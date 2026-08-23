@@ -2,243 +2,290 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-3R-REFERENCE-SYNTHESIS-IMPORT
+Phase: P2A-3S2-INBOX-STATUS-AUDIT
 Status: authorized
-Model: Terra
-Strength: Medium
+Model: Luna
+Strength: Low
 
 ## Objective
-Return to the crystal data/design mainline and import the GPT-authored four-reference synthesis input into the canonical reference-synthesis tables created by migration 009. Build only the smallest deterministic importer/preflight needed for this pilot, validate provenance strictly, perform one canonical import, prove replay idempotency, and STOP. Do not continue watcher/controller work.
+Return to data collection. Perform a read-only status audit of the current Google Drive Inbox image set against the canonical Crystal database so GPT can distinguish images that are fully processed, historically referenced but not upgraded to the new P2A evidence chain, and truly unprocessed. Do not perform visual analysis and do not modify canonical data.
 
-## Why Terra / Medium
-The input and schema are already fixed, but this phase writes canonical semantic rows and provenance links. The implementation boundary is narrow, yet mistakes could persist incorrect reference semantics, so use Terra / Medium.
+## Why Luna / Low
+This is a bounded metadata/read-only reconciliation task. No schema, semantic judgment, canonical write, or architecture work is required.
 
-## Authoritative inputs
-Read and follow exactly:
-- `inputs/p2a-3s1-reference-synthesis.json` — GPT-authored semantic source of truth
-- `outputs/p2a-3s0-reference-evidence-map.json` — exact observation IDs and source metadata
-- `migrations/009_p2a_reference_synthesis.sql`
-- `outputs/handoffs/P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA.json`
+## Current Drive snapshot supplied by GPT
+Google Drive Inbox currently contains 85 image files. Reviewed is currently empty.
 
-Expected references/assets:
-- REF-000002 -> ASSET-000001, ASSET-000002
-- REF-000006 -> ASSET-000015, ASSET-000016
-- REF-000019 -> ASSET-000046, ASSET-000047, ASSET-000048
-- REF-000025 -> ASSET-000064, ASSET-000065, ASSET-000066
+Known fully processed pilot images:
+- IMG_7633.PNG
+- IMG_7634.PNG
+- IMG_7668.PNG
+- IMG_7669.PNG
+- IMG_7717.PNG
+- IMG_7718.PNG
+- IMG_7719.PNG
+- IMG_7746.PNG
+- IMG_7747.PNG
+- IMG_7748.PNG
 
-Expected evidence baseline:
-- 4 references
-- 10 assets
-- 45 image_visual_observation rows
-- observation IDs exactly 1-45
-- id sum 1035
-- observed_value length sum 5479
-- current synthesis assertion rows = 0
-- current synthesis source rows = 0
+Known historically discussed/reference-analyzed groups that must NOT automatically be treated as brand-new/unseen merely because they lack P2A image observations:
+- IMG_7712.PNG, IMG_7713.PNG
+- IMG_7714.PNG, IMG_7715.PNG, IMG_7716.PNG
+- IMG_7721.PNG
+- IMG_7722.PNG, IMG_7723.PNG, IMG_7724.PNG
+- IMG_7729.PNG, IMG_7730.PNG, IMG_7731.PNG
+- IMG_7733.PNG, IMG_7734.PNG, IMG_7735.PNG, IMG_7736.PNG, IMG_7737.PNG
+- IMG_7743.PNG, IMG_7744.PNG, IMG_7745.PNG
 
-## GPT-authored input boundaries
-Do not rewrite, expand, reinterpret, summarize, or improve the semantic content in `inputs/p2a-3s1-reference-synthesis.json`.
+## Authoritative local sources
+Use only read-only inspection of:
+- canonical local SQLite DB
+- image_asset
+- design_reference_image
+- design_reference
+- image_visual_observation
+- design_reference_synthesis_assertion
+- design_reference_synthesis_source
+- existing historical P1C reference/assessment/pattern/theme/preference records where needed to detect historical analysis
+- existing P1C/P2A handoff/output artifacts if they contain historical image filename-to-reference mappings
 
-The input intentionally:
-- makes no mineral-species identification
-- proposes no pattern changes
-- proposes no theme changes
-- does not fold user preference evidence into image-derived synthesis
-- contains only image-observation-derived product_design/promotional_visual synthesis
+Do not use external web research. Do not redo image interpretation.
 
-Codex is the deterministic validator/importer only.
+## Inbox inventory
+Build the audit around the following exact 85 filenames currently present in Drive Inbox:
+IMG_7704.PNG
+IMG_7700.PNG
+IMG_7703.PNG
+IMG_7688.PNG
+IMG_7698.PNG
+IMG_7679.PNG
+IMG_7696.PNG
+IMG_7691.PNG
+IMG_7680.PNG
+IMG_7666.PNG
+IMG_7697.PNG
+IMG_7667.PNG
+IMG_7692.PNG
+IMG_7689.PNG
+IMG_7678.PNG
+IMG_7690.PNG
+IMG_7653.PNG
+IMG_7635.PNG
+IMG_7699.PNG
+IMG_7648.PNG
+IMG_7655.PNG
+IMG_7650.PNG
+IMG_7636.PNG
+IMG_7652.PNG
+IMG_7651.PNG
+IMG_7637.PNG
+IMG_7656.PNG
+IMG_7641.PNG
+IMG_7682.PNG
+IMG_7654.PNG
+IMG_7677.PNG
+IMG_7674.PNG
+IMG_7665.PNG
+IMG_7687.PNG
+IMG_7649.PNG
+IMG_7633.PNG
+IMG_7634.PNG
+IMG_7681.PNG
+IMG_7676.PNG
+IMG_7686.PNG
+IMG_7685.PNG
+IMG_7669.PNG
+IMG_7668.PNG
+IMG_7673.PNG
+IMG_7675.PNG
+IMG_7661.PNG
+IMG_7702.PNG
+IMG_7663.PNG
+IMG_7701.PNG
+IMG_7664.PNG
+IMG_7646.PNG
+IMG_7645.PNG
+IMG_7662.PNG
+IMG_7693.PNG
+IMG_7694.PNG
+IMG_7684.PNG
+IMG_7644.JPG
+IMG_7642.JPG
+IMG_7643.JPG
+IMG_7748.PNG
+IMG_7747.PNG
+IMG_7746.PNG
+IMG_7745.PNG
+IMG_7743.PNG
+IMG_7744.PNG
+IMG_7736.PNG
+IMG_7735.PNG
+IMG_7734.PNG
+IMG_7733.PNG
+IMG_7737.PNG
+IMG_7731.PNG
+IMG_7730.PNG
+IMG_7729.PNG
+IMG_7722.PNG
+IMG_7724.PNG
+IMG_7723.PNG
+IMG_7721.PNG
+IMG_7717.PNG
+IMG_7718.PNG
+IMG_7719.PNG
+IMG_7715.PNG
+IMG_7714.PNG
+IMG_7716.PNG
+IMG_7712.PNG
+IMG_7713.PNG
 
-## Minimal implementation
-Add the smallest importer script consistent with existing project conventions. Prefer a single script such as:
-`scripts/import-p2a-reference-synthesis.mjs`
+## Required classification
+Create exactly one main artifact:
+`outputs/p2a-3s2-inbox-status-audit.json`
 
-Do not introduce dependencies or a framework.
+For each of the 85 filenames, include:
+- filename
+- image_asset_key if known, else null
+- design_reference_keys (0..n)
+- has_historical_reference_analysis: true/false
+- has_image_visual_observation: true/false
+- image_visual_observation_count
+- has_reference_synthesis: true/false
+- reference_synthesis_assertion_count attributable to its linked reference(s)
+- status, exactly one of:
+  - `fully_processed`
+  - `historical_needs_p2a_upgrade`
+  - `unprocessed`
+  - `ambiguous_needs_review`
+- short machine-readable reason
 
-The importer must support at least:
-- preflight/dry-run mode
-- apply mode
-- deterministic replay/idempotency verification
+Classification rules:
+1. `fully_processed`
+   - image has canonical asset linkage
+   - has image_visual_observation rows
+   - linked reference has reference-level synthesis for the current P2A chain
 
-Reuse existing SQLite helpers/conventions where practical rather than creating a parallel data layer.
+2. `historical_needs_p2a_upgrade`
+   - image/reference has credible historical analysis/reference evidence in P1C/history
+   - but image-level P2A observation and/or current synthesis chain is incomplete
+   - do not require both to be absent
 
-## Preflight requirements
-Before any canonical write, reject the whole import if any condition fails:
+3. `unprocessed`
+   - no credible historical analysis/reference evidence
+   - no image_visual_observation
+   - no current synthesis
 
-1. contract_version is exactly `P2A-REFERENCE-SYNTHESIS-V1`
-2. producer/version/run metadata are nonblank
-3. reference set is exactly the four expected reference keys
-4. expected_asset_keys for each reference exactly match canonical design_reference_image linkage for this pilot
-5. every source_image_observation_id exists
-6. every source observation belongs to an asset canonically linked to the same target reference
-7. source observation scope is compatible with assertion scope:
-   - product_design assertion -> product_design source observations only
-   - promotional_visual assertion -> promotional_visual source observations only
-   - no assistant_assessment assertions are expected in this pilot
-8. assertion_class/scope/confidence values satisfy migration 009 enums
-9. assertion_key is nonblank and unique in input
-10. asserted_value and assertion_type are nonblank
-11. source_image_observation_ids are nonempty, unique per assertion, and deterministic in order or normalized deterministically
-12. no unknown reference/asset/evidence IDs
-13. no proposed pattern changes
-14. no proposed theme changes
-15. canonical observation fingerprint remains count 45, ids 1-45, sum 1035, observed_value length sum 5479
-16. canonical DB integrity_check is ok and foreign_key_check has zero violations
-17. migration 009 exists and both synthesis tables exist
-18. before first apply, synthesis tables are still empty; if they already contain only the exact same semantic replay identities, treat as replay verification rather than duplicate insertion; otherwise STOP and report unexpected pre-existing rows
+4. `ambiguous_needs_review`
+   - conflicting/multiple mappings, missing filename linkage, or insufficient evidence to classify safely
 
-Do not partially import if preflight fails.
+Do not classify an image as historically analyzed solely because another filename in the same numeric neighborhood was analyzed.
 
-## Canonical import behavior
-Use one transaction.
+## Summary required
+Top-level summary must include:
+- inbox_total = 85
+- fully_processed count
+- historical_needs_p2a_upgrade count
+- unprocessed count
+- ambiguous_needs_review count
+- count with image_asset linkage
+- count with design_reference linkage
+- count with image_visual_observation
+- count whose linked reference has current synthesis
+- list of filenames in each status bucket
 
-For each GPT assertion:
-1. resolve design_reference_id from reference_key
-2. insert into `design_reference_synthesis_assertion` using exact GPT-authored semantic fields plus producer/version/run metadata
-3. resolve the inserted/reused assertion id deterministically
-4. insert exact source links into `design_reference_synthesis_source`
+Also produce a small human-readable companion:
+`outputs/p2a-3s2-inbox-status-audit.md`
 
-Do not write:
-- legacy `design_reference_observation`
-- `design_assessment`
-- `visual_communication_reference`
-- patterns/themes/preferences
-- image observations
-- materials/components/suppliers/market/packaging
-- any migration
+The markdown should contain only:
+- summary counts
+- four status buckets with filenames
+- any true ambiguities that require GPT/user review
+- recommended next batch, preferring historical_needs_p2a_upgrade before truly unprocessed images where reuse of previous analysis saves effort
 
-Do not create migration 010.
+## Validation
+Verify:
+1. exactly 85 unique input filenames
+2. no filename appears in more than one final status bucket
+3. all 10 known pilot filenames classify as `fully_processed`; if not, STOP and report inconsistency
+4. canonical P2A pilot still has 45 image observations
+5. canonical reference synthesis still has 19 assertions and 37 source links
+6. no DB writes
+7. `PRAGMA integrity_check` = ok
+8. `PRAGMA foreign_key_check` = 0 violations
 
-## Replay/idempotency
-After successful first apply, immediately run the exact same input again.
-
-Required result:
-- zero additional semantic assertions
-- zero additional source links
-- all existing exact semantic identities/source links deterministically reused
-- no constraint error exposed to the user for a valid replay
-
-If the existing schema uniqueness means the script must detect/reuse before INSERT, implement that minimally and explicitly.
-
-## Expected row counts
-Derive expected assertion and source-link counts from the input before writing and report them.
-
-Do not hardcode counts in logic merely to make the test pass.
-
-After first apply and after replay, actual canonical counts for the four-reference synthesis pilot must exactly equal the input-derived expected counts.
-
-## Focused tests
-Add only focused tests needed to prove safety. Cover at minimum:
-1. valid preflight passes
-2. unknown reference fails
-3. asset grouping mismatch fails
-4. nonexistent observation fails
-5. cross-reference evidence fails
-6. product/promotional scope mismatch fails
-7. duplicate assertion key fails
-8. duplicate source IDs within one assertion fail or normalize deterministically before apply; behavior explicit
-9. blank semantic fields fail
-10. unexpected pattern/theme proposals fail
-11. dry-run performs zero DB writes
-12. successful transaction creates exact expected assertion/source counts
-13. replay creates zero new rows
-14. legacy semantic/P1C tables unchanged
-15. 45-row observation fingerprint unchanged
-16. integrity_check and foreign_key_check pass
-
-Use temporary isolated DBs for mutation/error tests where practical.
-
-## Canonical run sequence
-1. Confirm clean worktree.
-2. Ensure local branch is synchronized with origin/main using full Git for Windows where needed; do not force/rebase automatically if unsafe.
-3. Run importer dry-run against canonical DB.
-4. Record expected assertion/source counts from input.
-5. Apply once in one transaction.
-6. Verify actual counts and source/reference provenance.
-7. Replay same input.
-8. Verify zero new rows and same counts.
-9. Run focused tests + `npm test` + `npm run validate` + `git diff --check`.
-10. Run `PRAGMA integrity_check` and `PRAGMA foreign_key_check`.
-
-## Git/sandbox behavior
-Do not spend project time repairing watcher infrastructure.
-
-If Codex can commit/push normally, do so.
-If the sandbox blocks `.git/index.lock`, finish the authorized files/tests/import first, then report `READY_FOR_MANUAL_FINALIZE` with exact safe ordinary-PowerShell commands that stage ONLY this phase's files. Do not weaken sandbox, ACLs, or permissions.
-
-## Allowed changes
-- minimal reference-synthesis importer script
-- focused importer tests
-- minimal package script entry only if genuinely useful
-- canonical rows in `design_reference_synthesis_assertion`
-- canonical rows in `design_reference_synthesis_source`
+## Boundaries
+Allowed:
+- read-only DB queries
+- read-only existing repository artifacts
+- `outputs/p2a-3s2-inbox-status-audit.json`
+- `outputs/p2a-3s2-inbox-status-audit.md`
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P2A-3R-REFERENCE-SYNTHESIS-IMPORT.json`
+- `outputs/handoffs/P2A-3S2-INBOX-STATUS-AUDIT.json`
 
-## Forbidden
-- watcher/controller changes
-- migration changes / migration 010
-- edits to GPT-authored `inputs/p2a-3s1-reference-synthesis.json` unless a purely syntactic contract defect makes import impossible; if so STOP and report instead of silently changing semantics
-- image/material/component/supplier/market/packaging changes
+Forbidden:
+- visual/image semantic analysis
+- new image observations
+- new synthesis assertions/source links
+- database writes
+- migrations
 - pattern/theme/preference changes
-- legacy reference semantic table changes
-- reference regrouping
-- OpenViking/FiftyOne/vector/embedding work
-- new dependencies/frameworks
+- material/component/supplier/market/packaging work
+- moving/deleting Drive files
+- watcher/controller work
+- new dependencies
+
+## Git behavior
+If commit/push works normally, commit/push this audit. If Git metadata is blocked, report `READY_FOR_MANUAL_FINALIZE` with exact safe commands. Do not spend time fixing the channel.
 
 ## Reporting
 Update:
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P2A-3R-REFERENCE-SYNTHESIS-IMPORT.json`
+- `outputs/handoffs/P2A-3S2-INBOX-STATUS-AUDIT.json`
 
 Report:
-- importer path
-- input contract/version/run key
-- preflight result
-- input-derived expected assertion count
-- input-derived expected source-link count
-- first-apply created/reused counts
-- replay created/reused counts
-- final canonical synthesis assertion/source counts
-- confirmation that only the four intended references were affected
-- legacy/P1C/image-observation invariants
+- all four bucket counts
+- 85/85 reconciliation
+- known pilot check
+- DB read-only confirmation
 - integrity/FK checks
-- focused/full tests
-- business boundaries
-- blocker or manual-finalize requirement
-- whether GPT may proceed to expanding image/design-reference collection after this pilot
+- next recommended batch
+- whether GPT can proceed directly with historical-upgrade batch analysis
 
-Then STOP. Do not start another phase automatically.
+Then STOP.
 
 ## Final response
 PHASE:
-P2A-3R-REFERENCE-SYNTHESIS-IMPORT
+P2A-3S2-INBOX-STATUS-AUDIT
 
 STATUS:
 COMPLETED / READY_FOR_MANUAL_FINALIZE / BLOCKED
 
-PREFLIGHT:
+INBOX RECONCILIATION:
+<85/85 or fail>
+
+FULLY PROCESSED:
+<count>
+
+HISTORICAL NEEDS P2A UPGRADE:
+<count>
+
+UNPROCESSED:
+<count>
+
+AMBIGUOUS:
+<count>
+
+PILOT CHECK:
 PASS / FAIL
 
-EXPECTED ASSERTIONS / SOURCES:
-<count> / <count>
-
-FIRST APPLY CREATED / REUSED:
-<assertions created>/<assertions reused>; <sources created>/<sources reused>
-
-REPLAY CREATED / REUSED:
-<assertions created>/<assertions reused>; <sources created>/<sources reused>
-
-FINAL ASSERTIONS / SOURCES:
-<count> / <count>
-
-INVARIANTS:
+DB READ-ONLY:
 PASS / FAIL
 
 TESTS:
 <result>
 
-GPT MAY EXPAND DATA COLLECTION:
-YES / NO
+NEXT RECOMMENDED BATCH:
+<filenames or NONE>
 
 COMMIT:
 <sha or NONE>
