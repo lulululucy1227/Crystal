@@ -2,7 +2,8 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "AGENT-WATCHER-V1-BOOTSTRAP",
   "status": "completed",
-  "commit_sha": "",
+  "commit_sha": "a1ea59b3d3c3d9fe7c5f1b8be825dd4e2dcec574",
+  "commit_sha_convention": "Points to the immediately preceding watcher implementation commit; this metadata update avoids a self-referential commit loop.",
   "branch": "main",
   "changed_files": [
     "tools/agent-watcher/watcher.ps1",
