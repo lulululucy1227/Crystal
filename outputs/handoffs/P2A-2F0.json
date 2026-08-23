@@ -1,0 +1,71 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-2F0",
+  "status": "completed",
+  "commit_sha": "",
+  "branch": "main",
+  "changed_files": [
+    "outputs/GPT_HANDOFF.json",
+    "outputs/handoffs/P2A-2F0.json"
+  ],
+  "actual_changes": [
+    "Read-only schema gap check completed for image-level Vision observations."
+  ],
+  "decision": "MINIMAL_SCHEMA_CHANGE_REQUIRED",
+  "schema_gap": [
+    "No current table binds an image-level observation or inference to image_asset, source-content SHA-256, observer/model identity, and analysis-definition version.",
+    "Current reference-level observation, assessment, and promotional tables cannot preserve multiple image analyses and later human corrections without semantic overloading or destructive replacement."
+  ],
+  "existing_structures_reused": [
+    "image_asset for stable identity and image_hash exact-content SHA-256 (migrations/006_p1c_image_assets.sql).",
+    "design_reference_image for asset/reference linkage and image_role (migrations/006_p1c_image_assets.sql).",
+    "design_reference_observation for later reference-level synthesis and confirmed material linkage (migrations/001_initial.sql).",
+    "visual_communication_reference for reference-level promotional synthesis (migrations/001_initial.sql).",
+    "image_perceptual_hash as the content-SHA plus algorithm-version precedent (migrations/007_p2a_perceptual_hash.sql)."
+  ],
+  "proposed_minimum_change": {
+    "entity": "image_visual_observation",
+    "fields": [
+      "image_asset_id",
+      "source_content_sha256",
+      "observation_scope: product_design|promotional_visual",
+      "assertion_class: observation|inference",
+      "observation_type",
+      "observed_value",
+      "confidence",
+      "producer_type and producer_id",
+      "analysis_version",
+      "supersedes_observation_id",
+      "created_at and notes"
+    ],
+    "constraints": [
+      "Source SHA must be 64 hexadecimal characters and match image_asset.image_hash at insertion.",
+      "AI cannot write confirmed facts; human/source confirmation remains a separate evidence-backed canonical step.",
+      "Corrections are new append-only rows linked by supersedes_observation_id; original AI output is retained.",
+      "Use an idempotency key covering asset, source SHA, analysis version, producer, class, type and value."
+    ]
+  },
+  "important_semantic_boundaries": [
+    "Visible evidence is observation; appearance-based interpretation is inference; confirmed fact requires separate user/source/supplier evidence.",
+    "Image-level observation is separate from reference-level synthesis.",
+    "Product-design observation is separate from promotional visual observation."
+  ],
+  "evidence_pointers": [
+    "migrations/001_initial.sql: design_reference_observation, design_assessment, preference_evidence, visual_communication_reference",
+    "migrations/006_p1c_image_assets.sql: image_asset, design_reference_image, provider identity index, image_hash",
+    "migrations/007_p2a_perceptual_hash.sql: source_content_sha256, algorithm_version, uniqueness constraint",
+    "docs/schema.md: semantic separation and image asset/pHash rules"
+  ],
+  "risks_or_blockers": [
+    "Reusing reference-level tables would lose image/content-state traceability.",
+    "A fixed column for every visual attribute would create premature schema coupling."
+  ],
+  "requires_gpt_decision": [
+    "Approve or revise the one-table append-only proposal, initial observation_type vocabulary, analysis_version convention, and SHA equality enforcement mechanism."
+  ],
+  "tests_or_checks": [
+    "Read-only inspection of the four relevant migrations, docs/schema.md, field-review provenance structures, and scripts/crystal-db.mjs examples."
+  ],
+  "next_minimum_action": "Wait for GPT approval; then draft only a minimal migration and tests. Do not run Vision or proceed to migration 008 in P2A-2F0.",
+  "boundary_check": "PASS"
+}

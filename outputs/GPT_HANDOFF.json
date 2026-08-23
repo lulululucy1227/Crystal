@@ -1,35 +1,25 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "AGENT-HANDOFF-V1-BOOTSTRAP",
+  "phase": "P2A-2F0",
   "status": "completed",
-  "commit_sha": "b99a69fee6d11cab1ce2e66b4e75091e6ad90688",
-  "commit_sha_convention": "This field points to the immediately preceding bootstrap commit; the handoff update itself is the following commit and avoids a self-referential endless commit loop.",
+  "commit_sha": "",
   "branch": "main",
   "changed_files": [
-    ".gitignore",
-    "AGENTS.md",
-    "README.md",
-    "agent/GPT_NEXT_TASK.md",
-    "data/p1c-knowledge-seeds.jsonl",
-    "docs/",
-    "migrations/",
-    "outputs/",
-    "package.json",
-    "scripts/",
-    "templates/",
-    "test/"
+    "outputs/GPT_HANDOFF.json",
+    "outputs/handoffs/P2A-2F0.json"
   ],
   "actual_changes": [
-    "Established GitHub-based GPT/Codex task and handoff protocol."
+    "Read-only schema gap check completed for image-level Vision observations."
   ],
   "critical_boundaries_preserved": [
-    "No P2A implementation resumed.",
-    "No database or schema changes performed."
+    "No database, schema, migration 008, application code, Vision, OCR, image processing, Google Drive access, or dependency changes."
   ],
-  "tests_or_checks": [],
+  "tests_or_checks": [
+    "Inspected migrations/001_initial.sql, migrations/003_p1a_field_audit.sql, migrations/006_p1c_image_assets.sql, migrations/007_p2a_perceptual_hash.sql, docs/schema.md, and scripts/crystal-db.mjs."
+  ],
   "risks_or_blockers": [],
   "requires_gpt_decision": [
-    "GPT must provide the next authorized phase."
+    "Approve or revise the proposed minimal image_visual_observation structure and its initial controlled vocabulary/versioning rules."
   ],
-  "next_minimum_action": "Wait for GPT to publish the next task."
+  "next_minimum_action": "After GPT approval, draft only the minimal migration and tests; do not run Vision automatically."
 }
