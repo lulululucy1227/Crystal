@@ -2,7 +2,7 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "AGENT-WATCHER-V1.3.1-SYNC-ORDER",
   "status": "completed",
-  "commit_sha": "20f8773523bbccd5200ff9256395846a8a1ea450",
+  "commit_sha": "b975b1be15cf0b8e5ebfc36a306cf0237e56b112",
   "branch": "main",
   "changed_files": [
     "tools/agent-watcher/watcher.ps1",
