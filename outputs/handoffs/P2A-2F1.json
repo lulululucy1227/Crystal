@@ -2,7 +2,8 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2A-2F1",
   "status": "completed",
-  "commit_sha": "",
+  "commit_sha": "316b08c58f6abfdc5ebf16117477332893499242",
+  "commit_sha_convention": "Points to the immediately preceding P2A-2F1 implementation commit; this metadata update avoids a self-referential commit loop.",
   "branch": "main",
   "changed_files": [
     "migrations/008_p2a_visual_observation.sql",
