@@ -166,6 +166,16 @@ function Invoke-WatcherOnce {
     $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status
     if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
     if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+    if (Test-CompletedHandoff $RepoPath $task.Phase) {
+      $state.lastCompletedFingerprint = $task.Fingerprint
+      $state.lastLaunchedFingerprint = $task.Fingerprint
+      $state.lastFailureFingerprint = ''
+      $state.lastFailureAt = ''
+      $state.retryAfterUtc = ''
+      Save-JsonState $state
+      Write-WatcherLog "completion evidence found before launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
+      return [pscustomobject]@{ Action = 'completed-existing'; Phase = $task.Phase; Fingerprint = $task.Fingerprint }
+    }
     if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
     Write-WatcherLog "authorized task detected: phase=$($task.Phase) status=$($task.Status) fingerprint=$($task.Fingerprint)"
     $state.lastLaunchedFingerprint = $task.Fingerprint; Save-JsonState $state

@@ -9,6 +9,11 @@ function Set-LaunchExitCode {
   Set-Item -Path Function:Start-CodexExecution -Value {
     param([string]$Repository, [switch]$DryRun)
     if ($DryRun) { return [pscustomobject]@{ Started = $false; DryRun = $true } }
+    if ($script:SyntheticHandoffPhase) {
+      $outputDir = Join-Path $Repository 'outputs'
+      New-Item -ItemType Directory -Path $outputDir -Force | Out-Null
+      Set-Content -LiteralPath (Join-Path $outputDir 'GPT_HANDOFF.json') -Value ('{{"phase":"{0}","status":"completed"}}' -f $script:SyntheticHandoffPhase) -NoNewline
+    }
     return [pscustomobject]@{ Started = $true; ExitCode = $script:SyntheticExitCode }
   }
   $script:SyntheticExitCode = $ExitCode
@@ -39,12 +44,18 @@ try {
   Assert-That ($spec.Arguments -contains 'on-request') 'launcher must preserve on-request approval'
   Assert-That (-not ($spec.Arguments -contains '--no-alt-screen')) 'non-interactive launcher must not use TUI-only no-alt-screen'
 
+  Set-SyntheticTask 'SYNTHETIC-PREFLIGHT'
+  New-Item -ItemType Directory -Path (Join-Path $root 'outputs') -Force | Out-Null
+  Set-Content -LiteralPath (Join-Path $root 'outputs\GPT_HANDOFF.json') -Value '{"phase":"SYNTHETIC-PREFLIGHT","status":"completed"}' -NoNewline
+  $preflight = Invoke-WatcherOnce -SkipSync
+  Assert-That ($preflight.Action -eq 'completed-existing') 'matching existing handoff must prevent a duplicate launch'
+
   Set-SyntheticTask 'SYNTHETIC-NONZERO'
   Set-LaunchExitCode 9
   $nonZero = Invoke-WatcherOnce -SkipSync
   $nonZeroState = Get-JsonState
   Assert-That ($nonZero.Action -eq 'failed') 'non-zero exit must be reported as failed'
-  Assert-That ($nonZeroState.lastCompletedFingerprint -eq '') 'non-zero exit must not mark completed'
+  Assert-That ($nonZeroState.lastCompletedFingerprint -ne $nonZero.Fingerprint) 'non-zero exit must not mark completed'
   Assert-That ($nonZeroState.lastLaunchedFingerprint -eq '') 'non-zero exit must clear launched fingerprint'
   Assert-That ($nonZeroState.retryAfterUtc.Length -gt 0) 'non-zero exit must set retry backoff'
 
@@ -61,12 +72,12 @@ try {
   $zeroNoHandoff = Invoke-WatcherOnce -SkipSync
   $zeroNoHandoffState = Get-JsonState
   Assert-That ($zeroNoHandoff.Action -eq 'unverified') 'zero exit without handoff must remain unverified'
-  Assert-That ($zeroNoHandoffState.lastCompletedFingerprint -eq '') 'zero exit without matching handoff must not mark completed'
+  Assert-That ($zeroNoHandoffState.lastCompletedFingerprint -ne $zeroNoHandoff.Fingerprint) 'zero exit without matching handoff must not mark completed'
 
   Set-SyntheticTask 'SYNTHETIC-COMPLETED'
-  New-Item -ItemType Directory -Path (Join-Path $root 'outputs') -Force | Out-Null
-  Set-Content -LiteralPath (Join-Path $root 'outputs\GPT_HANDOFF.json') -Value '{"phase":"SYNTHETIC-COMPLETED","status":"completed"}' -NoNewline
+  $script:SyntheticHandoffPhase = 'SYNTHETIC-COMPLETED'
   $completed = Invoke-WatcherOnce -SkipSync
+  $script:SyntheticHandoffPhase = ''
   $completedState = Get-JsonState
   Assert-That ($completed.Action -eq 'completed') 'matching completed handoff must mark completed'
   Assert-That ($completedState.lastCompletedFingerprint -eq $completed.Fingerprint) 'matching completed handoff must persist completion'
@@ -83,7 +94,7 @@ try {
   $sync = Sync-CrystalRepository $dirtyRepo
   Assert-That (-not $sync.Ready) 'dirty worktree must block sync and launch'
   Assert-That (Test-Path -LiteralPath $state) 'state must persist across watcher invocations'
-  Write-Output 'watcher tests: 18 passed'
+  Write-Output 'watcher tests: 19 passed'
 } finally {
   if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
 }

@@ -12,4 +12,6 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/agent-watcher/watc
 
 The runtime state and log are under `.agent-state/` and are intentionally ignored by Git.
 
+A task fingerprint is completed only when Codex exits with code `0` and the post-run `outputs/GPT_HANDOFF.json` has the same phase with status `completed`. Non-zero exits, sync failures, and missing or mismatched completion evidence remain retryable. They are logged with failure timestamps and held for a five-minute local backoff before the same fingerprint may run again. A verified completed fingerprint remains skipped.
+
 The user-level Startup entry sets `CRYSTAL_WATCHER_ROOT` to this project directory explicitly; this avoids resolving paths relative to the Windows Startup folder.
