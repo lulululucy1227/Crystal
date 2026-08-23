@@ -2,181 +2,71 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA
+Phase: AGENT-WATCHER-V1.3.1-SYNC-ORDER
 Status: authorized
-Model: Terra
-Strength: Medium
+Model: Luna
+Strength: Low
 
 ## Objective
-Implement the smallest additive migration needed to persist future reference-level synthesis safely, based on the completed P2A-3F0 decision B. This phase is schema foundation only: create migration 009 and focused tests. Do not author or import any new reference synthesis content.
+Fix a specific polling-order bug in the Crystal watcher that prevents it from ever fetching a newly authorized GitHub task when the local `GPT_NEXT_TASK.md` still contains the fingerprint of a previously completed task.
 
-## Why Terra / Medium
-This phase changes the canonical SQLite schema and introduces provenance/history constraints. The design is already bounded by P2A-3F0, but schema mistakes would be durable, so use Terra / Medium rather than Luna.
+This is watcher infrastructure only. Do not execute P2A-3F1, do not modify database/schema/data/image/semantic content, and do not add new dependencies.
 
-## Authoritative design decision
-Read and follow exactly:
-- `outputs/p2a-3f0-reference-synthesis-fit.md`
-- `outputs/handoffs/P2A-3F0-REFERENCE-SYNTHESIS-FIT.json`
-- `migrations/008_p2a_visual_observation.sql`
+## Confirmed root cause
+Current `Invoke-WatcherOnce` reads the local task and then checks:
+- `lastCompletedFingerprint == task.Fingerprint` => immediately logs `duplicate completed fingerprint skipped` and returns.
 
-P2A-3F0 selected option B: additive minimal migration. Preserve the legacy tables unchanged:
-- `design_reference_observation`
-- `design_assessment`
-- `visual_communication_reference`
+That duplicate-completed return occurs BEFORE `Sync-CrystalRepository`.
 
-Do not backfill or reinterpret historical P1C rows.
+Observed result: after V1.3 completed locally, GitHub was updated to a new authorized `P2A-3F1` task, but every five-minute poll kept returning on the old completed V1.3 fingerprint and therefore never ran `git fetch` / fast-forward. The controller appeared alive but could never discover the new task.
 
-## Required migration
-Create exactly one new migration:
-`migrations/009_p2a_reference_synthesis.sql`
+## Required fix
+Reorder the clean-worktree path so repository synchronization happens before duplicate-completed / blocked-fingerprint decisions that depend on the task fingerprint.
 
-Add only the minimum persistence structures described below.
+Minimum intended flow for a clean worktree:
+1. acquire lock
+2. read state
+3. if sync is enabled, perform clean-worktree fetch + fast-forward-only sync
+4. re-read `agent/GPT_NEXT_TASK.md` AFTER sync
+5. update state `lastPhase/lastStatus/lastPollAt` from the fresh task
+6. only then evaluate authorized status, completed duplicate, blocked fingerprint, backoff, and launch
 
-### 1. `design_reference_synthesis_assertion`
-Required fields:
-- `id` INTEGER PRIMARY KEY
-- `assertion_key` TEXT NOT NULL UNIQUE
-- `design_reference_id` INTEGER NOT NULL FK -> `design_reference(id)`
-- `synthesis_scope` TEXT NOT NULL, constrained to:
-  - `product_design`
-  - `assistant_assessment`
-  - `promotional_visual`
-- `assertion_class` TEXT NOT NULL, constrained to:
-  - `observation`
-  - `inference`
-- `assertion_type` TEXT NOT NULL
-- `asserted_value` TEXT NOT NULL
-- `confidence` TEXT NOT NULL, constrained to:
-  - `low`
-  - `medium`
-  - `high`
-- `notes` TEXT NULL
-- `producer_type` TEXT NOT NULL, reuse the established producer convention where practical; at minimum support `assistant_model` and `human`
-- `producer_id` TEXT NOT NULL
-- `analysis_version` TEXT NOT NULL
-- `synthesis_run_key` TEXT NOT NULL
-- `supersedes_assertion_id` INTEGER NULL self-FK
-- `created_at` TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+For a dirty worktree/finalization-recovery path, preserve the existing safety logic: do not fetch/pull over dirty state; recovery eligibility must continue using the exact current local fingerprint and persisted watcher-observed snapshot.
 
-Required checks:
-- nonblank `assertion_key`
-- nonblank `assertion_type`
-- nonblank `asserted_value`
-- nonblank `producer_id`
-- nonblank `analysis_version`
-- nonblank `synthesis_run_key`
-- no self-supersession
-
-Required deterministic replay/idempotency protection:
-- preserve `assertion_key` uniqueness;
-- also add a semantic replay uniqueness constraint equivalent to the P2A-3F0 recommendation over reference + scope + class + type + value + producer + version, unless a canonical content-key column is materially safer/simpler.
-- Do not include mutable notes/confidence in the replay identity unless you can justify why that is necessary. Keep the mechanism minimal and deterministic.
-
-### 2. `design_reference_synthesis_source`
-Required fields:
-- `synthesis_assertion_id` INTEGER NOT NULL FK -> `design_reference_synthesis_assertion(id)`
-- `image_visual_observation_id` INTEGER NOT NULL FK -> `image_visual_observation(id)`
-- composite PRIMARY KEY (`synthesis_assertion_id`, `image_visual_observation_id`)
-
-Required indexes:
-- index lookup by `image_visual_observation_id`
-- index by `design_reference_id` / scope on assertion table if useful for normal retrieval
-
-## Provenance / lineage enforcement
-The database must prevent obviously invalid lineage where practical without overengineering.
-
-At minimum:
-- source rows must reference valid existing image observations;
-- assertion/source deletion should not silently destroy evidence history; prefer restrictive semantics for evidence links;
-- supersession must not cross reference or synthesis scope;
-- append-only history: once a synthesis assertion exists, corrections should be represented by a new row with `supersedes_assertion_id`, not UPDATE of semantic content.
-
-If SQLite triggers are the smallest robust way to enforce same-reference/scope supersession and append-only behavior, use narrowly scoped triggers consistent with migration 008 style.
-
-For the source-to-reference provenance rule (source observation asset must be canonically linked to the same design reference):
-- enforce in DB trigger only if it can be expressed clearly and safely with the existing `image_visual_observation -> image_asset -> design_reference_image` path;
-- otherwise document that this exact rule is importer-preflight enforced in the next phase, while still keeping FK integrity in schema.
-
-Do not add broad machinery solely to force every future importer invariant into SQL.
-
-## Migration behavior
-- additive only;
-- no ALTER/rewrite of the three legacy reference semantic tables;
-- no migration 010;
-- no semantic data insert;
-- no synthesis assertion seed rows;
-- no pattern/theme/preference changes;
-- preserve all P2A-2R and P2A-3F0 data unchanged.
+Do not weaken:
+- clean-worktree safety
+- exact finalization snapshot proof
+- lock/single-process behavior
+- fast-forward-only sync
+- retry/backoff/cap
+- sandbox or approval policy
+- controller default OFF / five-minute session polling
 
 ## Tests
-Add focused tests proving at minimum:
-1. migration 009 applies successfully after current baseline
-2. legacy semantic tables remain structurally and row-wise unchanged
-3. valid assertion inserts succeed
-4. invalid scope/class/confidence/blank producer/version/run key fail
-5. duplicate assertion_key fails
-6. semantic replay duplicate fails or deterministically reuses at importer layer if the chosen key design requires that; schema behavior must be explicit
-7. valid source links succeed
-8. duplicate source link fails
-9. nonexistent source observation fails
-10. self-supersession fails
-11. supersession across design reference fails
-12. supersession across synthesis scope fails
-13. append-only protection prevents destructive semantic UPDATE if implemented by trigger
-14. no canonical semantic assertion rows are inserted by the migration/tests into the real DB
-15. existing regression tests pass
-16. `PRAGMA integrity_check` and `foreign_key_check` pass
+Add/adjust focused synthetic tests proving at minimum:
+1. local task fingerprint is completed-old, remote has a new authorized task => watcher syncs first and detects the new task instead of returning duplicate old fingerprint
+2. if remote task is unchanged and already completed => duplicate skip still works after sync
+3. dirty worktree still does not fetch/pull
+4. eligible finalization recovery still works
+5. non-fast-forward sync still blocks
+6. existing watcher/controller tests pass
 
-Use isolated temporary DBs for mutation tests where possible. Applying migration 009 to the canonical local DB is allowed only as schema migration validation; do not insert synthesis semantic rows into canonical DB.
+No real business task execution in tests.
 
-## Open-source / design discipline
-Reuse established project conventions from migration 008 and common append-only assertion/source-link patterns. Do not add dependencies or frameworks. No OpenViking/FiftyOne/vector/embedding work.
-
-## Boundaries
-Allowed:
-- `migrations/009_p2a_reference_synthesis.sql`
-- focused schema tests
-- minimal validation/helper changes only if required
-- canonical `schema_migration` entry for 009 if local validation applies the migration
-- handoff files
-
-Forbidden:
-- any GPT/Codex reference synthesis content
-- any rows in `design_reference_synthesis_assertion` or `design_reference_synthesis_source` in canonical DB
-- changes to legacy P1C semantic rows
-- image observation changes
-- material/component/market/supplier/packaging changes
-- pattern/theme/preference changes
-- reference regrouping
-- Workbench UI
-- watcher/controller changes unless strictly required by the handoff protocol (do not use this phase to continue watcher feature work)
-
-## Validation / invariants
-Before and after canonical migration validation, record and confirm unchanged:
-- 4 pilot reference groupings
-- 10 pilot assets
-- 45 `image_visual_observation` rows
-- observation fingerprint used in P2A-3F0 (count 45; ids 1-45; id sum 1035; observed_value length sum 5479)
-- existing historical P1C assessment/pattern/theme rows for the four pilot references
-
-Canonical DB semantic row counts must not change except `schema_migration` gaining 009 and the two new tables existing empty.
+## Deliverables
+Allowed changes only:
+- `tools/agent-watcher/watcher.ps1`
+- focused watcher tests
+- minimal README note if needed
+- `outputs/GPT_HANDOFF.json`
+- `outputs/handoffs/AGENT-WATCHER-V1.3.1-SYNC-ORDER.json`
 
 ## Reporting
-Update:
-- `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA.json`
-
-Include:
-- migration name
-- exact tables/constraints/triggers added
-- whether source-to-reference provenance is DB-enforced or importer-preflight deferred
-- canonical new-table row counts (must both be 0)
-- legacy/P2A invariant checks
-- focused tests + full regressions
-- integrity/foreign-key checks
-- canonical tables changed
+Handoff must include:
+- exact root cause
+- exact ordering change
+- tests
 - boundary check
-- blockers/risks
-- whether GPT may now author the four-reference synthesis input for the next phase
+- whether the watcher can now discover a new GitHub task after a completed local fingerprint
 
-After push, STOP. Do not author synthesis content and do not build the importer automatically.
+After push, STOP. Do not restore or execute P2A-3F1 automatically in this phase.
