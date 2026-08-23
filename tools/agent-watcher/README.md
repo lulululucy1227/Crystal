@@ -11,9 +11,11 @@ The controller is a Windows-native PowerShell WinForms window. It is the only sc
 - Controller open + OFF: UI only; no timer poll, Git fetch, network, watcher, or Codex launch.
 - Controller open + ON: an in-process WinForms timer fires every five minutes and starts at most one `watcher.ps1 -Once`; the child watcher exits after that poll and the controller remains visible.
 - `立即检查一次` performs one lock-protected one-shot poll whether AUTO MODE is ON or OFF. Closing the controller stops the timer and future polls; it does not relaunch itself or kill an already running Codex task.
-- The UI displays AUTO MODE, controller state, current phase/status, last poll, last Codex run, retry count/2, and READY/RUNNING/BACKOFF/BLOCKED state.
+- The UI displays AUTO MODE, controller state, current phase/status, last poll, last Codex run, retry count/2, and READY/RUNNING/COMPLETED/BACKOFF/BLOCKED state. A live tracked watcher/Codex process takes precedence as RUNNING and includes elapsed time.
 - The watcher retains task fingerprinting, its exclusive lock, clean-worktree checks, full Git path preference (`C:\Program Files\Git\cmd\git.exe`), `workspace-write`, and `on-request` approval.
 - A fingerprint gets one initial attempt plus at most two automatic retries, separated by at least five minutes. Logs rotate at 2 MiB with one archive, bounding total watcher logs near 4 MiB.
+- Automatic finalization is allowed only for the same authorized fingerprint launched from a watcher-recorded clean baseline, after exit 0 produced no matching completed handoff and left a non-empty dirty snapshot. Recovery requires the current HEAD and every dirty entry's status, path, and SHA-256 to exactly equal the watcher-observed post-run state. Any pre-existing, added, removed, renamed, or content-changed entry blocks. Recovery uses a fixed watcher-owned prompt to preserve existing work and perform only validation, handoff, commit, and push work; it never derives commands from task prose.
+- Gitignored state records the launch baseline commit/clean marker, finalization fingerprint, observed post-run commit and dirty snapshot, recovery-attempt marker/count, and existing retry/backoff fields. Verified matching completion with a clean tree clears the finalization state.
 
 ## Install and use
 

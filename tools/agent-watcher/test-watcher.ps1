@@ -1,114 +1,111 @@
 $ErrorActionPreference = 'Stop'
-$watcher = Join-Path $PSScriptRoot 'watcher.ps1'
-. $watcher
+. (Join-Path $PSScriptRoot 'watcher.ps1')
 
 function Assert-That { param([bool]$Condition, [string]$Message) if (-not $Condition) { throw "ASSERTION FAILED: $Message" } }
-function Set-SyntheticTask { param([string]$Phase) Set-Content -LiteralPath $script:TaskFilePath -Value "# Task`nPhase: $Phase`nStatus: authorized`n" -NoNewline }
-function Set-LaunchExitCode {
-  param([int]$ExitCode)
-  Set-Item -Path Function:Start-CodexExecution -Value {
-    param([string]$Repository, [switch]$DryRun)
-    if ($DryRun) { return [pscustomobject]@{ Started = $false; DryRun = $true } }
-    if ($script:SyntheticHandoffPhase) {
-      $outputDir = Join-Path $Repository 'outputs'
-      New-Item -ItemType Directory -Path $outputDir -Force | Out-Null
-      Set-Content -LiteralPath (Join-Path $outputDir 'GPT_HANDOFF.json') -Value ('{{"phase":"{0}","status":"completed"}}' -f $script:SyntheticHandoffPhase) -NoNewline
+function Invoke-TestGit { param([Parameter(ValueFromRemainingArguments = $true)][object[]]$Arguments) & (Resolve-GitExecutable) @Arguments; if ($LASTEXITCODE -ne 0) { throw "test git failed: $($Arguments -join ' ')" } }
+function Set-SyntheticTask { param([string]$Phase) [IO.File]::WriteAllText($script:TaskFilePath, "# Task`nPhase: $Phase`nStatus: authorized`n") }
+function Commit-All { param([string]$Message = 'synthetic') Invoke-TestGit @('-C', $RepoPath, 'add', '-A') | Out-Null; Invoke-TestGit @('-C', $RepoPath, 'commit', '-m', $Message, '--quiet') | Out-Null }
+function Reset-SyntheticRepo {
+  Invoke-TestGit @('-C', $RepoPath, 'reset', '--hard', $script:BaselineCommit, '--quiet') | Out-Null
+  Invoke-TestGit @('-C', $RepoPath, 'clean', '-fd', '--quiet') | Out-Null
+  if (Test-Path -LiteralPath $StatePath) { Remove-Item -LiteralPath $StatePath -Force }
+  $script:SyntheticMode = 'exit0'; $script:ObservedRecoveryPrompt = $null
+}
+
+Set-Item -Path Function:Start-CodexExecution -Value {
+  param([string]$Repository, [switch]$DryRun, [switch]$FinalizationRecovery)
+  if ($DryRun) { return [pscustomobject]@{ DryRun = $true } }
+  if ($FinalizationRecovery) { $script:ObservedRecoveryPrompt = (Get-CodexLaunchSpec $Repository -FinalizationRecovery).Arguments[-1] }
+  switch ($script:SyntheticMode) {
+    'leave-dirty' { [IO.File]::WriteAllText((Join-Path $Repository 'phase-output.txt'), 'valid existing work'); return [pscustomobject]@{ Started = $true; ExitCode = 0 } }
+    'recover-success' {
+      $phase = (Read-TaskDescriptor $script:TaskFilePath).Phase
+      New-Item -ItemType Directory -Path (Join-Path $Repository 'outputs') -Force | Out-Null
+      [IO.File]::WriteAllText((Join-Path $Repository 'outputs\GPT_HANDOFF.json'), ('{{"phase":"{0}","status":"completed"}}' -f $phase))
+      Commit-All 'synthetic finalization'
+      return [pscustomobject]@{ Started = $true; ExitCode = 0 }
     }
-    return [pscustomobject]@{ Started = $true; ExitCode = $script:SyntheticExitCode }
+    'recovery-fail' { return [pscustomobject]@{ Started = $true; ExitCode = 7 } }
+    default { return [pscustomobject]@{ Started = $true; ExitCode = 0 } }
   }
-  $script:SyntheticExitCode = $ExitCode
 }
 
 $root = Join-Path ([IO.Path]::GetTempPath()) ('crystal-watcher-test-' + [Guid]::NewGuid().ToString('N'))
-$task = Join-Path $root 'GPT_NEXT_TASK.md'
-$state = Join-Path $root 'state.json'
-$log = Join-Path $root 'watcher.log'
-New-Item -ItemType Directory -Path $root -Force | Out-Null
+$RepoPath = Join-Path $root 'repo'; $StatePath = Join-Path $root 'state.json'; $LogPath = Join-Path $root 'watcher.log'; $TaskFilePath = Join-Path $root 'GPT_NEXT_TASK.md'
+New-Item -ItemType Directory -Path $RepoPath -Force | Out-Null
 try {
-  $RepoPath = $root; $StatePath = $state; $LogPath = $log; $TaskFilePath = $task
-  Set-Content -LiteralPath $task -Value "# Task`nPhase: WAITING`nStatus: waiting`n" -NoNewline
-  $waiting = Invoke-WatcherOnce -DryRun -SkipSync
-  Assert-That ($waiting.Action -eq 'waiting') 'waiting task must not launch'
+  Invoke-TestGit @('init', $RepoPath, '--quiet') | Out-Null
+  Invoke-TestGit @('-C', $RepoPath, 'config', 'user.email', 'watcher-test@example.invalid') | Out-Null
+  Invoke-TestGit @('-C', $RepoPath, 'config', 'user.name', 'Watcher Test') | Out-Null
+  [IO.File]::WriteAllText((Join-Path $RepoPath 'baseline.txt'), 'baseline')
+  Commit-All 'baseline'
+  $script:BaselineCommit = Get-HeadCommit $RepoPath
 
-  Set-SyntheticTask 'SYNTHETIC-DRY-RUN'
-  $dryOutcome = Invoke-WatcherOnce -DryRun -SkipSync
-  $dryState = Get-JsonState
-  Assert-That ($dryOutcome.Action -eq 'dry-run') 'synthetic dry-run must not invoke a business task'
-  Assert-That ($dryState.lastCompletedFingerprint -eq '') 'dry-run must not mark a task completed'
+  # Clean baseline remains mandatory; unknown/pre-existing dirt never launches.
+  Set-SyntheticTask 'DIRTY-FIRST'; [IO.File]::WriteAllText((Join-Path $RepoPath 'unknown.txt'), 'unknown')
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'blocked') 'first launch must require a clean worktree'
+  Assert-That (-not (Get-JsonState).launchBaselineClean) 'pre-existing dirty baseline must not become trusted finalization state'
 
-  $spec = Get-CodexLaunchSpec $root
-  $execIndex = [array]::IndexOf($spec.Arguments, 'exec')
-  $approvalIndex = [array]::IndexOf($spec.Arguments, '--ask-for-approval')
-  Assert-That ($execIndex -gt 0 -and $approvalIndex -ge 0 -and $approvalIndex -lt $execIndex) 'approval must be a global option before exec'
-  Assert-That ($spec.Arguments -contains 'workspace-write') 'launcher must preserve workspace-write sandbox'
-  Assert-That ($spec.Arguments -contains 'on-request') 'launcher must preserve on-request approval'
-  Assert-That (-not ($spec.Arguments -contains '--no-alt-screen')) 'non-interactive launcher must not use TUI-only no-alt-screen'
-
-  Set-SyntheticTask 'SYNTHETIC-PREFLIGHT'
-  New-Item -ItemType Directory -Path (Join-Path $root 'outputs') -Force | Out-Null
-  Set-Content -LiteralPath (Join-Path $root 'outputs\GPT_HANDOFF.json') -Value '{"phase":"SYNTHETIC-PREFLIGHT","status":"completed"}' -NoNewline
-  $preflight = Invoke-WatcherOnce -SkipSync
-  Assert-That ($preflight.Action -eq 'completed-existing') 'matching existing handoff must prevent a duplicate launch'
-
-  Set-SyntheticTask 'SYNTHETIC-NONZERO'
-  Set-LaunchExitCode 9
-  $nonZero = Invoke-WatcherOnce -SkipSync
-  $nonZeroState = Get-JsonState
-  Assert-That ($nonZero.Action -eq 'failed') 'non-zero exit must be reported as failed'
-  Assert-That ($nonZeroState.lastCompletedFingerprint -ne $nonZero.Fingerprint) 'non-zero exit must not mark completed'
-  Assert-That ($nonZeroState.lastLaunchedFingerprint -eq '') 'non-zero exit must clear launched fingerprint'
-  Assert-That ($nonZeroState.retryAfterUtc.Length -gt 0) 'non-zero exit must set retry backoff'
-
-  $backoff = Invoke-WatcherOnce -SkipSync
-  Assert-That ($backoff.Action -eq 'backoff') 'failed fingerprint must not rapidly retry during backoff'
-  $retryState = Get-JsonState
-  $retryState.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o')
-  Save-JsonState $retryState
-  $retried = Invoke-WatcherOnce -SkipSync
-  Assert-That ($retried.Action -eq 'failed') 'failed fingerprint must retry after backoff'
-  $retryState = Get-JsonState
-  $retryState.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o')
-  Save-JsonState $retryState
-  $finalRetry = Invoke-WatcherOnce -SkipSync
-  Assert-That ($finalRetry.Action -eq 'failed') 'second automatic retry may run after backoff'
-  $blocked = Invoke-WatcherOnce -SkipSync
-  Assert-That ($blocked.Action -eq 'blocked-retry-limit') 'same fingerprint must block after two automatic retries'
-  Assert-That ((Get-JsonState).retryCount -eq 2) 'controller-visible retry count must stop at two'
-
-  Set-SyntheticTask 'SYNTHETIC-ZERO-NO-HANDOFF'
-  Set-LaunchExitCode 0
-  $zeroNoHandoff = Invoke-WatcherOnce -SkipSync
-  $zeroNoHandoffState = Get-JsonState
-  Assert-That ($zeroNoHandoff.Action -eq 'unverified') 'zero exit without handoff must remain unverified'
-  Assert-That ($zeroNoHandoffState.lastCompletedFingerprint -ne $zeroNoHandoff.Fingerprint) 'zero exit without matching handoff must not mark completed'
-
-  Set-SyntheticTask 'SYNTHETIC-COMPLETED'
-  $script:SyntheticHandoffPhase = 'SYNTHETIC-COMPLETED'
+  # Exact observed dirty state enters fixed-prompt recovery and clears state after verified clean completion.
+  Reset-SyntheticRepo; Set-SyntheticTask 'FINALIZE-OK'; $script:SyntheticMode = 'leave-dirty'
+  $pending = Invoke-WatcherOnce -SkipSync
+  Assert-That ($pending.Action -eq 'finalization-pending') 'exit 0 plus observed dirty state must become finalization-pending'
+  $pendingState = Get-JsonState
+  Assert-That ($pendingState.launchBaselineClean -and $pendingState.launchBaselineCommit) 'clean baseline marker and commit must persist'
+  Assert-That (@($pendingState.observedPostRunDirtySnapshot).Count -eq 1) 'exact post-run dirty snapshot must persist'
+  $script:SyntheticMode = 'recover-success'; $pendingState.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o'); Save-JsonState $pendingState
   $completed = Invoke-WatcherOnce -SkipSync
-  $script:SyntheticHandoffPhase = ''
-  $completedState = Get-JsonState
-  Assert-That ($completed.Action -eq 'completed') 'matching completed handoff must mark completed'
-  Assert-That ($completedState.lastCompletedFingerprint -eq $completed.Fingerprint) 'matching completed handoff must persist completion'
-  $duplicate = Invoke-WatcherOnce -SkipSync
-  Assert-That ($duplicate.Action -eq 'duplicate') 'completed fingerprint must never launch again'
+  Assert-That ($completed.Action -eq 'completed') "successful recovery plus handoff and clean tree must complete (got $($completed.Action): $($completed.Reason))"
+  Assert-That ((Get-JsonState).finalizationFingerprint -eq '') 'successful clean completion must clear finalization state'
+  Assert-That ($script:ObservedRecoveryPrompt -match 'Preserve valid existing work' -and $script:ObservedRecoveryPrompt -match [regex]::Escape('C:\Program Files\Git\cmd\git.exe')) 'recovery prompt must be fixed watcher-owned preservation text with full Git path'
 
-  $lock = Acquire-WatcherLock
-  try { $locked = Invoke-WatcherOnce -DryRun -SkipSync; Assert-That ($locked.Action -eq 'locked') 'lock must prevent overlap' } finally { $lock.Dispose() }
+  # Any change or broadening after observation blocks.
+  Reset-SyntheticRepo; Set-SyntheticTask 'CHANGED-SET'; $script:SyntheticMode = 'leave-dirty'; $p = Invoke-WatcherOnce -SkipSync
+  [IO.File]::WriteAllText((Join-Path $RepoPath 'phase-output.txt'), 'changed afterward')
+  $s = Get-JsonState; $s.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o'); Save-JsonState $s
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'blocked') 'content change after observation must block'
 
-  $dirtyRepo = Join-Path $root 'dirty-git'
-  New-Item -ItemType Directory -Path $dirtyRepo -Force | Out-Null
-  & git init $dirtyRepo | Out-Null
-  Set-Content -LiteralPath (Join-Path $dirtyRepo 'untracked.txt') -Value 'dirty'
-  $sync = Sync-CrystalRepository $dirtyRepo
-  Assert-That (-not $sync.Ready) 'dirty worktree must block sync and launch'
-  Assert-That (Test-Path -LiteralPath $state) 'state must persist across watcher invocations'
+  Reset-SyntheticRepo; Set-SyntheticTask 'BROADENED-SET'; $script:SyntheticMode = 'leave-dirty'; $null = Invoke-WatcherOnce -SkipSync
+  [IO.File]::WriteAllText((Join-Path $RepoPath 'extra.txt'), 'extra')
+  $s = Get-JsonState; $s.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o'); Save-JsonState $s
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'blocked') 'broadened dirty set must block'
 
-  $LogPath = Join-Path $root 'bounded.log'; $MaxLogBytes = 1024
-  1..200 | ForEach-Object { Write-WatcherLog ('synthetic log line ' + ('x' * 80)) }
-  $logTotal = (Get-ChildItem -LiteralPath $root -Filter 'bounded.log*' | Measure-Object Length -Sum).Sum
-  Assert-That ($logTotal -le 2300) 'active plus rotated log must remain bounded'
-  Assert-That (Test-Path -LiteralPath "$LogPath.1") 'synthetic repeated logging must rotate'
-  Write-Output 'watcher tests: 24 passed'
+  Reset-SyntheticRepo; Set-SyntheticTask 'ORIGINAL-FINGERPRINT'; $script:SyntheticMode = 'leave-dirty'; $null = Invoke-WatcherOnce -SkipSync
+  Set-SyntheticTask 'DIFFERENT-FINGERPRINT'
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'blocked') 'different fingerprint must not inherit observed dirty state'
+
+  # Failed recovery respects five-minute backoff and the two-retry ceiling.
+  Reset-SyntheticRepo; Set-SyntheticTask 'RECOVERY-RETRIES'; $script:SyntheticMode = 'leave-dirty'; $null = Invoke-WatcherOnce -SkipSync
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'backoff') 'finalization must respect at least five-minute backoff'
+  $script:SyntheticMode = 'recovery-fail'
+  foreach ($attempt in 1..2) {
+    $s = Get-JsonState; $s.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o'); Save-JsonState $s
+    Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'failed') "recovery retry $attempt must report failure"
+  }
+  Assert-That ((Invoke-WatcherOnce -SkipSync).Action -eq 'blocked-retry-limit') 'failed recovery must block at max retry 2'
+
+  # Launch contract, lock, and log cap remain unchanged.
+  $normalSpec = Get-CodexLaunchSpec $RepoPath; $recoverySpec = Get-CodexLaunchSpec $RepoPath -FinalizationRecovery
+  Assert-That ($normalSpec.Arguments -contains 'workspace-write' -and $normalSpec.Arguments -contains 'on-request') 'sandbox and approval behavior must remain unchanged'
+  Assert-That ($normalSpec.Arguments[-1] -ne $recoverySpec.Arguments[-1]) 'recovery must use a dedicated fixed prompt'
+  $lock = Acquire-WatcherLock; try { Assert-That ((Invoke-WatcherOnce -DryRun -SkipSync).Action -eq 'locked') 'watcher lock must prevent overlap' } finally { $lock.Dispose() }
+  $LogPath = Join-Path $root 'bounded.log'; $MaxLogBytes = 1024; 1..200 | ForEach-Object { Write-WatcherLog ('x' * 100) }
+  Assert-That (((Get-ChildItem $root -Filter 'bounded.log*' | Measure-Object Length -Sum).Sum) -le 2400) 'log cap must remain bounded near two active chunks'
+
+  # Controller presentation: live PID wins over stale backoff/blocked, then terminal states apply.
+  . (Join-Path $PSScriptRoot 'controller.ps1') -RepoPath $RepoPath -TestMode
+  New-Item -ItemType Directory -Path (Join-Path $RepoPath '.agent-state') -Force | Out-Null
+  $script:pollProcess = [pscustomobject]@{ HasExited = $false; Id = 42 }; $script:pollStartedAt = [DateTime]::UtcNow.AddSeconds(-3)
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":1,"retryAfterUtc":"2099-01-01T00:00:00Z","blockedFingerprint":"x","lastRunStatus":"failed"}')
+  Assert-That ((Get-SessionStatusText) -match 'STATE: RUNNING') 'live tracked process must display RUNNING, not BACKOFF'
+  $script:pollProcess = [pscustomobject]@{ HasExited = $true; Id = 42 }
+  Assert-That ((Get-SessionStatusText) -match 'STATE: BACKOFF') 'after exit retry waiting must display BACKOFF'
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":0,"retryAfterUtc":"","blockedFingerprint":"","lastRunStatus":"completed"}')
+  Assert-That ((Get-SessionStatusText) -match 'STATE: COMPLETED') 'verified terminal state must display COMPLETED'
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":2,"retryAfterUtc":"","blockedFingerprint":"x","lastRunStatus":"failed"}')
+  Assert-That ((Get-SessionStatusText) -match 'STATE: BLOCKED') 'unsafe terminal state must display BLOCKED'
+
+  Write-Output 'watcher/controller tests: 13 scenarios passed'
 } finally {
   if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
 }

@@ -5,7 +5,7 @@ if (-not $RepoPath) { $RepoPath = Split-Path -Parent (Split-Path -Parent $PSScri
 $watcherPath = Join-Path $PSScriptRoot 'watcher.ps1'
 $statePath = Join-Path $RepoPath '.agent-state\watcher-state.json'
 $logPath = Join-Path $RepoPath '.agent-state\watcher.log'
-$script:autoMode = $false; $script:pollProcess = $null; $script:lastRun = 'not-run'; $script:pollIntervalMs = 5 * 60 * 1000
+$script:autoMode = $false; $script:pollProcess = $null; $script:pollStartedAt = $null; $script:lastRun = 'not-run'; $script:pollIntervalMs = 5 * 60 * 1000
 function Read-SessionState { if (Test-Path -LiteralPath $statePath) { try { return (Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json) } catch {} }; return $null }
 function Test-SessionPollBusy { return ($script:pollProcess -and -not $script:pollProcess.HasExited) }
 function Invoke-SessionPoll {
@@ -15,6 +15,7 @@ function Invoke-SessionPoll {
   if ($DryRun) { return [pscustomobject]@{ Result = 'WouldRun'; IntervalMs = $script:pollIntervalMs } }
   $args = @('-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',$watcherPath,'-RepoPath',$RepoPath,'-Once')
   $script:pollProcess = Start-Process -FilePath "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ArgumentList $args -WorkingDirectory $RepoPath -PassThru -WindowStyle Hidden
+  $script:pollStartedAt = [DateTime]::UtcNow
   $script:lastRun = "started (PID $($script:pollProcess.Id))"
   return [pscustomobject]@{ Result = 'Started'; ProcessId = $script:pollProcess.Id }
 }
@@ -25,8 +26,10 @@ function Get-SessionStatusText {
   $lastPollAt = if ($state) { [string]$state.lastPollAt } else { '-' }
   $retry = if ($state) { [int]$state.retryCount } else { 0 }
   $blocked = [bool]($state -and $state.blockedFingerprint)
-  $stateText = if ($blocked) { 'BLOCKED' } elseif ($state -and $state.retryAfterUtc) { 'BACKOFF' } elseif (Test-SessionPollBusy) { 'RUNNING' } else { 'READY' }
-  return "AUTO MODE: $(if ($script:autoMode) {'ON'} else {'OFF'})`r`nCONTROLLER: RUNNING`r`nCURRENT TASK: $phase / $taskStatus`r`nLAST POLL: $lastPollAt`r`nLAST CODEX RUN: $($script:lastRun)`r`nRETRY: $retry/2`r`nSTATE: $stateText"
+  $busy = Test-SessionPollBusy
+  $stateText = if ($busy) { 'RUNNING' } elseif ($state -and ([string]$state.lastRunStatus -like 'completed*')) { 'COMPLETED' } elseif ($state -and $state.retryAfterUtc) { 'BACKOFF' } elseif ($blocked) { 'BLOCKED' } else { 'READY' }
+  $runningFor = if ($busy -and $script:pollStartedAt) { "`r`nRUNNING FOR: $([Math]::Floor(([DateTime]::UtcNow - $script:pollStartedAt).TotalSeconds))s" } else { '' }
+  return "AUTO MODE: $(if ($script:autoMode) {'ON'} else {'OFF'})`r`nCONTROLLER: RUNNING`r`nCURRENT TASK: $phase / $taskStatus`r`nLAST POLL: $lastPollAt`r`nLAST CODEX RUN: $($script:lastRun)`r`nRETRY: $retry/2`r`nSTATE: $stateText$runningFor"
 }
 function Set-SessionAutoMode([bool]$Enabled) { $script:autoMode = $Enabled }
 if ($TestMode) { return }

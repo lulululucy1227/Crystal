@@ -58,7 +58,7 @@ function Read-TaskDescriptor {
 
 function Get-JsonState {
   if (-not (Test-Path -LiteralPath $script:StatePath -PathType Leaf)) {
-    return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = ''; lastPollAt = ''; lastRunAt = ''; lastRunStatus = ''; lastFailureFingerprint = ''; lastFailureAt = ''; retryAfterUtc = ''; retryCount = 0; blockedFingerprint = '' }
+    return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = ''; lastPollAt = ''; lastRunAt = ''; lastRunStatus = ''; lastFailureFingerprint = ''; lastFailureAt = ''; retryAfterUtc = ''; retryCount = 0; blockedFingerprint = ''; launchBaselineCommit = ''; launchBaselineClean = $false; finalizationFingerprint = ''; observedPostRunCommit = ''; observedPostRunDirtySnapshot = @(); finalizationAttempted = $false; finalizationRetryCount = 0 }
   }
   try {
     $state = [IO.File]::ReadAllText($script:StatePath) | ConvertFrom-Json
@@ -66,6 +66,10 @@ function Get-JsonState {
       if ($null -eq $state.PSObject.Properties[$name]) { $state | Add-Member -NotePropertyName $name -NotePropertyValue '' }
     }
     if ($null -eq $state.PSObject.Properties['retryCount']) { $state | Add-Member -NotePropertyName retryCount -NotePropertyValue 0 }
+    foreach ($name in @('launchBaselineCommit', 'finalizationFingerprint', 'observedPostRunCommit')) { if ($null -eq $state.PSObject.Properties[$name]) { $state | Add-Member -NotePropertyName $name -NotePropertyValue '' } }
+    foreach ($name in @('launchBaselineClean', 'finalizationAttempted')) { if ($null -eq $state.PSObject.Properties[$name]) { $state | Add-Member -NotePropertyName $name -NotePropertyValue $false } }
+    if ($null -eq $state.PSObject.Properties['finalizationRetryCount']) { $state | Add-Member -NotePropertyName finalizationRetryCount -NotePropertyValue 0 }
+    if ($null -eq $state.PSObject.Properties['observedPostRunDirtySnapshot']) { $state | Add-Member -NotePropertyName observedPostRunDirtySnapshot -NotePropertyValue @() }
     return $state
   } catch { throw "Watcher state is invalid: $script:StatePath" }
 }
@@ -95,6 +99,36 @@ function Test-WorktreeClean {
   $output = Invoke-Git @('-C', $Repository, 'status', '--porcelain') 2>&1
   if ($LASTEXITCODE -ne 0) { throw "Unable to inspect Git status: $($output -join ' ')" }
   return (($output -join "`n").Trim().Length -eq 0)
+}
+
+function Get-WorktreeSnapshot {
+  param([string]$Repository)
+  $lines = @(Invoke-Git @('-C', $Repository, 'status', '--porcelain=v1', '-z', '--untracked-files=all') 2>&1)
+  if ($LASTEXITCODE -ne 0) { throw "Unable to inspect Git status: $($lines -join ' ')" }
+  $raw = $lines -join "`n"
+  if (-not $raw) { return @() }
+  $entries = @($raw -split "`0" | Where-Object { $_ })
+  $snapshot = foreach ($entry in $entries) {
+    $path = if ($entry.Length -gt 3) { $entry.Substring(3) } else { '' }
+    if ($path -match ' -> ') { $path = ($path -split ' -> ', 2)[1] }
+    $fullPath = Join-Path $Repository $path
+    $hash = if (Test-Path -LiteralPath $fullPath -PathType Leaf) { (Get-FileHash -LiteralPath $fullPath -Algorithm SHA256).Hash.ToLowerInvariant() } else { '<absent>' }
+    [pscustomobject]@{ status = $entry.Substring(0, [Math]::Min(2, $entry.Length)); path = $path; sha256 = $hash }
+  }
+  return @($snapshot | Sort-Object path, status)
+}
+
+function Test-SnapshotEqual {
+  param($Left, $Right)
+  return ((@($Left) | ConvertTo-Json -Compress -Depth 4) -eq (@($Right) | ConvertTo-Json -Compress -Depth 4))
+}
+
+function Get-HeadCommit { param([string]$Repository) return ((Invoke-Git @('-C', $Repository, 'rev-parse', 'HEAD') 2>$null).Trim()) }
+
+function Clear-FinalizationState {
+  param($State)
+  $State.launchBaselineCommit = ''; $State.launchBaselineClean = $false; $State.finalizationFingerprint = ''; $State.observedPostRunCommit = ''
+  $State.observedPostRunDirtySnapshot = @(); $State.finalizationAttempted = $false; $State.finalizationRetryCount = 0
 }
 
 function Sync-CrystalRepository {
@@ -127,11 +161,16 @@ function Resolve-CodexCli {
 }
 
 function Get-CodexLaunchSpec {
-  param([string]$Repository)
+  param([string]$Repository, [switch]$FinalizationRecovery)
   $cli = Resolve-CodexCli
+  $prompt = if ($FinalizationRecovery) {
+    'Read AGENTS.md and the current agent/GPT_NEXT_TASK.md. This is watcher-owned finalization recovery for the same authorized phase. Inspect the exact existing dirty changes and stop if any dirty file is unrelated or ambiguous. Preserve valid existing work and do not redo completed analysis. Complete only missing validation, handoff, commit, and push work for the current phase. Use C:\Program Files\Git\cmd\git.exe if needed. Ensure the worktree is clean at the end, then stop after this phase.'
+  } else {
+    'Read AGENTS.md and agent/GPT_NEXT_TASK.md. Execute only the currently authorized phase. Preserve all task boundaries, publish the required GPT_HANDOFF files, push the permitted changes, then stop. Do not infer or start another phase.'
+  }
   [pscustomobject]@{
     Executable = $cli
-    Arguments = @('--ask-for-approval', 'on-request', 'exec', '--cd', $Repository, '--sandbox', 'workspace-write', 'Read AGENTS.md and agent/GPT_NEXT_TASK.md. Execute only the currently authorized phase. Preserve all task boundaries, publish the required GPT_HANDOFF files, push the permitted changes, then stop. Do not infer or start another phase.')
+    Arguments = @('--ask-for-approval', 'on-request', 'exec', '--cd', $Repository, '--sandbox', 'workspace-write', $prompt)
   }
 }
 
@@ -171,12 +210,23 @@ function Test-RetryBackoff {
 }
 
 function Start-CodexExecution {
-  param([string]$Repository, [switch]$DryRun)
-  $spec = Get-CodexLaunchSpec $Repository
+  param([string]$Repository, [switch]$DryRun, [switch]$FinalizationRecovery)
+  $spec = Get-CodexLaunchSpec $Repository -FinalizationRecovery:$FinalizationRecovery
   $env:CODEX_HOME = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE '.codex' }
   if ($DryRun) { return [pscustomobject]@{ Started = $false; DryRun = $true; Executable = $spec.Executable; Arguments = $spec.Arguments } }
   & $spec.Executable @($spec.Arguments)
   return [pscustomobject]@{ Started = $true; ExitCode = $LASTEXITCODE; Executable = $spec.Executable; Arguments = $spec.Arguments }
+}
+
+function Test-FinalizationEligible {
+  param($State, $Task, [string]$Repository, $CurrentSnapshot)
+  return ([bool]$State.launchBaselineClean -and $State.launchBaselineCommit -and
+    $State.finalizationFingerprint -eq $Task.Fingerprint -and $State.lastLaunchedFingerprint -eq $Task.Fingerprint -and
+    $State.observedPostRunCommit -and $State.observedPostRunCommit -eq (Get-HeadCommit $Repository) -and
+    @($State.observedPostRunDirtySnapshot).Count -gt 0 -and
+    (Test-SnapshotEqual -Left @($State.observedPostRunDirtySnapshot) -Right @($CurrentSnapshot)) -and
+    -not (Test-CompletedHandoff $Repository $Task.Phase) -and
+    [int]$State.finalizationRetryCount -lt $MaxAutomaticRetries)
 }
 
 function Invoke-WatcherOnce {
@@ -185,16 +235,31 @@ function Invoke-WatcherOnce {
   $lock = Acquire-WatcherLock
   if (-not $lock) { Write-WatcherLog 'lock busy; skipped cycle'; return [pscustomobject]@{ Action = 'locked' } }
   try {
-    if (-not $SkipSync) {
-      $sync = Sync-CrystalRepository $RepoPath
-      if (-not $sync.Ready) { Write-WatcherLog "blocked: $($sync.Reason)"; return [pscustomobject]@{ Action = 'blocked'; Reason = $sync.Reason } }
-    }
     $task = Read-TaskDescriptor $script:TaskFilePath
     $state = Get-JsonState
     $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status; $state.lastPollAt = [DateTime]::UtcNow.ToString('o')
     if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
     if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
     if ($state.blockedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "blocked retry limit reached: phase=$($task.Phase) retryCount=$($state.retryCount)"; return [pscustomobject]@{ Action = 'blocked-retry-limit'; Fingerprint = $task.Fingerprint; RetryCount = $state.retryCount } }
+    $currentSnapshot = @(Get-WorktreeSnapshot $RepoPath)
+    $isRecovery = $false
+    if ($currentSnapshot.Count -gt 0) {
+      if (-not (Test-FinalizationEligible $state $task $RepoPath $currentSnapshot)) {
+        Write-WatcherLog 'blocked: dirty worktree is not an exact eligible watcher-observed finalization snapshot'
+        return [pscustomobject]@{ Action = 'blocked'; Reason = 'unknown or changed dirty worktree' }
+      }
+      if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
+      $isRecovery = $true
+    } elseif (-not $SkipSync) {
+      $sync = Sync-CrystalRepository $RepoPath
+      if (-not $sync.Ready) { Write-WatcherLog "blocked: $($sync.Reason)"; return [pscustomobject]@{ Action = 'blocked'; Reason = $sync.Reason } }
+      $freshTask = Read-TaskDescriptor $script:TaskFilePath
+      if ($freshTask.Fingerprint -ne $task.Fingerprint) {
+        $state.lastPhase = $freshTask.Phase; $state.lastStatus = $freshTask.Status; Save-JsonState $state
+        Write-WatcherLog 'task changed during synchronization; deferring launch until next cycle'
+        return [pscustomobject]@{ Action = 'task-changed-during-sync'; Fingerprint = $freshTask.Fingerprint }
+      }
+    }
     if (Test-CompletedHandoff $RepoPath $task.Phase) {
       $state.lastCompletedFingerprint = $task.Fingerprint
       $state.lastLaunchedFingerprint = $task.Fingerprint
@@ -204,14 +269,17 @@ function Invoke-WatcherOnce {
       $state.retryCount = 0
       $state.blockedFingerprint = ''
       $state.lastRunStatus = 'completed-existing'
+      Clear-FinalizationState $state
       Save-JsonState $state
       Write-WatcherLog "completion evidence found before launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
       return [pscustomobject]@{ Action = 'completed-existing'; Phase = $task.Phase; Fingerprint = $task.Fingerprint }
     }
-    if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
+    if (-not $isRecovery -and (Test-RetryBackoff $state $task.Fingerprint)) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
     Write-WatcherLog "authorized task detected: phase=$($task.Phase) status=$($task.Status) fingerprint=$($task.Fingerprint)"
+    if (-not $isRecovery) { $state.launchBaselineCommit = Get-HeadCommit $RepoPath; $state.launchBaselineClean = $true; $state.finalizationFingerprint = ''; $state.observedPostRunDirtySnapshot = @(); $state.finalizationAttempted = $false; $state.finalizationRetryCount = 0 }
+    else { $state.finalizationAttempted = $true; $state.finalizationRetryCount = [int]$state.finalizationRetryCount + 1 }
     $state.lastLaunchedFingerprint = $task.Fingerprint; $state.lastRunAt = [DateTime]::UtcNow.ToString('o'); $state.lastRunStatus = 'running'; Save-JsonState $state
-    $launch = Start-CodexExecution $RepoPath -DryRun:$DryRun
+    $launch = Start-CodexExecution $RepoPath -DryRun:$DryRun -FinalizationRecovery:$isRecovery
     if ($launch.DryRun) {
       $state.lastLaunchedFingerprint = ''
       $state.lastRunStatus = 'dry-run'
@@ -222,9 +290,19 @@ function Invoke-WatcherOnce {
     Write-WatcherLog "Codex exited with code $($launch.ExitCode): phase=$($task.Phase)"
     if ($launch.ExitCode -ne 0) {
       Set-FailureState $state $task.Fingerprint
+      if ($isRecovery) { $state.lastLaunchedFingerprint = $task.Fingerprint }
       Save-JsonState $state
       Write-WatcherLog "Codex failure recorded: phase=$($task.Phase) retryCount=$($state.retryCount) blocked=$([bool]$state.blockedFingerprint) retryAfterUtc=$($state.retryAfterUtc)"
       return [pscustomobject]@{ Action = 'failed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
+    }
+    $postRunSnapshot = @(Get-WorktreeSnapshot $RepoPath)
+    if ($postRunSnapshot.Count -gt 0) {
+      if (-not $isRecovery) { $state.finalizationFingerprint = $task.Fingerprint; $state.observedPostRunCommit = Get-HeadCommit $RepoPath; $state.observedPostRunDirtySnapshot = $postRunSnapshot }
+      Set-FailureState $state $task.Fingerprint
+      $state.lastLaunchedFingerprint = $task.Fingerprint
+      $state.lastRunStatus = if ($isRecovery) { 'finalization-failed' } else { 'finalization-pending' }
+      Save-JsonState $state
+      return [pscustomobject]@{ Action = if ($isRecovery) { 'finalization-failed' } else { 'finalization-pending' }; Phase = $task.Phase; Fingerprint = $task.Fingerprint; DirtySnapshot = $postRunSnapshot }
     }
     if (-not $SkipSync) {
       $postLaunchSync = Sync-CrystalRepository $RepoPath
@@ -244,6 +322,7 @@ function Invoke-WatcherOnce {
       $state.retryCount = 0
       $state.blockedFingerprint = ''
       $state.lastRunStatus = 'completed'
+      Clear-FinalizationState $state
       Save-JsonState $state
       Write-WatcherLog "completion verified: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
       return [pscustomobject]@{ Action = 'completed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
