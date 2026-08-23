@@ -10,3 +10,4 @@ __pycache__/
 .env
 .env.*
 .agent-state/
+test/.tmp-p2a-2r-*/
