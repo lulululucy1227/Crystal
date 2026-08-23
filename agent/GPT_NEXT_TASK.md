@@ -2,74 +2,133 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-2F0
+Phase: P2A-2F1
 Status: authorized
 Model: Terra
 Strength: Medium
 
 ## Objective
-Determine whether the current schema can safely store image-level Vision observations for the next 10-image pilot. This is a read-only schema gap check. Do not implement and do not run Vision.
+Implement the minimal schema foundation required for image-level Vision observations, based on the completed P2A-2F0 gap check. Do not run Vision in this phase.
 
-## Current baseline
-- P2A-1R passed.
-- 10 real pilot images resolve deterministically.
-- SHA-256 exact-content identity and pHash candidate similarity are working and auditable.
-- Migration 007 exists for perceptual hashes.
-- Do not re-audit P2A-1R or repeat project history.
+## Approved design
+Create exactly one new table for image-level visual observations. Preferred name: `image_visual_observation`.
 
-## Only decision required
-Return exactly one:
-1. CURRENT_SCHEMA_SUFFICIENT
-2. MINIMAL_SCHEMA_CHANGE_REQUIRED
+The table must keep these semantics separate:
+- direct visible evidence = `observation`
+- appearance-based interpretation = `inference`
+- confirmed fact = NOT stored here; confirmed facts remain separate and evidence-backed
+- product-design observation vs promotional-visual observation
+- image-level data vs later reference-level synthesis
 
-If a change is required, define only the smallest schema addition needed for the 10-image Vision pilot. Do not create migration 008 in this phase.
+## Minimum fields
+Implement the smallest auditable structure containing:
+- `id` primary key
+- `image_asset_id` FK to `image_asset`
+- `source_content_sha256` (64 hex chars)
+- `observation_scope` CHECK: `product_design | promotional_visual`
+- `assertion_class` CHECK: `observation | inference`
+- `observation_type` nonblank TEXT
+- `observed_value` nonblank TEXT
+- `confidence` CHECK: `low | medium | high`
+- `producer_type` CHECK: `assistant_model | human`
+- `producer_id` nonblank TEXT
+- `analysis_version` nonblank TEXT
+- `supersedes_observation_id` nullable self-FK
+- `created_at` default CURRENT_TIMESTAMP
+- `notes` nullable
 
-## Required semantic boundaries
-Future storage must distinguish:
-- image-level observation: directly visible evidence;
-- inference: interpretation from appearance;
-- confirmed fact: separately confirmed by user/source/supplier evidence;
-- image-level observation vs reference-level synthesis;
-- product design observation vs promotional visual observation.
+Do not add a wide set of fixed columns for color, lighting, symmetry, etc.
 
-Vision output must never become confirmed material fact merely because it looks plausible.
+## Observation type vocabulary
+Do NOT hard-code a large permanent CHECK vocabulary in migration 008. Keep `observation_type` as nonblank text so the schema remains extensible.
 
-## Inspect only relevant structures
-Inspect current schema/code/docs for image_asset, design_reference_image, design_assessment, preference_evidence, visual/promotion analysis structures, provenance/evidence fields, observer/author fields, confidence fields, source-content SHA handling, and migration 007 conventions.
+For later importers/tests, define a small application-level initial vocabulary only when needed for the 10-image pilot. Do not implement the Vision importer in this phase.
 
-Do not audit unrelated material, supplier, pricing, packaging, market, OpenViking, or full P1C history unless a direct dependency exists.
+## Analysis version convention
+Use a single opaque nonblank `analysis_version` string in the schema. Do not split prompt/model/schema versions into multiple columns yet.
 
-## Minimum capabilities to check
-Can the current schema represent without semantic overloading:
-- image asset identity
-- observation category/type
-- structured observation value
-- observation vs inference class
-- confidence
-- observer/model identity
-- analysis/schema version
-- source image SHA-256
-- created timestamp
-- later human review/correction without destructive overwrite
+The later Vision pipeline may use values such as `p2a-vision-v1`; exact runtime naming belongs to the later pilot, not this migration.
 
-Avoid a wide fixed-column table for every visual feature unless strongly justified. Prefer the smallest auditable extensible model if a new structure is needed.
+## Source SHA enforcement
+The observation must be bound to the exact image bytes that were analyzed.
 
-## Versioning requirement
-A Vision result must remain traceable to image content state plus analysis definition/version. If image SHA changes, old observations must not silently apply. If analysis schema/prompt materially changes, new results must remain distinguishable from old results.
+Add database enforcement so INSERT/UPDATE is rejected when:
+- the referenced `image_asset.image_hash` is NULL, or
+- `source_content_sha256` does not case-insensitively equal the referenced asset's current `image_hash`.
 
-## Human review
-Do not design a full review workflow. Only determine whether AI output and later human correction/confirmation must remain separately auditable.
+SQLite CHECK constraints cannot safely query another table, so use the smallest clear BEFORE INSERT / BEFORE UPDATE trigger(s) if needed.
 
-## Anti-overengineering
-Do not propose or add vector DB, embeddings, FiftyOne runtime, OpenViking, ontology engine, generic annotation platform, event-sourcing framework, workflow engine, or new dependencies unless absolutely required to answer this schema question.
+Do not redesign `image_asset`.
 
-## Write boundary
-Allowed writes: only concise handoff files required by AGENT-HANDOFF-V1.
-Forbidden: DB changes, schema changes, migration 008, application code changes, Vision/OCR/image processing, Google Drive access, dependency installation, canonical record changes.
+## Append-only correction semantics
+Corrections must preserve original AI rows.
+
+- A later human or assistant correction is a new row.
+- It may point to the prior row through `supersedes_observation_id`.
+- Do not implement destructive overwrite semantics.
+- Do not add a full review/workflow table.
+
+Add a guard preventing a row from superseding itself. If a simple constraint can also prevent obvious invalid cross-asset superseding without overengineering, do so; otherwise document that importer validation will enforce same-asset lineage later.
+
+## Idempotency
+Add a uniqueness rule sufficient to prevent duplicate insertion of the same observation result for the same content/version/producer.
+
+Preferred conceptual key:
+`image_asset_id + source_content_sha256 + observation_scope + assertion_class + observation_type + observed_value + producer_type + producer_id + analysis_version`
+
+Do not include `confidence`, `notes`, or `supersedes_observation_id` in the identity key.
+
+## Migration
+Create:
+`migrations/008_p2a_visual_observation.sql`
+
+Do not modify migrations 001–007.
+
+Update `docs/schema.md` only as needed to document the new table and semantic boundary.
+
+## Tests
+Add focused tests proving at minimum:
+1. clean migration through 008 passes
+2. valid observation row inserts for an asset with matching SHA
+3. NULL asset SHA blocks observation insert
+4. mismatched source SHA blocks insert/update
+5. observation and inference are both allowed
+6. confirmed-fact class is impossible in this table
+7. product_design and promotional_visual scopes are distinct
+8. duplicate idempotency key is rejected
+9. same observed_value may exist for different assets/content/versions
+10. correction can append a new row referencing an older row
+11. self-supersede is rejected
+12. existing image/reference/material/market/supplier semantics remain unchanged
+13. all existing regression tests pass
+
+## Boundaries
+Allowed:
+- migration 008
+- focused schema tests
+- minimal schema documentation updates
+- required AGENT-HANDOFF files
+
+Forbidden:
+- Vision/OCR/image analysis
+- new observation data from the 10 pilot images
+- material inference writes
+- reference-level synthesis writes
+- new review workflow
+- new dependencies
+- OpenViking/FiftyOne/vector DB/embeddings
+- processing the remaining 56 assets
+- unrelated schema changes
 
 ## Required handoff
-Update outputs/GPT_HANDOFF.json and archive outputs/handoffs/P2A-2F0.json.
-Keep the handoff concise. Include decision, actual schema gap(s), exact existing structures reused, proposed minimum change if needed, evidence pointers, risks/blockers, GPT decision required, and next minimum action.
-Do not generate a long audit report unless a genuinely complex blocker makes it necessary.
+Update `outputs/GPT_HANDOFF.json` and archive `outputs/handoffs/P2A-2F1.json`.
 
-After push, stop. Do not proceed to migration 008 or Vision.
+Keep the handoff concise and delta-only. Include:
+- migration/table added
+- exact constraints/triggers
+- test results
+- any deviation from approved design
+- blockers/risks
+- next minimum action
+
+After push, stop. Do not run Vision or proceed to P2A-2R automatically.
