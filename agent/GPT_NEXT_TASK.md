@@ -6,6 +6,7 @@ Phase: AGENT-WATCHER-V1.1-RECOVERY
 Status: authorized
 Model: Luna
 Strength: Low
+Trigger-Nonce: 2026-08-23T16:29+02:00
 
 ## Objective
 Add the smallest safe interrupted-task recovery behavior to the Crystal watcher so an authorized task that was auto-launched, exited before completion, and left task-owned uncommitted changes does not require manual user intervention every time.
