@@ -2,133 +2,104 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-2F1
+Phase: P2A-2R
 Status: authorized
 Model: Terra
 Strength: Medium
 
 ## Objective
-Implement the minimal schema foundation required for image-level Vision observations, based on the completed P2A-2F0 gap check. Do not run Vision in this phase.
+Import the GPT-produced image-level visual observations for the same approved 10-image pilot into `image_visual_observation`, with strict validation and idempotency. Do not perform any new Vision analysis in Codex.
 
-## Approved design
-Create exactly one new table for image-level visual observations. Preferred name: `image_visual_observation`.
+## Authoritative GPT input
+Read exactly:
+`inputs/p2a-2r-vision-observations.json`
 
-The table must keep these semantics separate:
-- direct visible evidence = `observation`
-- appearance-based interpretation = `inference`
-- confirmed fact = NOT stored here; confirmed facts remain separate and evidence-backed
-- product-design observation vs promotional-visual observation
-- image-level data vs later reference-level synthesis
+This file was produced by GPT after directly reviewing the 10 approved Google Drive pilot images. Treat it as the only semantic input for this phase.
 
-## Minimum fields
-Implement the smallest auditable structure containing:
-- `id` primary key
-- `image_asset_id` FK to `image_asset`
-- `source_content_sha256` (64 hex chars)
-- `observation_scope` CHECK: `product_design | promotional_visual`
-- `assertion_class` CHECK: `observation | inference`
-- `observation_type` nonblank TEXT
-- `observed_value` nonblank TEXT
-- `confidence` CHECK: `low | medium | high`
-- `producer_type` CHECK: `assistant_model | human`
-- `producer_id` nonblank TEXT
-- `analysis_version` nonblank TEXT
-- `supersedes_observation_id` nullable self-FK
-- `created_at` default CURRENT_TIMESTAMP
-- `notes` nullable
+## Preflight
+Before canonical writes:
+1. Verify local canonical DB is migrated through `008_p2a_visual_observation`. If not, apply existing migration 008 only.
+2. Verify all 10 `asset_key` values exist exactly once.
+3. Verify each asset's current `image_hash` case-insensitively equals the input `source_content_sha256`.
+4. Verify each input `reference_key` matches the asset's existing `design_reference_image` linkage.
+5. Verify producer metadata is exactly:
+   - producer_type = `assistant_model`
+   - producer_id = `gpt-5.6-sol`
+   - analysis_version = `p2a-vision-v1`
+6. Validate every row against migration 008 constraints before writes.
 
-Do not add a wide set of fixed columns for color, lighting, symmetry, etc.
+If any identity/SHA/reference mismatch occurs, STOP before semantic writes and report the exact mismatch.
 
-## Observation type vocabulary
-Do NOT hard-code a large permanent CHECK vocabulary in migration 008. Keep `observation_type` as nonblank text so the schema remains extensible.
+## Import behavior
+Implement the smallest deterministic importer needed for this pilot, preferably a script under `scripts/` that:
+- reads the JSON input;
+- resolves assets by `asset_key`;
+- inserts rows into `image_visual_observation`;
+- relies on DB constraints/triggers for SHA and append-only enforcement;
+- is fully idempotent under the existing uniqueness rule;
+- reports created vs reused rows;
+- performs no reference-level synthesis.
 
-For later importers/tests, define a small application-level initial vocabulary only when needed for the 10-image pilot. Do not implement the Vision importer in this phase.
+Do not invent or rewrite GPT observation text.
+Do not normalize it into different semantic claims unless needed only for whitespace-safe transport.
+Do not promote any inference to confirmed fact.
 
-## Analysis version convention
-Use a single opaque nonblank `analysis_version` string in the schema. Do not split prompt/model/schema versions into multiple columns yet.
+## Scope
+Allowed canonical writes:
+- `schema_migration` only if existing migration 008 must be applied locally;
+- `image_visual_observation` rows from the approved input file.
 
-The later Vision pipeline may use values such as `p2a-vision-v1`; exact runtime naming belongs to the later pilot, not this migration.
-
-## Source SHA enforcement
-The observation must be bound to the exact image bytes that were analyzed.
-
-Add database enforcement so INSERT/UPDATE is rejected when:
-- the referenced `image_asset.image_hash` is NULL, or
-- `source_content_sha256` does not case-insensitively equal the referenced asset's current `image_hash`.
-
-SQLite CHECK constraints cannot safely query another table, so use the smallest clear BEFORE INSERT / BEFORE UPDATE trigger(s) if needed.
-
-Do not redesign `image_asset`.
-
-## Append-only correction semantics
-Corrections must preserve original AI rows.
-
-- A later human or assistant correction is a new row.
-- It may point to the prior row through `supersedes_observation_id`.
-- Do not implement destructive overwrite semantics.
-- Do not add a full review/workflow table.
-
-Add a guard preventing a row from superseding itself. If a simple constraint can also prevent obvious invalid cross-asset superseding without overengineering, do so; otherwise document that importer validation will enforce same-asset lineage later.
-
-## Idempotency
-Add a uniqueness rule sufficient to prevent duplicate insertion of the same observation result for the same content/version/producer.
-
-Preferred conceptual key:
-`image_asset_id + source_content_sha256 + observation_scope + assertion_class + observation_type + observed_value + producer_type + producer_id + analysis_version`
-
-Do not include `confidence`, `notes`, or `supersedes_observation_id` in the identity key.
-
-## Migration
-Create:
-`migrations/008_p2a_visual_observation.sql`
-
-Do not modify migrations 001–007.
-
-Update `docs/schema.md` only as needed to document the new table and semantic boundary.
-
-## Tests
-Add focused tests proving at minimum:
-1. clean migration through 008 passes
-2. valid observation row inserts for an asset with matching SHA
-3. NULL asset SHA blocks observation insert
-4. mismatched source SHA blocks insert/update
-5. observation and inference are both allowed
-6. confirmed-fact class is impossible in this table
-7. product_design and promotional_visual scopes are distinct
-8. duplicate idempotency key is rejected
-9. same observed_value may exist for different assets/content/versions
-10. correction can append a new row referencing an older row
-11. self-supersede is rejected
-12. existing image/reference/material/market/supplier semantics remain unchanged
-13. all existing regression tests pass
-
-## Boundaries
-Allowed:
-- migration 008
-- focused schema tests
-- minimal schema documentation updates
-- required AGENT-HANDOFF files
+Allowed code/docs writes:
+- one minimal importer script if needed;
+- focused tests for importer/idempotency/preflight;
+- AGENT-HANDOFF files.
 
 Forbidden:
-- Vision/OCR/image analysis
-- new observation data from the 10 pilot images
-- material inference writes
-- reference-level synthesis writes
-- new review workflow
-- new dependencies
-- OpenViking/FiftyOne/vector DB/embeddings
+- any new Vision/OCR/image analysis
+- any material/material_variant/component writes
+- any `design_reference_observation` writes
+- any `design_assessment` writes
+- any `visual_communication_reference` writes
+- any preference/theme/pattern/principle writes
+- reference regrouping
+- image asset mutation
+- pHash mutation
+- market/supplier/packaging writes
 - processing the remaining 56 assets
-- unrelated schema changes
+- migration 009
+- schema redesign
+- OpenViking/FiftyOne/vector DB/embeddings
 
-## Required handoff
-Update `outputs/GPT_HANDOFF.json` and archive `outputs/handoffs/P2A-2F1.json`.
+## Validation requirements
+At minimum prove:
+1. exact 10-asset manifest is accepted
+2. unknown asset fails before writes
+3. SHA mismatch fails before writes
+4. reference mismatch fails before writes
+5. invalid scope/class/confidence/producer metadata fails safely
+6. first run imports all approved observation rows
+7. second run creates 0 duplicate rows and reuses all existing rows
+8. no confirmed-fact assertion is created
+9. no non-`image_visual_observation` semantic tables change
+10. all existing regression tests pass
+
+## Reporting
+Update:
+- `outputs/GPT_HANDOFF.json`
+- `outputs/handoffs/P2A-2R.json`
 
 Keep the handoff concise and delta-only. Include:
-- migration/table added
-- exact constraints/triggers
-- test results
-- any deviation from approved design
+- input asset count
+- input observation row count
+- rows created/reused
+- observation vs inference counts
+- product_design vs promotional_visual counts
+- preflight result
+- idempotency result
+- tests
+- canonical tables changed
+- boundary check
 - blockers/risks
 - next minimum action
 
-After push, stop. Do not run Vision or proceed to P2A-2R automatically.
+After push, STOP. Do not perform reference-level synthesis automatically.
