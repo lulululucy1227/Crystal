@@ -1,0 +1,20 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-3S0-REFERENCE-EVIDENCE-MAP",
+  "status": "ready_for_manual_finalize",
+  "artifact": "outputs/p2a-3s0-reference-evidence-map.json",
+  "summary": {"reference_count": 4, "asset_count": 10, "observation_count": 45, "ids_min": 1, "ids_max": 45, "ids_sum": 1035, "observed_value_length_sum": 5479},
+  "per_reference_observation_counts": {"REF-000002": 9, "REF-000006": 9, "REF-000019": 13, "REF-000025": 14},
+  "per_scope_counts": {"product_design": 35, "promotional_visual": 10},
+  "per_assertion_class_counts": {"observation": 40, "inference": 5},
+  "validation": {"exact_expected_pilot_assets": true, "canonical_reference_linkage": true, "db_query_only": true, "synthesis_assertion_rows": 0, "synthesis_source_rows": 0, "integrity_check": "ok", "foreign_key_check_violations": 0},
+  "business_or_semantic_writes": false,
+  "synthesis_import": "not started",
+  "gpt_may_author_synthesis_input": true,
+  "manual_finalize_commands": [
+    "& 'C:\\Program Files\\Git\\cmd\\git.exe' add -- outputs/p2a-3s0-reference-evidence-map.json outputs/GPT_HANDOFF.json outputs/handoffs/P2A-3S0-REFERENCE-EVIDENCE-MAP.json",
+    "& 'C:\\Program Files\\Git\\cmd\\git.exe' commit -m 'feat: add P2A-3S0 reference evidence map'",
+    "& 'C:\\Program Files\\Git\\cmd\\git.exe' push origin main"
+  ],
+  "blocker": "Sandbox Git metadata write restriction and pre-existing V1.4 dirty files; no files were discarded."
+}
