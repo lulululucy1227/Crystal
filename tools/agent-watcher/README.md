@@ -1,43 +1,33 @@
 # Crystal Agent Watcher desktop control
 
-This Windows-only controller replaces the old resident Startup watcher. It uses built-in PowerShell, WinForms, Task Scheduler, and a desktop shortcut; it needs no administrator rights or added dependencies.
+## PRIMARY MODE: Desktop Controller Session Scheduler
+
+The controller is a Windows-native PowerShell WinForms window. It is the only scheduler used by the supported installation. Task Scheduler is unsupported on this machine because of Windows access policy; it is not required. No service, Startup entry, login trigger, WakeToRun, administrator privilege, Electron, Python GUI, or resident watcher is used.
 
 ## Behavior
 
-- Setup creates the current-user task `Crystal Agent Watcher` and leaves it **disabled (AUTO MODE OFF)**.
-- ON enables a five-minute trigger. Every trigger runs `watcher.ps1 -Once` and exits; Task Scheduler ignores overlapping instances.
-- OFF disables the trigger and stops only a PowerShell process whose command line contains this repository's exact watcher path.
-- `立即检查一次` runs one safe poll regardless of AUTO MODE. It is a real check; use `manage-watcher.ps1 -Action CheckOnce -DryRun` for validation.
-- The task is interactive-user only, limited privilege, does not start when missed, and has `WakeToRun = false`.
-- A fingerprint gets one initial attempt plus at most two automatic retries, separated by at least five minutes. It then shows BLOCKED until the task fingerprint changes or state is explicitly reviewed.
-- `watcher.log` rotates to one archive at 2 MiB, bounding watcher logs near 4 MiB total.
-
-The watcher retains task fingerprinting, its exclusive file lock, clean-worktree checks, `git fetch` plus fast-forward-only sync, `workspace-write`, and `on-request` approval.
+- `manage-watcher.ps1 -Action Install` creates only the current-user Desktop shortcut `Crystal Codex 自动接任务.lnk` and removes the legacy Crystal Startup launcher if present.
+- Every controller launch starts with `AUTO MODE: OFF` and never remembers the previous setting.
+- Controller open + OFF: UI only; no timer poll, Git fetch, network, watcher, or Codex launch.
+- Controller open + ON: an in-process WinForms timer fires every five minutes and starts at most one `watcher.ps1 -Once`; the child watcher exits after that poll and the controller remains visible.
+- `立即检查一次` performs one lock-protected one-shot poll whether AUTO MODE is ON or OFF. Closing the controller stops the timer and future polls; it does not relaunch itself or kill an already running Codex task.
+- The UI displays AUTO MODE, controller state, current phase/status, last poll, last Codex run, retry count/2, and READY/RUNNING/BACKOFF/BLOCKED state.
+- The watcher retains task fingerprinting, its exclusive lock, clean-worktree checks, full Git path preference (`C:\Program Files\Git\cmd\git.exe`), `workspace-write`, and `on-request` approval.
+- A fingerprint gets one initial attempt plus at most two automatic retries, separated by at least five minutes. Logs rotate at 2 MiB with one archive, bounding total watcher logs near 4 MiB.
 
 ## Install and use
-
-From the repository root:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/agent-watcher/manage-watcher.ps1 -Action Install
 ```
 
-This removes only the legacy `Crystal-Agent-Watcher.cmd` Startup entry and creates `Crystal Codex 自动接任务.lnk` on the current user's Desktop. Open the shortcut and use the four buttons.
+Open the shortcut and use the four buttons: `开启自动接任务`, `关闭自动接任务`, `立即检查一次`, and `打开日志`.
 
-Command-line controls:
-
-```powershell
-tools/agent-watcher/manage-watcher.ps1 -Action Status
-tools/agent-watcher/manage-watcher.ps1 -Action Enable
-tools/agent-watcher/manage-watcher.ps1 -Action Disable
-tools/agent-watcher/manage-watcher.ps1 -Action CheckOnce
-```
-
-Runtime state and logs live under `.agent-state/` and are gitignored.
+`controller.ps1 -TestMode` loads the session scheduler functions without opening a window, allowing synthetic tests without a real business task. Runtime state and logs live under `.agent-state/` and are gitignored.
 
 ## Resource and safety profile
 
-OFF has no watcher process, recurring poll, fetch, or Codex launch. ON has no resident watcher between five-minute Task Scheduler invocations. A poll transiently starts PowerShell and performs a fetch only after the clean-worktree check; Codex starts only for an authorized, eligible fingerprint. CPU and disk activity are burst-only. Logs are capped as described above. The task never wakes the computer and does not run while the user is logged out.
+The controller is the only process that persists while its window is open. Between ON polls there is no watcher PowerShell process. OFF and closed states perform zero polling and zero network work. A poll transiently starts one PowerShell child and uses the watcher lock to prevent overlap; Codex is started only for an authorized, eligible fingerprint. The controller does not wake the computer. Log rotation bounds disk use near 4 MiB.
 
 ## Uninstall
 
@@ -45,4 +35,4 @@ OFF has no watcher process, recurring poll, fetch, or Codex launch. ON has no re
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/agent-watcher/manage-watcher.ps1 -Action Uninstall
 ```
 
-This removes only the named scheduled task, named desktop shortcut, legacy named Startup file if present, and `.agent-state` runtime data. It does not touch unrelated tasks, processes, or user files.
+This removes only the named Desktop shortcut, legacy named Startup file if present, and Crystal watcher processes/runtime data. It does not touch unrelated tasks, processes, or user files. No Task Scheduler object is created by this mode.

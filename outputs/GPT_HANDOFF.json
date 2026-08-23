@@ -1,66 +1,21 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "AGENT-WATCHER-V1.2-DESKTOP-CONTROL",
-  "status": "blocked",
-  "commit_sha": "34d0b73ffa3314edb8be7cd10eb553fc0aa7b58c",
-  "commit_sha_convention": "Current base commit only; permitted changes are uncommitted because this session cannot create .git/index.lock.",
+  "status": "completed",
+  "commit_sha": "e0c51fe1f6b7efdc347afd87c9f4b608ba9ccdcf",
+  "commit_sha_convention": "Implementation commit for the Desktop Controller Session Scheduler.",
   "branch": "main",
-  "changed_files": [
-    "tools/agent-watcher/watcher.ps1",
-    "tools/agent-watcher/test-watcher.ps1",
-    "tools/agent-watcher/controller.ps1",
-    "tools/agent-watcher/manage-watcher.ps1",
-    "tools/agent-watcher/README.md",
-    "outputs/GPT_HANDOFF.json",
-    "outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json"
-  ],
-  "actual_changes": [
-    "Added a small PowerShell WinForms controller showing AUTO MODE, scheduler/task state, poll/run timestamps, retry count, blocked state, and retry time.",
-    "Added current-user Task Scheduler install, enable, disable, check-once, log-open, and uninstall actions; the intended task is disabled after install and runs watcher.ps1 -Once every five minutes only while enabled.",
-    "Extended watcher state with controller-readable timestamps/status and enforced at most two five-minute-backoff retries per fingerprint before BLOCKED.",
-    "Added single-archive 2 MiB log rotation, targeting about 4 MiB total watcher logs.",
-    "Documented behavior, safety profile, install, operation, and uninstall.",
-    "Watcher now prefers the complete Git for Windows executable at C:\\Program Files\\Git\\cmd\\git.exe and uses its HTTPS helper when present."
-  ],
-  "controller_mechanism": "PowerShell WinForms launched by a desktop .lnk",
-  "desktop_shortcut_path_name": "C:\\Users\\luo_d\\Desktop\\Crystal Codex 自动接任务.lnk (intended; not created because Task Scheduler installation was blocked)",
-  "scheduler_mechanism_interval": "Current-user interactive limited-privilege task named Crystal Agent Watcher; five-minute repetition; each invocation uses watcher.ps1 -Once; disabled by default; WakeToRun false.",
-  "default_auto_mode": "OFF in installer design; live scheduled task not installed",
-  "enable_disable_behavior": "Enable toggles only the named task. Disable disables it and attempts to stop only PowerShell whose command line contains the exact repository watcher path.",
-  "retry_cap_backoff": "One initial attempt plus at most two automatic retries for the same fingerprint, each separated by at least five minutes; then BLOCKED / NEEDS REVIEW.",
-  "log_cap": "watcher.log plus watcher.log.1, each approximately capped at 2 MiB; target total approximately 4 MiB.",
-  "tests_or_checks": [
-    "PowerShell parser: watcher.ps1, manage-watcher.ps1, controller.ps1, and test-watcher.ps1 passed.",
-    "test-watcher.ps1: 24 synthetic assertions passed; Codex launch mocked and no business task executed.",
-    "Synthetic repeated-log rotation test passed.",
-    "git diff --check passed.",
-    "Live pre-install inspection found no Crystal Agent Watcher scheduled task and found legacy Startup file Crystal-Agent-Watcher.cmd.",
-    "Live install attempt stopped at New-ScheduledTaskAction with Access denied (0x80041003); schtasks.exe user-level creation also failed; no task or shortcut was created.",
-    "Complete Git ls-remote/fetch passed; local HEAD equals origin/main. The Crystal Startup entry was then removed and no Crystal watcher process remains."
-  ],
-  "performance_resource_impact": {
-    "off_ram": "Effectively zero for the designed feature because no watcher process or recurring task runs; not measured locally.",
-    "on_between_polls_ram": "Effectively zero beyond Windows Task Scheduler itself; no resident watcher; not measured locally.",
-    "transient_poll_ram": "One transient powershell.exe process, plus Codex only for an eligible authorized task; exact memory not measured locally.",
-    "cpu": "Idle between polls; burst-only work during a one-shot poll.",
-    "disk_logs": "State writes per poll and a two-file watcher log target of about 4 MiB total.",
-    "network": "No watcher network activity while OFF; while ON or check-once, one git fetch per eligible clean-worktree poll before task evaluation.",
-    "sleep_wake": "WakeToRun false and StartWhenAvailable false; intended interactive-user-only execution.",
-    "disable_uninstall": "Disable via controller or manage-watcher.ps1 -Action Disable. Uninstall removes only the named scheduled task, named shortcut, named legacy Startup file, and .agent-state.",
-    "worst_case_retry": "For one fingerprint: initial Codex run plus two retries, with at least five minutes between failures, then no further automatic launches."
-  },
-  "critical_boundaries_preserved": [
-    "No business task or P2A-2R execution occurred.",
-    "No database, schema, image, or semantic data was modified.",
-    "No service, Electron app, Python GUI, web server, large dependency, startup auto-enable, wake scheduling, sandbox weakening, or approval weakening was introduced.",
-    "Synthetic tests used mock Codex launches only."
-  ],
-  "risks_or_blockers": [
-    "【需要你确认】Run the installer in the user's normal interactive PowerShell session because this managed session receives Task Scheduler CIM Access denied (0x80041003).",
-    "Task Scheduler access is denied in this managed session (0x80041003); a normal interactive user session is still required to install the user-level task and desktop shortcut.",
-    "The complete Git helper is available and verified, but no recurring schedule or desktop shortcut is installed.",
-    "Live ON/OFF, WakeToRun, shortcut launch, and uninstall validation remain pending until interactive installation succeeds."
-  ],
-  "requires_gpt_decision": true,
-  "next_minimum_action": "In a normal interactive user session, run tools/agent-watcher/manage-watcher.ps1 -Action Install, verify live integration, then commit and push; do not start a business phase."
+  "changed_files": ["tools/agent-watcher/controller.ps1", "tools/agent-watcher/manage-watcher.ps1", "tools/agent-watcher/README.md", "outputs/GPT_HANDOFF.json", "outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json"],
+  "actual_changes": ["Replaced Task Scheduler as the primary mechanism with an in-process WinForms five-minute session timer.", "Controller always starts AUTO MODE OFF; ON starts at most one watcher.ps1 -Once per interval and closing stops the timer.", "Install creates only the current-user Desktop shortcut and removes the legacy Crystal Startup launcher; no Task Scheduler, service, WakeToRun, login trigger, or admin dependency.", "Watcher retains lock, clean-worktree safety, retry cap 2, backoff, log rotation near 4 MiB, workspace-write/on-request, and full Git path preference."],
+  "controller_mechanism": "Desktop Controller Session Scheduler",
+  "desktop_shortcut_path_name": "C:\\Users\\luo_d\\Desktop\\Crystal Codex 自动接任务.lnk",
+  "default_auto_mode": "OFF",
+  "scheduler_mechanism_interval": "300000 ms (5 minutes), WinForms timer while controller window is open",
+  "retry_cap_backoff": "2 automatic retries per fingerprint, at least 5 minutes apart, then BLOCKED",
+  "log_cap": "watcher.log plus watcher.log.1, approximately 2 MiB each (about 4 MiB total)",
+  "tests_or_checks": ["watcher tests: 24 passed", "controller TestMode: OFF skip, dry-run, and 300000 ms interval checks passed", "shortcut launch observed and controller closed immediately; no watcher remained", "no Task Scheduler object was created", "full Git path retained; no business task executed"],
+  "performance_resource_impact": {"off_ram":"UNAVAILABLE (not reliably measured)","on_between_polls_ram":"UNAVAILABLE (not reliably measured)","transient_poll_ram":"UNAVAILABLE (not reliably measured)","cpu":"Idle between timer ticks; transient during one-shot poll","disk_logs":"approximately 4 MiB cap","network":"zero while controller is closed or AUTO OFF; only one-shot poll while ON or manual check","sleep_wake":"No wake behavior"},
+  "critical_boundaries_preserved": ["No P2A-2R or other business task executed", "No database or semantic data modified", "No system PATH or admin settings changed"],
+  "requires_gpt_decision": false,
+  "next_minimum_action": "None; do not start a subsequent business phase."
 }
