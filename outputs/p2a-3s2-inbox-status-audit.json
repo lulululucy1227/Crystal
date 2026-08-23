@@ -1,0 +1,1269 @@
+{
+  "artifact": "P2A-3S2-INBOX-STATUS-AUDIT",
+  "version": 1,
+  "source": {
+    "inventory": "agent/GPT_NEXT_TASK.md",
+    "database": "data/crystal-design.sqlite",
+    "read_only": true,
+    "visual_analysis": false
+  },
+  "summary": {
+    "inbox_total": 85,
+    "fully_processed": 10,
+    "historical_needs_p2a_upgrade": 56,
+    "unprocessed": 19,
+    "ambiguous_needs_review": 0,
+    "count_with_image_asset_linkage": 66,
+    "count_with_design_reference_linkage": 66,
+    "count_with_image_visual_observation": 10,
+    "count_linked_reference_has_current_synthesis": 12,
+    "status_buckets": {
+      "fully_processed": [
+        "IMG_7633.PNG",
+        "IMG_7634.PNG",
+        "IMG_7669.PNG",
+        "IMG_7668.PNG",
+        "IMG_7748.PNG",
+        "IMG_7747.PNG",
+        "IMG_7746.PNG",
+        "IMG_7717.PNG",
+        "IMG_7718.PNG",
+        "IMG_7719.PNG"
+      ],
+      "historical_needs_p2a_upgrade": [
+        "IMG_7700.PNG",
+        "IMG_7688.PNG",
+        "IMG_7698.PNG",
+        "IMG_7679.PNG",
+        "IMG_7696.PNG",
+        "IMG_7691.PNG",
+        "IMG_7680.PNG",
+        "IMG_7666.PNG",
+        "IMG_7697.PNG",
+        "IMG_7667.PNG",
+        "IMG_7692.PNG",
+        "IMG_7689.PNG",
+        "IMG_7678.PNG",
+        "IMG_7690.PNG",
+        "IMG_7635.PNG",
+        "IMG_7699.PNG",
+        "IMG_7655.PNG",
+        "IMG_7636.PNG",
+        "IMG_7656.PNG",
+        "IMG_7682.PNG",
+        "IMG_7654.PNG",
+        "IMG_7677.PNG",
+        "IMG_7674.PNG",
+        "IMG_7665.PNG",
+        "IMG_7687.PNG",
+        "IMG_7681.PNG",
+        "IMG_7676.PNG",
+        "IMG_7686.PNG",
+        "IMG_7673.PNG",
+        "IMG_7675.PNG",
+        "IMG_7661.PNG",
+        "IMG_7663.PNG",
+        "IMG_7664.PNG",
+        "IMG_7662.PNG",
+        "IMG_7693.PNG",
+        "IMG_7694.PNG",
+        "IMG_7745.PNG",
+        "IMG_7743.PNG",
+        "IMG_7744.PNG",
+        "IMG_7736.PNG",
+        "IMG_7735.PNG",
+        "IMG_7734.PNG",
+        "IMG_7733.PNG",
+        "IMG_7737.PNG",
+        "IMG_7731.PNG",
+        "IMG_7730.PNG",
+        "IMG_7729.PNG",
+        "IMG_7722.PNG",
+        "IMG_7724.PNG",
+        "IMG_7723.PNG",
+        "IMG_7721.PNG",
+        "IMG_7715.PNG",
+        "IMG_7714.PNG",
+        "IMG_7716.PNG",
+        "IMG_7712.PNG",
+        "IMG_7713.PNG"
+      ],
+      "unprocessed": [
+        "IMG_7704.PNG",
+        "IMG_7703.PNG",
+        "IMG_7653.PNG",
+        "IMG_7648.PNG",
+        "IMG_7650.PNG",
+        "IMG_7652.PNG",
+        "IMG_7651.PNG",
+        "IMG_7637.PNG",
+        "IMG_7641.PNG",
+        "IMG_7649.PNG",
+        "IMG_7685.PNG",
+        "IMG_7702.PNG",
+        "IMG_7701.PNG",
+        "IMG_7646.PNG",
+        "IMG_7645.PNG",
+        "IMG_7684.PNG",
+        "IMG_7644.JPG",
+        "IMG_7642.JPG",
+        "IMG_7643.JPG"
+      ],
+      "ambiguous_needs_review": []
+    }
+  },
+  "entries": [
+    {
+      "filename": "IMG_7704.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7700.PNG",
+      "image_asset_key": "ASSET-000040",
+      "design_reference_keys": [
+        "REF-000016"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7703.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7688.PNG",
+      "image_asset_key": "ASSET-000029",
+      "design_reference_keys": [
+        "REF-000011"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7698.PNG",
+      "image_asset_key": "ASSET-000038",
+      "design_reference_keys": [
+        "REF-000015"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7679.PNG",
+      "image_asset_key": "ASSET-000023",
+      "design_reference_keys": [
+        "REF-000009"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7696.PNG",
+      "image_asset_key": "ASSET-000036",
+      "design_reference_keys": [
+        "REF-000014"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7691.PNG",
+      "image_asset_key": "ASSET-000032",
+      "design_reference_keys": [
+        "REF-000013"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7680.PNG",
+      "image_asset_key": "ASSET-000024",
+      "design_reference_keys": [
+        "REF-000009"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7666.PNG",
+      "image_asset_key": "ASSET-000013",
+      "design_reference_keys": [
+        "REF-000005"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7697.PNG",
+      "image_asset_key": "ASSET-000037",
+      "design_reference_keys": [
+        "REF-000015"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7667.PNG",
+      "image_asset_key": "ASSET-000014",
+      "design_reference_keys": [
+        "REF-000005"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7692.PNG",
+      "image_asset_key": "ASSET-000033",
+      "design_reference_keys": [
+        "REF-000013"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7689.PNG",
+      "image_asset_key": "ASSET-000030",
+      "design_reference_keys": [
+        "REF-000012"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7678.PNG",
+      "image_asset_key": "ASSET-000022",
+      "design_reference_keys": [
+        "REF-000008"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7690.PNG",
+      "image_asset_key": "ASSET-000031",
+      "design_reference_keys": [
+        "REF-000012"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7653.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7635.PNG",
+      "image_asset_key": "ASSET-000003",
+      "design_reference_keys": [
+        "REF-000002"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7699.PNG",
+      "image_asset_key": "ASSET-000039",
+      "design_reference_keys": [
+        "REF-000016"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7648.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7655.PNG",
+      "image_asset_key": "ASSET-000006",
+      "design_reference_keys": [
+        "REF-000003"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7650.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7636.PNG",
+      "image_asset_key": "ASSET-000004",
+      "design_reference_keys": [
+        "REF-000002"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7652.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7651.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7637.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7656.PNG",
+      "image_asset_key": "ASSET-000007",
+      "design_reference_keys": [
+        "REF-000003"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7641.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7682.PNG",
+      "image_asset_key": "ASSET-000026",
+      "design_reference_keys": [
+        "REF-000010"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7654.PNG",
+      "image_asset_key": "ASSET-000005",
+      "design_reference_keys": [
+        "REF-000003"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7677.PNG",
+      "image_asset_key": "ASSET-000021",
+      "design_reference_keys": [
+        "REF-000008"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7674.PNG",
+      "image_asset_key": "ASSET-000018",
+      "design_reference_keys": [
+        "REF-000007"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7665.PNG",
+      "image_asset_key": "ASSET-000012",
+      "design_reference_keys": [
+        "REF-000005"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7687.PNG",
+      "image_asset_key": "ASSET-000028",
+      "design_reference_keys": [
+        "REF-000011"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7649.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7633.PNG",
+      "image_asset_key": "ASSET-000001",
+      "design_reference_keys": [
+        "REF-000002"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 5,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7634.PNG",
+      "image_asset_key": "ASSET-000002",
+      "design_reference_keys": [
+        "REF-000002"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 4,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7681.PNG",
+      "image_asset_key": "ASSET-000025",
+      "design_reference_keys": [
+        "REF-000010"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7676.PNG",
+      "image_asset_key": "ASSET-000020",
+      "design_reference_keys": [
+        "REF-000008"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7686.PNG",
+      "image_asset_key": "ASSET-000027",
+      "design_reference_keys": [
+        "REF-000011"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7685.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7669.PNG",
+      "image_asset_key": "ASSET-000016",
+      "design_reference_keys": [
+        "REF-000006"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 4,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7668.PNG",
+      "image_asset_key": "ASSET-000015",
+      "design_reference_keys": [
+        "REF-000006"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 5,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7673.PNG",
+      "image_asset_key": "ASSET-000017",
+      "design_reference_keys": [
+        "REF-000007"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7675.PNG",
+      "image_asset_key": "ASSET-000019",
+      "design_reference_keys": [
+        "REF-000007"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7661.PNG",
+      "image_asset_key": "ASSET-000008",
+      "design_reference_keys": [
+        "REF-000004"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7702.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7663.PNG",
+      "image_asset_key": "ASSET-000010",
+      "design_reference_keys": [
+        "REF-000004"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7701.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7664.PNG",
+      "image_asset_key": "ASSET-000011",
+      "design_reference_keys": [
+        "REF-000004"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7646.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7645.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7662.PNG",
+      "image_asset_key": "ASSET-000009",
+      "design_reference_keys": [
+        "REF-000004"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7693.PNG",
+      "image_asset_key": "ASSET-000034",
+      "design_reference_keys": [
+        "REF-000014"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7694.PNG",
+      "image_asset_key": "ASSET-000035",
+      "design_reference_keys": [
+        "REF-000014"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7684.PNG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7644.JPG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7642.JPG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7643.JPG",
+      "image_asset_key": null,
+      "design_reference_keys": [],
+      "has_historical_reference_analysis": false,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "unprocessed",
+      "reason": "no_canonical_asset_or_historical_reference_evidence"
+    },
+    {
+      "filename": "IMG_7748.PNG",
+      "image_asset_key": "ASSET-000066",
+      "design_reference_keys": [
+        "REF-000025"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 5,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7747.PNG",
+      "image_asset_key": "ASSET-000065",
+      "design_reference_keys": [
+        "REF-000025"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 4,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7746.PNG",
+      "image_asset_key": "ASSET-000064",
+      "design_reference_keys": [
+        "REF-000025"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 5,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 5,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7745.PNG",
+      "image_asset_key": "ASSET-000063",
+      "design_reference_keys": [
+        "REF-000024"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7743.PNG",
+      "image_asset_key": "ASSET-000061",
+      "design_reference_keys": [
+        "REF-000024"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7744.PNG",
+      "image_asset_key": "ASSET-000062",
+      "design_reference_keys": [
+        "REF-000024"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7736.PNG",
+      "image_asset_key": "ASSET-000059",
+      "design_reference_keys": [
+        "REF-000023"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7735.PNG",
+      "image_asset_key": "ASSET-000058",
+      "design_reference_keys": [
+        "REF-000023"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7734.PNG",
+      "image_asset_key": "ASSET-000057",
+      "design_reference_keys": [
+        "REF-000023"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7733.PNG",
+      "image_asset_key": "ASSET-000056",
+      "design_reference_keys": [
+        "REF-000023"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7737.PNG",
+      "image_asset_key": "ASSET-000060",
+      "design_reference_keys": [
+        "REF-000023"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7731.PNG",
+      "image_asset_key": "ASSET-000055",
+      "design_reference_keys": [
+        "REF-000022"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7730.PNG",
+      "image_asset_key": "ASSET-000054",
+      "design_reference_keys": [
+        "REF-000022"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7729.PNG",
+      "image_asset_key": "ASSET-000053",
+      "design_reference_keys": [
+        "REF-000022"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7722.PNG",
+      "image_asset_key": "ASSET-000050",
+      "design_reference_keys": [
+        "REF-000021"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7724.PNG",
+      "image_asset_key": "ASSET-000052",
+      "design_reference_keys": [
+        "REF-000021"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7723.PNG",
+      "image_asset_key": "ASSET-000051",
+      "design_reference_keys": [
+        "REF-000021"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7721.PNG",
+      "image_asset_key": "ASSET-000049",
+      "design_reference_keys": [
+        "REF-000020"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7717.PNG",
+      "image_asset_key": "ASSET-000046",
+      "design_reference_keys": [
+        "REF-000019"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 5,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 4,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7718.PNG",
+      "image_asset_key": "ASSET-000047",
+      "design_reference_keys": [
+        "REF-000019"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 4,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 4,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7719.PNG",
+      "image_asset_key": "ASSET-000048",
+      "design_reference_keys": [
+        "REF-000019"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": true,
+      "image_visual_observation_count": 4,
+      "has_reference_synthesis": true,
+      "reference_synthesis_assertion_count": 4,
+      "status": "fully_processed",
+      "reason": "asset_observation_and_reference_synthesis_present"
+    },
+    {
+      "filename": "IMG_7715.PNG",
+      "image_asset_key": "ASSET-000044",
+      "design_reference_keys": [
+        "REF-000018"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7714.PNG",
+      "image_asset_key": "ASSET-000043",
+      "design_reference_keys": [
+        "REF-000018"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7716.PNG",
+      "image_asset_key": "ASSET-000045",
+      "design_reference_keys": [
+        "REF-000018"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7712.PNG",
+      "image_asset_key": "ASSET-000041",
+      "design_reference_keys": [
+        "REF-000017"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    },
+    {
+      "filename": "IMG_7713.PNG",
+      "image_asset_key": "ASSET-000042",
+      "design_reference_keys": [
+        "REF-000017"
+      ],
+      "has_historical_reference_analysis": true,
+      "has_image_visual_observation": false,
+      "image_visual_observation_count": 0,
+      "has_reference_synthesis": false,
+      "reference_synthesis_assertion_count": 0,
+      "status": "historical_needs_p2a_upgrade",
+      "reason": "historical_reference_evidence_without_image_visual_observation"
+    }
+  ]
+}
