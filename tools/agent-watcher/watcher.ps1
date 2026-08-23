@@ -167,6 +167,7 @@ function Invoke-WatcherOnce {
     if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
     if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
     if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
+    Write-WatcherLog "authorized task detected: phase=$($task.Phase) status=$($task.Status) fingerprint=$($task.Fingerprint)"
     $state.lastLaunchedFingerprint = $task.Fingerprint; Save-JsonState $state
     $launch = Start-CodexExecution $RepoPath -DryRun:$DryRun
     if ($launch.DryRun) {
