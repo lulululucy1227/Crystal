@@ -2,7 +2,7 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA",
   "status": "completed",
-  "commit_sha": "PENDING",
+  "commit_sha": "8a98f3cf4e0e023f88e09d8be652ae0ba5b8587a",
   "branch": "main",
   "changed_files": [
     "migrations/009_p2a_reference_synthesis.sql",
