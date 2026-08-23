@@ -2,7 +2,8 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2A-2F0",
   "status": "completed",
-  "commit_sha": "",
+  "commit_sha": "67c24e194aedff20ec9b6b252914a95b45082300",
+  "commit_sha_convention": "Points to the immediately preceding P2A-2F0 handoff commit; this metadata update avoids a self-referential commit loop.",
   "branch": "main",
   "changed_files": [
     "outputs/GPT_HANDOFF.json",
