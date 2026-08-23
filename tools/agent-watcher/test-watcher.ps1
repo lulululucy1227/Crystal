@@ -92,6 +92,39 @@ try {
   $LogPath = Join-Path $root 'bounded.log'; $MaxLogBytes = 1024; 1..200 | ForEach-Object { Write-WatcherLog ('x' * 100) }
   Assert-That (((Get-ChildItem $root -Filter 'bounded.log*' | Measure-Object Length -Sum).Sum) -le 2400) 'log cap must remain bounded near two active chunks'
 
+  # Clean polling synchronizes before fingerprint decisions, so a completed local task cannot hide a new remote task.
+  Reset-SyntheticRepo; Set-SyntheticTask 'COMPLETED-LOCAL'
+  $old = Read-TaskDescriptor $script:TaskFilePath; $s = Get-JsonState; $s.lastCompletedFingerprint = $old.Fingerprint; Save-JsonState $s
+  $script:SyncCallCount = 0
+  Set-Item -Path Function:Sync-CrystalRepository -Value {
+    param([string]$Repository)
+    $script:SyncCallCount += 1; Set-SyntheticTask 'NEW-REMOTE-AUTHORIZED'
+    return [pscustomobject]@{ Ready = $true; Reason = 'synthetic sync' }
+  }
+  $newTask = Invoke-WatcherOnce -DryRun
+  Assert-That ($newTask.Action -eq 'dry-run' -and $newTask.Phase -eq 'NEW-REMOTE-AUTHORIZED') 'sync must expose and launch-check the new authorized task before duplicate evaluation'
+  Assert-That ($script:SyncCallCount -eq 1) 'clean cycle must sync before deciding the completed local fingerprint'
+
+  # An unchanged completed task still skips, but only after synchronization.
+  Reset-SyntheticRepo; Set-SyntheticTask 'COMPLETED-UNCHANGED'
+  $old = Read-TaskDescriptor $script:TaskFilePath; $s = Get-JsonState; $s.lastCompletedFingerprint = $old.Fingerprint; Save-JsonState $s
+  $script:SyncCallCount = 0
+  Set-Item -Path Function:Sync-CrystalRepository -Value { param([string]$Repository) $script:SyncCallCount += 1; return [pscustomobject]@{ Ready = $true; Reason = 'synthetic sync' } }
+  Assert-That ((Invoke-WatcherOnce -DryRun).Action -eq 'duplicate') 'unchanged completed task must still skip after sync'
+  Assert-That ($script:SyncCallCount -eq 1) 'duplicate decision must follow clean synchronization'
+
+  # Dirty state remains fail-safe and must not call sync; non-fast-forward remains blocked.
+  Reset-SyntheticRepo; Set-SyntheticTask 'DIRTY-NO-SYNC'; [IO.File]::WriteAllText((Join-Path $RepoPath 'unknown.txt'), 'unknown')
+  $script:SyncCallCount = 0
+  Set-Item -Path Function:Sync-CrystalRepository -Value { param([string]$Repository) $script:SyncCallCount += 1; return [pscustomobject]@{ Ready = $true; Reason = 'unexpected' } }
+  Assert-That ((Invoke-WatcherOnce -DryRun).Action -eq 'blocked') 'dirty worktree must remain blocked'
+  Assert-That ($script:SyncCallCount -eq 0) 'dirty worktree must not fetch or merge'
+
+  Reset-SyntheticRepo; Set-SyntheticTask 'NON-FF'
+  Set-Item -Path Function:Sync-CrystalRepository -Value { param([string]$Repository) return [pscustomobject]@{ Ready = $false; Reason = 'fast-forward-only sync failed; refusing to launch' } }
+  $nonFf = Invoke-WatcherOnce -DryRun
+  Assert-That ($nonFf.Action -eq 'blocked' -and $nonFf.Reason -match 'fast-forward-only') 'non-fast-forward sync must remain blocked'
+
   # Controller presentation: live PID wins over stale backoff/blocked, then terminal states apply.
   . (Join-Path $PSScriptRoot 'controller.ps1') -RepoPath $RepoPath -TestMode
   New-Item -ItemType Directory -Path (Join-Path $RepoPath '.agent-state') -Force | Out-Null
@@ -105,7 +138,7 @@ try {
   [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":2,"retryAfterUtc":"","blockedFingerprint":"x","lastRunStatus":"failed"}')
   Assert-That ((Get-SessionStatusText) -match 'STATE: BLOCKED') 'unsafe terminal state must display BLOCKED'
 
-  Write-Output 'watcher/controller tests: 13 scenarios passed'
+  Write-Output 'watcher/controller tests: 17 scenarios passed'
 } finally {
   if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
 }

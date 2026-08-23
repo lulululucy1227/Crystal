@@ -1,0 +1,22 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "AGENT-WATCHER-V1.3.1-SYNC-ORDER",
+  "status": "completed",
+  "commit_sha": "20f8773523bbccd5200ff9256395846a8a1ea450",
+  "branch": "main",
+  "root_cause": "Duplicate-completed detection used the stale local task fingerprint before repository synchronization, preventing fetch and discovery of a newer authorized remote task.",
+  "ordering_change": "Clean polls now sync first, re-read the task file, update state from the fresh descriptor, then apply duplicate/blocked/backoff/launch decisions. Dirty recovery remains local and never syncs.",
+  "new_task_discovery_after_completed_local_fingerprint": "verified by synthetic test",
+  "tests": [
+    "17 synthetic watcher/controller scenarios passed",
+    "npm test: 44 passed",
+    "npm run validate: passed",
+    "git diff --check: passed"
+  ],
+  "boundaries": [
+    "No P2A-3F1 execution",
+    "No database/schema/data/image/semantic changes",
+    "No policy, scheduler, lock, retry, finalization-proof, or fast-forward safety weakening"
+  ],
+  "next_minimum_action": "Stop after push; do not auto-execute P2A-3F1."
+}

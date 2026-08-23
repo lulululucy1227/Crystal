@@ -237,28 +237,31 @@ function Invoke-WatcherOnce {
   try {
     $task = Read-TaskDescriptor $script:TaskFilePath
     $state = Get-JsonState
-    $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status; $state.lastPollAt = [DateTime]::UtcNow.ToString('o')
-    if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
-    if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
-    if ($state.blockedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "blocked retry limit reached: phase=$($task.Phase) retryCount=$($state.retryCount)"; return [pscustomobject]@{ Action = 'blocked-retry-limit'; Fingerprint = $task.Fingerprint; RetryCount = $state.retryCount } }
     $currentSnapshot = @(Get-WorktreeSnapshot $RepoPath)
     $isRecovery = $false
     if ($currentSnapshot.Count -gt 0) {
+      # A dirty tree is recovery-only: do not fetch over it; use its exact local fingerprint.
+      $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status; $state.lastPollAt = [DateTime]::UtcNow.ToString('o')
+      if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
+      if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+      if ($state.blockedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "blocked retry limit reached: phase=$($task.Phase) retryCount=$($state.retryCount)"; return [pscustomobject]@{ Action = 'blocked-retry-limit'; Fingerprint = $task.Fingerprint; RetryCount = $state.retryCount } }
       if (-not (Test-FinalizationEligible $state $task $RepoPath $currentSnapshot)) {
         Write-WatcherLog 'blocked: dirty worktree is not an exact eligible watcher-observed finalization snapshot'
         return [pscustomobject]@{ Action = 'blocked'; Reason = 'unknown or changed dirty worktree' }
       }
       if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
       $isRecovery = $true
-    } elseif (-not $SkipSync) {
-      $sync = Sync-CrystalRepository $RepoPath
-      if (-not $sync.Ready) { Write-WatcherLog "blocked: $($sync.Reason)"; return [pscustomobject]@{ Action = 'blocked'; Reason = $sync.Reason } }
-      $freshTask = Read-TaskDescriptor $script:TaskFilePath
-      if ($freshTask.Fingerprint -ne $task.Fingerprint) {
-        $state.lastPhase = $freshTask.Phase; $state.lastStatus = $freshTask.Status; Save-JsonState $state
-        Write-WatcherLog 'task changed during synchronization; deferring launch until next cycle'
-        return [pscustomobject]@{ Action = 'task-changed-during-sync'; Fingerprint = $freshTask.Fingerprint }
+    } else {
+      # Synchronize a clean tree before any fingerprint decision, then re-read the task.
+      if (-not $SkipSync) {
+        $sync = Sync-CrystalRepository $RepoPath
+        if (-not $sync.Ready) { Write-WatcherLog "blocked: $($sync.Reason)"; return [pscustomobject]@{ Action = 'blocked'; Reason = $sync.Reason } }
+        $task = Read-TaskDescriptor $script:TaskFilePath
       }
+      $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status; $state.lastPollAt = [DateTime]::UtcNow.ToString('o')
+      if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
+      if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+      if ($state.blockedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "blocked retry limit reached: phase=$($task.Phase) retryCount=$($state.retryCount)"; return [pscustomobject]@{ Action = 'blocked-retry-limit'; Fingerprint = $task.Fingerprint; RetryCount = $state.retryCount } }
     }
     if (Test-CompletedHandoff $RepoPath $task.Phase) {
       $state.lastCompletedFingerprint = $task.Fingerprint
