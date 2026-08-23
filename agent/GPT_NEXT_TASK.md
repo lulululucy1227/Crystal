@@ -2,123 +2,190 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: AGENT-WATCHER-V1.1-RECOVERY
+Phase: AGENT-WATCHER-V1.2-DESKTOP-CONTROL
 Status: authorized
 Model: Luna
-Strength: Low
-Trigger-Nonce: 2026-08-23T16:29+02:00
+Strength: Medium
 
 ## Objective
-Add the smallest safe interrupted-task recovery behavior to the Crystal watcher so an authorized task that was auto-launched, exited before completion, and left task-owned uncommitted changes does not require manual user intervention every time.
+Replace the current always-on watcher experience with a user-controlled Windows desktop controller for Crystal Codex automation. The user must be able to turn automatic task pickup ON or OFF with one click and visibly see the current state.
 
-This phase is watcher infrastructure only. P2A-2R is already completed; do not modify its semantic output or rerun its importer.
+This phase is watcher/control infrastructure only. Do not execute any business task, do not rerun P2A-2R, and do not modify database/schema/image/semantic data.
 
-## Confirmed failure mode to solve
-Observed real sequence:
-1. watcher detected a new authorized task and auto-launched Codex;
-2. Codex produced valid task-owned files but exited before commit/handoff completion;
-3. watcher then saw a dirty worktree and blocked all future launches;
-4. manual recovery later verified all dirty files belonged to the same task and safely completed it.
+## User intent and safety priority
+The user explicitly does NOT want background polling or writes running all day by default. Resource impact, memory use, disk writes, network use, sleep/wake behavior, and reversibility must be treated as first-class requirements.
 
-Current generic dirty-worktree fail-safe is correct for unknown local changes, but incomplete for this same-task interrupted-run case.
+Default state after installation must be OFF.
+No startup auto-enable.
+No wake-from-sleep behavior.
+No administrator requirement.
+When OFF there must be no periodic polling, no network fetch, no watcher process, and no background Codex launch.
 
-## Required behavior
-Keep the default rule: unknown dirty worktree => block.
+## Desktop UX
+Create a simple Windows-native desktop control surface, preferably PowerShell + WinForms/WPF or another already-available Windows-native mechanism. Do not introduce Electron, Python GUI frameworks, web servers, or large new dependencies.
 
-Add a narrowly-scoped recovery path only when ALL of the following are true:
-- current task is `Status: authorized`;
-- current task fingerprint matches the watcher fingerprint that previously launched and did not complete;
-- the prior run did not produce a verified matching completed handoff;
-- the worktree is dirty;
-- the watcher can identify the dirty file set as belonging only to the interrupted task by using a locally persisted launch baseline and post-run git status/diff metadata, without guessing semantics;
-- no unrelated pre-existing dirty files were present at launch time.
+The user should have a clearly named desktop shortcut, for example:
+`Crystal Codex 自动接任务`
 
-If any condition is uncertain, remain blocked and require user confirmation.
+The controller should show at minimum:
+- AUTO MODE: ON / OFF
+- scheduler/watcher status
+- current task phase/status if locally available
+- last poll time
+- last Codex run time/status if available
+- retry count / blocked state if available
 
-## Recovery mechanism
-Prefer a minimal deterministic mechanism such as:
-- before launching Codex, persist the clean baseline commit SHA and baseline `git status --porcelain` (expected empty);
-- after an unverified/failed run, persist the resulting dirty file list associated with that fingerprint;
-- on a later cycle, if the same fingerprint is still authorized and the dirty file set exactly matches the persisted interrupted-run file set, allow one recovery Codex launch with an explicit recovery prompt;
-- the recovery prompt must instruct Codex to inspect and continue only the existing authorized phase, preserve current changes, finish tests/handoff/commit/push, and stop;
-- if the dirty file set changes unexpectedly, becomes broader, or includes unrelated files, block.
+Provide one-click actions:
+- 开启自动接任务
+- 关闭自动接任务
+- 立即检查一次
+- 打开日志
 
-Do NOT infer file ownership merely from filenames. Ownership here means the watcher itself observed the files appear from a clean baseline during the exact previous Codex run for the same fingerprint.
+Keep the UI small and obvious. No background tray agent is required unless it is materially simpler and lower-resource than the alternatives.
 
-## Safety requirements
+## Preferred scheduling model
+When AUTO MODE is ON:
+- use a Windows user-level scheduled task or equivalent low-overhead Windows-native scheduler;
+- invoke the existing watcher in one-shot mode (`watcher.ps1 -Once`) at a conservative interval of 5 minutes;
+- each poll process must exit after the one-shot cycle;
+- do not keep a resident PowerShell watcher alive between polls;
+- preserve the watcher lock so overlapping runs skip safely.
+
+When AUTO MODE is OFF:
+- disable/remove the periodic scheduled trigger or otherwise guarantee zero recurring poll execution;
+- any currently idle watcher process should be stopped safely if it exists;
+- do not terminate unrelated PowerShell/Codex processes.
+
+Do not configure the task to wake the computer.
+Do not run when the user is logged out unless required by the existing local environment; prefer current-user interactive mode only.
+
+## Resource limits
+Implement conservative resource behavior:
+- poll interval: 5 minutes
+- one-shot polling only
+- max one Codex process at a time
+- same fingerprint max automatic retries: 2
+- retry backoff: at least 5 minutes
+- after retry limit, stop retrying that fingerprint and expose BLOCKED / NEEDS REVIEW in the controller
+- log rotation or truncation so watcher/controller logs remain bounded, target total 2-5 MB
+- no continuous memory-resident service
+- no busy loop
+
+If the existing watcher state format must be extended for retry count or controller state, keep it minimal and gitignored.
+
+## Existing watcher reuse
+First audit and reuse the current implementation under:
+`tools/agent-watcher/`
+
+Do not rewrite from scratch.
 Preserve:
+- task fingerprinting
+- lock / single-run protection
+- clean-worktree safety
+- fetch + fast-forward-only behavior
 - workspace-write sandbox
-- on-request approvals
-- clean-worktree requirement for first launch
-- single-process lock
-- fetch + fast-forward-only sync when clean
-- no reset/clean/discard behavior
-- no auto-approval
-- no arbitrary shell execution from task text
+- on-request approval policy
+- failure/backoff logic where compatible
 
-Never run recovery against a different task fingerprint.
-Never delete or overwrite unknown local changes.
-Never auto-recover if the previous baseline was already dirty.
+The earlier AGENT-WATCHER-V1.1-RECOVERY phase was not successfully auto-launched. Do not execute its previous business of interrupted-task recovery unless a tiny part is strictly necessary to support the desktop controller. The priority of this phase is manual ON/OFF control and low-resource scheduling.
 
-## Retry/backoff
-Reuse the existing five-minute retry/backoff behavior where appropriate.
-Do not create a tight loop.
-Allow at most one Codex process at a time.
+## Windows integration
+Create a reversible, user-level setup.
+Allowed examples:
+- one Task Scheduler task named `Crystal Agent Watcher`
+- one desktop shortcut to the controller
+- versioned source files under `tools/agent-watcher/`
 
-## Recovery launch prompt
-Use a fixed watcher-owned recovery instruction, not task text as shell input. It should tell Codex to:
-- read AGENTS.md and the current GPT_NEXT_TASK.md;
-- inspect the existing worktree changes;
-- continue only the current authorized phase;
-- preserve valid existing work rather than restarting;
-- stop if any dirty file appears unrelated or ambiguous;
-- complete required tests/handoff/commit/push;
-- stop after that phase.
+Do not require admin privileges.
+Do not add a Windows service.
+Do not add a startup launcher that turns auto mode ON after reboot.
+If any old Startup launcher/resident watcher from previous phases still exists, safely disable/remove only the Crystal-specific one so there is no duplicate scheduling path.
 
-## Tests
-Add focused tests proving at minimum:
-1. first launch still requires a clean worktree
-2. dirty worktree with no matching interrupted-run metadata remains blocked
-3. same fingerprint + exact persisted interrupted dirty set can enter recovery mode
-4. changed/broadened dirty set blocks recovery
-5. different task fingerprint blocks recovery
-6. interrupted run whose baseline was dirty cannot be auto-recovered
-7. successful matching completed handoff clears recovery state
-8. failed recovery remains retryable after backoff
-9. lock/approval/sandbox behavior remains unchanged
-10. existing watcher tests continue to pass
+Provide a clean uninstall/remove path that removes:
+- Crystal-specific scheduled task
+- Crystal-specific desktop shortcut
+- optional local controller state
+without touching unrelated Windows tasks or user files.
 
-Use dry-run/mock Codex launch for tests. Do not execute any business task during watcher tests.
+## Safety before OS-level changes
+Before creating/removing Task Scheduler entries or desktop shortcuts, inspect the exact current local state first.
+If Windows requires interactive approval or an operation cannot be safely scoped to Crystal, stop and clearly show:
+`【需要你确认】`
 
-## Local state
-Extend `.agent-state/watcher-state.json` only as much as necessary. Runtime state remains gitignored.
+## Validation
+At minimum prove:
+1. install completes without admin rights
+2. default AUTO MODE after setup is OFF
+3. OFF means no periodic watcher process/poll/network fetch is scheduled
+4. clicking ON enables 5-minute one-shot polling
+5. clicking OFF disables recurring polling
+6. `立即检查一次` runs exactly one safe poll
+7. watcher lock prevents overlap
+8. same fingerprint cannot auto-retry more than 2 times
+9. failure/backoff state is visible to the controller
+10. logs remain bounded under a synthetic repeated-log test
+11. scheduled task does not have WakeToRun enabled
+12. no old Crystal Startup/resident watcher remains active
+13. desktop shortcut opens the controller successfully
+14. no business task is executed during tests; use synthetic/dry-run/mock Codex launch
+
+## Performance / hardware impact report
+The handoff MUST include a concise resource impact section with:
+- expected steady-state RAM when OFF: should be effectively zero for this feature
+- expected steady-state RAM between polls when ON: should be effectively zero except Task Scheduler itself
+- transient PowerShell memory during one poll
+- expected CPU behavior
+- disk/log write behavior and cap
+- network behavior
+- sleep/wake behavior
+- exact way to disable/uninstall
+- worst-case automatic retry behavior
+
+Do not claim exact MB numbers unless measured locally. If measured, report the measurement context.
+
+## Deliverables
+Expected minimal deliverables may include:
+- desktop controller script/UI under `tools/agent-watcher/`
+- enable/disable/check-once helper scripts if useful
+- Task Scheduler setup/remove helpers
+- desktop shortcut setup/remove helper
+- watcher changes only if needed for retry caps/log bounds/controller-readable state
+- focused tests
+- README update
+- `outputs/GPT_HANDOFF.json`
+- `outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json`
 
 ## Boundaries
-Allowed:
-- tools/agent-watcher/watcher.ps1
-- watcher tests
-- minimal README changes
-- AGENT-HANDOFF files
-
 Forbidden:
-- P2A-2R rerun or semantic changes
-- DB/schema/data/image changes
-- business code changes
-- GitHub Actions/cloud runner replacement
-- new dependencies
+- business-task execution
+- database/schema/data/image changes
+- P2A-2R rerun
+- new large dependencies/frameworks
+- Windows service installation
+- admin-only design
+- always-on resident watcher
+- auto-enable at boot/login
+- wake-computer scheduling
 - sandbox/approval weakening
+- modifying any other repository
 
 ## Reporting
 Update:
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/AGENT-WATCHER-V1.1-RECOVERY.json`
+- `outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json`
 
 Include:
-- exact interrupted-run state recorded
-- exact eligibility rule for recovery
-- recovery prompt behavior
+- controller mechanism
+- desktop shortcut path/name
+- scheduler mechanism and interval
+- default ON/OFF state
+- exact enable/disable behavior
+- retry cap/backoff
+- log cap
 - tests
-- any remaining edge cases
+- performance/resource impact
+- uninstall method
+- any user confirmation still required
 - boundary check
 
-After push, stop. Do not authorize or start the next business phase automatically.
+After push, stop. Do not authorize or start any business phase automatically.
