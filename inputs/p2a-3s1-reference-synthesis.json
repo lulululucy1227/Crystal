@@ -1,0 +1,212 @@
+{
+  "contract_version": "P2A-REFERENCE-SYNTHESIS-V1",
+  "analysis_version": "p2a-reference-synthesis-v1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "synthesis_run_key": "P2A-3S1-4REF-V1",
+  "source_evidence_map": "outputs/p2a-3s0-reference-evidence-map.json",
+  "references": [
+    {
+      "reference_key": "REF-000002",
+      "expected_asset_keys": ["ASSET-000001", "ASSET-000002"],
+      "assertions": [
+        {
+          "assertion_key": "P2A3S1-REF000002-COLOR",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "reference_color_system",
+          "asserted_value": "A dark forest-green to black-green palette is relieved by clear-to-gray-green elements and restrained silver-toned accents.",
+          "confidence": "high",
+          "source_image_observation_ids": [1]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000002-FOCAL",
+          "synthesis_scope": "product_design",
+          "assertion_class": "inference",
+          "assertion_type": "focal_hierarchy",
+          "asserted_value": "An oversized circular element framed by silver-toned hardware acts as the primary visual anchor, with geometric bead variation supporting rather than competing with it.",
+          "confidence": "medium",
+          "source_image_observation_ids": [2, 3, 5]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000002-RHYTHM",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "asymmetric_rhythm",
+          "asserted_value": "Uneven bead sizes and forms, with rectangular and oversized circular elements placed on different sides, create a deliberately non-uniform asymmetric rhythm.",
+          "confidence": "high",
+          "source_image_observation_ids": [6, 7]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000002-SECONDARY-LINE",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "secondary_line",
+          "asserted_value": "A short silver-toned chain with leaf-like charms extends below the focal zone as a secondary vertical line.",
+          "confidence": "high",
+          "source_image_observation_ids": [8]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000002-PROMO",
+          "synthesis_scope": "promotional_visual",
+          "assertion_class": "observation",
+          "assertion_type": "presentation_strategy",
+          "asserted_value": "The promotional treatment alternates contextual mountain-and-forest collage imagery with a centered isolated product view using substantial pale-gray negative space.",
+          "confidence": "high",
+          "source_image_observation_ids": [4, 9]
+        }
+      ]
+    },
+    {
+      "reference_key": "REF-000006",
+      "expected_asset_keys": ["ASSET-000015", "ASSET-000016"],
+      "assertions": [
+        {
+          "assertion_key": "P2A3S1-REF000006-SCALE-QUALITY",
+          "synthesis_scope": "product_design",
+          "assertion_class": "inference",
+          "assertion_type": "scale_quality_dependency",
+          "asserted_value": "The large, sparsely repeated transparent-to-gray elements make surface transparency, clouding, inclusions and finish highly visible, so perceived impact depends strongly on optical surface quality.",
+          "confidence": "medium",
+          "source_image_observation_ids": [10, 12, 14]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000006-FRAMED-REPETITION",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "framed_repetition",
+          "asserted_value": "Large round transparent-to-gray elements repeat in sequence and are structurally separated or framed by silver-toned hardware.",
+          "confidence": "high",
+          "source_image_observation_ids": [11, 15]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000006-RHYTHM-INTERRUPTION",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "rhythm_interruption",
+          "asserted_value": "A more irregular or faceted transparent element interrupts the otherwise dominant sequence of large spherical forms.",
+          "confidence": "medium",
+          "source_image_observation_ids": [16]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000006-EXTENSION",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "extension_detail",
+          "asserted_value": "A silver-toned dangling extension with several small charms adds a secondary terminal detail to the repeated large-scale structure.",
+          "confidence": "high",
+          "source_image_observation_ids": [17]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000006-PROMO",
+          "synthesis_scope": "promotional_visual",
+          "assertion_class": "observation",
+          "assertion_type": "inspection_presentation",
+          "asserted_value": "Tight wrist close-up and forearm-length presentation are used to make scale, surface detail and the repeated structural sequence easy to inspect.",
+          "confidence": "high",
+          "source_image_observation_ids": [13, 18]
+        }
+      ]
+    },
+    {
+      "reference_key": "REF-000019",
+      "expected_asset_keys": ["ASSET-000046", "ASSET-000047", "ASSET-000048"],
+      "assertions": [
+        {
+          "assertion_key": "P2A3S1-REF000019-COLOR",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "reference_color_system",
+          "asserted_value": "Muted gray-green, dark green, smoky gray and pale green elements are combined with restrained silver-toned accents.",
+          "confidence": "high",
+          "source_image_observation_ids": [19]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000019-CLUSTER",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "multi_scale_cluster",
+          "asserted_value": "Mostly round beads are interrupted by geometric forms and a dense one-sided cluster of much smaller elements, producing clear scale contrast within the bracelet.",
+          "confidence": "high",
+          "source_image_observation_ids": [20, 21]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000019-BALANCE",
+          "synthesis_scope": "product_design",
+          "assertion_class": "inference",
+          "assertion_type": "asymmetric_balance_strategy",
+          "asserted_value": "The dense cluster is balanced by larger and visually calmer beads on the opposite side rather than by mirror symmetry.",
+          "confidence": "medium",
+          "source_image_observation_ids": [21, 23]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000019-PROMO",
+          "synthesis_scope": "promotional_visual",
+          "assertion_class": "observation",
+          "assertion_type": "presentation_context",
+          "asserted_value": "The bracelet is presented on a translucent dish held by hands in a warm neutral interior, giving the reference a softer contextual presentation rather than a clinical product-only view.",
+          "confidence": "high",
+          "source_image_observation_ids": [22]
+        }
+      ]
+    },
+    {
+      "reference_key": "REF-000025",
+      "expected_asset_keys": ["ASSET-000064", "ASSET-000065", "ASSET-000066"],
+      "assertions": [
+        {
+          "assertion_key": "P2A3S1-REF000025-COLOR-MOOD",
+          "synthesis_scope": "product_design",
+          "assertion_class": "inference",
+          "assertion_type": "restrained_cool_mood",
+          "asserted_value": "A restrained gray, clear, smoky and blue-gray palette, reinforced by metallic and transparent contrast, produces a cool and quiet visual mood.",
+          "confidence": "medium",
+          "source_image_observation_ids": [32, 37, 43, 45]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000025-FOCAL",
+          "synthesis_scope": "product_design",
+          "assertion_class": "inference",
+          "assertion_type": "geometric_focal_hierarchy",
+          "asserted_value": "An off-center transparent faceted geometric element functions as a focal interruption within a predominantly rounded composition.",
+          "confidence": "medium",
+          "source_image_observation_ids": [33, 36, 38]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000025-SECONDARY-LINE",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "secondary_line_and_dangle",
+          "asserted_value": "Fine chain and hanging clear details create a secondary line extending away from the main bracelet body.",
+          "confidence": "high",
+          "source_image_observation_ids": [34, 39]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000025-RHYTHM",
+          "synthesis_scope": "product_design",
+          "assertion_class": "observation",
+          "assertion_type": "asymmetric_geometric_rhythm",
+          "asserted_value": "Rounded elements are interrupted by geometric forms and silver-toned transitions, creating an asymmetric rhythm instead of a uniform bead sequence.",
+          "confidence": "high",
+          "source_image_observation_ids": [41, 42]
+        },
+        {
+          "assertion_key": "P2A3S1-REF000025-PROMO",
+          "synthesis_scope": "promotional_visual",
+          "assertion_class": "observation",
+          "assertion_type": "editorial_closeup_strategy",
+          "asserted_value": "Dark editorial presentation and tight hand/finger close-ups emphasize the focal geometry, surface variation and restrained material contrast.",
+          "confidence": "high",
+          "source_image_observation_ids": [35, 44]
+        }
+      ]
+    }
+  ],
+  "proposed_pattern_changes": [],
+  "proposed_theme_changes": [],
+  "notes": [
+    "All mineral-like language is visual-description only; no mineral species identification is asserted.",
+    "Existing P1C pattern/theme links are intentionally not modified.",
+    "User preference evidence is intentionally not folded into this image-derived synthesis input."
+  ]
+}
