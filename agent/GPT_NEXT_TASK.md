@@ -2,190 +2,141 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: AGENT-WATCHER-V1.2-DESKTOP-CONTROL
+Phase: P2A-3F0-REFERENCE-SYNTHESIS-FIT
 Status: authorized
 Model: Luna
 Strength: Medium
 
 ## Objective
-Replace the current always-on watcher experience with a user-controlled Windows desktop controller for Crystal Codex automation. The user must be able to turn automatic task pickup ON or OFF with one click and visibly see the current state.
+Determine the smallest safe persistence path for reference-level synthesis derived from the completed 10-image P2A pilot, without writing any new semantic data or creating a migration in this phase.
 
-This phase is watcher/control infrastructure only. Do not execute any business task, do not rerun P2A-2R, and do not modify database/schema/image/semantic data.
+P2A-2R is completed. The canonical pilot now has 45 image-level `image_visual_observation` rows across the approved 10 assets. The next step is to synthesize image-level evidence into reference-level design understanding, but existing reference-level tables were created before the current producer/version/provenance model. This phase must decide whether the existing schema can represent the next GPT-produced reference synthesis safely, or whether a narrowly-scoped migration is required.
 
-## User intent and safety priority
-The user explicitly does NOT want background polling or writes running all day by default. Resource impact, memory use, disk writes, network use, sleep/wake behavior, and reversibility must be treated as first-class requirements.
+## Model rationale
+Use Luna / Medium because this is a bounded, read-only schema-fit and data-contract review. No production semantic writes or schema changes are authorized.
 
-Default state after installation must be OFF.
-No startup auto-enable.
-No wake-from-sleep behavior.
-No administrator requirement.
-When OFF there must be no periodic polling, no network fetch, no watcher process, and no background Codex launch.
+## Scope
+Read only the current Crystal repository and local canonical SQLite database as needed.
 
-## Desktop UX
-Create a simple Windows-native desktop control surface, preferably PowerShell + WinForms/WPF or another already-available Windows-native mechanism. Do not introduce Electron, Python GUI frameworks, web servers, or large new dependencies.
+Inspect at minimum:
+- `migrations/001_initial.sql`
+- `migrations/004_p1c_reference_relationships.sql`
+- `migrations/005_p1c_design_principle.sql`
+- `migrations/006_p1c_image_assets.sql`
+- `migrations/008_p2a_visual_observation.sql`
+- current `design_reference` / `design_reference_observation`
+- current `design_assessment`
+- current `visual_communication_reference`
+- reference-pattern/theme relationship tables
+- `image_visual_observation`
+- the 10 pilot assets and their `design_reference_image` links
+- existing P1C reference rows for the affected references
 
-The user should have a clearly named desktop shortcut, for example:
-`Crystal Codex 自动接任务`
+## Pilot references to analyze
+Use the exact existing reference grouping for the approved 10 pilot images. Do not regroup images.
 
-The controller should show at minimum:
-- AUTO MODE: ON / OFF
-- scheduler/watcher status
-- current task phase/status if locally available
-- last poll time
-- last Codex run time/status if available
-- retry count / blocked state if available
+Expected affected references include the groups containing:
+- IMG_7633 + IMG_7634
+- IMG_7668 + IMG_7669
+- IMG_7717 + IMG_7718 + IMG_7719
+- IMG_7746 + IMG_7747 + IMG_7748
 
-Provide one-click actions:
-- 开启自动接任务
-- 关闭自动接任务
-- 立即检查一次
-- 打开日志
+Resolve them from canonical `design_reference_image` rather than guessing IDs from filenames.
 
-Keep the UI small and obvious. No background tray agent is required unless it is materially simpler and lower-resource than the alternatives.
+## Core questions
+Answer these concretely:
 
-## Preferred scheduling model
-When AUTO MODE is ON:
-- use a Windows user-level scheduled task or equivalent low-overhead Windows-native scheduler;
-- invoke the existing watcher in one-shot mode (`watcher.ps1 -Once`) at a conservative interval of 5 minutes;
-- each poll process must exit after the one-shot cycle;
-- do not keep a resident PowerShell watcher alive between polls;
-- preserve the watcher lock so overlapping runs skip safely.
+1. Can the current `design_reference_observation` table safely hold GPT reference-level synthesis while preserving:
+   - producer type/id
+   - analysis version
+   - source image-observation provenance
+   - append-only correction history / supersession
+   - observation vs inference distinction
+   - confidence
+   - idempotency
 
-When AUTO MODE is OFF:
-- disable/remove the periodic scheduled trigger or otherwise guarantee zero recurring poll execution;
-- any currently idle watcher process should be stopped safely if it exists;
-- do not terminate unrelated PowerShell/Codex processes.
+2. Can the current `design_assessment` table safely hold versioned assistant synthesis without destructive overwrite, given its current one-row-per-reference shape?
 
-Do not configure the task to wake the computer.
-Do not run when the user is logged out unless required by the existing local environment; prefer current-user interactive mode only.
+3. Can the current `visual_communication_reference` table safely hold promotional-visual synthesis with version/provenance and non-destructive updates?
 
-## Resource limits
-Implement conservative resource behavior:
-- poll interval: 5 minutes
-- one-shot polling only
-- max one Codex process at a time
-- same fingerprint max automatic retries: 2
-- retry backoff: at least 5 minutes
-- after retry limit, stop retrying that fingerprint and expose BLOCKED / NEEDS REVIEW in the controller
-- log rotation or truncation so watcher/controller logs remain bounded, target total 2-5 MB
-- no continuous memory-resident service
-- no busy loop
+4. Which existing P1C pattern/theme links are already sufficient and should be reused rather than duplicated?
 
-If the existing watcher state format must be extended for retry count or controller state, keep it minimal and gitignored.
+5. What is the minimum data contract GPT should produce for a 4-reference synthesis pilot before any importer is built?
 
-## Existing watcher reuse
-First audit and reuse the current implementation under:
-`tools/agent-watcher/`
+6. If schema change is necessary, what is the minimum migration shape? Prefer additive tables/columns and append-only history over rewriting historical P1C rows. Do not draft a large redesign.
 
-Do not rewrite from scratch.
-Preserve:
-- task fingerprinting
-- lock / single-run protection
-- clean-worktree safety
-- fetch + fast-forward-only behavior
-- workspace-write sandbox
-- on-request approval policy
-- failure/backoff logic where compatible
+## Evidence / provenance requirement
+Reference-level synthesis must remain traceable to the underlying image-level evidence. A future persisted synthesis must be able to answer which `image_visual_observation` rows support a reference-level statement.
 
-The earlier AGENT-WATCHER-V1.1-RECOVERY phase was not successfully auto-launched. Do not execute its previous business of interrupted-task recovery unless a tiny part is strictly necessary to support the desktop controller. The priority of this phase is manual ON/OFF control and low-resource scheduling.
+Do not accept a design that only stores free text with no provenance path.
 
-## Windows integration
-Create a reversible, user-level setup.
-Allowed examples:
-- one Task Scheduler task named `Crystal Agent Watcher`
-- one desktop shortcut to the controller
-- versioned source files under `tools/agent-watcher/`
+## Existing semantic boundaries
+Keep these distinctions:
+- image-level observation != reference-level synthesis
+- observation != inference
+- user preference evidence != assistant assessment
+- design analysis != promotional visual analysis
+- material visual appearance != confirmed mineral identity
+- repeated screenshots of one bracelet != popularity/frequency evidence
 
-Do not require admin privileges.
-Do not add a Windows service.
-Do not add a startup launcher that turns auto mode ON after reboot.
-If any old Startup launcher/resident watcher from previous phases still exists, safely disable/remove only the Crystal-specific one so there is no duplicate scheduling path.
+Do not infer or identify mineral species.
 
-Provide a clean uninstall/remove path that removes:
-- Crystal-specific scheduled task
-- Crystal-specific desktop shortcut
-- optional local controller state
-without touching unrelated Windows tasks or user files.
+## Open-source-first check
+Before proposing custom schema machinery, briefly compare the needed provenance/versioning pattern with established general patterns already conceptually used in the project (append-only event/history records, explicit producer/version fields, source-link tables). Reuse the existing project conventions where adequate. Do not add dependencies or install frameworks.
 
-## Safety before OS-level changes
-Before creating/removing Task Scheduler entries or desktop shortcuts, inspect the exact current local state first.
-If Windows requires interactive approval or an operation cannot be safely scoped to Crystal, stop and clearly show:
-`【需要你确认】`
+## Forbidden
+- no migration 009 creation
+- no schema changes
+- no canonical semantic writes
+- no modification of P2A-2R rows
+- no Vision/OCR/image analysis
+- no new reference synthesis content authored by Codex
+- no regrouping references or assets
+- no pattern/theme/preference/assessment writes
+- no material/component/market/supplier/packaging writes
+- no OpenViking/FiftyOne/vector/embedding work
+- no Workbench UI work
+
+## Deliverable
+Create only a concise technical decision document:
+`outputs/p2a-3f0-reference-synthesis-fit.md`
+
+It must include:
+- affected reference keys and asset counts resolved from DB
+- current-table fit matrix for `design_reference_observation`, `design_assessment`, `visual_communication_reference`
+- explicit PASS / PARTIAL / FAIL per required capability
+- exact provenance/versioning gaps
+- recommended minimum future data contract for GPT reference synthesis
+- recommended persistence option:
+  A. reuse existing schema as-is
+  B. additive minimal migration
+  C. do not persist yet
+- if B, list only the minimum proposed entities/fields/keys, not full SQL
+- risks of overwriting or conflating historical P1C data
+- next minimum action
 
 ## Validation
-At minimum prove:
-1. install completes without admin rights
-2. default AUTO MODE after setup is OFF
-3. OFF means no periodic watcher process/poll/network fetch is scheduled
-4. clicking ON enables 5-minute one-shot polling
-5. clicking OFF disables recurring polling
-6. `立即检查一次` runs exactly one safe poll
-7. watcher lock prevents overlap
-8. same fingerprint cannot auto-retry more than 2 times
-9. failure/backoff state is visible to the controller
-10. logs remain bounded under a synthetic repeated-log test
-11. scheduled task does not have WakeToRun enabled
-12. no old Crystal Startup/resident watcher remains active
-13. desktop shortcut opens the controller successfully
-14. no business task is executed during tests; use synthetic/dry-run/mock Codex launch
-
-## Performance / hardware impact report
-The handoff MUST include a concise resource impact section with:
-- expected steady-state RAM when OFF: should be effectively zero for this feature
-- expected steady-state RAM between polls when ON: should be effectively zero except Task Scheduler itself
-- transient PowerShell memory during one poll
-- expected CPU behavior
-- disk/log write behavior and cap
-- network behavior
-- sleep/wake behavior
-- exact way to disable/uninstall
-- worst-case automatic retry behavior
-
-Do not claim exact MB numbers unless measured locally. If measured, report the measurement context.
-
-## Deliverables
-Expected minimal deliverables may include:
-- desktop controller script/UI under `tools/agent-watcher/`
-- enable/disable/check-once helper scripts if useful
-- Task Scheduler setup/remove helpers
-- desktop shortcut setup/remove helper
-- watcher changes only if needed for retry caps/log bounds/controller-readable state
-- focused tests
-- README update
-- `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json`
-
-## Boundaries
-Forbidden:
-- business-task execution
-- database/schema/data/image changes
-- P2A-2R rerun
-- new large dependencies/frameworks
-- Windows service installation
-- admin-only design
-- always-on resident watcher
-- auto-enable at boot/login
-- wake-computer scheduling
-- sandbox/approval weakening
-- modifying any other repository
+Prove:
+- no DB/schema writes occurred
+- no existing files outside the report + handoff files changed
+- pilot grouping resolved from canonical DB links
+- all 45 P2A-2R image observations remain unchanged
+- existing regression tests still pass if practical; otherwise run the smallest non-mutating validation needed and state why
 
 ## Reporting
 Update:
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json`
+- `outputs/handoffs/P2A-3F0-REFERENCE-SYNTHESIS-FIT.json`
 
-Include:
-- controller mechanism
-- desktop shortcut path/name
-- scheduler mechanism and interval
-- default ON/OFF state
-- exact enable/disable behavior
-- retry cap/backoff
-- log cap
-- tests
-- performance/resource impact
-- uninstall method
-- any user confirmation still required
+Handoff must include:
+- decision A/B/C
+- affected reference count
+- affected asset count
+- image observation count checked
+- whether migration is recommended
+- whether GPT can safely author the next synthesis input after this phase
+- tests/checks
 - boundary check
+- blocker if any
 
-After push, stop. Do not authorize or start any business phase automatically.
+After push, STOP. Do not create migration 009 or start synthesis import automatically.
