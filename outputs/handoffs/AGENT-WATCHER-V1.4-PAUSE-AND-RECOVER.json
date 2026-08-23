@@ -1,0 +1,15 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "AGENT-WATCHER-V1.4-PAUSE-AND-RECOVER",
+  "status": "ready_for_manual_finalize",
+  "dirty_files": ["tools/agent-watcher/controller.ps1", "tools/agent-watcher/test-watcher.ps1", "tools/agent-watcher/watcher.ps1", "outputs/agent-watcher-v1.4-oss-pattern-audit.md", "tools/agent-watcher/test-real-lifecycle-smoke.ps1"],
+  "checks": {"focused_watcher_controller": "24 scenarios passed", "npm_test": "48 passed", "npm_validate": "passed", "git_diff_check": "passed"},
+  "automatic_finalization": "deferred",
+  "no_host_git_finalizer": true,
+  "no_real_smoke_in_recovery": true,
+  "business_data_changed": false,
+  "database_data_changed": false,
+  "next_priority": "crystal data collection and workbench/business development",
+  "manual_finalize": {"required": true, "commands": ["& 'C:\\Program Files\\Git\\cmd\\git.exe' add -- tools/agent-watcher/controller.ps1 tools/agent-watcher/test-watcher.ps1 tools/agent-watcher/watcher.ps1 outputs/agent-watcher-v1.4-oss-pattern-audit.md tools/agent-watcher/test-real-lifecycle-smoke.ps1 outputs/GPT_HANDOFF.json outputs/handoffs/AGENT-WATCHER-V1.4-PAUSE-AND-RECOVER.json", "& 'C:\\Program Files\\Git\\cmd\\git.exe' commit -m 'chore: preserve v1.4 watcher recovery state'", "& 'C:\\Program Files\\Git\\cmd\\git.exe' push origin main"]},
+  "blocker": "Codex workspace-write sandbox cannot create .git/index.lock"
+}

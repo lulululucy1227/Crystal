@@ -1,74 +1,18 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA",
-  "status": "completed",
-  "commit_sha": "8a98f3cf4e0e023f88e09d8be652ae0ba5b8587a",
-  "branch": "main",
-  "changed_files": [
-    "migrations/009_p2a_reference_synthesis.sql",
-    "test/p2a-3f1-reference-synthesis-schema.test.mjs",
-    "outputs/GPT_HANDOFF.json",
-    "outputs/handoffs/P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA.json"
-  ],
-  "actual_changes": [
-    "Added migration 009 with append-only reference synthesis assertion and image-observation source tables.",
-    "Added semantic replay uniqueness, restricted lineage, same-reference/scope supersession checks, and DB-enforced source-to-reference provenance.",
-    "Added focused isolated-database tests for migration safety, constraints, replay, lineage, evidence links, and integrity."
-  ],
-  "migration_name": "009_p2a_reference_synthesis",
-  "schema_added": {
-    "tables": [
-      "design_reference_synthesis_assertion",
-      "design_reference_synthesis_source"
-    ],
-    "constraints": [
-      "Unique nonblank assertion_key and constrained scope/class/confidence/producer_type.",
-      "Nonblank assertion_type, asserted_value, producer_id, analysis_version, and synthesis_run_key.",
-      "Semantic replay uniqueness over reference, scope, class, type, value, producer type/id, and analysis version; confidence and notes excluded.",
-      "Restrictive foreign keys and composite source-link primary key."
-    ],
-    "triggers": [
-      "trg_reference_synthesis_assertion_lineage_insert",
-      "trg_reference_synthesis_assertion_no_update",
-      "trg_reference_synthesis_assertion_no_delete",
-      "trg_reference_synthesis_source_reference_insert",
-      "trg_reference_synthesis_source_no_update",
-      "trg_reference_synthesis_source_no_delete"
-    ],
-    "indexes": [
-      "idx_reference_synthesis_assertion_lookup",
-      "idx_reference_synthesis_source_observation"
-    ]
-  },
-  "source_to_reference_provenance": "DB-enforced through image_visual_observation.image_asset_id -> design_reference_image for the assertion design_reference_id.",
-  "canonical_new_table_row_counts": {
-    "design_reference_synthesis_assertion": 0,
-    "design_reference_synthesis_source": 0
-  },
-  "canonical_tables_changed": [
-    "schema_migration (009 entry only)",
-    "design_reference_synthesis_assertion (created empty)",
-    "design_reference_synthesis_source (created empty)"
-  ],
-  "critical_boundaries_preserved": [
-    "No synthesis content, importer, migration 010, pattern/theme/preference, image observation, reference grouping, UI, or watcher changes.",
-    "Legacy design_reference_observation, design_assessment, and visual_communication_reference structures and rows remained unchanged.",
-    "Canonical P2A fingerprint remained 45 rows, ids 1-45, id sum 1035, observed_value length sum 5479.",
-    "Canonical pilot remained 4 references and 10 observed pilot assets; the isolated migration test proved legacy semantic table definitions and rows are unchanged."
-  ],
-  "tests_or_checks": [
-    "Focused test: 4 passed.",
-    "Full npm test: 48 passed.",
-    "npm run validate: passed.",
-    "PRAGMA integrity_check: ok.",
-    "PRAGMA foreign_key_check: 0 violations.",
-    "git diff --check: passed."
-  ],
-  "risks_or_blockers": [
-    "The canonical SQLite file is intentionally gitignored; its local schema_migration entry for 009 and empty tables were validated locally and the migration is transported through Git."
-  ],
-  "boundary_check": "passed",
-  "gpt_may_author_four_reference_synthesis_input": true,
-  "requires_gpt_decision": false,
-  "next_minimum_action": "Stop. A separate authorized phase is required before authoring/importing synthesis content."
+  "phase": "AGENT-WATCHER-V1.4-PAUSE-AND-RECOVER",
+  "status": "ready_for_manual_finalize",
+  "model": "Luna",
+  "strength": "Low",
+  "dirty_files": ["tools/agent-watcher/controller.ps1", "tools/agent-watcher/test-watcher.ps1", "tools/agent-watcher/watcher.ps1", "outputs/agent-watcher-v1.4-oss-pattern-audit.md", "tools/agent-watcher/test-real-lifecycle-smoke.ps1"],
+  "useful_v1_4_changes": ["Watcher-owned execution states and run identity fields are present.", "RUNNING requires a live process with matching start time.", "Controller renders simplified Chinese states and Windows local time from watcher state.", "Synthetic watcher/controller regression coverage passes."],
+  "validation": {"focused_watcher_controller": "24 scenarios passed", "npm_test": "48 passed", "npm_validate": "passed", "git_diff_check": "passed"},
+  "automatic_finalization": "intentionally deferred; previous real smoke reached FINALIZING but sandbox could not write .git/index.lock",
+  "business_data_changed": false,
+  "p2a_or_database_changes": false,
+  "next_priority": "crystal data collection and workbench/business development, not watcher development",
+  "manual_finalize_required": true,
+  "manual_finalize_commands": ["& 'C:\\Program Files\\Git\\cmd\\git.exe' add -- tools/agent-watcher/controller.ps1 tools/agent-watcher/test-watcher.ps1 tools/agent-watcher/watcher.ps1 outputs/agent-watcher-v1.4-oss-pattern-audit.md tools/agent-watcher/test-real-lifecycle-smoke.ps1 outputs/GPT_HANDOFF.json outputs/handoffs/AGENT-WATCHER-V1.4-PAUSE-AND-RECOVER.json", "& 'C:\\Program Files\\Git\\cmd\\git.exe' commit -m 'chore: preserve v1.4 watcher recovery state'", "& 'C:\\Program Files\\Git\\cmd\\git.exe' push origin main"],
+  "blockers": ["Codex sandbox cannot write Git metadata; manual PowerShell finalization is required outside the sandbox."],
+  "boundary_check": "passed; no P2A/business phase started"
 }

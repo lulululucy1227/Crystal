@@ -18,6 +18,14 @@ Set-Item -Path Function:Start-CodexExecution -Value {
   if ($FinalizationRecovery) { $script:ObservedRecoveryPrompt = (Get-CodexLaunchSpec $Repository -FinalizationRecovery).Arguments[-1] }
   switch ($script:SyntheticMode) {
     'leave-dirty' { [IO.File]::WriteAllText((Join-Path $Repository 'phase-output.txt'), 'valid existing work'); return [pscustomobject]@{ Started = $true; ExitCode = 0 } }
+    'auto-finalize' {
+      if (-not $FinalizationRecovery) { [IO.File]::WriteAllText((Join-Path $Repository 'phase-output.txt'), 'valid existing work'); return [pscustomobject]@{ Started = $true; ExitCode = 0 } }
+      $phase = (Read-TaskDescriptor $script:TaskFilePath).Phase
+      New-Item -ItemType Directory -Path (Join-Path $Repository 'outputs') -Force | Out-Null
+      [IO.File]::WriteAllText((Join-Path $Repository 'outputs\GPT_HANDOFF.json'), ('{{"phase":"{0}","status":"completed"}}' -f $phase))
+      Commit-All 'synthetic same-cycle finalization'
+      return [pscustomobject]@{ Started = $true; ExitCode = 0 }
+    }
     'recover-success' {
       $phase = (Read-TaskDescriptor $script:TaskFilePath).Phase
       New-Item -ItemType Directory -Path (Join-Path $Repository 'outputs') -Force | Out-Null
@@ -49,7 +57,7 @@ try {
   # Exact observed dirty state enters fixed-prompt recovery and clears state after verified clean completion.
   Reset-SyntheticRepo; Set-SyntheticTask 'FINALIZE-OK'; $script:SyntheticMode = 'leave-dirty'
   $pending = Invoke-WatcherOnce -SkipSync
-  Assert-That ($pending.Action -eq 'finalization-pending') 'exit 0 plus observed dirty state must become finalization-pending'
+  Assert-That ($pending.Action -eq 'finalization-failed') 'a same-cycle finalizer that cannot clean must enter retry handling'
   $pendingState = Get-JsonState
   Assert-That ($pendingState.launchBaselineClean -and $pendingState.launchBaselineCommit) 'clean baseline marker and commit must persist'
   Assert-That (@($pendingState.observedPostRunDirtySnapshot).Count -eq 1) 'exact post-run dirty snapshot must persist'
@@ -58,6 +66,13 @@ try {
   Assert-That ($completed.Action -eq 'completed') "successful recovery plus handoff and clean tree must complete (got $($completed.Action): $($completed.Reason))"
   Assert-That ((Get-JsonState).finalizationFingerprint -eq '') 'successful clean completion must clear finalization state'
   Assert-That ($script:ObservedRecoveryPrompt -match 'Preserve valid existing work' -and $script:ObservedRecoveryPrompt -match [regex]::Escape('C:\Program Files\Git\cmd\git.exe')) 'recovery prompt must be fixed watcher-owned preservation text with full Git path'
+
+  # A clean initial launch that produces only watcher-observed output finalizes in the same cycle without consuming a retry.
+  Reset-SyntheticRepo; Set-SyntheticTask 'SAME-CYCLE-FINALIZE'; $script:SyntheticMode = 'auto-finalize'
+  $sameCycle = Invoke-WatcherOnce -SkipSync
+  $sameCycleState = Get-JsonState
+  Assert-That ($sameCycle.Action -eq 'completed' -and $sameCycleState.execution_state -eq 'COMPLETED') 'eligible dirty output must enter finalization and complete in the same cycle'
+  Assert-That ([int]$sameCycleState.retryCount -eq 0 -and -not $sameCycleState.finalization_required) 'successful same-cycle finalization must not consume retry state'
 
   # Any change or broadening after observation blocks.
   Reset-SyntheticRepo; Set-SyntheticTask 'CHANGED-SET'; $script:SyntheticMode = 'leave-dirty'; $p = Invoke-WatcherOnce -SkipSync
@@ -125,20 +140,35 @@ try {
   $nonFf = Invoke-WatcherOnce -DryRun
   Assert-That ($nonFf.Action -eq 'blocked' -and $nonFf.Reason -match 'fast-forward-only') 'non-fast-forward sync must remain blocked'
 
-  # Controller presentation: live PID wins over stale backoff/blocked, then terminal states apply.
+  # Controller consumes watcher state, renders Chinese labels, local time, and never treats a stale PID as RUNNING.
   . (Join-Path $PSScriptRoot 'controller.ps1') -RepoPath $RepoPath -TestMode
+  $script:StatePath = Join-Path $RepoPath '.agent-state\watcher-state.json'
+  $script:TaskFilePath = Join-Path $RepoPath 'agent\GPT_NEXT_TASK.md'
   New-Item -ItemType Directory -Path (Join-Path $RepoPath '.agent-state') -Force | Out-Null
-  $script:pollProcess = [pscustomobject]@{ HasExited = $false; Id = 42 }; $script:pollStartedAt = [DateTime]::UtcNow.AddSeconds(-3)
-  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":1,"retryAfterUtc":"2099-01-01T00:00:00Z","blockedFingerprint":"x","lastRunStatus":"failed"}')
-  Assert-That ((Get-SessionStatusText) -match 'STATE: RUNNING') 'live tracked process must display RUNNING, not BACKOFF'
-  $script:pollProcess = [pscustomobject]@{ HasExited = $true; Id = 42 }
-  Assert-That ((Get-SessionStatusText) -match 'STATE: BACKOFF') 'after exit retry waiting must display BACKOFF'
-  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":0,"retryAfterUtc":"","blockedFingerprint":"","lastRunStatus":"completed"}')
-  Assert-That ((Get-SessionStatusText) -match 'STATE: COMPLETED') 'verified terminal state must display COMPLETED'
-  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"retryCount":2,"retryAfterUtc":"","blockedFingerprint":"x","lastRunStatus":"failed"}')
-  Assert-That ((Get-SessionStatusText) -match 'STATE: BLOCKED') 'unsafe terminal state must display BLOCKED'
+  New-Item -ItemType Directory -Path (Join-Path $RepoPath 'agent') -Force | Out-Null
+  [IO.File]::WriteAllText((Join-Path $RepoPath 'agent\GPT_NEXT_TASK.md'), "# Task`nPhase: UI-NEW-TASK`nStatus: authorized`n")
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"execution_state":"RETRY_WAIT","retryAfterUtc":"2099-01-01T00:00:00Z","lastPollAt":"2026-08-23T20:00:00Z"}')
+  $view = Get-ControllerViewModel
+  Assert-That ($view.Status -eq $script:L.Retry -and $view.Task -match 'UI-NEW') 'retry state and latest task must render from authoritative watcher state'
+  Assert-That ($view.LastPoll -notmatch 'Z') 'UTC display must convert to local time without Z'
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"execution_state":"RUNNING","process_id":999999,"process_start_time_utc":"2026-08-23T20:00:00Z"}')
+  Assert-That ((Get-ControllerViewModel).InternalState -eq 'READY') 'stale PID must not render as RUNNING'
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"execution_state":"COMPLETED","lastRunStatus":"completed"}')
+  Assert-That ((Get-ControllerViewModel).Status -eq $script:L.Completed) 'completed state must render as Chinese completion'
+  [IO.File]::WriteAllText((Join-Path $RepoPath '.agent-state\watcher-state.json'), '{"execution_state":"BLOCKED","last_error_summary":"safe reason"}')
+  Assert-That ((Get-ControllerViewModel).Status -eq $script:L.Blocked) 'blocked state must render as Chinese handling state'
+  Assert-That ((Invoke-SessionPoll -DryRun).IntervalMs -eq 300000) 'controller poll interval must remain five minutes'
 
-  Write-Output 'watcher/controller tests: 17 scenarios passed'
+  # RUNNING is authoritative only while the exact live process/start-time pair exists.
+  $child = Start-Process -FilePath $PSHOME\powershell.exe -ArgumentList @('-NoProfile','-Command','Start-Sleep -Seconds 3') -WindowStyle Hidden -PassThru
+  try {
+    $liveState = Get-JsonState; $liveState.execution_state = 'RUNNING'; $liveState.process_id = $child.Id; $liveState.process_start_time_utc = $child.StartTime.ToUniversalTime().ToString('o')
+    Assert-That (Test-ActiveRunProcess $liveState) 'a matching live process and start time must be RUNNING'
+    $liveState.process_start_time_utc = [DateTime]::UtcNow.AddDays(-1).ToString('o')
+    Assert-That (-not (Test-ActiveRunProcess $liveState)) 'a reused or mismatched PID must not be RUNNING'
+  } finally { if (-not $child.HasExited) { $child.Kill(); $child.WaitForExit() } }
+
+  Write-Output 'watcher/controller tests: 24 scenarios passed'
 } finally {
   if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
 }
