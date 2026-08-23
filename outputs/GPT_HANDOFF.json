@@ -2,9 +2,23 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "AGENT-HANDOFF-V1-BOOTSTRAP",
   "status": "completed",
-  "commit_sha": "",
-  "branch": "",
-  "changed_files": [],
+  "commit_sha": "b99a69fee6d11cab1ce2e66b4e75091e6ad90688",
+  "commit_sha_convention": "This field points to the immediately preceding bootstrap commit; the handoff update itself is the following commit and avoids a self-referential endless commit loop.",
+  "branch": "main",
+  "changed_files": [
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "agent/GPT_NEXT_TASK.md",
+    "data/p1c-knowledge-seeds.jsonl",
+    "docs/",
+    "migrations/",
+    "outputs/",
+    "package.json",
+    "scripts/",
+    "templates/",
+    "test/"
+  ],
   "actual_changes": [
     "Established GitHub-based GPT/Codex task and handoff protocol."
   ],
