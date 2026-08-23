@@ -1,34 +1,35 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-2F1",
+  "phase": "AGENT-WATCHER-V1-BOOTSTRAP",
   "status": "completed",
-  "commit_sha": "316b08c58f6abfdc5ebf16117477332893499242",
-  "commit_sha_convention": "Points to the immediately preceding P2A-2F1 implementation commit; this metadata update avoids a self-referential commit loop.",
+  "commit_sha": "",
   "branch": "main",
   "changed_files": [
-    "migrations/008_p2a_visual_observation.sql",
-    "docs/schema.md",
-    "test/p2a-2f1-visual-observation.test.mjs",
+    "tools/agent-watcher/watcher.ps1",
+    "tools/agent-watcher/start-agent-watcher.cmd",
+    "tools/agent-watcher/README.md",
+    "tools/agent-watcher/test-watcher.ps1",
+    ".gitignore",
     "outputs/GPT_HANDOFF.json",
-    "outputs/handoffs/P2A-2F1.json"
+    "outputs/handoffs/AGENT-WATCHER-V1-BOOTSTRAP.json"
   ],
   "actual_changes": [
-    "Added image_visual_observation with exact image SHA binding, observation/inference separation, product/promotional scope, append-only superseding lineage, and idempotency uniqueness.",
-    "Added focused schema tests and minimal documentation."
+    "Installed a small PowerShell watcher that fetches and fast-forwards only clean Crystal worktrees, fingerprints GPT_NEXT_TASK.md, prevents duplicate/overlapping runs, and launches a fixed codex exec command only for a new authorized task.",
+    "Configured a user-level Startup launcher and persisted local state/logging under ignored .agent-state/."
   ],
   "critical_boundaries_preserved": [
-    "No Vision, OCR, image processing, pilot-image processing, semantic data writes, reference synthesis, dependency, Google Drive, or OpenViking changes.",
-    "Migrations 001-007 and image_asset were not modified."
+    "Queued P2A-2R was not executed.",
+    "No database, schema, data, image, Vision, dependency, API-token, or other-repository changes were made.",
+    "Watcher never interprets task content as shell commands and does not bypass Codex approvals."
   ],
   "tests_or_checks": [
-    "P2A-2F1 focused tests: 5 passed.",
-    "Existing regression tests: 26 passed.",
-    "Combined verified tests: 31 passed."
+    "Codex CLI path/version/help inspected: C:/Users/luo_d/AppData/Roaming/npm/codex.cmd, codex-cli 0.147.0; codex exec supports sandbox and ask-for-approval options.",
+    "Watcher safety tests: 8 passed in dry-run/mock mode.",
+    "Startup launcher path and remote task files verified."
   ],
   "risks_or_blockers": [
-    "The table intentionally stores no confirmed facts; later human/source evidence must promote or record confirmation separately.",
-    "No Vision importer is included in this phase."
+    "Codex doctor reports this non-interactive shell lacks HOME and has provider reachability limitations; launcher explicitly sets CODEX_HOME to %USERPROFILE%\\.codex and preserves normal approval behavior."
   ],
   "requires_gpt_decision": [],
-  "next_minimum_action": "Wait for GPT; do not run Vision or proceed to P2A-2R automatically."
+  "next_minimum_action": "Wait for a new authorized task-file fingerprint; do not execute queued P2A-2R automatically."
 }

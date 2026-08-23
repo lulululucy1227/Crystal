@@ -1,0 +1,32 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "AGENT-WATCHER-V1-BOOTSTRAP",
+  "status": "completed",
+  "commit_sha": "",
+  "branch": "main",
+  "changed_files": [
+    "tools/agent-watcher/watcher.ps1",
+    "tools/agent-watcher/start-agent-watcher.cmd",
+    "tools/agent-watcher/README.md",
+    "tools/agent-watcher/test-watcher.ps1",
+    ".gitignore",
+    "outputs/GPT_HANDOFF.json",
+    "outputs/handoffs/AGENT-WATCHER-V1-BOOTSTRAP.json"
+  ],
+  "watcher_mechanism": "PowerShell watcher polling every 60 seconds; git fetch origin/main plus fast-forward-only sync when clean; fixed codex exec launch only for a new authorized task fingerprint.",
+  "codex_cli": {
+    "path": "C:\\Users\\luo_d\\AppData\\Roaming\\npm\\codex.cmd",
+    "version": "codex-cli 0.147.0",
+    "launch": "codex exec --cd <repo> --sandbox workspace-write --ask-for-approval on-request --no-alt-screen <fixed protocol prompt>"
+  },
+  "fingerprint_and_lock": "Normalized GPT_NEXT_TASK.md SHA-256 persisted in ignored .agent-state/watcher-state.json; exclusive watcher.lock prevents overlap; same fingerprint is never relaunched.",
+  "auto_start": "User-level Startup entry: %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Crystal-Agent-Watcher.cmd; no administrator privileges.",
+  "approval_behavior": "Preserved; watcher does not use --approve-for-me or --dangerously-bypass-approvals-and-sandbox. CODEX_HOME is set explicitly because this shell lacks HOME.",
+  "tests": [
+    "8 dry-run tests passed: waiting no-op, new authorized detection, duplicate suppression, changed fingerprint, lock overlap, dirty Git safety, task-text non-execution, real Codex launch specification, and persisted state.",
+    "Queued P2A-2R was not run."
+  ],
+  "user_confirmation": "Confirmed for user-level Startup launcher creation.",
+  "blockers": [],
+  "next_minimum_action": "Wait for a new authorized task fingerprint; do not restore or execute P2A-2R automatically."
+}
