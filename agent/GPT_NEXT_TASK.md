@@ -2,104 +2,150 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-2R
+Phase: AGENT-WATCHER-V1-BOOTSTRAP
 Status: authorized
-Model: Terra
-Strength: Medium
+Model: Luna
+Strength: Low
 
 ## Objective
-Import the GPT-produced image-level visual observations for the same approved 10-image pilot into `image_visual_observation`, with strict validation and idempotency. Do not perform any new Vision analysis in Codex.
+Install the smallest safe local watcher so Codex can discover future changes to `agent/GPT_NEXT_TASK.md` and start authorized tasks without the user manually typing a start instruction each time.
 
-## Authoritative GPT input
-Read exactly:
-`inputs/p2a-2r-vision-observations.json`
+This is execution-infrastructure only. Do not resume P2A-2R in this phase; it is preserved at `agent/queue/P2A-2R.md`.
 
-This file was produced by GPT after directly reviewing the 10 approved Google Drive pilot images. Treat it as the only semantic input for this phase.
+## Design target
+Use a lightweight local process, not an LLM polling loop.
 
-## Preflight
-Before canonical writes:
-1. Verify local canonical DB is migrated through `008_p2a_visual_observation`. If not, apply existing migration 008 only.
-2. Verify all 10 `asset_key` values exist exactly once.
-3. Verify each asset's current `image_hash` case-insensitively equals the input `source_content_sha256`.
-4. Verify each input `reference_key` matches the asset's existing `design_reference_image` linkage.
-5. Verify producer metadata is exactly:
-   - producer_type = `assistant_model`
-   - producer_id = `gpt-5.6-sol`
-   - analysis_version = `p2a-vision-v1`
-6. Validate every row against migration 008 constraints before writes.
+Preferred behavior:
+1. Poll GitHub/local remote state at a modest interval, e.g. 60 seconds.
+2. Fetch/pull only enough to detect whether `agent/GPT_NEXT_TASK.md` changed.
+3. Parse at minimum `Phase:` and `Status:`.
+4. Only act when `Status: authorized` and the task fingerprint/phase has not already been executed by this watcher.
+5. Launch exactly one Codex execution for the new task using the locally installed Codex CLI capability actually available on this machine.
+6. Codex must read `AGENTS.md` and `agent/GPT_NEXT_TASK.md`, execute only that phase, publish `GPT_HANDOFF`, push GitHub, then stop.
+7. Watcher returns to waiting after the Codex process exits.
+8. Never launch two overlapping Codex runs for the same project.
+9. Never re-run the same task because of handoff-only commits.
+10. If the task is waiting/queued/completed/invalid, do nothing.
 
-If any identity/SHA/reference mismatch occurs, STOP before semantic writes and report the exact mismatch.
+## First inspect actual local capability
+Before implementing, inspect and record:
+- exact Codex CLI path/version
+- `codex --help` and available non-interactive/exec/resume options
+- current local authentication behavior
+- current sandbox/approval behavior
+- current Git remote and branch
+- whether Windows Task Scheduler or Startup launch is the cleaner option
 
-## Import behavior
-Implement the smallest deterministic importer needed for this pilot, preferably a script under `scripts/` that:
-- reads the JSON input;
-- resolves assets by `asset_key`;
-- inserts rows into `image_visual_observation`;
-- relies on DB constraints/triggers for SHA and append-only enforcement;
-- is fully idempotent under the existing uniqueness rule;
-- reports created vs reused rows;
-- performs no reference-level synthesis.
+Do not assume command-line flags that are not present locally.
 
-Do not invent or rewrite GPT observation text.
-Do not normalize it into different semantic claims unless needed only for whitespace-safe transport.
-Do not promote any inference to confirmed fact.
+## Safety model
+The watcher itself may only:
+- git fetch/pull the Crystal repo safely
+- read task/protocol files
+- maintain a small local state/lock file
+- launch one Codex process
+- log watcher activity locally
 
-## Scope
-Allowed canonical writes:
-- `schema_migration` only if existing migration 008 must be applied locally;
-- `image_visual_observation` rows from the approved input file.
+The watcher must NOT:
+- execute arbitrary task shell commands itself
+- approve Codex actions
+- bypass Codex sandbox/approval policy
+- use full-access mode merely for convenience
+- store API keys/tokens in repository files
+- force-push/reset/discard local work
+- modify another repository
 
-Allowed code/docs writes:
-- one minimal importer script if needed;
-- focused tests for importer/idempotency/preflight;
-- AGENT-HANDOFF files.
+Codex approvals must remain Codex approvals. Higher-risk actions must still pause according to the user's configured Codex policy. OpenAI's sandbox/approval model should remain intact.
 
-Forbidden:
-- any new Vision/OCR/image analysis
-- any material/material_variant/component writes
-- any `design_reference_observation` writes
-- any `design_assessment` writes
-- any `visual_communication_reference` writes
-- any preference/theme/pattern/principle writes
-- reference regrouping
-- image asset mutation
-- pHash mutation
-- market/supplier/packaging writes
-- processing the remaining 56 assets
-- migration 009
-- schema redesign
-- OpenViking/FiftyOne/vector DB/embeddings
+## Local-only files
+Prefer local-only infrastructure under a gitignored location such as:
+`tools/agent-watcher/` for versioned source if useful, plus `.agent-state/` or equivalent for runtime state/logs.
 
-## Validation requirements
+Runtime state must not be committed. Add only minimal `.gitignore` entries if needed.
+
+## Task fingerprint
+Do not rely only on phase name, because a phase may be revised.
+Use a stable fingerprint based on the fetched `GPT_NEXT_TASK.md` content (for example SHA-256 of normalized bytes) and store the last launched/completed fingerprint locally.
+
+The watcher must not run again until the task-file fingerprint changes.
+
+## Git synchronization
+Handle local project work defensively.
+- Never `reset --hard`.
+- Never discard uncommitted files.
+- If pulling would conflict with local work, stop watcher launch for that cycle and log a clear blocker rather than modifying the worktree.
+- Prefer fetch + fast-forward-only update when clean.
+
+## Windows auto-start
+Set up a user-level automatic start only if it can be done safely and reversibly.
+Preferred options:
+- Windows Task Scheduler at user logon, or
+- Startup folder launcher.
+
+Choose the simpler reliable method after inspecting the environment.
+
+Before creating/changing an OS auto-start task, if the environment asks for user approval, stop and clearly mark:
+`【需要你确认】`
+
+Do not require administrator privileges if avoidable.
+
+## Testing
+Test without executing the queued P2A task.
 At minimum prove:
-1. exact 10-asset manifest is accepted
-2. unknown asset fails before writes
-3. SHA mismatch fails before writes
-4. reference mismatch fails before writes
-5. invalid scope/class/confidence/producer metadata fails safely
-6. first run imports all approved observation rows
-7. second run creates 0 duplicate rows and reuses all existing rows
-8. no confirmed-fact assertion is created
-9. no non-`image_visual_observation` semantic tables change
-10. all existing regression tests pass
+1. waiting/non-authorized file does nothing
+2. a synthetic authorized task is detected once
+3. same fingerprint is not relaunched
+4. changed fingerprint can be detected as new
+5. lock prevents overlap
+6. dirty/conflicting git state fails safely
+7. watcher itself never executes business shell instructions from task content
+8. launcher command is constructed from the real local Codex CLI interface
+9. watcher survives/restarts with persisted local state
+
+For safety, use a dry-run/mock launch mode for detection tests. Do not let tests run P2A-2R.
+
+## Deliverables
+Keep implementation small. Expected deliverables may include:
+- watcher script
+- optional launcher script
+- minimal setup/remove instructions
+- focused tests
+- `.gitignore` runtime-state entries if needed
+- `outputs/GPT_HANDOFF.json`
+- `outputs/handoffs/AGENT-WATCHER-V1-BOOTSTRAP.json`
+
+Do not create a large framework or service.
+
+## Success criteria
+The bootstrap is successful only if:
+- watcher can be started automatically at user logon without admin rights, or a concrete minimal blocker is identified;
+- it detects a new authorized task without invoking the model just to poll;
+- it launches Codex only on a new task fingerprint;
+- Codex retains its normal approval/sandbox controls;
+- duplicate/overlapping runs are prevented;
+- queued P2A-2R was not executed.
+
+## Boundary
+Forbidden in this phase:
+- P2A-2R execution
+- DB/schema/data changes
+- Vision/image processing
+- new application/product features
+- GitHub Actions/cloud runner replacement unless local watcher is genuinely impossible
+- webhook/server/orchestrator frameworks
 
 ## Reporting
-Update:
-- `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P2A-2R.json`
-
-Keep the handoff concise and delta-only. Include:
-- input asset count
-- input observation row count
-- rows created/reused
-- observation vs inference counts
-- product_design vs promotional_visual counts
-- preflight result
-- idempotency result
+Update `outputs/GPT_HANDOFF.json` and archive `outputs/handoffs/AGENT-WATCHER-V1-BOOTSTRAP.json`.
+Keep the handoff concise. Include:
+- watcher mechanism selected
+- exact Codex CLI launch mechanism discovered
+- poll interval
+- fingerprint/lock behavior
+- auto-start mechanism
+- approval behavior preserved
 - tests
-- canonical tables changed
-- boundary check
-- blockers/risks
+- user confirmation still required, if any
+- blockers
 - next minimum action
 
-After push, STOP. Do not perform reference-level synthesis automatically.
+After push, stop. Do not restore or execute P2A-2R automatically.
