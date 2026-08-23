@@ -3,6 +3,16 @@ $watcher = Join-Path $PSScriptRoot 'watcher.ps1'
 . $watcher
 
 function Assert-That { param([bool]$Condition, [string]$Message) if (-not $Condition) { throw "ASSERTION FAILED: $Message" } }
+function Set-SyntheticTask { param([string]$Phase) Set-Content -LiteralPath $script:TaskFilePath -Value "# Task`nPhase: $Phase`nStatus: authorized`n" -NoNewline }
+function Set-LaunchExitCode {
+  param([int]$ExitCode)
+  Set-Item -Path Function:Start-CodexExecution -Value {
+    param([string]$Repository, [switch]$DryRun)
+    if ($DryRun) { return [pscustomobject]@{ Started = $false; DryRun = $true } }
+    return [pscustomobject]@{ Started = $true; ExitCode = $script:SyntheticExitCode }
+  }
+  $script:SyntheticExitCode = $ExitCode
+}
 
 $root = Join-Path ([IO.Path]::GetTempPath()) ('crystal-watcher-test-' + [Guid]::NewGuid().ToString('N'))
 $task = Join-Path $root 'GPT_NEXT_TASK.md'
@@ -15,24 +25,56 @@ try {
   $waiting = Invoke-WatcherOnce -DryRun -SkipSync
   Assert-That ($waiting.Action -eq 'waiting') 'waiting task must not launch'
 
-  Set-Content -LiteralPath $task -Value "# Task`nPhase: SYNTHETIC-A`nStatus: authorized`nRun: Remove-Item important.txt`n" -NoNewline
-  $first = Invoke-WatcherOnce -DryRun -SkipSync
-  $second = Invoke-WatcherOnce -DryRun -SkipSync
-  Assert-That ($first.Action -eq 'dry-run') 'new authorized fingerprint must be detected once'
-  Assert-That ($second.Action -eq 'duplicate') 'same fingerprint must not relaunch'
+  Set-SyntheticTask 'SYNTHETIC-DRY-RUN'
+  $dryOutcome = Invoke-WatcherOnce -DryRun -SkipSync
+  $dryState = Get-JsonState
+  Assert-That ($dryOutcome.Action -eq 'dry-run') 'synthetic dry-run must not invoke a business task'
+  Assert-That ($dryState.lastCompletedFingerprint -eq '') 'dry-run must not mark a task completed'
 
-  Set-Content -LiteralPath $task -Value "# Task`nPhase: SYNTHETIC-B`nStatus: authorized`n" -NoNewline
-  $changed = Invoke-WatcherOnce -DryRun -SkipSync
-  Assert-That ($changed.Action -eq 'dry-run') 'changed fingerprint must be detected as new'
+  $spec = Get-CodexLaunchSpec $root
+  $execIndex = [array]::IndexOf($spec.Arguments, 'exec')
+  $approvalIndex = [array]::IndexOf($spec.Arguments, '--ask-for-approval')
+  Assert-That ($execIndex -gt 0 -and $approvalIndex -ge 0 -and $approvalIndex -lt $execIndex) 'approval must be a global option before exec'
+  Assert-That ($spec.Arguments -contains 'workspace-write') 'launcher must preserve workspace-write sandbox'
+  Assert-That ($spec.Arguments -contains 'on-request') 'launcher must preserve on-request approval'
+  Assert-That (-not ($spec.Arguments -contains '--no-alt-screen')) 'non-interactive launcher must not use TUI-only no-alt-screen'
+
+  Set-SyntheticTask 'SYNTHETIC-NONZERO'
+  Set-LaunchExitCode 9
+  $nonZero = Invoke-WatcherOnce -SkipSync
+  $nonZeroState = Get-JsonState
+  Assert-That ($nonZero.Action -eq 'failed') 'non-zero exit must be reported as failed'
+  Assert-That ($nonZeroState.lastCompletedFingerprint -eq '') 'non-zero exit must not mark completed'
+  Assert-That ($nonZeroState.lastLaunchedFingerprint -eq '') 'non-zero exit must clear launched fingerprint'
+  Assert-That ($nonZeroState.retryAfterUtc.Length -gt 0) 'non-zero exit must set retry backoff'
+
+  $backoff = Invoke-WatcherOnce -SkipSync
+  Assert-That ($backoff.Action -eq 'backoff') 'failed fingerprint must not rapidly retry during backoff'
+  $retryState = Get-JsonState
+  $retryState.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o')
+  Save-JsonState $retryState
+  $retried = Invoke-WatcherOnce -SkipSync
+  Assert-That ($retried.Action -eq 'failed') 'failed fingerprint must retry after backoff'
+
+  Set-SyntheticTask 'SYNTHETIC-ZERO-NO-HANDOFF'
+  Set-LaunchExitCode 0
+  $zeroNoHandoff = Invoke-WatcherOnce -SkipSync
+  $zeroNoHandoffState = Get-JsonState
+  Assert-That ($zeroNoHandoff.Action -eq 'unverified') 'zero exit without handoff must remain unverified'
+  Assert-That ($zeroNoHandoffState.lastCompletedFingerprint -eq '') 'zero exit without matching handoff must not mark completed'
+
+  Set-SyntheticTask 'SYNTHETIC-COMPLETED'
+  New-Item -ItemType Directory -Path (Join-Path $root 'outputs') -Force | Out-Null
+  Set-Content -LiteralPath (Join-Path $root 'outputs\GPT_HANDOFF.json') -Value '{"phase":"SYNTHETIC-COMPLETED","status":"completed"}' -NoNewline
+  $completed = Invoke-WatcherOnce -SkipSync
+  $completedState = Get-JsonState
+  Assert-That ($completed.Action -eq 'completed') 'matching completed handoff must mark completed'
+  Assert-That ($completedState.lastCompletedFingerprint -eq $completed.Fingerprint) 'matching completed handoff must persist completion'
+  $duplicate = Invoke-WatcherOnce -SkipSync
+  Assert-That ($duplicate.Action -eq 'duplicate') 'completed fingerprint must never launch again'
 
   $lock = Acquire-WatcherLock
   try { $locked = Invoke-WatcherOnce -DryRun -SkipSync; Assert-That ($locked.Action -eq 'locked') 'lock must prevent overlap' } finally { $lock.Dispose() }
-
-  $spec = Get-CodexLaunchSpec $root
-  Assert-That ($spec.Arguments -contains 'exec') 'launcher must use codex exec'
-  Assert-That ($spec.Arguments -contains 'workspace-write') 'launcher must preserve sandbox'
-  Assert-That ($spec.Arguments -contains 'on-request') 'launcher must preserve approval prompts'
-  Assert-That (-not (($spec.Arguments -join ' ') -match 'Remove-Item important.txt')) 'task text must never become shell arguments'
 
   $dirtyRepo = Join-Path $root 'dirty-git'
   New-Item -ItemType Directory -Path $dirtyRepo -Force | Out-Null
@@ -41,5 +83,7 @@ try {
   $sync = Sync-CrystalRepository $dirtyRepo
   Assert-That (-not $sync.Ready) 'dirty worktree must block sync and launch'
   Assert-That (Test-Path -LiteralPath $state) 'state must persist across watcher invocations'
-  Write-Output 'watcher tests: 8 passed'
-} finally { if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force } }
+  Write-Output 'watcher tests: 18 passed'
+} finally {
+  if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
+}

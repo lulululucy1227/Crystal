@@ -50,8 +50,16 @@ function Read-TaskDescriptor {
 }
 
 function Get-JsonState {
-  if (-not (Test-Path -LiteralPath $script:StatePath -PathType Leaf)) { return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = '' } }
-  try { return [IO.File]::ReadAllText($script:StatePath) | ConvertFrom-Json } catch { throw "Watcher state is invalid: $script:StatePath" }
+  if (-not (Test-Path -LiteralPath $script:StatePath -PathType Leaf)) {
+    return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = ''; lastFailureFingerprint = ''; lastFailureAt = ''; retryAfterUtc = '' }
+  }
+  try {
+    $state = [IO.File]::ReadAllText($script:StatePath) | ConvertFrom-Json
+    foreach ($name in @('lastLaunchedFingerprint', 'lastCompletedFingerprint', 'lastPhase', 'lastStatus', 'lastFailureFingerprint', 'lastFailureAt', 'retryAfterUtc')) {
+      if ($null -eq $state.PSObject.Properties[$name]) { $state | Add-Member -NotePropertyName $name -NotePropertyValue '' }
+    }
+    return $state
+  } catch { throw "Watcher state is invalid: $script:StatePath" }
 }
 
 function Save-JsonState {
@@ -102,8 +110,36 @@ function Get-CodexLaunchSpec {
   $cli = Resolve-CodexCli
   [pscustomobject]@{
     Executable = $cli
-    Arguments = @('exec', '--cd', $Repository, '--sandbox', 'workspace-write', '--ask-for-approval', 'on-request', '--no-alt-screen', 'Read AGENTS.md and agent/GPT_NEXT_TASK.md. Execute only the currently authorized phase. Preserve all task boundaries, publish the required GPT_HANDOFF files, push the permitted changes, then stop. Do not infer or start another phase.')
+    Arguments = @('--ask-for-approval', 'on-request', 'exec', '--cd', $Repository, '--sandbox', 'workspace-write', 'Read AGENTS.md and agent/GPT_NEXT_TASK.md. Execute only the currently authorized phase. Preserve all task boundaries, publish the required GPT_HANDOFF files, push the permitted changes, then stop. Do not infer or start another phase.')
   }
+}
+
+function Test-CompletedHandoff {
+  param([string]$Repository, [string]$Phase)
+  $handoffPath = Join-Path $Repository 'outputs\GPT_HANDOFF.json'
+  if (-not (Test-Path -LiteralPath $handoffPath -PathType Leaf)) { return $false }
+  try {
+    $handoff = [IO.File]::ReadAllText($handoffPath) | ConvertFrom-Json
+    return ($handoff.phase -eq $Phase -and $handoff.status -eq 'completed')
+  } catch {
+    Write-WatcherLog "completion evidence unreadable: $handoffPath"
+    return $false
+  }
+}
+
+function Set-FailureState {
+  param($State, [string]$Fingerprint)
+  $now = [DateTime]::UtcNow
+  $State.lastLaunchedFingerprint = ''
+  $State.lastFailureFingerprint = $Fingerprint
+  $State.lastFailureAt = $now.ToString('o')
+  $State.retryAfterUtc = $now.AddMinutes(5).ToString('o')
+}
+
+function Test-RetryBackoff {
+  param($State, [string]$Fingerprint)
+  if ($State.lastFailureFingerprint -ne $Fingerprint -or -not $State.retryAfterUtc) { return $false }
+  try { return ([DateTime]::Parse($State.retryAfterUtc).ToUniversalTime() -gt [DateTime]::UtcNow) } catch { return $false }
 }
 
 function Start-CodexExecution {
@@ -129,13 +165,46 @@ function Invoke-WatcherOnce {
     $state = Get-JsonState
     $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status
     if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
-    if ($state.lastLaunchedFingerprint -eq $task.Fingerprint -or $state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+    if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+    if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
     $state.lastLaunchedFingerprint = $task.Fingerprint; Save-JsonState $state
     $launch = Start-CodexExecution $RepoPath -DryRun:$DryRun
-    if ($launch.DryRun) { $state.lastCompletedFingerprint = $task.Fingerprint; Save-JsonState $state; Write-WatcherLog "dry-run launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"; return [pscustomobject]@{ Action = 'dry-run'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; Launch = $launch } }
+    if ($launch.DryRun) {
+      $state.lastLaunchedFingerprint = ''
+      Save-JsonState $state
+      Write-WatcherLog "dry-run launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
+      return [pscustomobject]@{ Action = 'dry-run'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; Launch = $launch }
+    }
     Write-WatcherLog "Codex exited with code $($launch.ExitCode): phase=$($task.Phase)"
-    $state.lastCompletedFingerprint = $task.Fingerprint; Save-JsonState $state
-    return [pscustomobject]@{ Action = 'launched'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
+    if ($launch.ExitCode -ne 0) {
+      Set-FailureState $state $task.Fingerprint
+      Save-JsonState $state
+      Write-WatcherLog "Codex failure is retryable after $($state.retryAfterUtc): phase=$($task.Phase)"
+      return [pscustomobject]@{ Action = 'failed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
+    }
+    if (-not $SkipSync) {
+      $postLaunchSync = Sync-CrystalRepository $RepoPath
+      if (-not $postLaunchSync.Ready) {
+        Set-FailureState $state $task.Fingerprint
+        Save-JsonState $state
+        Write-WatcherLog "completion verification blocked: $($postLaunchSync.Reason)"
+        return [pscustomobject]@{ Action = 'unverified'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; Reason = $postLaunchSync.Reason }
+      }
+    }
+    if (Test-CompletedHandoff $RepoPath $task.Phase) {
+      $state.lastCompletedFingerprint = $task.Fingerprint
+      $state.lastLaunchedFingerprint = $task.Fingerprint
+      $state.lastFailureFingerprint = ''
+      $state.lastFailureAt = ''
+      $state.retryAfterUtc = ''
+      Save-JsonState $state
+      Write-WatcherLog "completion verified: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
+      return [pscustomobject]@{ Action = 'completed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
+    }
+    Set-FailureState $state $task.Fingerprint
+    Save-JsonState $state
+    Write-WatcherLog "completion evidence missing or mismatched; retryable after $($state.retryAfterUtc): phase=$($task.Phase)"
+    return [pscustomobject]@{ Action = 'unverified'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
   } finally { $lock.Dispose() }
 }
 
