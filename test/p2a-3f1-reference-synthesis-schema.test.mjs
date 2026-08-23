@@ -52,6 +52,10 @@ test('009 applies after baseline and leaves legacy semantic tables structurally 
     copyFileSync(join(root, 'data', 'crystal-design.sqlite'), path);
     const db = open(path);
     const before = legacyTables.map(name => ({ name, sql: db.prepare("SELECT sql FROM sqlite_master WHERE type='table' AND name=?").get(name).sql, rows: db.prepare(`SELECT * FROM ${name} ORDER BY id`).all() }));
+    const synthesisBefore = {
+      assertions: db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n,
+      sources: db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n
+    };
     db.exec(migration);
     db.prepare("INSERT OR IGNORE INTO schema_migration(version) VALUES ('009_p2a_reference_synthesis')").run();
     for (const snapshot of before) {
@@ -59,8 +63,8 @@ test('009 applies after baseline and leaves legacy semantic tables structurally 
       assert.deepEqual(db.prepare(`SELECT * FROM ${snapshot.name} ORDER BY id`).all(), snapshot.rows);
     }
     assert.ok(db.prepare("SELECT 1 FROM schema_migration WHERE version='009_p2a_reference_synthesis'").get());
-    assert.equal(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n, 0);
-    assert.equal(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n, 0);
+    assert.equal(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n, synthesisBefore.assertions);
+    assert.equal(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n, synthesisBefore.sources);
     db.close();
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

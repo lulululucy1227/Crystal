@@ -1,0 +1,20 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-3R-REFERENCE-SYNTHESIS-IMPORT",
+  "status": "completed",
+  "importer": "scripts/import-p2a-reference-synthesis.mjs",
+  "input_contract": "P2A-REFERENCE-SYNTHESIS-V1",
+  "input_run_key": "P2A-3S1-4REF-V1",
+  "preflight": "passed",
+  "expected_counts": {"assertions": 19, "source_links": 37},
+  "first_apply": {"assertions_created": 19, "assertions_reused": 0, "source_links_created": 37, "source_links_reused": 0},
+  "replay": {"assertions_created": 0, "assertions_reused": 19, "source_links_created": 0, "source_links_reused": 37},
+  "final_counts": {"assertions": 19, "source_links": 37},
+  "affected_references": ["REF-000002", "REF-000006", "REF-000019", "REF-000025"],
+  "invariants": {"legacy_and_p1c_unchanged": true, "image_visual_observations_unchanged": {"count": 45, "ids": "1-45", "id_sum": 1035, "observed_value_length_sum": 5479}, "integrity_check": "ok", "foreign_key_check_violations": 0},
+  "tests": {"focused": "12 passed", "full": "60 passed", "validate": "passed", "diff_check": "passed"},
+  "business_boundaries": "GPT-authored synthesis semantics were not edited or reinterpreted; only migration 009 tables received canonical rows.",
+  "gpt_may_expand_image_design_reference_collection": true,
+  "blocker": null,
+  "next_minimum_action": "Stop pending a separately authorized phase."
+}
