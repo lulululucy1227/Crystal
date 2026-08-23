@@ -2,162 +2,181 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: AGENT-WATCHER-V1.3-FINALIZATION
+Phase: P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA
 Status: authorized
-Model: Luna
+Model: Terra
 Strength: Medium
 
 ## Objective
-Fix the repeated completion-path failure in the Crystal desktop-controlled watcher: Codex successfully completes an authorized task and exits with code 0, but leaves only task-owned uncommitted report/handoff files, causing completion verification to stop on the generic dirty-worktree guard.
+Implement the smallest additive migration needed to persist future reference-level synthesis safely, based on the completed P2A-3F0 decision B. This phase is schema foundation only: create migration 009 and focused tests. Do not author or import any new reference synthesis content.
 
-This phase is watcher/controller infrastructure only. Do not execute any business phase, do not create migration 009, and do not modify database/schema/image/semantic data.
+## Why Terra / Medium
+This phase changes the canonical SQLite schema and introduces provenance/history constraints. The design is already bounded by P2A-3F0, but schema mistakes would be durable, so use Terra / Medium rather than Luna.
 
-## Confirmed real failure pattern
-This has now occurred repeatedly, including P2A-3F0:
-1. watcher starts from a clean worktree and detects a new authorized fingerprint;
-2. watcher launches Codex;
-3. Codex finishes the phase successfully and exits 0;
-4. the run leaves only phase-owned output/handoff changes uncommitted;
-5. watcher attempts completion verification, sees a dirty worktree, and blocks before it can finalize/verify the phase;
-6. manual recovery then confirms the dirty files are entirely task-owned, commits/pushes them, and the worktree becomes clean.
+## Authoritative design decision
+Read and follow exactly:
+- `outputs/p2a-3f0-reference-synthesis-fit.md`
+- `outputs/handoffs/P2A-3F0-REFERENCE-SYNTHESIS-FIT.json`
+- `migrations/008_p2a_visual_observation.sql`
 
-For P2A-3F0 the task-owned dirty files were exactly:
-- outputs/p2a-3f0-reference-synthesis-fit.md
-- outputs/GPT_HANDOFF.json
-- outputs/handoffs/P2A-3F0-REFERENCE-SYNTHESIS-FIT.json
+P2A-3F0 selected option B: additive minimal migration. Preserve the legacy tables unchanged:
+- `design_reference_observation`
+- `design_assessment`
+- `visual_communication_reference`
 
-Manual recovery completed successfully and pushed commit f27e2cc853bd3cc17ff446547f5570794bd876b9.
+Do not backfill or reinterpret historical P1C rows.
 
-## Required behavior
-Preserve the default safety rule:
-unknown dirty worktree => BLOCK.
+## Required migration
+Create exactly one new migration:
+`migrations/009_p2a_reference_synthesis.sql`
 
-Add a narrowly-scoped automatic finalization/recovery path only when the watcher itself can prove ALL of the following:
-- the authorized fingerprint was launched from a clean baseline;
-- the same fingerprint is still current/authorized;
-- Codex exited 0 or an explicitly retryable finalization attempt is in progress;
-- no verified matching completed handoff is yet visible;
-- the post-run dirty file set was observed by the watcher immediately after that exact run;
-- the current dirty file set exactly matches the persisted post-run set for that fingerprint;
-- there were no pre-existing dirty files at launch;
-- no file outside that observed set appeared or changed afterward.
+Add only the minimum persistence structures described below.
 
-Do not infer ownership from filenames or task prose. The watcher may trust only state it observed from a clean baseline for the exact run/fingerprint.
+### 1. `design_reference_synthesis_assertion`
+Required fields:
+- `id` INTEGER PRIMARY KEY
+- `assertion_key` TEXT NOT NULL UNIQUE
+- `design_reference_id` INTEGER NOT NULL FK -> `design_reference(id)`
+- `synthesis_scope` TEXT NOT NULL, constrained to:
+  - `product_design`
+  - `assistant_assessment`
+  - `promotional_visual`
+- `assertion_class` TEXT NOT NULL, constrained to:
+  - `observation`
+  - `inference`
+- `assertion_type` TEXT NOT NULL
+- `asserted_value` TEXT NOT NULL
+- `confidence` TEXT NOT NULL, constrained to:
+  - `low`
+  - `medium`
+  - `high`
+- `notes` TEXT NULL
+- `producer_type` TEXT NOT NULL, reuse the established producer convention where practical; at minimum support `assistant_model` and `human`
+- `producer_id` TEXT NOT NULL
+- `analysis_version` TEXT NOT NULL
+- `synthesis_run_key` TEXT NOT NULL
+- `supersedes_assertion_id` INTEGER NULL self-FK
+- `created_at` TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 
-## Finalization recovery launch
-When the above eligibility is satisfied, allow one watcher-owned recovery Codex launch for the same fingerprint even though the worktree is dirty.
+Required checks:
+- nonblank `assertion_key`
+- nonblank `assertion_type`
+- nonblank `asserted_value`
+- nonblank `producer_id`
+- nonblank `analysis_version`
+- nonblank `synthesis_run_key`
+- no self-supersession
 
-Use a fixed prompt owned by the watcher. The prompt must instruct Codex to:
-- read AGENTS.md and the current agent/GPT_NEXT_TASK.md;
-- inspect the exact existing dirty changes;
-- stop if any dirty file is unrelated or ambiguous;
-- preserve valid existing work and do not redo completed analysis;
-- complete only missing validation/handoff/commit/push work for the current phase;
-- use the full Git for Windows path if needed: C:\Program Files\Git\cmd\git.exe;
-- ensure worktree clean at the end;
-- stop after this phase.
+Required deterministic replay/idempotency protection:
+- preserve `assertion_key` uniqueness;
+- also add a semantic replay uniqueness constraint equivalent to the P2A-3F0 recommendation over reference + scope + class + type + value + producer + version, unless a canonical content-key column is materially safer/simpler.
+- Do not include mutable notes/confidence in the replay identity unless you can justify why that is necessary. Keep the mechanism minimal and deterministic.
 
-Do not pass task text as shell input.
-Do not auto-run arbitrary commands derived from task content.
+### 2. `design_reference_synthesis_source`
+Required fields:
+- `synthesis_assertion_id` INTEGER NOT NULL FK -> `design_reference_synthesis_assertion(id)`
+- `image_visual_observation_id` INTEGER NOT NULL FK -> `image_visual_observation(id)`
+- composite PRIMARY KEY (`synthesis_assertion_id`, `image_visual_observation_id`)
 
-## State / retry rules
-Persist only the minimum local gitignored state needed for the exact fingerprint/run:
-- launch baseline commit SHA
-- clean baseline status marker
-- observed post-run dirty file set
-- whether finalization recovery has been attempted
-- finalization retry count / backoff fields as needed
+Required indexes:
+- index lookup by `image_visual_observation_id`
+- index by `design_reference_id` / scope on assertion table if useful for normal retrieval
 
-Keep existing retry policy:
-- max 2 automatic retries per fingerprint overall
-- >=5 minute backoff
-- after limit => BLOCKED / NEEDS REVIEW
-- no tight loops
-- at most one Codex process at a time
+## Provenance / lineage enforcement
+The database must prevent obviously invalid lineage where practical without overengineering.
 
-Successful matching completed handoff + clean worktree must clear interrupted/finalization state for that fingerprint.
+At minimum:
+- source rows must reference valid existing image observations;
+- assertion/source deletion should not silently destroy evidence history; prefer restrictive semantics for evidence links;
+- supersession must not cross reference or synthesis scope;
+- append-only history: once a synthesis assertion exists, corrections should be represented by a new row with `supersedes_assertion_id`, not UPDATE of semantic content.
 
-## Controller status fix
-The desktop controller currently can show `STATE: BACKOFF` while a Codex PID is actively running. Fix only the status presentation needed for clarity.
+If SQLite triggers are the smallest robust way to enforce same-reference/scope supersession and append-only behavior, use narrowly scoped triggers consistent with migration 008 style.
 
-Desired precedence:
-- active launched Codex process is alive => RUNNING
-- matching completed handoff verified => COMPLETED
-- retry waiting => BACKOFF
-- retry limit / unsafe dirty state => BLOCKED
-- no active task/error => READY
+For the source-to-reference provenance rule (source observation asset must be canonically linked to the same design reference):
+- enforce in DB trigger only if it can be expressed clearly and safely with the existing `image_visual_observation -> image_asset -> design_reference_image` path;
+- otherwise document that this exact rule is importer-preflight enforced in the next phase, while still keeping FK integrity in schema.
 
-If practical, show `RUNNING FOR` elapsed duration while a tracked Codex PID is alive. Do not add a resident background service or extra polling beyond the existing controller session timer.
+Do not add broad machinery solely to force every future importer invariant into SQL.
 
-## Preserve existing desktop-control guarantees
-Do not regress:
-- controller starts AUTO MODE OFF
-- no Task Scheduler requirement
-- no Windows service
-- no startup auto-enable
-- no WakeToRun
-- no admin requirement
-- controller closed => zero periodic polling
-- AUTO OFF => zero periodic network polling
-- ON poll interval remains 5 minutes
-- watcher one-shot processes exit after each cycle
-- watcher lock prevents overlap
-- log cap remains about 4 MiB total
-- full Git path preference remains C:\Program Files\Git\cmd\git.exe
-- workspace-write sandbox and on-request approval remain unchanged
+## Migration behavior
+- additive only;
+- no ALTER/rewrite of the three legacy reference semantic tables;
+- no migration 010;
+- no semantic data insert;
+- no synthesis assertion seed rows;
+- no pattern/theme/preference changes;
+- preserve all P2A-2R and P2A-3F0 data unchanged.
 
 ## Tests
-Use synthetic/mock/dry-run Codex only. Do not execute any real business task.
+Add focused tests proving at minimum:
+1. migration 009 applies successfully after current baseline
+2. legacy semantic tables remain structurally and row-wise unchanged
+3. valid assertion inserts succeed
+4. invalid scope/class/confidence/blank producer/version/run key fail
+5. duplicate assertion_key fails
+6. semantic replay duplicate fails or deterministically reuses at importer layer if the chosen key design requires that; schema behavior must be explicit
+7. valid source links succeed
+8. duplicate source link fails
+9. nonexistent source observation fails
+10. self-supersession fails
+11. supersession across design reference fails
+12. supersession across synthesis scope fails
+13. append-only protection prevents destructive semantic UPDATE if implemented by trigger
+14. no canonical semantic assertion rows are inserted by the migration/tests into the real DB
+15. existing regression tests pass
+16. `PRAGMA integrity_check` and `foreign_key_check` pass
 
-Add/adjust tests proving at minimum:
-1. first launch still requires clean worktree
-2. exit 0 + exact watcher-observed dirty set + same fingerprint enters finalization recovery
-3. dirty set changed/broadened after run => BLOCKED
-4. different fingerprint => BLOCKED
-5. pre-existing dirty baseline => no auto-finalization
-6. recovery prompt is fixed watcher-owned text and preserves existing changes
-7. successful recovery + matching completed handoff + clean worktree clears recovery state
-8. failed recovery obeys >=5 min backoff and max retry 2
-9. unknown dirty worktree still blocks
-10. lock/sandbox/approval behavior unchanged
-11. controller shows RUNNING while tracked Codex process is alive, not BACKOFF
-12. controller returns to COMPLETED/BACKOFF/BLOCKED appropriately after exit
-13. existing watcher/controller regression tests still pass
+Use isolated temporary DBs for mutation tests where possible. Applying migration 009 to the canonical local DB is allowed only as schema migration validation; do not insert synthesis semantic rows into canonical DB.
+
+## Open-source / design discipline
+Reuse established project conventions from migration 008 and common append-only assertion/source-link patterns. Do not add dependencies or frameworks. No OpenViking/FiftyOne/vector/embedding work.
 
 ## Boundaries
 Allowed:
-- tools/agent-watcher/watcher.ps1
-- tools/agent-watcher/controller.ps1
-- focused watcher/controller tests
-- minimal README update
-- outputs/GPT_HANDOFF.json
-- outputs/handoffs/AGENT-WATCHER-V1.3-FINALIZATION.json
+- `migrations/009_p2a_reference_synthesis.sql`
+- focused schema tests
+- minimal validation/helper changes only if required
+- canonical `schema_migration` entry for 009 if local validation applies the migration
+- handoff files
 
 Forbidden:
-- migration 009
-- any DB/schema/data/image/semantic modification
-- P2A-3F0 redo
-- reference synthesis content
-- business task execution during tests
-- Windows Task Scheduler/service/startup changes
-- admin/system PATH changes
-- dependency additions
-- sandbox/approval weakening
-- reset/clean/discard of unknown user changes
+- any GPT/Codex reference synthesis content
+- any rows in `design_reference_synthesis_assertion` or `design_reference_synthesis_source` in canonical DB
+- changes to legacy P1C semantic rows
+- image observation changes
+- material/component/market/supplier/packaging changes
+- pattern/theme/preference changes
+- reference regrouping
+- Workbench UI
+- watcher/controller changes unless strictly required by the handoff protocol (do not use this phase to continue watcher feature work)
+
+## Validation / invariants
+Before and after canonical migration validation, record and confirm unchanged:
+- 4 pilot reference groupings
+- 10 pilot assets
+- 45 `image_visual_observation` rows
+- observation fingerprint used in P2A-3F0 (count 45; ids 1-45; id sum 1035; observed_value length sum 5479)
+- existing historical P1C assessment/pattern/theme rows for the four pilot references
+
+Canonical DB semantic row counts must not change except `schema_migration` gaining 009 and the two new tables existing empty.
 
 ## Reporting
 Update:
-- outputs/GPT_HANDOFF.json
-- outputs/handoffs/AGENT-WATCHER-V1.3-FINALIZATION.json
+- `outputs/GPT_HANDOFF.json`
+- `outputs/handoffs/P2A-3F1-REFERENCE-SYNTHESIS-SCHEMA.json`
 
 Include:
-- exact finalization eligibility rule
-- persisted local state fields
-- fixed recovery prompt behavior
-- controller state precedence
-- tests
-- resource impact delta (should be negligible; no new resident process)
-- remaining edge cases
+- migration name
+- exact tables/constraints/triggers added
+- whether source-to-reference provenance is DB-enforced or importer-preflight deferred
+- canonical new-table row counts (must both be 0)
+- legacy/P2A invariant checks
+- focused tests + full regressions
+- integrity/foreign-key checks
+- canonical tables changed
 - boundary check
+- blockers/risks
+- whether GPT may now author the four-reference synthesis input for the next phase
 
-After push, STOP. Do not authorize migration 009 or any business phase automatically.
+After push, STOP. Do not author synthesis content and do not build the importer automatically.
