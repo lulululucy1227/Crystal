@@ -60,4 +60,3 @@
   "requires_gpt_decision": false,
   "next_minimum_action": "Review this handoff. Do not start migration 009 or any business phase automatically."
 }
-
