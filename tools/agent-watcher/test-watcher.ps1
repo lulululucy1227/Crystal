@@ -66,6 +66,14 @@ try {
   Save-JsonState $retryState
   $retried = Invoke-WatcherOnce -SkipSync
   Assert-That ($retried.Action -eq 'failed') 'failed fingerprint must retry after backoff'
+  $retryState = Get-JsonState
+  $retryState.retryAfterUtc = [DateTime]::UtcNow.AddSeconds(-1).ToString('o')
+  Save-JsonState $retryState
+  $finalRetry = Invoke-WatcherOnce -SkipSync
+  Assert-That ($finalRetry.Action -eq 'failed') 'second automatic retry may run after backoff'
+  $blocked = Invoke-WatcherOnce -SkipSync
+  Assert-That ($blocked.Action -eq 'blocked-retry-limit') 'same fingerprint must block after two automatic retries'
+  Assert-That ((Get-JsonState).retryCount -eq 2) 'controller-visible retry count must stop at two'
 
   Set-SyntheticTask 'SYNTHETIC-ZERO-NO-HANDOFF'
   Set-LaunchExitCode 0
@@ -94,7 +102,13 @@ try {
   $sync = Sync-CrystalRepository $dirtyRepo
   Assert-That (-not $sync.Ready) 'dirty worktree must block sync and launch'
   Assert-That (Test-Path -LiteralPath $state) 'state must persist across watcher invocations'
-  Write-Output 'watcher tests: 19 passed'
+
+  $LogPath = Join-Path $root 'bounded.log'; $MaxLogBytes = 1024
+  1..200 | ForEach-Object { Write-WatcherLog ('synthetic log line ' + ('x' * 80)) }
+  $logTotal = (Get-ChildItem -LiteralPath $root -Filter 'bounded.log*' | Measure-Object Length -Sum).Sum
+  Assert-That ($logTotal -le 2300) 'active plus rotated log must remain bounded'
+  Assert-That (Test-Path -LiteralPath "$LogPath.1") 'synthetic repeated logging must rotate'
+  Write-Output 'watcher tests: 24 passed'
 } finally {
   if (Test-Path -LiteralPath $root) { Remove-Item -LiteralPath $root -Recurse -Force }
 }

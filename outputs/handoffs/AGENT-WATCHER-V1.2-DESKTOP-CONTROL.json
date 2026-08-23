@@ -1,0 +1,23 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "AGENT-WATCHER-V1.2-DESKTOP-CONTROL",
+  "status": "blocked",
+  "commit_sha": "34d0b73ffa3314edb8be7cd10eb553fc0aa7b58c",
+  "commit_sha_convention": "Current base commit only; permitted changes are uncommitted because this session cannot create .git/index.lock.",
+  "branch": "main",
+  "changed_files": ["tools/agent-watcher/watcher.ps1", "tools/agent-watcher/test-watcher.ps1", "tools/agent-watcher/controller.ps1", "tools/agent-watcher/manage-watcher.ps1", "tools/agent-watcher/README.md", "outputs/GPT_HANDOFF.json", "outputs/handoffs/AGENT-WATCHER-V1.2-DESKTOP-CONTROL.json"],
+  "actual_changes": ["Added native WinForms ON/OFF/status controller and reversible Task Scheduler management.", "Added two-retry cap with five-minute backoff, BLOCKED state, timestamps, and approximately 4 MiB total log bound.", "Added synthetic tests and operational/resource documentation.", "Watcher now prefers the complete Git for Windows executable at C:\\Program Files\\Git\\cmd\\git.exe and its HTTPS helper."],
+  "controller_mechanism": "PowerShell WinForms launched by Crystal Codex 自动接任务.lnk",
+  "desktop_shortcut_path_name": "C:\\Users\\luo_d\\Desktop\\Crystal Codex 自动接任务.lnk (intended, not installed)",
+  "scheduler_mechanism_interval": "Crystal Agent Watcher, current-user interactive limited privilege, five-minute one-shot watcher.ps1 -Once, disabled by default, WakeToRun false.",
+  "default_auto_mode": "OFF in installer design; live installation blocked",
+  "enable_disable_behavior": "Enable/disable only the named task; disable scopes process stopping to the exact watcher script path.",
+  "retry_cap_backoff": "Initial run plus two retries, at least five minutes apart, then BLOCKED.",
+  "log_cap": "One active and one rotated log at approximately 2 MiB each.",
+  "tests_or_checks": ["PowerShell syntax passed for four scripts.", "24 synthetic watcher assertions passed with mocked Codex.", "Repeated-log bound test passed.", "git diff --check passed.", "Task Scheduler install failed with Access denied 0x80041003; schtasks.exe user-level creation also failed before creating a task or shortcut.", "Complete Git ls-remote/fetch passed; local HEAD equals origin/main; the Crystal Startup entry was removed and no Crystal watcher process remains."],
+  "performance_resource_impact": {"off_ram":"Effectively zero; not measured.","on_between_polls_ram":"Effectively zero beyond Task Scheduler; not measured.","transient_poll_ram":"One transient PowerShell process plus Codex only when eligible; not measured.","cpu":"Idle between polls; burst-only.","disk_logs":"Per-poll state plus about 4 MiB target log cap.","network":"None while OFF; one git fetch per clean one-shot poll while ON/check-once.","sleep_wake":"No wake and no missed-trigger catch-up.","disable_uninstall":"Controller/manager disables; uninstall removes only named Crystal integration and .agent-state.","worst_case_retry":"Initial launch plus two five-minute-backoff retries, then blocked."},
+  "critical_boundaries_preserved": ["No business task, P2A-2R, database, schema, image, or semantic-data work.", "No resident service, startup auto-enable, new dependency, wake scheduling, or security weakening."],
+  "risks_or_blockers": ["【需要你确认】Task Scheduler access is denied in this managed session (0x80041003); a normal interactive user session is required to install the user-level task and desktop shortcut.", "No recurring schedule or desktop shortcut is installed; AUTO MODE remains OFF.", "Live ON/OFF, WakeToRun, shortcut launch, and uninstall validation remain pending until interactive installation succeeds."],
+  "requires_gpt_decision": true,
+  "next_minimum_action": "Run the installer in a normal interactive user session, validate live integration, commit and push these files, then stop without starting a business phase."
+}

@@ -7,7 +7,9 @@ param(
   [string]$RepoPath = (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)),
   [string]$StatePath = '',
   [string]$LogPath = '',
-  [string]$TaskFilePath = ''
+  [string]$TaskFilePath = '',
+  [int]$MaxAutomaticRetries = 2,
+  [int]$MaxLogBytes = 2097152
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,6 +25,11 @@ function Write-WatcherLog {
   param([string]$Message)
   $parent = Split-Path -Parent $script:LogPath
   New-Item -ItemType Directory -Path $parent -Force | Out-Null
+  if ((Test-Path -LiteralPath $script:LogPath) -and (Get-Item -LiteralPath $script:LogPath).Length -ge $MaxLogBytes) {
+    $archive = "$($script:LogPath).1"
+    if (Test-Path -LiteralPath $archive) { Remove-Item -LiteralPath $archive -Force }
+    Move-Item -LiteralPath $script:LogPath -Destination $archive
+  }
   Add-Content -LiteralPath $script:LogPath -Value ("{0:o} {1}" -f [DateTime]::UtcNow, $Message)
 }
 
@@ -51,13 +58,14 @@ function Read-TaskDescriptor {
 
 function Get-JsonState {
   if (-not (Test-Path -LiteralPath $script:StatePath -PathType Leaf)) {
-    return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = ''; lastFailureFingerprint = ''; lastFailureAt = ''; retryAfterUtc = '' }
+    return [pscustomobject]@{ lastLaunchedFingerprint = ''; lastCompletedFingerprint = ''; lastPhase = ''; lastStatus = ''; lastPollAt = ''; lastRunAt = ''; lastRunStatus = ''; lastFailureFingerprint = ''; lastFailureAt = ''; retryAfterUtc = ''; retryCount = 0; blockedFingerprint = '' }
   }
   try {
     $state = [IO.File]::ReadAllText($script:StatePath) | ConvertFrom-Json
-    foreach ($name in @('lastLaunchedFingerprint', 'lastCompletedFingerprint', 'lastPhase', 'lastStatus', 'lastFailureFingerprint', 'lastFailureAt', 'retryAfterUtc')) {
+    foreach ($name in @('lastLaunchedFingerprint', 'lastCompletedFingerprint', 'lastPhase', 'lastStatus', 'lastPollAt', 'lastRunAt', 'lastRunStatus', 'lastFailureFingerprint', 'lastFailureAt', 'retryAfterUtc', 'blockedFingerprint')) {
       if ($null -eq $state.PSObject.Properties[$name]) { $state | Add-Member -NotePropertyName $name -NotePropertyValue '' }
     }
+    if ($null -eq $state.PSObject.Properties['retryCount']) { $state | Add-Member -NotePropertyName retryCount -NotePropertyValue 0 }
     return $state
   } catch { throw "Watcher state is invalid: $script:StatePath" }
 }
@@ -69,9 +77,22 @@ function Save-JsonState {
   [IO.File]::WriteAllText($script:StatePath, ($State | ConvertTo-Json -Depth 4))
 }
 
+function Resolve-GitExecutable {
+  $preferred = 'C:\Program Files\Git\cmd\git.exe'
+  if (Test-Path -LiteralPath $preferred -PathType Leaf) { return $preferred }
+  $candidate = Get-Command git.exe -ErrorAction SilentlyContinue
+  if ($candidate) { return $candidate.Source }
+  throw 'Git executable not found; expected C:\Program Files\Git\cmd\git.exe or git.exe on PATH'
+}
+
+function Invoke-Git {
+  param([Parameter(ValueFromRemainingArguments = $true)][object[]]$Arguments)
+  & (Resolve-GitExecutable) @Arguments
+}
+
 function Test-WorktreeClean {
   param([string]$Repository)
-  $output = & git -C $Repository status --porcelain 2>&1
+  $output = Invoke-Git @('-C', $Repository, 'status', '--porcelain') 2>&1
   if ($LASTEXITCODE -ne 0) { throw "Unable to inspect Git status: $($output -join ' ')" }
   return (($output -join "`n").Trim().Length -eq 0)
 }
@@ -79,13 +100,13 @@ function Test-WorktreeClean {
 function Sync-CrystalRepository {
   param([string]$Repository)
   if (-not (Test-WorktreeClean $Repository)) { return [pscustomobject]@{ Ready = $false; Reason = 'dirty worktree; refusing to pull or launch' } }
-  & git -C $Repository fetch origin main --quiet 2>&1 | Out-Null
+  Invoke-Git @('-C', $Repository, 'fetch', 'origin', 'main', '--quiet') 2>&1 | Out-Null
   if ($LASTEXITCODE -ne 0) { return [pscustomobject]@{ Ready = $false; Reason = 'git fetch failed' } }
-  $local = (& git -C $Repository rev-parse HEAD 2>$null).Trim()
-  $remote = (& git -C $Repository rev-parse origin/main 2>$null).Trim()
+  $local = (Invoke-Git @('-C', $Repository, 'rev-parse', 'HEAD') 2>$null).Trim()
+  $remote = (Invoke-Git @('-C', $Repository, 'rev-parse', 'origin/main') 2>$null).Trim()
   if (-not $local -or -not $remote) { return [pscustomobject]@{ Ready = $false; Reason = 'unable to resolve local or origin/main' } }
   if ($local -ne $remote) {
-    & git -C $Repository merge --ff-only origin/main 2>&1 | Out-Null
+    Invoke-Git @('-C', $Repository, 'merge', '--ff-only', 'origin/main') 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) { return [pscustomobject]@{ Ready = $false; Reason = 'fast-forward-only sync failed; refusing to launch' } }
   }
   return [pscustomobject]@{ Ready = $true; Reason = 'clean and synchronized' }
@@ -130,10 +151,17 @@ function Test-CompletedHandoff {
 function Set-FailureState {
   param($State, [string]$Fingerprint)
   $now = [DateTime]::UtcNow
+  if ($State.lastFailureFingerprint -eq $Fingerprint) { $State.retryCount = [int]$State.retryCount + 1 } else { $State.retryCount = 0 }
   $State.lastLaunchedFingerprint = ''
   $State.lastFailureFingerprint = $Fingerprint
   $State.lastFailureAt = $now.ToString('o')
-  $State.retryAfterUtc = $now.AddMinutes(5).ToString('o')
+  $State.lastRunStatus = 'failed'
+  if ([int]$State.retryCount -ge $MaxAutomaticRetries) {
+    $State.blockedFingerprint = $Fingerprint
+    $State.retryAfterUtc = ''
+  } else {
+    $State.retryAfterUtc = $now.AddMinutes(5).ToString('o')
+  }
 }
 
 function Test-RetryBackoff {
@@ -163,25 +191,30 @@ function Invoke-WatcherOnce {
     }
     $task = Read-TaskDescriptor $script:TaskFilePath
     $state = Get-JsonState
-    $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status
+    $state.lastPhase = $task.Phase; $state.lastStatus = $task.Status; $state.lastPollAt = [DateTime]::UtcNow.ToString('o')
     if ($task.Status -ne 'authorized' -or -not $task.Phase) { Save-JsonState $state; Write-WatcherLog "waiting: phase=$($task.Phase) status=$($task.Status)"; return [pscustomobject]@{ Action = 'waiting'; Phase = $task.Phase; Status = $task.Status } }
     if ($state.lastCompletedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "duplicate completed fingerprint skipped: $($task.Fingerprint)"; return [pscustomobject]@{ Action = 'duplicate'; Fingerprint = $task.Fingerprint } }
+    if ($state.blockedFingerprint -eq $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "blocked retry limit reached: phase=$($task.Phase) retryCount=$($state.retryCount)"; return [pscustomobject]@{ Action = 'blocked-retry-limit'; Fingerprint = $task.Fingerprint; RetryCount = $state.retryCount } }
     if (Test-CompletedHandoff $RepoPath $task.Phase) {
       $state.lastCompletedFingerprint = $task.Fingerprint
       $state.lastLaunchedFingerprint = $task.Fingerprint
       $state.lastFailureFingerprint = ''
       $state.lastFailureAt = ''
       $state.retryAfterUtc = ''
+      $state.retryCount = 0
+      $state.blockedFingerprint = ''
+      $state.lastRunStatus = 'completed-existing'
       Save-JsonState $state
       Write-WatcherLog "completion evidence found before launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
       return [pscustomobject]@{ Action = 'completed-existing'; Phase = $task.Phase; Fingerprint = $task.Fingerprint }
     }
     if (Test-RetryBackoff $state $task.Fingerprint) { Save-JsonState $state; Write-WatcherLog "retry backoff active: phase=$($task.Phase) retryAfterUtc=$($state.retryAfterUtc)"; return [pscustomobject]@{ Action = 'backoff'; Fingerprint = $task.Fingerprint; RetryAfterUtc = $state.retryAfterUtc } }
     Write-WatcherLog "authorized task detected: phase=$($task.Phase) status=$($task.Status) fingerprint=$($task.Fingerprint)"
-    $state.lastLaunchedFingerprint = $task.Fingerprint; Save-JsonState $state
+    $state.lastLaunchedFingerprint = $task.Fingerprint; $state.lastRunAt = [DateTime]::UtcNow.ToString('o'); $state.lastRunStatus = 'running'; Save-JsonState $state
     $launch = Start-CodexExecution $RepoPath -DryRun:$DryRun
     if ($launch.DryRun) {
       $state.lastLaunchedFingerprint = ''
+      $state.lastRunStatus = 'dry-run'
       Save-JsonState $state
       Write-WatcherLog "dry-run launch: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
       return [pscustomobject]@{ Action = 'dry-run'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; Launch = $launch }
@@ -190,7 +223,7 @@ function Invoke-WatcherOnce {
     if ($launch.ExitCode -ne 0) {
       Set-FailureState $state $task.Fingerprint
       Save-JsonState $state
-      Write-WatcherLog "Codex failure is retryable after $($state.retryAfterUtc): phase=$($task.Phase)"
+      Write-WatcherLog "Codex failure recorded: phase=$($task.Phase) retryCount=$($state.retryCount) blocked=$([bool]$state.blockedFingerprint) retryAfterUtc=$($state.retryAfterUtc)"
       return [pscustomobject]@{ Action = 'failed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
     }
     if (-not $SkipSync) {
@@ -208,6 +241,9 @@ function Invoke-WatcherOnce {
       $state.lastFailureFingerprint = ''
       $state.lastFailureAt = ''
       $state.retryAfterUtc = ''
+      $state.retryCount = 0
+      $state.blockedFingerprint = ''
+      $state.lastRunStatus = 'completed'
       Save-JsonState $state
       Write-WatcherLog "completion verified: phase=$($task.Phase) fingerprint=$($task.Fingerprint)"
       return [pscustomobject]@{ Action = 'completed'; Phase = $task.Phase; Fingerprint = $task.Fingerprint; ExitCode = $launch.ExitCode }
