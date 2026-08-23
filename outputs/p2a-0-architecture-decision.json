@@ -1,0 +1,49 @@
+{
+  "phase": "P2A-0",
+  "mode": "read-only architecture audit",
+  "recommended_architecture": "provider-neutral acquisition handoff (core C, current A handoff)",
+  "lightweight_stack": {
+    "pillow": "use for deterministic metadata and validation",
+    "hashlib_sha256": "use as canonical exact-content identity",
+    "imagehash": "use pHash only; duplicate candidate only",
+    "sqlite": "retain as the only canonical source of truth",
+    "chatgpt_vision": "use selectively for assistant observations",
+    "fiftyone": "reuse concepts only; do not install runtime"
+  },
+  "asset_state": {
+    "asset_records": 66,
+    "unresolved": 66,
+    "unknown_image_roles": 66,
+    "real_promotional_analysis": 0
+  },
+  "key_boundaries": [
+    "Provider identity is not content identity",
+    "SHA-256 equality is not visual similarity",
+    "Perceptual similarity is a candidate, never an automatic merge",
+    "Vision observation is not confirmed material fact",
+    "Local cache path is not canonical identity"
+  ],
+  "cache_strategy": "selective persistent content-addressed cache keyed by SHA-256; cache paths not canonical",
+  "vision_cache_key": [
+    "sha256_content_hash",
+    "observation_schema_version",
+    "analysis_profile_version"
+  ],
+  "openviking": "defer",
+  "immediate_next_action": "Approve P2A-1 provider-neutral resolver and content-version/observation contract, then run an 8-12 image pilot.",
+  "no_write_verification": {
+    "canonical_db_modified": false,
+    "schema_modified": false,
+    "migration_created": false,
+    "google_drive_accessed": false,
+    "images_downloaded": 0,
+    "real_images_hashed": 0,
+    "images_analyzed": 0,
+    "openviking_configured": false,
+    "dependencies_installed": false,
+    "source_excel_modified": false,
+    "other_projects_modified": false,
+    "boundary_violations": false,
+    "database_sha256_before": "E098D3E20DE6EC54A918C21F5DACBCD82BC6C365BA29A882DB6DBBDF0F9ABDBC"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "crystal-design-sourcing-database",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "init": "node scripts/crystal-db.mjs init",
+    "validate": "node scripts/crystal-db.mjs validate",
+    "test": "node --test test/*.test.mjs",
+    "export": "node scripts/crystal-db.mjs export-json data/export.json"
+  },
+  "engines": { "node": ">=24" }
+}

@@ -1,0 +1,11 @@
+data/*.sqlite
+data/*.sqlite-*
+data/*.json
+node_modules/
+work/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*

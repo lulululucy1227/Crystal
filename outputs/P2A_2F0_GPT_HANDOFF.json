@@ -1,0 +1,78 @@
+{
+  "phase": "P2A-2F0",
+  "status": "READ_ONLY_SCHEMA_GAP_CHECK_COMPLETE",
+  "decision": "MINIMAL_SCHEMA_CHANGE_REQUIRED",
+  "schema_gap": [
+    "No current table is image-asset-level and simultaneously records an observation/inference, the exact source-content SHA-256, model/observer identity, and analysis-definition version.",
+    "design_reference_observation is reference-level, has no image_asset foreign key, no source-content SHA-256, no observer/model or analysis-version fields, and cannot preserve append-only AI output plus a later human correction.",
+    "design_assessment and visual_communication_reference are each one row per reference and therefore cannot represent multiple image-level analyses, content states, or review events without destructive replacement."
+  ],
+  "recommended_change": {
+    "needed": true,
+    "entities": [
+      "image_visual_observation: one append-only assertion about one image_asset at one SHA-256 content state and one analysis-definition version; a human correction is a new row that references the prior row through supersedes_observation_id."
+    ],
+    "fields": [
+      "id",
+      "image_asset_id (FK image_asset.id)",
+      "source_content_sha256 (64-character hex SHA-256 for the analyzed bytes)",
+      "observation_scope (product_design | promotional_visual)",
+      "assertion_class (observation | inference)",
+      "observation_type (controlled extensible vocabulary, versioned by analysis_version; for example material_appearance, bead_shape, composition, lighting)",
+      "observed_value (one atomic textual value per row)",
+      "confidence (low | medium | high)",
+      "producer_type (ai | human)",
+      "producer_id (model identifier or human reviewer identifier)",
+      "analysis_version (nonblank prompt/schema definition version)",
+      "supersedes_observation_id (nullable self-FK; used only for a later correction/review assertion)",
+      "created_at",
+      "notes (nullable)"
+    ],
+    "constraints": [
+      "FOREIGN KEY image_asset_id REFERENCES image_asset(id); FOREIGN KEY supersedes_observation_id REFERENCES image_visual_observation(id).",
+      "CHECK source_content_sha256 is exactly 64 hexadecimal characters; check all controlled class, scope and confidence values; require nonblank observation_type, observed_value, producer_id and analysis_version.",
+      "Insertion guard must require source_content_sha256 to equal the referenced image_asset.image_hash at creation time. Old rows remain attached to their historical SHA if asset bytes later change.",
+      "AI producers may insert only assertion_class observation or inference; confirmed facts are not Vision output and must be represented through existing evidence-backed canonical structures after human/source review.",
+      "Use append-only correction rows with supersedes_observation_id; do not overwrite the original AI row. A logical idempotency key should prevent exact duplicate reruns for the same asset SHA, analysis version, producer, class, type and value."
+    ]
+  },
+  "existing_structures_reused": [
+    "image_asset for stable asset identity and cryptographic image_hash (SHA-256 exact-content identity): migrations/006_p1c_image_assets.sql, table image_asset; docs/schema.md image-asset section.",
+    "design_reference_image for asset-to-reference linkage and existing image_role values including promotional: migrations/006_p1c_image_assets.sql, table design_reference_image.",
+    "design_reference_observation for later reference-level synthesis and evidence-backed confirmed material linkage, not for raw Vision rows: migrations/001_initial.sql, table design_reference_observation.",
+    "visual_communication_reference for reference-level promotional synthesis, not per-image Vision output: migrations/001_initial.sql, table visual_communication_reference; docs/schema.md visual-communication separation.",
+    "image_perceptual_hash as the existing content-state/versioning precedent: migrations/007_p2a_perceptual_hash.sql, source_content_sha256 plus algorithm_version."
+  ],
+  "important_semantic_boundaries": [
+    "A direct visible statement is an observation; an appearance-based identity statement is an inference; neither is a confirmed fact.",
+    "Confirmed material fact remains distinct: existing design_reference_observation requires identification_status='confirmed' together with confirmed_material_variant_id; a Vision result must not set either.",
+    "image_visual_observation is image-level. Reference-level synthesis remains in design_reference_observation, design_assessment, or visual_communication_reference only after a separate, explicit step.",
+    "observation_scope separates product_design from promotional_visual; promotional visual language must not become a product-design claim.",
+    "source_content_sha256 plus analysis_version makes an output traceable to both image bytes and analysis definition."
+  ],
+  "risks": [
+    "Reusing design_reference_observation would collapse several image assets into a reference-level row and lose the exact analyzed image state.",
+    "Reusing design_assessment or visual_communication_reference would make reruns and human corrections destructive because each is unique per design reference.",
+    "A bare image_asset_id without source_content_sha256 would allow an old Vision result to appear applicable after asset bytes change.",
+    "A fixed column per visual attribute would prematurely freeze a vocabulary and create frequent schema migrations."
+  ],
+  "requires_gpt_decision": [
+    "Approve or revise the one-table append-only image_visual_observation proposal before any migration is drafted.",
+    "Approve the initial controlled observation_type vocabulary and the analysis_version naming convention for the next ten-image Vision pilot.",
+    "Decide whether the insertion-time image-hash equality rule is enforced by a SQLite trigger (stronger) or by the approved writer path plus a regression test (lighter)."
+  ],
+  "tests_or_checks_performed": [
+    "Read-only inspection of migrations/001_initial.sql tables design_reference_observation, design_assessment, preference_evidence and visual_communication_reference.",
+    "Read-only inspection of migrations/006_p1c_image_assets.sql tables image_asset and design_reference_image, provider identity constraint and asset-status fields.",
+    "Read-only inspection of migrations/007_p2a_perceptual_hash.sql source_content_sha256 and versioned-hash precedent.",
+    "Read-only inspection of docs/schema.md semantic separation statements and scripts/crystal-db.mjs validation/seed examples."
+  ],
+  "files_inspected": [
+    "migrations/001_initial.sql",
+    "migrations/006_p1c_image_assets.sql",
+    "migrations/007_p2a_perceptual_hash.sql",
+    "docs/schema.md",
+    "scripts/crystal-db.mjs"
+  ],
+  "next_minimum_action": "Obtain a GPT decision on this minimal proposal; only then draft a narrowly scoped migration and tests for a future Vision pilot. Do not run Vision in P2A-2F0."
+}
