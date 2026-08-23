@@ -37,7 +37,7 @@
     "Database SHA-256 unchanged before and after validation"
   ],
   "risks_or_blockers": [
-    "Persistence remains intentionally gated: migration 009 and importer require a separate authorization."
+    "Persistence remains intentionally gated: migration 009 and importer require separate authorization."
   ],
   "requires_gpt_decision": false,
   "next_minimum_action": "Stop. Do not create migration 009 or start synthesis import automatically."
