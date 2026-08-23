@@ -1,0 +1,36 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-2F1",
+  "status": "completed",
+  "commit_sha": "",
+  "branch": "main",
+  "changed_files": [
+    "migrations/008_p2a_visual_observation.sql",
+    "docs/schema.md",
+    "test/p2a-2f1-visual-observation.test.mjs",
+    "outputs/GPT_HANDOFF.json",
+    "outputs/handoffs/P2A-2F1.json"
+  ],
+  "actual_changes": [
+    "Added exactly one image_visual_observation table.",
+    "Added source-SHA triggers, append-only update guard, self/cross-asset supersede guards, and the approved idempotency key.",
+    "Added focused tests and minimal schema documentation."
+  ],
+  "constraints_and_triggers": [
+    "source_content_sha256 is 64 hexadecimal characters and must case-insensitively match the current image_asset.image_hash on insert.",
+    "UPDATE is rejected to preserve original AI rows; corrections are new rows linked by supersedes_observation_id.",
+    "Self-supersede and cross-asset supersede are rejected.",
+    "assertion_class allows only observation or inference; confirmed facts are deliberately outside this table.",
+    "The uniqueness key excludes confidence, notes, and supersedes_observation_id as approved."
+  ],
+  "tests_or_checks": [
+    "Focused P2A-2F1 tests: 5 passed.",
+    "Existing regression tests: 26 passed.",
+    "JSON and clean migration checks passed."
+  ],
+  "deviations": [],
+  "risks_or_blockers": [
+    "No Vision importer or observation vocabulary was added; those belong to the later pilot."
+  ],
+  "next_minimum_action": "Wait for GPT; do not run Vision or proceed to P2A-2R automatically."
+}

@@ -1,26 +1,33 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-2F0",
+  "phase": "P2A-2F1",
   "status": "completed",
-  "commit_sha": "67c24e194aedff20ec9b6b252914a95b45082300",
-  "commit_sha_convention": "Points to the immediately preceding P2A-2F0 handoff commit; this metadata update avoids a self-referential commit loop.",
+  "commit_sha": "",
   "branch": "main",
   "changed_files": [
+    "migrations/008_p2a_visual_observation.sql",
+    "docs/schema.md",
+    "test/p2a-2f1-visual-observation.test.mjs",
     "outputs/GPT_HANDOFF.json",
-    "outputs/handoffs/P2A-2F0.json"
+    "outputs/handoffs/P2A-2F1.json"
   ],
   "actual_changes": [
-    "Read-only schema gap check completed for image-level Vision observations."
+    "Added image_visual_observation with exact image SHA binding, observation/inference separation, product/promotional scope, append-only superseding lineage, and idempotency uniqueness.",
+    "Added focused schema tests and minimal documentation."
   ],
   "critical_boundaries_preserved": [
-    "No database, schema, migration 008, application code, Vision, OCR, image processing, Google Drive access, or dependency changes."
+    "No Vision, OCR, image processing, pilot-image processing, semantic data writes, reference synthesis, dependency, Google Drive, or OpenViking changes.",
+    "Migrations 001-007 and image_asset were not modified."
   ],
   "tests_or_checks": [
-    "Inspected migrations/001_initial.sql, migrations/003_p1a_field_audit.sql, migrations/006_p1c_image_assets.sql, migrations/007_p2a_perceptual_hash.sql, docs/schema.md, and scripts/crystal-db.mjs."
+    "P2A-2F1 focused tests: 5 passed.",
+    "Existing regression tests: 26 passed.",
+    "Combined verified tests: 31 passed."
   ],
-  "risks_or_blockers": [],
-  "requires_gpt_decision": [
-    "Approve or revise the proposed minimal image_visual_observation structure and its initial controlled vocabulary/versioning rules."
+  "risks_or_blockers": [
+    "The table intentionally stores no confirmed facts; later human/source evidence must promote or record confirmation separately.",
+    "No Vision importer is included in this phase."
   ],
-  "next_minimum_action": "After GPT approval, draft only the minimal migration and tests; do not run Vision automatically."
+  "requires_gpt_decision": [],
+  "next_minimum_action": "Wait for GPT; do not run Vision or proceed to P2A-2R automatically."
 }

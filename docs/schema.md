@@ -1,5 +1,9 @@
 # P1A-R Schema
 
+## P2A-2F1 Image Visual Observations
+
+`image_visual_observation` stores image-level observations and inferences. Each row binds to the current `image_asset.image_hash` through `source_content_sha256`, separates `product_design` from `promotional_visual`, and keeps `observation` separate from `inference`. Confirmed facts are not stored here. Corrections append a new row through `supersedes_observation_id`; reference-level synthesis remains in the existing reference tables.
+
 ## P1A-R additions
 
 - `material_alias` records only reviewed identity names. Component, size, grade, origin, shape and trade descriptors are never silently removed to make an alias.
