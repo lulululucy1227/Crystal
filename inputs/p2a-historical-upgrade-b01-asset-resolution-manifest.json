@@ -1,0 +1,83 @@
+{
+  "protocol_version": "P2A-HISTORICAL-ASSET-RESOLUTION-V1",
+  "phase": "P2A-HISTORICAL-UPGRADE-B01-ASSET-RESOLUTION",
+  "source": "GPT Google Drive connector download of the exact five historical Inbox files",
+  "verification_method": "For each file, GPT fetched the exact Google Drive object by provider_file_id, decoded the returned image bytes, and computed SHA-256, dimensions, byte size, and detected format. These values are authoritative for this batch and must be matched to the existing canonical asset/provider mapping before any DB update.",
+  "producer": {
+    "type": "assistant_model",
+    "id": "gpt-5.6-sol"
+  },
+  "assets": [
+    {
+      "filename": "IMG_7712.PNG",
+      "asset_key": "ASSET-000041",
+      "reference_key": "REF-000017",
+      "provider": "google_drive",
+      "provider_file_id": "1sj4yVyrKqFaWW3De_BqOVF6LDZfrf6uW",
+      "sha256": "622bf53563ce96909ff78f32cb2b71c9b4ae7328e489423b3f3cbc78aa6a069a",
+      "mime_type": "image/png",
+      "detected_format": "PNG",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 3242294
+    },
+    {
+      "filename": "IMG_7713.PNG",
+      "asset_key": "ASSET-000042",
+      "reference_key": "REF-000017",
+      "provider": "google_drive",
+      "provider_file_id": "1E0G8AwDni2flI8b7SNF00A2WH6zNiGG3",
+      "sha256": "caaf22b77c23c38e3d31a78e384dd4f1031d35bed8a88216ca5a1e21959d9347",
+      "mime_type": "image/png",
+      "detected_format": "PNG",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 3122104
+    },
+    {
+      "filename": "IMG_7714.PNG",
+      "asset_key": "ASSET-000043",
+      "reference_key": "REF-000018",
+      "provider": "google_drive",
+      "provider_file_id": "16EnrRPtS2C9DP7iJWsGCRod3gih-ret0",
+      "sha256": "6992dcf9dfe912a76d7053b5f78fbfd479edfd1c3f749d62c6aa86bc2949a466",
+      "mime_type": "image/png",
+      "detected_format": "PNG",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 2551443
+    },
+    {
+      "filename": "IMG_7715.PNG",
+      "asset_key": "ASSET-000044",
+      "reference_key": "REF-000018",
+      "provider": "google_drive",
+      "provider_file_id": "1mhsyhfirakXP1Pad0B9lYSQnDMW2vb3M",
+      "sha256": "3579ecd48af69fcf65718efe758dfcb7178002b8d407aff2877c01eec44aaa2d",
+      "mime_type": "image/png",
+      "detected_format": "PNG",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 2997616
+    },
+    {
+      "filename": "IMG_7716.PNG",
+      "asset_key": "ASSET-000045",
+      "reference_key": "REF-000018",
+      "provider": "google_drive",
+      "provider_file_id": "1jFLMGsNVTNwjx65Tfq1a2Zm3NHqvg3WC",
+      "sha256": "9c81efe06a696230421496b31ed80a9b8da0256b2ba58ded398e8684e8b62c71",
+      "mime_type": "image/png",
+      "detected_format": "PNG",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 2116754
+    }
+  ],
+  "boundaries": {
+    "material_identification": false,
+    "semantic_analysis": false,
+    "reference_regrouping": false,
+    "pattern_theme_changes": false
+  }
+}
