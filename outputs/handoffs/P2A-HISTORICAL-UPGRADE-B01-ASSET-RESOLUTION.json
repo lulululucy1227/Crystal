@@ -1,0 +1,18 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-UPGRADE-B01-ASSET-RESOLUTION",
+  "status": "completed",
+  "resolver": "scripts/resolve-p2a-historical-assets.mjs",
+  "manifest": "inputs/p2a-historical-upgrade-b01-asset-resolution-manifest.json",
+  "assets_resolved": ["ASSET-000041", "ASSET-000042", "ASSET-000043", "ASSET-000044", "ASSET-000045"],
+  "first_apply": {"updated_assets": 5, "reused_assets": 0},
+  "replay": {"updated_assets": 0, "reused_assets": 5, "conflicts": 0},
+  "deterministic_metadata": {"sha_match": "5/5", "mime_type": "image/png", "dimensions": "1179x2556", "asset_status": "available"},
+  "phash": {"created": 0, "reused": 0, "deferred": 5},
+  "post_write_readiness": {"ready_for_observation_import": "5/5", "provider_file_id_and_reference_mapping_exact": true},
+  "invariants": {"pilot_observations": 45, "b01_observations": 0, "synthesis_assertions": 19, "synthesis_sources": 37, "integrity_check": "ok", "foreign_key_check_violations": 0, "legacy_p1c_semantic_rows_changed": false},
+  "tests": {"focused": "5 passed", "full": "65 passed", "validate": "passed", "diff_check": "passed"},
+  "business_boundaries": "No image observations, synthesis, pHash, reference grouping, pattern, theme, preference, or other semantic records were written.",
+  "next_safe_action": "Stop; a separately authorized B01 image-observation import may proceed.",
+  "blocker": null
+}

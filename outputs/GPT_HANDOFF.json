@@ -1,31 +1,28 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-HISTORICAL-UPGRADE-B01-ASSET-READINESS-CHECK",
+  "phase": "P2A-HISTORICAL-UPGRADE-B01-ASSET-RESOLUTION",
   "status": "completed",
-  "model": "Luna",
-  "strength": "Low",
-  "artifact": "outputs/p2a-historical-upgrade-b01-asset-readiness.json",
-  "summary": {
-    "ready_for_observation_import": 0,
-    "needs_verified_asset_resolution": 5,
-    "conflict_blocked": 0
-  },
-  "current_importer_reusable_as_is": false,
-  "separate_verified_asset_resolution_required": true,
-  "validation": {
-    "assets_checked": "5/5",
-    "exact_reference_linkage": true,
-    "target_observations_currently_zero": true,
-    "database_writes": false,
+  "model": "Terra",
+  "strength": "Medium",
+  "resolver": "scripts/resolve-p2a-historical-assets.mjs",
+  "manifest": "inputs/p2a-historical-upgrade-b01-asset-resolution-manifest.json",
+  "preflight": "passed",
+  "assets": {"requested": 5, "resolved": 5, "sha_match": 5, "metadata_match": 5},
+  "first_apply": {"updated_assets": 5, "reused_assets": 0},
+  "replay": {"updated_assets": 0, "reused_assets": 5, "conflicts": 0},
+  "phash": {"created": 0, "reused": 0, "deferred": 5, "reason": "Verified source bytes are not retained locally; no pHash was fabricated."},
+  "ready_for_observation_import": 5,
+  "invariants": {
     "pilot_image_visual_observations": 45,
+    "b01_image_visual_observations": 0,
     "synthesis_assertions": 19,
     "synthesis_source_links": 37,
+    "legacy_p1c_semantic_rows_changed": false,
     "integrity_check": "ok",
     "foreign_key_check_violations": 0
   },
-  "missing_canonical_fields": [
-    "image_hash (SHA-256) for ASSET-000041 through ASSET-000045"
-  ],
-  "next_safe_action": "Run a separately authorized verified asset-resolution step that obtains and validates exact source bytes and SHA-256; then rerun readiness check.",
+  "boundaries_preserved": ["No image observations or synthesis imported.", "No pHash created or modified.", "No asset, provider identity, reference linkage, pattern, theme, or preference changes."],
+  "tests": {"focused": "5 passed", "full": "65 passed", "validate": "passed", "diff_check": "passed"},
+  "next_safe_action": "A separately authorized B01 image-observation import may now use the existing P2A importer path.",
   "blocker": null
 }
