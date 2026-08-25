@@ -1,0 +1,90 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-UPGRADE-B01",
+  "analysis_version": "p2a-vision-v1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "source": "GPT visual review of Google Drive historical upgrade batch 01",
+  "source_verification": "google_drive_connector_bytes_reviewed_by_gpt",
+  "rules": [
+    "Image-level observations only; no confirmed mineral-species facts.",
+    "Inference rows are explicitly separated from direct observations.",
+    "Product-design and promotional-visual scopes are separate.",
+    "Existing design-reference grouping is preserved; no pattern/theme/preference changes are proposed.",
+    "Provider file IDs and SHA-256 values identify the exact Google Drive bytes reviewed by GPT."
+  ],
+  "assets": [
+    {
+      "asset_key": "ASSET-000041",
+      "reference_key": "REF-000017",
+      "filename": "IMG_7712.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1sj4yVyrKqFaWW3De_BqOVF6LDZfrf6uW",
+      "source_content_sha256": "622bf53563ce96909ff78f32cb2b71c9b4ae7328e489423b3f3cbc78aa6a069a",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"serial_framed_units","observed_value":"A sequence of translucent-to-smoky circular mineral-like elements is repeatedly enclosed by silver-toned frames, creating a continuous series of framed windows.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"hardware_language","observed_value":"Silver-toned metal is structural rather than merely decorative, wrapping or holding the major circular elements and visually linking them into one system.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"internal_variation","observed_value":"The framed translucent elements show visible differences in internal clouding, tonal density and inclusions, so variation inside each unit remains visually important despite the repeated outer form.","confidence":"medium"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"close_detail_presentation","observed_value":"The image is presented as a close detail view that makes the metal framing and internal variation of adjacent units easy to inspect.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"inference","observation_type":"design_principle","observed_value":"The design likely derives its identity from repeating one controlled framed module while allowing the natural-looking interiors of individual units to differ.","confidence":"medium"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000042",
+      "reference_key": "REF-000017",
+      "filename": "IMG_7713.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1E0G8AwDni2flI8b7SNF00A2WH6zNiGG3",
+      "source_content_sha256": "caaf22b77c23c38e3d31a78e384dd4f1031d35bed8a88216ca5a1e21959d9347",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"repetition_rhythm","observed_value":"The bracelet maintains a regular serial rhythm through similarly sized circular framed units rather than through a conventional uninterrupted round-bead strand.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"frame_to_mineral_ratio","observed_value":"The silver-toned border remains visually thin enough that the translucent center occupies most of each unit, keeping the mineral-like interior dominant.","confidence":"medium"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"tonal_system","observed_value":"The visible palette stays cool and restrained, dominated by clear, gray and smoky translucent tones with silver-toned metal.","confidence":"high"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"structure_reveal","observed_value":"The viewing angle exposes several consecutive framed units at once, emphasizing continuity of the construction rather than a single isolated focal piece.","confidence":"high"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000043",
+      "reference_key": "REF-000018",
+      "filename": "IMG_7714.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "16EnrRPtS2C9DP7iJWsGCRod3gih-ret0",
+      "source_content_sha256": "6992dcf9dfe912a76d7053b5f78fbfd479edfd1c3f749d62c6aa86bc2949a466",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"focal_structure","observed_value":"A large silver-framed landscape-like focal element is visually dominant and is surrounded by smaller round, irregular and micro-scale elements.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"multi_scale_composition","observed_value":"The composition deliberately combines large hero scale, medium beads or irregular pieces, and much smaller clustered or spacer-scale elements.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"organic_shape_mix","observed_value":"Rounded forms are mixed with irregular natural-looking pieces and small pearl-like or bead-like details, avoiding a single repeated geometry.","confidence":"medium"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"focal_emphasis","observed_value":"The image composition gives the oversized framed focal element visual priority while still showing the surrounding material and scale diversity.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"inference","observation_type":"controlled_maximalism_strategy","observed_value":"The dense material variety appears controlled by a clear focal hierarchy and repeated muted natural tones rather than by uniformity of shape or scale.","confidence":"medium"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000044",
+      "reference_key": "REF-000018",
+      "filename": "IMG_7715.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1mhsyhfirakXP1Pad0B9lYSQnDMW2vb3M",
+      "source_content_sha256": "3579ecd48af69fcf65718efe758dfcb7178002b8d407aff2877c01eec44aaa2d",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"cluster_density","observed_value":"Decorative elements are concentrated around the focal zone, producing a dense local cluster while other portions of the bracelet remain comparatively calmer.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"transition_language","observed_value":"Small beads, pearl-like elements and silver-toned fittings act as transitions between larger mineral-like pieces instead of functioning as equal-weight focal elements.","confidence":"medium"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"natural_tonal_palette","observed_value":"The visible palette is muted and nature-oriented, combining subdued green, gray, clear and pale neutral tones with restrained silver-toned metal.","confidence":"medium"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"detail_view","observed_value":"The close presentation makes the layered cluster, connectors and material-scale transitions around the focal zone legible.","confidence":"high"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000045",
+      "reference_key": "REF-000018",
+      "filename": "IMG_7716.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1jFLMGsNVTNwjx65Tfq1a2Zm3NHqvg3WC",
+      "source_content_sha256": "9c81efe06a696230421496b31ed80a9b8da0256b2ba58ded398e8684e8b62c71",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"asymmetric_mass","observed_value":"Visual mass is distributed asymmetrically, with the framed focal and denser decorative structures occupying one side rather than being mirrored around the bracelet.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"secondary_details","observed_value":"Small hanging or projecting details extend beyond the main bracelet circumference and add secondary directional movement.","confidence":"medium"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"material_complexity","observed_value":"Several visibly different surface, transparency and size treatments coexist in one bracelet, but the muted palette prevents the composition from becoming visually chaotic.","confidence":"medium"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"whole_structure_view","observed_value":"The view reveals enough of the bracelet circumference to show how the dense focal zone transitions into calmer sections and how asymmetry is maintained across the whole piece.","confidence":"high"}
+      ]
+    }
+  ]
+}
