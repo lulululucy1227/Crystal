@@ -1,0 +1,192 @@
+{
+  "artifact": "P2A-HISTORICAL-UPGRADE-B01-ASSET-READINESS-CHECK",
+  "version": 1,
+  "input": {
+    "path": "inputs/p2a-historical-upgrade-b01-vision-observations.json",
+    "phase": "P2A-HISTORICAL-UPGRADE-B01",
+    "analysis_version": "p2a-vision-v1",
+    "source_verification": "google_drive_connector_bytes_reviewed_by_gpt"
+  },
+  "assets": [
+    {
+      "asset_key": "ASSET-000041",
+      "filename": "IMG_7712.PNG",
+      "expected": {
+        "reference_key": "REF-000017",
+        "provider": "google_drive",
+        "provider_file_id": "1sj4yVyrKqFaWW3De_BqOVF6LDZfrf6uW",
+        "source_content_sha256": "622bf53563ce96909ff78f32cb2b71c9b4ae7328e489423b3f3cbc78aa6a069a"
+      },
+      "canonical": {
+        "exists": true,
+        "asset_key": "ASSET-000041",
+        "original_filename": "IMG_7712.PNG",
+        "linked_reference_keys": [
+          "REF-000017"
+        ],
+        "provider": "google_drive",
+        "provider_file_id": "1sj4yVyrKqFaWW3De_BqOVF6LDZfrf6uW",
+        "image_hash": null,
+        "asset_status": "unresolved",
+        "mime_type": null,
+        "width_px": null,
+        "height_px": null,
+        "byte_size": null,
+        "image_perceptual_hash_rows": 0,
+        "image_visual_observation_rows": 0
+      },
+      "checks": {
+        "metadata_match": false,
+        "exact_reference_linkage": true
+      },
+      "classification": "needs_verified_asset_resolution"
+    },
+    {
+      "asset_key": "ASSET-000042",
+      "filename": "IMG_7713.PNG",
+      "expected": {
+        "reference_key": "REF-000017",
+        "provider": "google_drive",
+        "provider_file_id": "1E0G8AwDni2flI8b7SNF00A2WH6zNiGG3",
+        "source_content_sha256": "caaf22b77c23c38e3d31a78e384dd4f1031d35bed8a88216ca5a1e21959d9347"
+      },
+      "canonical": {
+        "exists": true,
+        "asset_key": "ASSET-000042",
+        "original_filename": "IMG_7713.PNG",
+        "linked_reference_keys": [
+          "REF-000017"
+        ],
+        "provider": "google_drive",
+        "provider_file_id": "1E0G8AwDni2flI8b7SNF00A2WH6zNiGG3",
+        "image_hash": null,
+        "asset_status": "unresolved",
+        "mime_type": null,
+        "width_px": null,
+        "height_px": null,
+        "byte_size": null,
+        "image_perceptual_hash_rows": 0,
+        "image_visual_observation_rows": 0
+      },
+      "checks": {
+        "metadata_match": false,
+        "exact_reference_linkage": true
+      },
+      "classification": "needs_verified_asset_resolution"
+    },
+    {
+      "asset_key": "ASSET-000043",
+      "filename": "IMG_7714.PNG",
+      "expected": {
+        "reference_key": "REF-000018",
+        "provider": "google_drive",
+        "provider_file_id": "16EnrRPtS2C9DP7iJWsGCRod3gih-ret0",
+        "source_content_sha256": "6992dcf9dfe912a76d7053b5f78fbfd479edfd1c3f749d62c6aa86bc2949a466"
+      },
+      "canonical": {
+        "exists": true,
+        "asset_key": "ASSET-000043",
+        "original_filename": "IMG_7714.PNG",
+        "linked_reference_keys": [
+          "REF-000018"
+        ],
+        "provider": "google_drive",
+        "provider_file_id": "16EnrRPtS2C9DP7iJWsGCRod3gih-ret0",
+        "image_hash": null,
+        "asset_status": "unresolved",
+        "mime_type": null,
+        "width_px": null,
+        "height_px": null,
+        "byte_size": null,
+        "image_perceptual_hash_rows": 0,
+        "image_visual_observation_rows": 0
+      },
+      "checks": {
+        "metadata_match": false,
+        "exact_reference_linkage": true
+      },
+      "classification": "needs_verified_asset_resolution"
+    },
+    {
+      "asset_key": "ASSET-000044",
+      "filename": "IMG_7715.PNG",
+      "expected": {
+        "reference_key": "REF-000018",
+        "provider": "google_drive",
+        "provider_file_id": "1mhsyhfirakXP1Pad0B9lYSQnDMW2vb3M",
+        "source_content_sha256": "3579ecd48af69fcf65718efe758dfcb7178002b8d407aff2877c01eec44aaa2d"
+      },
+      "canonical": {
+        "exists": true,
+        "asset_key": "ASSET-000044",
+        "original_filename": "IMG_7715.PNG",
+        "linked_reference_keys": [
+          "REF-000018"
+        ],
+        "provider": "google_drive",
+        "provider_file_id": "1mhsyhfirakXP1Pad0B9lYSQnDMW2vb3M",
+        "image_hash": null,
+        "asset_status": "unresolved",
+        "mime_type": null,
+        "width_px": null,
+        "height_px": null,
+        "byte_size": null,
+        "image_perceptual_hash_rows": 0,
+        "image_visual_observation_rows": 0
+      },
+      "checks": {
+        "metadata_match": false,
+        "exact_reference_linkage": true
+      },
+      "classification": "needs_verified_asset_resolution"
+    },
+    {
+      "asset_key": "ASSET-000045",
+      "filename": "IMG_7716.PNG",
+      "expected": {
+        "reference_key": "REF-000018",
+        "provider": "google_drive",
+        "provider_file_id": "1jFLMGsNVTNwjx65Tfq1a2Zm3NHqvg3WC",
+        "source_content_sha256": "9c81efe06a696230421496b31ed80a9b8da0256b2ba58ded398e8684e8b62c71"
+      },
+      "canonical": {
+        "exists": true,
+        "asset_key": "ASSET-000045",
+        "original_filename": "IMG_7716.PNG",
+        "linked_reference_keys": [
+          "REF-000018"
+        ],
+        "provider": "google_drive",
+        "provider_file_id": "1jFLMGsNVTNwjx65Tfq1a2Zm3NHqvg3WC",
+        "image_hash": null,
+        "asset_status": "unresolved",
+        "mime_type": null,
+        "width_px": null,
+        "height_px": null,
+        "byte_size": null,
+        "image_perceptual_hash_rows": 0,
+        "image_visual_observation_rows": 0
+      },
+      "checks": {
+        "metadata_match": false,
+        "exact_reference_linkage": true
+      },
+      "classification": "needs_verified_asset_resolution"
+    }
+  ],
+  "summary": {
+    "ready_for_observation_import": 0,
+    "needs_verified_asset_resolution": 5,
+    "conflict_blocked": 0
+  },
+  "current_importer_reusable_as_is": false,
+  "separate_verified_asset_resolution_required": true,
+  "current_counts": {
+    "image_visual_observation_total": 45,
+    "synthesis_assertions": 19,
+    "synthesis_sources": 37,
+    "integrity_check": "ok",
+    "foreign_key_check_violations": 0
+  },
+  "db_write_performed": false
+}
