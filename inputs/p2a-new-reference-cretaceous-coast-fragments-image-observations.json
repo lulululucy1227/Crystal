@@ -1,0 +1,61 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-IMAGE-OBSERVATIONS",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "analysis_version": "p2a-vision-v1",
+  "reference_key": "REF-000026",
+  "user_supplied_concept_name": "白垩纪的海岸碎片",
+  "rules": [
+    "Image-level observations only; no confirmed mineral-species facts.",
+    "Seller/source material labels remain source-stated claims and are not promoted into confirmed facts.",
+    "The user concept name is narrative/design semantics only, not geological provenance.",
+    "Inference rows are explicitly separated from direct observations.",
+    "Product-design and promotional-visual scopes remain separate."
+  ],
+  "assets": [
+    {
+      "asset_key": "ASSET-000067",
+      "reference_key": "REF-000026",
+      "filename": "IMG_7812.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1G3vgzk5As10zXs3pPfXdc-oA3dG5iiAk",
+      "source_content_sha256": "0cc7c535ab6d5a13a6d9f2f0187ae07776067f06c92e06e8efb3645268eef6c5",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"overall_composition","observed_value":"The bracelet is assembled from large visually distinct units rather than a uniform repeated bead sequence, with each major element differing in shape, tone and internal pattern.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"hero_focal","observed_value":"An oversized spiral fossil-like element dominates the composition and is visibly larger and more irregular than the surrounding major units.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"spacer_strategy","observed_value":"Small glossy black spacer beads repeatedly separate the larger heterogeneous units and create a consistent visual punctuation between them.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"color_system","observed_value":"The visible palette combines mossy green, ochre, amber-brown, cream, smoky gray, muted blue-gray and black accents in a restrained earth-and-coast range.","confidence":"high"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"presentation_style","observed_value":"The bracelet is isolated on a warm off-white background with substantial negative space and minimal black editorial typography.","confidence":"high"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000068",
+      "reference_key": "REF-000026",
+      "filename": "IMG_7813.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1laJm9mwscENnZ6agSLcvUitzsJyUfO_P",
+      "source_content_sha256": "6bbb484c58da698942a8110c85c2b0fe2d4004a4e6cb05e16549dcdaac18bf2b",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"shape_mix","observed_value":"Rounded spheres, faceted or polygonal forms, barrel-like units, irregular chunks and the spiral focal are all visible in one composition.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"surface_diversity","observed_value":"The major units visibly range from translucent and glossy to cloudy, patterned, banded and fossil-like, making surface and internal variation a central visual feature.","confidence":"high"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"material_annotation","observed_value":"The source image places seller-provided material names and nominal sizes around individual components, visually treating the major units as separately identified pieces.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"inference","observation_type":"curated_fragment_strategy","observed_value":"The design appears to treat the large units as individually selected fragments, with cohesion coming more from the restrained palette and repeated black spacers than from matching geometry.","confidence":"medium"}
+      ]
+    },
+    {
+      "asset_key": "ASSET-000069",
+      "reference_key": "REF-000026",
+      "filename": "IMG_7814.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1QH29N5T9k_AKmK36x_ytiEQ4gEyEKt3i",
+      "source_content_sha256": "adb274777b61d0aa6e5fb7cad2e836e1ac31c7c93efc979c5e87154cfc939bd3",
+      "observations": [
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"multi_side_composition","observed_value":"A different viewing side reveals additional large units with distinct shapes and markings, confirming that the arrangement is intentionally non-uniform around the full circumference.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"observation","observation_type":"scale_hierarchy","observed_value":"One oversized hero element, several large secondary units and very small dark spacers form three clearly different visual scales.","confidence":"high"},
+        {"observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"side_labeling","observed_value":"The source explicitly labels the shown orientation as side A, presenting the bracelet as a composition with deliberately arranged sides rather than an interchangeable uniform strand.","confidence":"high"},
+        {"observation_scope":"product_design","assertion_class":"inference","observation_type":"narrative_fit","observed_value":"The user-provided concept name '白垩纪的海岸碎片' is visually compatible with the assembled-fragment strategy, fossil-like focal and sedimentary-looking color/texture variety; this is a design-narrative interpretation only, not a geological provenance claim.","confidence":"medium"}
+      ]
+    }
+  ]
+}
