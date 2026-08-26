@@ -10,6 +10,13 @@ const B01 = {
     'ASSET-000041': 'REF-000017', 'ASSET-000042': 'REF-000017', 'ASSET-000043': 'REF-000018', 'ASSET-000044': 'REF-000018', 'ASSET-000045': 'REF-000018'
   }, rows: 22
 };
+const COAST = {
+  phase: 'P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-IMAGE-OBSERVATIONS', reference: 'REF-000026', rows: 13, assets: {
+    'ASSET-000067': ['REF-000026', '1G3vgzk5As10zXs3pPfXdc-oA3dG5iiAk'],
+    'ASSET-000068': ['REF-000026', '1laJm9mwscENnZ6agSLcvUitzsJyUfO_P'],
+    'ASSET-000069': ['REF-000026', '1QH29N5T9k_AKmK36x_ytiEQ4gEyEKt3i']
+  }
+};
 const allowed = {
   observation_scope: new Set(['product_design', 'promotional_visual']),
   assertion_class: new Set(['observation', 'inference']),
@@ -23,6 +30,10 @@ function contractFor(input) {
   for (const [field, expected] of Object.entries(COMMON)) if (input?.[field] !== expected) fail(`${field} must be exactly ${JSON.stringify(expected)}; received ${JSON.stringify(input?.[field])}`);
   if (input.phase === 'P2A-2R') return { kind: 'pilot', assetCount: 10, rowCount: 45 };
   if (input.phase === B01.phase) return { kind: 'b01', assetCount: 5, rowCount: B01.rows };
+  if (input.phase === COAST.phase) {
+    if (input.reference_key !== COAST.reference || input.user_supplied_concept_name !== '白垩纪的海岸碎片') fail('coast reference/concept identity is not exact');
+    return { kind: 'coast', assetCount: 3, rowCount: COAST.rows };
+  }
   fail(`phase is not an authorized importer contract: ${JSON.stringify(input.phase)}`);
 }
 
@@ -38,6 +49,10 @@ function validateInput(input, contract) {
       if (B01.assets[asset.asset_key] !== asset.reference_key) fail(`${asset.asset_key} is not in the exact B01 asset/reference set`);
       if (asset.provider !== 'google_drive' || !nonblank(asset.provider_file_id)) fail(`${asset.asset_key} has invalid Google Drive identity`);
     }
+    if (contract.kind === 'coast') {
+      const expected = COAST.assets[asset.asset_key];
+      if (!expected || asset.reference_key !== expected[0] || asset.provider !== 'google_drive' || asset.provider_file_id !== expected[1]) fail(`${asset.asset_key} is not in the exact coast asset/reference set`);
+    }
     if (!Array.isArray(asset.observations) || !asset.observations.length) fail(`${asset.asset_key} has no observations`);
     for (const [rowIndex, row] of asset.observations.entries()) {
       const label = `${asset.asset_key} observation ${rowIndex}`;
@@ -47,6 +62,7 @@ function validateInput(input, contract) {
     }
   }
   if (contract.kind === 'b01' && (keys.size !== 5 || [...keys].some(key => !(key in B01.assets)))) fail('B01 asset set is incomplete or unexpected');
+  if (contract.kind === 'coast' && (keys.size !== 3 || [...keys].some(key => !(key in COAST.assets)))) fail('coast asset set is incomplete or unexpected');
   if (rowCount !== contract.rowCount) fail(`expected exactly ${contract.rowCount} observation rows; received ${rowCount}`);
   return rowCount;
 }
@@ -68,16 +84,23 @@ function b01Baseline(db) {
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok' || db.prepare('PRAGMA foreign_key_check').all().length) fail('B01 database integrity check failed');
 }
 
+function coastBaseline(db) {
+  const total = Number(db.prepare('SELECT COUNT(*) n FROM image_visual_observation').get().n);
+  if (![67, 80].includes(total)) fail(`coast observation baseline mismatch: total=${total}`);
+  if (Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n) !== 19 || Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n) !== 37) fail('coast synthesis baseline mismatch');
+  if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok' || db.prepare('PRAGMA foreign_key_check').all().length) fail('coast database integrity check failed');
+}
+
 function identity(assetId, asset, row, input) { return [assetId, asset.source_content_sha256, row.observation_scope, row.assertion_class, row.observation_type, row.observed_value, input.producer_type, input.producer_id, input.analysis_version]; }
 
-function checkB01ExistingRows(db, input, resolved) {
+function checkExistingRows(db, input, resolved, label) {
   const expected = new Map();
   for (const asset of input.assets) for (const row of asset.observations) expected.set(JSON.stringify(identity(resolved.get(asset.asset_key).id, asset, row, input)), row.confidence);
   const ids = [...resolved.values()].map(row => row.id);
   const rows = db.prepare(`SELECT image_asset_id,source_content_sha256,observation_scope,assertion_class,observation_type,observed_value,confidence,producer_type,producer_id,analysis_version FROM image_visual_observation WHERE image_asset_id IN (${ids.map(() => '?').join(',')})`).all(...ids);
   for (const row of rows) {
     const key = JSON.stringify([row.image_asset_id, row.source_content_sha256, row.observation_scope, row.assertion_class, row.observation_type, row.observed_value, row.producer_type, row.producer_id, row.analysis_version]);
-    if (!expected.has(key) || expected.get(key) !== row.confidence) fail(`B01 has unexpected pre-existing observation for asset id ${row.image_asset_id}`);
+    if (!expected.has(key) || expected.get(key) !== row.confidence) fail(`${label} has unexpected pre-existing observation for asset id ${row.image_asset_id}`);
   }
 }
 
@@ -85,23 +108,24 @@ export function importVisualObservations(dbPath, inputPath) {
   const input = JSON.parse(readFileSync(inputPath, 'utf8')); const contract = contractFor(input); const rowCount = validateInput(input, contract);
   const db = new DatabaseSync(dbPath); db.exec('PRAGMA foreign_keys = ON'); let migrated = false;
   try {
-    migrated = ensureMigration008(db, contract.kind === 'pilot'); if (contract.kind === 'b01') b01Baseline(db);
+    migrated = ensureMigration008(db, contract.kind === 'pilot'); if (contract.kind === 'b01') b01Baseline(db); if (contract.kind === 'coast') coastBaseline(db);
     db.exec('BEGIN IMMEDIATE'); const resolved = new Map();
     for (const asset of input.assets) {
-      const columns = contract.kind === 'b01' ? 'id,image_hash,provider,provider_file_id,asset_status,mime_type,width_px,height_px,byte_size' : 'id,image_hash';
+      const columns = ['b01', 'coast'].includes(contract.kind) ? 'id,image_hash,provider,provider_file_id,asset_status,mime_type,width_px,height_px,byte_size' : 'id,image_hash';
       const matches = db.prepare(`SELECT ${columns} FROM image_asset WHERE asset_key=?`).all(asset.asset_key);
       if (matches.length !== 1) fail(`${asset.asset_key} resolved ${matches.length} times; expected exactly once`);
       const match = matches[0];
       if (String(match.image_hash ?? '').toLowerCase() !== asset.source_content_sha256.toLowerCase()) fail(`${asset.asset_key} SHA mismatch: DB=${JSON.stringify(match.image_hash)} input=${JSON.stringify(asset.source_content_sha256)}`);
       const links = db.prepare('SELECT d.reference_key FROM design_reference_image dri JOIN design_reference d ON d.id=dri.design_reference_id WHERE dri.image_asset_id=? AND d.reference_key=?').all(match.id, asset.reference_key);
       if (links.length !== 1) fail(`${asset.asset_key} reference mismatch: expected exactly one linkage to ${asset.reference_key}; found ${links.length}`);
-      if (contract.kind === 'b01') {
+      if (['b01', 'coast'].includes(contract.kind)) {
         if (match.provider !== 'google_drive' || match.provider_file_id !== asset.provider_file_id) fail(`${asset.asset_key} provider identity mismatch`);
         if (match.asset_status !== 'available' || !nonblank(match.mime_type) || !Number.isInteger(match.width_px) || !Number.isInteger(match.height_px) || !Number.isInteger(match.byte_size)) fail(`${asset.asset_key} deterministic metadata is not resolved`);
       }
       resolved.set(asset.asset_key, match);
     }
-    if (contract.kind === 'b01') checkB01ExistingRows(db, input, resolved);
+    if (contract.kind === 'b01') checkExistingRows(db, input, resolved, 'B01');
+    if (contract.kind === 'coast') checkExistingRows(db, input, resolved, 'coast');
     const findExisting = db.prepare('SELECT id,confidence FROM image_visual_observation WHERE image_asset_id=? AND source_content_sha256=? COLLATE NOCASE AND observation_scope=? AND assertion_class=? AND observation_type=? AND observed_value=? AND producer_type=? AND producer_id=? AND analysis_version=?');
     const insert = db.prepare('INSERT INTO image_visual_observation (image_asset_id,source_content_sha256,observation_scope,assertion_class,observation_type,observed_value,confidence,producer_type,producer_id,analysis_version) VALUES (?,?,?,?,?,?,?,?,?,?)');
     let created = 0; let reused = 0;

@@ -1,0 +1,19 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-IMAGE-OBSERVATION-IMPORT",
+  "status": "completed",
+  "model": "Terra",
+  "strength": "Medium",
+  "input": "inputs/p2a-new-reference-cretaceous-coast-fragments-image-observations.json",
+  "importer": "scripts/import-p2a-2r-visual-observations.mjs",
+  "preflight": "passed",
+  "reference_key": "REF-000026",
+  "apply": {"input_assets": 3, "input_rows": 13, "created": 13, "reused": 0},
+  "replay": {"created": 0, "reused": 13},
+  "batch_counts": {"assertion_class": {"observation": 11, "inference": 2}, "observation_scope": {"product_design": 10, "promotional_visual": 3}},
+  "post_apply": {"total_image_visual_observations": 80, "prior_observations_unchanged": 67, "ref_000026_rows": 13, "synthesis_assertions": 19, "synthesis_sources": 37, "phash_rows_for_coast_assets": 0, "integrity_check": "ok", "foreign_key_check_violations": 0},
+  "boundaries_preserved": ["GPT-authored observation semantics were imported exactly without edits.", "No reference synthesis, source-claim promotion, material facts, asset identity, pHash, patterns, themes, or preferences were written."],
+  "tests": {"focused": "23 passed", "full": "84 passed", "validate": "passed", "diff_check": "passed"},
+  "gpt_may_author_reference_synthesis_next": true,
+  "blocker": null
+}

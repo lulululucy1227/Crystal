@@ -27,7 +27,7 @@ function snapshotObservations(db) {
   const row = db.prepare(`SELECT COUNT(*) AS count, MIN(id) AS min_id, MAX(id) AS max_id,
     COALESCE(SUM(id), 0) AS id_sum, COALESCE(SUM(length(observed_value)), 0) AS value_length_sum
     FROM image_visual_observation WHERE id <= 45`).get();
-  if (![45, 67].includes(total) || Number(row.count) !== 45 || Number(row.min_id) !== 1 || Number(row.max_id) !== 45 || Number(row.id_sum) !== 1035 || Number(row.value_length_sum) !== 5479)
+  if (![45, 67, 80].includes(total) || Number(row.count) !== 45 || Number(row.min_id) !== 1 || Number(row.max_id) !== 45 || Number(row.id_sum) !== 1035 || Number(row.value_length_sum) !== 5479)
     fail(`observation fingerprint mismatch: ${JSON.stringify({ total, ...row })}`);
   return { count: Number(row.count), id_sum: Number(row.id_sum), value_length_sum: Number(row.value_length_sum) };
 }
