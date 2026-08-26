@@ -1,0 +1,143 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "analysis_version": "p2a-vision-v1",
+  "user_supplied_concept_name": "白垩纪的海岸碎片",
+  "concept_name_semantics": "user_supplied_design_concept_only_not_a_geological_age_or_material_fact",
+  "source_context": {
+    "account_visible_in_screenshot": "Moss Mist 苔雾",
+    "source_post_title_visible_in_screenshot": "玉化羊角螺 串起白垩纪的海岸碎片",
+    "source_claim_boundary": "Text visible in the seller/source screenshot is source-stated promotional or material labeling, not independently verified material fact.",
+    "promotional_claims_visible": [
+      "原创设计 / 天然唯一性孤品",
+      "此款材料纯天然 无任何人工优化及染色"
+    ],
+    "material_labels_note": "IMG_7813 contains multiple seller/source material labels and nominal sizes. Preserve them only as source-stated claims if the canonical schema has an appropriate claim layer; do not promote them into confirmed material facts in this phase."
+  },
+  "reference_observations": [
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "overall_composition",
+      "observed_value": "The bracelet is composed of large individually distinctive stone- or fossil-like elements rather than a uniform repeated bead strand; each major unit differs in shape, pattern, translucency and color.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "hero_focal",
+      "observed_value": "One oversized spiral fossil-like element is the dominant visual focal and is substantially larger and more irregular than the surrounding units.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "scale_hierarchy",
+      "observed_value": "The design uses a clear hierarchy of one oversized hero element, several large rounded or irregular secondary elements, and very small dark spacer beads between them.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "shape_mix",
+      "observed_value": "Rounded spheres, faceted or polygonal forms, barrel-like forms, irregular stone-like chunks and the spiral focal coexist in the same bracelet.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "color_system",
+      "observed_value": "The palette mixes mossy green, ochre, amber-brown, cream, smoky gray, muted blue-gray and black details, producing an earthy coastal-geological impression without a single dominant bright color.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "surface_diversity",
+      "observed_value": "Visible surfaces range from translucent and glossy to cloudy, patterned, banded and fossil-like, making internal and surface variation a major part of the composition.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "observation_type": "spacer_strategy",
+      "observed_value": "Small glossy black spacer beads separate many of the large heterogeneous units, providing a repeated visual punctuation and preventing adjacent complex elements from visually merging.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "inference",
+      "observation_type": "curated_fragment_strategy",
+      "observed_value": "The composition appears to treat each large element as an individual collected fragment, with cohesion coming from the restrained earth-toned palette and repeated black spacers rather than from matching shapes.",
+      "confidence": "medium"
+    },
+    {
+      "observation_scope": "product_design",
+      "assertion_class": "inference",
+      "observation_type": "narrative_fit",
+      "observed_value": "The user's concept name '白垩纪的海岸碎片' fits the visual strategy of assembling irregular, fossil-like, sedimentary-looking and sea-toned fragments into one bracelet; this is a design-narrative interpretation, not a geological provenance claim.",
+      "confidence": "medium"
+    },
+    {
+      "observation_scope": "promotional_visual",
+      "assertion_class": "observation",
+      "observation_type": "presentation_style",
+      "observed_value": "The product is photographed on a warm off-white background with strong negative space, black serif branding and minimal editorial typography.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "promotional_visual",
+      "assertion_class": "observation",
+      "observation_type": "material_annotation",
+      "observed_value": "One source image annotates individual components with seller-provided material names and nominal sizes around the bracelet, emphasizing the uniqueness of each large unit.",
+      "confidence": "high"
+    },
+    {
+      "observation_scope": "promotional_visual",
+      "assertion_class": "observation",
+      "observation_type": "side_labeling",
+      "observed_value": "Another source image labels the shown orientation as 'side A', indicating that the design is intended to be viewed as a deliberately arranged multi-sided composition rather than an interchangeable uniform strand.",
+      "confidence": "high"
+    }
+  ],
+  "assets": [
+    {
+      "filename": "IMG_7812.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1G3vgzk5As10zXs3pPfXdc-oA3dG5iiAk",
+      "source_content_sha256": "0cc7c535ab6d5a13a6d9f2f0187ae07776067f06c92e06e8efb3645268eef6c5",
+      "mime_type": "image/png",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 831921,
+      "display_order": 1,
+      "image_role": "overall"
+    },
+    {
+      "filename": "IMG_7813.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1laJm9mwscENnZ6agSLcvUitzsJyUfO_P",
+      "source_content_sha256": "6bbb484c58da698942a8110c85c2b0fe2d4004a4e6cb05e16549dcdaac18bf2b",
+      "mime_type": "image/png",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 767393,
+      "display_order": 2,
+      "image_role": "detail"
+    },
+    {
+      "filename": "IMG_7814.PNG",
+      "provider": "google_drive",
+      "provider_file_id": "1QH29N5T9k_AKmK36x_ytiEQ4gEyEKt3i",
+      "source_content_sha256": "adb274777b61d0aa6e5fb7cad2e836e1ac31c7c93efc979c5e87154cfc939bd3",
+      "mime_type": "image/png",
+      "width_px": 1179,
+      "height_px": 2556,
+      "byte_size": 839617,
+      "display_order": 3,
+      "image_role": "overall"
+    }
+  ]
+}
