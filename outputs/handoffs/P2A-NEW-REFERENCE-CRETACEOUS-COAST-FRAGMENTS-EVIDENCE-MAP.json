@@ -1,0 +1,14 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-EVIDENCE-MAP",
+  "status": "completed",
+  "model": "Luna",
+  "strength": "Low",
+  "evidence_map": "outputs/p2a-cretaceous-coast-fragments-evidence-map.json",
+  "reference_key": "REF-000026",
+  "user_supplied_concept_name": "白垩纪的海岸碎片",
+  "rows": {"count": 13, "id_range": [68, 80], "id_sum": 962, "class_counts": {"observation": 11, "inference": 2}, "scope_counts": {"product_design": 10, "promotional_visual": 3}},
+  "validation": {"target_linkage": "exact", "total_image_visual_observations": 80, "synthesis_assertions": 19, "synthesis_sources": 37, "integrity_check": "ok", "foreign_key_check_violations": 0, "database_writes": false},
+  "gpt_may_author_reference_synthesis": true,
+  "blocker": null
+}
