@@ -1,0 +1,18 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-UPGRADE-B01-OBSERVATION-IMPORT",
+  "status": "completed",
+  "model": "Terra",
+  "strength": "Medium",
+  "authorized_input": "inputs/p2a-historical-upgrade-b01-vision-observations.json",
+  "importer": "scripts/import-p2a-2r-visual-observations.mjs",
+  "preflight": {"status": "passed", "asset_set": ["ASSET-000041", "ASSET-000042", "ASSET-000043", "ASSET-000044", "ASSET-000045"], "reference_mapping": {"ASSET-000041": "REF-000017", "ASSET-000042": "REF-000017", "ASSET-000043": "REF-000018", "ASSET-000044": "REF-000018", "ASSET-000045": "REF-000018"}, "source_identity": "canonical Google Drive provider file identities, SHA-256 values, status, and deterministic metadata matched", "baseline": {"pilot_observations": 45, "synthesis_assertions": 19, "synthesis_sources": 37}},
+  "apply": {"input_assets": 5, "input_rows": 22, "created": 22, "reused": 0},
+  "replay": {"created": 0, "reused": 22},
+  "batch_counts": {"assertion_class": {"observation": 20, "inference": 2}, "observation_scope": {"product_design": 17, "promotional_visual": 5}},
+  "post_apply": {"total_image_visual_observations": 67, "b01_asset_rows": 22, "original_pilot_fingerprint_unchanged": true, "synthesis_assertions": 19, "synthesis_sources": 37, "phash_rows_for_b01_assets": 0, "integrity_check": "ok", "foreign_key_check_violations": 0},
+  "boundaries_preserved": ["GPT-authored observation semantics were imported exactly and not edited.", "No source asset metadata, pHash, reference synthesis, reference links, patterns, themes, preferences, or other semantic domains were written."],
+  "tests": {"focused": "16 passed", "full": "72 passed", "validate": "passed", "diff_check": "passed"},
+  "next_safe_action": "GPT may author B01 reference synthesis in a separately authorized phase.",
+  "blocker": null
+}
