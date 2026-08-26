@@ -2,163 +2,128 @@
 
 Protocol: AGENT-HANDOFF-V1
 
-Phase: P2A-HISTORICAL-UPGRADE-B01-OBSERVATION-IMPORT
+Phase: P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-INTAKE
 Status: authorized
 Model: Terra
 Strength: Medium
 
 ## Objective
-Import the already GPT-authored image-level observations for historical upgrade batch 01 into the canonical `image_visual_observation` table now that ASSET-000041..045 have verified canonical SHA-256/source identity. Make the smallest safe importer adaptation required, perform one canonical apply, prove replay idempotency, validate invariants, and STOP.
+Create one new canonical design reference for the newly uploaded bracelet identified by the user as `白垩纪的海岸碎片`, and attach/resolve its exact three Google Drive images. This phase is intake + deterministic asset provenance only. Do not yet import image observations or reference synthesis.
 
 ## Why Terra / Medium
-This phase writes canonical semantic observation rows. The semantic content and exact five assets are already fixed, but incorrect persistence or provenance handling would contaminate the evidence chain, so use Terra / Medium.
+This phase creates a canonical design_reference and image_asset/reference links and writes verified SHA-256/source metadata. The grouping and exact three source objects are fixed by GPT/user, but canonical writes require careful provenance handling.
 
-## Authoritative input
+## Authoritative GPT input
 Read exactly:
-- `inputs/p2a-historical-upgrade-b01-vision-observations.json`
+- `inputs/p2a-new-reference-cretaceous-coast-fragments.json`
 
-Do not rewrite, expand, summarize, reinterpret, or improve its semantic content.
+The user explicitly stated this is one newly uploaded bracelet and supplied the concept name `白垩纪的海岸碎片`.
 
-Exact assets/references:
-- ASSET-000041 / IMG_7712.PNG / REF-000017
-- ASSET-000042 / IMG_7713.PNG / REF-000017
-- ASSET-000043 / IMG_7714.PNG / REF-000018
-- ASSET-000044 / IMG_7715.PNG / REF-000018
-- ASSET-000045 / IMG_7716.PNG / REF-000018
+Important semantic boundary:
+- Store `白垩纪的海岸碎片` as a user-supplied design concept/name.
+- Do NOT treat `白垩纪` as verified geological age/provenance.
+- Seller/source text visible in screenshots, including material labels and claims such as natural/no treatment, is source-stated only. Do not promote it to confirmed material facts.
 
-Expected input-derived totals:
-- 5 assets
-- 22 image-level rows
-- 20 `observation`
-- 2 `inference`
-- 17 `product_design`
-- 5 `promotional_visual`
+## Exact source images
+Treat these three files as one reference, in this order:
+1. IMG_7812.PNG / Drive file `1G3vgzk5As10zXs3pPfXdc-oA3dG5iiAk`
+2. IMG_7813.PNG / Drive file `1laJm9mwscENnZ6agSLcvUitzsJyUfO_P`
+3. IMG_7814.PNG / Drive file `1QH29N5T9k_AKmK36x_ytiEQ4gEyEKt3i`
 
-Also read:
-- `outputs/handoffs/P2A-HISTORICAL-UPGRADE-B01-ASSET-RESOLUTION.json`
-- existing `scripts/import-p2a-2r-visual-observations.mjs`
-- migration `008_p2a_visual_observation.sql`
+Use the exact SHA-256/dimensions/byte-size/MIME values in the GPT input as verified source-byte metadata.
 
-## Importer adaptation boundary
-The existing P2A-2R importer is pilot-specific and hardcodes phase/asset-count assumptions. Do NOT create a parallel semantic data layer.
+## Required preflight
+Before writing:
+1. git worktree must be clean
+2. sync origin/main ff-only and reread this task
+3. input protocol/phase/provider identities are exact and unique
+4. ensure no existing canonical image_asset already uses any of the three provider_file_id values; if exact existing rows are found, reuse only if all provenance metadata matches
+5. ensure no existing design_reference already represents these exact three provider identities as one reference; if an exact prior intake exists, reuse idempotently rather than duplicate
+6. SHA-256 values are exactly 64 lowercase hex
+7. image metadata values are positive and internally consistent
+8. DB integrity_check ok / foreign_key_check zero
 
-Prefer the smallest safe generalization of the existing importer so it can accept this authorized historical-batch contract while preserving all existing safety checks. Accept either:
-- a narrowly generalized `scripts/import-p2a-2r-visual-observations.mjs`, or
-- one small shared/general importer plus compatibility for the original pilot.
+If there is any conflicting provider identity, hash, or pre-existing ambiguous reference mapping, STOP.
 
-Do not add dependencies or a framework.
+## Canonical intake behavior
+Use the existing schema and project conventions only. No migration.
 
-The original P2A-2R pilot import and tests must remain valid.
+Create exactly one new design_reference for this bracelet unless an exact replay already exists.
 
-## Mandatory preflight before write
-Reject the whole batch if any check fails:
-1. protocol_version exactly `AGENT-HANDOFF-V1`
-2. phase exactly `P2A-HISTORICAL-UPGRADE-B01`
-3. producer_type exactly `assistant_model`
-4. producer_id exactly `gpt-5.6-sol`
-5. analysis_version exactly `p2a-vision-v1`
-6. exactly five unique assets and exactly 22 observation rows are present
-7. asset set is exactly ASSET-000041..ASSET-000045
-8. reference linkage is exactly REF-000017 for 41-42 and REF-000018 for 43-45
-9. provider is `google_drive` and provider_file_id matches canonical image_asset exactly
-10. input source_content_sha256 matches canonical image_asset.image_hash exactly for all five
-11. canonical asset_status is available and deterministic image metadata remains consistent
-12. every observation_scope/assertion_class/confidence value satisfies migration 008 constraints
-13. observation_type and observed_value are nonblank
-14. no image_visual_observation rows currently exist for these five assets before first apply; if exact semantic identities already exist because of a replay, reuse them rather than duplicate
-15. no reference regrouping, pattern/theme/preference proposal, material fact, or synthesis content is introduced by the importer
-16. current canonical pilot baseline before apply remains 45 image_visual_observation rows and synthesis remains 19 assertions / 37 source links
-17. integrity_check ok and foreign_key_check zero
+Preserve the user concept name `白垩纪的海岸碎片` in the most appropriate existing reference/narrative/user-wording field available without altering schema. Do not invent a new field. If the current canonical design_reference schema has no safe place for the concept name, store it in an existing provenance/narrative layer that explicitly preserves user wording and report where it was stored.
 
-No partial import.
+Create/reuse exactly three image_asset rows with:
+- provider = google_drive
+- exact provider_file_id
+- original filename
+- exact canonical image_hash = source_content_sha256
+- exact mime_type, width_px, height_px, byte_size
+- asset_status = available after all provenance checks pass
 
-## Canonical apply behavior
-Use one transaction.
+Create/reuse exactly three design_reference_image links to the one new reference with display_order 1,2,3.
+Use the image roles supplied in the GPT input if compatible with current constraints; otherwise preserve them conservatively without schema change.
 
-For each exact GPT-authored row, insert into `image_visual_observation` using:
-- canonical image_asset_id
-- canonical/input-matching source_content_sha256
-- exact observation_scope
-- exact assertion_class
-- exact observation_type
-- exact observed_value
-- exact confidence
-- producer_type / producer_id / analysis_version from input
+Do not create pHash if verified local bytes are not available to the Codex runtime. pHash may remain deferred.
 
-Do not add confirmed material facts.
-Do not convert inference into observation.
-Do not merge or rewrite rows.
-Do not write reference-level synthesis in this phase.
+## Source/seller claims boundary
+The GPT input contains source context and promotional/material-label notes.
+If the existing `sourced_claim` or equivalent provenance layer can safely hold these source-stated claims without treating them as canonical material facts, you MAY persist the minimal source claim text and source attribution.
+If doing so would require semantic inference, schema changes, or material-table writes, defer it and report the deferral.
 
-Reuse an existing row only when the full established semantic identity matches exactly. If an existing matching identity has conflicting confidence or source SHA, STOP.
+Do NOT write to confirmed material/component tables in this phase.
+
+## Forbidden in this phase
+- image_visual_observation inserts
+- design_reference_synthesis_assertion/source inserts
+- confirmed material facts
+- material/component/supplier/market/packaging writes
+- pattern/theme/preference changes unless an existing required reference-intake field demands only mechanical linkage; otherwise defer
+- pHash fabrication
+- migration/schema change
+- new dependencies/frameworks
+- watcher/controller work
+- Drive move/delete/rename
 
 ## Replay / idempotency
-Immediately replay the exact same input after first successful apply.
+Run the same intake a second time.
+Required replay:
+- 0 duplicate references
+- 0 duplicate assets
+- 0 duplicate links
+- exact provider identities reused
+- same reference key reused
 
-Required:
-- first apply: 22 created / 0 reused, unless exact rows already exist from an earlier valid run
-- replay: 0 created / 22 reused
-- no duplicate rows
-- no constraint error exposed for valid replay
+## Validation
+After intake verify:
+- exactly one canonical reference represents these three images
+- exactly three linked image assets
+- display_order = 1,2,3
+- all three canonical SHA-256 values match the GPT input
+- all three provider_file_id values remain unique
+- no image_visual_observation rows created for these assets
+- synthesis count remains unchanged from pre-run baseline
+- existing 67 image_visual_observation rows remain unchanged
+- no confirmed material/market/supplier data changed
+- integrity_check ok
+- foreign_key_check zero
+- npm test
+- npm run validate
+- git diff --check
 
-## Post-apply invariants
-Verify:
-- these five assets have exactly 22 new/current P2A image observation rows
-- class counts for this batch = 20 observation / 2 inference
-- scope counts for this batch = 17 product_design / 5 promotional_visual
-- total canonical image_visual_observation count becomes 67 (45 prior + 22 batch 01)
-- original 45-row pilot fingerprint/content remains unchanged
-- synthesis remains exactly 19 assertions / 37 source links; do not synthesize REF-000017/018 yet
-- no image_asset/source identity changes in this phase
-- no pHash changes
-- no legacy P1C/reference/pattern/theme/preference/material/component/supplier/market/packaging changes
-- integrity_check ok; FK violations 0
-
-## Focused tests
-Add only the minimum tests required for the generalized importer. Cover at least:
-- valid B01 input preflight
-- wrong phase/asset set rejected
-- SHA mismatch rejected
-- reference mismatch rejected
-- invalid enum/blank semantic field rejected
-- first apply exact counts
-- replay exact reuse/no duplicates
-- original P2A-2R pilot contract still supported/regression passes
-
-Then run:
+## Allowed files/changes
+- smallest deterministic intake/import script only if existing tooling cannot safely perform this exact intake
 - focused tests
-- `npm test`
-- `npm run validate`
-- `git diff --check`
-- `PRAGMA integrity_check`
-- `PRAGMA foreign_key_check`
-
-## Allowed changes
-- minimal safe generalization of existing image-observation importer
-- focused importer tests
-- canonical `image_visual_observation` rows for ASSET-000041..045 only
+- canonical new design_reference / image_asset / design_reference_image rows for this one reference only
+- minimal existing source-claim/narrative row if clearly supported by current schema and source-stated boundary
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P2A-HISTORICAL-UPGRADE-B01-OBSERVATION-IMPORT.json`
-
-## Forbidden
-- edits to GPT-authored observation semantics
-- source asset metadata changes
-- pHash creation/fabrication
-- reference-level synthesis inserts
-- migrations
-- new image assets/reference links
-- reference regrouping
-- pattern/theme/preference changes
-- material/component/supplier/market/packaging work
-- watcher/controller work
-- new dependencies/frameworks
+- `outputs/handoffs/P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-INTAKE.json`
 
 ## Git behavior
-If commit/push works normally, commit/push. If Git metadata is blocked, finish authorized DB work/tests and report exact safe manual-finalize commands. Do not weaken sandbox or permissions.
+If commit/push works normally, commit/push. If Git metadata is blocked, finish the authorized DB work/tests and report exact safe manual-finalize commands. Do not spend time repairing watcher/sandbox.
 
 ## Final response
 PHASE:
-P2A-HISTORICAL-UPGRADE-B01-OBSERVATION-IMPORT
+P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-INTAKE
 
 STATUS:
 COMPLETED / READY_FOR_MANUAL_FINALIZE / BLOCKED
@@ -166,26 +131,35 @@ COMPLETED / READY_FOR_MANUAL_FINALIZE / BLOCKED
 PREFLIGHT:
 PASS / FAIL
 
-INPUT ASSETS / ROWS:
-<count> / <count>
-
-FIRST APPLY CREATED / REUSED:
+REFERENCE CREATED / REUSED:
 <created> / <reused>
 
-REPLAY CREATED / REUSED:
+REFERENCE KEY:
+<key or NONE>
+
+ASSETS CREATED / REUSED:
 <created> / <reused>
 
-BATCH CLASS COUNTS:
-<observation> / <inference>
+LINKS CREATED / REUSED:
+<created> / <reused>
 
-BATCH SCOPE COUNTS:
-<product_design> / <promotional_visual>
+SHA MATCH:
+<count>/3
 
-TOTAL IMAGE OBSERVATIONS:
-<count>
+USER CONCEPT NAME PRESERVED:
+YES / NO — <where>
 
-SYNTHESIS ASSERTIONS / SOURCES:
-<count> / <count>
+SOURCE CLAIMS:
+PRESERVED / DEFERRED / NONE
+
+PHASH:
+<created/reused/deferred>
+
+REPLAY:
+PASS / FAIL
+
+IMAGE OBSERVATIONS CREATED:
+0 required
 
 INVARIANTS:
 PASS / FAIL
@@ -193,7 +167,7 @@ PASS / FAIL
 TESTS:
 <result>
 
-GPT MAY AUTHOR B01 REFERENCE SYNTHESIS:
+GPT MAY AUTHOR IMAGE OBSERVATIONS NEXT:
 YES / NO
 
 COMMIT:
