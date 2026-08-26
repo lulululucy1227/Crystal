@@ -1,0 +1,20 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-INTAKE",
+  "status": "completed",
+  "model": "Terra",
+  "strength": "Medium",
+  "input": "inputs/p2a-new-reference-cretaceous-coast-fragments.json",
+  "preflight": "passed",
+  "reference": {"created": 1, "reused": 0, "reference_key": "REF-000026"},
+  "assets": {"created": 3, "reused": 0, "asset_keys": ["ASSET-000067", "ASSET-000068", "ASSET-000069"], "sha_matches": 3},
+  "links": {"created": 3, "reused": 0, "display_order": [1, 2, 3], "image_roles": ["overall", "detail", "overall"]},
+  "user_concept_name": {"value": "白垩纪的海岸碎片", "stored_in": "design_reference.notes", "semantic_boundary": "user-supplied design concept/name only; not a geological age/provenance claim or material fact"},
+  "source_claims": {"status": "deferred", "reason": "Seller/source material labels and promotional claims were not promoted into confirmed material facts."},
+  "phash": {"created": 0, "reused": 0, "deferred": 3, "reason": "Verified local bytes are not retained in the Codex runtime."},
+  "replay": {"references_created": 0, "assets_created": 0, "links_created": 0, "reference_key": "REF-000026"},
+  "invariants": {"image_visual_observations": 67, "new_asset_observations": 0, "synthesis_assertions": 19, "synthesis_sources": 37, "integrity_check": "ok", "foreign_key_check_violations": 0},
+  "tests": {"focused": "5 passed", "full": "77 passed", "validate": "passed", "diff_check": "passed"},
+  "gpt_may_author_image_observations_next": true,
+  "blocker": null
+}
