@@ -24,11 +24,11 @@ Exact mapping:
 - ASSET-000068 / IMG_7813.PNG / REF-000026
 - ASSET-000069 / IMG_7814.PNG / REF-000026
 
-Expected totals from input:
+Expected totals from the authoritative input (corrected to match the actual authored rows):
 - 3 assets
 - 13 image-level rows
 - 11 observation / 2 inference
-- 9 product_design / 4 promotional_visual
+- 10 product_design / 3 promotional_visual
 
 The user concept name `白垩纪的海岸碎片` is design/narrative semantics only. It must not be treated as geological provenance or material fact.
 Seller/source material labels remain source-stated claims only.
@@ -87,7 +87,7 @@ Required:
 Verify:
 - REF-000026's three assets contain exactly 13 current rows from this input
 - class counts = 11 observation / 2 inference
-- scope counts = 9 product_design / 4 promotional_visual
+- scope counts = 10 product_design / 3 promotional_visual
 - total canonical image_visual_observation count becomes 80 (67 + 13)
 - prior 67 observations remain unchanged
 - synthesis remains 19 / 37
