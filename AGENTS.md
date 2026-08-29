@@ -2,6 +2,8 @@
 
 GitHub is the shared task and handoff layer between GPT and Codex.
 
+Bridge and Agent operations must also comply with `agent/BRIDGE_PERMISSION_PROTOCOL.md`. The default is `READ_ONLY + DEFAULT DENY`; an Agent may not expand a path or capability without a new explicit user/GPT grant.
+
 ## Codex protocol
 
 1. Before a new phase, read `agent/GPT_NEXT_TASK.md`.
@@ -11,10 +13,8 @@ GitHub is the shared task and handoff layer between GPT and Codex.
 5. If Codex requires user approval, pause and request it. Never bypass approval controls.
 6. At completion or safe stop:
    - run required tests/checks;
-   - commit the relevant changes;
-   - push to GitHub;
-   - update `outputs/GPT_HANDOFF.json`;
-   - archive the same result to `outputs/handoffs/<PHASE>.json`.
+   - commit, push, or update handoff files only when the current task grant explicitly includes the corresponding capability and path;
+   - archive the same result to `outputs/handoffs/<PHASE>.json` only when explicitly authorized.
 7. Handoffs must report DELTA only, not repeat the full project history.
 8. Detailed reports are optional and only warranted for migrations, complex failures, security/data-integrity issues, or major architecture decisions.
 9. After publishing the handoff, STOP and wait for a new task.
