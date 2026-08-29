@@ -1,178 +1,75 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P2A-IMAGE-BACKLOG-CONTINUOUS-COMPLETION
-Status: authorized
+Phase: P2A-HISTORICAL-CANONICAL-REGROUP-DECISION
+Status: waiting_for_user_authorization
 Model: Terra
-Strength: Medium
-Execution class: DATABASE_WRITE
+Strength: High
+Execution class: HIGH_RISK
 
-## Objective
-Continue the Crystal image-analysis mainline until the current Google Drive Inbox/backlog is exhausted. Do not stop after routine batch boundaries. Codex is the deterministic execution plane; GPT is the visual/design semantic authority.
+## Current verified GPT-side state
+- Google Drive Inbox image count: 0.
+- All 94 currently known project images have completed GPT visual analysis and were moved to the `Reviewed` folder after their analysis was safely preserved.
+- `Reviewed` means GPT visual analysis complete; it does NOT by itself mean canonical SQLite ingestion complete.
+- Latest new reference IMG_7869.PNG + IMG_7870.PNG has authoritative semantic input at `inputs/p2a-gpt-new-reference-gray-fog-wood-anchor-20260830.json`.
+- Previously completed authoritative semantic batches remain available under `inputs/`.
+- Last verified local canonical DB baseline before these pending additive imports remains 80 image observations and 19 synthesis assertions / 37 synthesis sources, SHA-256 `9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2`.
 
-## Verified baseline before this resumed backlog execution
-- Crystal canonical image_visual_observation baseline: 80.
-- Crystal canonical synthesis baseline: 19 assertions / 37 sources.
-- Canonical DB SHA-256 after Bridge recovery verification: `9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2`.
-- REF-000026 / `白垩纪的海岸碎片`: 13 canonical image observations already exist; reference synthesis remains pending.
-- Historical B01 REF-000017 / REF-000018, IMG_7712..7716: asset resolution and 22 canonical image observations already exist; reference synthesis remains pending.
-- Previous audit `outputs/p2a-3s2-inbox-status-audit.json`: 85 images = 10 fully processed + 56 historical needs P2A upgrade + 19 unprocessed.
-- Subsequent Inbox additions include IMG_7812..7814 and IMG_7864..IMG_7867. A fresh Drive metadata inventory on 2026-08-29 exposed 92 current images total at that read. Reconcile against Drive again at execution time; do not hard-code 92 if the folder changed later.
+## Why execution is paused
+GPT discovered a real historical canonical grouping defect while completing visual review. Correcting it requires splitting existing design references and moving existing canonical asset links, so it is beyond ordinary additive DATABASE_WRITE and requires explicit HIGH_RISK authorization.
 
-## New authoritative GPT semantic batch
-GPT has completed visual-semantic analysis for all 19 images that were previously in the `unprocessed` bucket plus four newly discovered images IMG_7864..IMG_7867.
+Decision pack:
+`outputs/p2a-historical-canonical-regroup-decision-pack-20260830.json`
 
-Authoritative input:
-`inputs/p2a-gpt-unprocessed-plus-new-20260829-a.json`
+Authoritative detailed evidence:
+`inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json`
 
-Input facts:
-- 23 image assets
-- 12 reference groups
-- 76 GPT-authored image-level semantic rows
-- 29 GPT-authored reference-synthesis drafts
-- exact Google Drive provider IDs, SHA-256, MIME type, dimensions and byte size for all 23 assets
-- no explicit USER SIGNAL inferred from mere Inbox presence
-- no mineral/geological/authenticity claims promoted from seller text
-- no proposed pattern/theme/preference changes
+## Proposed high-risk correction
+### Split bundled references
+- REF-000003 currently bundles IMG_7654 / IMG_7655 / IMG_7656, which are three different bracelet designs from one carousel. Proposed: three separate design references EARLY-C01 / C02 / C03.
+- REF-000004 currently bundles IMG_7661 / IMG_7662 / IMG_7663 / IMG_7664, which are four different bracelet designs. Proposed: four separate design references EARLY-C04 / C05 / C06 / C07.
 
-The synthesis drafts use `source_observation_selectors` because canonical observation IDs do not exist yet for these new groups. Codex may deterministically resolve each selector to the newly imported canonical observation row and transform the draft into the existing `P2A-REFERENCE-SYNTHESIS-V1` input contract. This selector resolution is deterministic plumbing, not semantic authoring. Codex MUST preserve GPT wording/class/scope/confidence and MUST NOT add new synthesis claims.
+### Move five high-confidence boundary assets
+- IMG_7678: REF-000008 → REF-000009
+- IMG_7688: REF-000011 → REF-000012
+- IMG_7690: REF-000012 → REF-000013
+- IMG_7696: REF-000014 → REF-000015
+- IMG_7698: REF-000015 → REF-000016
 
-## Required execution order
-1. Safely sync Crystal main and confirm clean preflight.
-2. Reconcile the current Drive Inbox against canonical DB and previous audit, including IMG_7812..7814 and IMG_7864..7867.
-3. Close pending REF-000026 synthesis and historical B01 synthesis wherever authoritative GPT semantic evidence already exists.
-4. Import `inputs/p2a-gpt-unprocessed-plus-new-20260829-a.json`:
-   - create/link canonical assets and design references for its 12 reference groups using exact supplied provenance;
-   - preserve the grouping supplied by GPT;
-   - import exactly the 76 semantic rows;
-   - replay and prove idempotency;
-   - deterministically resolve synthesis selectors to canonical observation IDs;
-   - import exactly the authored synthesis drafts after contract transformation;
-   - do not infer USER SIGNAL from these images.
-5. Continue through the remaining historical_needs_p2a_upgrade references in coherent groups, reusing historical grouping/analysis. Where new GPT visual-semantic authoring is still genuinely missing, prepare exact deterministic provenance/mapping and add it to `outputs/p2a-image-backlog-needs-gpt-analysis.json`; continue all other safe items.
-6. Ensure every current Inbox image appears in the final status artifact.
+These moves are supported by source-account/product/post continuity, not image similarity alone.
 
-## Semantic boundary — strict
-Codex MUST NOT invent or independently decide:
-- image observations
-- reference synthesis wording
-- mineral/material identity
-- user preference
-- pattern/theme changes
-- design judgments
-- promotional-visual interpretation
+## Recommendation
+AUTHORIZE correction.
 
-Seller/source labels remain source claims only. Narrative names are not geological facts.
+Reason: `Design Reference` is intended to represent one product/design composition. Leaving carousel bundling and cross-boundary mistakes in canonical data would contaminate pattern frequency, theme attribution, design assessment and future design-DNA inference.
 
-## Database authorization
-DATABASE_WRITE is authorized only for the existing image-analysis pipeline and existing canonical schema.
+## If user authorizes HIGH_RISK correction
+Do NOT mutate immediately. First run a read-only impact audit across all tables related to affected references/assets, including at minimum:
+- design_reference
+- design_reference_image
+- image_asset
+- image_visual_observation
+- design_reference_synthesis_assertion/source
+- preference evidence
+- design assessments
+- pattern/reference relations
+- theme/reference relations
+- source/provenance tables
 
-Allowed:
-- verified image asset provenance/linkage
-- design reference creation/linkage deterministically supported by GPT grouping or existing historical grouping
-- GPT-authored `image_visual_observation` rows
-- GPT-authored reference synthesis assertions/sources after deterministic selector-to-ID resolution
+Then execute transactionally with:
+1. timestamped DB backup + pre-write SHA-256;
+2. exact before manifest;
+3. preserve existing reference keys where least disruptive and create new keys only for split child designs;
+4. move only the five exact high-confidence boundary assets above;
+5. never duplicate ambiguous old reference-level relations across every child; quarantine/flag uncertain attribution rather than guessing;
+6. preserve raw evidence, observations and user-signal history;
+7. then import all pending additive GPT semantic inputs;
+8. full integrity/FK/idempotency/tests/validate/diff checks;
+9. exact after manifest + DB SHA;
+10. coherent commit/push and handoff report.
 
-Not authorized:
-- schema migration
-- deletion/rewrite of existing canonical semantic rows
-- material/component/supplier/market/packaging writes
-- broad pattern/theme/preference transformations
-- watcher/controller work
-- Bridge infrastructure work
+## If user declines correction
+Do not perform the split/moves. Continue additive semantic import only and record the canonical grouping defects as known technical debt. Future analytics must explicitly exclude or flag affected references.
 
-If a schema migration is genuinely required, record only that sub-item as HIGH_RISK blocked and continue independent safe work.
-
-## Provenance
-Never fabricate SHA-256, provider IDs, dimensions, MIME type, pHash or file metadata. Deferred pHash alone does not block fully_processed. Provider/hash/reference conflicts are item-local blockers unless they reveal global integrity failure.
-
-## Required status artifacts
-Maintain:
-- `outputs/p2a-image-backlog-status.json`
-- `outputs/p2a-image-backlog-needs-gpt-analysis.json`
-
-Status must include one row per current Inbox image with filename, provider_file_id, asset_key, reference_key, status, verified SHA flag, observation flag, synthesis flag, and blocker/next action.
-
-Allowed status values:
-- fully_processed
-- needs_gpt_analysis
-- provenance_blocked
-- ambiguous
-
-## Fully processed definition
-An image is fully_processed when canonical asset/reference linkage and required provenance are complete, required image semantic evidence is canonical, and its linked reference has canonical reference-level synthesis where appropriate. Deferred pHash alone is acceptable.
-
-## Validation after every canonical-write batch
-- exact input/file/reference counts
-- first apply and replay reuse counts
-- prior canonical fingerprints unchanged except intentional additions
-- `PRAGMA integrity_check = ok`
-- `PRAGMA foreign_key_check = 0`
-- focused tests
-- `npm test`
-- `npm run validate`
-- `git diff --check`
-
-Do not alter production DB merely to run tests unless the tests are isolated.
-
-## Continuous execution / stop conditions
-A normal batch completion is NOT a stop condition. Record item-local blockers and continue.
-
-Stop only when:
-1. every current Inbox image is fully_processed; OR
-2. every remaining unresolved image/reference has been deterministically prepared and now genuinely requires new GPT semantic analysis, user business/aesthetic judgment, inaccessible source bytes, or new HIGH_RISK permission; OR
-3. a global integrity/safety problem makes further writes unsafe.
-
-## Git behavior
-Commit/push coherent Crystal checkpoints. Keep main synchronized safely. Do not work on or publish the Local-Codex-Bridge repo in this task.
-
-## Final response
-Return one concise report only at a real stop condition:
-
-PHASE:
-P2A-IMAGE-BACKLOG-CONTINUOUS-COMPLETION
-
-STATUS:
-COMPLETED / NEEDS_GPT_ANALYSIS / BLOCKED
-
-INBOX TOTAL:
-<count>
-
-FULLY PROCESSED:
-<count>
-
-NEEDS GPT ANALYSIS:
-<count images / count references>
-
-PROVENANCE BLOCKED:
-<count>
-
-AMBIGUOUS:
-<count>
-
-IMAGE OBSERVATIONS TOTAL:
-<count>
-
-SYNTHESIS ASSERTIONS / SOURCES:
-<count / count>
-
-BACKLOG STATUS ARTIFACT:
-<path>
-
-GPT ANALYSIS QUEUE:
-<path or NONE>
-
-TESTS / INTEGRITY:
-<summary>
-
-COMMITS:
-<Crystal checkpoint SHAs>
-
-WORKTREE CLEAN:
-YES / NO
-
-USER MAY UPLOAD NEW IMAGES:
-YES only if FULLY PROCESSED = INBOX TOTAL and all other remaining counts are zero; otherwise NO
-
-BLOCKER:
-NONE or concise remaining blocker summary
+## No execution authorization yet
+HIGH_RISK execution is NOT authorized until the user explicitly chooses Option A.
