@@ -1,0 +1,68 @@
+{
+  "contract_version": "P2A-GPT-SEMANTIC-BATCH-V1",
+  "analysis_version": "p2a-vision-v1",
+  "synthesis_analysis_version": "p2a-reference-synthesis-v1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "batch_key": "P2A-GPT-NEWREF-GRAY-FOG-WOOD-ANCHOR-20260830",
+  "purpose": "Authoritative GPT visual-semantic analysis for newly discovered Inbox images IMG_7869.PNG and IMG_7870.PNG. Codex may deterministically create/link the corresponding reference/assets and import these rows under the existing schema. Seller material naming remains source claim only.",
+  "semantic_boundary": [
+    "OBSERVATION rows describe visible image content.",
+    "INFERENCE rows are assistant design-language interpretations.",
+    "No explicit USER SIGNAL is inferred from image presence alone.",
+    "The source caption wording including 灰兔毛 is a seller/source claim only and is not a confirmed mineral identity.",
+    "The dark brown barrel-like element is described visually as wood-like; exact material is not confirmed from image alone."
+  ],
+  "reference_groups": [
+    {
+      "reference_group_key": "GPT-NEWREF-D01",
+      "working_name": "Gray Fog Wood Anchor",
+      "source_context": {
+        "account_visible": "FUBAI_STUDIO",
+        "source_caption_visible": "清冷高级灰兔毛🤍一半通透一半雾 / 自带清冷感的灰幽灵兔毛共生。 / 一半清透，一半雾。",
+        "source_claim_boundary": "Caption wording and implied material identity remain seller/source claims only."
+      },
+      "user_signal": null,
+      "assets": [
+        {
+          "filename": "IMG_7869.PNG",
+          "provider": "google_drive",
+          "provider_file_id": "11SGf5ZZH_5ffhLkWUtbQAm6XHLAkZIVU",
+          "source_content_sha256": "89755f5d9fd0ff6f305d7c49f354fb00e61af5d9f58aca18ad619cf5577abf4f",
+          "mime_type": "image/png",
+          "width_px": 1179,
+          "height_px": 2556,
+          "byte_size": 7190375
+        },
+        {
+          "filename": "IMG_7870.PNG",
+          "provider": "google_drive",
+          "provider_file_id": "1F_zIqUEvcDJd9nWx_YWW4u9VWVAJzbFJ",
+          "source_content_sha256": "6e1ce5a544b1ebd38bc00f40fd814c6e0e2744ee72a249833e225305f8f115cf",
+          "mime_type": "image/png",
+          "width_px": 1179,
+          "height_px": 2556,
+          "byte_size": 3021552
+        }
+      ],
+      "image_observations": [
+        {"filename":"IMG_7869.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"gray_clear_cloud_palette","observed_value":"The bracelet is dominated by large gray-to-clear round elements whose interiors vary from transparent areas to dense smoky, cloudy and dark inclusion-like zones.","confidence":"high"},
+        {"filename":"IMG_7869.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"wood_like_barrel_anchor","observed_value":"One dark brown barrel-shaped matte-looking element interrupts the round sequence near the top and introduces a warm organic-looking contrast; exact material is not confirmed from the image.","confidence":"high"},
+        {"filename":"IMG_7869.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"silver_hardware_punctuation","observed_value":"Silver-toned hardware appears as a floral engraved sphere, a wrapped-coil separator and small spacer clusters rather than as a continuous metal frame system.","confidence":"high"},
+        {"filename":"IMG_7869.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"rustic_dark_stage","observed_value":"The bracelet is laid on coarse dark-brown fringed textile over weathered wood, creating a rustic, tactile backdrop that amplifies the cool gray product tones.","confidence":"high"},
+        {"filename":"IMG_7870.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"worn_scale_and_rotation","observed_value":"A hand-held view confirms the large bead scale, the off-center brown barrel element, the engraved silver sphere and the coil-like metal separator as distinct repeated structural landmarks around the circumference.","confidence":"high"},
+        {"filename":"IMG_7870.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"internal_variation_continuity","observed_value":"Different round elements alternate among clearer gray, darker smoky and strongly clouded appearances while remaining close in size and shape.","confidence":"high"},
+        {"filename":"IMG_7870.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"warm_indoor_hand_view","observed_value":"The second image uses a warm neutral indoor background and a hand-held presentation, providing scale and a softer contrast to the darker rustic product shot.","confidence":"high"},
+        {"filename":"IMG_7870.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"material_contrast_anchor","observed_value":"The warm matte-looking barrel element and bright silver hardware act as two different material punctuations inside an otherwise cool gray optical study.","confidence":"medium"},
+        {"filename":"IMG_7870.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"quiet_optical_complexity","observed_value":"Because hue variation is tightly constrained, close-view complexity comes primarily from transparency, clouding, dark internal marks and the contrast between glossy rounds, matte-looking brown and silver-toned surfaces.","confidence":"medium"}
+      ],
+      "reference_synthesis_draft": [
+        {"assertion_key_suffix":"OPTICAL-GRAY","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"quiet_gray_optical_complexity","asserted_value":"A narrow gray-clear palette keeps the bracelet restrained at distance while transparency, clouding and dark internal variation provide most of the close-view complexity.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7869.PNG","observation_type":"gray_clear_cloud_palette"},{"filename":"IMG_7870.PNG","observation_type":"internal_variation_continuity"},{"filename":"IMG_7870.PNG","observation_type":"quiet_optical_complexity"}]},
+        {"assertion_key_suffix":"MATERIAL-PUNCTUATION","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"dual_material_punctuation","asserted_value":"A warm dark barrel-shaped matte-looking element and two visibly different silver-toned hardware forms punctuate the otherwise consistent large gray round-bead rhythm without introducing a broad color palette.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7869.PNG","observation_type":"wood_like_barrel_anchor"},{"filename":"IMG_7869.PNG","observation_type":"silver_hardware_punctuation"},{"filename":"IMG_7870.PNG","observation_type":"material_contrast_anchor"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"rustic_to_warm_scale_pair","asserted_value":"A dark tactile rustic still-life is paired with a warm hand-held view, giving both an atmospheric material presentation and an immediate sense of scale.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7869.PNG","observation_type":"rustic_dark_stage"},{"filename":"IMG_7870.PNG","observation_type":"warm_indoor_hand_view"}]}
+      ]
+    }
+  ],
+  "proposed_pattern_changes": [],
+  "proposed_theme_changes": []
+}
