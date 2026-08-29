@@ -1,0 +1,269 @@
+{
+  "contract_version": "P2A-GPT-SEMANTIC-BATCH-V1",
+  "analysis_version": "p2a-vision-v1",
+  "synthesis_analysis_version": "p2a-reference-synthesis-v1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "batch_key": "P2A-GPT-UNPROCESSED-PLUS-NEW-20260829-A",
+  "purpose": "Authoritative GPT semantic analysis for 19 previously unprocessed Inbox images plus 4 newly discovered Inbox images. Codex may deterministically create/link assets/references, import image observations, resolve canonical observation IDs from selectors, and transform synthesis drafts into the existing canonical synthesis contract. Codex must not alter semantic wording or invent additional design claims.",
+  "semantic_boundary": [
+    "OBSERVATION rows describe visible image content.",
+    "INFERENCE rows are assistant design-language interpretations.",
+    "No explicit USER SIGNAL is inferred from mere presence in Inbox.",
+    "Seller/source material labels and promotional claims remain source claims only.",
+    "No mineral species, geological provenance, treatment status, or authenticity is confirmed by this artifact."
+  ],
+  "inventory": {
+    "assets_in_batch": 23,
+    "reference_groups": 12,
+    "previously_unprocessed_assets": 19,
+    "newly_discovered_assets": 4,
+    "current_drive_inventory_note": "Drive metadata inventory on 2026-08-29 exposed four newer images IMG_7864..IMG_7867 in addition to the prior 85-image audit and IMG_7812..7814; expected current Inbox count is 92 if no other items were added after that metadata read."
+  },
+  "reference_groups": [
+    {
+      "reference_group_key": "GPT-NEWREF-A01",
+      "working_name": "Serial Oval Gallery",
+      "source_context": {
+        "account_visible": "PURPLE / Purple Crystal Studio",
+        "source_post_context": "same product shown worn and in a pink display case",
+        "source_claim_boundary": "Any on-screen seller naming is source context only; no mineral identity is confirmed."
+      },
+      "user_signal": null,
+      "assets": [
+        {
+          "filename": "IMG_7703.PNG",
+          "provider": "google_drive",
+          "provider_file_id": "1rKIYCi3qLHUZ2MYgM7Tw38AmWxxBYYXv",
+          "source_content_sha256": "6c6469852fa1f4abf3841d117f5b8081b56cfc8261acec77e2d9fe4e06dbbcd9",
+          "mime_type": "image/png",
+          "width_px": 1179,
+          "height_px": 2556,
+          "byte_size": 4225814
+        },
+        {
+          "filename": "IMG_7704.PNG",
+          "provider": "google_drive",
+          "provider_file_id": "1cC15LUWbf8Z6DXWpsHjj9F8-WtT54B4L",
+          "source_content_sha256": "cc64cfd33a0b01af1c70340e7c686b9123216c858b30b41a874d5e60291dbeca",
+          "mime_type": "image/png",
+          "width_px": 1179,
+          "height_px": 2556,
+          "byte_size": 8222752
+        }
+      ],
+      "image_observations": [
+        {"filename":"IMG_7703.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"framed_module_sequence","observed_value":"Three oversized oval translucent-to-smoky elements are each enclosed by silver-toned bezels and linked as a serial sequence across the top of the wrist.","confidence":"high"},
+        {"filename":"IMG_7703.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"internal_color_variation","observed_value":"The three large oval modules show visibly different internal color zones, including muted pink-brown, smoky gray and gray-green/golden areas.","confidence":"high"},
+        {"filename":"IMG_7703.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"secondary_details","observed_value":"Small silver-toned floral or botanical connectors sit between the large modules and the lower bracelet structure.","confidence":"high"},
+        {"filename":"IMG_7704.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"lower_structure","observed_value":"The lower half shifts from the three heavy oval modules into smaller clear faceted or geometric elements, silver-toned connectors and a loose chain/charms section.","confidence":"high"},
+        {"filename":"IMG_7704.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"display_context","observed_value":"The bracelet is presented inside a pale pink display case with printed paper and soft domestic textiles, creating a romantic gift-like context rather than a clinical product shot.","confidence":"high"},
+        {"filename":"IMG_7703.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"gallery_module_strategy","observed_value":"The repeated oval bezels make the three major stones read as a small gallery of individual framed images rather than one conventional center stone.","confidence":"medium"}
+      ],
+      "reference_synthesis_draft": [
+        {"assertion_key_suffix":"SERIAL-FRAMED","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"serial_framed_gallery","asserted_value":"Three similarly scaled oval framed modules form a gallery-like hero zone; individuality comes from each module's internal visual variation rather than from changing the outer frame grammar.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7703.PNG","observation_type":"framed_module_sequence"},{"filename":"IMG_7703.PNG","observation_type":"internal_color_variation"},{"filename":"IMG_7703.PNG","observation_type":"gallery_module_strategy"}]},
+        {"assertion_key_suffix":"WEIGHT-TRANSITION","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"weight_transition","asserted_value":"The composition transitions from a visually heavy three-module upper section into a lighter lower section of clear geometric elements, small connectors and dangling chain details.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7704.PNG","observation_type":"lower_structure"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"soft_gift_presentation","asserted_value":"A worn close-up is paired with a pale-pink gift/display setting, balancing structural inspection with a softer romantic presentation.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7703.PNG","observation_type":"framed_module_sequence"},{"filename":"IMG_7704.PNG","observation_type":"display_context"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A02","working_name":"Rust Ribbon Rhythm","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7653.PNG","provider":"google_drive","provider_file_id":"1DOx5k3lZSD8n1r5TS3alQqIA6lrAQCkY","source_content_sha256":"2bd0aca39e18d8f4ec561114f040f64b10dd7ed899d0d3c4370e5e707579867c","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":2089589}],
+      "image_observations":[
+        {"filename":"IMG_7653.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"dominant_color_family","observed_value":"Most large round elements share a warm rust, terracotta and translucent clear color family with visible ribbon-like internal variation.","confidence":"high"},
+        {"filename":"IMG_7653.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"geometric_interruptions","observed_value":"Clear rectangular bars and darker faceted or smoky geometric units interrupt the otherwise dominant sequence of large round beads.","confidence":"high"},
+        {"filename":"IMG_7653.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"scale_consistency","observed_value":"The major round elements stay close in scale, so rhythm is driven more by color/internal pattern and shape interruptions than by large size changes.","confidence":"high"},
+        {"filename":"IMG_7653.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"plate_presentation","observed_value":"The bracelet is centered on a clear circular plate over a warm neutral tabletop with a wood strip, producing a clean catalog-like view.","confidence":"high"},
+        {"filename":"IMG_7653.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"designed_simplicity","observed_value":"A narrow warm palette and only a few geometric interruptions create a simple composition that still reads intentionally designed rather than as a uniform strand.","confidence":"medium"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"COLOR-RHYTHM","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"warm_ribbon_color_rhythm","asserted_value":"A repeated rust-to-clear internal color language provides cohesion across similarly scaled round elements.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7653.PNG","observation_type":"dominant_color_family"}]},
+        {"assertion_key_suffix":"INTERRUPTION","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"geometric_rhythm_interruption","asserted_value":"Rectangular clear bars and darker faceted units act as controlled interruptions inside an otherwise round and scale-consistent rhythm.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7653.PNG","observation_type":"geometric_interruptions"},{"filename":"IMG_7653.PNG","observation_type":"scale_consistency"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A03","working_name":"Smoky Landscape Hardware","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7648.PNG","provider":"google_drive","provider_file_id":"1qy_b2Ijg5d84-NX1ianoEKaxrGPNXYWR","source_content_sha256":"f859435c295dd3b1de1610ffff78d3151dd1d52a17509a65f0e77daa85101243","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1976573}],
+      "image_observations":[
+        {"filename":"IMG_7648.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"hero_geometric_piece","observed_value":"A large irregular rectangular-to-polygonal transparent element with dark and rust-colored internal patterning acts as the dominant focal.","confidence":"high"},
+        {"filename":"IMG_7648.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"smoky_clear_sequence","observed_value":"Large clear and smoky round elements repeat around the bracelet in alternating transparent and dark values.","confidence":"high"},
+        {"filename":"IMG_7648.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"metal_language","observed_value":"Silver-toned sculptural caps, flat separators and one ribbed spherical metal bead are used as visible structural accents rather than tiny hidden spacers.","confidence":"high"},
+        {"filename":"IMG_7648.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"focal_capping","observed_value":"The large patterned focal is flanked by silver-toned cap-like hardware, making the transition into the round bead sequence explicit.","confidence":"high"},
+        {"filename":"IMG_7648.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"hardware_structures_focal","observed_value":"Metal hardware functions as part of the focal assembly and overall rhythm, not merely as decorative filler.","confidence":"medium"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"FOCAL-ASSEMBLY","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"hardware_integrated_focal","asserted_value":"The patterned geometric focal and its flanking silver-toned caps operate as one assembled focal system within a clear/smoky round-bead base.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7648.PNG","observation_type":"hero_geometric_piece"},{"filename":"IMG_7648.PNG","observation_type":"focal_capping"},{"filename":"IMG_7648.PNG","observation_type":"hardware_structures_focal"}]},
+        {"assertion_key_suffix":"METAL-RHYTHM","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"visible_metal_rhythm","asserted_value":"Large visible silver-toned separators and a ribbed metal sphere create a second material rhythm alongside the transparent and smoky beads.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7648.PNG","observation_type":"metal_language"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A04","working_name":"Pale Mineral Blocks","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7650.PNG","provider":"google_drive","provider_file_id":"1fmnzMkCa5L1b3si0qGImq5dV4eHB_P9f","source_content_sha256":"55193b2fc1edf9fd286839d8b66e645189e1da9afe39b81deee9abcac89d9ec9","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1885195}],
+      "image_observations":[
+        {"filename":"IMG_7650.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"muted_palette","observed_value":"Large round elements alternate among clear, pale yellow-green, soft green and smoky brown with one red-brown patterned round.","confidence":"high"},
+        {"filename":"IMG_7650.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"clear_block_interruptions","observed_value":"Two clear rectangular or faceted block-like elements interrupt the round sequence.","confidence":"high"},
+        {"filename":"IMG_7650.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"low_hardware_presence","observed_value":"Visible metal hardware is nearly absent, allowing the transparent material, color and geometry to carry the design.","confidence":"high"},
+        {"filename":"IMG_7650.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"quiet_color_blocking","observed_value":"The bracelet gains structure from restrained color blocking and transparent geometric interruptions rather than from decorative hardware.","confidence":"medium"},
+        {"filename":"IMG_7650.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"neutral_catalog_view","observed_value":"The bracelet is isolated on a clear dish against a warm neutral tabletop, emphasizing color and transparency without additional props.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[{"assertion_key_suffix":"QUIET-COLOR","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"quiet_color_blocking","asserted_value":"A restrained clear/green/smoky palette is organized by two transparent block-like interruptions, producing low-complexity but deliberate visual rhythm.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7650.PNG","observation_type":"muted_palette"},{"filename":"IMG_7650.PNG","observation_type":"clear_block_interruptions"},{"filename":"IMG_7650.PNG","observation_type":"quiet_color_blocking"}]}]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A05","working_name":"Clear Inclusion Study","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7652.PNG","provider":"google_drive","provider_file_id":"1WGdMrPmCvv5byZV6H9lyf8BrfPMpg86U","source_content_sha256":"ed208bbc7b503e3b91c90b7715a82efe8ca33ecedc35a81e4fe9b5bf7a079640","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1831686}],
+      "image_observations":[
+        {"filename":"IMG_7652.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"high_transparency_base","observed_value":"The bracelet is dominated by highly transparent clear round elements, several with fine dark or green speckled inclusions.","confidence":"high"},
+        {"filename":"IMG_7652.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"clear_geometric_forms","observed_value":"Transparent rectangular or elongated geometric elements appear among the large round beads without changing the color palette.","confidence":"high"},
+        {"filename":"IMG_7652.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"micro_metal_accent","observed_value":"A very small silver-toned leaf-like charm is the only prominent non-transparent accent.","confidence":"high"},
+        {"filename":"IMG_7652.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"optical_detail_focus","observed_value":"Because color contrast is minimal, internal inclusions, clarity and cut geometry become the primary sources of visual interest.","confidence":"medium"},
+        {"filename":"IMG_7652.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"inspection_view","observed_value":"The neutral dish presentation and overhead angle make clarity, inclusions and geometric interruptions easy to inspect.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[{"assertion_key_suffix":"OPTICAL-DETAIL","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"optical_detail_first","asserted_value":"The design suppresses color and hardware complexity so transparency, inclusions and subtle shape changes carry most of the visual information.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7652.PNG","observation_type":"high_transparency_base"},{"filename":"IMG_7652.PNG","observation_type":"clear_geometric_forms"},{"filename":"IMG_7652.PNG","observation_type":"optical_detail_focus"}]}]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A06","working_name":"Smoky Oval Anchor","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7651.PNG","provider":"google_drive","provider_file_id":"1Iq-UzT14Cxme2gaGTvAEAhRYD6YAD_hw","source_content_sha256":"c6e6d35fd89bdc55a5b43f5b3430802149e2eea6b6c828e029819a66e31e2985","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1830563}],
+      "image_observations":[
+        {"filename":"IMG_7651.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"oversized_oval_anchor","observed_value":"One oversized dark smoky oval element is visibly larger than the surrounding round beads and acts as a strong visual anchor.","confidence":"high"},
+        {"filename":"IMG_7651.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"smoky_clear_alternation","observed_value":"Clear and smoky round elements alternate around the bracelet with relatively even scale.","confidence":"high"},
+        {"filename":"IMG_7651.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"metal_counterweight","observed_value":"A large ribbed silver-toned spherical bead and several flat silver separators create a secondary metallic counterweight to the dark oval.","confidence":"high"},
+        {"filename":"IMG_7651.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"dual_anchor_balance","observed_value":"The composition reads as a balance between a dark oversized oval on one side and a bright textured metal sphere on the other rather than a centered focal arrangement.","confidence":"medium"},
+        {"filename":"IMG_7651.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"neutral_catalog_view","observed_value":"The overhead clear-dish presentation isolates the scale and material contrast of the dark oval, clear rounds and metal sphere.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[{"assertion_key_suffix":"DUAL-ANCHOR","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"opposed_anchor_balance","asserted_value":"A large dark oval and a ribbed silver-toned sphere create two different visual anchors across a mostly clear/smoky round-bead base.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7651.PNG","observation_type":"oversized_oval_anchor"},{"filename":"IMG_7651.PNG","observation_type":"metal_counterweight"},{"filename":"IMG_7651.PNG","observation_type":"dual_anchor_balance"}]}]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A07","working_name":"Cloud Smoke Wood Punctuation","source_context":{"account_visible":"YUHER Crystal","source_post_title_visible":"被6w人看过的 新款手串大上新 姐妹爱得不行","source_claim_boundary":"Hashtags and any seller naming are source-stated context only; no mineral identity is confirmed."},"user_signal":null,
+      "assets":[{"filename":"IMG_7649.PNG","provider":"google_drive","provider_file_id":"1K_YRp3yk7REXRE0o9_OcJFMVc1Dy1AjV","source_content_sha256":"d750851f0ef7be7dedeec7b3b103312234868afe23f8cc5be99488fb4f10e48c","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1613697}],
+      "image_observations":[
+        {"filename":"IMG_7649.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"high_contrast_palette","observed_value":"Cloudy white and very dark smoky round elements alternate with a few clear-to-gray geometric units.","confidence":"high"},
+        {"filename":"IMG_7649.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"brown_spacer_cluster","observed_value":"A compact group of thin dark-brown disc-like spacers creates a warm matte interruption among glossy stone-like elements.","confidence":"high"},
+        {"filename":"IMG_7649.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"shape_interruptions","observed_value":"A faceted smoky polygon and a rectangular translucent element with a dark-to-clear gradient interrupt the dominant round-bead sequence.","confidence":"high"},
+        {"filename":"IMG_7649.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"material_contrast_punctuation","observed_value":"The small brown spacer cluster functions as tactile material punctuation between large glossy elements; it visually resembles wood but material identity is not confirmed.","confidence":"medium"},
+        {"filename":"IMG_7649.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"neutral_catalog_view","observed_value":"The simple overhead dish view emphasizes the black-white contrast and small warm spacer cluster.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"CONTRAST","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"black_white_warm_contrast","asserted_value":"Cloudy white and dark smoky rounds establish a high-contrast base, while a small warm-brown spacer cluster adds a third tactile register.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7649.PNG","observation_type":"high_contrast_palette"},{"filename":"IMG_7649.PNG","observation_type":"brown_spacer_cluster"}]},
+        {"assertion_key_suffix":"PUNCTUATION","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"small_matte_punctuation","asserted_value":"A compact matte-looking brown spacer group breaks the glossy large-bead rhythm without competing in scale.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7649.PNG","observation_type":"material_contrast_punctuation"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A08","working_name":"Forest Framed Relic","source_context":{"account_visible":"扶光谣 Radiance","source_text_visible":"Wood&Crystal; seller-provided material names visible in caption","source_claim_boundary":"Seller material names are source claims only and are not promoted into confirmed mineral facts."},"user_signal":null,
+      "assets":[{"filename":"IMG_7637.PNG","provider":"google_drive","provider_file_id":"16wSJ3u2ACzlW1f-ufcga7EXrocFiF4eT","source_content_sha256":"74bd05bc969156a692b3e4bf3ef3fc1f37436209447a25997a0868cd03735af9","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1795852}],
+      "image_observations":[
+        {"filename":"IMG_7637.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"framed_oval_focal","observed_value":"A large oval green-gray translucent element enclosed by an ornate silver-toned frame is the dominant focal.","confidence":"high"},
+        {"filename":"IMG_7637.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"mixed_shape_base","observed_value":"The surrounding structure combines mostly round green-gray elements with one pale cube-like element and several irregular or faceted units.","confidence":"high"},
+        {"filename":"IMG_7637.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"small_brown_cluster","observed_value":"A small cluster of dark-brown round beads sits off-center near the pale geometric element and contrasts with the cooler glossy materials.","confidence":"high"},
+        {"filename":"IMG_7637.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"silver_secondary_line","observed_value":"Silver-toned leaf-like links and an extension chain create a downward secondary line from the focal zone.","confidence":"high"},
+        {"filename":"IMG_7637.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"forest_relic_mood","observed_value":"The framed oval, mossy green-gray palette, small brown cluster and botanical metal details together create a forest-relic impression; this is a design inference, not a material claim.","confidence":"medium"},
+        {"filename":"IMG_7637.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"four_view_collage","observed_value":"The source uses a four-view collage including hand-held, worn and prop-supported views to show both full structure and focal scale.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"FRAMED-RELIC","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"framed_forest_relic","asserted_value":"An ornate framed oval serves as a relic-like hero while cooler green-gray rounds, one pale cube and a small warm-brown cluster create asymmetric supporting structure.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7637.PNG","observation_type":"framed_oval_focal"},{"filename":"IMG_7637.PNG","observation_type":"mixed_shape_base"},{"filename":"IMG_7637.PNG","observation_type":"small_brown_cluster"},{"filename":"IMG_7637.PNG","observation_type":"forest_relic_mood"}]},
+        {"assertion_key_suffix":"BOTANICAL-LINE","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"botanical_secondary_line","asserted_value":"Leaf-like silver-toned links and a hanging chain extend the focal vertically and make the metal language part of the silhouette.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7637.PNG","observation_type":"silver_secondary_line"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A09","working_name":"Qingyue Black-Green Forest","source_context":{"account_visible":"文成 WENCEN","source_design_name_visible":"青樾","source_claim_boundary":"Visible seller naming and material claims remain source context only."},"user_signal":null,
+      "assets":[
+        {"filename":"IMG_7641.PNG","provider":"google_drive","provider_file_id":"1_OoeIFpoyOG6fkPN3tnPm29rXLsbXTZ9","source_content_sha256":"7d5c028da98aa6f9d1fb7b8d1418d4a7c03bc3230abc7596b97d7735e0bbf4f0","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1780127},
+        {"filename":"IMG_7645.PNG","provider":"google_drive","provider_file_id":"1xAhQFowt60yxCR447ygdkXy-R-2gYgSy","source_content_sha256":"66d2f96ae0314115467939e76b35bf6e0cc416fea4b3d035a7b06511963a14a7","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":798467},
+        {"filename":"IMG_7646.PNG","provider":"google_drive","provider_file_id":"1_sf6t5lrDy5_6OexvkDCwmUbL9i0AyZ2","source_content_sha256":"cc4ad67d53ab1de08862b8064331457040646949202cbfdc2a43cb5ea83591c5","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":826437},
+        {"filename":"IMG_7642.JPG","provider":"google_drive","provider_file_id":"18KdF4nd646AC-yjxoLkUBmY_IdIm4MgR","source_content_sha256":"2847d01a51bff861134b3b816964712214e0bfcbd9754d45857a3fd95c52a90b","mime_type":"image/jpeg","width_px":1440,"height_px":1920,"byte_size":213078},
+        {"filename":"IMG_7643.JPG","provider":"google_drive","provider_file_id":"1IoSyfNlFCvtrjQhWiGydcepilnaYWcH-","source_content_sha256":"218d27af9132de4c53af919b0092281e0749758c4b301e02ba8911884244992d","mime_type":"image/jpeg","width_px":1440,"height_px":1920,"byte_size":193640},
+        {"filename":"IMG_7644.JPG","provider":"google_drive","provider_file_id":"1wXZ-aXWOb7UPeEKs0p7ArZOF9_vGjXmm","source_content_sha256":"e63e1e408aeedc5f227da81d950e8f975d4f421bd656976ff16a1a630e9bba02","mime_type":"image/jpeg","width_px":1440,"height_px":1920,"byte_size":221907}
+      ],
+      "image_observations":[
+        {"filename":"IMG_7641.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"black_green_palette","observed_value":"The bracelet uses a tightly controlled palette of deep black, dark emerald, medium moss green and translucent pale green with restrained silver-toned accents.","confidence":"high"},
+        {"filename":"IMG_7641.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"forest_moodboard","observed_value":"The promotional collage directly pairs bracelet details with dense green forest imagery, reinforcing a dark woodland visual narrative.","confidence":"high"},
+        {"filename":"IMG_7645.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"faceted_black_focal","observed_value":"A large black faceted polygonal element breaks the round-bead sequence and is visually attached to a small silver leaf-like detail.","confidence":"high"},
+        {"filename":"IMG_7645.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"round_rhythm","observed_value":"Most of the bracelet is built from similarly scaled glossy round elements whose main variation is black-to-green color and internal texture.","confidence":"high"},
+        {"filename":"IMG_7645.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"micro_cluster","observed_value":"A compact cluster of much smaller translucent green round elements appears on one side, creating a local scale change.","confidence":"high"},
+        {"filename":"IMG_7645.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"chain_extension","observed_value":"A silver-toned leaf-link and short extension chain hang from the black focal area.","confidence":"high"},
+        {"filename":"IMG_7646.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"controlled_asymmetry","observed_value":"The black faceted focal and small green cluster occupy different parts of the bracelet, creating asymmetry while the repeated round base preserves overall stability.","confidence":"medium"},
+        {"filename":"IMG_7642.JPG","observation_scope":"product_design","assertion_class":"observation","observation_type":"alternate_overall_view","observed_value":"An isolated full-product view confirms the black faceted focal, round green/black sequence, small green cluster and hanging silver extension as persistent structural features.","confidence":"high"},
+        {"filename":"IMG_7643.JPG","observation_scope":"product_design","assertion_class":"observation","observation_type":"alternate_overall_view","observed_value":"A second isolated view shows the same focal-to-cluster asymmetry from a slightly changed rotation.","confidence":"high"},
+        {"filename":"IMG_7644.JPG","observation_scope":"product_design","assertion_class":"observation","observation_type":"alternate_overall_view","observed_value":"A third isolated view confirms that the design remains visually coherent around the full circumference rather than only from one promotional angle.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"COLOR","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"deep_forest_palette","asserted_value":"A narrow black-to-emerald-to-moss palette keeps the overall bracelet visually quiet despite internal texture variation.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7641.PNG","observation_type":"black_green_palette"}]},
+        {"assertion_key_suffix":"FOCAL","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"faceted_focal_interruption","asserted_value":"One large black faceted polygon acts as the principal shape interruption within a mostly round composition.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7645.PNG","observation_type":"faceted_black_focal"},{"filename":"IMG_7645.PNG","observation_type":"round_rhythm"}]},
+        {"assertion_key_suffix":"ASYM","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"stable_asymmetry","asserted_value":"The off-center faceted focal and separate micro-cluster create asymmetric interest while the continuous repeated round base keeps the bracelet stable at a distance.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7645.PNG","observation_type":"micro_cluster"},{"filename":"IMG_7646.PNG","observation_type":"controlled_asymmetry"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"explicit_forest_moodboard","asserted_value":"Product views are paired with dense forest photography, making the promotional narrative unusually explicit and directly color-matched to the bracelet.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7641.PNG","observation_type":"forest_moodboard"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A10","working_name":"Annual Rings / Patterned Earth","source_context":{"account_visible":"时迹 TimeTrace","source_design_name_visible":"年轮","source_material_labels_visible":["墨西哥玛瑙","黑玛瑙","阿拉善","淡水珍珠"],"source_claim_boundary":"All visible material labels are seller/source claims only."},"user_signal":null,
+      "assets":[
+        {"filename":"IMG_7684.PNG","provider":"google_drive","provider_file_id":"1NtjxuaXjHm5Xa4bbXERxmBLUDeXM6WsG","source_content_sha256":"0c6f89ddd5d069bbab2989c067eb4795f53a428f44a6bfdbd1418ca9d0ab0681","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":655389},
+        {"filename":"IMG_7685.PNG","provider":"google_drive","provider_file_id":"16Cg1FPV9T00WDT4kuThRW-1XFhKqgGKs","source_content_sha256":"a2fe1b1847b7f04e65dffb9bd1688a4f98258f08f23bdd69a24a593aa2edd486","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1408017}
+      ],
+      "image_observations":[
+        {"filename":"IMG_7684.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"earth_neutral_palette","observed_value":"The composition uses cream, beige, taupe, gray-brown and glossy black with very little saturated color.","confidence":"high"},
+        {"filename":"IMG_7684.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"patterned_surface_emphasis","observed_value":"Several large round elements show strong banded, carved-looking or layered natural-pattern appearances that remain visually distinct from bead to bead.","confidence":"high"},
+        {"filename":"IMG_7684.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"small_cluster_interruptions","observed_value":"A compact cluster of small glossy black beads and a separate small pearl-like cluster interrupt the dominant large-bead scale.","confidence":"high"},
+        {"filename":"IMG_7685.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"shape_variation","observed_value":"The otherwise round composition includes one pale irregular rounded form and one darker flattened or pebble-like irregular element.","confidence":"high"},
+        {"filename":"IMG_7685.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"pattern_over_color","observed_value":"Individual surface patterns and geological-looking markings carry more visual identity than color contrast; the neutral palette allows those patterns to remain legible.","confidence":"medium"},
+        {"filename":"IMG_7684.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"color_swatch_layout","observed_value":"The promotional layout uses a white field, restrained typography and a vertical set of neutral color swatches next to the bracelet.","confidence":"high"},
+        {"filename":"IMG_7685.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"minimal_detail_view","observed_value":"A second minimal white-background view removes most annotation and lets the patterned surfaces and small cluster details dominate.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"PATTERN-FIRST","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"pattern_first_neutral_composition","asserted_value":"A restrained cream/taupe/black palette acts as a neutral field for strong bead-to-bead surface pattern variation, so pattern rather than hue becomes the main source of identity.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7684.PNG","observation_type":"earth_neutral_palette"},{"filename":"IMG_7684.PNG","observation_type":"patterned_surface_emphasis"},{"filename":"IMG_7685.PNG","observation_type":"pattern_over_color"}]},
+        {"assertion_key_suffix":"SCALE-CLUSTERS","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"micro_cluster_interruptions","asserted_value":"Two small-scale clusters interrupt the large-bead rhythm without introducing a new dominant color system.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7684.PNG","observation_type":"small_cluster_interruptions"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"neutral_swatch_editorial","asserted_value":"White-space-heavy product photography and neutral color swatches frame the bracelet as a restrained material/pattern study.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7684.PNG","observation_type":"color_swatch_layout"},{"filename":"IMG_7685.PNG","observation_type":"minimal_detail_view"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A11","working_name":"Dark Red-Brown Geological Ensemble","source_context":{"account_visible":"Moss Mist 苔雾","source_text_visible":["暗调红棕 年度复古流行色","ORIGINAL DESIGN HANDMADE","天然唯一性孤品"],"source_claim_boundary":"Visible material names, naturalness claims and sizes are seller/source claims only."},"user_signal":null,
+      "assets":[
+        {"filename":"IMG_7701.PNG","provider":"google_drive","provider_file_id":"1xT_aUMFxNzXE7Goe7JEg8AkdyBxMlHnT","source_content_sha256":"d24789e6e4cc4a76c31185fc8aa36d4d9c317438a3d3968d219c236518732e32","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":841983},
+        {"filename":"IMG_7702.PNG","provider":"google_drive","provider_file_id":"1wItXj-SI33FDRNB7Nm7CpAKLyzzmqr-W","source_content_sha256":"02ea3c4558e924e2dd1a9e828d942bff7772292c9c60ac0942a75515e10daa40","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":919460}
+      ],
+      "image_observations":[
+        {"filename":"IMG_7701.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"large_scale_units","observed_value":"The bracelet is built almost entirely from very large units with visibly different shapes, surfaces and internal patterns.","confidence":"high"},
+        {"filename":"IMG_7701.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"heterogeneous_shape_mix","observed_value":"Rounds coexist with a cube-like dark element, a polygonal rust-patterned element and several highly individualized irregular-looking pieces.","confidence":"high"},
+        {"filename":"IMG_7701.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"dark_warm_palette","observed_value":"Black, dark brown, rust, amber, cream, muted yellow-green and deep berry-red form a dark warm multicolor palette.","confidence":"high"},
+        {"filename":"IMG_7701.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"minimal_spacer_hardware","observed_value":"Only very small silver-toned spacers are visible between some large units, so hardware does not visually unify the bracelet.","confidence":"high"},
+        {"filename":"IMG_7702.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"side_specific_composition","observed_value":"The source labels a particular orientation as side A, emphasizing that the bracelet has a deliberately arranged side-specific composition.","confidence":"high"},
+        {"filename":"IMG_7702.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"curated_geological_ensemble","observed_value":"The design reads as a curated ensemble of individually distinctive geological-looking objects, held together by a dark warm palette rather than by repeated shape or hardware.","confidence":"medium"},
+        {"filename":"IMG_7702.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"editorial_poster","observed_value":"The product is shown on a white editorial poster with burgundy serif typography and short English text blocks, producing a fashion-editorial rather than marketplace-catalog presentation.","confidence":"high"},
+        {"filename":"IMG_7701.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"component_annotation","observed_value":"One source view annotates individual elements with seller-provided names and nominal sizes around the bracelet.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"CURATED-ENSEMBLE","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"curated_large_scale_ensemble","asserted_value":"Very large, individually distinctive units with different geometries and surface patterns are composed as an ensemble; cohesion comes primarily from a dark red-brown/black/cream palette rather than from uniform form.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7701.PNG","observation_type":"large_scale_units"},{"filename":"IMG_7701.PNG","observation_type":"heterogeneous_shape_mix"},{"filename":"IMG_7701.PNG","observation_type":"dark_warm_palette"},{"filename":"IMG_7702.PNG","observation_type":"curated_geological_ensemble"}]},
+        {"assertion_key_suffix":"HARDWARE-ABSENCE","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"minimal_hardware_visibility","asserted_value":"Hardware is reduced to tiny separators, allowing the large material-like units to dominate nearly the entire visual field.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7701.PNG","observation_type":"minimal_spacer_hardware"}]},
+        {"assertion_key_suffix":"SIDE","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"side_specific_arrangement","asserted_value":"The explicit side-A presentation indicates that placement around the circumference is treated as composed rather than interchangeable.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7702.PNG","observation_type":"side_specific_composition"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"burgundy_editorial_system","asserted_value":"White space, burgundy serif typography, component annotation and side labeling frame the bracelet as a collectible design object rather than a generic bead strand.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7702.PNG","observation_type":"editorial_poster"},{"filename":"IMG_7701.PNG","observation_type":"component_annotation"}]}
+      ]
+    },
+    {
+      "reference_group_key":"GPT-NEWREF-A12","working_name":"Black Gold Nocturne","source_context":{"account_visible":"Xuan Crystal Studio","source_text_visible":["Everything goes as you wish","All things are natural"],"source_caption_visible":"精致高级｜贵气故事感｜秋色鎏金｜茶色沉稳，是底气。金色微闪，是锋芒在外…","source_claim_boundary":"Source promotional wording and any implied material identity are not treated as confirmed facts."},"user_signal":null,
+      "assets":[
+        {"filename":"IMG_7864.PNG","provider":"google_drive","provider_file_id":"1m-xOph_0C1Sudgdb0Id6MV8LuzLB9Be5","source_content_sha256":"cf7ae757af473f315118dc50246250445bb3aa92f0a5a735906685600f174ae7","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":1899845},
+        {"filename":"IMG_7865.PNG","provider":"google_drive","provider_file_id":"1X1GHnY9lyl68x0PTFK12vDPsL10IVgbM","source_content_sha256":"54fd51cf18ff2d7ddde7af0f4c485f93d80bbbf18e92cf0565fabcd0c14f15ff","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":2944487},
+        {"filename":"IMG_7866.PNG","provider":"google_drive","provider_file_id":"10mvc_tXYV3_RDKUiFBblCfx0UXYhbDbU","source_content_sha256":"82fe7b9fa7ba7facbd11bdf2e3d08cd84df32b8b8789f57cf72e8bd70178a7c7","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":2065112},
+        {"filename":"IMG_7867.PNG","provider":"google_drive","provider_file_id":"1uzea5_5OHTpWYvybnSU6D4E_WLfq8SQe","source_content_sha256":"a2ca1194a708274941621867156d0f0f50bec5dc859366c39c708098937ead3c","mime_type":"image/png","width_px":1179,"height_px":2556,"byte_size":2539530}
+      ],
+      "image_observations":[
+        {"filename":"IMG_7864.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"black_smoky_clear_palette","observed_value":"The bracelet combines glossy black, smoky brown, clear transparent elements and one pale pearl-like round element with gold-toned hardware.","confidence":"high"},
+        {"filename":"IMG_7864.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"gold_hardware_language","observed_value":"Gold-toned caps, links, small beads and a dangling chain are used repeatedly and visibly across the composition.","confidence":"high"},
+        {"filename":"IMG_7864.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"dark_geometric_focal","observed_value":"A large dark faceted geometric element creates a strong non-round focal interruption.","confidence":"high"},
+        {"filename":"IMG_7864.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"micro_bead_line","observed_value":"A narrow secondary line of very small black and gold beads runs off the main bracelet body, creating a fine-scale counterpoint to the large beads.","confidence":"high"},
+        {"filename":"IMG_7865.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"chain_extension","observed_value":"A long gold-toned chain extension leaves the bracelet and creates a strong linear tail on the dark surface.","confidence":"high"},
+        {"filename":"IMG_7865.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"dark_reflective_stage","observed_value":"The bracelet is staged on a dark reflective or metallic rectangular surface under dramatic directional light.","confidence":"high"},
+        {"filename":"IMG_7866.PNG","observation_scope":"product_design","assertion_class":"observation","observation_type":"worn_scale","observed_value":"A hand-held view shows the large bead scale, asymmetry and hanging chain relative to the hand.","confidence":"high"},
+        {"filename":"IMG_7866.PNG","observation_scope":"product_design","assertion_class":"inference","observation_type":"luxury_contrast_strategy","observed_value":"The design uses high black-to-gold contrast and mixed glossy transparency to create a more overtly luxurious, nocturnal impression than the quieter silver-toned references.","confidence":"medium"},
+        {"filename":"IMG_7867.PNG","observation_scope":"promotional_visual","assertion_class":"observation","observation_type":"close_detail_dark","observed_value":"A tight dark-background close-up emphasizes reflections, gold micro-details and clear-versus-smoky optical contrast.","confidence":"high"}
+      ],
+      "reference_synthesis_draft":[
+        {"assertion_key_suffix":"COLOR-METAL","synthesis_scope":"product_design","assertion_class":"observation","assertion_type":"black_gold_nocturne","asserted_value":"Glossy black, smoky and clear large elements are tied together by repeated bright gold-toned hardware, producing a high-contrast dark-luxury palette.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7864.PNG","observation_type":"black_smoky_clear_palette"},{"filename":"IMG_7864.PNG","observation_type":"gold_hardware_language"}]},
+        {"assertion_key_suffix":"MULTISCALE","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"multi_scale_gold_line","asserted_value":"A dark faceted focal, large rounded elements, a micro-bead secondary line and a long chain tail create multiple scales and directions without relying on color variety.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7864.PNG","observation_type":"dark_geometric_focal"},{"filename":"IMG_7864.PNG","observation_type":"micro_bead_line"},{"filename":"IMG_7865.PNG","observation_type":"chain_extension"}]},
+        {"assertion_key_suffix":"LUXURY","synthesis_scope":"product_design","assertion_class":"inference","assertion_type":"overt_luxury_contrast","asserted_value":"The black-gold contrast, polished surfaces and visible chain hardware make the design read as intentionally more decorative and overtly luxurious than the project's quieter silver-based references.","confidence":"medium","source_observation_selectors":[{"filename":"IMG_7866.PNG","observation_type":"luxury_contrast_strategy"}]},
+        {"assertion_key_suffix":"PROMO","synthesis_scope":"promotional_visual","assertion_class":"observation","assertion_type":"dramatic_dark_editorial","asserted_value":"Dark reflective staging, directional highlights and tight close-ups amplify gold reflections and transparency, making the promotional language strongly editorial and dramatic.","confidence":"high","source_observation_selectors":[{"filename":"IMG_7865.PNG","observation_type":"dark_reflective_stage"},{"filename":"IMG_7867.PNG","observation_type":"close_detail_dark"}]}
+      ]
+    }
+  ],
+  "proposed_pattern_changes": [],
+  "proposed_theme_changes": [],
+  "proposed_preference_changes": []
+}
