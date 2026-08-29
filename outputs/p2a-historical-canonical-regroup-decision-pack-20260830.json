@@ -1,0 +1,86 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-DECISION",
+  "status": "WAITING_FOR_USER_HIGH_RISK_AUTHORIZATION",
+  "producer": "gpt-5.6-sol",
+  "drive_state": {
+    "inbox_image_count": 0,
+    "reviewed_image_count_expected": 94,
+    "rule": "Inbox contains only images not yet GPT-analyzed; Reviewed contains images whose GPT visual analysis is safely preserved.",
+    "note": "All currently known images have completed GPT visual analysis and were moved from Inbox to Reviewed. Canonical DB ingestion status is independent of Drive review status."
+  },
+  "authoritative_semantic_inputs": [
+    "inputs/p2a-2r-vision-observations.json",
+    "inputs/p2a-3s1-reference-synthesis.json",
+    "inputs/p2a-historical-upgrade-b01-vision-observations.json",
+    "inputs/p2a-new-reference-cretaceous-coast-fragments-image-observations.json",
+    "inputs/p2a-gpt-unprocessed-plus-new-20260829-a.json",
+    "inputs/p2a-gpt-historical-late-b.json",
+    "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json",
+    "inputs/p2a-gpt-new-reference-gray-fog-wood-anchor-20260830.json"
+  ],
+  "canonical_db_last_verified_baseline": {
+    "image_visual_observations": 80,
+    "synthesis_assertions": 19,
+    "synthesis_sources": 37,
+    "sha256": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2",
+    "note": "This is the last verified local canonical baseline before the pending additive imports. Do not claim the new GPT semantic batches are canonical until Codex imports and validates them."
+  },
+  "high_risk_issue": {
+    "reason": "Historical canonical design-reference grouping contains both same-carousel multi-design bundling and cross-reference boundary errors. Fixing it requires splitting existing canonical references and reassigning existing asset links; associated reference-level semantic/link tables must be audited to avoid inheriting mixed old meaning.",
+    "reference_splits": [
+      {
+        "existing_reference": "REF-000003",
+        "current_assets": ["IMG_7654.PNG", "IMG_7655.PNG", "IMG_7656.PNG"],
+        "finding": "three visually different bracelet designs from one YUHER carousel were bundled into one design reference",
+        "recommended_result": [
+          {"group": "EARLY-C01", "assets": ["IMG_7654.PNG"]},
+          {"group": "EARLY-C02", "assets": ["IMG_7655.PNG"]},
+          {"group": "EARLY-C03", "assets": ["IMG_7656.PNG"]}
+        ]
+      },
+      {
+        "existing_reference": "REF-000004",
+        "current_assets": ["IMG_7661.PNG", "IMG_7662.PNG", "IMG_7663.PNG", "IMG_7664.PNG"],
+        "finding": "four visually different bracelet designs from one carousel were bundled into one design reference",
+        "recommended_result": [
+          {"group": "EARLY-C04", "assets": ["IMG_7661.PNG"]},
+          {"group": "EARLY-C05", "assets": ["IMG_7662.PNG"]},
+          {"group": "EARLY-C06", "assets": ["IMG_7663.PNG"]},
+          {"group": "EARLY-C07", "assets": ["IMG_7664.PNG"]}
+        ]
+      }
+    ],
+    "high_confidence_asset_moves": [
+      {"asset": "IMG_7678.PNG", "from": "REF-000008", "to": "REF-000009", "reason": "same WyStudio post/product as IMG_7679-7680; different account/product from IMG_7676-7677"},
+      {"asset": "IMG_7688.PNG", "from": "REF-000011", "to": "REF-000012", "reason": "same free～寒仔 framed-green product as IMG_7689; different account/product from IMG_7686-7687"},
+      {"asset": "IMG_7690.PNG", "from": "REF-000012", "to": "REF-000013", "reason": "same Radiance 深海余烬 product as IMG_7691-7692; different account/product from IMG_7688-7689"},
+      {"asset": "IMG_7696.PNG", "from": "REF-000014", "to": "REF-000015", "reason": "same dark framed gothic product as IMG_7697; different account/product from pale Moss Mist IMG_7693-7694"},
+      {"asset": "IMG_7698.PNG", "from": "REF-000015", "to": "REF-000016", "reason": "same VeryLan 雪国 product as IMG_7699-7700; different account/product from IMG_7696-7697"}
+    ]
+  },
+  "recommended_execution_policy": {
+    "recommendation": "AUTHORIZE_CORRECTION",
+    "why": [
+      "Design Reference is intended to represent one design/product composition, not an entire carousel containing multiple products.",
+      "Leaving the bundling in place contaminates future pattern frequency, theme evidence and preference/design assessment attribution.",
+      "The five boundary moves are supported by source-account/product continuity, not weak visual similarity alone.",
+      "The correction is recoverable if performed transactionally with a pre-write DB backup, exact before/after manifests and no deletion of raw evidence."
+    ],
+    "safe_method": [
+      "Create timestamped canonical DB backup and record pre-write SHA-256.",
+      "Run read-only impact audit over design_reference, design_reference_image, preference evidence, assessments, pattern/theme relations and synthesis/observation tables before mutation.",
+      "Preserve original REF-000003 and REF-000004 keys for one surviving group each where semantically least disruptive; create new reference keys for the additional groups rather than renumbering existing references.",
+      "Move only the exact five high-confidence cross-boundary assets listed above.",
+      "For any reference-level historical relation whose meaning cannot be unambiguously assigned after a split, do not guess: preserve provenance but mark/quarantine it for review rather than copying it to every child reference.",
+      "Do not delete image observations, raw source evidence or user-signal history.",
+      "Recompute only deterministic linkage/status outputs; do not invent new pattern/theme/preference relations.",
+      "Validate foreign keys, integrity, row-count deltas, replay/idempotency, canonical fingerprints and full tests before commit."
+    ]
+  },
+  "user_decision_required": {
+    "option_A_recommended": "Authorize the HIGH_RISK canonical regroup correction described above, then proceed with safe additive semantic imports and full validation.",
+    "option_B": "Keep the historical canonical grouping unchanged. Import additive semantics only; retain known grouping defects as documented technical debt.",
+    "decision_effect": "Option A changes historical canonical reference structure but improves semantic integrity. Option B avoids mutation now but knowingly leaves reference-level analytics and future design-DNA inference contaminated."
+  }
+}
