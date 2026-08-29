@@ -1,0 +1,262 @@
+{
+  "contract_version": "P2A-GPT-HISTORICAL-REGROUP-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "analysis_version": "p2a-vision-v1",
+  "batch_key": "P2A-GPT-HISTORICAL-EARLY-C",
+  "purpose": "Authoritative GPT visual analysis for early historical references plus an evidence-backed regroup proposal. Semantic analysis is complete for the listed assets. Canonical regrouping is intentionally NOT authorized by this artifact.",
+  "semantic_boundary": [
+    "OBSERVATION means directly visible image content.",
+    "INFERENCE means assistant design-language interpretation.",
+    "Seller/source material names and promotional claims remain source claims only.",
+    "No mineral species, authenticity, treatment or geological provenance is confirmed from images.",
+    "Presence in Inbox is not USER SIGNAL.",
+    "Existing canonical asset/reference moves, splits, rewrites or deletions require separate HIGH_RISK authorization because they change historical canonical grouping."
+  ],
+  "asset_provenance": {
+    "IMG_7654.PNG":{"provider_file_id":"1hj2QRlH8MnYyw7xrgikFNGhZLD03St89","sha256":"818d8910868f5cf850d8fc66f88bfbbf1b5a52d17bddcdb8a99a9c80fb64aad1"},
+    "IMG_7655.PNG":{"provider_file_id":"1ZbQ0LL-80y1QZ2H2GPLbvzKCEfZr98jM","sha256":"690e84ff1ace47298cdf0588d3a2847a23adda4d64afc53aca0c6d4a26937941"},
+    "IMG_7656.PNG":{"provider_file_id":"1YMfxRardSZx_zb87Q04pE7x222MUnKkM","sha256":"735934d7f6be3b63be801ab244e146155a9d0006ae8ef9df3d6acb63d33b8ec9"},
+    "IMG_7661.PNG":{"provider_file_id":"1yVBvWRRw8JzBgjh3uzJVjcrZqklUka9f","sha256":"d5d99f5e65fa2ca55c471de1ade00a38c13e2e936b6ba6177d9d267183b4bfaf"},
+    "IMG_7662.PNG":{"provider_file_id":"1f4nNqRLRAFuQzgKFFvjxwjmY1bBsH3Fc","sha256":"089dce92eb30bffd9cb1beb3abc7ba838cef99e0b38b7668440dd91419a5ea0a"},
+    "IMG_7663.PNG":{"provider_file_id":"1WrSmABFhGV57RKoobxaj4UltsH5SmggB","sha256":"79ee3ddc5d0dae88e558a634a7a26e5f188ddf26f14f493411f5cacf7aee8fc6"},
+    "IMG_7664.PNG":{"provider_file_id":"17-WIlGmvB7KaCQdPw4nCLRHIeb3Qe8ZC","sha256":"19c1b7c483d90983ee79230e1e80f2bfbaa37ce5dfebf1312119e637090c41f1"},
+    "IMG_7665.PNG":{"provider_file_id":"1Odil74MLOTKH9U_hy7A4dfvy0H992XDi","sha256":"468fd47bc7c4d9a156572221ceb403d1907d3b12a6b12bf36df0446254c10908"},
+    "IMG_7666.PNG":{"provider_file_id":"1P0qNrozpAQgMDQ-tYNZcMzUTjc_SHcQm","sha256":"85a820e377f0a355229076557b8bab8f8a0d74ab9417e6b4bb0f9169c2abe93d"},
+    "IMG_7667.PNG":{"provider_file_id":"1kr9r7LgpCuI1Mm_3t3J7QUBPp2JL96i0","sha256":"3ff6228e248e7199e19b9dc63ca88e2891aaa26fd534137ff79253ed2238054b"},
+    "IMG_7673.PNG":{"provider_file_id":"1WUxWoM6MgigLO1RSHbPwhELQbz7zp8mH","sha256":"2ff89025746bfdbc985def6e7543777f151ad437078aaab7bcd3a23f164f4a51"},
+    "IMG_7674.PNG":{"provider_file_id":"1HyB5wKUSkYflHbKZMtxXWgC7ofNEcpf2","sha256":"6ce0398c655e78b412607565801c1c8d6189528fee5aa097d634de9305c4e67a"},
+    "IMG_7675.PNG":{"provider_file_id":"1NHxVBdNQfsvQL9i-PaOwZHFwGQXsCXkL","sha256":"be114450ec876711fe18181ebdbc3281518061382fe44f07250c328e59b6128b"},
+    "IMG_7676.PNG":{"provider_file_id":"1W51_9XlTOpL8NxVBlyoMdrkB2JHOwVla","sha256":"db216f9a1bfe5c0c2bddd234c128bba349fa6c054aa559282d0670ca39b9e4e0"},
+    "IMG_7677.PNG":{"provider_file_id":"1A5afg7phBW77wV16XqVND2yv5djV-Pev","sha256":"7aea7d5b9a4e5c067d0891c71ce92ebfbe9b57e35818a530340ba45388fb8c8d"},
+    "IMG_7678.PNG":{"provider_file_id":"1tUv3iFrhiiJM9diZIVO9zK6O3EhT0uXI","sha256":"8200621d52bf6d457505efa69e19473f9c689895a53949c2d0876d39742e7dab"},
+    "IMG_7679.PNG":{"provider_file_id":"1EV-Gt7Sk5cHEe8OtdcPDcGD2SLCzUgE1","sha256":"92a57fdac81768fb6a1419d2eaa886432f6de289bd562039518c8771376c1e00"},
+    "IMG_7680.PNG":{"provider_file_id":"1YmekwlkXuWfnVZwnOXwWVq6KOjA0O11Z","sha256":"cdca9a2459eb1324c514542d806b7c9342be9351508f2ba5608b1ee7beea186b"},
+    "IMG_7681.PNG":{"provider_file_id":"1yJwYBQ-Qy_RNvZWXnGvVD-hA2oLqmsiQ","sha256":"814e506a221cbd8e2bf2905502bb8f2153a16882f8c57a7fc6abb088affb0590"},
+    "IMG_7682.PNG":{"provider_file_id":"19k_YQqYkfXTvQmuJWZINo3Hy_mdnOFue","sha256":"716059c6bca61a5a0712c8082f688dbc629207d8547f97be21613d2cba94b2a1"},
+    "IMG_7686.PNG":{"provider_file_id":"1XEYZkfUVc7A9Q156TOkZSO4kRC1m81mh","sha256":"9e3399cc1c85b2140de2a59dbeac9a3242dbcf3c3e37662688a98075b80306da"},
+    "IMG_7687.PNG":{"provider_file_id":"1KMkXLJvy6TueEABh0Rq3hWSykmw5H8yg","sha256":"79e2917082665bc0500a5020beaff93ddee2c0b7d4bd8fb17b76e694ba873bf4"},
+    "IMG_7688.PNG":{"provider_file_id":"1uXAKNr4yDpMTcnhdrj1NFVu6FoyXKyy_","sha256":"62a21bd7d2d9f71dc04a563d980cd5cacf876a0e30b76e437aa27979dc9c9bce"},
+    "IMG_7689.PNG":{"provider_file_id":"1XzTjdxT0SMWWPjm7PTM3vU0XmI7Ys0-z","sha256":"848b8dcefa9f1575ed19d8d4a864e063de2eb47bb08829b3af08b12d0d75ff5c"},
+    "IMG_7690.PNG":{"provider_file_id":"1SlsnMaOPlU_R7RAstJiGpqDOACAEyQeu","sha256":"9cc6977826dc832148a75bb3353549cf7e1d55c0683697278a72abf87e016257"},
+    "IMG_7691.PNG":{"provider_file_id":"1oGHTBWfO2YnRl6aXTp5-gDVbgqdQD-do","sha256":"368485efb1c574510a5ac320d11e7159b7a324a03c665d468b5794a1e0119361"},
+    "IMG_7692.PNG":{"provider_file_id":"1dl5FSc58p_7LDWrzEndgNdqi65wS6Nrb","sha256":"09bace9ff00ff22eae2729ac81571b2dcca5a0d1de8097e3865260f2773abd80"},
+    "IMG_7693.PNG":{"provider_file_id":"14rWOsozV7Ncifa_FxZIh-LIKtRMcwhYN","sha256":"07aa7e529797be9f152080d7bc80b10d2c077f50f82c5241b341b8fee2141b5a"},
+    "IMG_7694.PNG":{"provider_file_id":"1_xT94UJRi1e_qHVTzHv04s25QjUl-KN4","sha256":"58b3373c233cc9a7b57bfd9b17fd7bf3c9383094aea447c7eb1c78ce9b857250"},
+    "IMG_7696.PNG":{"provider_file_id":"10B_iu6wiKEKcLzJTvXxm0Y-93zs9eX2P","sha256":"e68aeb0cbaac9aec2336afd8a7c95f937b7f8625de72b72d7c9607758204dd61"},
+    "IMG_7697.PNG":{"provider_file_id":"10gTSUuZN4RCam6qhujD1HHrQaQHI1PTb","sha256":"4290bc75295bdf320c2b0ed145043ed8b3f1116f84370d256026fc10c367e120"},
+    "IMG_7698.PNG":{"provider_file_id":"1gM8tLk2yxU-ALaoA1tWAHhr2Opqy4Vmv","sha256":"f3516b26166cc606da1077a5b47ae83fac260b6c46801822417d2bb3ee666c39"},
+    "IMG_7699.PNG":{"provider_file_id":"1a2o2P3RCcEclGJxnjqlQo8iB-eTPyDlE","sha256":"e24c216cd5b1f9b0b3e95c998d626ea9cc03f3bc52cdabca7c86075657f2dd91"},
+    "IMG_7700.PNG":{"provider_file_id":"1T2wb-4mkPc7ftZDcYivxeiIX5HlgpoSQ","sha256":"1c3b42c95cf0f859672e1bcfe8c4e91a5f5c5b8a499c95702170539aa5e1fb3a"}
+  },
+  "semantic_groups": [
+    {
+      "group_key":"EARLY-C01","working_name":"Smoky Clear Wood Punctuation","historical_reference":"REF-000003","assets":["IMG_7654.PNG"],"source_account":"YUHER Crystal",
+      "observations":[
+        "Large smoky-brown and clear rounds are mixed with one dark rectangular block, one warm patterned round and a small stack of brown disc-like spacers.",
+        "The palette stays neutral-to-warm and the design relies on bead-to-bead optical variation rather than bright color.",
+        "The compact brown disc cluster creates a small matte-looking interruption among glossy larger units."
+      ],
+      "inference":"A restrained smoky composition gains identity from a few tactile/geometric interruptions rather than a single dominant hero.",
+      "synthesis":"Smoky transparency, one dark block and a compact warm spacer cluster create a quiet mixed-material rhythm."
+    },
+    {
+      "group_key":"EARLY-C02","working_name":"Rust Clear Gold Accent","historical_reference":"REF-000003","assets":["IMG_7655.PNG"],"source_account":"YUHER Crystal",
+      "observations":[
+        "Warm rust-red translucent rounds dominate the bracelet, interrupted by clear rectangular units, a large smoky oval/round unit and one bright gold-toned sphere.",
+        "The major beads remain large and visually weighty, while color and geometry provide the main rhythm changes.",
+        "The gold-toned sphere acts as a high-luminance punctuation inside an otherwise earthy transparent palette."
+      ],
+      "inference":"The design uses one metallic punctuation and clear geometric breaks to sharpen an otherwise warm monochromatic system.",
+      "synthesis":"Rust transparency forms the base rhythm; clear blocks and one gold-toned accent create controlled visual punctuation."
+    },
+    {
+      "group_key":"EARLY-C03","working_name":"Minimal Smoky Oval Arc","historical_reference":"REF-000003","assets":["IMG_7656.PNG"],"source_account":"YUHER Crystal",
+      "observations":[
+        "A large dark smoky oval is the strongest visual anchor, paired with a few clear/smoky beads and elongated transparent or brown rectangular units.",
+        "Most of the circumference is carried by thin silver-toned arc/cord structure instead of a continuous bead strand.",
+        "The sparse bead count leaves substantial negative space and makes every large unit visually isolated."
+      ],
+      "inference":"This is closer to mineral placement on a structural metal line than to a conventional bead bracelet.",
+      "synthesis":"Sparse mineral-like units and a large smoky oval are distributed across a thin silver-toned structural arc, making space part of the design."
+    },
+    {
+      "group_key":"EARLY-C04","working_name":"Deep Blue Moon Focal","historical_reference":"REF-000004","assets":["IMG_7661.PNG"],"source_account":"婉月",
+      "observations":[
+        "Large deep-blue glossy rounds form a nearly uniform sequence.",
+        "One oversized clear-to-white circular focal with a crescent-like internal/metallic visual motif breaks the blue repetition.",
+        "Hardware is minimal and visually subordinate to the saturated blue field."
+      ],
+      "inference":"A single luminous focal carries most of the design intervention inside an otherwise classical large-round strand.",
+      "synthesis":"Uniform deep-blue rounds create calm mass while one pale circular focal acts as the sole high-contrast interruption."
+    },
+    {
+      "group_key":"EARLY-C05","working_name":"Blue Clear Scale Gradient","historical_reference":"REF-000004","assets":["IMG_7662.PNG"],"source_account":"婉月",
+      "observations":[
+        "Several large deep-blue rounds occupy one sector, while the opposite side transitions into smaller clear and pale aqua rounds.",
+        "Tiny gold-toned spacers punctuate the smaller-bead section without becoming dominant.",
+        "The bracelet uses both color lightening and bead-size reduction around the circumference."
+      ],
+      "inference":"Scale and color move together as a gradient from dense deep blue toward lighter transparent micro-rhythm.",
+      "synthesis":"A sector of large blue beads dissolves into smaller clear/aqua beads, creating a directional scale-and-color gradient."
+    },
+    {
+      "group_key":"EARLY-C06","working_name":"Clear Inclusion Gray Accent","historical_reference":"REF-000004","assets":["IMG_7663.PNG"],"source_account":"婉月",
+      "observations":[
+        "Large clear rounds with visible internal inclusions form the majority of the strand.",
+        "One muted blue-gray round and restrained silver-toned separators introduce low-saturation contrast.",
+        "Because hue variation is small, internal clarity and inclusion structure remain visually prominent."
+      ],
+      "inference":"Optical detail carries more identity than color; the gray accent prevents the strand from reading as completely uniform.",
+      "synthesis":"Clear inclusion-rich rounds dominate, with one blue-gray interruption and restrained silver transitions."
+    },
+    {
+      "group_key":"EARLY-C07","working_name":"Micro Aqua Halo","historical_reference":"REF-000004","assets":["IMG_7664.PNG"],"source_account":"婉月",
+      "observations":[
+        "Very small pale-aqua and clear beads create a fine continuous circumference.",
+        "One larger transparent pale-blue circular/oval element is centered as a restrained focal.",
+        "Tiny gold-toned spacers create micro-scale highlights rather than visible hardware mass."
+      ],
+      "inference":"The design expresses delicacy through extreme scale reduction and one slightly enlarged optical focal.",
+      "synthesis":"A micro-bead aqua halo is interrupted by one larger transparent focal and minute gold-toned punctuation."
+    },
+    {
+      "group_key":"EARLY-C08","working_name":"Forest Structural Wood","historical_reference":"REF-000005","assets":["IMG_7665.PNG","IMG_7666.PNG","IMG_7667.PNG"],"source_account":"扶光谣 Radiance",
+      "observations":[
+        "Deep green, black-green and smoky rounds are combined with one large translucent green rectangular block.",
+        "Stacks of dark-brown disc-like spacers appear repeatedly and are large enough to function as visible structural transitions.",
+        "Ornate silver-toned sculptural components cluster near the rectangular hero and brown spacer stacks.",
+        "Multiple views confirm the same asymmetric distribution of green block, dark rounds, brown discs and silver hardware."
+      ],
+      "inference":"Warm matte-looking brown spacers act as structural texture against glossy dark-green mineral-like units, while silver hardware turns the green block into a focal assembly.",
+      "synthesis":"Dark forest tones are organized around a rectangular green hero, repeated brown structural spacer stacks and ornate silver-toned transitions."
+    },
+    {
+      "group_key":"EARLY-C09","working_name":"Vertical Mineral Totem","historical_reference":"REF-000007","assets":["IMG_7673.PNG","IMG_7674.PNG","IMG_7675.PNG"],"source_account":"APAOOOOOOO",
+      "observations":[
+        "This reference is a vertically suspended ornament rather than a wrist bracelet.",
+        "Transparent green, smoky, wine-toned and clear bead-like units alternate with ornate silver-toned cages, caps and spacers along one long axis.",
+        "A large irregular green-gray slab-like element occupies the lower-middle position as the strongest mineral-like mass.",
+        "Small dangling side charms introduce lateral movement from the otherwise vertical composition."
+      ],
+      "inference":"The reference is useful as a narrative-component and vertical-assembly study: metal grammar and directional sequencing are as important as the mineral-like units.",
+      "synthesis":"A long vertical sequence combines varied translucent units, ornate silver hardware and one irregular slab hero into a totem-like hanging composition."
+    },
+    {
+      "group_key":"EARLY-C10","working_name":"Ink Night Geometry","historical_reference":"REF-000008","assets":["IMG_7676.PNG","IMG_7677.PNG"],"source_account":"是小喵儿",
+      "observations":[
+        "Clear, smoky gray and muted green-gray large rounds are interrupted by transparent rectangular units and dark block-like spacers.",
+        "Several tiny dark-teal beads and a small star-like silver charm create micro-scale accents.",
+        "The source pairs the bracelet with blue-black ink/water imagery and also shows it suspended alone against a pale interior."
+      ],
+      "inference":"The strongest design logic is a cool smoky optical field punctuated by dark geometry and very small color/metal accents.",
+      "synthesis":"Clear-smoky rounds, rectangular transparent units and dark spacers form a cool geometric rhythm with a small star-like accent."
+    },
+    {
+      "group_key":"EARLY-C11","working_name":"Ice Wood Portable Bracelet","historical_reference":"REF-000009","assets":["IMG_7678.PNG","IMG_7679.PNG","IMG_7680.PNG"],"source_account":"文隅 WyStudio",
+      "observations":[
+        "Large clear rounds alternate with irregular dark-brown chip or disc-like elements around most of the circumference.",
+        "A short silver-toned chain with small botanical/charm details hangs from one section.",
+        "The contrast is primarily optical and tactile: glossy transparent spheres against rougher-looking warm-brown irregular pieces.",
+        "Three source views show the same bracelet in a box, close detail and full-product arrangement."
+      ],
+      "inference":"The brown irregular pieces function as warm structural texture and keep the clear rounds from reading as a generic transparent strand.",
+      "synthesis":"Clear spherical mass is repeatedly interrupted by small warm-brown irregular texture and a restrained silver charm line."
+    },
+    {
+      "group_key":"EARLY-C12","working_name":"Forest Lake Silver","historical_reference":"REF-000010","assets":["IMG_7681.PNG","IMG_7682.PNG"],"source_account":"Xuan Crystal Studio",
+      "observations":[
+        "Dark emerald, translucent green, smoky blue-gray and black rounds are mixed with one large green rectangular/cube-like element.",
+        "Several conspicuous silver-toned caps, separators and sculptural details interrupt the round sequence.",
+        "One clear round with bright internal reflective detail acts as a luminous counterpoint to the darker green field.",
+        "Dark-background presentation increases the contrast of green transparency and silver reflections."
+      ],
+      "inference":"The composition balances forest-dark color with silver hardware and one bright optical bead, producing a denser, more decorative interpretation of the forest palette.",
+      "synthesis":"Emerald-to-smoky rounds and a green block are structured by visible silver hardware and one luminous clear counterpoint."
+    },
+    {
+      "group_key":"EARLY-C13","working_name":"Root Red Black","historical_reference":"REF-000011","assets":["IMG_7686.PNG","IMG_7687.PNG"],"source_account":"噢是圆圆啊",
+      "observations":[
+        "Faceted red-to-rust translucent beads alternate with very dark smoky/black faceted units.",
+        "Dark metallic-looking separators and a small padlock-like charm reinforce the black-red contrast.",
+        "The product is photographed on a dark textured slab under low-key directional light.",
+        "A material-explanation graphic in the source is seller-provided context and is not treated as verified material identity."
+      ],
+      "inference":"The design reads as compact, rooted and weighty because saturation, faceting and dark metal all concentrate visual density rather than introducing airy transparency.",
+      "synthesis":"Faceted red/rust units and near-black geometry form a dense root-like rhythm with dark metal and a small lock-shaped charm."
+    },
+    {
+      "group_key":"EARLY-C14","working_name":"Green Relic Double Line","historical_reference":"REF-000012","assets":["IMG_7688.PNG","IMG_7689.PNG"],"source_account":"free～寒仔",
+      "observations":[
+        "A large ornate silver-framed oval focal with pale pink/green internal appearance dominates the composition.",
+        "The main circumference mixes green-gray rounds, clear rectangular units and silver botanical/sculptural hardware.",
+        "A separate fine line of small green beads runs alongside part of the main bracelet, creating a second scale and parallel direction.",
+        "Multiple dangling silver details extend beyond the main circumference."
+      ],
+      "inference":"The piece behaves as a layered focal assembly rather than a single-strand bead bracelet: framed hero, main line, micro-bead secondary line and hanging hardware coexist.",
+      "synthesis":"An ornate framed oval hero anchors a layered green-gray composition with clear geometry, silver botanical hardware and a secondary micro-bead line."
+    },
+    {
+      "group_key":"EARLY-C15","working_name":"Deep Sea Ember Framed Composition","historical_reference":"REF-000013","assets":["IMG_7690.PNG","IMG_7691.PNG","IMG_7692.PNG"],"source_account":"扶光谣 Radiance",
+      "observations":[
+        "A large ornate silver-framed dark green-gray round/oval focal establishes the primary hero.",
+        "Green-gray, smoky, clear and red-brown units of several shapes and scales are distributed around the circumference.",
+        "Silver-toned botanical, wave-like and framed components are frequent and visually structural.",
+        "Dense multi-scale clustering appears near the focal while other sections remain relatively more open."
+      ],
+      "inference":"High material and hardware complexity is controlled by a clear framed hero and repeated green/red/silver tonal logic rather than by uniform bead shape.",
+      "synthesis":"A framed dark-green hero organizes a dense multi-scale green/red/silver composition with botanical and wave-like hardware."
+    },
+    {
+      "group_key":"EARLY-C16","working_name":"Chalk White Raw Architecture","historical_reference":"REF-000014","assets":["IMG_7693.PNG","IMG_7694.PNG"],"source_account":"Moss Mist 苔雾",
+      "observations":[
+        "Cream, chalk white, pale gray and very light blue-gray create an extremely low-saturation palette.",
+        "Large round elements are interrupted by multiple oversized irregular, rectangular and raw-looking pale pieces.",
+        "Visible metal is minimal; form, scale and surface pattern provide most of the design structure.",
+        "The seller layout annotates individual components, but those names remain source claims only."
+      ],
+      "inference":"The piece treats irregular pale mineral-like blocks as architecture inside a soft tonal field, producing geological structure without dark contrast.",
+      "synthesis":"Low-saturation pale rounds and oversized irregular blocks create a chalky geological architecture with almost no visible hardware."
+    },
+    {
+      "group_key":"EARLY-C17","working_name":"Gothic Framed Double Line","historical_reference":"REF-000015","assets":["IMG_7696.PNG","IMG_7697.PNG"],"source_account":"吃吃水晶",
+      "observations":[
+        "A large smoky circular/oval focal is enclosed or capped by ornate silver-toned hardware and dominates the center zone.",
+        "Clear-to-smoky beads, dark metal units and silver structural parts create a mostly monochrome dark-gray system.",
+        "A secondary chain/bead line runs alongside the principal bracelet body, and multiple dangling silver details extend below it.",
+        "Black-background photography emphasizes metallic texture and the dark framed focal."
+      ],
+      "inference":"The piece uses a gothic relic-like focal plus parallel linework, making silver structure and dangling hardware nearly equal to the mineral-like beads in visual importance.",
+      "synthesis":"A dark framed focal, parallel secondary line and ornate silver hardware produce a gothic multi-line bracelet architecture."
+    },
+    {
+      "group_key":"EARLY-C18","working_name":"Snow Angel Clear White","historical_reference":"REF-000016","assets":["IMG_7698.PNG","IMG_7699.PNG","IMG_7700.PNG"],"source_account":"VeryLan",
+      "observations":[
+        "Large clear, pale gray and milky-white rounds/irregular forms dominate a very bright cool palette.",
+        "Silver-toned floral, snowflake-like and small spacer components are distributed between large transparent units.",
+        "A short extension chain and dangling details add a fine linear counterpoint to the large bead mass.",
+        "Worn and black-box product views confirm the same airy clear-white composition."
+      ],
+      "inference":"The design uses high transparency, pale optical variation and delicate silver motifs to create a light snow-like mood without relying on saturated color.",
+      "synthesis":"Large clear-white optical units are connected by delicate silver floral/snow-like hardware and a fine extension line."
+    }
+  ],
+  "canonical_regroup_proposal": {
+    "execution_status":"NOT_AUTHORIZED_HIGH_RISK",
+    "reason":"The historical canonical grouping contains both cross-post boundary errors and same-post multi-design bundling. Correcting it would create/split references and reassign existing canonical asset links, which exceeds the current additive image-analysis DATABASE_WRITE scope.",
+    "high_confidence_asset_moves":[
+      {"asset_filename":"IMG_7678.PNG","from":"REF-000008","to":"REF-000009","evidence":"same WyStudio post/product as IMG_7679-7680; different account and product from IMG_7676-7677"},
+      {"asset_filename":"IMG_7688.PNG","from":"REF-000011","to":"REF-000012","evidence":"same free～寒仔 framed-green product as IMG_7689; different account/product from IMG_7686-7687"},
+      {"asset_filename":"IMG_7690.PNG","from":"REF-000012","to":"REF-000013","evidence":"same Radiance 深海余烬 product as IMG_7691-7692; different account/product from IMG_7688-7689"},
+      {"asset_filename":"IMG_7696.PNG","from":"REF-000014","to":"REF-000015","evidence":"same dark framed gothic product as IMG_7697; different account/product from pale Moss Mist IMG_7693-7694"},
+      {"asset_filename":"IMG_7698.PNG","from":"REF-000015","to":"REF-000016","evidence":"same VeryLan 雪国 product as IMG_7699-7700; different account/product from IMG_7696-7697"}
+    ],
+    "high_confidence_reference_splits":[
+      {"existing_reference":"REF-000003","reason":"three different bracelet designs from one YUHER carousel were bundled as one reference","proposed_groups":["EARLY-C01","EARLY-C02","EARLY-C03"]},
+      {"existing_reference":"REF-000004","reason":"four different 清凉系 bracelet designs from one carousel were bundled as one reference","proposed_groups":["EARLY-C04","EARLY-C05","EARLY-C06","EARLY-C07"]}
+    ],
+    "references_that_can_remain_single_after_boundary_fix":["REF-000005","REF-000007","REF-000008","REF-000009","REF-000010","REF-000011","REF-000012","REF-000013","REF-000014","REF-000015","REF-000016"]
+  },
+  "review_status":"GPT_VISUAL_ANALYSIS_COMPLETE",
+  "reviewed_folder_rule":"These images may be moved from Inbox to Reviewed because GPT visual analysis is complete and this authoritative artifact preserves the analysis. Canonical regrouping may remain pending independently."
+}
