@@ -1,0 +1,26 @@
+{
+  "decision_version": "P2M-USER-PROTOTYPE-DECISION-V1",
+  "decided_on": "2026-08-30",
+  "decision_source": "explicit_user_choice_A_in_chatgpt",
+  "selected_route": "A_GLACIER_SIGNATURE",
+  "theme": "Glacier",
+  "positioning": "Signature / high-end validation prototype",
+  "sourcing_route_for_first_prototype_planning": "Europe-local ease/speed",
+  "staged_benchmark_policy": "Exact staged public-catalog benchmarks may be used for prototype planning and conservative cost envelopes, but remain unapproved/unverified and are not purchase authorization.",
+  "design_direction": [
+    "cold white / gray-blue / transparent visual system",
+    "Aquamarine and Rainbow Moonstone are primary body-material candidates",
+    "Larimar is a premium hero-mineral candidate, not a mandatory final material",
+    "925 silver is structural hardware, not decorative overload",
+    "use asymmetry, geometric interruption, negative space and structural silver rather than a generic uniform round-bead bracelet"
+  ],
+  "not_authorized": [
+    "supplier selection",
+    "purchase or order",
+    "production commitment",
+    "final packaging selection",
+    "final retail price",
+    "gemstone authenticity/grade/treatment verification",
+    "quality-tier lock beyond Signature prototype positioning"
+  ]
+}
