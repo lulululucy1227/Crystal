@@ -1,0 +1,244 @@
+{
+  "contract_version": "P2B-GPT-MARKET-EVIDENCE-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "observed_on": "2026-08-30",
+  "target_market": "Europe / EUR-facing online market",
+  "purpose": "Current market baseline for natural-stone/gemstone bracelets relevant to Crystal Design positioning. Web-derived evidence is kept separate from GPT strategic inference.",
+  "evidence_boundary": [
+    "Prices are observed public online prices on or near 2026-08-30 and may later change.",
+    "Brand claims such as natural, handmade, ethical, premium or healing are stored as source claims, not independently verified facts.",
+    "This file does not infer material authenticity or gemstone grade beyond source-stated claims.",
+    "Strategic conclusions are assistant analysis and must remain distinct from market_evidence facts."
+  ],
+  "sources": [
+    {
+      "source_key": "MARKET-AURUM-BROTHERS",
+      "source_type": "brand",
+      "name": "Aurum Brothers",
+      "source_url": "https://aurumbrothers.de/",
+      "geography": "Netherlands / Europe",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["Handmade in the Netherlands", "Premium natural stones and materials", "One-of-a-kind collection", "Family-crafted since 2015"]
+    },
+    {
+      "source_key": "MARKET-MONICA-VINADER",
+      "source_type": "brand",
+      "name": "Monica Vinader",
+      "source_url": "https://www.monicavinader.com/de/",
+      "geography": "UK / Germany-facing EU storefront",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified"
+    },
+    {
+      "source_key": "MARKET-AGLAIA",
+      "source_type": "brand",
+      "name": "AGLAIA Europe",
+      "source_url": "https://www.aglaiaco.com/en-eu/collections/gemstone-bracelets",
+      "geography": "France / Europe",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["Handcrafted in Europe", "Natural-stone bracelet range", "Gold-plated and sterling-silver hardware"]
+    },
+    {
+      "source_key": "MARKET-BERGERLIN",
+      "source_type": "brand",
+      "name": "Bergerlin",
+      "source_url": "https://www.bergerlin.de/en/collections/natural-stone-bracelets",
+      "geography": "Germany",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["Natural/healing-stone bracelet positioning", "Large catalog of bead bracelets"]
+    },
+    {
+      "source_key": "MARKET-EXODOS",
+      "source_type": "brand",
+      "name": "EXODOS Copenhagen Jewelry",
+      "source_url": "https://exodosjewelry.com/",
+      "geography": "Denmark / Europe",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["Custom-sized gemstone bracelets", "Scandinavian understated-luxury positioning", "100% natural/undyed/semi-precious stone claim"]
+    },
+    {
+      "source_key": "MARKET-ZOLLI",
+      "source_type": "brand",
+      "name": "Zolli",
+      "source_url": "https://zolli.shop/",
+      "geography": "Croatia / Europe",
+      "evidence_strength": "medium",
+      "verification_status": "partially_verified",
+      "source_claims": ["Handcrafted gemstone bracelets", "Handpicked gemstones", "Mood/meaning-led branding"]
+    },
+    {
+      "source_key": "MARKET-SHAMBALLA",
+      "source_type": "brand",
+      "name": "Shamballa Jewels",
+      "source_url": "https://www.shamballajewels.com/",
+      "geography": "Denmark / Europe",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["18K gold and diamond luxury bracelet construction"]
+    },
+    {
+      "source_key": "MARKET-CELINNI",
+      "source_type": "brand",
+      "name": "Celinni",
+      "source_url": "https://www.celinni.com/en/421-gemstone-bracelets",
+      "geography": "France / Europe",
+      "evidence_strength": "high",
+      "verification_status": "partially_verified",
+      "source_claims": ["18K gold/platinum gemstone bracelets", "Fine-jewelry positioning"]
+    }
+  ],
+  "market_evidence": [
+    {
+      "source_key": "MARKET-AURUM-BROTHERS",
+      "brand": "Aurum Brothers",
+      "product_name": "Mother of Pearl Cube Bracelet I (4mm)",
+      "market": "Germany/EU",
+      "price_currency": "EUR",
+      "price_minor": 27195,
+      "claim": "Public listed sale price €271.95; cube-format natural-material bracelet in premium natural-stone brand context.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-AURUM-BROTHERS",
+      "brand": "Aurum Brothers",
+      "product_name": "Nephrite Jade Cube Bracelet V (4mm)",
+      "market": "Germany/EU",
+      "price_currency": "EUR",
+      "price_minor": 26795,
+      "claim": "Public listed sale price €267.95; small-scale cube bracelet.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-AURUM-BROTHERS",
+      "brand": "Aurum Brothers",
+      "product_name": "Raw Black Diamond Bracelet 25 carats (4-5mm)",
+      "market": "Germany/EU",
+      "price_currency": "EUR",
+      "price_minor": 67395,
+      "claim": "Public listed sale price €673.95; limited/new raw-diamond bracelet.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-AURUM-BROTHERS",
+      "brand": "Aurum Brothers",
+      "product_name": "Raw Black Diamond Bracelet IV (2-3mm)",
+      "market": "Germany/EU",
+      "price_currency": "EUR",
+      "price_minor": 111395,
+      "claim": "Public listed price €1,113.95; premium raw-diamond bracelet.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-MONICA-VINADER",
+      "brand": "Monica Vinader",
+      "product_name": "Rio Gemstone Beaded Bracelet - Green Onyx",
+      "market": "Germany",
+      "price_currency": "EUR",
+      "price_minor": 28900,
+      "claim": "Regular listed price €289; 18k gold vermeil and green onyx beaded bracelet. A temporary discounted price was also displayed.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-MONICA-VINADER",
+      "brand": "Monica Vinader",
+      "product_name": "Delphi Multi Gemstone Beaded Bracelet - Sodalite",
+      "market": "Germany",
+      "price_currency": "EUR",
+      "price_minor": 14900,
+      "claim": "Public listed price €149; 18k gold vermeil and sodalite multi-gemstone beaded bracelet.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-AGLAIA",
+      "brand": "AGLAIA Europe",
+      "product_name": "Gemstone bracelet collection price span",
+      "market": "EU",
+      "price_currency": "EUR",
+      "price_minor": 5500,
+      "claim": "Observed collection includes multiple natural-stone bracelet products around €55-€135, with examples at €55, €60, €75, €85, €90, €95, €99, €125 and €135.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "notes": "price_minor stores the observed lower representative point; full range is retained in claim text"
+    },
+    {
+      "source_key": "MARKET-BERGERLIN",
+      "brand": "Bergerlin",
+      "product_name": "Natural stone bracelet collection",
+      "market": "Germany",
+      "price_currency": "EUR",
+      "price_minor": 2100,
+      "claim": "Observed bead-bracelet examples broadly around €21-€36, including rock crystal, amazonite, amber and multicolor tourmaline products.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "notes": "price_minor stores observed lower representative point; range retained in claim"
+    },
+    {
+      "source_key": "MARKET-EXODOS",
+      "brand": "EXODOS Copenhagen Jewelry",
+      "product_name": "Natural gemstone bracelet collection",
+      "market": "EU",
+      "price_currency": "EUR",
+      "price_minor": 4795,
+      "claim": "Observed products include faceted lepidolite €47.95, phosphosiderite €50.95, rose quartz and moonstone from €59.95, sodalite from €64.95 and a black-stone bracelet from €94.95.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-ZOLLI",
+      "brand": "Zolli",
+      "product_name": "Tiny gemstone bracelet examples",
+      "market": "EU",
+      "price_currency": "EUR",
+      "price_minor": 5400,
+      "claim": "Observed sale examples: orange sodalite 4mm silver €54 and amazonite 4mm gold €59.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "medium"
+    },
+    {
+      "source_key": "MARKET-SHAMBALLA",
+      "brand": "Shamballa Jewels",
+      "product_name": "6mm Lock Bracelet",
+      "market": "EU",
+      "price_currency": "EUR",
+      "price_minor": 809000,
+      "claim": "Public listed price €8,090; 18K white-gold bracelet with gemstone beads and diamonds.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    },
+    {
+      "source_key": "MARKET-CELINNI",
+      "brand": "Celinni",
+      "product_name": "Sapphire River Bracelet",
+      "market": "EU",
+      "price_currency": "EUR",
+      "price_minor": 198000,
+      "claim": "Public price from €1,980 in an 18K gold/platinum fine-jewelry gemstone bracelet collection.",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high"
+    }
+  ],
+  "assistant_market_assessment": {
+    "assessment_type": "competitive_price_architecture",
+    "confidence": "medium",
+    "assessment_text": "The observed European market is strongly segmented. Commodity/meaning-led natural-stone bead bracelets cluster roughly around €20-€100; branded fashion-jewelry gemstone bracelets frequently sit around €75-€300; a directly relevant premium natural-stone specialist (Aurum Brothers) demonstrates a credible €200-€700+ band and extends above €1,000 for rarer materials; fine-jewelry brands move quickly into €2,000-€8,000+ through precious metals and diamonds. A €599 one-of-one mineral bracelet is therefore not outside the market, but it cannot be justified by generic round-bead construction or healing-language alone. It requires visible design authorship, distinctive focal/shape/hardware composition, credible material/provenance presentation, limited/one-of-one scarcity, and premium photography/packaging/service.",
+    "basis_notes": "Based on current public price/product examples from Aurum Brothers, Monica Vinader, AGLAIA, Bergerlin, EXODOS Copenhagen, Zolli, Shamballa Jewels and Celinni observed 2026-08-30.",
+    "implications": [
+      "Closest strategic benchmark among observed brands is Aurum Brothers because it monetizes natural-stone bracelets at premium prices without relying exclusively on fine-jewelry precious-metal value.",
+      "The €599 target sits above mainstream gemstone fashion jewelry and below precious-metal fine jewelry, creating a positioning gap that must be filled by design uniqueness, material selection and storytelling rather than gemstone category alone.",
+      "Avoid competing with €20-€100 healing-stone bead bracelets on meaning claims; that segment anchors consumers to low prices and generic construction.",
+      "Use Core / Signature / One-of-One price architecture rather than forcing every design to €599; current evidence supports a premium ladder more plausibly than a single-price assortment.",
+      "One-of-one and limited small-batch language already exists in the premium natural-stone market, so uniqueness is commercially legible but is not by itself a differentiator."
+    ]
+  }
+}
