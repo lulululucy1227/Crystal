@@ -5,7 +5,7 @@
   "model":"Terra",
   "strength":"Medium",
   "execution_class":"DATABASE_WRITE",
-  "commit_sha":"pending",
+  "commit_sha":"9f8e20e",
   "branch":"main",
   "changed_files":["scripts/import-p2e-sourcing-identity.mjs","scripts/audit-p2e-sourcing-readiness.mjs","test/p2e-sourcing-identity.test.mjs","outputs/p2e-sourcing-before-manifest.json","outputs/p2e-sourcing-identity-and-offer-promotion.json","outputs/p2e-sourcing-readiness-after-promotion.json","outputs/GPT_HANDOFF.json","outputs/handoffs/P2E-SOURCING-IDENTITY-ENRICHMENT-AND-OFFER-PROMOTION.json"],
   "actual_changes":{"backup":"C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2e-sourcing-identity-20260830-152022.sqlite","db_sha256_before":"385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7","db_sha256_after":"385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7","p2e_canonical_writes_retained":0,"six_staged_records": "review_required"},
