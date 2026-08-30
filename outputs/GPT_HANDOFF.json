@@ -1,38 +1,31 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
-  "status": "blocked",
-  "model": "Terra",
-  "strength": "High",
-  "execution_class": "HIGH_RISK",
-  "user_authorized": true,
-  "authorization_record": "inputs/p2a-historical-canonical-regroup-user-authorization-20260830.json",
-  "task_file": "agent/GPT_NEXT_TASK.md",
-  "decision_pack": "outputs/p2a-historical-canonical-regroup-decision-pack-20260830.json",
-  "drive_state": {
-    "inbox_images": 0,
-    "reviewed_images_expected": 94
-  },
-  "canonical_last_verified_baseline": {
-    "image_visual_observations": 80,
-    "synthesis_assertions": 19,
-    "synthesis_sources": 37,
-    "db_sha256": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2"
-  },
-  "authorized_scope": {
-    "split_references": ["REF-000003", "REF-000004"],
-    "exact_asset_moves": ["IMG_7678.PNG", "IMG_7688.PNG", "IMG_7690.PNG", "IMG_7696.PNG", "IMG_7698.PNG"],
-    "then_continue_pending_additive_semantic_imports": true
-  },
-  "execution_result": {
-    "backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2a-historical-canonical-regroup-20260830-113556.sqlite",
-    "db_sha256_before": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2",
+  "phase": "P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION",
+  "status": "WAITING_FOR_LOCAL_EXECUTION",
+  "model": "Luna",
+  "strength": "Medium",
+  "execution_class": "DATABASE_WRITE",
+  "previous_phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
+  "previous_result": {
+    "status": "partial_blocked_for_structured_gpt_input",
     "db_sha256_after": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2",
-    "reference_splits": { "REF-000003": { "EARLY-C01": "REF-000003", "EARLY-C02": "REF-000027", "EARLY-C03": "REF-000028" }, "REF-000004": { "EARLY-C04": "REF-000029", "EARLY-C05": "REF-000004", "EARLY-C06": "REF-000030", "EARLY-C07": "REF-000031" } },
-    "asset_moves_completed": 5,
-    "quarantined_ambiguous_relations": 6,
-    "structured_imports_completed": ["p2a-gpt-unprocessed-plus-new-20260829-a.json", "p2a-gpt-historical-late-b.json", "p2a-gpt-new-reference-gray-fog-wood-anchor-20260830.json"],
-    "final_counts": { "image_visual_observation": 210, "design_reference_synthesis_assertion": 82, "design_reference_synthesis_source": 175 }
+    "image_visual_observations": 210,
+    "synthesis_assertions": 82,
+    "synthesis_sources": 175,
+    "canonical_assets": 94,
+    "assets_pending_observations": 34,
+    "quarantined_ambiguous_legacy_relations": 6
   },
-  "blocker": "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json contains retained GPT wording for EARLY-C01 through EARLY-C18 but omits mandatory canonical observation scope/confidence and structured synthesis provenance. A structured GPT import payload is required; Codex did not invent those semantics."
+  "gpt_blocker_resolution": {
+    "status": "resolved",
+    "input": "inputs/p2a-gpt-historical-early-c-structured-completion-20260830.json",
+    "source_semantics": "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json",
+    "groups": 18,
+    "assets": 34,
+    "gpt_authored_missing_fields": ["canonical reference mapping", "observation scope", "assertion class", "confidence", "per-asset coverage rule", "synthesis scope/class/confidence", "synthesis provenance rule"],
+    "codex_semantic_authoring_required": false
+  },
+  "task_file": "agent/GPT_NEXT_TASK.md",
+  "user_decision_required": false,
+  "next_action": "Local Codex should sync main, read the latest task and structured completion spec, deterministically materialize/import the remaining early-C semantics, replay, validate, update status/handoff, commit and push."
 }
