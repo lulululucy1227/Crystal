@@ -1,131 +1,109 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION
+Phase: P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION
 Status: authorized
-Model: Terra
-Strength: High
-Execution class: HIGH_RISK
+Model: Luna
+Strength: Medium
+Execution class: DATABASE_WRITE
 
-## Explicit user authorization
-The user chose Option A on 2026-08-30 and explicitly authorized the historical canonical regroup correction.
+## Why this phase exists
+The authorized HIGH_RISK canonical regroup has already been completed successfully and validated to the point documented in `outputs/p2a-historical-canonical-regroup-after.json`.
 
-Authorization record:
-`inputs/p2a-historical-canonical-regroup-user-authorization-20260830.json`
+Completed state that MUST be preserved:
+- REF-000003 split mapping: EARLY-C01=REF-000003, EARLY-C02=REF-000027, EARLY-C03=REF-000028.
+- REF-000004 split mapping: EARLY-C04=REF-000029, EARLY-C05=REF-000004, EARLY-C06=REF-000030, EARLY-C07=REF-000031.
+- Exactly five authorized cross-boundary asset moves are already completed.
+- 6 ambiguous legacy reference-level relations remain quarantined and MUST NOT be guessed or propagated.
+- Current canonical counts after completed imports: image_visual_observation=210; synthesis assertions=82; synthesis sources=175.
+- Current DB SHA after the completed correction/import checkpoint: `084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2`.
+- 94 canonical image assets exist; exactly 34 early-C assets are still missing canonical observations because the previous GPT input omitted mandatory scope/confidence/provenance fields.
 
-Decision pack:
-`outputs/p2a-historical-canonical-regroup-decision-pack-20260830.json`
+GPT has now resolved that blocker by authoring:
+`inputs/p2a-gpt-historical-early-c-structured-completion-20260830.json`
 
-Detailed GPT evidence:
+The original retained semantic wording remains in:
 `inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json`
 
 ## Objective
-Correct the known historical canonical Design Reference grouping defects safely, then continue the already-authorized image-analysis mainline by importing all pending GPT-authored additive semantics and validating the canonical database end to end.
+Deterministically materialize the GPT-authored completion spec, import the remaining EARLY-C01 through EARLY-C18 image semantics and reference syntheses into the existing canonical schema, prove idempotency and full integrity, then close the image backlog if no genuine blocker remains.
 
-## Current GPT-side state
-- Google Drive Inbox image count: 0.
-- All 94 currently known project images have completed GPT visual analysis and are in `Reviewed`.
-- `Reviewed` means GPT visual analysis complete; it does not by itself mean canonical SQLite ingestion complete.
-- Last verified canonical DB baseline before pending imports: 80 image observations, 19 synthesis assertions / 37 synthesis sources, SHA-256 `9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2`.
+## Preflight
+1. Safely sync Crystal `main` and require clean worktree before writes. Do not reset/clean/discard user work.
+2. Read `AGENTS.md`, latest `agent/GPT_NEXT_TASK.md`, `outputs/GPT_HANDOFF.json`, `outputs/p2a-historical-canonical-regroup-after.json`, the original early-C semantic file, and the new structured completion spec.
+3. Verify canonical DB current SHA/state against the last completed checkpoint. If it differs, reconcile from Git/handoff before writing; do not overwrite unexplained work.
+4. Create a fresh timestamped byte-for-byte DB backup for this additive completion and record its path/SHA.
 
-## Authorized canonical corrections
-### Split bundled references
-- REF-000003 currently bundles IMG_7654 / IMG_7655 / IMG_7656. Split into three distinct design references corresponding to EARLY-C01 / EARLY-C02 / EARLY-C03.
-- REF-000004 currently bundles IMG_7661 / IMG_7662 / IMG_7663 / IMG_7664. Split into four distinct design references corresponding to EARLY-C04 / EARLY-C05 / EARLY-C06 / EARLY-C07.
+## Semantic authority and deterministic materialization
+The new structured completion spec is GPT-authored semantic authority for the missing fields. Codex may deterministically transform it into the repository's existing `P2A-GPT-SEMANTIC-BATCH-V1` / canonical importer shape.
 
-Preserve an existing reference key for one surviving child where semantically least disruptive; create new stable reference keys for additional children. Do not renumber unaffected references.
+Codex MUST NOT alter or invent:
+- original observation wording in `semantic_group.observations[]`
+- original `semantic_group.inference` wording
+- original `semantic_group.synthesis` wording
+- scope/class/confidence values supplied by the completion spec
+- canonical reference mapping supplied by the completion spec
+- secondary-asset coverage template supplied by the completion spec
 
-### Move exactly these five high-confidence boundary assets
-- IMG_7678: REF-000008 → REF-000009
-- IMG_7688: REF-000011 → REF-000012
-- IMG_7690: REF-000012 → REF-000013
-- IMG_7696: REF-000014 → REF-000015
-- IMG_7698: REF-000015 → REF-000016
+Apply the completion spec exactly:
+- each original observation string -> primary asset, `product_design`, class `observation`, confidence `high`;
+- original inference -> primary asset, `product_design`, class `inference`, confidence `medium`;
+- each explicitly listed secondary asset -> exactly one `alternate_view_same_reference` observation using the exact GPT template, `product_design`, class `observation`, confidence `high`;
+- each group synthesis string -> exactly one reference synthesis assertion, `product_design`, class `inference`, confidence `medium`;
+- synthesis provenance -> all rows materialized for that same group.
 
-Do not expand the move set without a new GPT/user authorization.
+Use `canonical_reference_map_after_authorized_regroup` exactly. Do not create or renumber references for EARLY-C01..C18.
 
-## Mandatory pre-write phase
-Before any canonical mutation:
-1. Safely sync Crystal main and require a clean worktree.
-2. Create a timestamped byte-for-byte backup of the canonical SQLite DB.
-3. Record pre-write DB SHA-256 and exact affected-row manifest.
-4. Run a read-only impact audit across all tables related to affected references/assets, including at minimum:
-   - design_reference
-   - design_reference_image
-   - image_asset
-   - image_visual_observation
-   - design_reference_synthesis_assertion
-   - design_reference_synthesis_source
-   - preference evidence tables
-   - design assessment tables
-   - reference-pattern relations
-   - reference-theme relations
-   - source/provenance relations
-5. Produce a deterministic reassignment plan before opening the write transaction.
+## Database scope
+DATABASE_WRITE is authorized only for additive early-C image observations and reference synthesis/source rows using the existing canonical schema and deterministic plumbing needed to import them.
 
-## Mutation rules
-- Execute transactionally.
-- Preserve raw source evidence, image assets, image observations, provenance and user-signal history.
-- Never copy an ambiguous old reference-level preference/pattern/theme/assessment/synthesis relation onto every split child.
-- When an old reference-level relation cannot be assigned unambiguously from existing evidence, preserve its provenance and quarantine/flag it for review rather than guessing.
-- Reassign only relations whose target child is deterministically supported by existing source/image evidence.
-- No schema migration unless execution proves one is strictly necessary; if so, stop that sub-item and report HIGH_RISK schema blocker rather than improvising.
-- No material/component/supplier/market/packaging writes.
-- No watcher/controller or Bridge infrastructure work.
+Not authorized:
+- schema migration
+- changing the completed canonical regroup
+- any additional asset move
+- deleting/rewriting raw evidence
+- resolving the 6 quarantined relations by guess
+- preference/pattern/theme mutations
+- material/component/supplier/market/packaging writes
+- watcher/controller/Bridge work
 
-## Pending additive GPT semantic inputs
-After the regroup correction is validated, import all still-pending authoritative GPT semantic batches using the existing schema and deterministic selector resolution only. At minimum reconcile these inputs against canonical state before applying:
-- `inputs/p2a-gpt-unprocessed-plus-new-20260829-a.json`
-- `inputs/p2a-gpt-historical-late-b.json`
-- `inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json`
-- `inputs/p2a-gpt-new-reference-gray-fog-wood-anchor-20260830.json`
-- existing pending REF-000017 / REF-000018 synthesis
-- existing pending REF-000026 synthesis
+## Required reconciliation and validation
+Before applying, reconcile exact matches so nothing already canonical is duplicated.
 
-Do not duplicate rows already canonical. Preserve GPT wording, assertion class, scope and confidence exactly. Codex must not author new visual/design semantics.
+After apply:
+- every one of the 34 previously pending early-C assets must have canonical image semantic evidence;
+- all 18 EARLY-C groups must have canonical reference synthesis;
+- report exact created/reused observation/assertion/source counts;
+- replay the same materialized payload and prove idempotent reuse/no new rows;
+- unrelated canonical fingerprints must remain unchanged;
+- preserve all 6 quarantined legacy relations unchanged;
+- `PRAGMA integrity_check = ok`;
+- `PRAGMA foreign_key_check = 0`;
+- focused tests;
+- full `npm test`;
+- `npm run validate`;
+- `git diff --check`.
 
-## Required validation
-After correction and after each coherent additive import batch:
-- exact before/after row counts and key manifests
-- replay/idempotency proof
-- prior unrelated canonical fingerprints unchanged
-- `PRAGMA integrity_check = ok`
-- `PRAGMA foreign_key_check = 0`
-- focused regroup/import tests
-- full `npm test`
-- `npm run validate`
-- `git diff --check`
-- post-write DB SHA-256
-
-## Required outputs
-Create/update:
-- `outputs/p2a-historical-canonical-regroup-before.json`
-- `outputs/p2a-historical-canonical-regroup-after.json`
+Update:
 - `outputs/p2a-image-backlog-status.json`
-- `outputs/p2a-image-backlog-needs-gpt-analysis.json` only if any semantic gap genuinely remains
+- `outputs/p2a-image-backlog-needs-gpt-analysis.json` (must be empty/NONE if no semantic gap remains)
 - `outputs/GPT_HANDOFF.json`
-- archived phase handoff under `outputs/handoffs/`
+- archived handoff under `outputs/handoffs/`
 
-Final handoff must include:
-- phase/status
-- backup path
-- DB SHA before/after
-- exact split/new reference mapping
-- exact five asset moves
-- quarantined/ambiguous relation count and identities
-- additive semantic import counts
-- final image observation total
-- final synthesis assertion/source totals
-- integrity/FK/test/validate results
-- commits
-- worktree cleanliness
-- whether any user decision is still required
+If all 94 canonical assets are now fully processed and no GPT/provenance/ambiguity blocker remains, explicitly report image backlog completion and `USER MAY UPLOAD NEW IMAGES: YES`.
 
-## Stop condition
-Continue automatically through correction, additive semantic import, status reconciliation and validation. Stop only for:
-1. a genuinely ambiguous business/aesthetic attribution that requires user judgment;
-2. a new HIGH_RISK scope not covered by this authorization;
-3. inaccessible required bytes/provenance;
-4. global integrity/safety failure.
+## Git
+Commit/push the coherent Crystal checkpoint to `main`, then verify local HEAD == origin/main and clean worktree. Do not touch Local-Codex-Bridge.
 
-Do not stop merely because one normal batch completed.
+## Stop conditions
+Continue through materialization, import, replay, validation, status reconciliation, commit and push. Stop only for:
+1. genuine unexplained canonical state divergence;
+2. schema change requirement;
+3. global integrity/test failure that cannot be safely corrected inside this additive scope;
+4. inaccessible required provenance;
+5. successful completion.
+
+No user business/aesthetic decision is currently required.
+
+## Final handoff fields
+PHASE / STATUS / BACKUP / DB SHA BEFORE / DB SHA AFTER / MATERIALIZED OBSERVATION COUNT / CREATED+REUSED OBSERVATIONS / CREATED+REUSED SYNTHESIS ASSERTIONS+SOURCES / ASSETS FULLY PROCESSED / NEEDS GPT / PROVENANCE BLOCKED / AMBIGUOUS / QUARANTINED LEGACY RELATIONS UNCHANGED / INTEGRITY / TESTS / COMMIT / HEAD==ORIGIN / WORKTREE CLEAN / USER MAY UPLOAD NEW IMAGES / USER DECISION REQUIRED.
