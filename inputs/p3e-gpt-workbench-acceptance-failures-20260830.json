@@ -1,0 +1,90 @@
+{
+  "phase": "P3E-WORKBENCH-ACCEPTANCE-GAP",
+  "observed_on": "2026-08-30",
+  "producer": "GPT-5.6 Sol control plane",
+  "basis": [
+    "outputs/GPT_HANDOFF.json",
+    "outputs/p3-workbench-mvp-report.json",
+    "workbench/server.mjs",
+    "workbench/app.js",
+    "agent/GPT_NEXT_TASK.md"
+  ],
+  "status": "FUNCTIONAL_GAPS_FOUND",
+  "accepted_parts": {
+    "assortment_exports_created": true,
+    "assortment_counts": {
+      "minerals": 24,
+      "pearls_organic": 4,
+      "hardware": 10,
+      "packaging": 8,
+      "canonical_matches": 25,
+      "candidate_only": 21
+    },
+    "workbench_server_exists": true,
+    "npm_run_workbench_exists": true,
+    "canonical_sqlite_read_only": true,
+    "local_url": "http://127.0.0.1:4173"
+  },
+  "acceptance_failures": [
+    {
+      "area": "Assortment",
+      "required": "priority/theme/design-role/form-spec/canonical-vs-candidate filters",
+      "observed": "UI exposes only section dropdown plus generic text search"
+    },
+    {
+      "area": "Overview",
+      "required": "assortment counts by category and priority plus shortcuts",
+      "observed": "UI primarily shows canonical DB counts and theme cards"
+    },
+    {
+      "area": "Materials Library",
+      "required": "assortment overlay, selected themes/roles/forms, canonical variants, search/filter",
+      "observed": "UI renders basic canonical material cards and variant count only"
+    },
+    {
+      "area": "Accessories Library",
+      "required": "combine canonical components with V1 hardware assortment and pearl/organic candidates",
+      "observed": "UI renders canonical components only"
+    },
+    {
+      "area": "Packaging Library",
+      "required": "combine canonical packaging options with V1 packaging assortment overlay",
+      "observed": "UI renders canonical packaging options only"
+    },
+    {
+      "area": "Reference Gallery",
+      "required": "themes, patterns/summary, asset count, synthesis/observation snippets and image/placeholder handling",
+      "observed": "UI renders only id/reference_key/title"
+    },
+    {
+      "area": "Design Board persistence",
+      "required": "named drafts saved/loaded from workbench/state/*.json",
+      "observed": "frontend saves only to browser localStorage; server sidecar endpoint is not used by UI"
+    },
+    {
+      "area": "Design Board editing",
+      "required": "select assortment items, remove, role edit, form/spec edit, reorder, notes",
+      "observed": "UI only auto-adds first three theme-matching items and has no item editing/removal/reorder"
+    },
+    {
+      "area": "Exports",
+      "required": "assortment CSV/JSON export and draft Markdown/JSON export from UI",
+      "observed": "no UI export workflow implemented"
+    },
+    {
+      "area": "Malformed sidecar handling",
+      "required": "actionable error or safe recovery without deleting bad file",
+      "observed": "server GET catches all read/parse errors and silently returns an empty draft"
+    },
+    {
+      "area": "Delivery report",
+      "required": "known limitations, file structure, tests, commit, HEAD==origin/main and worktree clean",
+      "observed": "current report is minimal and omits several required delivery fields"
+    }
+  ],
+  "safety_boundary": {
+    "canonical_db": "READ_ONLY",
+    "allowed_writes": ["workbench/**", "test/**", "outputs/**", "package.json only if needed"],
+    "forbidden": ["schema migration", "canonical DB writes", "supplier progression", "supplier research", "purchase work", "Bridge/watcher work"]
+  }
+}
