@@ -11,3 +11,6 @@ __pycache__/
 .env.*
 .agent-state/
 test/.tmp-p2a-2r-*/
+test/.tmp-cretaceous-intake-*/
+test/.tmp-p2a-semantic-resolve-*/
+backups/

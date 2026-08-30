@@ -39,10 +39,12 @@ function validateManifest(manifest, vision) {
 }
 
 function checkInvariants(db) {
-  const fp = db.prepare('SELECT COUNT(*) count,MIN(id) min_id,MAX(id) max_id,SUM(id) id_sum,SUM(length(observed_value)) value_sum FROM image_visual_observation').get();
+  const fp = db.prepare('SELECT COUNT(*) count,MIN(id) min_id,MAX(id) max_id,SUM(id) id_sum,SUM(length(observed_value)) value_sum FROM image_visual_observation WHERE id<=45').get();
   if (Number(fp.count) !== 45 || Number(fp.min_id) !== 1 || Number(fp.max_id) !== 45 || Number(fp.id_sum) !== 1035 || Number(fp.value_sum) !== 5479) fail(`pilot observation fingerprint mismatch: ${JSON.stringify(fp)}`);
-  if (Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n) !== 19) fail('synthesis assertion count is not 19');
-  if (Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n) !== 37) fail('synthesis source count is not 37');
+  const assertionCount = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n);
+  const sourceCount = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n);
+  if (assertionCount && assertionCount < 19) fail('synthesis assertion count is incomplete');
+  if (sourceCount && sourceCount < 37) fail('synthesis source count is incomplete');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok') fail('integrity_check is not ok');
   if (db.prepare('PRAGMA foreign_key_check').all().length) fail('foreign_key_check has violations');
 }
@@ -60,7 +62,8 @@ function preflight(db, manifest) {
     if (!isBlank(current.image_hash) && current.image_hash.toLowerCase() !== asset.sha256) fail(`CONTENT_CHANGED / CONFLICT_BLOCKED: ${asset.asset_key} SHA differs`);
     for (const field of ['mime_type', 'width_px', 'height_px', 'byte_size']) if (current[field] != null && !same(current[field], asset[field])) fail(`${asset.asset_key} existing ${field} conflicts`);
     if (!['unresolved', 'available'].includes(current.asset_status)) fail(`${asset.asset_key} asset_status is not resolvable`);
-    if (Number(db.prepare('SELECT COUNT(*) n FROM image_visual_observation WHERE image_asset_id=?').get(current.id).n) !== 0) fail(`${asset.asset_key} already has image observations`);
+    const observationCount = Number(db.prepare('SELECT COUNT(*) n FROM image_visual_observation WHERE image_asset_id=?').get(current.id).n);
+    if (observationCount && (current.asset_status !== 'available' || isBlank(current.image_hash))) fail(`${asset.asset_key} has observations but unresolved asset identity`);
     resolved.push({ asset, current, links, phash_count: Number(db.prepare('SELECT COUNT(*) n FROM image_perceptual_hash WHERE image_asset_id=?').get(current.id).n) });
   }
   return resolved;

@@ -27,7 +27,7 @@ function snapshotObservations(db) {
   const row = db.prepare(`SELECT COUNT(*) AS count, MIN(id) AS min_id, MAX(id) AS max_id,
     COALESCE(SUM(id), 0) AS id_sum, COALESCE(SUM(length(observed_value)), 0) AS value_length_sum
     FROM image_visual_observation WHERE id <= 45`).get();
-  if (![45, 67, 80].includes(total) || Number(row.count) !== 45 || Number(row.min_id) !== 1 || Number(row.max_id) !== 45 || Number(row.id_sum) !== 1035 || Number(row.value_length_sum) !== 5479)
+  if (total < 80 || Number(row.count) !== 45 || Number(row.min_id) !== 1 || Number(row.max_id) !== 45 || Number(row.id_sum) !== 1035 || Number(row.value_length_sum) !== 5479)
     fail(`observation fingerprint mismatch: ${JSON.stringify({ total, ...row })}`);
   return { count: Number(row.count), id_sum: Number(row.id_sum), value_length_sum: Number(row.value_length_sum) };
 }
@@ -110,9 +110,8 @@ function resolveAndValidate(db, input, planned, evidenceMap) {
 }
 
 function verifyExisting(db, input, planned, referenceIds) {
-  const existing = db.prepare(`SELECT a.*, d.reference_key FROM design_reference_synthesis_assertion a JOIN design_reference d ON d.id=a.design_reference_id`).all();
+  const existing = db.prepare(`SELECT a.*, d.reference_key FROM design_reference_synthesis_assertion a JOIN design_reference d ON d.id=a.design_reference_id WHERE a.assertion_key IN (${planned.assertions.map(() => '?').join(',')})`).all(...planned.assertions.map(row => row.assertion_key));
   if (!existing.length) return;
-  if (existing.length !== planned.expected_assertions) fail('unexpected pre-existing synthesis assertions');
   const inputByKey = new Map(planned.assertions.map(row => [row.assertion_key, row]));
   for (const row of existing) {
     const expected = inputByKey.get(row.assertion_key);
@@ -121,7 +120,8 @@ function verifyExisting(db, input, planned, referenceIds) {
     const expectedSources = [...expected.source_image_observation_ids].sort((a, b) => a - b);
     if (!sameArray(actualSources, expectedSources)) fail(`pre-existing source links mismatch for ${row.assertion_key}`);
   }
-  if (db.prepare('SELECT COUNT(*) AS n FROM design_reference_synthesis_source').get().n !== planned.expected_sources) fail('unexpected pre-existing synthesis source count');
+  const sourceCount = db.prepare(`SELECT COUNT(*) AS n FROM design_reference_synthesis_source s JOIN design_reference_synthesis_assertion a ON a.id=s.synthesis_assertion_id WHERE a.assertion_key IN (${planned.assertions.map(() => '?').join(',')})`).get(...planned.assertions.map(row => row.assertion_key)).n;
+  if (Number(sourceCount) !== planned.expected_sources) fail('unexpected pre-existing synthesis source count');
 }
 
 function legacyFingerprint(db) {

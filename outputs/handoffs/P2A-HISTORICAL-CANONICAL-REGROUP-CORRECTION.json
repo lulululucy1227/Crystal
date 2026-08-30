@@ -1,0 +1,11 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
+  "status": "blocked",
+  "model": "Terra",
+  "strength": "High",
+  "execution_class": "HIGH_RISK",
+  "result": "Canonical regroup and all structurally complete GPT semantic batches were committed transactionally. The remaining EARLY-C source is not structurally canonicalizable without GPT-supplied scope, confidence, and synthesis provenance.",
+  "artifacts": ["outputs/p2a-historical-canonical-regroup-before.json", "outputs/p2a-historical-canonical-regroup-after.json", "outputs/p2a-image-backlog-status.json"],
+  "blocker": "GPT_CONTENT_REQUIRED: structured canonical payload for EARLY-C01 through EARLY-C18."
+}

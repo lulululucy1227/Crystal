@@ -1,0 +1,42 @@
+{
+  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
+  "recorded_at": "2026-08-30T11:35:56Z",
+  "canonical_database": "data/crystal-design.sqlite",
+  "db_sha256": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2",
+  "backup": {
+    "path": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2a-historical-canonical-regroup-20260830-113556.sqlite",
+    "sha256": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2",
+    "byte_for_byte_match": true
+  },
+  "row_counts": {
+    "design_reference": 26,
+    "design_reference_image": 69,
+    "image_asset": 69,
+    "image_visual_observation": 80,
+    "design_reference_synthesis_assertion": 19,
+    "design_reference_synthesis_source": 37,
+    "preference_evidence": 34,
+    "design_assessment": 24,
+    "design_reference_pattern": 32,
+    "design_reference_theme": 14,
+    "source": 107
+  },
+  "deterministic_reassignment_plan": {
+    "reference_splits": [
+      { "from": "REF-000003", "surviving_child": "EARLY-C01", "children": [{ "group": "EARLY-C01", "asset": "IMG_7654.PNG" }, { "group": "EARLY-C02", "asset": "IMG_7655.PNG" }, { "group": "EARLY-C03", "asset": "IMG_7656.PNG" }] },
+      { "from": "REF-000004", "surviving_child": "EARLY-C05", "children": [{ "group": "EARLY-C04", "asset": "IMG_7661.PNG" }, { "group": "EARLY-C05", "asset": "IMG_7662.PNG" }, { "group": "EARLY-C06", "asset": "IMG_7663.PNG" }, { "group": "EARLY-C07", "asset": "IMG_7664.PNG" }] }
+    ],
+    "asset_moves": [
+      { "asset": "IMG_7678.PNG", "from": "REF-000008", "to": "REF-000009" },
+      { "asset": "IMG_7688.PNG", "from": "REF-000011", "to": "REF-000012" },
+      { "asset": "IMG_7690.PNG", "from": "REF-000012", "to": "REF-000013" },
+      { "asset": "IMG_7696.PNG", "from": "REF-000014", "to": "REF-000015" },
+      { "asset": "IMG_7698.PNG", "from": "REF-000015", "to": "REF-000016" }
+    ],
+    "ambiguous_legacy_relations_quarantined_on_surviving_reference": [
+      { "reference": "REF-000003", "relations": ["preference_evidence:12", "design_assessment:3", "design_reference_pattern:1"] },
+      { "reference": "REF-000004", "relations": ["preference_evidence:13", "design_reference_theme:3", "design_reference_theme:4"] }
+    ],
+    "rule": "No ambiguous reference-level relation will be copied to a child reference. Provenance remains on the historical surviving reference and is flagged in its notes for review."
+  }
+}

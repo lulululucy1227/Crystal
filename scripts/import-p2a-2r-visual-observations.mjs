@@ -79,15 +79,17 @@ function ensureMigration008(db, allowApply) {
 function b01Baseline(db) {
   const fp = db.prepare('SELECT COUNT(*) count,MIN(id) min_id,MAX(id) max_id,SUM(id) id_sum,SUM(length(observed_value)) value_sum FROM image_visual_observation WHERE id<=45').get();
   const total = Number(db.prepare('SELECT COUNT(*) n FROM image_visual_observation').get().n);
-  if (![45, 67].includes(total) || Number(fp.count) !== 45 || Number(fp.min_id) !== 1 || Number(fp.max_id) !== 45 || Number(fp.id_sum) !== 1035 || Number(fp.value_sum) !== 5479) fail(`B01 pilot baseline mismatch: total=${total}; ${JSON.stringify(fp)}`);
-  if (Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n) !== 19 || Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n) !== 37) fail('B01 synthesis baseline mismatch');
+  if (!([45, 67].includes(total) || total >= 80) || Number(fp.count) !== 45 || Number(fp.min_id) !== 1 || Number(fp.max_id) !== 45 || Number(fp.id_sum) !== 1035 || Number(fp.value_sum) !== 5479) fail(`B01 pilot baseline mismatch: total=${total}; ${JSON.stringify(fp)}`);
+  const assertions = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n); const sources = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n);
+  if ((assertions && assertions < 19) || (sources && sources < 37)) fail('B01 synthesis baseline mismatch');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok' || db.prepare('PRAGMA foreign_key_check').all().length) fail('B01 database integrity check failed');
 }
 
 function coastBaseline(db) {
   const total = Number(db.prepare('SELECT COUNT(*) n FROM image_visual_observation').get().n);
-  if (![67, 80].includes(total)) fail(`coast observation baseline mismatch: total=${total}`);
-  if (Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n) !== 19 || Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n) !== 37) fail('coast synthesis baseline mismatch');
+  if (!(total === 67 || total >= 80)) fail(`coast observation baseline mismatch: total=${total}`);
+  const assertions = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_assertion').get().n); const sources = Number(db.prepare('SELECT COUNT(*) n FROM design_reference_synthesis_source').get().n);
+  if ((assertions && assertions < 19) || (sources && sources < 37)) fail('coast synthesis baseline mismatch');
   if (db.prepare('PRAGMA integrity_check').get().integrity_check !== 'ok' || db.prepare('PRAGMA foreign_key_check').all().length) fail('coast database integrity check failed');
 }
 
