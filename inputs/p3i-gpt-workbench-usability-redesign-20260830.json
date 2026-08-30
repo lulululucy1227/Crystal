@@ -1,0 +1,95 @@
+{
+  "phase": "P3I-WORKBENCH-USABILITY-REDESIGN",
+  "observed_user_feedback": "Current Crystal Workbench is technically functional but the user cannot understand the interface at a glance.",
+  "screenshot_findings": [
+    "The top navigation exposes implementation/data concepts directly: Overview, Assortment, Materials, Accessories, Packaging, References, Design Board.",
+    "The home page begins with raw database counts such as materials, variants, components and assets, which are meaningful to the system but not useful as the user's first decision surface.",
+    "Internal enum labels such as minerals_crystals, pearls_organic, hardware_accessories, A_CORE, B_DESIGN_EXTENSION and C_SIGNATURE_ONE_OF_ONE are shown literally.",
+    "Cards have large empty areas and weak action hierarchy; it is unclear what the user should click first.",
+    "The information architecture separates Materials, Accessories and Packaging even though the user's actual mental model is selecting things for a design.",
+    "The interface is English-first even though the user operates this project primarily in Chinese.",
+    "The current overview behaves like a database dashboard rather than a design workbench."
+  ],
+  "design_principle": "Task-oriented, Chinese-first, human-readable. Hide database terminology unless the user explicitly opens a technical detail view.",
+  "target_information_architecture": {
+    "primary_navigation": [
+      {"label": "首页", "purpose": "Tell the user what they can do next."},
+      {"label": "选品库", "purpose": "One unified place for 水晶/天然材质/配饰/包装, with tabs inside."},
+      {"label": "灵感库", "purpose": "Reference gallery and design-language inspiration."},
+      {"label": "设计台", "purpose": "Create and edit design drafts."}
+    ],
+    "secondary_or_hidden": [
+      "database counts",
+      "canonical/candidate implementation terminology",
+      "variant/component/asset counts",
+      "supplier and price information"
+    ]
+  },
+  "home_page": {
+    "title": "水晶设计工作台",
+    "subtitle": "选材料、找灵感、做设计。",
+    "primary_actions": [
+      {"label": "开始选品", "description": "从水晶、天然材质、配饰和包装中挑选。", "target": "选品库"},
+      {"label": "查看灵感", "description": "查看已经整理的设计参考和主题语言。", "target": "灵感库"},
+      {"label": "开始设计", "description": "建立一个新的手串设计草稿。", "target": "设计台"}
+    ],
+    "summary_cards": [
+      "核心选品",
+      "设计扩展",
+      "Signature / 孤品素材",
+      "最近设计草稿"
+    ],
+    "do_not_show_first": ["33 materials", "73 variants", "15 components", "94 assets", "raw database counters"]
+  },
+  "human_labels": {
+    "minerals_crystals": "水晶 / 矿物",
+    "pearls_organic": "珍珠 / 天然材质",
+    "hardware_accessories": "配饰 / 结构件",
+    "packaging": "包装",
+    "A_CORE": "核心常备",
+    "B_DESIGN_EXTENSION": "设计扩展",
+    "C_SIGNATURE_ONE_OF_ONE": "Signature / 孤品",
+    "RESERVE_NOT_CORE": "备用"
+  },
+  "assortment_page": {
+    "name": "选品库",
+    "tabs": ["水晶 / 矿物", "珍珠 / 天然材质", "配饰 / 结构件", "包装"],
+    "filters": ["主题", "层级", "设计作用", "形状/规格", "关键词"],
+    "card_first_line": "中文/常用材料名称",
+    "card_second_line": "一句话解释它在设计里干什么",
+    "card_meta": ["适合主题", "推荐形状/尺寸", "选品层级"],
+    "primary_card_action": "加入设计台",
+    "secondary_detail": "展开后再显示 canonical/候选、来源状态、技术信息"
+  },
+  "reference_page": {
+    "name": "灵感库",
+    "primary_filters": ["主题", "设计结构", "色彩/氛围"],
+    "card_priority": ["图片或安全占位图", "标题", "一句设计语言摘要", "主题标签"],
+    "hide_raw_ids": true
+  },
+  "design_board": {
+    "name": "设计台",
+    "first_view": ["设计名称", "主题", "已选材料", "设计备注"],
+    "empty_state": "还没有材料。去选品库添加，或点击“添加材料”。",
+    "selected_item_display": ["名称", "角色", "规格/形状", "上移/下移/删除"],
+    "actions": ["保存草稿", "导出设计单"],
+    "avoid": ["implementation terminology", "supplier/purchase CTA", "database language"]
+  },
+  "visual_direction": {
+    "language": "Chinese-first with optional small English subtitle only where useful",
+    "layout": "left sidebar or compact top navigation; clear selected state",
+    "density": "compact but readable; no large empty cards",
+    "surface": "off-white/light grey",
+    "text": "graphite",
+    "accent": "restrained ice blue/cyan",
+    "avoid": ["spreadsheet dashboard look", "raw enum labels", "large empty white cards", "mystical crystal-shop styling", "decorative luxury gradients"]
+  },
+  "acceptance_examples": [
+    "A first-time user can understand within 10 seconds that the main workflows are 选品、灵感、设计.",
+    "No raw enum such as minerals_crystals or A_CORE is visible in the default UI.",
+    "No raw database counts dominate the homepage.",
+    "The user can reach any material category from 选品库 without understanding canonical DB concepts.",
+    "Technical canonical/candidate status remains available only in secondary detail when useful.",
+    "All existing sidecar and read-only database safety guarantees remain unchanged."
+  ]
+}
