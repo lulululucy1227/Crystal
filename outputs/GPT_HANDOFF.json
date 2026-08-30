@@ -1,17 +1,30 @@
 {
-  "protocol_version":"AGENT-HANDOFF-V1",
-  "phase":"P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS",
-  "status":"completed",
-  "model":"Terra",
-  "strength":"Medium",
-  "execution_class":"DATABASE_WRITE + READ_ONLY chained phases",
-  "commit_sha":"e6d9acef7f4c340eeb3ef556642658a5866a9e68",
-  "branch":"main",
-  "changed_files":["scripts/import-p2i-p2j-identities.mjs","scripts/audit-p2k-p2l-readiness.mjs","test/p2i-p2j-identity.test.mjs","test/p2k-p2l-readiness.test.mjs","outputs/p2i-p2j-before-manifest.json","outputs/p2i-p2j-after-manifest.json","outputs/p2i-packaging-identity-reconciliation.json","outputs/p2j-material-gap-resolution.json","outputs/p2k-sourcing-review-ready-pack.json","outputs/p2l-prototype-readiness-gate.json","outputs/GPT_HANDOFF.json","outputs/handoffs/P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS.json"],
-  "actual_changes":{"p2i":{"source_scoped_packaging_options_created":4,"promotion_created":0},"p2j":{"generic_parent_material_created":"Rutilated Quartz","source_scoped_variants_created":2,"promotion_created":0},"p2k":{"exact_review_ready":10,"unresolved":0,"promoted":0},"p2l":{"classification":"READY_FOR_USER_PROTOTYPE_DECISION","distinct_material_categories":7,"exact_hardware_component_benchmarks":2,"exact_packaging_benchmarks":4},"db_sha256_after":"89d31eacbab93d8baac83b999e201120043e578cb48316b19a2ee1651c85b184"},
-  "critical_boundaries_preserved":["no schema migration","no supplier selection or purchase","all catalog claims remain unverified","no fabricated approval or promotion","no packaging style or prototype design selected"],
-  "tests_or_checks":{"focused_tests":"PASS (2/2)","npm_test":"PASS (101 passed, 1 environment skip)","npm_validate":"PASS","integrity_check":"ok","foreign_key_check":0,"git_diff_check":"PENDING"},
-  "risks_or_blockers":[],
-  "requires_gpt_decision":true,
-  "next_minimum_action":"User prototype decision is now required: theme/design direction, positioning/quality envelope, sourcing route, and whether exact staged benchmarks may be used for planning."
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2M-P2Q-GLACIER-SIGNATURE-PROTOTYPE-PLANNING",
+  "status": "WAITING_FOR_LOCAL_EXECUTION",
+  "model": "Terra",
+  "strength": "Medium",
+  "execution_class": "DATABASE_WRITE + READ_ONLY chained phases",
+  "user_decision": {
+    "selected_route": "A_GLACIER_SIGNATURE",
+    "theme": "Glacier",
+    "positioning": "Signature / high-end validation prototype",
+    "sourcing_route_for_first_prototype_planning": "Europe-local ease/speed",
+    "exact_staged_benchmarks_allowed_for_planning": true,
+    "purchase_authorized": false
+  },
+  "decision_evidence": "inputs/p2m-user-prototype-decision-glacier-signature-20260830.json",
+  "gpt_semantic_brief": "inputs/p2m-gpt-glacier-signature-prototype-brief-20260830.json",
+  "task": "agent/GPT_NEXT_TASK.md",
+  "starting_db_sha256": "89d31eacbab93d8baac83b999e201120043e578cb48316b19a2ee1651c85b184",
+  "continuous_phases": [
+    "P2M product concept",
+    "P2N design structure and sourcing map",
+    "P2O conservative prototype procurement cost envelope",
+    "P2P packaging shortlist and execution pack",
+    "P2Q purchase-readiness gate"
+  ],
+  "stop_boundary": "No supplier outreach, order, purchase, checkout or production commitment without a new explicit user decision.",
+  "requires_gpt_decision": false,
+  "next_minimum_action": "Local Codex should sync main and execute the authorized P2M-P2Q task continuously until its stop condition."
 }
