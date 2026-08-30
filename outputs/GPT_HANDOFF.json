@@ -1,34 +1,24 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2M-P2Q-GLACIER-SIGNATURE-PROTOTYPE-PLANNING",
-  "status": "completed",
+  "phase": "P3A-P3D-ASSORTMENT-AND-WORKBENCH-MVP",
+  "status": "WAITING_FOR_LOCAL_EXECUTION",
   "model": "Terra",
   "strength": "Medium",
-  "execution_class": "DATABASE_WRITE + READ_ONLY chained phases",
-  "user_decision": {
-    "selected_route": "A_GLACIER_SIGNATURE",
-    "theme": "Glacier",
-    "positioning": "Signature / high-end validation prototype",
-    "sourcing_route_for_first_prototype_planning": "Europe-local ease/speed",
-    "exact_staged_benchmarks_allowed_for_planning": true,
-    "purchase_authorized": false
+  "execution_class": "SAFE_WRITE + READ_ONLY_DB + sidecar user-state writes",
+  "user_priority_change": {
+    "purchase_work": "paused",
+    "supplier_progression": "paused",
+    "primary_goals": [
+      "deliver practical crystal/mineral, pearl/organic, hardware and packaging assortment",
+      "build usable local Crystal design workbench"
+    ]
   },
-  "decision_evidence": "inputs/p2m-user-prototype-decision-glacier-signature-20260830.json",
-  "gpt_semantic_brief": "inputs/p2m-gpt-glacier-signature-prototype-brief-20260830.json",
+  "authoritative_assortment": "data/assortment-selection-v1.json",
+  "human_readable_assortment": "docs/ASSORTMENT_SELECTION_V1.md",
   "task": "agent/GPT_NEXT_TASK.md",
-  "starting_db_sha256": "89d31eacbab93d8baac83b999e201120043e578cb48316b19a2ee1651c85b184",
-  "continuous_phases": [
-    "P2M product concept",
-    "P2N design structure and sourcing map",
-    "P2O conservative prototype procurement cost envelope",
-    "P2P packaging shortlist and execution pack",
-    "P2Q purchase-readiness gate"
-  ],
-  "stop_boundary": "No supplier outreach, order, purchase, checkout or production commitment without a new explicit user decision.",
-  "actual_changes": {"product_concept":{"id":2,"created":1,"reused_on_replay":1},"canonical_bom_created":0,"p2n_p01_a_and_b_sourcing_map":"complete","p2o":"VAT-separated conservative full-strand/per-piece envelopes","p2p":"four-item ranked shortlist; no selection","p2q_classification":"READY_FOR_PURCHASE_APPROVAL","db_sha256_after":"3bbad4e36e985e4204e127b8cd8267312c918ab298f5130c81215f73bc364b9f"},
-  "critical_boundaries_preserved": ["no supplier selection/outreach/order/purchase","no final packaging lock","no BOM quantities or per-bead arithmetic invented","exact staged catalog evidence remains unverified"],
-  "tests_or_checks": {"focused_tests":"PASS (2/2)","npm_test":"PASS (103 passed, 1 environment skip)","npm_validate":"PASS","integrity_check":"ok","foreign_key_check":0,"git_diff_check":"PENDING"},
-  "commit_sha": "f7f2c8f3c546f3b9c869d6bda4be514a77b793ef",
-  "requires_gpt_decision": true,
-  "next_minimum_action": "Before any spend, user must approve or revise the P01-A basket, quantities, VAT-separated envelope, and sample packaging choice."
+  "required_workbench_mode": "canonical SQLite read-only; drafts/annotations only in sidecar JSON",
+  "supplier_boundary": "Do not research, contact, rank or progress suppliers in this phase; stored source/provenance data may remain visible only as secondary factual context.",
+  "purchase_authorized": false,
+  "requires_gpt_decision": false,
+  "next_minimum_action": "Local Codex should execute the authorized P3A-P3D assortment and workbench task continuously through completion."
 }
