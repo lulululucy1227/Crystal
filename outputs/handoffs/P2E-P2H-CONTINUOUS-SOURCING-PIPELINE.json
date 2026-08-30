@@ -9,5 +9,6 @@
   "p2h": { "classification": "CONTINUE_ORDINARY_DATA_WORK", "matrix": "outputs/p2h-sourcing-cost-readiness-matrix.json" },
   "db": { "before_p2e": "385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7", "before_p2f_p2g": "71f1e2e54fe92382661703e1d80e6daa7da8d14c8ce74c8036404ec94b77073d", "after": "ea80287d36dd3fe71e25962d8b34492612c6f72c8f12c012cf334f6be086015e", "backups": ["backups/p2e-r-20260830-155341.sqlite", "backups/p2f-p2g-20260830-155652.sqlite"] },
   "validation": { "focused_tests": "PASS (3/3)", "npm_test": "PASS (99 passed, 1 environment skip)", "npm_validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0 },
+  "commit": "c992d942cde5f0422c453a902afac5a505541594",
   "user_decision_required": "NONE"
 }

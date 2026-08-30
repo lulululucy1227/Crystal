@@ -5,7 +5,7 @@
   "model":"Terra",
   "strength":"Medium",
   "execution_class":"DATABASE_WRITE + READ_ONLY chained phases",
-  "commit_sha":"PENDING_COMMIT",
+  "commit_sha":"c992d942cde5f0422c453a902afac5a505541594",
   "branch":"main",
   "changed_files":["scripts/import-p2f-p2g-staging.mjs","scripts/audit-p2f-p2g-matchability.mjs","scripts/audit-p2h-sourcing-readiness.mjs","test/p2e-sourcing-identity.test.mjs","test/p2f-p2g-staging.test.mjs","outputs/p2f-packaging-matchability-audit.json","outputs/p2g-core-material-matchability-audit.json","outputs/p2h-sourcing-cost-readiness-matrix.json","outputs/p2e-p2h-continuous-after.json","outputs/GPT_HANDOFF.json","outputs/handoffs/P2E-P2H-CONTINUOUS-SOURCING-PIPELINE.json"],
   "actual_changes":{"p2e":{"explicit_user_approval":"records 139-144 approved by project_owner_user via Crystal GPT control plane on 2026-08-30","promoted_offers":6,"promotion_logs":6,"all_offers_unverified":true},"p2f":{"staged_packaging_offers":4,"promoted_packaging_offers":0,"exact_matches":0,"no_matches":4},"p2g":{"staged_material_offers":6,"source_scoped_unverified_variants":4,"promoted_material_offers":0,"ambiguous":1,"no_parent_mapping":1},"p2h":{"classification":"CONTINUE_ORDINARY_DATA_WORK"},"db_sha256_after":"ea80287d36dd3fe71e25962d8b34492612c6f72c8f12c012cf334f6be086015e"},
