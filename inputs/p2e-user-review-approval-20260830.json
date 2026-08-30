@@ -1,0 +1,8 @@
+{
+  "status": "APPROVED",
+  "approved_on": "2026-08-30",
+  "approval_source": "explicit_user_message_in_chatgpt",
+  "reviewer": "project_owner_user",
+  "staged_record_ids": [139, 140, 141, 142, 143, 144],
+  "scope": "Approve only these six staged public-catalog benchmark records for the existing canonical review and promotion workflow. Resulting catalog claims remain unverified."
+}
