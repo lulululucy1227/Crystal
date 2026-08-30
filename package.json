@@ -6,7 +6,8 @@
     "init": "node scripts/crystal-db.mjs init",
     "validate": "node scripts/crystal-db.mjs validate",
     "test": "node --test test/*.test.mjs",
-    "export": "node scripts/crystal-db.mjs export-json data/export.json"
+    "export": "node scripts/crystal-db.mjs export-json data/export.json",
+    "workbench": "node workbench/server.mjs"
   },
   "engines": { "node": ">=24" }
 }

@@ -1,0 +1,211 @@
+{
+  "selected_mineral_count": 24,
+  "selected_pearl_organic_count": 4,
+  "selected_hardware_count": 10,
+  "selected_packaging_count": 8,
+  "canonical_match_count": 25,
+  "candidate_only_count": 21,
+  "known_canonical_identities": [
+    {
+      "name": "Clear Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 2,
+        "canonical_name": "Clear Quartz"
+      }
+    },
+    {
+      "name": "Smoky Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 6,
+        "canonical_name": "Smoky Quartz"
+      }
+    },
+    {
+      "name": "Aquamarine",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 31,
+        "canonical_name": "Aquamarine"
+      }
+    },
+    {
+      "name": "Labradorite",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 21,
+        "canonical_name": "Labradorite"
+      }
+    },
+    {
+      "name": "Rainbow Moonstone",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 26,
+        "canonical_name": "Rainbow Moonstone"
+      }
+    },
+    {
+      "name": "Amazonite",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 22,
+        "canonical_name": "Amazonite"
+      }
+    },
+    {
+      "name": "Lapis Lazuli",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 24,
+        "canonical_name": "Lapis Lazuli"
+      }
+    },
+    {
+      "name": "Green Phantom Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 12,
+        "canonical_name": "Green Phantom Quartz"
+      }
+    },
+    {
+      "name": "Obsidian",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 7,
+        "canonical_name": "Obsidian"
+      }
+    },
+    {
+      "name": "Amethyst",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 5,
+        "canonical_name": "Amethyst"
+      }
+    },
+    {
+      "name": "Citrine",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 4,
+        "canonical_name": "Citrine"
+      }
+    },
+    {
+      "name": "Tiger's Eye",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 9,
+        "canonical_name": "Tiger's Eye"
+      }
+    },
+    {
+      "name": "Blue Lace Agate",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 15,
+        "canonical_name": "Blue Lace Agate"
+      }
+    },
+    {
+      "name": "Kunzite",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 23,
+        "canonical_name": "Kunzite"
+      }
+    },
+    {
+      "name": "Bloodstone",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 19,
+        "canonical_name": "Bloodstone"
+      }
+    },
+    {
+      "name": "White Phantom Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 13,
+        "canonical_name": "White Phantom Quartz"
+      }
+    },
+    {
+      "name": "Rose Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 3,
+        "canonical_name": "Rose Quartz"
+      }
+    },
+    {
+      "name": "Rainbow Obsidian",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 20,
+        "canonical_name": "Rainbow Obsidian"
+      }
+    },
+    {
+      "name": "Larimar",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 1,
+        "canonical_name": "Larimar"
+      }
+    },
+    {
+      "name": "Gold Rutilated Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 27,
+        "canonical_name": "Gold Rutilated Quartz"
+      }
+    },
+    {
+      "name": "Black Rutilated Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 28,
+        "canonical_name": "Black Rutilated Quartz"
+      }
+    },
+    {
+      "name": "Rutilated Quartz",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 33,
+        "canonical_name": "Rutilated Quartz"
+      }
+    },
+    {
+      "name": "Sugilite",
+      "section": "minerals_crystals",
+      "identity": {
+        "id": 25,
+        "canonical_name": "Sugilite"
+      }
+    },
+    {
+      "name": "White South Sea Pearl",
+      "section": "pearls_organic",
+      "identity": {
+        "id": 30,
+        "canonical_name": "White South Sea Pearl"
+      }
+    },
+    {
+      "name": "Golden South Sea Pearl",
+      "section": "pearls_organic",
+      "identity": {
+        "id": 29,
+        "canonical_name": "Golden South Sea Pearl"
+      }
+    }
+  ],
+  "supplier_recommendation": "none"
+}

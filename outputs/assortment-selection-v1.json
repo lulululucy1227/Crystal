@@ -1,0 +1,1166 @@
+{
+  "version": "ASSORTMENT-SELECTION-V1",
+  "items": [
+    {
+      "section": "minerals_crystals",
+      "name": "Clear Quartz",
+      "priority": "A_CORE",
+      "themes": [
+        "Glacier",
+        "Starlight",
+        "Mountain"
+      ],
+      "roles": [
+        "light",
+        "structural_mineral",
+        "atmosphere"
+      ],
+      "preferred_forms": [
+        "6-8mm round",
+        "8-12mm faceted",
+        "12-22mm irregular/polygon hero"
+      ],
+      "selection_notes": "High-clarity pieces matter more than generic abundance; use geometric or irregular pieces to create structure.",
+      "canonical_identity": {
+        "id": 2,
+        "canonical_name": "Clear Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Smoky Quartz",
+      "priority": "A_CORE",
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Starlight"
+      ],
+      "roles": [
+        "anchor",
+        "shadow",
+        "atmosphere"
+      ],
+      "preferred_forms": [
+        "6-8mm round",
+        "8-10mm round",
+        "12-22mm oval/faceted focal"
+      ],
+      "selection_notes": "Useful as a quiet dark anchor; avoid making the whole bracelet uniformly brown-grey.",
+      "canonical_identity": {
+        "id": 6,
+        "canonical_name": "Smoky Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Aquamarine",
+      "priority": "A_CORE",
+      "themes": [
+        "Glacier",
+        "Ocean"
+      ],
+      "roles": [
+        "anchor_atmosphere",
+        "light",
+        "hero"
+      ],
+      "preferred_forms": [
+        "6-8mm round",
+        "6-8mm faceted",
+        "10-18mm irregular/oval focal"
+      ],
+      "selection_notes": "One of the strongest cool-blue core materials. Separate pale translucent body beads from higher-optical-quality focal pieces.",
+      "canonical_identity": {
+        "id": 31,
+        "canonical_name": "Aquamarine"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Labradorite",
+      "priority": "A_CORE",
+      "themes": [
+        "Starlight",
+        "Forest",
+        "Mountain"
+      ],
+      "roles": [
+        "shadow",
+        "light",
+        "hero"
+      ],
+      "preferred_forms": [
+        "6-8mm round",
+        "7-10mm faceted",
+        "12-20mm irregular focal"
+      ],
+      "selection_notes": "Flash and surface character are the selection criteria; dark low-flash beads should not be priced or positioned like strong-flash focal material.",
+      "canonical_identity": {
+        "id": 21,
+        "canonical_name": "Labradorite"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Rainbow Moonstone",
+      "priority": "A_CORE",
+      "themes": [
+        "Glacier",
+        "Starlight",
+        "Ocean"
+      ],
+      "roles": [
+        "light",
+        "transition",
+        "atmosphere"
+      ],
+      "preferred_forms": [
+        "4-6mm micro/round",
+        "6-8mm round",
+        "8-12mm irregular accent"
+      ],
+      "selection_notes": "Use as light and air rather than making every piece the visual hero.",
+      "canonical_identity": {
+        "id": 26,
+        "canonical_name": "Rainbow Moonstone"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Amazonite",
+      "priority": "A_CORE",
+      "themes": [
+        "Ocean",
+        "Glacier",
+        "Forest"
+      ],
+      "roles": [
+        "atmosphere",
+        "color_field",
+        "transition"
+      ],
+      "preferred_forms": [
+        "6-8mm round",
+        "6-8mm cube",
+        "8-14mm irregular"
+      ],
+      "selection_notes": "Prefer muted mineral blue-green and visible natural variation over saturated candy-like color.",
+      "canonical_identity": {
+        "id": 22,
+        "canonical_name": "Amazonite"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Lapis Lazuli",
+      "priority": "A_CORE",
+      "themes": [
+        "Ocean",
+        "Starlight"
+      ],
+      "roles": [
+        "anchor",
+        "color_field",
+        "micro_accent"
+      ],
+      "preferred_forms": [
+        "3-5mm micro bead",
+        "6-8mm round",
+        "6-10mm cube/barrel"
+      ],
+      "selection_notes": "Use deep blue as a controlled anchor; strong gold-speckled or overly uniform material should be treated as a separate visual variant.",
+      "canonical_identity": {
+        "id": 24,
+        "canonical_name": "Lapis Lazuli"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Green Phantom Quartz",
+      "priority": "A_CORE",
+      "themes": [
+        "Forest",
+        "Mountain"
+      ],
+      "roles": [
+        "hero",
+        "texture",
+        "geological_composition"
+      ],
+      "preferred_forms": [
+        "8-10mm round",
+        "10-16mm irregular",
+        "12-22mm clear inclusion focal"
+      ],
+      "selection_notes": "Inclusion visibility and internal landscape are more important than nominal size.",
+      "canonical_identity": {
+        "id": 12,
+        "canonical_name": "Green Phantom Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Obsidian",
+      "priority": "A_CORE",
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Starlight"
+      ],
+      "roles": [
+        "shadow",
+        "anchor",
+        "structural_mineral"
+      ],
+      "preferred_forms": [
+        "4-6mm micro bead",
+        "6-10mm round",
+        "8-14mm faceted/geometric"
+      ],
+      "selection_notes": "Use as black punctuation or structure, not as a full generic black-bead bracelet.",
+      "canonical_identity": {
+        "id": 7,
+        "canonical_name": "Obsidian"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Amethyst",
+      "priority": "A_CORE",
+      "themes": [
+        "Starlight",
+        "Sunrise"
+      ],
+      "roles": [
+        "color_field",
+        "light",
+        "accent"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "6-10mm faceted",
+        "10-16mm irregular"
+      ],
+      "selection_notes": "Favor grey-violet, smoky-violet or clear mineral tones over very saturated purple.",
+      "canonical_identity": {
+        "id": 5,
+        "canonical_name": "Amethyst"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Citrine",
+      "priority": "A_CORE",
+      "themes": [
+        "Sunrise",
+        "Mountain"
+      ],
+      "roles": [
+        "light",
+        "warm_accent",
+        "hero"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "6-10mm faceted",
+        "10-18mm irregular"
+      ],
+      "selection_notes": "Keep warm tones mineral and restrained; avoid orange/yellow combinations that read as costume jewelry.",
+      "canonical_identity": {
+        "id": 4,
+        "canonical_name": "Citrine"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Tiger's Eye",
+      "priority": "A_CORE",
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Sunrise"
+      ],
+      "roles": [
+        "anchor",
+        "texture",
+        "warm_accent"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "6-10mm barrel",
+        "8-14mm geometric"
+      ],
+      "selection_notes": "Select for chatoyancy and dark-brown/gold depth; use as a structural accent rather than a conventional full strand.",
+      "canonical_identity": {
+        "id": 9,
+        "canonical_name": "Tiger's Eye"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Blue Lace Agate",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Glacier",
+        "Ocean"
+      ],
+      "roles": [
+        "atmosphere",
+        "transition",
+        "soft_color"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "8-14mm oval",
+        "10-18mm irregular"
+      ],
+      "selection_notes": "Useful for pale blue-white transitions and quieter designs.",
+      "canonical_identity": {
+        "id": 15,
+        "canonical_name": "Blue Lace Agate"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Kunzite",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Sunrise",
+        "Starlight"
+      ],
+      "roles": [
+        "light",
+        "soft_color",
+        "hero"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "6-10mm faceted",
+        "10-16mm focal"
+      ],
+      "selection_notes": "Prefer cool pale pink-lilac transparency; avoid candy-pink presentation.",
+      "canonical_identity": {
+        "id": 23,
+        "canonical_name": "Kunzite"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Bloodstone",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Forest",
+        "Mountain"
+      ],
+      "roles": [
+        "texture",
+        "anchor",
+        "geological_composition"
+      ],
+      "preferred_forms": [
+        "6-10mm round",
+        "8-14mm irregular",
+        "10-18mm focal"
+      ],
+      "selection_notes": "Good for earthy geological composition when paired with quiet silver or dark wood.",
+      "canonical_identity": {
+        "id": 19,
+        "canonical_name": "Bloodstone"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "White Phantom Quartz",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Glacier",
+        "Mountain"
+      ],
+      "roles": [
+        "texture",
+        "light",
+        "geological_composition"
+      ],
+      "preferred_forms": [
+        "8-10mm round",
+        "10-16mm irregular",
+        "12-20mm focal"
+      ],
+      "selection_notes": "Treat internal structure as the design content; do not mix with too many other inclusion-heavy minerals.",
+      "canonical_identity": {
+        "id": 13,
+        "canonical_name": "White Phantom Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Rose Quartz",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Sunrise"
+      ],
+      "roles": [
+        "soft_color",
+        "atmosphere",
+        "transition"
+      ],
+      "preferred_forms": [
+        "5-8mm round",
+        "8-14mm irregular"
+      ],
+      "selection_notes": "Use only in restrained, low-saturation pink compositions; not a default healing-crystal aesthetic.",
+      "canonical_identity": {
+        "id": 3,
+        "canonical_name": "Rose Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Rainbow Obsidian",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Starlight",
+        "Mountain"
+      ],
+      "roles": [
+        "shadow",
+        "hero",
+        "optical_detail"
+      ],
+      "preferred_forms": [
+        "8-10mm round",
+        "10-18mm focal"
+      ],
+      "selection_notes": "Only worth carrying when the sheen is visually legible; ordinary black material belongs under Obsidian.",
+      "canonical_identity": {
+        "id": 20,
+        "canonical_name": "Rainbow Obsidian"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Larimar",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Ocean",
+        "Glacier"
+      ],
+      "roles": [
+        "hero",
+        "painterly_mineral",
+        "one_of_one"
+      ],
+      "preferred_forms": [
+        "8x5mm tumbled",
+        "10-18mm oval",
+        "12-25mm irregular/freeform"
+      ],
+      "selection_notes": "Reserve better pattern and color pieces for compact focal zones; do not distribute expensive focal material evenly around the bracelet.",
+      "canonical_identity": {
+        "id": 1,
+        "canonical_name": "Larimar"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Gold Rutilated Quartz",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Sunrise",
+        "Mountain",
+        "Starlight"
+      ],
+      "roles": [
+        "hero",
+        "light",
+        "optical_detail"
+      ],
+      "preferred_forms": [
+        "8-12mm round",
+        "12-22mm oval/irregular focal"
+      ],
+      "selection_notes": "Need visible rutile composition and enough transparency; strong focal use only.",
+      "canonical_identity": {
+        "id": 27,
+        "canonical_name": "Gold Rutilated Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Black Rutilated Quartz",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Starlight",
+        "Mountain",
+        "Forest"
+      ],
+      "roles": [
+        "hero",
+        "shadow",
+        "optical_detail"
+      ],
+      "preferred_forms": [
+        "8-12mm round",
+        "12-22mm oval/irregular focal"
+      ],
+      "selection_notes": "Use where dark inclusions remain readable through the crystal body; suited to silver-framed focal treatments.",
+      "canonical_identity": {
+        "id": 28,
+        "canonical_name": "Black Rutilated Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Rutilated Quartz",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Mountain",
+        "Starlight"
+      ],
+      "roles": [
+        "hero",
+        "geological_composition",
+        "one_of_one"
+      ],
+      "preferred_forms": [
+        "8-12mm round",
+        "12-25mm irregular focal"
+      ],
+      "selection_notes": "Generic parent for mixed-rutile material; preserve visible source variation rather than forcing it into gold/black subtypes.",
+      "canonical_identity": {
+        "id": 33,
+        "canonical_name": "Rutilated Quartz"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Sugilite",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Starlight"
+      ],
+      "roles": [
+        "hero",
+        "color_field",
+        "one_of_one"
+      ],
+      "preferred_forms": [
+        "6-10mm round",
+        "10-18mm focal"
+      ],
+      "selection_notes": "Use selectively as a deep mineral-purple focal; avoid large areas of uniform saturated purple.",
+      "canonical_identity": {
+        "id": 25,
+        "canonical_name": "Sugilite"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "minerals_crystals",
+      "name": "Aquamarine / collector focal grade",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Glacier",
+        "Ocean"
+      ],
+      "roles": [
+        "hero",
+        "light",
+        "one_of_one"
+      ],
+      "preferred_forms": [
+        "10-18mm faceted irregular",
+        "12-25mm oval/freeform"
+      ],
+      "selection_notes": "This is a quality/form tier of Aquamarine, not a second material identity. Workbench should keep it as a selection specification overlay.",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "pearls_organic",
+      "name": "White freshwater pearl",
+      "priority": "A_CORE",
+      "themes": [
+        "Glacier",
+        "Ocean",
+        "Sunrise"
+      ],
+      "roles": [
+        "light",
+        "micro_cluster",
+        "transition"
+      ],
+      "preferred_forms": [
+        "3-5mm rice/irregular",
+        "4-6mm small baroque"
+      ],
+      "selection_notes": "Use in small clusters or rhythm breaks; avoid generic pearl-bracelet dominance.",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "pearls_organic",
+      "name": "White South Sea Pearl",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Glacier",
+        "Ocean"
+      ],
+      "roles": [
+        "hero",
+        "light"
+      ],
+      "preferred_forms": [
+        "8-12mm near-round/baroque focal"
+      ],
+      "selection_notes": "Use as one or a few focal elements, not a full strand for this project language.",
+      "canonical_identity": {
+        "id": 30,
+        "canonical_name": "White South Sea Pearl"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "pearls_organic",
+      "name": "Golden South Sea Pearl",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [
+        "Sunrise"
+      ],
+      "roles": [
+        "hero",
+        "warm_light"
+      ],
+      "preferred_forms": [
+        "8-12mm near-round/baroque focal"
+      ],
+      "selection_notes": "Signature Sunrise focal only; not part of the default cool/silver system.",
+      "canonical_identity": {
+        "id": 29,
+        "canonical_name": "Golden South Sea Pearl"
+      },
+      "identity_status": "canonical_match"
+    },
+    {
+      "section": "pearls_organic",
+      "name": "Dark wood / agarwood-like structural spacer",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [
+        "Forest",
+        "Mountain"
+      ],
+      "roles": [
+        "texture",
+        "transition",
+        "warm_anchor"
+      ],
+      "preferred_forms": [
+        "2-5mm thin irregular disc",
+        "4-8mm short tube",
+        "small carved/irregular segment"
+      ],
+      "selection_notes": "Use as structural texture. Avoid large standard wooden rounds that make the design read as a conventional Buddhist/ethnic bead bracelet.",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver micro spacer",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "separator",
+        "transition",
+        "micro_accent"
+      ],
+      "preferred_forms": [
+        "2-4mm, polished or satin, visually minimal"
+      ],
+      "selection_notes": "2-4mm, polished or satin, visually minimal",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver curved tube",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "structural_interruption",
+        "secondary_line"
+      ],
+      "preferred_forms": [
+        "20-30mm length class; clean curve; no ornate engraving"
+      ],
+      "selection_notes": "20-30mm length class; clean curve; no ornate engraving",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver thin frame / bezel",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "frame",
+        "hero_assembly"
+      ],
+      "preferred_forms": [
+        "oval/freeform/polygon stone framing; thin profile; open or visually light construction"
+      ],
+      "selection_notes": "oval/freeform/polygon stone framing; thin profile; open or visually light construction",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver half-cap / edge-cap",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "cap",
+        "transition"
+      ],
+      "preferred_forms": [
+        "for irregular or focal minerals; restrained geometry"
+      ],
+      "selection_notes": "for irregular or focal minerals; restrained geometry",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver geometric connector",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "connector",
+        "structural_mineral_partner"
+      ],
+      "preferred_forms": [
+        "bar/block/ring geometry; small scale; no ornate motif"
+      ],
+      "selection_notes": "bar/block/ring geometry; small scale; no ornate motif",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver small round counterweight",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [
+        "anchor",
+        "counterweight",
+        "transition"
+      ],
+      "preferred_forms": [
+        "approximately 5-8mm visual scale, smooth or lightly textured"
+      ],
+      "selection_notes": "approximately 5-8mm visual scale, smooth or lightly textured",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver fine chain + minimal clasp",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [],
+      "roles": [
+        "extension",
+        "closure",
+        "secondary_line"
+      ],
+      "preferred_forms": [
+        "thin chain, minimal clasp, suitable only for non-elastic constructions"
+      ],
+      "selection_notes": "thin chain, minimal clasp, suitable only for non-elastic constructions",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "925 sterling silver micro organic charm",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [],
+      "roles": [
+        "micro_accent",
+        "narrative_component"
+      ],
+      "preferred_forms": [
+        "small leaf/botanical/abstract form; secondary only, never the main product story"
+      ],
+      "selection_notes": "small leaf/botanical/abstract form; secondary only, never the main product story",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "Oxidized / blackened sterling silver micro accent",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [],
+      "roles": [
+        "shadow",
+        "micro_accent"
+      ],
+      "preferred_forms": [
+        "small-scale only; use to connect dark mineral palettes"
+      ],
+      "selection_notes": "small-scale only; use to connect dark mineral palettes",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "hardware_accessories",
+      "name": "Gold-tone hardware",
+      "priority": "RESERVE_NOT_CORE",
+      "themes": [],
+      "roles": [
+        "accent"
+      ],
+      "preferred_forms": [
+        "Do not build V1 around gold plating. Revisit only for explicit Sunrise or Black-Gold capsule designs."
+      ],
+      "selection_notes": "Do not build V1 around gold plating. Revisit only for explicit Sunrise or Black-Gold capsule designs.",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Compact matte white rigid presentation box",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "clean white or cool off-white, matte/soft-touch or fine paper texture, compact interior, no visible gold trim"
+      ],
+      "selection_notes": "clean white or cool off-white, matte/soft-touch or fine paper texture, compact interior, no visible gold trim",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Cool grey rigid drawer box",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "stone grey / blue-grey, low-saturation, restrained typography, removable insert"
+      ],
+      "selection_notes": "stone grey / blue-grey, low-saturation, restrained typography, removable insert",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Soft grey or pearl-white protective pouch",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "non-shedding, low-lint fabric; avoid heavy black velvet as default"
+      ],
+      "selection_notes": "non-shedding, low-lint fabric; avoid heavy black velvet as default",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Cotton-linen envelope pouch",
+      "priority": "B_DESIGN_EXTENSION",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "natural but refined weave, cool beige/grey preferred over rustic brown"
+      ],
+      "selection_notes": "natural but refined weave, cool beige/grey preferred over rustic brown",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Book-style magnetic box",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "minimal exterior, no ritual/mystical graphics, space for material card and one-of-one certificate"
+      ],
+      "selection_notes": "minimal exterior, no ritual/mystical graphics, space for material card and one-of-one certificate",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Material disclosure + care card",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "state material names/status and care; no healing/energy claims; visually editorial, not mystical"
+      ],
+      "selection_notes": "state material names/status and care; no healing/energy claims; visually editorial, not mystical",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "One-of-One certificate card",
+      "priority": "C_SIGNATURE_ONE_OF_ONE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "record design code, material composition, date/batch and visible uniqueness notes; do not claim unverifiable geology/authenticity"
+      ],
+      "selection_notes": "record design code, material composition, date/batch and visible uniqueness notes; do not claim unverifiable geology/authenticity",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    },
+    {
+      "section": "packaging",
+      "name": "Branded shipping mailer",
+      "priority": "A_CORE",
+      "themes": [],
+      "roles": [],
+      "preferred_forms": [
+        "plain protective exterior, compact, recyclable preference where practical; presentation box remains the visual product layer"
+      ],
+      "selection_notes": "plain protective exterior, compact, recyclable preference where practical; presentation box remains the visual product layer",
+      "canonical_identity": null,
+      "identity_status": "candidate_only"
+    }
+  ],
+  "reconciliation": {
+    "selected_mineral_count": 24,
+    "selected_pearl_organic_count": 4,
+    "selected_hardware_count": 10,
+    "selected_packaging_count": 8,
+    "canonical_match_count": 25,
+    "candidate_only_count": 21,
+    "known_canonical_identities": [
+      {
+        "name": "Clear Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 2,
+          "canonical_name": "Clear Quartz"
+        }
+      },
+      {
+        "name": "Smoky Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 6,
+          "canonical_name": "Smoky Quartz"
+        }
+      },
+      {
+        "name": "Aquamarine",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 31,
+          "canonical_name": "Aquamarine"
+        }
+      },
+      {
+        "name": "Labradorite",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 21,
+          "canonical_name": "Labradorite"
+        }
+      },
+      {
+        "name": "Rainbow Moonstone",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 26,
+          "canonical_name": "Rainbow Moonstone"
+        }
+      },
+      {
+        "name": "Amazonite",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 22,
+          "canonical_name": "Amazonite"
+        }
+      },
+      {
+        "name": "Lapis Lazuli",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 24,
+          "canonical_name": "Lapis Lazuli"
+        }
+      },
+      {
+        "name": "Green Phantom Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 12,
+          "canonical_name": "Green Phantom Quartz"
+        }
+      },
+      {
+        "name": "Obsidian",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 7,
+          "canonical_name": "Obsidian"
+        }
+      },
+      {
+        "name": "Amethyst",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 5,
+          "canonical_name": "Amethyst"
+        }
+      },
+      {
+        "name": "Citrine",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 4,
+          "canonical_name": "Citrine"
+        }
+      },
+      {
+        "name": "Tiger's Eye",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 9,
+          "canonical_name": "Tiger's Eye"
+        }
+      },
+      {
+        "name": "Blue Lace Agate",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 15,
+          "canonical_name": "Blue Lace Agate"
+        }
+      },
+      {
+        "name": "Kunzite",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 23,
+          "canonical_name": "Kunzite"
+        }
+      },
+      {
+        "name": "Bloodstone",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 19,
+          "canonical_name": "Bloodstone"
+        }
+      },
+      {
+        "name": "White Phantom Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 13,
+          "canonical_name": "White Phantom Quartz"
+        }
+      },
+      {
+        "name": "Rose Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 3,
+          "canonical_name": "Rose Quartz"
+        }
+      },
+      {
+        "name": "Rainbow Obsidian",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 20,
+          "canonical_name": "Rainbow Obsidian"
+        }
+      },
+      {
+        "name": "Larimar",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 1,
+          "canonical_name": "Larimar"
+        }
+      },
+      {
+        "name": "Gold Rutilated Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 27,
+          "canonical_name": "Gold Rutilated Quartz"
+        }
+      },
+      {
+        "name": "Black Rutilated Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 28,
+          "canonical_name": "Black Rutilated Quartz"
+        }
+      },
+      {
+        "name": "Rutilated Quartz",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 33,
+          "canonical_name": "Rutilated Quartz"
+        }
+      },
+      {
+        "name": "Sugilite",
+        "section": "minerals_crystals",
+        "identity": {
+          "id": 25,
+          "canonical_name": "Sugilite"
+        }
+      },
+      {
+        "name": "White South Sea Pearl",
+        "section": "pearls_organic",
+        "identity": {
+          "id": 30,
+          "canonical_name": "White South Sea Pearl"
+        }
+      },
+      {
+        "name": "Golden South Sea Pearl",
+        "section": "pearls_organic",
+        "identity": {
+          "id": 29,
+          "canonical_name": "Golden South Sea Pearl"
+        }
+      }
+    ],
+    "supplier_recommendation": "none"
+  }
+}
