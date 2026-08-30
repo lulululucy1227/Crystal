@@ -1,109 +1,158 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION
+Phase: P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS
 Status: authorized
 Model: Luna
 Strength: Medium
 Execution class: DATABASE_WRITE
 
 ## Why this phase exists
-The authorized HIGH_RISK canonical regroup has already been completed successfully and validated to the point documented in `outputs/p2a-historical-canonical-regroup-after.json`.
+The P2A image backlog is complete and validated. Current verified handoff reports:
+- 94 canonical image assets fully processed;
+- 308 image_visual_observation rows;
+- 100 design_reference_synthesis_assertion rows;
+- 273 design_reference_synthesis_source rows;
+- no remaining GPT image-analysis queue;
+- no provenance/image ambiguity blocker;
+- the 6 intentionally quarantined legacy relations remain unchanged.
 
-Completed state that MUST be preserved:
-- REF-000003 split mapping: EARLY-C01=REF-000003, EARLY-C02=REF-000027, EARLY-C03=REF-000028.
-- REF-000004 split mapping: EARLY-C04=REF-000029, EARLY-C05=REF-000004, EARLY-C06=REF-000030, EARLY-C07=REF-000031.
-- Exactly five authorized cross-boundary asset moves are already completed.
-- 6 ambiguous legacy reference-level relations remain quarantined and MUST NOT be guessed or propagated.
-- Current canonical counts after completed imports: image_visual_observation=210; synthesis assertions=82; synthesis sources=175.
-- Current DB SHA after the completed correction/import checkpoint: `084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2`.
-- 94 canonical image assets exist; exactly 34 early-C assets are still missing canonical observations because the previous GPT input omitted mandatory scope/confidence/provenance fields.
+The project should now return to its business/data priority: Europe-market positioning, sourcing evidence, supplier/component readiness and eventual product/BOM development. Do not spend this phase on watcher/Bridge infrastructure or additional image-pipeline architecture.
 
-GPT has now resolved that blocker by authoring:
-`inputs/p2a-gpt-historical-early-c-structured-completion-20260830.json`
+## New authoritative GPT market input
+Import/reconcile:
+`inputs/p2b-gpt-europe-market-baseline-20260830.json`
 
-The original retained semantic wording remains in:
-`inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json`
+This file contains current public-market evidence observed by GPT on 2026-08-30 and a separately identified assistant market assessment. Source claims remain source claims and are not independent verification of gemstone authenticity, grade, ethics, or healing properties.
 
 ## Objective
-Deterministically materialize the GPT-authored completion spec, import the remaining EARLY-C01 through EARLY-C18 image semantics and reference syntheses into the existing canonical schema, prove idempotency and full integrity, then close the image backlog if no genuine blocker remains.
+1. Safely import the supplied Europe market baseline into the existing canonical `source`, `market_evidence`, and `market_assessment` tables without schema changes or duplicate creation.
+2. Prove idempotency and integrity.
+3. Produce a read-only sourcing-readiness audit of the current canonical database so GPT can choose the next business/data phase.
+4. Do not invent market research, supplier facts, material facts, prices, product concepts or design judgments beyond the supplied GPT input.
 
 ## Preflight
-1. Safely sync Crystal `main` and require clean worktree before writes. Do not reset/clean/discard user work.
-2. Read `AGENTS.md`, latest `agent/GPT_NEXT_TASK.md`, `outputs/GPT_HANDOFF.json`, `outputs/p2a-historical-canonical-regroup-after.json`, the original early-C semantic file, and the new structured completion spec.
-3. Verify canonical DB current SHA/state against the last completed checkpoint. If it differs, reconcile from Git/handoff before writing; do not overwrite unexplained work.
-4. Create a fresh timestamped byte-for-byte DB backup for this additive completion and record its path/SHA.
+1. Safely sync Crystal `main`; require clean worktree before writes. Never reset/clean/discard user work.
+2. Read `AGENTS.md`, latest `agent/GPT_NEXT_TASK.md`, `outputs/GPT_HANDOFF.json`, and `inputs/p2b-gpt-europe-market-baseline-20260830.json`.
+3. Verify the P2A completed canonical state from the latest handoff before writing.
+4. Create a timestamped byte-for-byte backup of the canonical SQLite DB and record pre-write SHA-256.
 
-## Semantic authority and deterministic materialization
-The new structured completion spec is GPT-authored semantic authority for the missing fields. Codex may deterministically transform it into the repository's existing `P2A-GPT-SEMANTIC-BATCH-V1` / canonical importer shape.
+## Canonical import rules
+### source
+For every supplied `sources[]` item:
+- reconcile by stable factual identity using source_type + name + URL where possible;
+- reuse an existing matching source rather than duplicate it;
+- preserve source claims as notes/source context, not verified facts;
+- observed_on = 2026-08-30 where appropriate;
+- do not upgrade verification beyond the GPT input.
 
-Codex MUST NOT alter or invent:
-- original observation wording in `semantic_group.observations[]`
-- original `semantic_group.inference` wording
-- original `semantic_group.synthesis` wording
-- scope/class/confidence values supplied by the completion spec
-- canonical reference mapping supplied by the completion spec
-- secondary-asset coverage template supplied by the completion spec
+### market_evidence
+For every supplied `market_evidence[]` row:
+- link to the reconciled canonical source;
+- preserve brand/product/market/currency/price/claim/verification/evidence strength exactly;
+- do not normalize a stated price range into invented midpoints;
+- where the input explicitly uses a representative lower point and preserves the full range in the claim/notes, retain that convention exactly;
+- make the import idempotent using deterministic matching/hash logic consistent with project patterns.
 
-Apply the completion spec exactly:
-- each original observation string -> primary asset, `product_design`, class `observation`, confidence `high`;
-- original inference -> primary asset, `product_design`, class `inference`, confidence `medium`;
-- each explicitly listed secondary asset -> exactly one `alternate_view_same_reference` observation using the exact GPT template, `product_design`, class `observation`, confidence `high`;
-- each group synthesis string -> exactly one reference synthesis assertion, `product_design`, class `inference`, confidence `medium`;
-- synthesis provenance -> all rows materialized for that same group.
+### market_assessment
+Import exactly one assistant-authored assessment from `assistant_market_assessment` using the existing `market_assessment` table:
+- subject_type = `other`;
+- subject_id = NULL;
+- target_market = `Europe / EUR-facing online market`;
+- assessment_text = exact supplied assessment_text;
+- analyst = `gpt-5.6-sol`;
+- basis_notes = supplied basis_notes plus serialized implications without changing wording;
+- assessment_date = 2026-08-30;
+- confidence = supplied confidence.
 
-Use `canonical_reference_map_after_authorized_regroup` exactly. Do not create or renumber references for EARLY-C01..C18.
+Do not create preference/pattern/theme/material/supplier-offer/product-concept records from this market input.
+
+## Sourcing-readiness audit — READ ONLY after import
+Create:
+`outputs/p2b-sourcing-readiness-audit.json`
+
+Report exact canonical counts and useful gap metrics for at least:
+- material
+- material_variant
+- component
+- supplier
+- supplier_offer
+- packaging_option
+- packaging_supplier_offer
+- source, grouped by source_type and verification_status
+- market_evidence
+- market_assessment
+- product_concept
+- bom
+- bom_line
+- staged_record grouped by validation_status/target_entity
+- staged_field grouped by field_status/target_entity
+- review_decision
+- promotion_log
+
+Also report:
+- material variants with/without indicative price;
+- material variants by commercial_tier and reproducibility;
+- supplier offers with/without MOQ, quote date and verified/partially-verified status;
+- components by component_type and design_role;
+- packaging options with/without supplier offers;
+- market evidence price distribution by broad factual buckets only: <€100, €100–299.99, €300–699.99, €700–1999.99, >=€2000, using the stored point price only and clearly noting this is not a sales distribution;
+- unresolved staged/review backlog counts;
+- exact list/count of current suppliers and supplier offers, without guessing missing information.
+
+The audit may identify missing data but must not make aesthetic/business recommendations. GPT will interpret the audit.
 
 ## Database scope
-DATABASE_WRITE is authorized only for additive early-C image observations and reference synthesis/source rows using the existing canonical schema and deterministic plumbing needed to import them.
+DATABASE_WRITE authorized only for the supplied P2B market baseline into existing:
+- source
+- market_evidence
+- market_assessment
+
+Read-only audit of all other listed tables is authorized.
 
 Not authorized:
 - schema migration
-- changing the completed canonical regroup
-- any additional asset move
-- deleting/rewriting raw evidence
-- resolving the 6 quarantined relations by guess
-- preference/pattern/theme mutations
-- material/component/supplier/market/packaging writes
+- material/material_variant/component writes
+- supplier/supplier_offer writes
+- packaging writes
+- product concept/BOM writes
+- preference/pattern/theme/reference mutations
+- changes to P2A image/reference data
+- resolving the 6 quarantined legacy relations
+- web scraping or independent internet research by Codex
 - watcher/controller/Bridge work
 
-## Required reconciliation and validation
-Before applying, reconcile exact matches so nothing already canonical is duplicated.
-
+## Validation
 After apply:
-- every one of the 34 previously pending early-C assets must have canonical image semantic evidence;
-- all 18 EARLY-C groups must have canonical reference synthesis;
-- report exact created/reused observation/assertion/source counts;
-- replay the same materialized payload and prove idempotent reuse/no new rows;
-- unrelated canonical fingerprints must remain unchanged;
-- preserve all 6 quarantined legacy relations unchanged;
+- exact created/reused source counts;
+- exact created/reused market_evidence counts;
+- exact created/reused market_assessment counts;
+- replay/idempotency proof;
+- P2A image/reference counts and fingerprints unchanged;
 - `PRAGMA integrity_check = ok`;
 - `PRAGMA foreign_key_check = 0`;
-- focused tests;
+- focused tests for the new importer if implementation is needed;
 - full `npm test`;
 - `npm run validate`;
 - `git diff --check`.
 
-Update:
-- `outputs/p2a-image-backlog-status.json`
-- `outputs/p2a-image-backlog-needs-gpt-analysis.json` (must be empty/NONE if no semantic gap remains)
+## Required outputs
+Create/update:
+- `outputs/p2b-sourcing-readiness-audit.json`
 - `outputs/GPT_HANDOFF.json`
-- archived handoff under `outputs/handoffs/`
-
-If all 94 canonical assets are now fully processed and no GPT/provenance/ambiguity blocker remains, explicitly report image backlog completion and `USER MAY UPLOAD NEW IMAGES: YES`.
+- archived handoff under `outputs/handoffs/P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS.json`
 
 ## Git
-Commit/push the coherent Crystal checkpoint to `main`, then verify local HEAD == origin/main and clean worktree. Do not touch Local-Codex-Bridge.
+Commit/push a coherent Crystal checkpoint to `main`; verify local HEAD == origin/main and worktree clean. Do not touch Local-Codex-Bridge.
 
 ## Stop conditions
-Continue through materialization, import, replay, validation, status reconciliation, commit and push. Stop only for:
-1. genuine unexplained canonical state divergence;
-2. schema change requirement;
-3. global integrity/test failure that cannot be safely corrected inside this additive scope;
-4. inaccessible required provenance;
-5. successful completion.
+Continue through import, replay, validation, audit, commit and push. Stop only for:
+1. unexplained canonical state divergence;
+2. schema requirement;
+3. integrity/test failure that cannot be safely resolved in this additive scope;
+4. successful completion.
 
 No user business/aesthetic decision is currently required.
 
 ## Final handoff fields
-PHASE / STATUS / BACKUP / DB SHA BEFORE / DB SHA AFTER / MATERIALIZED OBSERVATION COUNT / CREATED+REUSED OBSERVATIONS / CREATED+REUSED SYNTHESIS ASSERTIONS+SOURCES / ASSETS FULLY PROCESSED / NEEDS GPT / PROVENANCE BLOCKED / AMBIGUOUS / QUARANTINED LEGACY RELATIONS UNCHANGED / INTEGRITY / TESTS / COMMIT / HEAD==ORIGIN / WORKTREE CLEAN / USER MAY UPLOAD NEW IMAGES / USER DECISION REQUIRED.
+PHASE / STATUS / BACKUP / DB SHA BEFORE / DB SHA AFTER / CREATED+REUSED SOURCES / CREATED+REUSED MARKET EVIDENCE / CREATED+REUSED MARKET ASSESSMENT / P2A COUNTS UNCHANGED / SOURCING READINESS AUDIT PATH / KEY TABLE COUNTS / INTEGRITY / TESTS / COMMIT / HEAD==ORIGIN / WORKTREE CLEAN / USER DECISION REQUIRED.
