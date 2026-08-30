@@ -16,7 +16,7 @@
   "malformed_sidecar": "422 actionable MALFORMED_DRAFT; file preserved",
   "supplier_purchase_status": "paused",
   "known_limitations": ["unresolvable image assets are shown as metadata rather than broken images"],
-  "commit_sha": "72e0efd85c984da6696a056969c7806094f4710f",
+  "commit_sha": "fb1cad96d979db981d386d01e1c6bdaa0d4beda1",
   "head_equals_origin_main": true,
   "worktree_clean": true,
   "requires_gpt_decision": false

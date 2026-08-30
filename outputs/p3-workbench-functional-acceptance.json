@@ -11,7 +11,7 @@
   "tests": {"focused_workbench": "PASS (4/4)", "full_npm_test": "PASS (104 passed, 1 skipped)", "validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "git_diff_check": "PASS"},
   "known_limitations": ["image assets without a safe local path remain metadata-only placeholders"],
   "supplier_purchase_status": "paused",
-  "commit_sha": "72e0efd85c984da6696a056969c7806094f4710f",
+  "commit_sha": "fb1cad96d979db981d386d01e1c6bdaa0d4beda1",
   "head_equals_origin_main": true,
   "worktree_clean": true
 }
