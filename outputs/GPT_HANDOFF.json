@@ -1,15 +1,28 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-NEW-REFERENCE-CRETACEOUS-COAST-FRAGMENTS-EVIDENCE-MAP",
-  "status": "completed",
-  "model": "Luna",
-  "strength": "Low",
-  "output": "outputs/p2a-cretaceous-coast-fragments-evidence-map.json",
-  "reference_key": "REF-000026",
-  "user_supplied_concept_name": "白垩纪的海岸碎片",
-  "rows": {"count": 13, "min_id": 68, "max_id": 80, "id_sum": 962, "class_counts": {"observation": 11, "inference": 2}, "scope_counts": {"product_design": 10, "promotional_visual": 3}},
-  "canonical_baseline": {"total_image_visual_observations": 80, "synthesis_assertions": 19, "synthesis_sources": 37, "integrity_check": "ok", "foreign_key_check_violations": 0},
-  "database_writes": false,
-  "gpt_may_author_reference_synthesis": true,
-  "blocker": null
+  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
+  "status": "WAITING_FOR_LOCAL_EXECUTION",
+  "model": "Terra",
+  "strength": "High",
+  "execution_class": "HIGH_RISK",
+  "user_authorized": true,
+  "authorization_record": "inputs/p2a-historical-canonical-regroup-user-authorization-20260830.json",
+  "task_file": "agent/GPT_NEXT_TASK.md",
+  "decision_pack": "outputs/p2a-historical-canonical-regroup-decision-pack-20260830.json",
+  "drive_state": {
+    "inbox_images": 0,
+    "reviewed_images_expected": 94
+  },
+  "canonical_last_verified_baseline": {
+    "image_visual_observations": 80,
+    "synthesis_assertions": 19,
+    "synthesis_sources": 37,
+    "db_sha256": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2"
+  },
+  "authorized_scope": {
+    "split_references": ["REF-000003", "REF-000004"],
+    "exact_asset_moves": ["IMG_7678.PNG", "IMG_7688.PNG", "IMG_7690.PNG", "IMG_7696.PNG", "IMG_7698.PNG"],
+    "then_continue_pending_additive_semantic_imports": true
+  },
+  "blocker": "This Chat does not have a direct Local-Codex-Bridge invocation tool. The local execution plane must pick up the authorized task before canonical SQLite mutation can occur."
 }
