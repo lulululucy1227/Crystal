@@ -5,7 +5,7 @@
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "commit_sha": "pending",
+  "commit_sha": "a0426746608ded63d76cc4be6e171fe707d77ca8",
   "branch": "main",
   "changed_files": ["scripts/import-p2c-sourcing-discovery.mjs", "scripts/audit-p2c-sourcing-matchability.mjs", "test/p2c-sourcing-discovery.test.mjs", "outputs/p2c-sourcing-matchability-audit.json", "outputs/GPT_HANDOFF.json"],
   "actual_changes": {"created_sources": 6, "reused_sources_on_replay": 6, "created_suppliers": 6, "reused_suppliers_on_replay": 6, "staged_catalog_offers": 6, "staged_marketplace_discovery": 1, "exact_matches": 0, "ambiguous": 0, "no_match": 6, "canonical_supplier_offers_created": 0, "audit": "outputs/p2c-sourcing-matchability-audit.json"},
