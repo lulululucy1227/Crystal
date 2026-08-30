@@ -1,0 +1,777 @@
+{
+  "protocol_version": "P2D-SOURCING-IDENTITY-GAP-AUDIT-V1",
+  "phase": "P2D-SOURCING-IDENTITY-GAP-AUDIT",
+  "generated_on": "2026-08-30",
+  "read_only": true,
+  "offers": [
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-6MM-375CM",
+      "seller_identity": {
+        "seller_material_label": "Smokey Quartz",
+        "product_label": "Smokey Quartz Round Beads 6mm 37.5cm",
+        "shape_or_form": "Round",
+        "size_or_dimensions": "6mm",
+        "unit_basis": "strand",
+        "supplier_id": 3,
+        "supplier_name": "Gemstone Wholesale / edelsteine.de",
+        "source_url": "https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [],
+      "classification": "parent_material_missing",
+      "minimum_safe_next_action": "GPT must author/approve a canonical parent material identity before any variant mapping."
+    },
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-10MM",
+      "seller_identity": {
+        "seller_material_label": "Smokey Quartz",
+        "product_label": "Smokey Quartz Round Beads 10mm",
+        "shape_or_form": "Round",
+        "size_or_dimensions": "10mm",
+        "unit_basis": "strand",
+        "supplier_id": 3,
+        "supplier_name": "Gemstone Wholesale / edelsteine.de",
+        "source_url": "https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [],
+      "classification": "parent_material_missing",
+      "minimum_safe_next_action": "GPT must author/approve a canonical parent material identity before any variant mapping."
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-8MM-39CM",
+      "seller_identity": {
+        "seller_material_label": "Aquamarine",
+        "product_label": "Aquamarine Gemstone Beads Round 8mm ca.39cm",
+        "shape_or_form": "Round",
+        "size_or_dimensions": "8mm ca.39cm",
+        "unit_basis": "strand",
+        "supplier_id": 3,
+        "supplier_name": "Gemstone Wholesale / edelsteine.de",
+        "source_url": "https://www.edelsteine.de/shop/en/aquamarine-gemstone-beads-round-8mm-ca-39cm%3A%3A17095.html"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [],
+      "classification": "parent_material_missing",
+      "minimum_safe_next_action": "GPT must author/approve a canonical parent material identity before any variant mapping."
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+      "seller_identity": {
+        "seller_material_label": "Aquamarine",
+        "product_label": "Aquamarine multicolored Gemstone Beads Facetted 7mm strand",
+        "shape_or_form": "Facetted",
+        "size_or_dimensions": "7mm",
+        "unit_basis": "strand",
+        "supplier_id": 3,
+        "supplier_name": "Gemstone Wholesale / edelsteine.de",
+        "source_url": "https://www.edelsteine.de/shop/en/aquamarine-multicolored-gemstone-beads-facetted%3A%3A14152.html"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [],
+      "classification": "parent_material_missing",
+      "minimum_safe_next_action": "GPT must author/approve a canonical parent material identity before any variant mapping."
+    },
+    {
+      "offer_key": "PERLES-925-CURVED-TUBE-26X3",
+      "seller_identity": {
+        "seller_material_label": "925 Sterling Silver",
+        "product_label": "Curved tube bead - European manufacture 26x3 mm - Sterling silver 925",
+        "shape_or_form": "Curved",
+        "size_or_dimensions": "26x3 mm",
+        "unit_basis": "piece",
+        "supplier_id": 4,
+        "supplier_name": "Perles & Co",
+        "source_url": "https://www.perlesandco.com/"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [
+        {
+          "id": 3,
+          "component_code": "p1b-cmp-3-925-sterling-silver-spacer",
+          "component_type": "spacer",
+          "shape_code": "other",
+          "size_mm": "2-4mm，抛光/拉丝",
+          "design_role": "anchor",
+          "material_variant_id": null,
+          "source_id": 63,
+          "hardware_finish": null
+        }
+      ],
+      "classification": "component_identity_missing",
+      "minimum_safe_next_action": "GPT/user must define exact component identity (type, shape, dimensions, finish) before promotion."
+    },
+    {
+      "offer_key": "PERLES-925-ROUND-SPACER-113X6",
+      "seller_identity": {
+        "seller_material_label": "925 Sterling Silver",
+        "product_label": "Round ball spacer with 2 rings 11.30x6 mm in Sterling Silver 925",
+        "shape_or_form": "Round",
+        "size_or_dimensions": "11.30x6 mm",
+        "unit_basis": "piece",
+        "supplier_id": 4,
+        "supplier_name": "Perles & Co",
+        "source_url": "https://www.perlesandco.com/"
+      },
+      "canonical_parent_candidates": [],
+      "aliases": [],
+      "canonical_variant_candidates": [],
+      "canonical_component_candidates": [
+        {
+          "id": 3,
+          "component_code": "p1b-cmp-3-925-sterling-silver-spacer",
+          "component_type": "spacer",
+          "shape_code": "other",
+          "size_mm": "2-4mm，抛光/拉丝",
+          "design_role": "anchor",
+          "material_variant_id": null,
+          "source_id": 63,
+          "hardware_finish": null
+        }
+      ],
+      "classification": "component_identity_missing",
+      "minimum_safe_next_action": "GPT/user must define exact component identity (type, shape, dimensions, finish) before promotion."
+    }
+  ],
+  "broader_canonical_readiness": {
+    "materials": [
+      {
+        "id": 1,
+        "canonical_name": "Larimar",
+        "material_family": "gemstone",
+        "natural_status": "natural"
+      },
+      {
+        "id": 2,
+        "canonical_name": "Clear Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 3,
+        "canonical_name": "Rose Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 4,
+        "canonical_name": "Citrine",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 5,
+        "canonical_name": "Amethyst",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 6,
+        "canonical_name": "Smoky Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 7,
+        "canonical_name": "Obsidian",
+        "material_family": "gemstone",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 8,
+        "canonical_name": "Green Aventurine",
+        "material_family": "gemstone",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 9,
+        "canonical_name": "Tiger's Eye",
+        "material_family": "gemstone",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 10,
+        "canonical_name": "Red Tiger's Eye",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 11,
+        "canonical_name": "Red Agate",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 12,
+        "canonical_name": "Green Phantom Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 13,
+        "canonical_name": "White Phantom Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 14,
+        "canonical_name": "Strawberry Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 15,
+        "canonical_name": "Blue Lace Agate",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 16,
+        "canonical_name": "Chalcedony",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 17,
+        "canonical_name": "Blue Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 18,
+        "canonical_name": "Yellow Chalcedony",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 19,
+        "canonical_name": "Bloodstone",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 20,
+        "canonical_name": "Rainbow Obsidian",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 21,
+        "canonical_name": "Labradorite",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 22,
+        "canonical_name": "Amazonite",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 23,
+        "canonical_name": "Kunzite",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 24,
+        "canonical_name": "Lapis Lazuli",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 25,
+        "canonical_name": "Sugilite",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 26,
+        "canonical_name": "Rainbow Moonstone",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 27,
+        "canonical_name": "Gold Rutilated Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 28,
+        "canonical_name": "Black Rutilated Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 29,
+        "canonical_name": "Golden South Sea Pearl",
+        "material_family": "pearl",
+        "natural_status": "unknown"
+      },
+      {
+        "id": 30,
+        "canonical_name": "White South Sea Pearl",
+        "material_family": "pearl",
+        "natural_status": "unknown"
+      }
+    ],
+    "aliases_relevant_to_offers": [],
+    "variant_counts_by_parent": [
+      {
+        "material_id": 1,
+        "count": 1
+      },
+      {
+        "material_id": 2,
+        "count": 2
+      },
+      {
+        "material_id": 3,
+        "count": 2
+      },
+      {
+        "material_id": 4,
+        "count": 1
+      },
+      {
+        "material_id": 5,
+        "count": 2
+      },
+      {
+        "material_id": 6,
+        "count": 2
+      },
+      {
+        "material_id": 7,
+        "count": 6
+      },
+      {
+        "material_id": 8,
+        "count": 2
+      },
+      {
+        "material_id": 9,
+        "count": 2
+      },
+      {
+        "material_id": 10,
+        "count": 2
+      },
+      {
+        "material_id": 11,
+        "count": 2
+      },
+      {
+        "material_id": 12,
+        "count": 2
+      },
+      {
+        "material_id": 13,
+        "count": 2
+      },
+      {
+        "material_id": 14,
+        "count": 2
+      },
+      {
+        "material_id": 15,
+        "count": 2
+      },
+      {
+        "material_id": 16,
+        "count": 2
+      },
+      {
+        "material_id": 17,
+        "count": 2
+      },
+      {
+        "material_id": 18,
+        "count": 2
+      },
+      {
+        "material_id": 19,
+        "count": 2
+      },
+      {
+        "material_id": 20,
+        "count": 2
+      },
+      {
+        "material_id": 21,
+        "count": 2
+      },
+      {
+        "material_id": 22,
+        "count": 2
+      },
+      {
+        "material_id": 23,
+        "count": 2
+      },
+      {
+        "material_id": 24,
+        "count": 2
+      },
+      {
+        "material_id": 25,
+        "count": 2
+      },
+      {
+        "material_id": 26,
+        "count": 2
+      },
+      {
+        "material_id": 27,
+        "count": 2
+      },
+      {
+        "material_id": 28,
+        "count": 2
+      },
+      {
+        "material_id": 29,
+        "count": 2
+      },
+      {
+        "material_id": 30,
+        "count": 2
+      }
+    ],
+    "variants_missing_provenance_or_exact_size_cut": [
+      {
+        "id": 1,
+        "variant_code": "LARIMAR-COLLECTOR-10MM",
+        "material_id": 1
+      },
+      {
+        "id": 2,
+        "variant_code": "P1AF-CLEAR-QUARTZ-R3",
+        "material_id": 2
+      },
+      {
+        "id": 3,
+        "variant_code": "P1AF-ROSE-QUARTZ-R4",
+        "material_id": 3
+      },
+      {
+        "id": 4,
+        "variant_code": "P1AF-CITRINE-R5",
+        "material_id": 4
+      },
+      {
+        "id": 5,
+        "variant_code": "P1AF-AMETHYST-R6",
+        "material_id": 5
+      },
+      {
+        "id": 6,
+        "variant_code": "P1AF-SMOKY-QUARTZ-R7",
+        "material_id": 6
+      },
+      {
+        "id": 7,
+        "variant_code": "P1AF-OBSIDIAN-R8",
+        "material_id": 7
+      },
+      {
+        "id": 8,
+        "variant_code": "P1AF-OBSIDIAN-R9",
+        "material_id": 7
+      },
+      {
+        "id": 9,
+        "variant_code": "P1AF-OBSIDIAN-R10",
+        "material_id": 7
+      },
+      {
+        "id": 10,
+        "variant_code": "P1AF-GREEN-AVENTURINE-R11",
+        "material_id": 8
+      },
+      {
+        "id": 11,
+        "variant_code": "P1AF-TIGER-S-EYE-R12",
+        "material_id": 9
+      },
+      {
+        "id": 12,
+        "variant_code": "p1b-source-水晶-13",
+        "material_id": 10
+      },
+      {
+        "id": 13,
+        "variant_code": "p1b-source-水晶-15",
+        "material_id": 11
+      },
+      {
+        "id": 14,
+        "variant_code": "p1b-source-水晶-17",
+        "material_id": 12
+      },
+      {
+        "id": 15,
+        "variant_code": "p1b-source-水晶-18",
+        "material_id": 13
+      },
+      {
+        "id": 16,
+        "variant_code": "p1b-source-水晶-19",
+        "material_id": 14
+      },
+      {
+        "id": 17,
+        "variant_code": "p1b-source-水晶-20",
+        "material_id": 15
+      },
+      {
+        "id": 18,
+        "variant_code": "p1b-source-水晶-21",
+        "material_id": 16
+      },
+      {
+        "id": 19,
+        "variant_code": "p1b-source-水晶-24",
+        "material_id": 17
+      },
+      {
+        "id": 20,
+        "variant_code": "p1b-source-水晶-25",
+        "material_id": 18
+      },
+      {
+        "id": 21,
+        "variant_code": "p1b-source-水晶-26",
+        "material_id": 19
+      },
+      {
+        "id": 22,
+        "variant_code": "p1b-source-水晶-27",
+        "material_id": 20
+      },
+      {
+        "id": 23,
+        "variant_code": "p1b-source-水晶-29",
+        "material_id": 21
+      },
+      {
+        "id": 24,
+        "variant_code": "p1b-source-水晶-30",
+        "material_id": 22
+      },
+      {
+        "id": 25,
+        "variant_code": "p1b-source-水晶-34",
+        "material_id": 23
+      },
+      {
+        "id": 26,
+        "variant_code": "p1b-source-水晶-35",
+        "material_id": 24
+      },
+      {
+        "id": 27,
+        "variant_code": "p1b-source-水晶-37",
+        "material_id": 25
+      },
+      {
+        "id": 28,
+        "variant_code": "p1b-source-水晶-39",
+        "material_id": 26
+      },
+      {
+        "id": 29,
+        "variant_code": "p1b-source-水晶-40",
+        "material_id": 27
+      },
+      {
+        "id": 30,
+        "variant_code": "p1b-source-水晶-41",
+        "material_id": 28
+      },
+      {
+        "id": 31,
+        "variant_code": "p1b-source-珍珠-10",
+        "material_id": 29
+      },
+      {
+        "id": 32,
+        "variant_code": "p1b-source-珍珠-11",
+        "material_id": 30
+      },
+      {
+        "id": 33,
+        "variant_code": "p1b--水晶-3",
+        "material_id": 2
+      },
+      {
+        "id": 34,
+        "variant_code": "p1b--水晶-4",
+        "material_id": 3
+      },
+      {
+        "id": 35,
+        "variant_code": "p1b--水晶-6",
+        "material_id": 5
+      },
+      {
+        "id": 36,
+        "variant_code": "p1b--水晶-7",
+        "material_id": 6
+      },
+      {
+        "id": 37,
+        "variant_code": "p1b--水晶-8",
+        "material_id": 7
+      },
+      {
+        "id": 38,
+        "variant_code": "p1b--水晶-9",
+        "material_id": 7
+      },
+      {
+        "id": 39,
+        "variant_code": "p1b--水晶-10",
+        "material_id": 7
+      },
+      {
+        "id": 40,
+        "variant_code": "p1b--水晶-11",
+        "material_id": 8
+      },
+      {
+        "id": 41,
+        "variant_code": "p1b--水晶-12",
+        "material_id": 9
+      },
+      {
+        "id": 42,
+        "variant_code": "p1b--水晶-13",
+        "material_id": 10
+      },
+      {
+        "id": 43,
+        "variant_code": "p1b--水晶-15",
+        "material_id": 11
+      },
+      {
+        "id": 44,
+        "variant_code": "p1b--水晶-17",
+        "material_id": 12
+      },
+      {
+        "id": 45,
+        "variant_code": "p1b--水晶-18",
+        "material_id": 13
+      },
+      {
+        "id": 46,
+        "variant_code": "p1b--水晶-19",
+        "material_id": 14
+      },
+      {
+        "id": 47,
+        "variant_code": "p1b--水晶-20",
+        "material_id": 15
+      },
+      {
+        "id": 48,
+        "variant_code": "p1b--水晶-21",
+        "material_id": 16
+      },
+      {
+        "id": 49,
+        "variant_code": "p1b--水晶-24",
+        "material_id": 17
+      },
+      {
+        "id": 50,
+        "variant_code": "p1b--水晶-25",
+        "material_id": 18
+      },
+      {
+        "id": 51,
+        "variant_code": "p1b--水晶-26",
+        "material_id": 19
+      },
+      {
+        "id": 52,
+        "variant_code": "p1b--水晶-29",
+        "material_id": 20
+      },
+      {
+        "id": 53,
+        "variant_code": "p1b--水晶-31",
+        "material_id": 21
+      },
+      {
+        "id": 54,
+        "variant_code": "p1b--水晶-32",
+        "material_id": 22
+      },
+      {
+        "id": 55,
+        "variant_code": "p1b--水晶-36",
+        "material_id": 23
+      },
+      {
+        "id": 56,
+        "variant_code": "p1b--水晶-37",
+        "material_id": 24
+      },
+      {
+        "id": 57,
+        "variant_code": "p1b--水晶-39",
+        "material_id": 25
+      },
+      {
+        "id": 58,
+        "variant_code": "p1b--水晶-41",
+        "material_id": 26
+      },
+      {
+        "id": 59,
+        "variant_code": "p1b--水晶-42",
+        "material_id": 27
+      },
+      {
+        "id": 60,
+        "variant_code": "p1b--水晶-43",
+        "material_id": 28
+      },
+      {
+        "id": 61,
+        "variant_code": "p1b--珍珠-10",
+        "material_id": 29
+      },
+      {
+        "id": 62,
+        "variant_code": "p1b--珍珠-11",
+        "material_id": 30
+      }
+    ],
+    "generic_or_underspecified_components": [],
+    "schema_fit": {
+      "source_scoped_unverified_supplier_variants_components": "representable using existing provenance_source_id/source_id and verification_status fields",
+      "additive_identity_phase_without_migration": true
+    }
+  },
+  "recommendation": "NEEDS_GPT_SEMANTIC_MAPPING",
+  "recommendation_reason": "All six claims need authored exact identity mapping (material variant or component dimensions) before safe promotion; no schema blocker or business choice is proven.",
+  "safety": {
+    "sqlite_writes": 0,
+    "independent_research": false,
+    "canonical_rows_modified": false
+  }
+}

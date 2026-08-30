@@ -1,18 +1,18 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2C-SOURCING-DISCOVERY-AND-MATCHABILITY",
+  "phase": "P2D-SOURCING-IDENTITY-GAP-AUDIT",
   "status": "completed",
   "model": "Luna",
   "strength": "Medium",
-  "execution_class": "DATABASE_WRITE",
-  "commit_sha": "a0426746608ded63d76cc4be6e171fe707d77ca8",
+  "execution_class": "READ_ONLY",
+  "commit_sha": "pending",
   "branch": "main",
-  "changed_files": ["scripts/import-p2c-sourcing-discovery.mjs", "scripts/audit-p2c-sourcing-matchability.mjs", "test/p2c-sourcing-discovery.test.mjs", "outputs/p2c-sourcing-matchability-audit.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2C-SOURCING-DISCOVERY-AND-MATCHABILITY.json"],
-  "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2c-sourcing-discovery-20260830-144015.sqlite", "db_sha256_before": "7da13a867132c6e1973c007700080ad19fb898b2ae857677a91863289e152514", "db_sha256_after": "385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7", "sources": {"created": 6, "reused_on_replay": 6}, "suppliers": {"created": 6, "reused_on_replay": 6}, "staged_catalog_offers": {"created": 6, "reused_on_replay": 6}, "staged_marketplace_discovery": {"created": 1, "reused_on_replay": 1}, "exact_matches": 0, "ambiguous": 0, "no_match": 6, "canonical_supplier_offers_created": 0, "canonical_supplier_offers_reused": 0, "final_counts": {"source": 134, "supplier": 7, "supplier_offer": 1, "staged_record": 145, "staged_field": 1206}},
-  "readiness_audit": "outputs/p2c-sourcing-matchability-audit.json",
-  "critical_boundaries_preserved": ["no new material/component/packaging identities", "no fuzzy promotion", "marketplace suppliers not canonicalized", "seller labels remain source claims", "P2A/P2B canonical data unchanged", "no outreach or orders"],
-  "tests_or_checks": {"focused_p2c": "PASS", "idempotency": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "npm_test": "PASS (96 passed, 1 environment skip)", "npm_validate": "PASS", "git_diff_check": "PASS"},
-  "risks_or_blockers": ["All six catalog offers remain review_required/no_match because existing canonical identity is insufficient for exact promotion; no BOM-costing offers added."],
+  "changed_files": ["scripts/audit-p2d-sourcing-identity-gap.mjs", "outputs/p2d-sourcing-identity-gap-audit.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2D-SOURCING-IDENTITY-GAP-AUDIT.json"],
+  "actual_changes": {"db_sha256_before": "385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7", "db_sha256_after": "385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7", "sqlite_writes": 0, "classifications": {"parent_material_missing": 4, "component_identity_missing": 2, "parent_material_exists_variant_missing": 0, "existing_exact_target": 0, "conflicting_or_ambiguous_identity": 0}, "recommendation": "NEEDS_GPT_SEMANTIC_MAPPING"},
+  "audit": "outputs/p2d-sourcing-identity-gap-audit.json",
+  "critical_boundaries_preserved": ["read-only SQLite audit", "no material/variant/component/supplier/offer/staging writes", "no independent research", "seller labels not upgraded to facts"],
+  "tests_or_checks": {"integrity_check": "ok", "foreign_key_check": 0, "db_sha_unchanged": true, "git_diff_check": "PASS", "npm_validate": "PASS", "npm_test": "PASS (96 passed, 1 environment skip)"},
+  "risks_or_blockers": ["Six offers cannot be safely promoted without GPT-authored exact identity mappings; no schema blocker identified."],
   "requires_gpt_decision": false,
-  "next_minimum_action": "Review matchability audit; authorize exact variant/component identity work only if desired."
+  "next_minimum_action": "Authorize/author exact semantic mappings for the six staged offers before any identity enrichment."
 }
