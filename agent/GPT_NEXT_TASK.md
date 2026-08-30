@@ -1,274 +1,203 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P3E-P3H-WORKBENCH-FUNCTIONAL-COMPLETION
+Phase: P3I-P3K-WORKBENCH-USABILITY-REDESIGN
 Status: authorized
 Model: Luna
 Strength: Medium
 Execution class: SAFE_WRITE + READ_ONLY_DB + sidecar user-state writes
 
-## Why this follow-up exists
+## User feedback
 
-P3A assortment delivery is accepted, but GPT acceptance review found that the current Workbench is only a shell and does not yet satisfy the functional requirements originally authorized for P3B-P3D.
+The current Workbench is functionally complete but the user cannot understand the interface at a glance. Treat this as a failed usability acceptance, not as a request for more features.
 
-Read as authoritative acceptance audit:
-- `inputs/p3e-gpt-workbench-acceptance-failures-20260830.json`
+Authoritative UX brief:
+- `inputs/p3i-gpt-workbench-usability-redesign-20260830.json`
 
-Read current implementation:
-- `workbench/server.mjs`
-- `workbench/app.js`
+Current implementation:
 - `workbench/index.html`
+- `workbench/app.js`
 - `workbench/style.css`
-- `outputs/p3-workbench-mvp-report.json`
-- `outputs/p3a-assortment-reconciliation.json`
-
-User priority remains unchanged:
-1. selection list + design workbench are the primary project output;
-2. supplier progression, quote research, sourcing expansion, purchasing and P01 spend work remain paused.
-
-This is a bounded implementation-completion phase. Architecture is already decided, so use Luna / Medium.
+- `workbench/server.mjs`
+- `outputs/p3-workbench-functional-acceptance.json`
 
 ## Hard boundaries
 
 - no schema migration;
-- canonical SQLite must remain READ ONLY;
-- no canonical product/BOM/material/component/packaging writes;
+- canonical SQLite remains READ ONLY;
+- keep existing sidecar draft persistence and exports;
 - no supplier research/contact/ranking;
 - no purchase/checkout/order;
 - no Bridge/watcher work;
-- no React/Vue/Electron or other large framework;
-- prefer Node 24 built-ins + `node:sqlite` + vanilla HTML/CSS/JS;
-- allowed user-state writes only under `workbench/state/` and `workbench/exports/`;
-- do not reset/clean/discard unrelated user work.
+- no new framework;
+- do not add features merely because they are possible;
+- preserve existing functional tests unless UX changes require bounded updates.
 
-Execute P3E → P3F → P3G → P3H continuously. Do not stop after one page or feature.
+This phase is primarily an information-architecture and UI rewrite.
 
 ---
 
-# P3E — OVERVIEW + ASSORTMENT ACCEPTANCE COMPLETION
+# P3I — INFORMATION ARCHITECTURE SIMPLIFICATION
 
-## Overview
+Replace the current seven top-level technical navigation items with four human task areas:
 
-Implement the originally required Overview behavior:
-- assortment counts by section;
-- assortment counts by priority;
-- six themes: Mountain / Ocean / Forest / Sunrise / Starlight / Glacier;
-- canonical DB counts for material, variant, component, packaging, design reference and image asset;
-- clear navigation shortcuts to Assortment and Design Board.
+1. `首页`
+2. `选品库`
+3. `灵感库`
+4. `设计台`
 
-Do not show sourcing KPIs, supplier dashboard or purchase CTA.
+`选品库` contains internal tabs for:
+- 水晶 / 矿物
+- 珍珠 / 天然材质
+- 配饰 / 结构件
+- 包装
 
-## Assortment
+Do not expose Materials / Accessories / Packaging as separate top-level concepts.
 
-Implement explicit filters for:
-- section/category;
-- priority;
-- theme;
-- design role;
-- form/spec keyword;
-- canonical match vs candidate-only;
-- free-text search.
+All default UI labels must use the human labels in the GPT brief. Raw enum labels must not be visible in normal browsing:
+- `minerals_crystals` -> `水晶 / 矿物`
+- `pearls_organic` -> `珍珠 / 天然材质`
+- `hardware_accessories` -> `配饰 / 结构件`
+- `A_CORE` -> `核心常备`
+- `B_DESIGN_EXTENSION` -> `设计扩展`
+- `C_SIGNATURE_ONE_OF_ONE` -> `Signature / 孤品`
+- `RESERVE_NOT_CORE` -> `备用`
 
-Cards/rows must show, at minimum:
-- selection name;
-- priority;
+Technical canonical/candidate status may remain in an expanded secondary details area but must not dominate.
+
+---
+
+# P3J — HOME / ASSORTMENT / INSPIRATION / DESIGN DESK REWRITE
+
+## 首页
+
+Use Chinese-first copy.
+
+Header:
+- title: `水晶设计工作台`
+- subtitle: `选材料、找灵感、做设计。`
+
+The first screen should answer “我现在能做什么”, not “数据库里有什么”.
+
+Primary action cards/buttons:
+- `开始选品` — 从水晶、天然材质、配饰和包装中挑选。
+- `查看灵感` — 查看已经整理的设计参考和主题语言。
+- `开始设计` — 建立一个新的手串设计草稿。
+
+Show a compact summary after those actions:
+- 核心选品数量
+- 设计扩展数量
+- Signature / 孤品数量
+- 草稿数量 if available
+
+Do NOT show raw database counters such as 33 materials / 73 variants / components / assets as the homepage's main content. If retained at all, place them in a small collapsed `数据状态` secondary section at the bottom.
+
+## 选品库
+
+This is the main working page.
+
+Use category tabs, readable names and compact cards.
+
+Each card should immediately communicate:
+- name;
+- one short sentence: what it does in design;
 - themes;
-- roles;
 - preferred forms/spec;
-- canonical/candidate status;
-- selection notes in detail/expanded view.
+- selection tier;
+- obvious primary action `加入设计台`.
 
-Supplier/price data should not dominate this page.
+Filters:
+- 主题
+- 层级
+- 设计作用
+- 形状/规格
+- 关键词
 
----
+Do not require the user to understand canonical/candidate distinction to use the page.
 
-# P3F — LIBRARIES + REFERENCE GALLERY COMPLETION
+## 灵感库
 
-## Materials Library
+Rename References -> `灵感库`.
 
-Read canonical SQLite only.
+Default card hierarchy:
+1. safe image if actually resolvable; otherwise clean visual placeholder;
+2. title;
+3. one concise design-language summary;
+4. theme tags;
+5. secondary detail on demand.
 
-For each material show:
-- canonical name;
-- family/natural status when stored;
-- whether selected in V1 assortment;
-- assortment priority/themes/roles/forms overlay where selected;
-- canonical material variants with useful identity fields;
-- source/verification badges only where actually stored, without implying verification.
+Hide raw IDs/reference keys in default view.
 
-Add useful search/filter at least by:
-- text;
-- assortment priority;
-- theme;
-- selected vs non-selected.
+## 设计台
 
-## Accessories Library
+Rename Design Board -> `设计台`.
 
-Combine in one page while clearly labelling origin/type:
-- canonical `component` rows;
-- V1 `hardware_accessories` assortment candidates;
-- V1 `pearls_organic` assortment candidates.
+Make empty state instructional:
+`还没有材料。去选品库添加，或点击“添加材料”。`
 
-Do not collapse candidate records into canonical components. Show `canonical` / `assortment candidate` badges.
+First-view controls should be only:
+- 设计名称
+- 主题
+- 已选材料
+- 设计备注
+- 保存草稿
+- 导出设计单
 
-## Packaging Library
+For each selected item show:
+- 名称
+- 角色
+- 规格/形状
+- 上移 / 下移 / 删除
 
-Combine:
-- canonical `packaging_option` rows;
-- V1 packaging assortment candidates.
+Do not expose supplier, price, canonical IDs or database terminology in the main design workflow.
 
-Default presentation should focus on packaging type/spec/aesthetic role. Supplier offers remain secondary or hidden.
-
-## Reference Gallery
-
-Inspect current read-only schema and existing rows rather than guessing table names. Build the richest safe read-only view possible from existing:
-- `design_reference`;
-- `design_reference_image`;
-- `image_asset`;
-- theme/pattern relationship tables;
-- synthesis/observation data already present.
-
-Each reference card should show when available:
-- title/key;
-- themes;
-- patterns or concise synthesis summary;
-- asset count;
-- one or two synthesis/observation snippets.
-
-If an image has a resolvable local/static path or URL that can be served safely, render it. Otherwise show a clean metadata placeholder. Never render broken image elements.
-
-No new image analysis or canonical reference writes.
+Preserve existing save/load/export behavior and sidecar storage.
 
 ---
 
-# P3G — DESIGN BOARD + SIDECAR PERSISTENCE + EXPORTS
+# P3K — VISUAL POLISH + REAL USABILITY ACCEPTANCE
 
-The Design Board must use server-side sidecar JSON as the persistent source of truth. Browser localStorage may be optional cache only, not the primary persistence mechanism.
+Visual direction:
+- off-white / light grey surfaces;
+- graphite text;
+- restrained ice-blue/cyan accent only for selected/active/action states;
+- compact cards with less empty whitespace;
+- strong hierarchy between page title, action, filter and content;
+- Chinese-first typography and labels;
+- desktop-first;
+- no mystical crystal-shop language;
+- no dashboard/spreadsheet appearance;
+- no gradient-heavy luxury decoration.
 
-## Draft API / persistence
+Navigation may be a compact left sidebar or a very clear top navigation. Choose whichever is simpler and more readable in the existing vanilla implementation.
 
-Implement safe local endpoints sufficient for:
-- list draft names;
-- create/save named draft;
-- load named draft;
-- overwrite/update named draft safely;
-- export named/current draft.
+## Acceptance criteria
 
-Store only:
-- `workbench/state/*.json`
-- `workbench/exports/*`
+Programmatically and, if browser automation is locally available, visually verify:
 
-Use safe filename normalization and atomic-ish temp-write + rename.
+1. Homepage default viewport contains the three primary actions without scrolling.
+2. A first-time user can understand the top-level workflows from visible labels: 选品 / 灵感 / 设计.
+3. No raw enum labels such as `minerals_crystals`, `pearls_organic`, `A_CORE`, `B_DESIGN_EXTENSION`, `C_SIGNATURE_ONE_OF_ONE` are visible in default UI text.
+4. Raw DB counters do not dominate the homepage.
+5. From `选品库`, the four categories are accessible as tabs/segmented controls.
+6. At least one mineral can be filtered and added to `设计台` without seeing technical identity concepts.
+7. `灵感库` shows design-language content rather than bare IDs.
+8. `设计台` save/load/reorder/remove/export still works.
+9. Existing sidecar safety remains intact.
+10. Canonical DB SHA unchanged before/after workbench tests.
+11. focused workbench tests PASS.
+12. full `npm test` PASS.
+13. `npm run validate` PASS.
+14. `git diff --check` PASS.
+15. Commit/push main, HEAD == origin/main, worktree clean.
 
-Malformed JSON behavior:
-- do not delete or overwrite the malformed file automatically;
-- listing/loading must return an actionable error state identifying the affected draft;
-- UI must show the error and allow the user to create/load another draft.
+## Delivery
 
-## Design Board UI
-
-User must be able to:
-- create a named draft;
-- choose one of six themes;
-- browse/search assortment items and explicitly add selected items;
-- remove items;
-- edit role per selected item;
-- edit preferred form/size/spec text per selected item;
-- reorder items using simple Up/Down controls or equivalent;
-- add freeform draft notes;
-- save to sidecar;
-- load existing drafts from a list;
-- show save/error status clearly.
-
-Do NOT auto-add arbitrary first-three items as the primary workflow.
-Do NOT require quantity, supplier or price fields in V1.
-Do NOT write canonical `product_concept` or BOM.
-
-## Export
-
-From the UI provide:
-- assortment CSV export;
-- assortment JSON export;
-- Design Board JSON export;
-- Design Board Markdown export.
-
-Assortment export may directly serve/copy the already-generated authoritative output files.
-Draft export should create or download an exact representation of the sidecar draft; Markdown should be readable with name/theme/items/roles/forms/notes.
-
-No external network call should be required for normal use.
-
----
-
-# P3H — REAL ACCEPTANCE TEST + DELIVERY
-
-## Preflight
-
-- safe sync `main`;
-- clean worktree before implementation; if not clean, inspect and preserve user work rather than reset/clean;
-- `git diff --check` PASS before and after;
-- record canonical DB SHA before smoke tests.
-
-## Functional acceptance
-
-At minimum verify programmatically and, if browser automation is locally available, through the UI:
-
-1. `npm run workbench` starts successfully at deterministic localhost URL.
-2. Overview returns/render assortment counts and canonical counts.
-3. Assortment filters work for at least priority + theme + canonical/candidate state.
-4. Materials Library returns canonical material data plus assortment overlay and variant details.
-5. Accessories page includes both canonical and assortment-candidate content.
-6. Packaging page includes both canonical and assortment-candidate content.
-7. Reference Gallery includes more than bare reference title/key where existing data supports it.
-8. Create draft `acceptance-smoke` through the actual sidecar API/UI.
-9. Add at least one mineral and one hardware/packaging candidate, edit role/spec, save, reload and verify equality.
-10. Reorder/remove operation works.
-11. Export that draft as JSON and Markdown and verify files/content.
-12. Export assortment CSV and JSON from the UI/API path.
-13. A deliberately malformed test-sidecar returns an actionable error and is not deleted/overwritten; remove only test artifacts explicitly after the test.
-14. Canonical SQLite SHA is unchanged after all workbench smoke tests.
-15. `PRAGMA integrity_check = ok` and `PRAGMA foreign_key_check = 0`.
-16. focused workbench tests PASS.
-17. full `npm test` PASS.
-18. `npm run validate` PASS.
-19. final `git diff --check` PASS.
-
-## Delivery artifacts
-
-Update/create:
-- `outputs/p3-workbench-mvp-report.json`
-- `outputs/p3-workbench-functional-acceptance.json`
+Create/update:
+- `outputs/p3k-workbench-usability-acceptance.json`
 - `outputs/GPT_HANDOFF.json`
-- `outputs/handoffs/P3E-P3H-WORKBENCH-FUNCTIONAL-COMPLETION.json`
+- `outputs/handoffs/P3I-P3K-WORKBENCH-USABILITY-REDESIGN.json`
 
-The final report/handoff must explicitly include:
-- status = completed only if all functional acceptance criteria above pass;
-- assortment counts;
-- implemented pages/features;
-- sidecar API/state paths;
-- export paths;
-- exact startup command;
-- exact local URL;
-- canonical DB SHA before/after smoke test;
-- known limitations that genuinely remain;
-- focused + full test results;
-- `git diff --check` result;
-- commit SHA;
-- HEAD == origin/main;
-- worktree clean;
-- supplier and purchase tracks still paused.
+Include one explicit checklist mapping every screenshot complaint in the GPT UX brief to the final implementation.
 
-## Git
-
-Commit and push the coherent completion to Crystal `main`.
-Confirm local HEAD == origin/main and worktree clean.
-
-## Stop condition
-
-Do not stop at an ordinary UI milestone. Stop only for:
-1. a schema migration becomes truly necessary;
-2. canonical DB read-only safety cannot be guaranteed;
-3. unexplained data/repository divergence;
-4. a blocker that cannot be safely solved within vanilla local workbench scope;
-5. all P3E-P3H acceptance criteria pass and the workbench is genuinely usable.
-
-No user business/aesthetic decision is required for this completion phase.
+Stop only when the workbench is both functionally intact and understandable without database knowledge.
