@@ -5,7 +5,7 @@
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "commit_sha": "pending",
+  "commit_sha": "62598aa0c07644e790e2f66961c6f1e73d2beb53",
   "branch": "main",
   "changed_files": ["scripts/import-p2b-europe-market-baseline.mjs", "scripts/audit-p2b-sourcing-readiness.mjs", "test/p2b-market-baseline.test.mjs", "outputs/p2b-sourcing-readiness-audit.json", "outputs/GPT_HANDOFF.json"],
   "actual_changes": {"created_sources": 8, "reused_sources_on_replay": 8, "created_market_evidence": 12, "reused_market_evidence_on_replay": 12, "created_market_assessment": 1, "reused_market_assessment_on_replay": 1, "audit": "outputs/p2b-sourcing-readiness-audit.json"},

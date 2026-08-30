@@ -5,7 +5,7 @@
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "commit_sha": "pending",
+  "commit_sha": "62598aa0c07644e790e2f66961c6f1e73d2beb53",
   "branch": "main",
   "changed_files": ["scripts/import-p2b-europe-market-baseline.mjs", "scripts/audit-p2b-sourcing-readiness.mjs", "test/p2b-market-baseline.test.mjs", "outputs/p2b-sourcing-readiness-audit.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS.json"],
   "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2b-europe-market-baseline-20260830-133127.sqlite", "db_sha256_before": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0", "db_sha256_after": "7da13a867132c6e1973c007700080ad19fb898b2ae857677a91863289e152514", "sources": {"created": 8, "reused_on_replay": 8}, "market_evidence": {"created": 12, "reused_on_replay": 12}, "market_assessment": {"created": 1, "reused_on_replay": 1}, "final_counts": {"source": 128, "market_evidence": 13, "market_assessment": 71}, "p2a_invariants": {"image_visual_observation": 308, "design_reference": 44, "image_asset": 94, "design_reference_image": 94, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273}},
