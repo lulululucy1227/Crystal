@@ -1,0 +1,159 @@
+{
+  "phase": "P2Q-PURCHASE-READINESS-GATE",
+  "classification": "READY_FOR_PURCHASE_APPROVAL",
+  "purchase_decision_packet": {
+    "recommended_prototype_variant": "P01-A",
+    "proposed_basket": {
+      "code": "P01-A",
+      "items": [
+        {
+          "role": "anchor_atmosphere",
+          "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+          "unit": "strand",
+          "unit_price_minor": 5712,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "promoted"
+        },
+        {
+          "role": "light_secondary",
+          "variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+          "unit": "strand",
+          "unit_price_minor": 2261,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "exact_staged_only"
+        },
+        {
+          "role": "structural_interruption",
+          "component_code": "SRC-PERLES-925-CURVED-TUBE-26X3",
+          "unit": "piece",
+          "unit_price_minor": 380,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        },
+        {
+          "role": "micro_transition_or_counterweight",
+          "component_code": "SRC-PERLES-925-ROUND-SPACER-113X6",
+          "unit": "piece",
+          "unit_price_minor": 210,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        }
+      ],
+      "known_catalog_spend": {
+        "eur_incl_19pct_vat_minor": 7973,
+        "eur_source_stated_catalog_basis_minor": 590
+      },
+      "optional_larimar_hero_incremental": {
+        "eur_incl_19pct_vat_minor": 8500,
+        "source_state": "exact_staged_only"
+      },
+      "unknown_cost_items": [
+        "shipping",
+        "payment fees",
+        "customs",
+        "returns",
+        "wastage",
+        "tooling",
+        "assembly labor"
+      ],
+      "rough_sample_budget_request_possible": true
+    },
+    "packaging_recommendation_ranked_not_locked": [
+      {
+        "rank": 1,
+        "offer_key": "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+        "product_label": "White satin finish card universal box",
+        "dimensions": "7.8cm x 7.8cm x 3cm",
+        "price_tiers": [
+          {
+            "min_quantity": 12,
+            "unit_price_minor": 180
+          },
+          {
+            "min_quantity": 48,
+            "unit_price_minor": 166
+          },
+          {
+            "min_quantity": 144,
+            "unit_price_minor": 158
+          }
+        ],
+        "vat_basis": "excl_vat",
+        "reason": "White/satin source description most directly supports the authorized cool/quiet presentation direction; compact universal format and stated sample MOQ.",
+        "selected": false,
+        "staged_unapproved": true
+      },
+      {
+        "rank": 2,
+        "offer_key": "LAVAL-703705-ECO-KRAFT-BRACELET-BOX",
+        "product_label": "Natural kraft matchbox style bracelet box",
+        "dimensions": null,
+        "price_tiers": [
+          {
+            "min_quantity": null,
+            "unit_price_minor": 195
+          }
+        ],
+        "vat_basis": "excl_vat",
+        "reason": "Bracelet-specific format and neutral kraft source description; warm kraft remains a presentation trade-off.",
+        "selected": false,
+        "staged_unapproved": true
+      },
+      {
+        "rank": 3,
+        "offer_key": "LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+        "product_label": "Black man-made leatherette jewellery presentation box with gold edging",
+        "dimensions": "9cm x 9cm x 3.2cm",
+        "price_tiers": [
+          {
+            "min_quantity": 6,
+            "unit_price_minor": 370
+          },
+          {
+            "min_quantity": 24,
+            "unit_price_minor": 344
+          },
+          {
+            "min_quantity": 72,
+            "unit_price_minor": 333
+          }
+        ],
+        "vat_basis": "excl_vat",
+        "reason": "Bracelet-specific format but stated black/gold presentation is a less direct match for cool/quiet Glacier direction.",
+        "selected": false,
+        "staged_unapproved": true
+      },
+      {
+        "rank": 4,
+        "offer_key": "LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+        "product_label": "Natural Kraft-coloured card universal box",
+        "dimensions": "10.5cm x 10.5cm x 4cm",
+        "price_tiers": [
+          {
+            "min_quantity": 8,
+            "unit_price_minor": 260
+          },
+          {
+            "min_quantity": 32,
+            "unit_price_minor": 239
+          },
+          {
+            "min_quantity": 96,
+            "unit_price_minor": 229
+          }
+        ],
+        "vat_basis": "excl_vat",
+        "reason": "Universal protection format and lower MOQ, but natural kraft is the least direct visual fit.",
+        "selected": false,
+        "staged_unapproved": true
+      }
+    ],
+    "warnings": [
+      "All catalog claims and source identities remain unverified.",
+      "P01-A uses exact staged-only Moonstone/Larimar benchmarks for planning.",
+      "No supplier or packaging selection has been made."
+    ],
+    "minimum_user_decision_before_money": "Approve or revise P01-A first-sample basket, confirm full-strand/per-piece quantities, accept the VAT-separated cost envelope, and choose whether to use the ranked packaging candidate for the sample.",
+    "purchase_authorization_granted": false
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "phase": "P2O-CONSERVATIVE-PROTOTYPE-PROCUREMENT-COST-ENVELOPE",
+  "policy": "Full strand prices are conservative first-sample procurement ceilings; no per-bead allocation is inferred.",
+  "variants": [
+    {
+      "code": "P01-A",
+      "items": [
+        {
+          "role": "anchor_atmosphere",
+          "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+          "unit": "strand",
+          "unit_price_minor": 5712,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "promoted"
+        },
+        {
+          "role": "light_secondary",
+          "variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+          "unit": "strand",
+          "unit_price_minor": 2261,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "exact_staged_only"
+        },
+        {
+          "role": "structural_interruption",
+          "component_code": "SRC-PERLES-925-CURVED-TUBE-26X3",
+          "unit": "piece",
+          "unit_price_minor": 380,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        },
+        {
+          "role": "micro_transition_or_counterweight",
+          "component_code": "SRC-PERLES-925-ROUND-SPACER-113X6",
+          "unit": "piece",
+          "unit_price_minor": 210,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        }
+      ],
+      "known_catalog_spend": {
+        "eur_incl_19pct_vat_minor": 7973,
+        "eur_source_stated_catalog_basis_minor": 590
+      },
+      "optional_larimar_hero_incremental": {
+        "eur_incl_19pct_vat_minor": 8500,
+        "source_state": "exact_staged_only"
+      },
+      "unknown_cost_items": [
+        "shipping",
+        "payment fees",
+        "customs",
+        "returns",
+        "wastage",
+        "tooling",
+        "assembly labor"
+      ],
+      "rough_sample_budget_request_possible": true
+    },
+    {
+      "code": "P01-B",
+      "items": [
+        {
+          "role": "anchor_atmosphere",
+          "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+          "unit": "strand",
+          "unit_price_minor": 5712,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "promoted"
+        },
+        {
+          "role": "light_secondary",
+          "variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+          "unit": "strand",
+          "unit_price_minor": 2261,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "exact_staged_only"
+        },
+        {
+          "role": "faceted_transition_candidate",
+          "variant_code": "SRC-EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+          "unit": "strand",
+          "unit_price_minor": 6545,
+          "vat_basis": "incl_19pct_vat",
+          "source_state": "promoted"
+        },
+        {
+          "role": "structural_interruption",
+          "component_code": "SRC-PERLES-925-CURVED-TUBE-26X3",
+          "unit": "piece",
+          "unit_price_minor": 380,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        },
+        {
+          "role": "micro_transition_or_counterweight",
+          "component_code": "SRC-PERLES-925-ROUND-SPACER-113X6",
+          "unit": "piece",
+          "unit_price_minor": 210,
+          "vat_basis": "source_stated_catalog_basis",
+          "source_state": "promoted"
+        }
+      ],
+      "known_catalog_spend": {
+        "eur_incl_19pct_vat_minor": 14518,
+        "eur_source_stated_catalog_basis_minor": 590
+      },
+      "optional_larimar_hero_incremental": null,
+      "unknown_cost_items": [
+        "shipping",
+        "payment fees",
+        "customs",
+        "returns",
+        "wastage",
+        "tooling",
+        "assembly labor"
+      ],
+      "rough_sample_budget_request_possible": true
+    }
+  ],
+  "packaging_separate_shortlisted_benchmark": {
+    "currency": "EUR",
+    "vat_basis": "excl_vat",
+    "min_minor": 158,
+    "max_minor": 370,
+    "selected": false
+  }
+}

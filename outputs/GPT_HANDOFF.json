@@ -1,7 +1,7 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2M-P2Q-GLACIER-SIGNATURE-PROTOTYPE-PLANNING",
-  "status": "WAITING_FOR_LOCAL_EXECUTION",
+  "status": "completed",
   "model": "Terra",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE + READ_ONLY chained phases",
@@ -25,6 +25,9 @@
     "P2Q purchase-readiness gate"
   ],
   "stop_boundary": "No supplier outreach, order, purchase, checkout or production commitment without a new explicit user decision.",
-  "requires_gpt_decision": false,
-  "next_minimum_action": "Local Codex should sync main and execute the authorized P2M-P2Q task continuously until its stop condition."
+  "actual_changes": {"product_concept":{"id":2,"created":1,"reused_on_replay":1},"canonical_bom_created":0,"p2n_p01_a_and_b_sourcing_map":"complete","p2o":"VAT-separated conservative full-strand/per-piece envelopes","p2p":"four-item ranked shortlist; no selection","p2q_classification":"READY_FOR_PURCHASE_APPROVAL","db_sha256_after":"3bbad4e36e985e4204e127b8cd8267312c918ab298f5130c81215f73bc364b9f"},
+  "critical_boundaries_preserved": ["no supplier selection/outreach/order/purchase","no final packaging lock","no BOM quantities or per-bead arithmetic invented","exact staged catalog evidence remains unverified"],
+  "tests_or_checks": {"focused_tests":"PASS (2/2)","npm_test":"PASS (103 passed, 1 environment skip)","npm_validate":"PASS","integrity_check":"ok","foreign_key_check":0,"git_diff_check":"PENDING"},
+  "requires_gpt_decision": true,
+  "next_minimum_action": "Before any spend, user must approve or revise the P01-A basket, quantities, VAT-separated envelope, and sample packaging choice."
 }

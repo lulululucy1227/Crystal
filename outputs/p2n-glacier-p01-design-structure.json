@@ -1,0 +1,180 @@
+{
+  "phase": "P2N-DESIGN-STRUCTURE-AND-EXACT-SOURCING-MAP",
+  "prototype_key": "GLACIER-SIGNATURE-P01",
+  "product_concept_id": 2,
+  "design_hypothesis": "A quiet, cool-toned mineral composition that reads restrained from a distance and richer at close range. The bracelet should rely on optical variation, asymmetric rhythm, a small structural silver intervention and one premium mineral focal zone rather than uniform bead repetition.",
+  "prototype_variants": [
+    {
+      "code": "P01-A",
+      "status": "recommended",
+      "description": "Aquamarine round body + Rainbow Moonstone light rhythm + compact Larimar hero zone + curved silver structural interruption + round silver counterweight.",
+      "purpose": "Test the full Glacier Signature visual thesis.",
+      "material_roles": [
+        "anchor_atmosphere",
+        "light_secondary",
+        "hero_candidate"
+      ],
+      "hardware_roles": [
+        "structural_interruption",
+        "micro_transition_or_counterweight"
+      ],
+      "structure_rules": [
+        "Do not use a uniform same-size round-bead rhythm around the entire bracelet.",
+        "Keep one asymmetrical focal zone rather than a centered decorative pendant composition.",
+        "Use the curved silver tube as a structural interruption, not as a dominant luxury ornament.",
+        "Use Rainbow Moonstone as light/air, not as the only visual hero.",
+        "Aquamarine provides the main cool mineral body and visual continuity.",
+        "Larimar, if used, should be concentrated into a small hero zone rather than distributed evenly.",
+        "Maintain visible breathing space/rhythm changes through size, cut or hardware transitions instead of adding many material species.",
+        "Maximum core mineral species for P01: three. Maximum visible hardware languages: two."
+      ]
+    },
+    {
+      "code": "P01-B",
+      "status": "fallback",
+      "description": "Aquamarine round body + Rainbow Moonstone light rhythm + faceted Aquamarine transition zone + same silver hardware, without Larimar.",
+      "purpose": "Lower material complexity/cost fallback while preserving the Glacier structure language.",
+      "material_roles": [
+        "anchor_atmosphere",
+        "light_secondary",
+        "faceted_transition_candidate"
+      ],
+      "hardware_roles": [
+        "structural_interruption",
+        "micro_transition_or_counterweight"
+      ],
+      "structure_rules": [
+        "Do not use a uniform same-size round-bead rhythm around the entire bracelet.",
+        "Keep one asymmetrical focal zone rather than a centered decorative pendant composition.",
+        "Use the curved silver tube as a structural interruption, not as a dominant luxury ornament.",
+        "Use Rainbow Moonstone as light/air, not as the only visual hero.",
+        "Aquamarine provides the main cool mineral body and visual continuity.",
+        "Larimar, if used, should be concentrated into a small hero zone rather than distributed evenly.",
+        "Maintain visible breathing space/rhythm changes through size, cut or hardware transitions instead of adding many material species.",
+        "Maximum core mineral species for P01: three. Maximum visible hardware languages: two."
+      ]
+    }
+  ],
+  "material_roles": [
+    {
+      "role": "anchor_atmosphere",
+      "required": true,
+      "canonical_material_id": 31,
+      "canonical_material": "Aquamarine",
+      "material_variant_id": 65,
+      "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+      "supplier": "Gemstone Wholesale / edelsteine.de",
+      "source_url": "https://www.edelsteine.de/shop/en/",
+      "offer_state": "promoted",
+      "price": {
+        "id": 4,
+        "quote_currency": "EUR",
+        "unit_price_minor": 5712,
+        "unit_label": "strand",
+        "verification_status": "unverified",
+        "notes": "Public catalog-price benchmark; VAT included per source. Not landed/negotiated production cost.",
+        "vat_basis": "incl_19pct_vat"
+      },
+      "bead_count_explicitly_sourced": false,
+      "per_bead_cost": "must_not_be_calculated; use full strand as conservative first-sample ceiling"
+    },
+    {
+      "role": "light_secondary",
+      "required": true,
+      "canonical_material_id": 26,
+      "canonical_material": "Rainbow Moonstone",
+      "material_variant_id": 68,
+      "variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "supplier": "Gemstone Wholesale / edelsteine.de",
+      "source_url": "https://www.edelsteine.de/shop/en/",
+      "offer_state": "exact_staged_only",
+      "price": {
+        "quote_currency": "EUR",
+        "unit_price_minor": 2261,
+        "unit_label": "strand",
+        "verification_status": "unverified",
+        "vat_basis": "incl_19pct_vat"
+      },
+      "bead_count_explicitly_sourced": false,
+      "per_bead_cost": "must_not_be_calculated; use full strand as conservative first-sample ceiling"
+    },
+    {
+      "role": "hero_candidate",
+      "required": false,
+      "canonical_material_id": 1,
+      "canonical_material": "Larimar",
+      "material_variant_id": 70,
+      "variant_code": "SRC-P2G-EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "supplier": "Gemstone Wholesale / edelsteine.de",
+      "source_url": "https://www.edelsteine.de/shop/en/",
+      "offer_state": "exact_staged_only",
+      "price": {
+        "quote_currency": "EUR",
+        "unit_price_minor": 8500,
+        "unit_label": "strand",
+        "verification_status": "unverified",
+        "vat_basis": "incl_19pct_vat"
+      },
+      "bead_count_explicitly_sourced": false,
+      "per_bead_cost": "must_not_be_calculated; use full strand as conservative first-sample ceiling"
+    },
+    {
+      "role": "faceted_transition_candidate",
+      "required": false,
+      "canonical_material_id": 31,
+      "canonical_material": "Aquamarine",
+      "material_variant_id": 66,
+      "variant_code": "SRC-EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+      "supplier": "Gemstone Wholesale / edelsteine.de",
+      "source_url": "https://www.edelsteine.de/shop/en/",
+      "offer_state": "promoted",
+      "price": {
+        "id": 5,
+        "quote_currency": "EUR",
+        "unit_price_minor": 6545,
+        "unit_label": "strand",
+        "verification_status": "unverified",
+        "notes": "Public catalog special-price benchmark; VAT included per source. Not landed/negotiated production cost.",
+        "vat_basis": "incl_19pct_vat"
+      },
+      "bead_count_explicitly_sourced": false,
+      "per_bead_cost": "must_not_be_calculated; use full strand as conservative first-sample ceiling"
+    }
+  ],
+  "hardware_roles": [
+    {
+      "component_code": "SRC-PERLES-925-CURVED-TUBE-26X3",
+      "role": "structural_interruption",
+      "required": true,
+      "id": 14,
+      "unit_price_minor": 380,
+      "quote_currency": "EUR",
+      "unit_label": "piece",
+      "verification_status": "unverified",
+      "supplier": "Perles & Co",
+      "source_url": "https://www.perlesandco.de/",
+      "offer_state": "promoted",
+      "vat_basis": "source_stated_catalog_basis",
+      "per_bead_cost": "not_applicable_per_piece"
+    },
+    {
+      "component_code": "SRC-PERLES-925-ROUND-SPACER-113X6",
+      "role": "micro_transition_or_counterweight",
+      "required": true,
+      "id": 15,
+      "unit_price_minor": 210,
+      "quote_currency": "EUR",
+      "unit_label": "piece",
+      "verification_status": "unverified",
+      "supplier": "Perles & Co",
+      "source_url": "https://www.perlesandco.de/",
+      "offer_state": "promoted",
+      "vat_basis": "source_stated_catalog_basis",
+      "per_bead_cost": "not_applicable_per_piece"
+    }
+  ],
+  "boundaries": [
+    "No bracelet bead quantities or finished length inferred.",
+    "No new source-product identities created."
+  ]
+}

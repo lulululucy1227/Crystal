@@ -1,0 +1,14 @@
+{
+  "protocol_version":"AGENT-HANDOFF-V1",
+  "phase":"P2M-P2Q-GLACIER-SIGNATURE-PROTOTYPE-PLANNING",
+  "status":"completed",
+  "commit_sha":"PENDING_COMMIT",
+  "branch":"main",
+  "changed_files":["scripts/import-p2m-glacier-product-concept.mjs","scripts/audit-p2n-p2q-glacier.mjs","test/p2m-glacier-product-concept.test.mjs","test/p2n-p2q-glacier-readiness.test.mjs","outputs/p2m-before-manifest.json","outputs/p2m-after-manifest.json","outputs/p2m-glacier-signature-product-concept.json","outputs/p2n-glacier-p01-design-structure.json","outputs/p2o-glacier-p01-prototype-cost-envelope.json","outputs/p2p-glacier-p01-prototype-execution-pack.json","outputs/p2q-glacier-p01-purchase-readiness-gate.json"],
+  "actual_changes":{"product_concept_created":{"id":2,"name":"Glacier Signature Prototype 01"},"canonical_bom":"safely deferred","p01_a_and_b_sourcing_map":"complete","p2q_classification":"READY_FOR_PURCHASE_APPROVAL"},
+  "critical_boundaries_preserved":["no purchase or supplier contact","no packaging selection","no per-bead arithmetic","unverified/staged status remains visible"],
+  "tests_or_checks":{"focused":"PASS (2/2)","npm_test":"PASS (103 passed, 1 environment skip)","npm_validate":"PASS","integrity_check":"ok","foreign_key_check":0,"git_diff_check":"PENDING"},
+  "risks_or_blockers":[],
+  "requires_gpt_decision":true,
+  "next_minimum_action":"Request explicit purchase approval for the proposed P01-A basket only after the user confirms quantities, VAT-separated costs, and a non-final sample packaging candidate."
+}

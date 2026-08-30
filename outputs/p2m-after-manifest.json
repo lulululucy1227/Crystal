@@ -1,0 +1,10 @@
+{
+  "phase":"P2M-P2Q-GLACIER-SIGNATURE-PROTOTYPE-PLANNING",
+  "db_sha256_before":"89d31eacbab93d8baac83b999e201120043e578cb48316b19a2ee1651c85b184",
+  "db_sha256_after":"3bbad4e36e985e4204e127b8cd8267312c918ab298f5130c81215f73bc364b9f",
+  "backup":"C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2m-20260830-165219.sqlite",
+  "created":{"product_concept":1,"bom":0,"bom_line":0},
+  "replay":{"product_concept_reused":1},
+  "integrity_check":"ok",
+  "foreign_key_check_count":0
+}

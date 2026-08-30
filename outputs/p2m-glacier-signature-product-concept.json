@@ -1,0 +1,9 @@
+{
+  "phase":"P2M-RECORD-PROTOTYPE-DECISION-AND-PRODUCT-CONCEPT",
+  "product_concept":{"id":2,"name":"Glacier Signature Prototype 01","theme":"Glacier","version_label":"v0","status":"research"},
+  "decision_provenance":"inputs/p2m-user-prototype-decision-glacier-signature-20260830.json; explicit_user_choice_A_in_chatgpt",
+  "gpt_brief":"inputs/p2m-gpt-glacier-signature-prototype-brief-20260830.json",
+  "created":1,
+  "reused_on_replay":1,
+  "canonical_bom":{"created":0,"deferred":true,"reason":"No finished bracelet quantity, bead allocation, or deterministic line quantities were authorized or inferred."}
+}
