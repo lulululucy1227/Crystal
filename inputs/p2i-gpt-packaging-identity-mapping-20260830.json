@@ -1,0 +1,71 @@
+{
+  "contract_version": "P2I-GPT-PACKAGING-IDENTITY-MAPPING-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "observed_on": "2026-08-30",
+  "purpose": "Author exact source-scoped packaging identities for the four already-staged Laval Europe catalog offers. These are supplier product identities and public catalog claims, not a packaging-style selection or quality endorsement.",
+  "semantic_boundary": [
+    "All identity fields are source-stated public catalog evidence observed from Laval Europe official pages/catalog.",
+    "Do not infer landed cost, VAT-inclusive cost, final brand suitability, packaging quality or preferred style.",
+    "Create source-scoped packaging_option identities only; keep verification_status unverified.",
+    "Do not promote packaging_supplier_offer unless the normal review workflow is honestly satisfied."
+  ],
+  "supplier": {
+    "name": "Laval Europe",
+    "canonical_supplier_expected": true
+  },
+  "mappings": [
+    {
+      "offer_key": "LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "packaging_code": "SRC-LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "packaging_type": "gift_box",
+      "material_description": "Light natural kraft card; seller states synthetic foam insert and non-woven protective flaps.",
+      "dimensions": "10.5 x 10.5 x 4 cm",
+      "finish": null,
+      "suitable_tier": "unclassified",
+      "verification_status": "unverified",
+      "source_product_reference": "703525",
+      "source_url": "https://www.laval-europe.com/en/ecrins-bijoux/carton/natural-kraft-coloured-card-universal-box-92624.html",
+      "source_notes": "Seller states made in Europe and customisable with logo. Catalog tiers: EUR 2.60 at 8+, EUR 2.39 at 32+, EUR 2.29 at 96+, prices excluding VAT."
+    },
+    {
+      "offer_key": "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "packaging_code": "SRC-LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "packaging_type": "gift_box",
+      "material_description": "White card; seller states white synthetic foam interior with white synthetic non-woven flaps.",
+      "dimensions": "7.8 x 7.8 x 3 cm",
+      "finish": "satin finish",
+      "suitable_tier": "unclassified",
+      "verification_status": "unverified",
+      "source_product_reference": "703211",
+      "source_url": "https://www.laval-europe.com/en/jewellery-gift-boxes/card/white-satin-finish-card-universal-box-55959.html",
+      "source_notes": "Seller states made in Europe and customisable with logo. Catalog tiers: EUR 1.80 at 12+, EUR 1.66 at 48+, EUR 1.58 at 144+, prices excluding VAT."
+    },
+    {
+      "offer_key": "LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "packaging_code": "SRC-LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "packaging_type": "gift_box",
+      "material_description": "Black man-made sheathing; seller states black velvet and white synthetic satin interior.",
+      "dimensions": "22 x 5.3 x 2.3 cm",
+      "finish": null,
+      "suitable_tier": "unclassified",
+      "verification_status": "unverified",
+      "source_product_reference": "700290",
+      "source_url": "https://www.laval-europe.com/en/jewellery-gift-boxes/traditional-covered/black-man-made-leatherette-jewellery-presentation-boxes-with-gold-edging-55429.html",
+      "source_notes": "Bracelet-box format. Seller states logo printing on request. Catalog tiers: EUR 3.70 at 6+, EUR 3.44 at 24+, EUR 3.33 at 72+, prices excluding VAT."
+    },
+    {
+      "offer_key": "LAVAL-703705-ECO-KRAFT-BRACELET-BOX",
+      "packaging_code": "SRC-LAVAL-703705-ECO-KRAFT-BRACELET-BOX",
+      "packaging_type": "gift_box",
+      "material_description": "Natural kraft card matchbox-style bracelet box; seller states cream-coloured synthetic foam interior.",
+      "dimensions": "22.5 x 5 x 2.5 cm",
+      "finish": null,
+      "suitable_tier": "unclassified",
+      "verification_status": "unverified",
+      "source_product_reference": "703705",
+      "source_url": "https://www.laval-europe.com/en/jewellery-gift-boxes/card/natural-kraft-matchbox-style-bracelet-box-91167.html",
+      "source_notes": "Seller states made in Europe. Public catalog price EUR 1.95 excluding VAT for the staged offer; no final packaging selection is implied."
+    }
+  ]
+}
