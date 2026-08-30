@@ -1,0 +1,80 @@
+{
+  "phase": "P2G-CORE-MATERIAL-CATALOG-BENCHMARK-INTAKE",
+  "exact_identity_created": 4,
+  "no_match": 1,
+  "ambiguous": 1,
+  "promotion_created": 0,
+  "material_cost_benchmark_range": {
+    "currency": "EUR",
+    "min_minor": 1309,
+    "max_minor": 11305
+  },
+  "source_scoped_variants": [
+    {
+      "variant_code": "SRC-P2G-EDEL-BLACK-LABRADORITE-8MM-40CM",
+      "material_name": "Labradorite"
+    },
+    {
+      "variant_code": "SRC-P2G-EDEL-LAPIS-8MM-38CM-46BEADS",
+      "material_name": "Lapis Lazuli"
+    },
+    {
+      "variant_code": "SRC-P2G-EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "material_name": "Larimar"
+    },
+    {
+      "variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "material_name": "Rainbow Moonstone"
+    }
+  ],
+  "offers": [
+    {
+      "offer_key": "EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "result": "exact_identity_created",
+      "reason": "Explicit canonical parent mapping reconciled to a source-scoped, unverified variant.",
+      "staged": true,
+      "source_scoped_variant_code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "promotion": "not_created_pending_review"
+    },
+    {
+      "offer_key": "EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM",
+      "result": "ambiguous",
+      "reason": "Seller title and description retain conflicting size claims; no exact variant was normalized.",
+      "staged": true,
+      "source_scoped_variant_code": null,
+      "promotion": "not_created_pending_review"
+    },
+    {
+      "offer_key": "EDEL-LAPIS-8MM-38CM-46BEADS",
+      "result": "exact_identity_created",
+      "reason": "Explicit canonical parent mapping reconciled to a source-scoped, unverified variant.",
+      "staged": true,
+      "source_scoped_variant_code": "SRC-P2G-EDEL-LAPIS-8MM-38CM-46BEADS",
+      "promotion": "not_created_pending_review"
+    },
+    {
+      "offer_key": "EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "result": "exact_identity_created",
+      "reason": "Explicit canonical parent mapping reconciled to a source-scoped, unverified variant.",
+      "staged": true,
+      "source_scoped_variant_code": "SRC-P2G-EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "promotion": "not_created_pending_review"
+    },
+    {
+      "offer_key": "EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM",
+      "result": "no_match",
+      "reason": "Authoritative input intentionally supplies no canonical parent mapping.",
+      "staged": true,
+      "source_scoped_variant_code": null,
+      "promotion": "not_created_pending_review"
+    },
+    {
+      "offer_key": "EDEL-BLACK-LABRADORITE-8MM-40CM",
+      "result": "exact_identity_created",
+      "reason": "Explicit canonical parent mapping reconciled to a source-scoped, unverified variant.",
+      "staged": true,
+      "source_scoped_variant_code": "SRC-P2G-EDEL-BLACK-LABRADORITE-8MM-40CM",
+      "promotion": "not_created_pending_review"
+    }
+  ]
+}

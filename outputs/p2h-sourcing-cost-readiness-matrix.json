@@ -1,0 +1,126 @@
+{
+  "phase": "P2H-SOURCING-COST-READINESS-MATRIX",
+  "read_only": true,
+  "price_boundary": "Catalog benchmarks are public prices only, not landed production costs or supplier selections.",
+  "counts": {
+    "materials": 32,
+    "variants": 71,
+    "components": 15,
+    "suppliers": 7,
+    "supplier_offers": 7,
+    "packaging_supplier_offers": 0
+  },
+  "supplier_offer_by_status": [
+    {
+      "verification_status": "unverified",
+      "count": 7
+    }
+  ],
+  "catalog_benchmarks_usable_for_bom_costing": {
+    "material_variant_offers": [
+      {
+        "variant_code": "SRC-EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+        "material": "Aquamarine",
+        "supplier_offer_id": 5,
+        "quote_currency": "EUR",
+        "unit_price_minor": 6545,
+        "unit_label": "strand"
+      },
+      {
+        "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+        "material": "Aquamarine",
+        "supplier_offer_id": 4,
+        "quote_currency": "EUR",
+        "unit_price_minor": 5712,
+        "unit_label": "strand"
+      },
+      {
+        "variant_code": "SRC-EDEL-SMOKY-QTZ-RND-10MM",
+        "material": "Smoky Quartz",
+        "supplier_offer_id": 3,
+        "quote_currency": "EUR",
+        "unit_price_minor": 1856,
+        "unit_label": "strand"
+      },
+      {
+        "variant_code": "SRC-EDEL-SMOKY-QTZ-RND-6MM",
+        "material": "Smoky Quartz",
+        "supplier_offer_id": 2,
+        "quote_currency": "EUR",
+        "unit_price_minor": 1428,
+        "unit_label": "strand"
+      }
+    ],
+    "component_offers": [
+      {
+        "component_code": "SRC-PERLES-925-CURVED-TUBE-26X3",
+        "supplier_offer_id": 6,
+        "quote_currency": "EUR",
+        "unit_price_minor": 380,
+        "unit_label": "piece"
+      },
+      {
+        "component_code": "SRC-PERLES-925-ROUND-SPACER-113X6",
+        "supplier_offer_id": 7,
+        "quote_currency": "EUR",
+        "unit_price_minor": 210,
+        "unit_label": "piece"
+      }
+    ],
+    "total": 6
+  },
+  "staged_only_evidence": {
+    "supplier_offer": 7,
+    "packaging_offer": 4
+  },
+  "cost_ranges": {
+    "promoted_supplier_offer": [
+      {
+        "min_minor": 1800,
+        "max_minor": 1800,
+        "quote_currency": "CNY"
+      },
+      {
+        "min_minor": 210,
+        "max_minor": 6545,
+        "quote_currency": "EUR"
+      }
+    ],
+    "staged_packaging": {
+      "currency": "EUR",
+      "vat_basis": "excl_vat",
+      "min_minor": 158,
+      "max_minor": 370
+    },
+    "staged_p2g_material": {
+      "currency": "EUR",
+      "vat_basis": "incl_19pct_vat",
+      "min_minor": 1309,
+      "max_minor": 11305
+    }
+  },
+  "sourcing_coverage": {
+    "materials_with_exact_catalog_offer": [
+      "Aquamarine",
+      "Smoky Quartz"
+    ],
+    "components_with_exact_catalog_offer": [
+      "SRC-PERLES-925-CURVED-TUBE-26X3",
+      "SRC-PERLES-925-ROUND-SPACER-113X6"
+    ],
+    "themes_observed_read_only": [
+      "Forest",
+      "Glacier",
+      "Mountain",
+      "Ocean",
+      "Starlight"
+    ],
+    "blocked_only_by_missing_or_unapproved_data": [
+      "P2F packaging offers require exact packaging_option mapping and/or approved promotion.",
+      "P2G offers remain review_required; Labradorite faceted size conflict and Rutilated Quartz parent mapping remain staged."
+    ],
+    "genuine_user_business_decision_required": []
+  },
+  "classification": "CONTINUE_ORDINARY_DATA_WORK",
+  "reason": "Ordinary exact identity and review work remains before selecting a prototype theme, quality tier, or sourcing route."
+}

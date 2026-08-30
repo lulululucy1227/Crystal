@@ -1,0 +1,94 @@
+{
+  "phase": "P2F-EUROPE-PACKAGING-BENCHMARK-INTAKE",
+  "exact": 0,
+  "no_match": 4,
+  "ambiguous": 0,
+  "packaging_cost_benchmark_range": {
+    "currency": "EUR",
+    "price_basis": "catalog_excluding_vat",
+    "min_minor": null,
+    "max_minor": null
+  },
+  "offers": [
+    {
+      "offer_key": "LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "result": "no_match",
+      "reason": "No exact existing packaging_option identity and no approved packaging promotion record.",
+      "staged": true,
+      "promotion": "not_created",
+      "price_tiers": [
+        {
+          "min_quantity": 8,
+          "unit_price_minor": 260
+        },
+        {
+          "min_quantity": 32,
+          "unit_price_minor": 239
+        },
+        {
+          "min_quantity": 96,
+          "unit_price_minor": 229
+        }
+      ],
+      "price_basis": "excl_vat"
+    },
+    {
+      "offer_key": "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "result": "no_match",
+      "reason": "No exact existing packaging_option identity and no approved packaging promotion record.",
+      "staged": true,
+      "promotion": "not_created",
+      "price_tiers": [
+        {
+          "min_quantity": 12,
+          "unit_price_minor": 180
+        },
+        {
+          "min_quantity": 48,
+          "unit_price_minor": 166
+        },
+        {
+          "min_quantity": 144,
+          "unit_price_minor": 158
+        }
+      ],
+      "price_basis": "excl_vat"
+    },
+    {
+      "offer_key": "LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "result": "no_match",
+      "reason": "No exact existing packaging_option identity and no approved packaging promotion record.",
+      "staged": true,
+      "promotion": "not_created",
+      "price_tiers": [
+        {
+          "min_quantity": 6,
+          "unit_price_minor": 370
+        },
+        {
+          "min_quantity": 24,
+          "unit_price_minor": 344
+        },
+        {
+          "min_quantity": 72,
+          "unit_price_minor": 333
+        }
+      ],
+      "price_basis": "excl_vat"
+    },
+    {
+      "offer_key": "LAVAL-703705-ECO-KRAFT-BRACELET-BOX",
+      "result": "no_match",
+      "reason": "No exact existing packaging_option identity and no approved packaging promotion record.",
+      "staged": true,
+      "promotion": "not_created",
+      "price_tiers": [
+        {
+          "min_quantity": null,
+          "unit_price_minor": 195
+        }
+      ],
+      "price_basis": "excl_vat"
+    }
+  ]
+}
