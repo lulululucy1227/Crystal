@@ -1,160 +1,198 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P2E-P2H-CONTINUOUS-SOURCING-PIPELINE
+Phase: P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS
 Status: authorized
 Model: Terra
 Strength: Medium
 Execution class: DATABASE_WRITE + READ_ONLY chained phases
 
-## Explicit user review approval recorded
-The user explicitly approved staged records 139-144 in the Crystal GPT control plane on 2026-08-30.
+## Authorization basis
+The user explicitly asked GPT to push multiple tasks continuously and to stop only when a genuinely consequential business/aesthetic choice requires intervention. The prior P2E-P2H pipeline completed successfully and classified the next step as `CONTINUE_ORDINARY_DATA_WORK`.
 
-Approval evidence:
-`inputs/p2e-user-review-approval-20260830.json`
+This phase performs only bounded source-identity enrichment and read-only readiness analysis. It does NOT select a supplier, packaging style, quality tier, production geography, prototype design, purchase quantity, or order.
 
-Previous blocker package:
-`outputs/p2e-review-approval-required-20260830.json`
+## Verified starting state
+Latest `outputs/GPT_HANDOFF.json` reports P2E-P2H completed:
+- P2E: 6 approved records 139-144 promoted; 6 promotion logs; all offers remain unverified.
+- P2F: 4 packaging catalog offers staged; 0 promoted; 4 no_match due missing exact packaging identity/review.
+- P2G: 6 material catalog offers staged; 4 source-scoped variants created; 1 Labradorite size-conflict identity unresolved; 1 Rutilated Quartz parent mapping unresolved; 0 promoted because no new human approvals were fabricated.
+- P2H: classification `CONTINUE_ORDINARY_DATA_WORK`.
+- DB SHA after P2H: `ea80287d36dd3fe71e25962d8b34492612c6f72c8f12c012cf334f6be086015e`.
+- Latest handoff listed `git_diff_check` as PENDING, so preflight MUST explicitly verify current worktree/diff safety before any new write.
 
-Approval scope is limited to:
-- these six staged public-catalog claims may receive `review_decision.decision='approved'`;
-- reviewer role label must be recorded exactly as `project_owner_user`;
-- notes/source context must state that approval was explicitly given through the Crystal GPT control plane on 2026-08-30;
-- resulting canonical identities/offers remain source-scoped and `unverified`;
-- this is NOT supplier selection, purchase approval, production approval, sourcing-geography selection, quality verification, gemstone authenticity verification, grade verification or purity verification.
+New GPT semantic authority:
+- `inputs/p2i-gpt-packaging-identity-mapping-20260830.json`
+- `inputs/p2j-gpt-material-gap-resolution-20260830.json`
 
-The six approved records are:
-- 139 — EDEL-SMOKY-QUARTZ-6MM-375CM
-- 140 — EDEL-SMOKY-QUARTZ-10MM
-- 141 — EDEL-AQUAMARINE-8MM-39CM
-- 142 — EDEL-AQUAMARINE-MULTI-FACETED-7MM
-- 143 — PERLES-925-CURVED-TUBE-26X3
-- 144 — PERLES-925-ROUND-SPACER-113X6
-
-Current canonical DB remains at the pre-P2E SHA until local execution:
-`385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7`
-
-No P2E canonical identity/promotion writes from the blocked attempt were retained.
-
-Execute Phases A → B → C → D continuously in one run. Do not stop at ordinary phase boundaries.
+Execute Phases A → B → C → D continuously. Do not stop at ordinary phase boundaries.
 
 ---
 
-# PHASE A — P2E-R REVIEW APPROVAL + EXACT OFFER PROMOTION
+# PHASE A — P2I EXACT SOURCE-SCOPED PACKAGING IDENTITIES
+
+Objective: create/reconcile exact source-product packaging identities for the four already-staged Laval Europe offers without selecting any packaging style.
 
 Read:
-- `inputs/p2e-user-review-approval-20260830.json`
-- `inputs/p2e-gpt-sourcing-identity-mapping-20260830.json`
-- `outputs/p2e-review-approval-required-20260830.json`
-- latest P2E blocker outputs/handoff
+- `outputs/p2f-packaging-matchability-audit.json`
+- the original P2F GPT catalog input
+- `inputs/p2i-gpt-packaging-identity-mapping-20260830.json`
 
-1. Create/reuse exactly six approved `review_decision` rows for staged records 139-144.
-2. Reviewer field must be role label `project_owner_user`; notes must record explicit approval through the Crystal GPT control plane on 2026-08-30. Do not invent a personal name.
-3. Rerun the P2E exact identity enrichment using the existing schema and authoritative GPT mapping.
-4. Promote exactly the six P2E offers to `supplier_offer` if all target/source/price fields reconcile.
-5. All offers remain `verification_status='unverified'` and notes must preserve public-catalog benchmark/VAT boundary.
-6. Create/reuse promotion_log through normal project mechanics.
-7. Prove replay/idempotency and full integrity.
+Using existing schema only, create/reuse exactly the four GPT-authored `packaging_option` identities:
+- `SRC-LAVAL-703525-KRAFT-UNIVERSAL-BOX`
+- `SRC-LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX`
+- `SRC-LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX`
+- `SRC-LAVAL-703705-ECO-KRAFT-BRACELET-BOX`
 
-Preserve all original P2E boundaries: no schema migration, no fuzzy matching, no supplier selection, no purchase, no packaging/product/BOM changes in this phase.
+Rules:
+- use the exact supplier/source mapping already canonical for Laval Europe;
+- preserve source-stated material, dimensions, finish and source notes exactly;
+- `verification_status = unverified`;
+- `suitable_tier = unclassified`;
+- do not map these to the older generic packaging options;
+- do not retire/delete/modify old generic packaging options;
+- do not create `packaging_supplier_offer` unless a valid approved review_decision already exists for the staged record. Do not fabricate new approval.
 
----
+Produce/update:
+- `outputs/p2i-packaging-identity-reconciliation.json`
 
-# PHASE B — P2F EUROPE PACKAGING BENCHMARK INTAKE
-
-Authoritative GPT input:
-`inputs/p2f-gpt-packaging-catalog-benchmark-20260830.json`
-
-Objective:
-1. Reconcile existing canonical Laval Europe supplier/source.
-2. Stage all four exact packaging catalog offers with full provenance and price tiers.
-3. Preserve excl-VAT basis exactly; do not convert VAT or landed cost.
-4. Deterministically compare against existing `packaging_option` identities.
-5. Create canonical `packaging_supplier_offer` only when an existing packaging_option is an exact conflict-free match and the existing review/promotion workflow is honestly satisfied.
-6. If no exact match or review approval is absent, leave staged/review_required. Do not create a new packaging_option or fabricate approval merely to force promotion.
-7. Produce `outputs/p2f-packaging-matchability-audit.json` with exact/no_match/ambiguous counts and packaging cost benchmark ranges.
-
-No packaging style selection is authorized.
+It must report four staged offer keys -> exact packaging_option IDs/codes and whether each remains review-required.
 
 ---
 
-# PHASE C — P2G CORE MATERIAL CATALOG BENCHMARK INTAKE
+# PHASE B — P2J RESOLVE REMAINING P2G MATERIAL IDENTITIES
 
-Authoritative GPT input:
-`inputs/p2g-gpt-core-material-catalog-benchmark-20260830.json`
+Read:
+- `outputs/p2g-core-material-matchability-audit.json`
+- original P2G GPT input
+- `inputs/p2j-gpt-material-gap-resolution-20260830.json`
 
-Objective:
-1. Reconcile existing Gemstone Wholesale / edelsteine.de supplier/source.
-2. Stage all six exact catalog offers.
-3. Where `canonical_parent_mapping` is explicitly supplied and conflict-free, create/reuse source-scoped unverified material_variant identity if required to represent the exact seller product.
-4. Do not overwrite general/non-source-scoped existing variants.
-5. Promote to supplier_offer only where exact target identity exists and the normal review/promotion process is honestly satisfied; do not fabricate approval for newly staged P2G records.
-6. For `EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM`, keep staged only because GPT intentionally did not map the parent to Gold or Black Rutilated Quartz.
-7. For Labradorite faceted AAA offer, preserve source title/description size conflict exactly and do not normalize to one exact size; if that prevents exact variant identity, leave staged/review_required.
-8. Do not infer seller quality claims as verified quality.
-9. Produce `outputs/p2g-core-material-matchability-audit.json`.
+Resolve exactly two remaining source-product identity gaps:
 
-No quality-tier or supplier-selection decision is authorized.
+## Rutilated Quartz Multi
+- Create/reuse generic canonical parent `Rutilated Quartz` exactly as GPT authored if absent.
+- Do NOT merge it into or substitute `Gold Rutilated Quartz` or `Black Rutilated Quartz`.
+- Create/reuse source-scoped unverified variant:
+  `SRC-P2G-EDEL-RUTILATED-QTZ-MULTI-8MM-40CM`.
+
+## Labradorite faceted AAA product
+- Reuse canonical parent `Labradorite`.
+- Create/reuse source-scoped unverified variant:
+  `SRC-P2G-EDEL-LABRADORITE-FACETED-AAA-15471`.
+- Preserve BOTH supplier size claims verbatim in the identity/notes: title 12-13mm and description approx. 11.5mm.
+- The stable source product identity is supplier product no. `STRLABFAC125AAA-15471`; do not normalize the conflict into one exact size.
+
+Do not promote either staged offer unless the normal review workflow is already honestly satisfied. Do not fabricate human approval.
+
+Produce/update:
+- `outputs/p2j-material-gap-resolution.json`
 
 ---
 
-# PHASE D — P2H SOURCING / COST READINESS MATRIX — READ ONLY
+# PHASE C — P2K REVIEW-READY SOURCING RECONCILIATION — READ ONLY EXCEPT OUTPUT FILES
 
-After phases A-C, run a read-only project readiness synthesis from canonical/staged data.
+After A/B, audit all P2F and P2G staged catalog records.
 
 Create:
-`outputs/p2h-sourcing-cost-readiness-matrix.json`
+`outputs/p2k-sourcing-review-ready-pack.json`
 
-Report factual and deterministic metrics only:
-- materials and source-scoped material variants with exact catalog benchmark offers;
-- components with exact catalog benchmark offers;
-- packaging options with exact/staged benchmark offers;
-- supplier count and supplier_offer count by verification status;
-- catalog benchmarks usable for BOM costing vs staged-only evidence;
-- broad cost ranges by material/component/packaging offer without pretending retail catalog prices are landed production costs;
-- which canonical materials/components/themes currently have sufficient sourcing evidence to support a prototype cost estimate;
-- which are blocked only by missing data;
-- which would require a genuine user business decision.
+For every P2F/P2G offer report:
+- offer_key
+- staged_record_id
+- exact canonical target type/id/code, if now available
+- supplier/source identity
+- price/currency/unit/VAT basis
+- verification status
+- current review_decision state
+- current staged status
+- classification exactly one of:
+  - `EXACT_IDENTITY_REVIEW_REQUIRED`
+  - `EXACT_IDENTITY_ALREADY_APPROVED`
+  - `PROMOTED`
+  - `IDENTITY_STILL_UNRESOLVED`
+- whether the public catalog evidence is usable as a rough benchmark even if not canonical-promoted
 
-You may cross-reference existing design-reference synthesis and existing canonical theme/pattern data READ ONLY to identify sourcing coverage. Do not create or mutate preference, pattern, theme or product concepts.
+Do NOT create review approvals in P2K.
+Do NOT ask user to approve ordinary records inside Codex.
+The purpose is to consolidate future review into one batch if/when it is operationally needed.
 
-Do NOT create a product_concept or BOM in P2H unless every required component identity and cost basis is already deterministic AND doing so does not implicitly choose a theme/quality/supplier route. The default is READ ONLY readiness analysis.
+Also report:
+- total exact review-ready P2F/P2G records;
+- unresolved count;
+- promoted count;
+- all exact staged public-catalog benchmarks by material/component/packaging category.
 
-The P2H output must classify the next step as exactly one of:
+---
+
+# PHASE D — P2L PROTOTYPE READINESS GATE — READ ONLY
+
+Create:
+`outputs/p2l-prototype-readiness-gate.json`
+
+Use canonical plus exact staged public-catalog evidence. Preserve the distinction:
+- promoted canonical offer;
+- exact staged but unapproved benchmark;
+- unresolved evidence.
+
+Do not create product_concept, BOM, theme assignment, supplier selection, or aesthetic recommendation.
+
+## Required factual matrix
+Report:
+- distinct canonical material categories with exact source-product price benchmark identity;
+- exact source-scoped material variants with public catalog prices;
+- exact hardware components with public catalog prices;
+- exact packaging source products with public catalog prices;
+- number of promoted vs exact-staged-only offers;
+- price ranges per currency and VAT basis;
+- which prices are per piece vs per strand;
+- explicit bead-count offers where per-bead arithmetic could later be deterministic;
+- offers where per-bead cost MUST NOT be inferred;
+- schema/integrity/process blockers if any.
+
+## Readiness classification
+Set exactly one:
 - `CONTINUE_ORDINARY_DATA_WORK`
 - `READY_FOR_USER_PROTOTYPE_DECISION`
 - `NEEDS_GPT_SEMANTIC_MAPPING`
 - `SCHEMA_BLOCKER`
 
-Use `READY_FOR_USER_PROTOTYPE_DECISION` only if ordinary data work is sufficiently complete that the next meaningful action is choosing first prototype theme/design/quality/sourcing route.
+Use `READY_FOR_USER_PROTOTYPE_DECISION` only if ALL are true after P2I/P2J:
+1. at least 5 distinct canonical material categories have exact source-product public price benchmark identity, promoted or exact-staged;
+2. at least 2 exact hardware component benchmark offers exist;
+3. at least 2 exact packaging source-product benchmarks exist;
+4. no unresolved schema/integrity blocker prevents a rough prototype cost envelope;
+5. a rough prototype cost envelope could be built without inventing per-bead cost. Full-strand prices may be treated only as explicit strand-cost benchmarks/conservative ceilings unless bead count is source-stated.
+
+If classification is `READY_FOR_USER_PROTOTYPE_DECISION`, report a `decision_inputs` object containing factual choices the user will need to make next, but do NOT choose for them. At minimum:
+- first prototype theme/design direction;
+- target prototype positioning/quality envelope;
+- whether first prototype should optimize for Europe-local ease/speed or broader lower-cost sourcing exploration;
+- whether staged exact benchmarks are acceptable for prototype planning before formal promotion, or only approved canonical offers may be used.
+
+If criteria are not met, report the exact ordinary-data gaps and continue no further than this phase.
 
 ---
 
 # CONTINUOUS EXECUTION RULE
 
-Execute Phases A → B → C → D continuously in one Codex run.
-
-Do NOT stop because:
-- P2E promotion completed;
-- P2F finished staging;
-- P2G finished staging;
-- one audit completed.
+Execute A → B → C → D in one run.
+Do NOT stop merely because A, B or C completes.
 
 Stop only for:
-1. new HIGH_RISK scope outside these explicit boundaries;
-2. schema/process blocker that cannot be handled honestly;
-3. unexplained canonical divergence or integrity failure;
-4. a genuine user business decision is reached;
-5. all four phases complete.
+1. unexpected HIGH_RISK scope or schema migration requirement;
+2. unexplained canonical divergence/integrity failure;
+3. inability to represent GPT-authored identities without corrupting source-claim boundaries;
+4. completion of P2L, especially if it reaches a genuine prototype/business decision.
 
 ## Safety / validation
-Before each write phase:
-- clean worktree and safe sync;
+Before writes:
+- safe sync and clean worktree;
+- explicitly run/verify `git diff --check` because the prior handoff left this check PENDING;
 - byte-for-byte DB backup;
-- pre-write SHA and affected manifest.
+- pre-write DB SHA and affected manifest.
 
-After each coherent write phase:
-- created/reused counts;
+After each write phase:
+- exact created/reused counts;
 - replay/idempotency;
 - unrelated fingerprints unchanged;
 - `PRAGMA integrity_check = ok`;
@@ -164,18 +202,17 @@ After each coherent write phase:
 - `npm run validate`;
 - `git diff --check`.
 
-No schema migration, supplier outreach, quote request, order, purchase, production commitment, or Bridge/watcher work.
+No supplier outreach, quote request, order, purchase, production commitment, schema migration, Bridge/watcher work, or fabricated human review approval.
 
-## Required final handoff
-Update `outputs/GPT_HANDOFF.json` and archive a handoff for `P2E-P2H-CONTINUOUS-SOURCING-PIPELINE` including:
-- explicit user review approval evidence status;
-- six P2E review/promotion results;
-- P2F packaging stage/promotion counts;
-- P2G material stage/variant/promotion counts;
-- P2H readiness classification;
-- DB SHA sequence/backups;
-- integrity/tests;
-- commits;
-- HEAD==origin/main;
+## Final handoff
+Update `outputs/GPT_HANDOFF.json` and archive `outputs/handoffs/P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS.json` with:
+- P2I packaging identities created/reused;
+- P2J material identities created/reused;
+- P2K review-ready counts;
+- P2L readiness classification and decision_inputs/gaps;
+- DB SHA before/after and backup;
+- integrity/tests/idempotency;
+- commit;
+- HEAD == origin/main;
 - worktree clean;
-- `USER DECISION REQUIRED` with exact decision only if genuinely consequential.
+- USER DECISION REQUIRED only if P2L genuinely reaches it.
