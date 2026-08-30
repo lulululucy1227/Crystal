@@ -1,18 +1,18 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION",
+  "phase": "P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS",
   "status": "completed",
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "commit_sha": "c3a794a4ac93ec956b5743fdcd4d7978296e16bd",
+  "commit_sha": "pending",
   "branch": "main",
-  "changed_files": ["scripts/import-p2a-historical-early-c-structured.mjs", "test/p2a-historical-early-c-structured-completion.test.mjs", "outputs/p2a-image-backlog-status.json", "outputs/p2a-image-backlog-needs-gpt-analysis.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION.json"],
-  "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2a-early-c-structured-completion-20260830-125710.sqlite", "db_sha256_before": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2", "db_sha256_after": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0", "assets_fully_processed": 94, "materialized_observations": 98, "created_observations": 98, "reused_observations_on_replay": 98, "created_synthesis_assertions": 18, "reused_synthesis_assertions_on_replay": 18, "created_synthesis_sources": 98, "reused_synthesis_sources_on_replay": 98, "final_counts": {"image_visual_observation": 308, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273}},
-  "critical_boundaries_preserved": ["canonical regroup mapping unchanged", "five authorized moves unchanged", "6 quarantined relations unchanged", "no material/pattern/theme/preference writes", "no schema migration", "no pHash writes"],
-  "tests_or_checks": {"focused_early_c": "PASS", "npm_test": "PASS (94 tests: 93 passed, 1 environment skip)", "npm_validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "git_diff_check": "PASS"},
-  "risks_or_blockers": null,
+  "changed_files": ["scripts/import-p2b-europe-market-baseline.mjs", "scripts/audit-p2b-sourcing-readiness.mjs", "test/p2b-market-baseline.test.mjs", "outputs/p2b-sourcing-readiness-audit.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS.json"],
+  "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2b-europe-market-baseline-20260830-133127.sqlite", "db_sha256_before": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0", "db_sha256_after": "7da13a867132c6e1973c007700080ad19fb898b2ae857677a91863289e152514", "sources": {"created": 8, "reused_on_replay": 8}, "market_evidence": {"created": 12, "reused_on_replay": 12}, "market_assessment": {"created": 1, "reused_on_replay": 1}, "final_counts": {"source": 128, "market_evidence": 13, "market_assessment": 71}, "p2a_invariants": {"image_visual_observation": 308, "design_reference": 44, "image_asset": 94, "design_reference_image": 94, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273}},
+  "critical_boundaries_preserved": ["writes limited to source, market_evidence and market_assessment", "no schema/material/supplier-offer/packaging/product/P2A writes", "source claims and verification statuses preserved", "no independent web research"],
+  "readiness_audit": "outputs/p2b-sourcing-readiness-audit.json",
+  "tests_or_checks": {"focused_p2b": "PASS", "npm_test": "PASS (95 passed, 1 environment skip)", "npm_validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "git_diff_check": "PASS", "idempotency": "PASS"},
+  "risks_or_blockers": ["Sourcing readiness gaps are reported from stored-point inventory only; no supplier/packaging facts were inferred."],
   "requires_gpt_decision": false,
-  "next_minimum_action": "None; backlog is complete. User may upload new images.",
-  "user_may_upload_new_images": true
+  "next_minimum_action": "Review readiness audit and decide whether to authorize future sourcing data intake."
 }

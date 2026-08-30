@@ -1,0 +1,303 @@
+{
+  "protocol_version": "P2B-SOURCING-READINESS-AUDIT-V1",
+  "generated_on": "2026-08-30",
+  "read_only": true,
+  "counts": {
+    "material": 30,
+    "material_variant": 62,
+    "component": 13,
+    "supplier": 1,
+    "supplier_offer": 1,
+    "packaging_option": 9,
+    "packaging_supplier_offer": 0,
+    "source": 128,
+    "market_evidence": 13,
+    "market_assessment": 71,
+    "product_concept": 1,
+    "bom": 1,
+    "bom_line": 1,
+    "staged_record": 138,
+    "staged_field": 1128,
+    "review_decision": 81,
+    "promotion_log": 81
+  },
+  "grouped": {
+    "source_by_type": [
+      {
+        "key": "brand",
+        "count": 8
+      },
+      {
+        "key": "internal_note",
+        "count": 1
+      },
+      {
+        "key": "social",
+        "count": 13
+      },
+      {
+        "key": "user_upload",
+        "count": 106
+      }
+    ],
+    "source_by_verification": [
+      {
+        "key": "partially_verified",
+        "count": 8
+      },
+      {
+        "key": "unverified",
+        "count": 119
+      },
+      {
+        "key": "verified",
+        "count": 1
+      }
+    ],
+    "variants_by_tier": [
+      {
+        "key": "accessible",
+        "count": 10
+      },
+      {
+        "key": "mid",
+        "count": 18
+      },
+      {
+        "key": "premium",
+        "count": 4
+      },
+      {
+        "key": "unclassified",
+        "count": 30
+      }
+    ],
+    "variants_by_reproducibility": [
+      {
+        "key": "limited_lot",
+        "count": 11
+      },
+      {
+        "key": "repeatable",
+        "count": 51
+      }
+    ],
+    "staged_by_status": [
+      {
+        "key": "human_approved",
+        "count": 81
+      },
+      {
+        "key": "review_required",
+        "count": 57
+      }
+    ],
+    "staged_by_target": [
+      {
+        "key": "component_intake",
+        "count": 12
+      },
+      {
+        "key": "material_intake",
+        "count": 117
+      },
+      {
+        "key": "packaging_intake",
+        "count": 9
+      }
+    ],
+    "staged_fields_by_status": [
+      {
+        "key": "review_required",
+        "count": 840
+      },
+      {
+        "key": "valid",
+        "count": 288
+      }
+    ],
+    "staged_fields_by_target": [
+      {
+        "key": "component",
+        "count": 24
+      },
+      {
+        "key": "market_assessment",
+        "count": 117
+      },
+      {
+        "key": "material",
+        "count": 117
+      },
+      {
+        "key": "material_alias",
+        "count": 117
+      },
+      {
+        "key": "material_narrative",
+        "count": 117
+      },
+      {
+        "key": "material_variant",
+        "count": 458
+      },
+      {
+        "key": "packaging_option",
+        "count": 9
+      },
+      {
+        "key": "packaging_supplier_offer",
+        "count": 9
+      },
+      {
+        "key": "supplier",
+        "count": 31
+      },
+      {
+        "key": "supplier_offer",
+        "count": 129
+      }
+    ],
+    "components_by_type": [
+      {
+        "key": "cap",
+        "count": 1
+      },
+      {
+        "key": "charm",
+        "count": 2
+      },
+      {
+        "key": "clasp",
+        "count": 1
+      },
+      {
+        "key": "connector",
+        "count": 1
+      },
+      {
+        "key": "other",
+        "count": 4
+      },
+      {
+        "key": "pearl",
+        "count": 1
+      },
+      {
+        "key": "round_bead",
+        "count": 1
+      },
+      {
+        "key": "spacer",
+        "count": 2
+      }
+    ],
+    "components_by_role": [
+      {
+        "key": "anchor",
+        "count": 8
+      },
+      {
+        "key": "hero",
+        "count": 4
+      },
+      {
+        "key": "transition",
+        "count": 1
+      }
+    ]
+  },
+  "readiness": {
+    "material_variants_price_presence": {
+      "with_price": 1,
+      "without_price": 61
+    },
+    "supplier_offers_detail": [
+      {
+        "supplier_id": 1,
+        "material_variant_id": 1,
+        "component_id": null,
+        "moq": 10,
+        "quoted_on": "2026-08-22",
+        "verification_status": "unverified"
+      }
+    ],
+    "packaging_options_offer_presence": [
+      {
+        "id": 1,
+        "packaging_code": "p1b-pkg-3-drawstring-velvet-pouch",
+        "packaging_type": "pouch",
+        "offer_count": 0
+      },
+      {
+        "id": 2,
+        "packaging_code": "p1b-pkg-4-cotton-linen-envelope-pouch",
+        "packaging_type": "envelope_pouch",
+        "offer_count": 0
+      },
+      {
+        "id": 3,
+        "packaging_code": "p1b-pkg-5-rigid-drawer-gift-box",
+        "packaging_type": "gift_box",
+        "offer_count": 0
+      },
+      {
+        "id": 4,
+        "packaging_code": "p1b-pkg-6-book-style-magnetic-box",
+        "packaging_type": "gift_box",
+        "offer_count": 0
+      },
+      {
+        "id": 5,
+        "packaging_code": "p1b-pkg-7-premium-jewelry-hinged-box",
+        "packaging_type": "gift_box",
+        "offer_count": 0
+      },
+      {
+        "id": 6,
+        "packaging_code": "p1b-pkg-8-limited-edition-ritual-box",
+        "packaging_type": "gift_box",
+        "offer_count": 0
+      },
+      {
+        "id": 7,
+        "packaging_code": "p1b-pkg-9-branded-mailer-box",
+        "packaging_type": "large_packaging",
+        "offer_count": 0
+      },
+      {
+        "id": 8,
+        "packaging_code": "p1b-pkg-10-12-piece-shipping-display-carton",
+        "packaging_type": "large_packaging",
+        "offer_count": 0
+      },
+      {
+        "id": 9,
+        "packaging_code": "p1b-pkg-11-24-piece-refill-carton",
+        "packaging_type": "large_packaging",
+        "offer_count": 0
+      }
+    ],
+    "stored_point_price_buckets": [
+      {
+        "bucket": "<100",
+        "count": 1
+      }
+    ],
+    "source_and_offer_exact_list": [
+      {
+        "supplier_id": 1,
+        "supplier_name": "Sample supplier",
+        "offer_id": 1,
+        "moq": 10,
+        "quoted_on": "2026-08-22",
+        "verification_status": "unverified"
+      }
+    ]
+  },
+  "safety": {
+    "no_schema_changes": true,
+    "no_business_table_writes": true,
+    "notes": "Counts are stored-point inventory, not sales distribution; no independent research or gap-filling performed."
+  }
+}

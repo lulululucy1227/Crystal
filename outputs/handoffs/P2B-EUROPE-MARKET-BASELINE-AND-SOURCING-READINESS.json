@@ -1,0 +1,17 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2B-EUROPE-MARKET-BASELINE-AND-SOURCING-READINESS",
+  "status": "completed",
+  "model": "Luna",
+  "strength": "Medium",
+  "execution_class": "DATABASE_WRITE",
+  "commit_sha": "pending",
+  "branch": "main",
+  "changed_files": ["scripts/import-p2b-europe-market-baseline.mjs", "scripts/audit-p2b-sourcing-readiness.mjs", "test/p2b-market-baseline.test.mjs", "outputs/p2b-sourcing-readiness-audit.json", "outputs/GPT_HANDOFF.json"],
+  "actual_changes": {"created_sources": 8, "reused_sources_on_replay": 8, "created_market_evidence": 12, "reused_market_evidence_on_replay": 12, "created_market_assessment": 1, "reused_market_assessment_on_replay": 1, "audit": "outputs/p2b-sourcing-readiness-audit.json"},
+  "critical_boundaries_preserved": ["only authorized market tables written", "P2A canonical image/reference/synthesis invariants unchanged", "no schema changes or research beyond supplied input"],
+  "tests_or_checks": {"focused_p2b": "PASS", "npm_test": "PASS (95 passed, 1 environment skip)", "npm_validate": "PASS", "git_diff_check": "PASS", "idempotency": "PASS", "integrity_check": "ok", "foreign_key_check": 0},
+  "risks_or_blockers": ["Readiness gaps remain for variant pricing, supplier offers and packaging offers; see audit."],
+  "requires_gpt_decision": false,
+  "next_minimum_action": "None for this phase; stop and await next authorized task."
+}
