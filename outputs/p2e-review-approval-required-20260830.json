@@ -1,0 +1,31 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2E-REVIEW-APPROVAL-BLOCKER",
+  "status": "WAITING_FOR_EXPLICIT_USER_APPROVAL",
+  "reason": "The canonical promotion validator requires an explicit approved review_decision before promotion_log. P2E correctly rolled back because no human approval existed and reviewer identity must not be fabricated.",
+  "staged_records_requiring_approval": [
+    {"staged_record_id":139,"offer_key":"EDEL-SMOKY-QUARTZ-6MM-375CM","record_boundary":"source-scoped unverified public catalog benchmark"},
+    {"staged_record_id":140,"offer_key":"EDEL-SMOKY-QUARTZ-10MM","record_boundary":"source-scoped unverified public catalog benchmark"},
+    {"staged_record_id":141,"offer_key":"EDEL-AQUAMARINE-8MM-39CM","record_boundary":"source-scoped unverified public catalog benchmark"},
+    {"staged_record_id":142,"offer_key":"EDEL-AQUAMARINE-MULTI-FACETED-7MM","record_boundary":"source-scoped unverified public catalog benchmark"},
+    {"staged_record_id":143,"offer_key":"PERLES-925-CURVED-TUBE-26X3","record_boundary":"source-scoped unverified public catalog benchmark"},
+    {"staged_record_id":144,"offer_key":"PERLES-925-ROUND-SPACER-113X6","record_boundary":"source-scoped unverified public catalog benchmark"}
+  ],
+  "approval_effect": [
+    "Creates approved review_decision rows for only staged records 139-144.",
+    "Allows deterministic P2E identity enrichment and promotion to supplier_offer while preserving verification_status=unverified.",
+    "Does not select a supplier, approve a purchase, approve a production geography, or verify gemstone authenticity/grade/purity.",
+    "Reviewer should be recorded as role label `project_owner_user` with source context noting explicit ChatGPT user approval on 2026-08-30; do not invent a personal name."
+  ],
+  "prepared_follow_on_inputs": [
+    "inputs/p2f-gpt-packaging-catalog-benchmark-20260830.json",
+    "inputs/p2g-gpt-core-material-catalog-benchmark-20260830.json"
+  ],
+  "continuous_pipeline_after_approval": [
+    "P2E-R: create explicit review approvals, rerun exact six offer promotion and validate",
+    "P2F: stage/reconcile Europe packaging catalog benchmarks; promote only exact packaging-option matches",
+    "P2G: stage/reconcile bounded core-material catalog benchmarks; create only source-scoped unverified variants where GPT parent mapping is explicit and conflict-free",
+    "P2H: read-only sourcing/cost-readiness matrix across materials, components, packaging and existing design/reference evidence; do not create product concepts or BOMs unless all required identities/cost basis are deterministic",
+    "Stop at the first genuine business decision such as first prototype theme, quality tier, production geography, supplier selection or purchasing commitment"
+  ]
+}
