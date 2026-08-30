@@ -1,0 +1,110 @@
+{
+  "contract_version": "P2A-GPT-SEMANTIC-COMPLETION-SPEC-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "analysis_version": "p2a-vision-v1",
+  "synthesis_analysis_version": "p2a-reference-synthesis-v1",
+  "batch_key": "P2A-GPT-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION-20260830",
+  "source_semantic_file": "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json",
+  "purpose": "Supply the missing GPT-authored canonical scope, assertion class, confidence, per-asset coverage, reference mapping, and synthesis provenance rules for EARLY-C01 through EARLY-C18. Codex may apply these rules deterministically; Codex must not change wording or invent semantic content.",
+  "semantic_authority": {
+    "all_scope_confidence_and_class_values_below_are_authored_by_gpt": true,
+    "seller_labels_remain_source_claims": true,
+    "no_material_identity_is_confirmed": true,
+    "no_user_signal_is_inferred_from_inbox_presence": true,
+    "no_pattern_theme_preference_relation_is_authored_by_this_payload": true
+  },
+  "canonical_reference_map_after_authorized_regroup": {
+    "EARLY-C01": "REF-000003",
+    "EARLY-C02": "REF-000027",
+    "EARLY-C03": "REF-000028",
+    "EARLY-C04": "REF-000029",
+    "EARLY-C05": "REF-000004",
+    "EARLY-C06": "REF-000030",
+    "EARLY-C07": "REF-000031",
+    "EARLY-C08": "REF-000005",
+    "EARLY-C09": "REF-000007",
+    "EARLY-C10": "REF-000008",
+    "EARLY-C11": "REF-000009",
+    "EARLY-C12": "REF-000010",
+    "EARLY-C13": "REF-000011",
+    "EARLY-C14": "REF-000012",
+    "EARLY-C15": "REF-000013",
+    "EARLY-C16": "REF-000014",
+    "EARLY-C17": "REF-000015",
+    "EARLY-C18": "REF-000016"
+  },
+  "group_asset_assignment": {
+    "EARLY-C01": {"primary_asset":"IMG_7654.PNG","secondary_assets":[]},
+    "EARLY-C02": {"primary_asset":"IMG_7655.PNG","secondary_assets":[]},
+    "EARLY-C03": {"primary_asset":"IMG_7656.PNG","secondary_assets":[]},
+    "EARLY-C04": {"primary_asset":"IMG_7661.PNG","secondary_assets":[]},
+    "EARLY-C05": {"primary_asset":"IMG_7662.PNG","secondary_assets":[]},
+    "EARLY-C06": {"primary_asset":"IMG_7663.PNG","secondary_assets":[]},
+    "EARLY-C07": {"primary_asset":"IMG_7664.PNG","secondary_assets":[]},
+    "EARLY-C08": {"primary_asset":"IMG_7665.PNG","secondary_assets":["IMG_7666.PNG","IMG_7667.PNG"]},
+    "EARLY-C09": {"primary_asset":"IMG_7673.PNG","secondary_assets":["IMG_7674.PNG","IMG_7675.PNG"]},
+    "EARLY-C10": {"primary_asset":"IMG_7676.PNG","secondary_assets":["IMG_7677.PNG"]},
+    "EARLY-C11": {"primary_asset":"IMG_7678.PNG","secondary_assets":["IMG_7679.PNG","IMG_7680.PNG"]},
+    "EARLY-C12": {"primary_asset":"IMG_7681.PNG","secondary_assets":["IMG_7682.PNG"]},
+    "EARLY-C13": {"primary_asset":"IMG_7686.PNG","secondary_assets":["IMG_7687.PNG"]},
+    "EARLY-C14": {"primary_asset":"IMG_7688.PNG","secondary_assets":["IMG_7689.PNG"]},
+    "EARLY-C15": {"primary_asset":"IMG_7690.PNG","secondary_assets":["IMG_7691.PNG","IMG_7692.PNG"]},
+    "EARLY-C16": {"primary_asset":"IMG_7693.PNG","secondary_assets":["IMG_7694.PNG"]},
+    "EARLY-C17": {"primary_asset":"IMG_7696.PNG","secondary_assets":["IMG_7697.PNG"]},
+    "EARLY-C18": {"primary_asset":"IMG_7698.PNG","secondary_assets":["IMG_7699.PNG","IMG_7700.PNG"]}
+  },
+  "deterministic_materialization_rules": {
+    "primary_asset_observations": {
+      "source": "For each semantic_group, take each string in semantic_group.observations[] verbatim and attach it to that group's primary_asset.",
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "confidence": "high",
+      "observation_type_format": "historical_group_observation_{two_digit_1_based_index}",
+      "wording_policy": "verbatim"
+    },
+    "primary_asset_inference": {
+      "source": "Take semantic_group.inference verbatim and attach it to that group's primary_asset.",
+      "observation_scope": "product_design",
+      "assertion_class": "inference",
+      "confidence": "medium",
+      "observation_type": "historical_group_design_inference",
+      "wording_policy": "verbatim"
+    },
+    "secondary_asset_coverage": {
+      "source": "For every secondary asset explicitly listed in group_asset_assignment, create exactly one GPT-authored coverage observation using the template below.",
+      "observation_scope": "product_design",
+      "assertion_class": "observation",
+      "confidence": "high",
+      "observation_type": "alternate_view_same_reference",
+      "observed_value_template": "This image is an alternate source view of the same {working_name} design composition represented by {group_key}; it confirms the asset belongs to the same product/design reference."
+    },
+    "reference_synthesis": {
+      "source": "Take semantic_group.synthesis verbatim as exactly one synthesis assertion for that group.",
+      "synthesis_scope": "product_design",
+      "assertion_class": "inference",
+      "confidence": "medium",
+      "assertion_type": "historical_group_design_synthesis",
+      "assertion_key_suffix": "GROUP-SYNTHESIS",
+      "wording_policy": "verbatim",
+      "source_provenance_rule": "Link the synthesis assertion to every canonical image_visual_observation materialized for the same group by this completion spec, including the primary observations, primary inference, and secondary alternate-view coverage rows."
+    }
+  },
+  "counts_expected_from_materialization": {
+    "reference_groups": 18,
+    "assets_covered": 34,
+    "synthesis_assertions": 18,
+    "note": "Observation-row count is deterministic from the original semantic_group observations plus one inference per group plus one alternate-view coverage row per secondary asset. Codex must compute and report the exact count before applying and prove the same count on replay."
+  },
+  "execution_constraints": [
+    "Do not modify the already-completed canonical regroup mapping.",
+    "Do not create new Design References for EARLY-C01 through EARLY-C18; use canonical_reference_map_after_authorized_regroup exactly.",
+    "Do not change the five already-completed cross-boundary asset moves.",
+    "Do not duplicate any observation or synthesis already canonical; reconcile first and reuse exact matches where present.",
+    "Do not invent promotional_visual observations for this batch; all missing early-C semantic rows in this completion are product_design scope.",
+    "Do not infer or write material identity, authenticity, geological provenance, user preference, pattern, or theme relations.",
+    "No schema migration is authorized.",
+    "Preserve all quarantined ambiguous legacy relations from the regroup correction unchanged unless a later explicit GPT/user decision resolves them."
+  ],
+  "completion_definition": "After deterministic materialization/import, all 34 previously pending early-C assets must have canonical image semantic evidence and all 18 groups must have canonical reference synthesis, with integrity/FK/idempotency and full project tests passing."
+}
