@@ -1,0 +1,14 @@
+{
+  "phase": "P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS",
+  "db_sha256_before": "ea80287d36dd3fe71e25962d8b34492612c6f72c8f12c012cf334f6be086015e",
+  "backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2i-p2j-20260830-163317.sqlite",
+  "affected_staged_records": [146, 147, 148, 149, 150, 151, 152, 153, 154, 155],
+  "existing_generic_packaging_option_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "existing_materials": ["Labradorite", "Gold Rutilated Quartz", "Black Rutilated Quartz"],
+  "write_plan": {
+    "source_scoped_packaging_options": 4,
+    "generic_materials": 1,
+    "source_scoped_material_variants": 2,
+    "supplier_offer_promotions": 0
+  }
+}

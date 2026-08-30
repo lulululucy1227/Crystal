@@ -1,0 +1,10 @@
+{
+  "phase": "P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS",
+  "db_sha256_before": "ea80287d36dd3fe71e25962d8b34492612c6f72c8f12c012cf334f6be086015e",
+  "db_sha256_after": "89d31eacbab93d8baac83b999e201120043e578cb48316b19a2ee1651c85b184",
+  "backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2i-p2j-20260830-163317.sqlite",
+  "created": {"packaging_option":4,"material":1,"material_variant":2,"review_decision":0,"promotion_log":0},
+  "replay": {"packaging_option_reused":4,"material_reused":2,"material_variant_reused":2},
+  "integrity_check":"ok",
+  "foreign_key_check_count":0
+}

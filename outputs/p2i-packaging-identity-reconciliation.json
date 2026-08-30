@@ -1,0 +1,14 @@
+{
+  "phase": "P2I-EXACT-SOURCE-SCOPED-PACKAGING-IDENTITIES",
+  "supplier_source": "Laval Europe / source_id 132",
+  "created": 4,
+  "reused": 0,
+  "mappings": [
+    {"offer_key":"LAVAL-703525-KRAFT-UNIVERSAL-BOX","packaging_option_id":10,"packaging_code":"SRC-LAVAL-703525-KRAFT-UNIVERSAL-BOX","review_required":true},
+    {"offer_key":"LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX","packaging_option_id":11,"packaging_code":"SRC-LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX","review_required":true},
+    {"offer_key":"LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX","packaging_option_id":12,"packaging_code":"SRC-LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX","review_required":true},
+    {"offer_key":"LAVAL-703705-ECO-KRAFT-BRACELET-BOX","packaging_option_id":13,"packaging_code":"SRC-LAVAL-703705-ECO-KRAFT-BRACELET-BOX","review_required":true}
+  ],
+  "promotion_created": 0,
+  "boundary": "Source-product identities are unverified and do not select a packaging style."
+}

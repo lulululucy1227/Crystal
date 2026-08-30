@@ -1,0 +1,216 @@
+{
+  "phase": "P2L-PROTOTYPE-READINESS-GATE",
+  "read_only": true,
+  "factual_matrix": {
+    "distinct_canonical_material_categories": [
+      "Aquamarine",
+      "Labradorite",
+      "Lapis Lazuli",
+      "Larimar",
+      "Rainbow Moonstone",
+      "Rutilated Quartz",
+      "Smoky Quartz"
+    ],
+    "exact_source_scoped_material_variants_with_public_catalog_prices": [
+      {
+        "source_state": "promoted",
+        "variant_code": "SRC-EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+        "material": "Aquamarine",
+        "supplier_offer_id": 5,
+        "currency": "EUR",
+        "unit_price_minor": 6545,
+        "unit": "strand",
+        "price_boundary": "source-stated catalog basis"
+      },
+      {
+        "source_state": "promoted",
+        "variant_code": "SRC-EDEL-AQUAMARINE-RND-8MM",
+        "material": "Aquamarine",
+        "supplier_offer_id": 4,
+        "currency": "EUR",
+        "unit_price_minor": 5712,
+        "unit": "strand",
+        "price_boundary": "source-stated catalog basis"
+      },
+      {
+        "source_state": "promoted",
+        "variant_code": "SRC-EDEL-SMOKY-QTZ-RND-10MM",
+        "material": "Smoky Quartz",
+        "supplier_offer_id": 3,
+        "currency": "EUR",
+        "unit_price_minor": 1856,
+        "unit": "strand",
+        "price_boundary": "source-stated catalog basis"
+      },
+      {
+        "source_state": "promoted",
+        "variant_code": "SRC-EDEL-SMOKY-QTZ-RND-6MM",
+        "material": "Smoky Quartz",
+        "supplier_offer_id": 2,
+        "currency": "EUR",
+        "unit_price_minor": 1428,
+        "unit": "strand",
+        "price_boundary": "source-stated catalog basis"
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+        "type": "material_variant",
+        "id": 68,
+        "code": "SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 2261,
+          "vat_basis": "incl_19pct_vat"
+        }
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM",
+        "type": "material_variant",
+        "id": 73,
+        "code": "SRC-P2G-EDEL-LABRADORITE-FACETED-AAA-15471",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 11305,
+          "vat_basis": "incl_19pct_vat"
+        }
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-LAPIS-8MM-38CM-46BEADS",
+        "type": "material_variant",
+        "id": 69,
+        "code": "SRC-P2G-EDEL-LAPIS-8MM-38CM-46BEADS",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 1309,
+          "vat_basis": "incl_19pct_vat"
+        }
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+        "type": "material_variant",
+        "id": 70,
+        "code": "SRC-P2G-EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 8500,
+          "vat_basis": "incl_19pct_vat"
+        }
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM",
+        "type": "material_variant",
+        "id": 72,
+        "code": "SRC-P2G-EDEL-RUTILATED-QTZ-MULTI-8MM-40CM",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 4825,
+          "vat_basis": "incl_19pct_vat"
+        }
+      },
+      {
+        "source_state": "exact_staged_only",
+        "offer_key": "EDEL-BLACK-LABRADORITE-8MM-40CM",
+        "type": "material_variant",
+        "id": 71,
+        "code": "SRC-P2G-EDEL-BLACK-LABRADORITE-8MM-40CM",
+        "price": {
+          "currency": "EUR",
+          "unit": "strand",
+          "unit_price_minor": 2142,
+          "vat_basis": "incl_19pct_vat"
+        }
+      }
+    ],
+    "exact_hardware_component_benchmark_offers": 2,
+    "hardware_components": [
+      "SRC-PERLES-925-CURVED-TUBE-26X3",
+      "SRC-PERLES-925-ROUND-SPACER-113X6"
+    ],
+    "exact_packaging_source_product_benchmarks": 4,
+    "packaging_source_products": [
+      "SRC-LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "SRC-LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "SRC-LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "SRC-LAVAL-703705-ECO-KRAFT-BRACELET-BOX"
+    ],
+    "promoted_offers": 6,
+    "exact_staged_only_offers": 10,
+    "price_ranges": [
+      {
+        "currency": "EUR",
+        "vat_basis": "excl_vat",
+        "min_minor": 158,
+        "max_minor": 370,
+        "source": "P2F packaging tiers"
+      },
+      {
+        "currency": "EUR",
+        "vat_basis": "incl_19pct_vat",
+        "min_minor": 1309,
+        "max_minor": 11305,
+        "source": "P2G material strand prices"
+      },
+      {
+        "currency": "EUR",
+        "vat_basis": "source_stated_catalog_basis",
+        "min_minor": 210,
+        "max_minor": 6545,
+        "source": "P2E promoted public-catalog benchmarks"
+      }
+    ],
+    "per_piece_offers": [
+      "PERLES-925-CURVED-TUBE-26X3",
+      "PERLES-925-ROUND-SPACER-113X6",
+      "LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "LAVAL-703705-ECO-KRAFT-BRACELET-BOX"
+    ],
+    "per_strand_offers": [
+      "EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM",
+      "EDEL-LAPIS-8MM-38CM-46BEADS",
+      "EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM",
+      "EDEL-BLACK-LABRADORITE-8MM-40CM"
+    ],
+    "explicit_bead_count_offers": [
+      {
+        "offer_key": "EDEL-LAPIS-8MM-38CM-46BEADS",
+        "bead_count": 46,
+        "source_statement": "seller states 46 beads"
+      }
+    ],
+    "per_bead_cost_must_not_be_inferred": [
+      "EDEL-RAINBOW-MOONSTONE-6MM-A-40CM",
+      "EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM",
+      "EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A",
+      "EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM",
+      "EDEL-BLACK-LABRADORITE-8MM-40CM"
+    ],
+    "schema_integrity_process_blockers": []
+  },
+  "classification": "READY_FOR_USER_PROTOTYPE_DECISION",
+  "decision_inputs": {
+    "first_prototype_theme_or_design_direction": null,
+    "target_prototype_positioning_or_quality_envelope": null,
+    "sourcing_route": [
+      "Europe-local ease/speed",
+      "broader lower-cost sourcing exploration"
+    ],
+    "staged_benchmarks_policy": [
+      "accept exact staged benchmarks for planning",
+      "use only approved canonical offers"
+    ]
+  }
+}

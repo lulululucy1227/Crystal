@@ -1,0 +1,11 @@
+{
+  "phase": "P2J-RESOLVE-REMAINING-P2G-MATERIAL-IDENTITIES",
+  "materials": {"created": 1, "reused": 1},
+  "variants": {"created": 2, "reused": 0},
+  "mappings": [
+    {"offer_key":"EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM","canonical_parent":"Rutilated Quartz","variant_id":72,"variant_code":"SRC-P2G-EDEL-RUTILATED-QTZ-MULTI-8MM-40CM","review_required":true},
+    {"offer_key":"EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM","canonical_parent":"Labradorite","variant_id":73,"variant_code":"SRC-P2G-EDEL-LABRADORITE-FACETED-AAA-15471","source_product_no":"STRLABFAC125AAA-15471","title_size_claim":"12-13mm","description_size_claim":"approximately 11.5mm","review_required":true}
+  ],
+  "promotion_created": 0,
+  "boundary": "Both variants are source-scoped and unverified; neither seller claim has been normalized or verified."
+}

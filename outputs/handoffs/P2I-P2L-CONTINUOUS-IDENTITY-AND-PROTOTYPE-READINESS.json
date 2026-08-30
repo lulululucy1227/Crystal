@@ -1,0 +1,14 @@
+{
+  "protocol_version":"AGENT-HANDOFF-V1",
+  "phase":"P2I-P2L-CONTINUOUS-IDENTITY-AND-PROTOTYPE-READINESS",
+  "status":"completed",
+  "commit_sha":"PENDING_COMMIT",
+  "branch":"main",
+  "changed_files":["scripts/import-p2i-p2j-identities.mjs","scripts/audit-p2k-p2l-readiness.mjs","test/p2i-p2j-identity.test.mjs","test/p2k-p2l-readiness.test.mjs","outputs/p2i-p2j-before-manifest.json","outputs/p2i-p2j-after-manifest.json","outputs/p2i-packaging-identity-reconciliation.json","outputs/p2j-material-gap-resolution.json","outputs/p2k-sourcing-review-ready-pack.json","outputs/p2l-prototype-readiness-gate.json"],
+  "actual_changes":{"p2i":{"created":4,"reused_on_replay":4,"promotion_created":0},"p2j":{"materials_created":1,"variants_created":2,"reused_on_replay":{"materials":2,"variants":2},"promotion_created":0},"p2k":{"exact_review_ready":10,"unresolved":0,"promoted":0},"p2l":{"classification":"READY_FOR_USER_PROTOTYPE_DECISION","decision_inputs_present":true}},
+  "critical_boundaries_preserved":["source-scoped and unverified identities only","no change to older generic packaging options","Labradorite source size conflict preserved","Rutilated Quartz not merged into Gold/Black Rutilated Quartz","no approval/promotion/supplier selection/prototype created"],
+  "tests_or_checks":{"focused":"PASS (2/2)","npm_test":"PASS (101 passed, 1 environment skip)","npm_validate":"PASS","integrity_check":"ok","foreign_key_check":0,"git_diff_check":"PENDING"},
+  "risks_or_blockers":[],
+  "requires_gpt_decision":true,
+  "next_minimum_action":"Obtain the prototype decision captured in outputs/p2l-prototype-readiness-gate.json before creating a product concept or BOM."
+}
