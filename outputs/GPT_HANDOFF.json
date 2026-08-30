@@ -20,7 +20,8 @@
   "supplier_boundary": "Do not research, contact, rank or progress suppliers in this phase; stored source/provenance data may remain visible only as secondary factual context.",
   "purchase_authorized": false,
   "actual_changes":{"assortment_export":"outputs/assortment-selection-v1.csv and JSON","workbench":"vanilla local Workbench MVP at http://127.0.0.1:4173","canonical_db":"read-only"},
-  "tests_or_checks":{"p3a":"PASS","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PENDING"},
+  "tests_or_checks":{"p3a":"PASS","npm_test":"PASS (104 passed, 1 skipped)","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PASS"},
+  "commit_sha": "a83c3b7c1bc1f2f23f15a7a563e8d9d1f4ec9594",
   "requires_gpt_decision": false,
   "next_minimum_action": "Open the local Workbench and use the Design Board for sidecar-only draft exploration; supplier and purchase tracks remain paused."
 }
