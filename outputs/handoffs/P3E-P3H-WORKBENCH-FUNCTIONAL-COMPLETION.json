@@ -1,0 +1,23 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P3E-P3H-WORKBENCH-FUNCTIONAL-COMPLETION",
+  "status": "completed",
+  "model": "Luna",
+  "strength": "Medium",
+  "execution_class": "SAFE_WRITE + READ_ONLY_DB + sidecar user-state writes",
+  "assortment_counts": {"minerals": 24, "pearls_organic": 4, "hardware": 10, "packaging": 8, "canonical_matches": 25, "candidate_only": 21},
+  "implemented_pages": ["Overview", "Assortment", "Materials Library", "Accessories Library", "Packaging Library", "Reference Gallery", "Design Board"],
+  "sidecar_api": ["GET /api/drafts", "GET /api/drafts/:name", "PUT /api/drafts/:name", "POST /api/drafts/:name/export"],
+  "state_paths": ["workbench/state/*.json", "workbench/exports/*"],
+  "startup": {"command": "npm run workbench", "url": "http://127.0.0.1:4173"},
+  "canonical_db_sha_before": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "canonical_db_sha_after": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "tests": {"focused_workbench": "PASS (4/4)", "full_npm_test": "PASS (104 passed, 1 skipped)", "validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "git_diff_check": "PASS"},
+  "malformed_sidecar": "422 actionable MALFORMED_DRAFT; file preserved",
+  "supplier_purchase_status": "paused",
+  "known_limitations": ["unresolvable image assets are shown as metadata rather than broken images"],
+  "commit_sha": "PENDING",
+  "head_equals_origin_main": false,
+  "worktree_clean": false,
+  "requires_gpt_decision": false
+}
