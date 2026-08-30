@@ -1,0 +1,42 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
+  "decision": "OPTION_A_AUTHORIZE_CORRECTION",
+  "authorization_class": "HIGH_RISK",
+  "authorized": true,
+  "authorized_at_local": "2026-08-30T11:13:00+02:00",
+  "user_instruction": "选A",
+  "scope": {
+    "reference_splits": [
+      {
+        "existing_reference": "REF-000003",
+        "target_groups": ["EARLY-C01", "EARLY-C02", "EARLY-C03"]
+      },
+      {
+        "existing_reference": "REF-000004",
+        "target_groups": ["EARLY-C04", "EARLY-C05", "EARLY-C06", "EARLY-C07"]
+      }
+    ],
+    "asset_moves": [
+      {"asset": "IMG_7678.PNG", "from": "REF-000008", "to": "REF-000009"},
+      {"asset": "IMG_7688.PNG", "from": "REF-000011", "to": "REF-000012"},
+      {"asset": "IMG_7690.PNG", "from": "REF-000012", "to": "REF-000013"},
+      {"asset": "IMG_7696.PNG", "from": "REF-000014", "to": "REF-000015"},
+      {"asset": "IMG_7698.PNG", "from": "REF-000015", "to": "REF-000016"}
+    ]
+  },
+  "mandatory_safety": [
+    "Create timestamped canonical DB backup before mutation and record SHA-256.",
+    "Run read-only impact audit across all affected reference/image semantic and relation tables before mutation.",
+    "Apply changes transactionally and preserve raw evidence, image observations, source provenance and user-signal history.",
+    "Do not duplicate ambiguous reference-level relations to all split children; quarantine or flag uncertain attribution instead of guessing.",
+    "Do not renumber unaffected reference keys.",
+    "After regroup correction, import all pending additive GPT-authored semantic inputs without inventing new semantics.",
+    "Run integrity, foreign-key, idempotency, focused tests, full npm test, validate and git diff checks before commit/push.",
+    "Produce exact before/after manifests and final DB SHA-256."
+  ],
+  "authoritative_evidence": [
+    "outputs/p2a-historical-canonical-regroup-decision-pack-20260830.json",
+    "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json"
+  ]
+}
