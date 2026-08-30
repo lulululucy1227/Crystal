@@ -1,0 +1,33 @@
+{
+  "protocol_version": "P2Q-PURCHASE-APPROVAL-REQUEST-V1",
+  "phase": "P2Q-PURCHASE-READINESS-GATE",
+  "status": "WAITING_FOR_EXPLICIT_USER_PURCHASE_DECISION",
+  "recommended_route": "P01-A_FULL_GLACIER_SIGNATURE",
+  "recommended_first_sample_basket": [
+    {"item":"Aquamarine round 8mm strand","quantity":1,"catalog_price_eur":57.12,"vat_basis":"incl_19pct_vat","source_state":"promoted"},
+    {"item":"Rainbow Moonstone approx. 6mm A 40cm strand","quantity":1,"catalog_price_eur":22.61,"vat_basis":"incl_19pct_vat","source_state":"exact_staged_only"},
+    {"item":"Larimar tumbled 8x5mm 40cm A strand","quantity":1,"catalog_price_eur":85.00,"vat_basis":"incl_19pct_vat","source_state":"exact_staged_only"},
+    {"item":"925 sterling silver curved tube 26x3mm","quantity":1,"catalog_price_eur":3.80,"vat_basis":"source_stated_catalog_basis","source_state":"promoted"},
+    {"item":"925 sterling silver round spacer 11.30x6mm","quantity":1,"catalog_price_eur":2.10,"vat_basis":"source_stated_catalog_basis","source_state":"promoted"}
+  ],
+  "known_price_envelope": {
+    "materials_eur_incl_19pct_vat": 164.73,
+    "hardware_eur_source_stated_catalog_basis": 5.90,
+    "simple_catalog_sum_before_shipping_eur": 170.63,
+    "unknown": ["shipping","payment fees","returns","wastage","tooling","assembly labor"]
+  },
+  "packaging_recommendation": {
+    "decision": "DEFER_FOR_FIRST_ASSEMBLY_PROTOTYPE",
+    "reason": "Packaging is not required to validate the bracelet's material, rhythm, asymmetry, focal balance, or hardware proportion. Deferring avoids a third supplier/order and a 12-unit MOQ before the product structure is validated.",
+    "rank_1_if_later_sample_needed": "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+    "rank_1_moq": 12,
+    "rank_1_unit_price_eur_excl_vat": 1.80,
+    "rank_1_minimum_catalog_spend_eur_excl_vat": 21.60
+  },
+  "boundary": "No supplier outreach, checkout, order, payment, purchase, or production commitment is authorized until the user explicitly approves or revises this basket.",
+  "warnings": [
+    "All source/catalog material, grade, authenticity, treatment, and component claims remain unverified.",
+    "The full P01-A visual thesis includes the Larimar hero zone; omitting Larimar materially changes what the prototype validates.",
+    "Catalog prices are not landed production costs."
+  ]
+}
