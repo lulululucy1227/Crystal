@@ -5,7 +5,7 @@
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "commit_sha": "pending",
+  "commit_sha": "c3a794a4ac93ec956b5743fdcd4d7978296e16bd",
   "branch": "main",
   "changed_files": ["scripts/import-p2a-historical-early-c-structured.mjs", "test/p2a-historical-early-c-structured-completion.test.mjs", "outputs/p2a-image-backlog-status.json", "outputs/p2a-image-backlog-needs-gpt-analysis.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION.json"],
   "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2a-early-c-structured-completion-20260830-125710.sqlite", "db_sha256_before": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2", "db_sha256_after": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0", "assets_fully_processed": 94, "materialized_observations": 98, "created_observations": 98, "reused_observations_on_replay": 98, "created_synthesis_assertions": 18, "reused_synthesis_assertions_on_replay": 18, "created_synthesis_sources": 98, "reused_synthesis_sources_on_replay": 98, "final_counts": {"image_visual_observation": 308, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273}},

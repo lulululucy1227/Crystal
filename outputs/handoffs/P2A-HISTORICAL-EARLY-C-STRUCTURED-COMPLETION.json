@@ -2,7 +2,7 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION",
   "status": "completed",
-  "commit_sha": "pending",
+  "commit_sha": "c3a794a4ac93ec956b5743fdcd4d7978296e16bd",
   "branch": "main",
   "changed_files": ["scripts/import-p2a-historical-early-c-structured.mjs", "test/p2a-historical-early-c-structured-completion.test.mjs", "outputs/p2a-image-backlog-status.json", "outputs/p2a-image-backlog-needs-gpt-analysis.json"],
   "actual_changes": "Materialized the GPT completion spec exactly: 98 observations, 18 reference syntheses and 98 provenance links for all 34 early-C assets. All 94 assets now have canonical semantic evidence.",
