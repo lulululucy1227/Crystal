@@ -1,0 +1,54 @@
+{
+  "contract_version": "P2M-GPT-GLACIER-SIGNATURE-PROTOTYPE-BRIEF-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "authored_on": "2026-08-30",
+  "user_decision_input": "inputs/p2m-user-prototype-decision-glacier-signature-20260830.json",
+  "prototype_key": "GLACIER-SIGNATURE-P01",
+  "product_concept_name": "Glacier Signature Prototype 01",
+  "theme": "Glacier",
+  "positioning": "Signature / high-end validation prototype",
+  "design_hypothesis": "A quiet, cool-toned mineral composition that reads restrained from a distance and richer at close range. The bracelet should rely on optical variation, asymmetric rhythm, a small structural silver intervention and one premium mineral focal zone rather than uniform bead repetition.",
+  "material_roles": [
+    {"role":"anchor_atmosphere","preferred_variant_code":"SRC-EDEL-AQUAMARINE-RND-8MM","material":"Aquamarine","required":true},
+    {"role":"light_secondary","preferred_variant_code":"SRC-P2G-EDEL-RAINBOW-MOONSTONE-6MM-A-40CM","material":"Rainbow Moonstone","required":true},
+    {"role":"hero_candidate","preferred_variant_code":"SRC-P2G-EDEL-LARIMAR-TUMBLED-8X5MM-40CM-A","material":"Larimar","required":false,"boundary":"premium hero candidate; may be omitted if first sample cost or visual balance is poor"},
+    {"role":"faceted_transition_candidate","preferred_variant_code":"SRC-EDEL-AQUAMARINE-MULTI-FACETED-7MM","material":"Aquamarine","required":false}
+  ],
+  "hardware_roles": [
+    {"component_code":"SRC-PERLES-925-CURVED-TUBE-26X3","role":"structural_interruption","required":true},
+    {"component_code":"SRC-PERLES-925-ROUND-SPACER-113X6","role":"micro_transition_or_counterweight","required":true}
+  ],
+  "structure_rules": [
+    "Do not use a uniform same-size round-bead rhythm around the entire bracelet.",
+    "Keep one asymmetrical focal zone rather than a centered decorative pendant composition.",
+    "Use the curved silver tube as a structural interruption, not as a dominant luxury ornament.",
+    "Use Rainbow Moonstone as light/air, not as the only visual hero.",
+    "Aquamarine provides the main cool mineral body and visual continuity.",
+    "Larimar, if used, should be concentrated into a small hero zone rather than distributed evenly.",
+    "Maintain visible breathing space/rhythm changes through size, cut or hardware transitions instead of adding many material species.",
+    "Maximum core mineral species for P01: three. Maximum visible hardware languages: two."
+  ],
+  "prototype_variants": [
+    {
+      "code":"P01-A",
+      "status":"recommended",
+      "description":"Aquamarine round body + Rainbow Moonstone light rhythm + compact Larimar hero zone + curved silver structural interruption + round silver counterweight.",
+      "purpose":"Test the full Glacier Signature visual thesis."
+    },
+    {
+      "code":"P01-B",
+      "status":"fallback",
+      "description":"Aquamarine round body + Rainbow Moonstone light rhythm + faceted Aquamarine transition zone + same silver hardware, without Larimar.",
+      "purpose":"Lower material complexity/cost fallback while preserving the Glacier structure language."
+    }
+  ],
+  "costing_rules": [
+    "Do not infer per-bead cost from a strand unless seller bead count is explicitly stored.",
+    "For prototype planning, use full-strand purchase price as a conservative procurement basket cost where per-bead allocation is unavailable.",
+    "Keep VAT-included material prices, source-stated hardware prices and VAT-excluded packaging prices separated unless an explicit normalization is performed and documented.",
+    "Shipping, payment fees, wastage, tooling and returns remain unknown unless sourced."
+  ],
+  "packaging_shortlist_policy": "Do not select final packaging. Compare the four exact Laval source-product benchmarks against Glacier visual fit, prototype protection and sample-order practicality; output a ranked shortlist only.",
+  "stop_boundary": "Stop before any action that spends money, places an order, contacts a supplier for commitment, or locks a production supplier/quality tier/final packaging."
+}
