@@ -2,35 +2,28 @@
 
 Protocol: AGENT-HANDOFF-V1
 Phase: P2E-P2H-CONTINUOUS-SOURCING-PIPELINE
-Status: waiting_for_explicit_user_review_approval
+Status: authorized
 Model: Terra
 Strength: Medium
 Execution class: DATABASE_WRITE + READ_ONLY chained phases
 
-## Current blocker
-The previous P2E attempt correctly stopped and restored the canonical DB byte-for-byte because project validation requires an explicit approved `review_decision` before creating `promotion_log`, while the task correctly prohibited fabricating a human approval.
+## Explicit user review approval recorded
+The user explicitly approved staged records 139-144 in the Crystal GPT control plane on 2026-08-30.
 
-Latest verified handoff:
-`outputs/GPT_HANDOFF.json`
+Approval evidence:
+`inputs/p2e-user-review-approval-20260830.json`
 
-Approval package:
+Previous blocker package:
 `outputs/p2e-review-approval-required-20260830.json`
 
-Current canonical DB remains at pre-P2E SHA:
-`385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7`
-
-No P2E canonical identity/promotion writes were retained.
-
-## Explicit user action required before execution
-Do NOT execute this task until GPT records that the user explicitly approves staged records 139-144 for canonical promotion under the exact boundary below.
-
-Approval means only:
+Approval scope is limited to:
 - these six staged public-catalog claims may receive `review_decision.decision='approved'`;
-- reviewer role label may be recorded exactly as `project_owner_user` with notes/source context that approval was explicitly given in ChatGPT on 2026-08-30;
-- the resulting canonical identities/offers remain source-scoped and `unverified`;
-- this is NOT supplier selection, purchase approval, production approval, geography selection, quality verification or gemstone authenticity verification.
+- reviewer role label must be recorded exactly as `project_owner_user`;
+- notes/source context must state that approval was explicitly given through the Crystal GPT control plane on 2026-08-30;
+- resulting canonical identities/offers remain source-scoped and `unverified`;
+- this is NOT supplier selection, purchase approval, production approval, sourcing-geography selection, quality verification, gemstone authenticity verification, grade verification or purity verification.
 
-The six records are:
+The six approved records are:
 - 139 — EDEL-SMOKY-QUARTZ-6MM-375CM
 - 140 — EDEL-SMOKY-QUARTZ-10MM
 - 141 — EDEL-AQUAMARINE-8MM-39CM
@@ -38,20 +31,25 @@ The six records are:
 - 143 — PERLES-925-CURVED-TUBE-26X3
 - 144 — PERLES-925-ROUND-SPACER-113X6
 
-Once explicit user approval is recorded by GPT, update Status to `authorized` and continue all phases below in one run. Do not stop at ordinary phase boundaries.
+Current canonical DB remains at the pre-P2E SHA until local execution:
+`385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7`
+
+No P2E canonical identity/promotion writes from the blocked attempt were retained.
+
+Execute Phases A → B → C → D continuously in one run. Do not stop at ordinary phase boundaries.
 
 ---
 
 # PHASE A — P2E-R REVIEW APPROVAL + EXACT OFFER PROMOTION
 
 Read:
+- `inputs/p2e-user-review-approval-20260830.json`
 - `inputs/p2e-gpt-sourcing-identity-mapping-20260830.json`
 - `outputs/p2e-review-approval-required-20260830.json`
 - latest P2E blocker outputs/handoff
 
-After explicit user approval exists:
 1. Create/reuse exactly six approved `review_decision` rows for staged records 139-144.
-2. Reviewer field must be role label `project_owner_user`; notes must record that this is explicit user approval through the Crystal GPT control plane on 2026-08-30. Do not invent a personal name.
+2. Reviewer field must be role label `project_owner_user`; notes must record explicit approval through the Crystal GPT control plane on 2026-08-30. Do not invent a personal name.
 3. Rerun the P2E exact identity enrichment using the existing schema and authoritative GPT mapping.
 4. Promote exactly the six P2E offers to `supplier_offer` if all target/source/price fields reconcile.
 5. All offers remain `verification_status='unverified'` and notes must preserve public-catalog benchmark/VAT boundary.
@@ -72,8 +70,8 @@ Objective:
 2. Stage all four exact packaging catalog offers with full provenance and price tiers.
 3. Preserve excl-VAT basis exactly; do not convert VAT or landed cost.
 4. Deterministically compare against existing `packaging_option` identities.
-5. Create canonical `packaging_supplier_offer` only when an existing packaging_option is an exact conflict-free match.
-6. If no exact match, leave staged/review_required. Do not create a new packaging_option merely to force promotion.
+5. Create canonical `packaging_supplier_offer` only when an existing packaging_option is an exact conflict-free match and the existing review/promotion workflow is honestly satisfied.
+6. If no exact match or review approval is absent, leave staged/review_required. Do not create a new packaging_option or fabricate approval merely to force promotion.
 7. Produce `outputs/p2f-packaging-matchability-audit.json` with exact/no_match/ambiguous counts and packaging cost benchmark ranges.
 
 No packaging style selection is authorized.
@@ -90,7 +88,7 @@ Objective:
 2. Stage all six exact catalog offers.
 3. Where `canonical_parent_mapping` is explicitly supplied and conflict-free, create/reuse source-scoped unverified material_variant identity if required to represent the exact seller product.
 4. Do not overwrite general/non-source-scoped existing variants.
-5. Promote to supplier_offer only where exact target identity exists and the normal review/promotion process is honestly satisfied.
+5. Promote to supplier_offer only where exact target identity exists and the normal review/promotion process is honestly satisfied; do not fabricate approval for newly staged P2G records.
 6. For `EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM`, keep staged only because GPT intentionally did not map the parent to Gold or Black Rutilated Quartz.
 7. For Labradorite faceted AAA offer, preserve source title/description size conflict exactly and do not normalize to one exact size; if that prevents exact variant identity, leave staged/review_required.
 8. Do not infer seller quality claims as verified quality.
@@ -128,13 +126,13 @@ The P2H output must classify the next step as exactly one of:
 - `NEEDS_GPT_SEMANTIC_MAPPING`
 - `SCHEMA_BLOCKER`
 
-Use `READY_FOR_USER_PROTOTYPE_DECISION` only if the ordinary data work is sufficiently complete that the next meaningful action is choosing first prototype theme/design/quality/sourcing route.
+Use `READY_FOR_USER_PROTOTYPE_DECISION` only if ordinary data work is sufficiently complete that the next meaningful action is choosing first prototype theme/design/quality/sourcing route.
 
 ---
 
 # CONTINUOUS EXECUTION RULE
 
-Once explicit approval is present, execute Phases A → B → C → D continuously in one Codex run.
+Execute Phases A → B → C → D continuously in one Codex run.
 
 Do NOT stop because:
 - P2E promotion completed;
