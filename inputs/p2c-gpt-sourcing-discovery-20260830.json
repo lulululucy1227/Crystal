@@ -1,0 +1,225 @@
+{
+  "contract_version": "P2C-GPT-SOURCING-DISCOVERY-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "observed_on": "2026-08-30",
+  "purpose": "Add a bounded first real supplier/sourcing evidence layer after the P2B readiness audit. Official supplier capabilities may be canonicalized as source/supplier records; product and price claims remain source-stated evidence and should be staged unless an exact canonical variant/component match is deterministic.",
+  "semantic_boundary": [
+    "All supplier capabilities and prices below are source-stated public web evidence observed on 2026-08-30.",
+    "No gemstone authenticity, grade, treatment, ethical sourcing or geological provenance is independently verified by GPT.",
+    "Retail/catalog prices are not treated as landed production cost and VAT treatment is preserved in notes.",
+    "Marketplace supplier listings are discovery evidence only and remain unverified until direct supplier/product verification.",
+    "Do not infer missing MOQ, shipping, certification, stock, trade discount or material quality."
+  ],
+  "supplier_candidates": [
+    {
+      "candidate_key": "SUP-CAND-HUELLER-DE",
+      "name": "Hüller & Hüller GmbH",
+      "geography": "Germany",
+      "supplier_url": "https://www.mineralien-hueller.de/en/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "capability_claims": [
+        "Official site states the company is a wholesale company for minerals and stone jewellery and sells to dealers with a subject-related business license.",
+        "Official site lists jewellery, tumbled stones, polished stones, minerals/rough stones and accessories.",
+        "Showroom is in Beuren, Germany."
+      ],
+      "canonical_supplier_allowed": true
+    },
+    {
+      "candidate_key": "SUP-CAND-EDELSTEINE-DE",
+      "name": "Gemstone Wholesale / edelsteine.de",
+      "geography": "Germany",
+      "supplier_url": "https://www.edelsteine.de/shop/en/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "capability_claims": [
+        "Official site describes gemstone jewellery and wholesale, gemstone beads and 925 silver accessories.",
+        "Official site states quantity discounts are available for professional jewellery designers as well as smaller-quantity buyers.",
+        "Catalog exposes public product prices and shipping-time claims for individual bead strands."
+      ],
+      "canonical_supplier_allowed": true
+    },
+    {
+      "candidate_key": "SUP-CAND-PERLESCO-EU",
+      "name": "Perles & Co",
+      "geography": "France / EU",
+      "supplier_url": "https://www.perlesandco.de/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "capability_claims": [
+        "Official German-language catalog covers gemstone beads, wood/natural beads, freshwater pearls, sterling silver 925, gold-filled and other jewellery components.",
+        "Official site states more than 60,000 bead/component references and says products comply with applicable EU REACH requirements; it also describes independent-lab testing and XRF/Gemtester quality controls.",
+        "Official catalog exposes quantity-tier prices for many jewellery findings."
+      ],
+      "canonical_supplier_allowed": true
+    },
+    {
+      "candidate_key": "SUP-CAND-LAVAL-EU",
+      "name": "Laval Europe",
+      "geography": "France / Europe",
+      "supplier_url": "https://www.laval-europe.com/en/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "high",
+      "capability_claims": [
+        "Official site describes Laval as a major European jewellery/watchmaking wholesale supplier.",
+        "Official sterling-silver findings catalog includes clasps, chains, spacer beads and other 925 findings.",
+        "Official site states no minimum order and delivery to most European countries in 3-5 working days; German packaging page states 3-5 working days to Germany and Austria.",
+        "Official packaging catalog lists hundreds of jewellery boxes and offers in-house logo/address personalization."
+      ],
+      "canonical_supplier_allowed": true
+    },
+    {
+      "candidate_key": "SUP-CAND-INTERCOLLECTION",
+      "name": "Intercollection",
+      "geography": "France / United Kingdom",
+      "supplier_url": "https://www.intercollection.com/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "medium",
+      "capability_claims": [
+        "Official site describes a B2B wholesale jewellery business operating for over thirty years in France and the UK.",
+        "Official site states its production has Responsible Jewellery Council certification and that jewellery is tested for EU GPSR and other market standards.",
+        "Catalog focus is finished/wholesale jewellery and beads/charms rather than only loose findings, so fit for custom component sourcing remains to be verified."
+      ],
+      "canonical_supplier_allowed": true
+    },
+    {
+      "candidate_key": "SUP-CAND-VELA-PACKAGING",
+      "name": "Vela Packaging",
+      "geography": "International supplier serving US and Europe",
+      "supplier_url": "https://velapackaging.com/",
+      "source_type": "supplier",
+      "verification_status": "partially_verified",
+      "evidence_strength": "medium",
+      "capability_claims": [
+        "Official site presents bespoke luxury jewellery packaging: boxes, pouches and branded bags.",
+        "Official site states custom boxes and pouches start at MOQ 300 units; shopping bags at 500-1,000 units.",
+        "Official site states sampling 2-3 weeks, production 3-5 weeks and DDP worldwide shipping."
+      ],
+      "canonical_supplier_allowed": true
+    }
+  ],
+  "catalog_offer_claims": [
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-6MM-375CM",
+      "supplier_candidate_key": "SUP-CAND-EDELSTEINE-DE",
+      "source_url": "https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list",
+      "seller_material_label": "Smokey Quartz",
+      "product_label": "Smokey Quartz Round Beads 6mm 37.5cm",
+      "unit_label": "strand",
+      "price_currency": "EUR",
+      "price_minor": 1428,
+      "price_basis": "public catalog special price, VAT included",
+      "moq": null,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    },
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-10MM",
+      "supplier_candidate_key": "SUP-CAND-EDELSTEINE-DE",
+      "source_url": "https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list",
+      "seller_material_label": "Smokey Quartz",
+      "product_label": "Smokey Quartz Round Beads 10mm",
+      "unit_label": "strand",
+      "price_currency": "EUR",
+      "price_minor": 1856,
+      "price_basis": "public catalog price, VAT included",
+      "moq": null,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-8MM-39CM",
+      "supplier_candidate_key": "SUP-CAND-EDELSTEINE-DE",
+      "source_url": "https://www.edelsteine.de/shop/en/aquamarine-gemstone-beads-round-8mm-ca-39cm%3A%3A17095.html",
+      "seller_material_label": "Aquamarine",
+      "product_label": "Aquamarine Gemstone Beads Round 8mm ca.39cm",
+      "unit_label": "strand",
+      "price_currency": "EUR",
+      "price_minor": 5712,
+      "price_basis": "public catalog price, VAT included",
+      "moq": null,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+      "supplier_candidate_key": "SUP-CAND-EDELSTEINE-DE",
+      "source_url": "https://www.edelsteine.de/shop/en/aquamarine-multicolored-gemstone-beads-facetted%3A%3A14152.html",
+      "seller_material_label": "Aquamarine",
+      "product_label": "Aquamarine multicolored Gemstone Beads Facetted 7mm strand",
+      "unit_label": "strand",
+      "price_currency": "EUR",
+      "price_minor": 6545,
+      "price_basis": "public catalog special price, VAT included",
+      "moq": null,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    },
+    {
+      "offer_key": "PERLES-925-CURVED-TUBE-26X3",
+      "supplier_candidate_key": "SUP-CAND-PERLESCO-EU",
+      "source_url": "https://www.perlesandco.com/",
+      "seller_material_label": "925 Sterling Silver",
+      "product_label": "Curved tube bead - European manufacture 26x3 mm - Sterling silver 925",
+      "unit_label": "piece",
+      "price_currency": "EUR",
+      "price_minor": 380,
+      "price_basis": "public catalog single-piece price; site also displayed 5+ price 3.60 EUR",
+      "moq": 1,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    },
+    {
+      "offer_key": "PERLES-925-ROUND-SPACER-113X6",
+      "supplier_candidate_key": "SUP-CAND-PERLESCO-EU",
+      "source_url": "https://www.perlesandco.com/",
+      "seller_material_label": "925 Sterling Silver",
+      "product_label": "Round ball spacer with 2 rings 11.30x6 mm in Sterling Silver 925",
+      "unit_label": "piece",
+      "price_currency": "EUR",
+      "price_minor": 210,
+      "price_basis": "public catalog single-piece price; site also displayed 5+ price 1.85 EUR",
+      "moq": 1,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first"
+    }
+  ],
+  "marketplace_discovery_only": [
+    {
+      "source_name": "Alibaba natural gemstone beads marketplace",
+      "source_url": "https://www.alibaba.com/countrysearch/CN/natural-gemstone-beads-wholesale.html",
+      "verification_status": "unverified",
+      "evidence_strength": "low",
+      "observed_claims": [
+        "Huizhou Jinshiyuan Stone Crafts Co., Ltd. listing: multicolor Amazonite beads, MOQ 5 strands, displayed range USD 1.19-2.78.",
+        "Huizhou Jinshiyuan Stone Crafts Co., Ltd. listing: natural clear quartz bead strands, MOQ 5 strands, displayed range USD 2.74-11.07.",
+        "Yiwu Jingdi Jewelry Co., Ltd. listing: natural yellow tiger eye beads, MOQ 5 strands, displayed range USD 0.37-21.92."
+      ],
+      "canonical_supplier_policy": "do_not_canonicalize_without_stable_direct_product_or_supplier_verification"
+    }
+  ],
+  "gpt_phase_assessment": {
+    "assessment_type": "sourcing_readiness_interpretation",
+    "confidence": "high",
+    "assessment_text": "The P2B audit shows that image/design evidence is mature but sourcing data is not: 62 material variants contain only one indicative price, only one supplier/offer exists and it is an unverified sample, and all nine packaging options lack supplier offers. The next efficient step is a bounded supplier-discovery and price-evidence intake, not broader schema work or product/BOM expansion.",
+    "execution_implications": [
+      "Create/reconcile real supplier/source identities from official supplier pages.",
+      "Stage exact public catalog offer claims with provenance instead of forcing uncertain material/component matches into canonical supplier_offer.",
+      "Run a deterministic matchability audit against existing material variants/components/packaging options.",
+      "Promote only exact matches supported by existing canonical identity; leave all uncertain offers staged/review_required.",
+      "Do not contact suppliers, place orders or select a production supplier in this phase."
+    ]
+  }
+}
