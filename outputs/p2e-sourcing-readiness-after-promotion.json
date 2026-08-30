@@ -1,0 +1,16 @@
+{
+  "protocol_version": "P2E-SOURCING-READINESS-V1",
+  "generated_on": "2026-08-30",
+  "counts": {
+    "material": 30,
+    "material_variant": 62,
+    "component": 13,
+    "supplier": 7,
+    "supplier_offer": 1,
+    "packaging_supplier_offer": 0
+  },
+  "exact_catalog_benchmark_offers": 0,
+  "staged_supplier_offer_review_required": 7,
+  "remaining_business_choice_required": false,
+  "notes": "Counts are factual; public catalog offers remain unverified benchmarks, not landed/negotiated costs."
+}

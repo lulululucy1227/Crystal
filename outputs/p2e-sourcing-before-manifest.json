@@ -1,0 +1,45 @@
+{
+  "phase": "P2E-SOURCING-IDENTITY-ENRICHMENT-AND-OFFER-PROMOTION",
+  "created_on": "2026-08-30",
+  "tables": {
+    "material": 30,
+    "material_alias": 6,
+    "material_variant": 62,
+    "component": 13,
+    "supplier_offer": 1,
+    "staged_record": 145,
+    "promotion_log": 81
+  },
+  "staged_offers": [
+    {
+      "id": 139,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"EDEL-SMOKY-QUARTZ-6MM-375CM\",\"supplier_candidate_key\":\"SUP-CAND-EDELSTEINE-DE\",\"source_url\":\"https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list\",\"seller_material_label\":\"Smokey Quartz\",\"product_label\":\"Smokey Quartz Round Beads 6mm 37.5cm\",\"unit_label\":\"strand\",\"price_currency\":\"EUR\",\"price_minor\":1428,\"price_basis\":\"public catalog special price, VAT included\",\"moq\":null,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    },
+    {
+      "id": 140,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"EDEL-SMOKY-QUARTZ-10MM\",\"supplier_candidate_key\":\"SUP-CAND-EDELSTEINE-DE\",\"source_url\":\"https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354.html?filter_id=71&show=list\",\"seller_material_label\":\"Smokey Quartz\",\"product_label\":\"Smokey Quartz Round Beads 10mm\",\"unit_label\":\"strand\",\"price_currency\":\"EUR\",\"price_minor\":1856,\"price_basis\":\"public catalog price, VAT included\",\"moq\":null,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    },
+    {
+      "id": 141,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"EDEL-AQUAMARINE-8MM-39CM\",\"supplier_candidate_key\":\"SUP-CAND-EDELSTEINE-DE\",\"source_url\":\"https://www.edelsteine.de/shop/en/aquamarine-gemstone-beads-round-8mm-ca-39cm%3A%3A17095.html\",\"seller_material_label\":\"Aquamarine\",\"product_label\":\"Aquamarine Gemstone Beads Round 8mm ca.39cm\",\"unit_label\":\"strand\",\"price_currency\":\"EUR\",\"price_minor\":5712,\"price_basis\":\"public catalog price, VAT included\",\"moq\":null,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    },
+    {
+      "id": 142,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"EDEL-AQUAMARINE-MULTI-FACETED-7MM\",\"supplier_candidate_key\":\"SUP-CAND-EDELSTEINE-DE\",\"source_url\":\"https://www.edelsteine.de/shop/en/aquamarine-multicolored-gemstone-beads-facetted%3A%3A14152.html\",\"seller_material_label\":\"Aquamarine\",\"product_label\":\"Aquamarine multicolored Gemstone Beads Facetted 7mm strand\",\"unit_label\":\"strand\",\"price_currency\":\"EUR\",\"price_minor\":6545,\"price_basis\":\"public catalog special price, VAT included\",\"moq\":null,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    },
+    {
+      "id": 143,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"PERLES-925-CURVED-TUBE-26X3\",\"supplier_candidate_key\":\"SUP-CAND-PERLESCO-EU\",\"source_url\":\"https://www.perlesandco.com/\",\"seller_material_label\":\"925 Sterling Silver\",\"product_label\":\"Curved tube bead - European manufacture 26x3 mm - Sterling silver 925\",\"unit_label\":\"piece\",\"price_currency\":\"EUR\",\"price_minor\":380,\"price_basis\":\"public catalog single-piece price; site also displayed 5+ price 3.60 EUR\",\"moq\":1,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    },
+    {
+      "id": 144,
+      "validation_status": "review_required",
+      "raw_record_json": "{\"offer_key\":\"PERLES-925-ROUND-SPACER-113X6\",\"supplier_candidate_key\":\"SUP-CAND-PERLESCO-EU\",\"source_url\":\"https://www.perlesandco.com/\",\"seller_material_label\":\"925 Sterling Silver\",\"product_label\":\"Round ball spacer with 2 rings 11.30x6 mm in Sterling Silver 925\",\"unit_label\":\"piece\",\"price_currency\":\"EUR\",\"price_minor\":210,\"price_basis\":\"public catalog single-piece price; site also displayed 5+ price 1.85 EUR\",\"moq\":1,\"verification_status\":\"unverified\",\"evidence_strength\":\"medium\",\"canonical_offer_policy\":\"stage_first\"}"
+    }
+  ]
+}

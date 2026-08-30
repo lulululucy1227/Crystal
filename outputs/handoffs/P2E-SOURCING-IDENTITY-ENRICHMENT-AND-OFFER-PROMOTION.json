@@ -1,0 +1,17 @@
+{
+  "protocol_version":"AGENT-HANDOFF-V1",
+  "phase":"P2E-SOURCING-IDENTITY-ENRICHMENT-AND-OFFER-PROMOTION",
+  "status":"blocked",
+  "model":"Terra",
+  "strength":"Medium",
+  "execution_class":"DATABASE_WRITE",
+  "commit_sha":"pending",
+  "branch":"main",
+  "changed_files":["scripts/import-p2e-sourcing-identity.mjs","scripts/audit-p2e-sourcing-readiness.mjs","test/p2e-sourcing-identity.test.mjs","outputs/p2e-sourcing-before-manifest.json","outputs/p2e-sourcing-identity-and-offer-promotion.json","outputs/p2e-sourcing-readiness-after-promotion.json","outputs/GPT_HANDOFF.json"],
+  "actual_changes":{"db_sha256_before_after":"385fe22cad0b2148f4a48a98678863c6a659bf8c49ec55915737485d942c31a7","canonical_writes_retained":0,"staged_offer_status":"all six remain review_required"},
+  "critical_boundaries_preserved":["no fabricated human approval","byte-for-byte DB rollback after validator discovered the process rule","no schema/unrelated writes"],
+  "tests_or_checks":{"focused_p2e_blocker":"PASS","npm_test":"PASS (97 passed, 1 environment skip)","npm_validate":"PASS","git_diff_check":"PASS","integrity_check":"ok","foreign_key_check":0},
+  "risks_or_blockers":["Canonical promotion is blocked until explicit approval review_decision rows exist for records 139-144."],
+  "requires_gpt_decision":false,
+  "next_minimum_action":"Approved review workflow must create explicit approvals; then rerun P2E."
+}
