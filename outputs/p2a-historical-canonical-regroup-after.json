@@ -1,9 +1,9 @@
 {
   "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
-  "status": "partial_blocked_for_structured_gpt_input",
+  "status": "completed",
   "canonical_database": "data/crystal-design.sqlite",
   "db_sha256_before": "9321567717F7AB32505A0D873DD2527270C6E3F7651820E66949291D794F9DD2",
-  "db_sha256_after": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2",
+  "db_sha256_after": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0",
   "reference_splits": {
     "REF-000003": { "EARLY-C01": "REF-000003", "EARLY-C02": "REF-000027", "EARLY-C03": "REF-000028" },
     "REF-000004": { "EARLY-C04": "REF-000029", "EARLY-C05": "REF-000004", "EARLY-C06": "REF-000030", "EARLY-C07": "REF-000031" }
@@ -23,10 +23,10 @@
     "inputs/p2a-gpt-unprocessed-plus-new-20260829-a.json": { "created_references": 12, "created_assets": 23, "created_observations": 76, "created_assertions": 29, "created_sources": 58, "replay": { "reused_references": 12, "reused_assets": 23, "reused_observations": 76, "reused_assertions": 29, "reused_sources": 58 } },
     "inputs/p2a-gpt-historical-late-b.json": { "created_references": 0, "created_assets": 0, "resolved_existing_assets": 17, "created_observations": 45, "created_assertions": 31, "created_sources": 72, "replay": { "reused_assets": 17, "reused_observations": 45, "reused_assertions": 31, "reused_sources": 72 } },
     "inputs/p2a-gpt-new-reference-gray-fog-wood-anchor-20260830.json": { "created_references": 1, "created_assets": 2, "created_observations": 9, "created_assertions": 3, "created_sources": 8, "replay": { "reused_references": 1, "reused_assets": 2, "reused_observations": 9, "reused_assertions": 3, "reused_sources": 8 } },
-    "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json": { "imported": false, "reason": "The authoritative text provides observation/inference wording but omits the mandatory canonical observation_scope and confidence fields, plus structured synthesis provenance/selectors. Filling those fields would create new GPT semantics, which is not authorized." }
+    "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json": { "materialized_by": "inputs/p2a-gpt-historical-early-c-structured-completion-20260830.json", "created_observations": 98, "created_assertions": 18, "created_sources": 98, "replay_reused": { "observations": 98, "assertions": 18, "sources": 98 } }
   },
-  "final_counts": { "design_reference": 44, "design_reference_image": 94, "image_asset": 94, "image_visual_observation": 210, "design_reference_synthesis_assertion": 82, "design_reference_synthesis_source": 175, "preference_evidence": 34, "design_assessment": 24, "design_reference_pattern": 32, "design_reference_theme": 14, "source": 120 },
+  "final_counts": { "design_reference": 44, "design_reference_image": 94, "image_asset": 94, "image_visual_observation": 308, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273, "preference_evidence": 34, "design_assessment": 24, "design_reference_pattern": 32, "design_reference_theme": 14, "source": 120 },
   "integrity": { "integrity_check": "ok", "foreign_key_check_violations": 0 },
   "unrelated_relation_tables": "No preference, assessment, pattern, or theme rows were propagated to split children; their pre-write counts are unchanged.",
-  "remaining_blocker": "EARLY-C01 through EARLY-C18 require a structured GPT canonical-import payload before the remaining 34 assets can receive observations/synthesis."
+  "remaining_blocker": null
 }

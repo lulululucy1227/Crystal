@@ -2,12 +2,17 @@
   "phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
   "reviewed_images_expected": 94,
   "canonical_assets": 94,
-  "assets_with_canonical_observations": 60,
-  "assets_pending_canonical_observations": 34,
+  "assets_with_canonical_observations": 94,
+  "assets_pending_canonical_observations": 0,
+  "backlog_complete": true,
   "new_visual_analysis_queue": [],
-  "structured_import_blocker": {
+  "structured_import_blocker": null,
+  "completed_structured_input": {
     "input": "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json",
     "groups": ["EARLY-C01", "EARLY-C02", "EARLY-C03", "EARLY-C04", "EARLY-C05", "EARLY-C06", "EARLY-C07", "EARLY-C08", "EARLY-C09", "EARLY-C10", "EARLY-C11", "EARLY-C12", "EARLY-C13", "EARLY-C14", "EARLY-C15", "EARLY-C16", "EARLY-C17", "EARLY-C18"],
-    "reason": "Existing GPT wording is retained, but it lacks mandatory canonical scope/confidence and structured synthesis provenance. No new visual analysis has been requested or invented."
+    "materialized_observations": 98,
+    "materialized_synthesis_assertions": 18,
+    "materialized_sources": 98,
+    "replay": "exact reuse; no duplicates"
   }
 }

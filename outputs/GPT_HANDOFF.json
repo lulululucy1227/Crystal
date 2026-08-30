@@ -1,31 +1,18 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION",
-  "status": "WAITING_FOR_LOCAL_EXECUTION",
+  "status": "completed",
   "model": "Luna",
   "strength": "Medium",
   "execution_class": "DATABASE_WRITE",
-  "previous_phase": "P2A-HISTORICAL-CANONICAL-REGROUP-CORRECTION",
-  "previous_result": {
-    "status": "partial_blocked_for_structured_gpt_input",
-    "db_sha256_after": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2",
-    "image_visual_observations": 210,
-    "synthesis_assertions": 82,
-    "synthesis_sources": 175,
-    "canonical_assets": 94,
-    "assets_pending_observations": 34,
-    "quarantined_ambiguous_legacy_relations": 6
-  },
-  "gpt_blocker_resolution": {
-    "status": "resolved",
-    "input": "inputs/p2a-gpt-historical-early-c-structured-completion-20260830.json",
-    "source_semantics": "inputs/p2a-gpt-historical-early-c-analysis-and-regroup-plan.json",
-    "groups": 18,
-    "assets": 34,
-    "gpt_authored_missing_fields": ["canonical reference mapping", "observation scope", "assertion class", "confidence", "per-asset coverage rule", "synthesis scope/class/confidence", "synthesis provenance rule"],
-    "codex_semantic_authoring_required": false
-  },
-  "task_file": "agent/GPT_NEXT_TASK.md",
-  "user_decision_required": false,
-  "next_action": "Local Codex should sync main, read the latest task and structured completion spec, deterministically materialize/import the remaining early-C semantics, replay, validate, update status/handoff, commit and push."
+  "commit_sha": "pending",
+  "branch": "main",
+  "changed_files": ["scripts/import-p2a-historical-early-c-structured.mjs", "test/p2a-historical-early-c-structured-completion.test.mjs", "outputs/p2a-image-backlog-status.json", "outputs/p2a-image-backlog-needs-gpt-analysis.json", "outputs/GPT_HANDOFF.json", "outputs/handoffs/P2A-HISTORICAL-EARLY-C-STRUCTURED-COMPLETION.json"],
+  "actual_changes": {"backup": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\backups\\p2a-early-c-structured-completion-20260830-125710.sqlite", "db_sha256_before": "084d4b3e531a8f3523bfa61bed27a7f7677306a4039c53756520b261d921d7b2", "db_sha256_after": "d03a67eb055b3b15c66b00302f5fa0e30c5ae4acb546f046a1c8850cf32ff6f0", "assets_fully_processed": 94, "materialized_observations": 98, "created_observations": 98, "reused_observations_on_replay": 98, "created_synthesis_assertions": 18, "reused_synthesis_assertions_on_replay": 18, "created_synthesis_sources": 98, "reused_synthesis_sources_on_replay": 98, "final_counts": {"image_visual_observation": 308, "design_reference_synthesis_assertion": 100, "design_reference_synthesis_source": 273}},
+  "critical_boundaries_preserved": ["canonical regroup mapping unchanged", "five authorized moves unchanged", "6 quarantined relations unchanged", "no material/pattern/theme/preference writes", "no schema migration", "no pHash writes"],
+  "tests_or_checks": {"focused_early_c": "PASS", "npm_test": "PASS (94 tests: 93 passed, 1 environment skip)", "npm_validate": "PASS", "integrity_check": "ok", "foreign_key_check": 0, "git_diff_check": "PASS"},
+  "risks_or_blockers": null,
+  "requires_gpt_decision": false,
+  "next_minimum_action": "None; backlog is complete. User may upload new images.",
+  "user_may_upload_new_images": true
 }
