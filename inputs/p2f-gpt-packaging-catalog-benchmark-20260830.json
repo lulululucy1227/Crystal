@@ -1,0 +1,113 @@
+{
+  "contract_version": "P2F-GPT-PACKAGING-CATALOG-BENCHMARK-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "observed_on": "2026-08-30",
+  "purpose": "Add bounded public-catalog packaging price evidence for the Europe-facing sourcing layer. These are source-stated catalog benchmarks, not negotiated production quotes or landed costs.",
+  "semantic_boundary": [
+    "All prices and product facts are source-stated public catalog evidence observed on 2026-08-30.",
+    "Prices marked excl. VAT must remain excl. VAT; do not convert or gross-up unless separately authorized.",
+    "Do not infer branding cost, shipping, landed cost, stock permanence, material certification or final suitability.",
+    "Stage first. Promote to canonical packaging_supplier_offer only when an existing packaging_option is an exact, conflict-free identity match; otherwise leave review_required.",
+    "This input does not select a final packaging style."
+  ],
+  "supplier_identity": {
+    "name": "Laval Europe",
+    "supplier_url": "https://www.laval-europe.com/en/",
+    "canonical_supplier_expected": true,
+    "verification_status": "partially_verified"
+  },
+  "catalog_offers": [
+    {
+      "offer_key": "LAVAL-703525-KRAFT-UNIVERSAL-BOX",
+      "source_url": "https://www.laval-europe.com/en/ecrins-bijoux/carton/natural-kraft-coloured-card-universal-box-92624.html",
+      "product_reference": "703525",
+      "product_label": "Natural Kraft-coloured card universal box",
+      "packaging_type_hint": "gift_box",
+      "material_description": "Kraft card, light natural colour; synthetic foam and non-woven protective flaps",
+      "function": "Universal jewellery gift box",
+      "dimensions": "10.5cm x 10.5cm x 4cm",
+      "made_in_claim": "Europe",
+      "customization_claim": "Logo printing available on request in Laval workshop in France",
+      "currency": "EUR",
+      "vat_basis": "excl_vat",
+      "price_tiers": [
+        {"min_quantity": 8, "unit_price_minor": 260},
+        {"min_quantity": 32, "unit_price_minor": 239},
+        {"min_quantity": 96, "unit_price_minor": 229}
+      ],
+      "order_multiple": 8,
+      "verification_status": "unverified",
+      "evidence_strength": "high",
+      "canonical_offer_policy": "stage_first_exact_match_only"
+    },
+    {
+      "offer_key": "LAVAL-703211-WHITE-SATIN-UNIVERSAL-BOX",
+      "source_url": "https://www.laval-europe.com/en/jewellery-gift-boxes/card/white-satin-finish-card-universal-box-55959.html",
+      "product_reference": "703211",
+      "product_label": "White satin finish card universal box",
+      "packaging_type_hint": "gift_box",
+      "material_description": "Card with satin finish; white synthetic foam and non-woven flaps",
+      "function": "Universal jewellery gift box",
+      "dimensions": "7.8cm x 7.8cm x 3cm",
+      "made_in_claim": "Europe",
+      "customization_claim": "Logo printing available on request in Laval workshop in France",
+      "currency": "EUR",
+      "vat_basis": "excl_vat",
+      "price_tiers": [
+        {"min_quantity": 12, "unit_price_minor": 180},
+        {"min_quantity": 48, "unit_price_minor": 166},
+        {"min_quantity": 144, "unit_price_minor": 158}
+      ],
+      "order_multiple": 12,
+      "verification_status": "unverified",
+      "evidence_strength": "high",
+      "canonical_offer_policy": "stage_first_exact_match_only"
+    },
+    {
+      "offer_key": "LAVAL-700290-BLACK-LEATHERETTE-BRACELET-BOX",
+      "source_url": "https://www.laval-europe.com/en/jewellery-gift-boxes/traditional-covered/black-man-made-leatherette-jewellery-presentation-boxes-with-gold-edging-55429.html",
+      "product_reference": "700290",
+      "product_label": "Black man-made leatherette jewellery presentation box with gold edging",
+      "packaging_type_hint": "gift_box",
+      "material_description": "Man-made black sheathing; black velvet and white synthetic satin interior",
+      "function": "Bracelet box",
+      "dimensions": "9cm x 9cm x 3.2cm",
+      "customization_claim": "Logo printing available on request in Laval workshop in France",
+      "currency": "EUR",
+      "vat_basis": "excl_vat",
+      "price_tiers": [
+        {"min_quantity": 6, "unit_price_minor": 370},
+        {"min_quantity": 24, "unit_price_minor": 344},
+        {"min_quantity": 72, "unit_price_minor": 333}
+      ],
+      "order_multiple": 6,
+      "verification_status": "unverified",
+      "evidence_strength": "high",
+      "canonical_offer_policy": "stage_first_exact_match_only"
+    },
+    {
+      "offer_key": "LAVAL-703705-ECO-KRAFT-BRACELET-BOX",
+      "source_url": "https://www.laval-europe.com/en/collection/eco-friendly-jewellery-gift-boxes-63.html",
+      "product_reference": "703705",
+      "product_label": "Natural kraft matchbox style bracelet box",
+      "packaging_type_hint": "gift_box",
+      "material_description": "Natural kraft matchbox-style jewellery box",
+      "function": "Bracelet box",
+      "dimensions": null,
+      "currency": "EUR",
+      "vat_basis": "excl_vat",
+      "price_tiers": [
+        {"min_quantity": null, "unit_price_minor": 195}
+      ],
+      "order_multiple": null,
+      "verification_status": "unverified",
+      "evidence_strength": "medium",
+      "canonical_offer_policy": "stage_first_exact_match_only"
+    }
+  ],
+  "gpt_assessment": {
+    "confidence": "high",
+    "assessment_text": "Public Laval catalog evidence shows that non-bespoke Europe-supplied jewellery boxes can be benchmarked at low single-digit EUR per unit before VAT, while customization is quoted separately. This is useful for feasibility and cost-envelope work but is not a final packaging decision or landed-cost quote."
+  }
+}
