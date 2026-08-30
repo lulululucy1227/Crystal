@@ -1,0 +1,68 @@
+{
+  "contract_version": "P2J-GPT-MATERIAL-GAP-RESOLUTION-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "observed_on": "2026-08-30",
+  "purpose": "Resolve the two remaining P2G source-product identity gaps without forcing seller claims into existing narrower canonical categories.",
+  "semantic_boundary": [
+    "Seller material names, naturalness and grade remain source claims unless independently verified.",
+    "Rutilated Quartz Multi must not be forced into Gold Rutilated Quartz or Black Rutilated Quartz.",
+    "The Labradorite AAA source product retains the seller's conflicting size claims rather than normalizing them to one exact size.",
+    "All source-scoped variants remain unverified and do not select a quality tier or supplier route."
+  ],
+  "mappings": [
+    {
+      "offer_key": "EDEL-RUTILATED-QUARTZ-MULTI-8MM-40CM",
+      "parent_action": "create_or_reuse_generic_parent",
+      "canonical_parent": {
+        "canonical_name": "Rutilated Quartz",
+        "material_family": "crystal",
+        "natural_status": "unknown",
+        "description": "Canonical category for rutilated quartz not restricted to gold- or black-rutile seller/color subcategories. Category identity does not verify any supplier product."
+      },
+      "variant": {
+        "variant_code": "SRC-P2G-EDEL-RUTILATED-QTZ-MULTI-8MM-40CM",
+        "grade_label": null,
+        "color_description": "seller-stated multicolor / multi-rutile",
+        "transparency": "unknown",
+        "optical_features": null,
+        "inclusion_features": "seller-stated rutile inclusions; unverified",
+        "cut_description": "round bead",
+        "size_range_mm": "8mm; strand 40cm",
+        "treatment_disclosure": null,
+        "reproducibility": "repeatable",
+        "commercial_tier": "unclassified",
+        "source_tier_label": null,
+        "verification_status": "unverified"
+      },
+      "source_url": "https://www.edelsteine.de/shop/en/gemstone-beads%3A%3A%3A354%3A27.html",
+      "source_product_label": "Rutilated Quartz Beads Multi Rutile Gemstone 8mm, 40cm",
+      "source_price": {"currency":"EUR","unit_price_minor":4825,"unit_label":"strand","vat_basis":"incl_19pct_vat"}
+    },
+    {
+      "offer_key": "EDEL-LABRADORITE-FACETED-AAA-12-13MM-40CM",
+      "parent_action": "reuse_existing",
+      "canonical_parent_name": "Labradorite",
+      "variant": {
+        "variant_code": "SRC-P2G-EDEL-LABRADORITE-FACETED-AAA-15471",
+        "grade_label": "seller claim AAA",
+        "color_description": "seller description mentions transparency and blue color; source claim only",
+        "transparency": "unknown",
+        "optical_features": "seller description mentions blue color/shimmer characteristics; unverified",
+        "inclusion_features": null,
+        "cut_description": "faceted irregular button-like bead",
+        "size_range_mm": "seller title: 12-13mm; seller description: approximately 11.5mm; strand approximately 40cm",
+        "treatment_disclosure": null,
+        "reproducibility": "repeatable",
+        "commercial_tier": "unclassified",
+        "source_tier_label": "AAA",
+        "verification_status": "unverified"
+      },
+      "source_product_no": "STRLABFAC125AAA-15471",
+      "source_url": "https://www.edelsteine.de/shop/en/labradorite-faceted-beads-aaa-12-13mm-40cm%3A%3A15471.html",
+      "source_product_label": "Labradorite faceted beads AAA 12-13mm 40cm",
+      "source_conflict_note": "Official product title states 12-13mm while official description states approximately 11.5mm; preserve both claims. The stable source product identity is the supplier product number, not a normalized single size.",
+      "source_price": {"currency":"EUR","unit_price_minor":11305,"unit_label":"strand","vat_basis":"incl_19pct_vat"}
+    }
+  ]
+}
