@@ -1,0 +1,100 @@
+{
+  "protocol_version": "P2C-SOURCING-MATCHABILITY-AUDIT-V1",
+  "generated_on": "2026-08-30",
+  "read_only": true,
+  "offers": [
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-6MM-375CM",
+      "canonical_supplier_id": 3,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 139,
+      "staged_status": "review_required"
+    },
+    {
+      "offer_key": "EDEL-SMOKY-QUARTZ-10MM",
+      "canonical_supplier_id": 3,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 140,
+      "staged_status": "review_required"
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-8MM-39CM",
+      "canonical_supplier_id": 3,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 141,
+      "staged_status": "review_required"
+    },
+    {
+      "offer_key": "EDEL-AQUAMARINE-MULTI-FACETED-7MM",
+      "canonical_supplier_id": 3,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 142,
+      "staged_status": "review_required"
+    },
+    {
+      "offer_key": "PERLES-925-CURVED-TUBE-26X3",
+      "canonical_supplier_id": 4,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 143,
+      "staged_status": "review_required"
+    },
+    {
+      "offer_key": "PERLES-925-ROUND-SPACER-113X6",
+      "canonical_supplier_id": 4,
+      "candidate_target_type": "none",
+      "exact_canonical_candidate_ids": [],
+      "match_status": "no_match",
+      "exact_reason": "Seller label and catalog dimensions do not uniquely identify an existing canonical variant/component.",
+      "canonical_supplier_offer_created_or_reused": false,
+      "staged_record_id": 144,
+      "staged_status": "review_required"
+    }
+  ],
+  "summary": {
+    "exact": 0,
+    "ambiguous": 0,
+    "no_match": 6,
+    "canonical_supplier_offers_created": 0,
+    "canonical_supplier_offers_reused": 0
+  },
+  "readiness": {
+    "suppliers": 7,
+    "supplier_offers": 1,
+    "staged_supplier_offer_records": [
+      {
+        "validation_status": "review_required",
+        "count": 7
+      }
+    ],
+    "material_variants_with_indicative_price": 1,
+    "packaging_supplier_offers": 0,
+    "offers_usable_for_bom_costing": 0,
+    "offers_only_benchmark_or_staged_evidence": 6
+  },
+  "marketplace_discovery": {
+    "canonicalized": false,
+    "staged": true,
+    "count": 1
+  },
+  "notes": "No fuzzy similarity promotion; marketplace claims remain discovery evidence."
+}
