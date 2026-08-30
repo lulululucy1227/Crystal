@@ -1,0 +1,88 @@
+{
+  "version": "ASSORTMENT-SELECTION-V1",
+  "date": "2026-08-30",
+  "purpose": "First practical assortment for the Crystal design workbench. Supplier progression is intentionally paused. This is a design/selection layer, not a purchase list.",
+  "principles": [
+    "Prioritize material quality, optical interest, shape language and structural composition over generic same-size round-bead repetition.",
+    "Keep the initial assortment compact enough to design with: core materials first, then design extensions and signature/one-of-one focal materials.",
+    "Use no more than 3-4 core material species in a single design unless a deliberate controlled-maximalism concept requires more.",
+    "Silver is the default hardware language; gold-tone hardware is not a V1 core requirement.",
+    "Packaging should be quiet, modern and material-led, without mystical/healing/ritual cues.",
+    "Existing supplier, price and verification data remain available in the database but are not the focus of this assortment view."
+  ],
+  "themes": ["Mountain", "Ocean", "Forest", "Sunrise", "Starlight", "Glacier"],
+  "mineral_selection": [
+    {"name":"Clear Quartz","priority":"A_CORE","themes":["Glacier","Starlight","Mountain"],"roles":["light","structural_mineral","atmosphere"],"recommended_forms":["6-8mm round","8-12mm faceted","12-22mm irregular/polygon hero"],"selection_note":"High-clarity pieces matter more than generic abundance; use geometric or irregular pieces to create structure."},
+    {"name":"Smoky Quartz","priority":"A_CORE","themes":["Mountain","Forest","Starlight"],"roles":["anchor","shadow","atmosphere"],"recommended_forms":["6-8mm round","8-10mm round","12-22mm oval/faceted focal"],"selection_note":"Useful as a quiet dark anchor; avoid making the whole bracelet uniformly brown-grey."},
+    {"name":"Aquamarine","priority":"A_CORE","themes":["Glacier","Ocean"],"roles":["anchor_atmosphere","light","hero"],"recommended_forms":["6-8mm round","6-8mm faceted","10-18mm irregular/oval focal"],"selection_note":"One of the strongest cool-blue core materials. Separate pale translucent body beads from higher-optical-quality focal pieces."},
+    {"name":"Labradorite","priority":"A_CORE","themes":["Starlight","Forest","Mountain"],"roles":["shadow","light","hero"],"recommended_forms":["6-8mm round","7-10mm faceted","12-20mm irregular focal"],"selection_note":"Flash and surface character are the selection criteria; dark low-flash beads should not be priced or positioned like strong-flash focal material."},
+    {"name":"Rainbow Moonstone","priority":"A_CORE","themes":["Glacier","Starlight","Ocean"],"roles":["light","transition","atmosphere"],"recommended_forms":["4-6mm micro/round","6-8mm round","8-12mm irregular accent"],"selection_note":"Use as light and air rather than making every piece the visual hero."},
+    {"name":"Amazonite","priority":"A_CORE","themes":["Ocean","Glacier","Forest"],"roles":["atmosphere","color_field","transition"],"recommended_forms":["6-8mm round","6-8mm cube","8-14mm irregular"],"selection_note":"Prefer muted mineral blue-green and visible natural variation over saturated candy-like color."},
+    {"name":"Lapis Lazuli","priority":"A_CORE","themes":["Ocean","Starlight"],"roles":["anchor","color_field","micro_accent"],"recommended_forms":["3-5mm micro bead","6-8mm round","6-10mm cube/barrel"],"selection_note":"Use deep blue as a controlled anchor; strong gold-speckled or overly uniform material should be treated as a separate visual variant."},
+    {"name":"Green Phantom Quartz","priority":"A_CORE","themes":["Forest","Mountain"],"roles":["hero","texture","geological_composition"],"recommended_forms":["8-10mm round","10-16mm irregular","12-22mm clear inclusion focal"],"selection_note":"Inclusion visibility and internal landscape are more important than nominal size."},
+    {"name":"Obsidian","priority":"A_CORE","themes":["Mountain","Forest","Starlight"],"roles":["shadow","anchor","structural_mineral"],"recommended_forms":["4-6mm micro bead","6-10mm round","8-14mm faceted/geometric"],"selection_note":"Use as black punctuation or structure, not as a full generic black-bead bracelet."},
+    {"name":"Amethyst","priority":"A_CORE","themes":["Starlight","Sunrise"],"roles":["color_field","light","accent"],"recommended_forms":["5-8mm round","6-10mm faceted","10-16mm irregular"],"selection_note":"Favor grey-violet, smoky-violet or clear mineral tones over very saturated purple."},
+    {"name":"Citrine","priority":"A_CORE","themes":["Sunrise","Mountain"],"roles":["light","warm_accent","hero"],"recommended_forms":["5-8mm round","6-10mm faceted","10-18mm irregular"],"selection_note":"Keep warm tones mineral and restrained; avoid orange/yellow combinations that read as costume jewelry."},
+    {"name":"Tiger's Eye","priority":"A_CORE","themes":["Mountain","Forest","Sunrise"],"roles":["anchor","texture","warm_accent"],"recommended_forms":["5-8mm round","6-10mm barrel","8-14mm geometric"],"selection_note":"Select for chatoyancy and dark-brown/gold depth; use as a structural accent rather than a conventional full strand."},
+    {"name":"Blue Lace Agate","priority":"B_DESIGN_EXTENSION","themes":["Glacier","Ocean"],"roles":["atmosphere","transition","soft_color"],"recommended_forms":["5-8mm round","8-14mm oval","10-18mm irregular"],"selection_note":"Useful for pale blue-white transitions and quieter designs."},
+    {"name":"Kunzite","priority":"B_DESIGN_EXTENSION","themes":["Sunrise","Starlight"],"roles":["light","soft_color","hero"],"recommended_forms":["5-8mm round","6-10mm faceted","10-16mm focal"],"selection_note":"Prefer cool pale pink-lilac transparency; avoid candy-pink presentation."},
+    {"name":"Bloodstone","priority":"B_DESIGN_EXTENSION","themes":["Forest","Mountain"],"roles":["texture","anchor","geological_composition"],"recommended_forms":["6-10mm round","8-14mm irregular","10-18mm focal"],"selection_note":"Good for earthy geological composition when paired with quiet silver or dark wood."},
+    {"name":"White Phantom Quartz","priority":"B_DESIGN_EXTENSION","themes":["Glacier","Mountain"],"roles":["texture","light","geological_composition"],"recommended_forms":["8-10mm round","10-16mm irregular","12-20mm focal"],"selection_note":"Treat internal structure as the design content; do not mix with too many other inclusion-heavy minerals."},
+    {"name":"Rose Quartz","priority":"B_DESIGN_EXTENSION","themes":["Sunrise"],"roles":["soft_color","atmosphere","transition"],"recommended_forms":["5-8mm round","8-14mm irregular"],"selection_note":"Use only in restrained, low-saturation pink compositions; not a default healing-crystal aesthetic."},
+    {"name":"Rainbow Obsidian","priority":"B_DESIGN_EXTENSION","themes":["Starlight","Mountain"],"roles":["shadow","hero","optical_detail"],"recommended_forms":["8-10mm round","10-18mm focal"],"selection_note":"Only worth carrying when the sheen is visually legible; ordinary black material belongs under Obsidian."},
+    {"name":"Larimar","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Ocean","Glacier"],"roles":["hero","painterly_mineral","one_of_one"],"recommended_forms":["8x5mm tumbled","10-18mm oval","12-25mm irregular/freeform"],"selection_note":"Reserve better pattern and color pieces for compact focal zones; do not distribute expensive focal material evenly around the bracelet."},
+    {"name":"Gold Rutilated Quartz","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Sunrise","Mountain","Starlight"],"roles":["hero","light","optical_detail"],"recommended_forms":["8-12mm round","12-22mm oval/irregular focal"],"selection_note":"Need visible rutile composition and enough transparency; strong focal use only."},
+    {"name":"Black Rutilated Quartz","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Starlight","Mountain","Forest"],"roles":["hero","shadow","optical_detail"],"recommended_forms":["8-12mm round","12-22mm oval/irregular focal"],"selection_note":"Use where dark inclusions remain readable through the crystal body; suited to silver-framed focal treatments."},
+    {"name":"Rutilated Quartz","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Mountain","Starlight"],"roles":["hero","geological_composition","one_of_one"],"recommended_forms":["8-12mm round","12-25mm irregular focal"],"selection_note":"Generic parent for mixed-rutile material; preserve visible source variation rather than forcing it into gold/black subtypes."},
+    {"name":"Sugilite","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Starlight"],"roles":["hero","color_field","one_of_one"],"recommended_forms":["6-10mm round","10-18mm focal"],"selection_note":"Use selectively as a deep mineral-purple focal; avoid large areas of uniform saturated purple."},
+    {"name":"Aquamarine / collector focal grade","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Glacier","Ocean"],"roles":["hero","light","one_of_one"],"recommended_forms":["10-18mm faceted irregular","12-25mm oval/freeform"],"selection_note":"This is a quality/form tier of Aquamarine, not a second material identity. Workbench should keep it as a selection specification overlay."}
+  ],
+  "pearls_and_organic": [
+    {"name":"White freshwater pearl","priority":"A_CORE","themes":["Glacier","Ocean","Sunrise"],"roles":["light","micro_cluster","transition"],"recommended_forms":["3-5mm rice/irregular","4-6mm small baroque"],"canonical_status":"candidate_if_absent","selection_note":"Use in small clusters or rhythm breaks; avoid generic pearl-bracelet dominance."},
+    {"name":"White South Sea Pearl","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Glacier","Ocean"],"roles":["hero","light"],"recommended_forms":["8-12mm near-round/baroque focal"],"canonical_status":"existing_material","selection_note":"Use as one or a few focal elements, not a full strand for this project language."},
+    {"name":"Golden South Sea Pearl","priority":"C_SIGNATURE_ONE_OF_ONE","themes":["Sunrise"],"roles":["hero","warm_light"],"recommended_forms":["8-12mm near-round/baroque focal"],"canonical_status":"existing_material","selection_note":"Signature Sunrise focal only; not part of the default cool/silver system."},
+    {"name":"Dark wood / agarwood-like structural spacer","priority":"B_DESIGN_EXTENSION","themes":["Forest","Mountain"],"roles":["texture","transition","warm_anchor"],"recommended_forms":["2-5mm thin irregular disc","4-8mm short tube","small carved/irregular segment"],"canonical_status":"candidate_if_absent","selection_note":"Use as structural texture. Avoid large standard wooden rounds that make the design read as a conventional Buddhist/ethnic bead bracelet."}
+  ],
+  "hardware_selection": [
+    {"name":"925 sterling silver micro spacer","priority":"A_CORE","roles":["separator","transition","micro_accent"],"spec":"2-4mm, polished or satin, visually minimal"},
+    {"name":"925 sterling silver curved tube","priority":"A_CORE","roles":["structural_interruption","secondary_line"],"spec":"20-30mm length class; clean curve; no ornate engraving"},
+    {"name":"925 sterling silver thin frame / bezel","priority":"A_CORE","roles":["frame","hero_assembly"],"spec":"oval/freeform/polygon stone framing; thin profile; open or visually light construction"},
+    {"name":"925 sterling silver half-cap / edge-cap","priority":"A_CORE","roles":["cap","transition"],"spec":"for irregular or focal minerals; restrained geometry"},
+    {"name":"925 sterling silver geometric connector","priority":"A_CORE","roles":["connector","structural_mineral_partner"],"spec":"bar/block/ring geometry; small scale; no ornate motif"},
+    {"name":"925 sterling silver small round counterweight","priority":"A_CORE","roles":["anchor","counterweight","transition"],"spec":"approximately 5-8mm visual scale, smooth or lightly textured"},
+    {"name":"925 sterling silver fine chain + minimal clasp","priority":"B_DESIGN_EXTENSION","roles":["extension","closure","secondary_line"],"spec":"thin chain, minimal clasp, suitable only for non-elastic constructions"},
+    {"name":"925 sterling silver micro organic charm","priority":"B_DESIGN_EXTENSION","roles":["micro_accent","narrative_component"],"spec":"small leaf/botanical/abstract form; secondary only, never the main product story"},
+    {"name":"Oxidized / blackened sterling silver micro accent","priority":"B_DESIGN_EXTENSION","roles":["shadow","micro_accent"],"spec":"small-scale only; use to connect dark mineral palettes"},
+    {"name":"Gold-tone hardware","priority":"RESERVE_NOT_CORE","roles":["accent"],"spec":"Do not build V1 around gold plating. Revisit only for explicit Sunrise or Black-Gold capsule designs."}
+  ],
+  "packaging_selection": [
+    {"name":"Compact matte white rigid presentation box","priority":"A_CORE","use":"default bracelet presentation","spec":"clean white or cool off-white, matte/soft-touch or fine paper texture, compact interior, no visible gold trim"},
+    {"name":"Cool grey rigid drawer box","priority":"A_CORE","use":"Signature presentation","spec":"stone grey / blue-grey, low-saturation, restrained typography, removable insert"},
+    {"name":"Soft grey or pearl-white protective pouch","priority":"A_CORE","use":"inner protection / travel","spec":"non-shedding, low-lint fabric; avoid heavy black velvet as default"},
+    {"name":"Cotton-linen envelope pouch","priority":"B_DESIGN_EXTENSION","use":"lighter-weight packaging option","spec":"natural but refined weave, cool beige/grey preferred over rustic brown"},
+    {"name":"Book-style magnetic box","priority":"C_SIGNATURE_ONE_OF_ONE","use":"limited/signature set","spec":"minimal exterior, no ritual/mystical graphics, space for material card and one-of-one certificate"},
+    {"name":"Material disclosure + care card","priority":"A_CORE","use":"documentation","spec":"state material names/status and care; no healing/energy claims; visually editorial, not mystical"},
+    {"name":"One-of-One certificate card","priority":"C_SIGNATURE_ONE_OF_ONE","use":"unique mineral/focal pieces","spec":"record design code, material composition, date/batch and visible uniqueness notes; do not claim unverifiable geology/authenticity"},
+    {"name":"Branded shipping mailer","priority":"A_CORE","use":"outer protection","spec":"plain protective exterior, compact, recyclable preference where practical; presentation box remains the visual product layer"}
+  ],
+  "shape_language": [
+    "round 4-10mm",
+    "micro bead 2-5mm",
+    "oval focal 10-25mm",
+    "cube / rectangular block 6-14mm",
+    "shield / polygon 10-22mm",
+    "faceted irregular 6-18mm",
+    "raw/freeform focal 12-30mm",
+    "disc 2-6mm",
+    "column/tube 6-20mm"
+  ],
+  "deprioritize": [
+    "Large inventory of identical 8mm round strands with no role/shape distinction",
+    "Rainbow/chakra multi-color mixes as a default product language",
+    "Large ornate zodiac/animal/ethnic charms as primary focal elements",
+    "Low-cost plated alloy findings presented as premium hardware",
+    "Heavy black velvet + gold luxury packaging as the default brand system",
+    "Healing/energy/ritual packaging copy or product claims",
+    "Buying many mineral species before shape/form/quality coverage of the core assortment is sufficient"
+  ]
+}
