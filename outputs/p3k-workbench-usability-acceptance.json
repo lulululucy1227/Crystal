@@ -1,0 +1,15 @@
+{
+  "phase": "P3I-P3K-WORKBENCH-USABILITY-REDESIGN",
+  "status": "completed",
+  "visual_direction": "中文优先、复古 Windows 操作感、浅灰纸面与冰蓝操作色",
+  "implemented": ["四个任务导向导航：首页、选品库、灵感库、设计台", "选品库四个内部分类与中文筛选", "首页三条明确行动路径与紧凑选品概览", "灵感库设计语言卡片与安全占位图", "设计台中文保存、载入、排序、删除与导出"],
+  "complaint_mapping": {"technical_navigation": "收敛为首页、选品库、灵感库、设计台", "database_dashboard_home": "首页首先呈现开始选品、查看灵感、开始设计", "raw_enums": "默认界面使用中文分类与选品层级名称", "weak_action_hierarchy": "首页和选品卡均提供明确主操作", "english_first": "主界面与操作文案改为中文", "separate_libraries": "合并为选品库内部分类标签"},
+  "db_sha_before": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "db_sha_after": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "tests": {"focused_workbench": "PASS (5/5)", "npm_test": "PASS (109 passed, 1 skipped)", "validate": "PASS", "git_diff_check": "PASS", "ui_detector": "PASS with degraded static-parser coverage"},
+  "boundaries": ["canonical SQLite read-only", "sidecar persistence unchanged", "supplier and purchase tracks paused"],
+  "startup": {"command": "npm run workbench", "url": "http://127.0.0.1:4173"},
+  "commit_sha": "PENDING",
+  "head_equals_origin_main": false,
+  "worktree_clean": false
+}

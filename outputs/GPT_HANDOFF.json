@@ -1,8 +1,8 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P3E-P3H-WORKBENCH-FUNCTIONAL-COMPLETION",
+  "phase": "P3I-P3K-WORKBENCH-USABILITY-REDESIGN",
   "status": "completed",
-  "model": "Terra",
+  "model": "Luna",
   "strength": "Medium",
   "execution_class": "SAFE_WRITE + READ_ONLY_DB + sidecar user-state writes",
   "user_priority_change": {
@@ -19,9 +19,9 @@
   "required_workbench_mode": "canonical SQLite read-only; drafts/annotations only in sidecar JSON",
   "supplier_boundary": "Do not research, contact, rank or progress suppliers in this phase; stored source/provenance data may remain visible only as secondary factual context.",
   "purchase_authorized": false,
-  "actual_changes":{"assortment_export":"outputs/assortment-selection-v1.csv and JSON","workbench":"vanilla local Workbench MVP at http://127.0.0.1:4173","canonical_db":"read-only"},
-  "tests_or_checks":{"p3a":"PASS","npm_test":"PASS (104 passed, 1 skipped)","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PASS"},
-  "commit_sha": "fb1cad96d979db981d386d01e1c6bdaa0d4beda1",
+  "actual_changes":{"workbench":"中文优先的四工作区界面，位于 http://127.0.0.1:4173","canonical_db":"read-only","sidecar":"草稿保存、载入与导出保持不变"},
+  "tests_or_checks":{"focused_workbench":"PASS (5/5)","npm_test":"PASS (109 passed, 1 skipped)","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PASS"},
+  "commit_sha": "PENDING",
   "requires_gpt_decision": false,
   "next_minimum_action": "Open the local Workbench and use the Design Board for sidecar-only draft exploration; supplier and purchase tracks remain paused."
 }

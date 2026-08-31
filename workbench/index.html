@@ -1,1 +1,23 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Crystal Workbench</title><link rel="stylesheet" href="style.css"></head><body><header><h1>Crystal Workbench</h1><nav><button data-page="overview">Overview</button><button data-page="assortment">Assortment</button><button data-page="materials">Materials</button><button data-page="accessories">Accessories</button><button data-page="packaging">Packaging</button><button data-page="references">References</button><button data-page="board">Design Board</button></nav></header><main id="app">Loading…</main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>水晶设计工作台</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">C</span><div><strong>Crystal</strong><small>设计工作台</small></div></div>
+    <nav aria-label="主导航">
+      <button class="nav-item active" data-page="home">首页</button>
+      <button class="nav-item" data-page="assortment">选品库</button>
+      <button class="nav-item" data-page="inspiration">灵感库</button>
+      <button class="nav-item" data-page="desk">设计台</button>
+    </nav>
+    <p class="sidebar-note">先选品，再组合成设计草稿。</p>
+  </aside>
+  <main id="app" class="workspace" aria-live="polite">加载中…</main>
+  <script src="app.js"></script>
+</body>
+</html>

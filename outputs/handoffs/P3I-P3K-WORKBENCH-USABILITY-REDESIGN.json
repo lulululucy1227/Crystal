@@ -1,0 +1,14 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P3I-P3K-WORKBENCH-USABILITY-REDESIGN",
+  "status": "completed",
+  "commit_sha": "PENDING",
+  "branch": "main",
+  "changed_files": ["workbench/index.html", "workbench/app.js", "workbench/style.css", "test/p3e-p3h-workbench-functional.test.mjs", "outputs/p3k-workbench-usability-acceptance.json"],
+  "actual_changes": {"information_architecture": "四个中文任务入口", "selection_library": "四个中文内部分类、筛选、加入设计台", "inspiration": "设计语言摘要而非裸 ID", "design_desk": "中文草稿操作与原有 sidecar/export 保持"},
+  "critical_boundaries_preserved": ["canonical database read-only", "no supplier/purchase work", "no Bridge/watcher work"],
+  "tests_or_checks": {"focused_workbench": "PASS (5/5)", "npm_test": "PASS (109 passed, 1 skipped)", "validate": "PASS", "git_diff_check": "PASS", "db_sha_unchanged": true},
+  "risks_or_blockers": ["无可控浏览器会话；已使用本地服务启动与功能/静态测试验证"],
+  "requires_gpt_decision": false,
+  "next_minimum_action": "用户可运行 npm run workbench，在首页从“开始选品”进入第一版中文工作流。"
+}
