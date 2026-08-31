@@ -50,10 +50,10 @@ test('assortment and draft exports are available', async () => {
   r = await req('/api/export/assortment?format=json'); assert.equal(r.status, 200); assert.match(r.body.path, /assortment-selection-v1\.json$/);
 });
 
-test('Chinese task-oriented shell hides raw selection enums from primary navigation', () => {
+test('classic desktop catalogue shell provides bilingual crystal names and an honest photo state', () => {
   const html = fs.readFileSync(path.join(root, 'workbench', 'index.html'), 'utf8');
   const app = fs.readFileSync(path.join(root, 'workbench', 'app.js'), 'utf8');
-  assert.match(html, /首页/); assert.match(html, /选品库/); assert.match(html, /灵感库/); assert.match(html, /设计台/);
+  assert.match(html, /文件\(F\)/); assert.match(html, /水晶目录/); assert.match(html, /配饰精选/); assert.match(html, /包装精选/);
   assert.doesNotMatch(html, /Materials|Accessories|Packaging|References|Design Board/);
-  assert.match(app, /水晶设计工作台/); assert.match(app, /开始选品/); assert.match(app, /查看灵感/); assert.match(app, /开始设计/);
+  assert.match(app, /白水晶/); assert.match(app, /Aquamarine/); assert.match(app, /待补圆珠实拍图/);
 });
