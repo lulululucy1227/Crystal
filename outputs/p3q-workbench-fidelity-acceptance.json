@@ -1,0 +1,38 @@
+{
+  "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
+  "status": "partial_completed",
+  "scope_change": {
+    "image_sourcing": "Skipped by explicit user instruction on 2026-08-31; delegated to GPT.",
+    "result": "No web-derived image, manifest, licence record or image-processing output from this run remains in the repository."
+  },
+  "viewport_1280x960": {
+    "screenshot": "outputs/visual/p3q-workbench-1280x960.png",
+    "top_chrome": "PASS: title bar, menu bar and icon-plus-text toolbar are present.",
+    "three_columns": "PASS: 190px left / approximately 783px centre / 268px right.",
+    "centre_catalogue": "PASS: seven material cards plus an add-card render in four compact columns.",
+    "right_libraries": "PASS structurally: nine accessory cells and six packaging cells.",
+    "recent_design_board": "PASS: bottom region and genuine empty state/new-board control are present.",
+    "horizontal_overflow": "PASS: false at 1280px.",
+    "language": "PASS: Chinese-first labels; English is a small comparison line.",
+    "real_asset_coverage": "DEFERRED TO GPT: cards and library cells explicitly state that image material is pending; no fake or unrelated product photograph is used."
+  },
+  "functional_checks": {
+    "focused_workbench_test": "PASS (5/5); test cleanup snapshots and restores pre-existing runtime exports.",
+    "full_npm_test": "PASS (109 passed, 1 skipped)",
+    "npm_validate": "PASS",
+    "catalogue_to_design_board": "PASS in browser: a material was added and the design-board state was visible without raw enum leakage.",
+    "draft_save_load_reorder_remove_export": "PASS in focused regression test",
+    "git_diff_check": "PASS",
+    "impeccable_detector": "No findings; detector ran in degraded regex mode because its optional HTML parser modules were unavailable."
+  },
+  "canonical_db": {
+    "mode": "read_only",
+    "sha256_before": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+    "sha256_after": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+    "unchanged": true
+  },
+  "reference_difference_remaining": [
+    "The supplied target includes photographic product imagery. This run intentionally contains no substitute imagery after the user delegated image sourcing to GPT.",
+    "Buttons with no existing business behaviour are disabled and labelled by title rather than being presented as functional."
+  ]
+}

@@ -1,27 +1,43 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P3I-P3K-WORKBENCH-USABILITY-REDESIGN",
-  "status": "completed",
-  "model": "Luna",
-  "strength": "Medium",
-  "execution_class": "SAFE_WRITE + READ_ONLY_DB + sidecar user-state writes",
-  "user_priority_change": {
-    "purchase_work": "paused",
-    "supplier_progression": "paused",
-    "primary_goals": [
-      "deliver practical crystal/mineral, pearl/organic, hardware and packaging assortment",
-      "build usable local Crystal design workbench"
-    ]
+  "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
+  "status": "partial_completed",
+  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
+  "branch": "main",
+  "commit_sha": "recorded in the accompanying archive after final commit",
+  "changed_files": [
+    "workbench/index.html",
+    "workbench/app.js",
+    "workbench/style.css",
+    "workbench/server.mjs",
+    "test/p3e-p3h-workbench-functional.test.mjs",
+    "outputs/p3l-current-ui-gap-audit.json",
+    "outputs/p3q-workbench-fidelity-acceptance.json",
+    "outputs/visual/p3q-workbench-1280x960.png"
+  ],
+  "actual_changes": {
+    "layout": "Implemented the reference image's desktop title/menu/tool bars, 190px left navigation tree, four-column centre catalogue, 268px right two-library rail, recent design-board strip and local-time status bar.",
+    "language": "Made materials, accessories and packaging Chinese-first with English comparison text.",
+    "integrity": "Retained local sidecar draft behaviour, assortment export and read-only canonical SQLite access.",
+    "test_isolation": "Made the workbench test server port configurable so focused tests no longer collide with a user's running 4173 workbench."
   },
-  "authoritative_assortment": "data/assortment-selection-v1.json",
-  "human_readable_assortment": "docs/ASSORTMENT_SELECTION_V1.md",
-  "task": "agent/GPT_NEXT_TASK.md",
-  "required_workbench_mode": "canonical SQLite read-only; drafts/annotations only in sidecar JSON",
-  "supplier_boundary": "Do not research, contact, rank or progress suppliers in this phase; stored source/provenance data may remain visible only as secondary factual context.",
-  "purchase_authorized": false,
-  "actual_changes":{"workbench":"中文优先的四工作区界面，位于 http://127.0.0.1:4173","canonical_db":"read-only","sidecar":"草稿保存、载入与导出保持不变"},
-  "tests_or_checks":{"focused_workbench":"PASS (5/5)","npm_test":"PASS (109 passed, 1 skipped)","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PASS"},
-  "commit_sha": "86f9a1b8438d793edfbf1c5919e058cdd3d56704",
+  "critical_boundaries_preserved": [
+    "canonical SQLite unchanged",
+    "no schema or canonical data write",
+    "no supplier, purchase, watcher or Bridge change",
+    "no web-derived image asset remains after user delegated image sourcing to GPT"
+  ],
+  "tests_or_checks": {
+    "focused_workbench": "PASS (5/5)",
+    "npm_test": "PASS (109 passed, 1 skipped)",
+    "npm_validate": "PASS",
+    "browser_1280x960": "PASS structurally; screenshot at outputs/visual/p3q-workbench-1280x960.png",
+    "git_diff_check": "PASS",
+    "canonical_db_sha_unchanged": true
+  },
+  "risks_or_blockers": [
+    "Real bead/accessory/packaging imagery is intentionally deferred to GPT by explicit user instruction. Image-specific P3N/P3O/P3Q acceptance remains outstanding."
+  ],
   "requires_gpt_decision": false,
-  "next_minimum_action": "Open the local Workbench and use the Design Board for sidecar-only draft exploration; supplier and purchase tracks remain paused."
+  "next_minimum_action": "GPT may execute the separated image-source, licensing and asset-integration task against the new compact catalogue slots."
 }

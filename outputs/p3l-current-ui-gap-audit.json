@@ -1,0 +1,20 @@
+{
+  "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
+  "recorded_at": "2026-08-31",
+  "head_before_work": "6f34f23",
+  "current_task_file": "agent/GPT_NEXT_TASK.md",
+  "prior_functional_acceptance": "retained",
+  "visual_acceptance_before_work": "rejected",
+  "gap_reason": [
+    "The previous catalogue used vertically expansive cards instead of the reference image's compact four-column centre directory.",
+    "The previous shell did not faithfully implement the title/menu/tool bars, navigation tree, right-side two-library layout and bottom recent-design region as one desktop composition.",
+    "The previous handoff described a completed P3I-P3K phase but was behind the actual Git head."
+  ],
+  "worktree_before_work": {
+    "tracked_changes": [],
+    "preserved_untracked_runtime_output": "workbench/exports/assortment-selection-v1.csv"
+  },
+  "startup": "npm run workbench -> http://127.0.0.1:4173",
+  "canonical_db_sha256_before": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "visual_reference": "inputs/ui-reference/crystal-workbench-target-layout.jpg"
+}

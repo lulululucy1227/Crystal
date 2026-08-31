@@ -53,4 +53,5 @@ const server = http.createServer(async (req, res) => {
     const rel = url.pathname === '/' ? 'index.html' : url.pathname.slice(1); const file = path.resolve(root, rel); if (!file.startsWith(root) || !fs.existsSync(file)) return json(res, { error: 'not found' }, 404); const type = file.endsWith('.css') ? 'text/css' : file.endsWith('.js') ? 'application/javascript' : 'text/html'; res.writeHead(200, { 'content-type': type }); return res.end(fs.readFileSync(file));
   } catch (error) { return json(res, { error: { code: 'SERVER_ERROR', message: error.message } }, 500); }
 });
-server.listen(4173, '127.0.0.1', () => console.log('Crystal Workbench http://127.0.0.1:4173'));
+const port = Number(process.env.WORKBENCH_PORT || 4173);
+server.listen(port, '127.0.0.1', () => console.log(`Crystal Workbench http://127.0.0.1:${port}`));
