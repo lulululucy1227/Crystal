@@ -4,7 +4,7 @@
   "status": "partial_completed",
   "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
   "branch": "main",
-  "commit_sha": "recorded in the accompanying archive after final commit",
+  "commit_sha": "12dd63dcda005d71e16db95c7e62baad003e4f2e",
   "changed_files": [
     "workbench/index.html",
     "workbench/app.js",
@@ -25,7 +25,7 @@
     "canonical SQLite unchanged",
     "no schema or canonical data write",
     "no supplier, purchase, watcher or Bridge change",
-    "no web-derived image asset remains after user delegated image sourcing to GPT"
+    "no web-derived image asset is sourced, downloaded or processed by Codex; external assets are GPT-owned"
   ],
   "tests_or_checks": {
     "focused_workbench": "PASS (5/5)",
@@ -36,8 +36,8 @@
     "canonical_db_sha_unchanged": true
   },
   "risks_or_blockers": [
-    "Real bead/accessory/packaging imagery is intentionally deferred to GPT by explicit user instruction. Image-specific P3N/P3O/P3Q acceptance remains outstanding."
+    "Real bead/accessory/packaging imagery is asset_pending_from_gpt. Codex will only consume a manifest-approved, repository-present GPT asset."
   ],
   "requires_gpt_decision": false,
-  "next_minimum_action": "GPT may execute the separated image-source, licensing and asset-integration task against the new compact catalogue slots."
+  "next_minimum_action": "GPT may deliver manifest-approved imagery; Codex can then integrate it into the compact catalogue slots."
 }

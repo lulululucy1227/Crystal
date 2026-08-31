@@ -3,11 +3,11 @@
   "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
   "status": "partial_completed",
   "branch": "main",
-  "commit_sha": "recorded in the following delivery metadata commit",
+  "commit_sha": "12dd63dcda005d71e16db95c7e62baad003e4f2e",
   "delta": {
     "visual_structure": "Reference-layout desktop shell now has title/menu/tool bars, 190px/783px/268px left-centre-right composition, a four-column catalogue, 9-cell accessory rail, 6-cell packaging rail, recent design-board strip and status bar.",
     "functional_integrity": "Focused workbench tests use port 4174 to avoid colliding with a user's normal port-4173 process; draft and export regression paths pass.",
-    "asset_boundary": "At the user's instruction, all candidate downloaded image bytes and licence/manifests were removed. Existing cards expose an honest GPT image-integration state instead of fabricated imagery."
+    "asset_boundary": "Current task authority assigns sourcing, licence verification, download and cutout work to GPT. Existing cards expose an honest asset_pending_from_gpt state instead of fabricated imagery."
   },
   "checks": {
     "focused_workbench": "PASS (5/5)",
@@ -17,7 +17,7 @@
     "canonical_db_sha256": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F unchanged"
   },
   "blockers": [
-    "Image/asset acceptance is intentionally deferred to GPT."
+    "Image/asset acceptance awaits GPT-owned manifest-approved assets."
   ],
-  "next_minimum_action": "Run the separate GPT-owned legal-image sourcing and catalogue slot integration task."
+  "next_minimum_action": "GPT delivers legal manifest-approved assets; Codex integrates the repository-present files."
 }

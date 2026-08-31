@@ -2,7 +2,7 @@
   "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
   "status": "partial_completed",
   "scope_change": {
-    "image_sourcing": "Skipped by explicit user instruction on 2026-08-31; delegated to GPT.",
+    "image_sourcing": "GPT-owned under the current authorization; Codex does not source, download or cut out external images.",
     "result": "No web-derived image, manifest, licence record or image-processing output from this run remains in the repository."
   },
   "viewport_1280x960": {
@@ -14,7 +14,7 @@
     "recent_design_board": "PASS: bottom region and genuine empty state/new-board control are present.",
     "horizontal_overflow": "PASS: false at 1280px.",
     "language": "PASS: Chinese-first labels; English is a small comparison line.",
-    "real_asset_coverage": "DEFERRED TO GPT: cards and library cells explicitly state that image material is pending; no fake or unrelated product photograph is used."
+    "real_asset_coverage": "asset_pending_from_gpt: cards and library cells explicitly state that image material is pending; no fake or unrelated product photograph is used."
   },
   "functional_checks": {
     "focused_workbench_test": "PASS (5/5); test cleanup snapshots and restores pre-existing runtime exports.",
