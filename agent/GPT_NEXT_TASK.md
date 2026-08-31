@@ -6,7 +6,7 @@ Status: authorized
 Primary language: 中文
 Secondary language: English comparison only
 Model guidance: Luna / Medium preferred. If the local Codex UI only offers Sol, Sol / High is acceptable and must NOT block execution.
-Execution class: SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite + NETWORK_READ(image/license research only)
+Execution class: SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite
 
 ## 一、主管结论 / Supervisor decision
 
@@ -19,7 +19,7 @@ Execution class: SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite + NETWO
 
 本阶段总目标：
 
-> 在不修改 canonical SQLite schema / 数据的前提下，把 Crystal Workbench 的桌面 UI **严格按参考图的排版骨架、信息密度、窗口层级和卡片结构重做**；同时建立可合法进入公开 GitHub 的真实水晶/天然材质/配饰/包装图片资产流程，并使用真实的单颗圆珠抠图素材生成/组合出接近参考图的目录视觉。
+> 在不修改 canonical SQLite schema / 数据的前提下，把 Crystal Workbench 的桌面 UI **严格按参考图的排版骨架、信息密度、窗口层级和卡片结构重做**；真实水晶/天然材质/配饰/包装的网络找图、许可核验、下载、抠图和上传 GitHub **由 GPT 主管负责**。Codex 只读取 GPT 已提交到仓库的合规素材，并负责 UI 接入、排版与必要的目录组合预览。
 
 用户指定的视觉权威参考图：
 - `inputs/ui-reference/crystal-workbench-target-layout.jpg`
@@ -34,12 +34,14 @@ Execution class: SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite + NETWO
 2. 某一个子任务遇到 blocker 时，记录 blocker，继续执行其他所有可以安全推进的子任务。
 3. 只有当“所有剩余工作”都需要用户决策、额外授权或无法继续时，才允许停止。
 4. 中文是默认主语言；英文只作为名称/术语对照，例如：`白水晶` 下方小字 `Clear Quartz`。不得出现英文主导页面。
-5. 不新增 Web framework；继续使用现有 vanilla workbench 架构，除非现有仓库已经包含的轻量依赖足够完成测试/图片处理。
+5. 不新增 Web framework；继续使用现有 vanilla workbench 架构，除非现有仓库已经包含的轻量依赖足够完成测试/图片展示。
 6. canonical SQLite 永远 READ ONLY；不得 schema migration，不得修改 canonical 数据。
 7. 草稿 sidecar 保存、载入、排序、删除、导出能力必须保持。
-8. 不开展供应商排名、询价、采购、下单、联系商家；本阶段网络读取仅限：图片来源、授权许可、图片元数据和必要的视觉素材研究。
-9. 禁止为了“像参考图”而伪造数据库事实。页面中的数量、硬度、产地、规格等必须来自现有可信数据；没有可靠数据时隐藏该字段或使用设计用途字段，不能编造。
-10. 禁止把“寓意/疗愈/能量”等主观或玄学说法作为事实。若需要占用参考图相同信息位置，优先显示 `设计语言 / Design role`、主题或已有 selection notes。
+8. **素材职责严格分离：GPT 负责联网找图、许可核验、下载、抠图、透明背景处理、素材命名、manifest 与将合规素材提交 GitHub；Codex 不得自行联网搜索、下载、抓取或抠取外部图片。**
+9. Codex 只可使用仓库内 GPT 已交付的素材；如某素材尚未交付，使用明确的中性 placeholder 并继续其他 UI/功能任务，不得因此停止总任务。
+10. 不开展供应商排名、询价、采购、下单、联系商家。
+11. 禁止为了“像参考图”而伪造数据库事实。页面中的数量、硬度、产地、规格等必须来自现有可信数据；没有可靠数据时隐藏该字段或使用设计用途字段，不能编造。
+12. 禁止把“寓意/疗愈/能量”等主观或玄学说法作为事实。若需要占用参考图相同信息位置，优先显示 `设计语言 / Design role`、主题或已有 selection notes。
 
 ---
 
@@ -162,8 +164,8 @@ Panel title: `水晶目录`
 每张水晶卡的层次参考目标图：
 1. 中文主名（例如 `白水晶`）
 2. 英文小字对照（例如 `Clear Quartz`）
-3. 大型主视觉区：优先使用真实圆珠素材生成的手串/环形目录预览，或合法来源的真实手串图；不得继续显示巨大灰色占位图
-4. 下方 3 个小型形态/配件槽位，至少第 1 个使用真实单颗圆珠抠图；其他形态只有在有真实/合法素材时才展示，否则使用明确的中性几何占位，不伪装为实拍
+3. 大型主视觉区：优先使用 GPT 已提交的真实素材或基于真实单颗圆珠抠图生成的目录组合预览；不得继续显示巨大灰色占位图
+4. 下方 3 个小型形态/配件槽位，至少第 1 个优先使用 GPT 已提交的真实单颗圆珠抠图；其他形态只有在仓库已有对应真实/合法素材时才展示，否则使用明确的中性几何占位，不伪装为实拍
 5. 2-3 行紧凑事实/设计信息，例如：
    - `硬度`（仅数据库已有可信值时）
    - `产地`（仅已有可信值时）
@@ -194,7 +196,7 @@ Panel title: `水晶目录`
 - 3×2 紧凑图片格
 - `查看更多包装...`
 
-当前右栏的 `○` / `□` 空占位必须在本阶段显著减少；有合法真实图片的条目必须显示图片。
+当前右栏的 `○` / `□` 空占位必须在本阶段显著减少；GPT 已提交真实素材的条目必须显示图片。
 
 ### G. 底部状态栏
 
@@ -213,48 +215,60 @@ Panel title: `水晶目录`
 
 ---
 
-# P3N — 真实图片来源与公开仓库许可审计 / Real-image sourcing + licensing
+# P3N — GPT 素材交付接口 / GPT-owned asset handoff
 
-本仓库当前为公开 GitHub 仓库。**不得把来源不明、版权不明的供应商/商城/博客产品图片直接复制进仓库。**
+本子任务的职责不是让 Codex 找图，而是让 Codex **消费 GPT 已准备并提交到 GitHub 的合规素材**。
 
-用户要求真实的单颗圆珠和其他库真实图片。执行方式：
+## GPT 主管负责
 
-## 来源优先级
+GPT 主管在本阶段并行负责：
+- 查找真实水晶、天然材质、配饰、包装图片；
+- 核验公开仓库所需许可与来源；
+- 下载原始素材；
+- 对单颗圆珠和需要透明背景的素材完成抠图；
+- 输出透明 PNG / WebP；
+- 统一基础命名与必要尺寸；
+- 维护 `data/workbench-asset-manifest.json`；
+- 维护 `docs/WORKBENCH_ASSET_SOURCES.md`；
+- 将可合法再分发/修改的素材提交到 GitHub。
 
-1. Public Domain / CC0；
-2. 明确允许再分发与修改的 Creative Commons / permissive media；
-3. 官方/厂商素材仅当其页面或许可条款明确允许当前公开仓库中的再分发与衍生处理；
-4. 许可不清楚：可以记录 `source_url` 作为研究证据，但**禁止提交二进制图片**。
-
-不要因为找不到合规图片就偷用电商图。版权 blocker 只阻塞对应素材，不阻塞 UI、其他素材或其他子任务。
-
-## 优先覆盖材料
-
-优先为当前水晶目录中真实存在的核心/高频条目寻找圆珠素材，至少覆盖可获得许可的：
+GPT 优先覆盖当前项目真实存在的核心/高频条目，例如：
 - 白水晶 / Clear Quartz
 - 粉水晶 / Rose Quartz
 - 紫水晶 / Amethyst
 - 茶晶 / Smoky Quartz
 - 黑曜石 / Obsidian
-- 绿东陵 / Green Aventurine（只有项目真实条目存在时）
 - 虎眼石 / Tiger's Eye
 - 海蓝宝 / Aquamarine
-- 黑发晶 / Black Rutilated Quartz（若能找到可授权素材）
-- 其他当前 assortment 中的主力水晶
+- 黑发晶 / Black Rutilated Quartz
+- 以及当前 assortment 中其他主力水晶
 
-不要为不存在于项目选品中的材料硬加数据。
+并并行覆盖：
+- 银色结构件/扣件/隔珠等配饰；
+- 绒布袋、礼盒、牛皮纸盒、亚麻袋等包装。
 
-同时搜索可合法再分发的：
-- 银色结构件/扣件/隔珠等真实配饰图片；
-- 绒布袋、礼盒、牛皮纸盒、亚麻袋等真实包装图片。
+以上列表仅作为素材优先级，不得因此向 canonical DB 新增不存在的材料。
 
-## 资产清单
+## Codex 负责
 
-新增：
-- `data/workbench-asset-manifest.json`
-- `docs/WORKBENCH_ASSET_SOURCES.md`
+Codex 每次同步 main 后：
+1. 检查 `data/workbench-asset-manifest.json` 是否存在；
+2. 检查仓库内已存在的 GPT 素材路径；
+3. 只集成 manifest 中允许使用且实际存在的文件；
+4. 不得自行联网搜索替代图片；
+5. 不得从电商、博客、供应商页面自行下载图片；
+6. 不得自行执行原图抠图来绕过 GPT 素材交付；
+7. 缺失素材时明确显示 neutral placeholder，并继续完成布局、交互、测试和其他已有素材的接入。
 
-每个已提交图片必须记录至少：
+建议素材目录：
+- `workbench/assets/catalog/crystals/source/`（如 GPT 选择保留可公开原图）
+- `workbench/assets/catalog/crystals/cutout/`
+- `workbench/assets/catalog/accessories/`
+- `workbench/assets/catalog/packaging/`
+
+## 资产清单字段
+
+Codex 应读取但不得伪造 manifest。每个 GPT 已提交图片至少应包含：
 - asset_id
 - category
 - zh_name
@@ -273,30 +287,24 @@ Panel title: `水晶目录`
 - sha256
 - notes
 
-若 `can_redistribute != true`，不得将原图/处理图提交到仓库。
+只有 manifest 标记 `can_redistribute=true` 且文件真实存在的外部素材才能进入默认 UI。
 
 ---
 
-# P3O — 抠图、统一素材与手串目录视觉 / Image processing + catalogue composition
+# P3O — 已交付素材的 UI 处理与目录组合 / Asset integration + catalogue composition
 
-合法真实图片下载后，建立清晰目录，例如：
-
-- `workbench/assets/catalog/crystals/source/`
-- `workbench/assets/catalog/crystals/cutout/`
-- `workbench/assets/catalog/accessories/`
-- `workbench/assets/catalog/packaging/`
+Codex 不负责找图和抠图；本阶段只处理 GPT 已提交的透明素材与其 UI 组合。
 
 处理规则：
 
-1. 对单颗圆珠做背景去除/抠图，输出透明 PNG 或 WebP；
+1. 直接使用 GPT 已提供的透明 PNG / WebP 单颗圆珠抠图；
 2. 保留天然材质真实纹理，不做“重绘成假水晶”；
-3. 统一裁切、留白和视觉尺寸，使它们放在卡片里时接近参考图；
+3. 可以在前端或轻量构建脚本中统一显示尺寸、留白、缩放，使卡片效果接近参考图；
 4. 不要用 CSS 圆形渐变冒充真实水晶照片；
-5. 可以把**真实单颗圆珠抠图**重复排列/旋转，生成一个目录用的环形手串预览。这种图必须在 manifest 标记为 `composed_from_real_bead_cutout`，不能声称是实拍手串；
-6. 若已有合法真实手串图片，可以直接使用，但同样记录来源许可；
-7. 配饰和包装优先使用真实抠图；没有合法素材的条目使用清晰、低干扰的中性 placeholder，不得伪造实拍。
-
-如本地已有 ImageMagick、Python/Pillow、rembg 或等效安全工具可直接用；不要为了本任务引入重型服务。若背景去除工具不可用，可使用简单透明背景处理/手工 mask 或保留白底裁切，但要继续其他任务。
+5. 可以把**GPT 已提交的真实单颗圆珠抠图**重复排列/旋转，生成目录用的环形手串预览；这种图或渲染必须在代码/manifest 语义上标记为 `composed_from_real_bead_cutout`，不能声称是实拍手串；
+6. 若 GPT 已提交合法真实手串图片，可以直接使用；
+7. 配饰和包装优先使用 GPT 已提交真实抠图；没有素材的条目使用清晰、低干扰的中性 placeholder，不得伪造实拍；
+8. Codex 可以做安全的前端尺寸适配、缩略图生成或基于已交付透明素材的组合排布，但不得从外部图片开始新的背景去除/抠图流程。
 
 ---
 
@@ -351,8 +359,8 @@ Panel title: `水晶目录`
 3. 左栏有导航树与底部今日概览；
 4. 中栏水晶目录首屏是 4 列紧凑卡片，而非单列；
 5. 主水晶卡的主视觉不再是灰色巨大占位；
-6. 至少若干已授权材料使用真实单颗圆珠抠图；
-7. 真实圆珠生成的组合手串视觉（如采用）清楚标识资产来源，不伪称实拍；
+6. GPT 已交付素材中的真实单颗圆珠抠图必须实际显示；
+7. 基于真实圆珠生成的组合手串视觉（如采用）清楚标识为组合预览，不伪称实拍；
 8. 右栏配饰精选接近参考图 3×3；
 9. 右栏包装精选接近参考图 3×2；
 10. 中栏底部出现最近打开的设计板区域；
@@ -368,12 +376,13 @@ Panel title: `水晶目录`
 
 ## 资产验收
 
-1. 所有 committed web-derived images 都在 manifest；
-2. 每张都明确 `can_redistribute=true` 与许可依据；
-3. 许可不明图片不得进入 repo；
-4. 不允许 data URL / base64 把外部版权图片藏进源码；
-5. 没有把网络图片误标为项目自有原创；
-6. 图片源站不可访问时，记录 blocker，不影响其他合法素材继续推进。
+Codex 仅验收 GPT 已交付的仓库资产：
+1. 所有 UI 使用的 web-derived images 都应在 manifest；
+2. 每张使用中的外部素材应明确 `can_redistribute=true`；
+3. 不允许 data URL / base64 把外部版权图片藏进源码；
+4. 没有把网络图片误标为项目自有原创；
+5. GPT 尚未交付的素材记录为 `asset_pending_from_gpt`，不得由 Codex自行联网补图；
+6. 素材不足不得阻塞已经可以完成的 UI、交互和测试。
 
 ---
 
@@ -383,18 +392,22 @@ Panel title: `水晶目录`
 - `workbench/**`
 - `test/**`（仅与本阶段 workbench/asset 验收相关的 bounded updates）
 - `inputs/ui-reference/**`（只读现有参考图；如需补充说明文件可写）
-- `data/workbench-asset-manifest.json`
-- `docs/WORKBENCH_ASSET_SOURCES.md`
 - `outputs/p3l-current-ui-gap-audit.json`
 - `outputs/p3q-workbench-fidelity-acceptance.json`
 - `outputs/visual/**`
 - `outputs/GPT_HANDOFF.json`
 - `outputs/handoffs/P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION.json`
 
-如需增加仅用于本阶段图片处理的轻量脚本，可写：
+GPT 主管负责写入/更新，Codex 默认只读消费：
+- `data/workbench-asset-manifest.json`
+- `docs/WORKBENCH_ASSET_SOURCES.md`
+- `workbench/assets/catalog/**` 中的外部来源素材文件
+
+如 Codex 仅需增加用于“已交付透明素材的组合预览/缩略显示”的轻量脚本，可写：
 - `scripts/workbench-assets/**`
 
 禁止：
+- Codex 自行网络找图、下载、抓取或抠图；
 - canonical SQLite 写入；
 - migrations；
 - supplier/contact/purchase 流程；
@@ -416,8 +429,8 @@ Panel title: `水晶目录`
 6. 验证 worktree clean；
 7. 最终报告必须简短，只包含：
    - 实际改了什么；
-   - 真实图片覆盖到哪些材料/配饰/包装；
-   - 哪些素材因许可/来源问题未能进入仓库；
+   - 已接入哪些 GPT 素材；
+   - 哪些条目仍为 `asset_pending_from_gpt`；
    - 视觉验收是否满足 1280×960 结构要求；
    - tests/checks；
    - canonical DB SHA 是否不变；
