@@ -2,7 +2,7 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P3I-P3K-WORKBENCH-USABILITY-REDESIGN",
   "status": "completed",
-  "commit_sha": "PENDING",
+  "commit_sha": "86f9a1b8438d793edfbf1c5919e058cdd3d56704",
   "branch": "main",
   "changed_files": ["workbench/index.html", "workbench/app.js", "workbench/style.css", "test/p3e-p3h-workbench-functional.test.mjs", "outputs/p3k-workbench-usability-acceptance.json"],
   "actual_changes": {"information_architecture": "四个中文任务入口", "selection_library": "四个中文内部分类、筛选、加入设计台", "inspiration": "设计语言摘要而非裸 ID", "design_desk": "中文草稿操作与原有 sidecar/export 保持"},

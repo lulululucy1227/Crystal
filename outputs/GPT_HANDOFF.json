@@ -21,7 +21,7 @@
   "purchase_authorized": false,
   "actual_changes":{"workbench":"中文优先的四工作区界面，位于 http://127.0.0.1:4173","canonical_db":"read-only","sidecar":"草稿保存、载入与导出保持不变"},
   "tests_or_checks":{"focused_workbench":"PASS (5/5)","npm_test":"PASS (109 passed, 1 skipped)","validate":"PASS","db_sha_unchanged_on_smoke":true,"git_diff_check":"PASS"},
-  "commit_sha": "PENDING",
+  "commit_sha": "86f9a1b8438d793edfbf1c5919e058cdd3d56704",
   "requires_gpt_decision": false,
   "next_minimum_action": "Open the local Workbench and use the Design Board for sidecar-only draft exploration; supplier and purchase tracks remain paused."
 }

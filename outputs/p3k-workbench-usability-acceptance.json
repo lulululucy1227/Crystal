@@ -9,7 +9,7 @@
   "tests": {"focused_workbench": "PASS (5/5)", "npm_test": "PASS (109 passed, 1 skipped)", "validate": "PASS", "git_diff_check": "PASS", "ui_detector": "PASS with degraded static-parser coverage"},
   "boundaries": ["canonical SQLite read-only", "sidecar persistence unchanged", "supplier and purchase tracks paused"],
   "startup": {"command": "npm run workbench", "url": "http://127.0.0.1:4173"},
-  "commit_sha": "PENDING",
+  "commit_sha": "86f9a1b8438d793edfbf1c5919e058cdd3d56704",
   "head_equals_origin_main": false,
   "worktree_clean": false
 }
