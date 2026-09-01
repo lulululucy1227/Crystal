@@ -1,0 +1,208 @@
+{
+  "contract_version": "P3R-GPT-INBOX-REFERENCE-ANALYSIS-V1",
+  "producer_type": "assistant_model",
+  "producer_id": "gpt-5.6-sol",
+  "analysis_version": "p3r-vision-v1",
+  "batch_key": "P3R-INBOX-BRACELETS-20260901",
+  "purpose": "Authoritative GPT visual/semantic analysis for the seven new bracelet screenshots currently in the Crystal Inbox. Codex must materialize only the semantics explicitly supplied here, preserve uncertainty, and must not infer user preference or mineral identity from image appearance.",
+  "source_folder": {
+    "name": "Inbox",
+    "google_drive_folder_id": "1IeTjrm0rmqo0sSGe-K8rSdlhDmwp-W7V"
+  },
+  "semantic_authority": {
+    "image_presence_in_inbox_is_not_user_preference": true,
+    "no_user_preference_evidence_is_authorized": true,
+    "no_material_identity_is_confirmed_from_visual_appearance": true,
+    "no_authenticity_grade_treatment_origin_or_ethics_claim_is_authorized": true,
+    "source_account_names_and_visible_marketing_copy_are_source_context_only": true,
+    "these_are_design_reference_assets_not_material_catalog_thumbnails": true,
+    "pattern_and_theme_relations_below_are_gpt_design_inferences_and_may_be materialized only by exact reuse of existing canonical identities": true
+  },
+  "assets": [
+    {
+      "filename": "IMG_7920.PNG",
+      "google_drive_file_id": "1A9sWRUlPQwtP809XFEHrZWFYeWfExXjG",
+      "group_key": "SEP01-A-PURPLE-NOCTURNE-GOLD",
+      "role": "primary_overview",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Xuan Crystal Studio"
+    },
+    {
+      "filename": "IMG_7921.PNG",
+      "google_drive_file_id": "1cuqE6ySWH6QbSl98jB-wUq-WYuGJ8swm",
+      "group_key": "SEP01-A-PURPLE-NOCTURNE-GOLD",
+      "role": "secondary_worn_scale",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Xuan Crystal Studio"
+    },
+    {
+      "filename": "IMG_7922.PNG",
+      "google_drive_file_id": "1XX-jKALrg_x6-t2dqebaco4g8tKBJAC4",
+      "group_key": "SEP01-A-PURPLE-NOCTURNE-GOLD",
+      "role": "secondary_detail",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Xuan Crystal Studio"
+    },
+    {
+      "filename": "IMG_7925.PNG",
+      "google_drive_file_id": "1uVIeX_pmm9pKZ99ZfHqXD6nisI1g0QDu",
+      "group_key": "SEP01-B-COOL-GREY-SILVER-RHYTHM",
+      "role": "secondary_overview",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Aveda 凡达"
+    },
+    {
+      "filename": "IMG_7926.PNG",
+      "google_drive_file_id": "14h8IZAzM9b7fNuEEHcJ2_aPM9eziB1Jz",
+      "group_key": "SEP01-B-COOL-GREY-SILVER-RHYTHM",
+      "role": "secondary_hardware_detail",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Aveda 凡达"
+    },
+    {
+      "filename": "IMG_7927.PNG",
+      "google_drive_file_id": "14jZra_4Q9xQie-YUyub6CIqmYVXEKB8C",
+      "group_key": "SEP01-B-COOL-GREY-SILVER-RHYTHM",
+      "role": "primary_overview",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Aveda 凡达"
+    },
+    {
+      "filename": "IMG_7928.PNG",
+      "google_drive_file_id": "1YYTUgobyPatkcCCINuAfw1xO3mktu5HG",
+      "group_key": "SEP01-B-COOL-GREY-SILVER-RHYTHM",
+      "role": "secondary_detail",
+      "source_context": "social_media_screenshot",
+      "visible_source_account": "Aveda 凡达"
+    }
+  ],
+  "reference_groups": [
+    {
+      "group_key": "SEP01-A-PURPLE-NOCTURNE-GOLD",
+      "working_title_zh": "紫夜鎏金结构参考",
+      "working_title_en": "Purple Nocturne Gilded Structure",
+      "source_marketing_context": {
+        "visible_account": "Xuan Crystal Studio",
+        "visible_phrase_short": "紫夜鎏金",
+        "policy": "Source marketing phrase only. Do not treat 'All things are natural' or similar on-image copy as verified factual evidence."
+      },
+      "primary_asset": "IMG_7920.PNG",
+      "secondary_assets": ["IMG_7921.PNG", "IMG_7922.PNG"],
+      "product_design_observations": [
+        "The visible palette is dominated by glossy black, saturated violet, transparent/clear beads and warm gold-tone metal.",
+        "Large violet round beads with visible fibrous or marbled visual texture punctuate runs of glossy black round beads and transparent round beads containing dark visible inclusions or fractures.",
+        "Metal is used as a visible structural and decorative language rather than only as tiny separators: the design includes a large sculptural gold-tone bead, flat gold-tone spacer elements and a hanging fine chain/bar element.",
+        "A dark rectangular or block-like focal component creates an off-centre geometric interruption in the circular bead rhythm.",
+        "A small cluster of dark textured micro-elements creates a dense local transition zone instead of repeating one uniform spacer treatment around the bracelet.",
+        "The bracelet uses visibly different bead scales and component types, creating an asymmetric composition with multiple local focal points rather than a centered single-charm layout.",
+        "The overall structure is high-contrast and materially rich; the black base visually contains the violet, clear and gold elements so the composition remains legible despite high complexity."
+      ],
+      "alternate_view_observations": {
+        "IMG_7921.PNG": "The hand-held view confirms wearable scale, the hanging chain/bar drape and the visual dominance of the larger violet/clear beads relative to the black base beads.",
+        "IMG_7922.PNG": "The closer view confirms the off-centre black block, dense dark micro-cluster, sculptural gold-tone component and multiple distinct transition treatments within the same bracelet."
+      },
+      "design_inference": "This is a Controlled Maximalism / focal-assembly reference: complexity is concentrated into off-centre zones, while repeated black rounds act as a shadow anchor that prevents the mixed materials and gold hardware from becoming visually incoherent.",
+      "reference_synthesis": "A high-contrast nocturne bracelet architecture in which black rounds provide depth, violet rounds carry saturated color, clear inclusion-bearing rounds add optical variation, and gold-tone sculptural hardware plus a secondary chain line turn the bracelet into an asymmetric focal assembly. It is useful as a Signature / One-of-One structural reference rather than a quiet core-line template. To adapt this language to the project's restrained European direction, preserve the off-centre focal logic and mixed scale but reduce ornate hardware count or gold dominance if the result begins to read as decorative luxury-craft rather than mineral-led design.",
+      "theme_candidates": [
+        {"theme": "Starlight", "confidence": "high", "reason": "Black/violet/clear nocturne palette and high-contrast reflective details."}
+      ],
+      "existing_pattern_candidates": [
+        {"name": "Controlled Maximalism", "confidence": "high"},
+        {"name": "Off-center Focal Composition", "confidence": "high"},
+        {"name": "Focal Assembly", "confidence": "high"},
+        {"name": "Rhythm Interruption", "confidence": "high"},
+        {"name": "Micro-cluster Transition", "confidence": "medium"},
+        {"name": "Secondary Line", "confidence": "high"},
+        {"name": "Shadow Anchor", "confidence": "high"},
+        {"name": "Geometric Vocabulary", "confidence": "medium"}
+      ],
+      "promotional_visual_observations": [
+        "The product is photographed against a nearly black textile backdrop with hard/specular highlights that amplify bead gloss and metal reflectivity.",
+        "Large white serif typography and luxury-oriented source copy are overlaid on the product image, creating a nocturne editorial presentation rather than a neutral e-commerce presentation."
+      ],
+      "reuse_notes": {
+        "strongest_reusable_elements": [
+          "off-centre focal assembly",
+          "black round beads as visual shadow anchor",
+          "mixed-scale rhythm",
+          "hardware as structural punctuation",
+          "secondary hanging line"
+        ],
+        "main_risk": "Color complexity and material complexity are both high; if all ornate metal elements are retained, the design can drift away from Quiet Complexity and toward overt decorative luxury-craft."
+      }
+    },
+    {
+      "group_key": "SEP01-B-COOL-GREY-SILVER-RHYTHM",
+      "working_title_zh": "冷灰银色节奏结构参考",
+      "working_title_en": "Cool Grey Silver Rhythm Structure",
+      "source_marketing_context": {
+        "visible_account": "Aveda 凡达",
+        "visible_phrase_short": "自带清冷感",
+        "policy": "Source aesthetic language only; it is not evidence of mineral species, treatment, grade or provenance."
+      },
+      "primary_asset": "IMG_7927.PNG",
+      "secondary_assets": ["IMG_7925.PNG", "IMG_7926.PNG", "IMG_7928.PNG"],
+      "product_design_observations": [
+        "The bracelet uses a narrow cool palette: muted translucent grey-blue round beads combined with aged or textured silver-tone metal.",
+        "Thin textured metal spacer rings appear between many adjacent round beads, creating a fine repeated cadence without changing the mineral color family.",
+        "Two elongated zones made from dense stacks of irregular or wavy silver-tone discs interrupt the bead run and behave like structural ribs or compressed metal columns.",
+        "A single ornate spherical metal bead creates a smaller secondary focal point away from the two elongated ribbed metal zones.",
+        "The design keeps the mineral bead shape and color relatively consistent while moving most of the complexity into metal density, texture and spacing rhythm.",
+        "The full top-down view reads comparatively quiet from a distance, while close views reveal much richer metal texture and repeated micro-spacer detail.",
+        "The composition is not dependent on a central pendant; hierarchy is created by changing the density and length of metal sections around the bracelet."
+      ],
+      "alternate_view_observations": {
+        "IMG_7925.PNG": "The oblique overview shows the continuous grey-blue round-bead base, one ornate spherical metal focal and both dense ribbed metal sections within the same bracelet.",
+        "IMG_7926.PNG": "The close crop makes the repeated thin spacers and one elongated stacked-disc metal section clearly legible as a deliberate structural rhythm rather than incidental findings.",
+        "IMG_7928.PNG": "The detail view confirms the translucent grey-blue visual character of the rounds, the frequent metal separators and the contrast between a single ornate sphere and the simpler repeated spacer language."
+      },
+      "design_inference": "This is a strong Quiet Complexity and Mineral Architecture reference: the mineral palette remains restrained, while metal rhythm, density and texture create the close-view richness. Hardware functions as architecture rather than merely decoration.",
+      "reference_synthesis": "A cool grey-blue bracelet architecture that achieves complexity primarily through metal rhythm rather than through multiple mineral species. Repeated thin separators establish cadence, two dense ribbed silver-tone zones create large structural interruptions, and one ornate sphere prevents the composition from becoming mechanically repetitive. This is especially useful for Glacier / Starlight development. For a more contemporary European light-luxury adaptation, the ribbed metal language is worth preserving, while the ornate sphere could be simplified to avoid an antique/ethnic reading.",
+      "theme_candidates": [
+        {"theme": "Glacier", "confidence": "high", "reason": "Cool grey-blue translucent body and silver structural language."},
+        {"theme": "Starlight", "confidence": "medium", "reason": "Silver reflectivity and dark-background presentation give a secondary nocturnal/metallic reading."}
+      ],
+      "existing_pattern_candidates": [
+        {"name": "Rhythm Interruption", "confidence": "high"},
+        {"name": "Mineral Architecture", "confidence": "high"},
+        {"name": "Asymmetric Balance", "confidence": "medium"},
+        {"name": "Micro Accent", "confidence": "medium"}
+      ],
+      "promotional_visual_observations": [
+        "The bracelet is shown on black woven textile under directional light, emphasizing cool translucent beads and relief in the silver-tone hardware.",
+        "Minimal white 'chill' typography sits over the product, reinforcing a restrained cool editorial mood rather than a bright commercial catalog look."
+      ],
+      "reuse_notes": {
+        "strongest_reusable_elements": [
+          "hardware as architecture",
+          "repeated micro-spacer cadence",
+          "two elongated structural metal interruptions",
+          "one-material-color restraint with texture-led complexity",
+          "quiet-at-distance rich-at-close behavior"
+        ],
+        "main_risk": "Too many ornate or antique-textured metal elements can shift the design toward vintage/ethnic craft; the modern adaptation should keep the rhythm but simplify ornamental motifs."
+      }
+    }
+  ],
+  "materialization_rules": {
+    "reference_grouping": "Create exactly two new design references for this batch unless an exact existing reference with the same source assets already exists. IMG_7920/7921/7922 belong to one reference; IMG_7925/7926/7927/7928 belong to another reference.",
+    "asset_semantics": "Each asset must receive canonical image_visual_observation coverage. Attach the full group product_design observations and design inference to the primary asset; attach the supplied alternate-view observation to each secondary asset. Promotional visual observations may be attached to the primary asset under promotional_visual scope.",
+    "synthesis": "Create exactly one product_design synthesis assertion per reference using reference_synthesis verbatim, and link it to all new observations for that reference through the existing synthesis-source mechanism.",
+    "themes": "Theme relations are authorized only for the explicit theme_candidates above. Reuse existing canonical theme identities; do not create new themes.",
+    "patterns": "Pattern relations are authorized only when an exact canonical pattern identity with the supplied name already exists. If an exact pattern does not exist, preserve the phrase only inside synthesis/observation text and do not create a new pattern identity in this phase.",
+    "source_context": "Preserve Drive file IDs, filenames, visible source account and screenshot nature as provenance/source metadata where the current schema supports it. Do not invent original social-media URLs that are not present.",
+    "reviewed_transition": "After canonical persistence, idempotency and integrity checks pass, mark this seven-asset batch as ready_for_reviewed_move and report the exact Drive file IDs. Do not claim the Google Drive move occurred unless an actual authorized move action succeeds."
+  },
+  "execution_constraints": [
+    "No schema migration.",
+    "No material/material_variant/component/packaging identity creation from these images.",
+    "No user preference_evidence or preference relation creation from inbox presence.",
+    "No supplier, pricing, sourcing, purchase or outreach work.",
+    "Do not use these screenshot assets as round-bead material catalog thumbnails; they are bracelet design references.",
+    "Do not edit the current workbench UI in this phase; P3L-P3Q remains a separate partially completed UI/asset lane.",
+    "Do not overwrite existing append-only image observations or syntheses; reconcile exact existing rows first and reuse if present.",
+    "Replay must create zero duplicates.",
+    "Preserve canonical DB integrity and unrelated P2/P3 fingerprints."
+  ],
+  "completion_definition": "Two bracelet design references with all seven images correctly grouped, canonical observation coverage, one synthesis per reference, authorized theme/pattern relations only, provenance preserved, no material or preference overclaim, replay idempotent, integrity/FK/tests passing, and a reviewed-move-ready manifest listing the seven Drive IDs."
+}
