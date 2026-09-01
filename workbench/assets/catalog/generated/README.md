@@ -14,15 +14,23 @@
 
 - `crystals-hero-atlas.svg`：23 个水晶/矿物代表图
 - `crystals-comparison-atlas.svg`：23 个水晶的低/中/高、光效、纹理或类型对比
+- `crystals-grade-overrides-v1.svg`：视觉 QA 后对 10 个容易在小卡片里弱化等级差异的材料提供更明显的低/中/高覆盖图
 - `pearls-organic-hero-atlas.svg`：珍珠与深色木材代表图
 - `pearls-organic-comparison-atlas.svg`：珍珠光泽/表皮/颜色差异与木材结构对比
 - `hardware-hero-atlas.svg`：8 个 V1 银色结构件
 - `packaging-hero-atlas.svg`：8 个 V1 包装结构
-- `generated-asset-manifest-v1.json`：atlas 网格、条目顺序与中英文映射
+- `generated-asset-manifest-v1.json`：主 atlas 网格、条目顺序与中英文映射
+- `generated-asset-overrides-v1.json`：10 个水晶等级覆盖图的使用规则
 
 ## 使用方式
 
-工作台可依据 `generated-asset-manifest-v1.json` 的 atlas 网格和条目顺序，通过 SVG sprite、裁切或 background-position 使用。
+工作台先读取 `generated-asset-manifest-v1.json`。若材料存在于 `generated-asset-overrides-v1.json`，等级对比优先采用 `crystals-grade-overrides-v1.svg`；否则使用主 comparison atlas。
+
+## 视觉 QA 后的覆盖对象
+
+覆盖图适用于：白水晶、茶晶、海蓝宝、天河石、紫水晶、黄水晶、紫锂辉、粉水晶、海纹石、舒俱来。
+
+原因不是这些品种缺少证据，而是第一版统一球形显示在目录卡片尺寸下容易让低/中/高差距显得过弱。覆盖图只放大已经核验过的真实差异轴，例如净度、灰雾、颜色纯度、白纹/基质比例和天然纹理负担，不新增虚构特征。
 
 ## 重要边界
 
