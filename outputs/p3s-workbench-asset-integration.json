@@ -1,0 +1,45 @@
+{
+  "phase": "P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA",
+  "status": "completed",
+  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
+  "representation_type": "generated_from_evidence",
+  "runtime_coverage": {
+    "crystal_mineral": "23/23",
+    "pearl_organic": "6/6",
+    "hardware": "8/8",
+    "packaging": "8/8",
+    "total": "45/45",
+    "broken_assets": 0
+  },
+  "comparison": {
+    "override_mapping": "10/10",
+    "override_runtime_usage": "10/10",
+    "override_materials": ["clear_quartz", "smoky_quartz", "aquamarine", "amazonite", "amethyst", "citrine", "kunzite", "rose_quartz", "larimar", "sugilite"],
+    "base_comparison": "13/13 remaining crystals and 6/6 pearl or organic items use the material-specific base comparison atlas; no AA/AAA market-grade language."
+  },
+  "runtime_qa": {
+    "viewport": "1280x960",
+    "source": "actual local Crystal Workbench browser run",
+    "hero_images_visible": "45/45",
+    "generated_label_visible": "45/45",
+    "chinese_primary_english_secondary": "PASS",
+    "cropping_or_overflow": "none observed",
+    "visual_notes": [
+      "Atlas sprites were given explicit card and thumbnail dimensions so focal spheres, optical bands, inclusions, hardware silhouettes and packaging structures remain legible.",
+      "The local server now serves SVG with image/svg+xml, fixing actual browser rendering of the generated atlas layer.",
+      "The existing catalogue layout was preserved; only a missing 珍珠 / 天然材质 navigation entry was exposed so all six manifest items can be inspected."
+    ],
+    "locally_adjusted": ["atlas hero scale", "comparison sprite sizing", "manifest-driven catalog filtering and two generated pearl display rows", "SVG MIME type"],
+    "materials_still_visually_weak": []
+  },
+  "canonical_sqlite": {
+    "sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "unchanged": true,
+    "writes": 0
+  },
+  "visual_evidence": ["outputs/visual/p3s-workbench-assets-1280x960.png", "outputs/visual/p3s-workbench-asset-comparison.png"],
+  "p3r_status": "blocked and preserved; its seven Google Drive image SHA-256 blockers were not touched.",
+  "requires_gpt_decision": false,
+  "true_blockers": []
+}

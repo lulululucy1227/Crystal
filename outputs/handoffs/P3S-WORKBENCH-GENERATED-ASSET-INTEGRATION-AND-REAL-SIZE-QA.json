@@ -1,0 +1,16 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA",
+  "status": "completed",
+  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
+  "summary": "The existing Workbench now consumes the committed generated V1 display layer at real card size without canonical SQLite writes.",
+  "coverage": {"crystal_mineral": "23/23", "pearl_organic": "6/6", "hardware": "8/8", "packaging": "8/8", "total": "45/45", "broken_assets": 0},
+  "comparison": {"override_mapping": "10/10", "override_runtime_usage": "10/10", "override_atlas": "crystals-grade-overrides-v1.svg", "other_crystals_and_pearls": "material-specific comparison atlases; no AA/AAA language"},
+  "qa": {"viewport": "1280x960", "result": "PASS", "visual_evidence": ["outputs/visual/p3s-workbench-assets-1280x960.png", "outputs/visual/p3s-workbench-asset-comparison.png"], "locally_adjusted": ["atlas display sizing", "comparison sprite sizing", "manifest display mapping", "SVG MIME type"], "materials_still_visually_weak": []},
+  "canonical_sqlite": {"sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "unchanged": true, "writes": 0},
+  "validation": {"focused_p3s": "PASS", "npm_test": "PASS (111 passed, 0 failed, 1 skipped)", "npm_validate": "PASS", "git_diff_check": "PASS"},
+  "p3r_status": "blocked and preserved; P3S did not modify its references, unresolved assets, or SHA blocker.",
+  "requires_gpt_decision": false,
+  "true_blockers": [],
+  "commit_sha": "recorded by the final Git checkpoint containing this handoff"
+}

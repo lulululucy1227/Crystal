@@ -1,41 +1,17 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
-  "status": "blocked",
-  "execution_class": "DATABASE_WRITE + READ_ONLY supporting audit",
+  "phase": "P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA",
+  "status": "completed",
+  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
   "branch": "main",
-  "commit_sha": "9484c7072a63dd6f8fac0c7329ceb74d68edcc04",
-  "changed_files": [
-    "data/crystal-design.sqlite",
-    "scripts/import-p3r-inbox-bracelet-reference-ingestion.mjs",
-    "test/p3r-inbox-bracelet-reference-ingestion.test.mjs",
-    "outputs/p3r-inbox-bracelet-reference-ingestion.json",
-    "outputs/p3r-reviewed-move-ready.json"
-  ],
-  "actual_changes": {
-    "references": "Created REF-000045 for the 3-view 紫夜鎏金结构参考 group and REF-000046 for the 4-view 冷灰银色节奏结构参考 group.",
-    "asset_identity": "Created seven unresolved Google Drive assets with exact filenames, file IDs, source context, reference links and authorized display ordering.",
-    "relations": "Created three authorized theme relations and twelve exact-existing pattern relations; no new theme or pattern identity was created.",
-    "semantic_hold": "No image observations or synthesis assertion was written because all seven assets lack a source SHA-256 in the authorized local intake path."
-  },
-  "critical_boundaries_preserved": [
-    "No seven-way reference split",
-    "No user preference evidence",
-    "No material/mineral identity inference",
-    "No material/component/packaging/supplier/offer writes",
-    "No Workbench UI changes",
-    "No invented SHA or pHash"
-  ],
-  "tests_or_checks": {
-    "focused_p3r": "PASS",
-    "replay": "PASS: zero duplicate references/assets/links/theme/pattern relations",
-    "integrity_check": "ok",
-    "foreign_key_check_rows": 0
-  },
-  "risks_or_blockers": [
-    "All seven files lack source bytes or authoritative SHA-256 metadata in the local authorized intake path. This DB requires resolved SHA-256 for image observations and synthesis provenance.",
-    "The canonical SQLite file is intentionally Git-ignored; the local write is identified by its SHA and byte-for-byte backup path in the P3R report."
-  ],
+  "summary": "Manifest-driven generated V1 assets are now the Workbench display layer, verified in the actual local UI at 1280x960.",
+  "asset_coverage": {"crystal_mineral": "23/23", "pearl_organic": "6/6", "hardware": "8/8", "packaging": "8/8", "total": "45/45", "broken_assets": 0},
+  "comparison": {"override_mapping": "10/10", "override_runtime_usage": "10/10", "override_source": "crystals-grade-overrides-v1.svg", "representation": "visual reference only; not supplier AA/AAA or market grades"},
+  "runtime_qa": {"viewport": "1280x960", "status": "PASS", "visual_evidence": ["outputs/visual/p3s-workbench-assets-1280x960.png", "outputs/visual/p3s-workbench-asset-comparison.png"], "locally_adjusted": ["atlas display sizing", "comparison sprite sizing", "manifest mapping", "SVG MIME type"], "materials_still_visually_weak": []},
+  "canonical_sqlite": {"sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "unchanged": true, "writes": 0},
+  "tests_or_checks": {"focused_p3s": "PASS", "npm_test": "PASS (111 passed, 0 failed, 1 skipped)", "npm_validate": "PASS", "git_diff_check": "PASS"},
+  "p3r_status": "P3R remains blocked and preserved. Its seven Google Drive image SHA-256 blockers were not touched.",
   "requires_gpt_decision": false,
-  "next_minimum_action": "GPT provides an authorized seven-file intake manifest with exact SHA-256 values, after which Codex can replay the already-authored semantics without new visual analysis."
+  "true_blockers": [],
+  "next_minimum_action": "Supervisor may review the committed P3S runtime screenshots and handoff; no P3R SHA recovery was attempted."
 }
