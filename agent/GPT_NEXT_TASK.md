@@ -1,337 +1,293 @@
 # GPT NEXT TASK
 
 Protocol: AGENT-HANDOFF-V1
-Phase: P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA
+Phase: P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR
 Status: authorized
-Model: Luna preferred; Sol/High acceptable if Luna is unavailable
+Model: Luna preferred; Sol/High acceptable if unavailable
 Strength: Medium
 Execution class: SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite
 
-## 主管结论
+## 主管纠偏结论
 
-Crystal Workbench 当前 UI/功能主线视为已完成。本轮**不是重新设计工作台**，而是把 GPT 已完成并提交到 GitHub 的 V1 标准化素材真正接入现有工作台，并在实际卡片尺寸与 1280×960 视口下完成视觉 QA。
+P3S 先前的 `COMPLETED` 验收结论被用户真实运行截图推翻，必须重新打开验收。
 
-GPT 素材库当前已经覆盖 45/45 个 V1 对象：
+用户在实际 `http://127.0.0.1:4173` 工作台中看到：
 
-- 水晶 / 矿物：23
-- 珍珠 / 天然材质：6
-- 配饰 / 结构件：8
-- 包装：8
+- 水晶卡片主图区域为空白；
+- low/mid/high / effect comparison 小格为空白；
+- 右侧配饰精选没有图像，只剩文字；
+- 右侧包装精选没有图像，只剩文字；
+- 页面仍显示“生成参考图”标签，说明映射/DOM 骨架存在，但实际图像没有渲染出来。
 
-素材性质统一为：
+此前提交的 `outputs/visual/p3s-*.png` 不能再作为真实运行验收依据；用户指出那是渲染/模拟结果，不是其实际工作台截图。
 
-`representation_type = generated_from_evidence`
+因此：
 
-这些素材不是实拍图，不得标记为 `source_photo` 或暗示为真实商品照片。
+`P3S engineering mapping exists` ≠ `P3S runtime image rendering works`。
 
-## 必须先读取的权威文件
+本轮不是 P3T 视觉优化，也不是重新设计 UI。唯一目标是修复并证明真实浏览器中的素材渲染。
 
-按顺序读取：
+## 当前基线
 
-1. `workbench/assets/catalog/generated/README.md`
-2. `workbench/assets/catalog/generated/generated-asset-manifest-v1.json`
-3. `workbench/assets/catalog/generated/generated-asset-overrides-v1.json`
-4. `workbench/assets/catalog/generated/crystals-hero-atlas.svg`
-5. `workbench/assets/catalog/generated/crystals-comparison-atlas.svg`
-6. `workbench/assets/catalog/generated/crystals-grade-overrides-v1.svg`
-7. `workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg`
-8. `workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg`
-9. `workbench/assets/catalog/generated/hardware-hero-atlas.svg`
-10. `workbench/assets/catalog/generated/packaging-hero-atlas.svg`
-11. `docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md`
-12. `docs/WORKBENCH_VISUAL_GRADE_GUIDE.md`
-13. `data/workbench-source-coverage-audit-v1.json`
-14. `data/workbench-asset-production-queue.json`
+- 当前已知 P3S commit：`f3cdc57a85258e8124253171367b8344aa7f5006`
+- canonical DB SHA 基线：`8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6`
+- P3R 继续保持 blocked and preserved。
+- `workbench/exports/` 属于用户本地导出，不得删除、纳入、清理或修改。
 
-如实现需要核对来源，可只读：
+## 权威素材文件
 
-- `data/workbench-asset-manifest.json`
-- `workbench/assets/catalog/_sources/**`
+继续使用现有仓库素材，不联网找图，不重新生产素材：
 
-## 与 P3R 的边界
+- `workbench/assets/catalog/generated/generated-asset-manifest-v1.json`
+- `workbench/assets/catalog/generated/generated-asset-overrides-v1.json`
+- `workbench/assets/catalog/generated/crystals-hero-atlas.svg`
+- `workbench/assets/catalog/generated/crystals-comparison-atlas.svg`
+- `workbench/assets/catalog/generated/crystals-grade-overrides-v1.svg`
+- `workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg`
+- `workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg`
+- `workbench/assets/catalog/generated/hardware-hero-atlas.svg`
+- `workbench/assets/catalog/generated/packaging-hero-atlas.svg`
 
-上一阶段 `P3R-INBOX-BRACELET-REFERENCE-INGESTION` 当前为 blocked：7 张 Google Drive 截图缺少权威 SHA-256，因此 canonical image observations / synthesis 尚未写入。
+## 执行原则
 
-本轮 P3S 与 P3R 独立：
+1. 不重新设计工作台布局。
+2. 不写 canonical SQLite。
+3. 不处理 P3R SHA blocker。
+4. 不联网重新找图片。
+5. 不接受“manifest 存在”“DOM 有 span”“CSS 有 background-image”作为通过证明。
+6. 必须以用户真实访问路径 `http://127.0.0.1:4173` 的浏览器渲染为最终事实。
+7. 单项 blocker 记录后继续其他可安全检查；只有所有剩余项都被真正 blocker 阻塞时才停。
 
-- 不修改 P3R 已创建的 2 个 reference / 7 个 unresolved asset；
-- 不尝试解决 P3R 的 Drive SHA blocker；
-- 不写 canonical SQLite；
-- 不删除、重置或回滚 P3R 文件；
-- P3S handoff 中必须注明 `P3R remains blocked and preserved`。
+## P3S-R1-A — 先定位为什么真实浏览器为空白
 
-## 总目标
+在修改代码前完成最小诊断，并把结论写入 `outputs/p3s-r1-runtime-asset-repair.json`。
 
-把 GPT 已提交的标准化素材作为 Workbench 的正式 Display Layer 接入现有界面，使用户在真实工作台尺寸下可以：
+必须检查：
 
-1. 一眼识别材料品种；
-2. 在适用材料中看出 low / mid / high 视觉品质差异；
-3. 对光效型材料看出 effect strength；
-4. 对纹理/幽灵/发晶等材料看出 pattern 差异；
-5. 对黑曜石等材料优先看 type，而不是伪造统一低中高；
-6. 在配饰和包装精选区域看到对应的标准化结构素材；
-7. 不破坏现有工作台布局、交互与数据库边界。
+### 1. 静态资源 HTTP 可达性
 
-## 总原则
+实际启动 Workbench server 后，对以下真实 URL 做 GET：
 
-1. **不要重新设计工作台布局。** 只做素材读取、映射、显示、必要的轻量样式适配与视觉 QA 修正。
-2. **不要联网找图。** GPT 已完成找图与素材生产；Codex 只消费仓库已有素材。
-3. **不要写 canonical SQLite。** 本轮必须记录 DB SHA before/after 并证明完全不变。
-4. 中文名为主，英文名为小字对照；不得把英文变成主视觉。
-5. 不新增 healing / energy / chakra / ritual 等宣传语。
-6. 不把 `low / mid / high` 描述成统一市场价格等级、供应商 AA/AAA 或鉴定等级。
-7. 不把 `generated_from_evidence` 素材描述成实拍、真品照片或商品照片。
-8. 单个素材显示 blocker 不得阻塞其他 44 个对象；记录后继续。
-9. 避免建立复杂的新素材框架。优先以现有前端最小改动消费 manifest + atlas。
-10. 如果已有 UI 已有图片槽位，直接复用；不要为了素材再创造一套平行 UI。
+- `/assets/catalog/generated/crystals-hero-atlas.svg`
+- `/assets/catalog/generated/crystals-comparison-atlas.svg`
+- `/assets/catalog/generated/crystals-grade-overrides-v1.svg`
+- `/assets/catalog/generated/pearls-organic-hero-atlas.svg`
+- `/assets/catalog/generated/hardware-hero-atlas.svg`
+- `/assets/catalog/generated/packaging-hero-atlas.svg`
+- `/assets/catalog/generated/generated-asset-manifest-v1.json`
 
-## P3S-A — Preflight / current integration audit
+逐项记录：
+- HTTP status
+- content-type
+- body length > 0
 
-- 安全同步 `main`；禁止 reset / clean / discard 用户工作。
-- 记录 worktree 状态。
-- 读取最新 `outputs/GPT_HANDOFF.json`，确认 P3R blocker 保留。
-- 记录 canonical SQLite SHA before。
-- 审查当前 Workbench 如何渲染：
-  - 水晶目录卡片；
-  - 详情/品质对比区域（如已有）；
-  - 配饰精选；
-  - 包装精选；
-  - 选品清单/设计板中已有材料缩略图（如已有）。
-- 输出简洁 gap audit 到：
-  - `outputs/p3s-workbench-asset-integration.json`
+所有 SVG 必须返回 200 + `image/svg+xml`。
 
-不要因为当前实现方式不是你最喜欢的就重构。只解决实际素材接入问题。
+### 2. SVG 本身能否被 Chrome 直接渲染
 
-## P3S-B — Manifest-driven asset integration
+至少直接打开：
 
-工作台必须以：
+`http://127.0.0.1:4173/assets/catalog/generated/crystals-hero-atlas.svg`
 
-`workbench/assets/catalog/generated/generated-asset-manifest-v1.json`
+确认浏览器中确实能看到 atlas 图形，而不是空白/解析错误。
 
-作为 V1 Display Layer 的主映射。
+如 SVG 自身不能显示，先修 SVG/服务层；如 SVG 单独可显示但 Workbench 中空白，继续检查 CSS/DOM。
 
-要求：
+### 3. 实际 DOM + computed style
 
-- 23 个水晶/矿物全部映射到 `crystals-hero-atlas.svg`；
-- 6 个珍珠/天然材质全部映射到 `pearls-organic-hero-atlas.svg`；
-- 8 个配饰全部映射到 `hardware-hero-atlas.svg`；
-- 8 个包装全部映射到 `packaging-hero-atlas.svg`；
-- 总 Display Layer 覆盖必须 = 45/45；
-- atlas crop / clipping / SVG sprite / CSS background-position 均可，选择现有前端最简单稳定的方法；
-- 不要把 atlas 拆成几十个手工复制的重复文件，除非当前框架确实无法可靠使用 atlas；
-- 若数据库里存在 canonical material id/name 与 atlas slug 的差异，在前端建立最小显式 mapping；不得为了显示图片去改数据库。
+在真实 Workbench 页面检查至少一个水晶 hero、一个 grade slot、一个配饰、一个包装 `.atlas-sprite`：
 
-## P3S-C — Grade / effect / type comparison integration
+记录：
+- 元素存在；
+- width / height > 0；
+- computed `background-image` 不是 `none`；
+- computed `background-size`；
+- computed `background-position`；
+- 实际 background image URL；
+- 对该 URL 发起的 Network request 是否 200；
+- Console 是否有 SVG/CSS/resource error。
 
-如当前详情页、材料卡展开区或既有比较区域能够显示对比图，则接入 comparison layer。
+如果 computed background-image 为 none，查 CSS custom property/inline style 生成问题。
+如果 background-image 有 URL 但请求 404，修路径。
+如果 URL 200 且 SVG 可单独显示，但 sprite 空白，查 background-size / background-position / atlas cell geometry。
 
-优先规则：
+### 4. 不允许用脚本“合成截图”代替浏览器结果
 
-### 1. 10 个视觉 QA override 材料
+任何视觉验收截图必须来自实际 Chrome/Chromium 打开的 Workbench 页面。
+不得用 Pillow、SVG renderer、mock HTML、离线拼图或人工合成截图作为 runtime QA 证据。
 
-以下材料的 low/mid/high 对比**必须优先读取**：
+## P3S-R1-B — 修复策略：优先简单可靠
 
-`workbench/assets/catalog/generated/crystals-grade-overrides-v1.svg`
+根据诊断结果采用最小修复。
 
-对象：
+允许：
+- 修正 URL/path；
+- 修正 MIME；
+- 修正 CSS custom property；
+- 修正 background-size/background-position；
+- 修正 sprite wrapper 尺寸；
+- 修正 atlas grid 计算；
+- 如 CSS background sprite 在本地浏览器环境确实不稳定，可改成更可靠的裁切方案。
 
-- 白水晶 / Clear Quartz
-- 茶晶 / Smoky Quartz
-- 海蓝宝 / Aquamarine
-- 天河石 / Amazonite
-- 紫水晶 / Amethyst
-- 黄水晶 / Citrine
-- 紫锂辉 / Kunzite
-- 粉水晶 / Rose Quartz
-- 海纹石 / Larimar
-- 舒俱来 / Sugilite
+如果现有 `background-image + CSS custom property` 方案是根因，优先改成浏览器更容易验证的直接 DOM 图像方案，例如：
 
-映射规则以：
+- wrapper `overflow:hidden` + `<img src="...atlas.svg">` 绝对定位/transform 裁切；或
+- 其他无需复制 45 份素材、仍保持 manifest 驱动的简单方案。
 
-`generated-asset-overrides-v1.json`
+不要为了修图引入复杂框架。
 
-为准。
+## P3S-R1-C — 真正的运行态验收
 
-### 2. 其他水晶
+修复后必须在用户实际路径等价的本地浏览器中确认：
 
-使用：
+### 水晶页面
 
-`crystals-comparison-atlas.svg`
+至少首屏 8 个对象必须肉眼看到真实图形：
+- 白水晶
+- 茶晶
+- 海蓝宝
+- 拉长石
+- 彩虹月光石
+- 天河石
+- 青金石
+- 绿幽灵
 
-但必须尊重材料自己的比较语义：
+不是空白框，不是只显示“生成参考图”。
 
-- 拉长石 / 彩虹月光石 / 虎眼石：`optical effect strength`
-- 绿幽灵 / 白幽灵 / 血石 /综合色发晶：`pattern / structure quality`
-- 黑曜石：`type first`
-- 金发晶 / 黑发晶：发丝密度、秩序、底体净度等，而不是只加深颜色
+### 珍珠页面
 
-### 3. 珍珠
+至少确认：
+- 白色淡水珍珠
+- Akoya
+- 大溪地
+- 白色南洋珠
+- 金色南洋珠
+- 深色木材结构隔片
 
-使用：
+hero 实际可见。
 
-`pearls-organic-comparison-atlas.svg`
+### 配饰/包装右栏
 
-比较重点：
+8/8 配饰与 8/8 包装必须实际有图形缩略图，不得只剩名称。
 
-- 光泽
-- 表皮
-- 圆度/形态
-- 颜色/伴色
-- 匹配度（适用时）
+### comparison
 
-不得显示“AAA”等供应商等级。
+至少验证：
+- 白水晶 override
+- 茶晶 override
+- 海蓝宝 override
+- 拉长石 base effect
+- 彩虹月光石 base effect
+- 虎眼石 base effect
 
-如果当前 Workbench 根本没有合理的对比展示位置，不要为了本轮重新设计复杂详情页。可以只在既有详情/展开位置增加一个小型“视觉品质参考 / Visual reference”区；如果连这个都会显著破坏已完成布局，则先完成 hero integration，并把 comparison 标记为 `available_but_not_exposed_due_to_existing_ui_boundary`，不得因此阻塞其他任务。
+三个 comparison 小格实际可见。
 
-## P3S-D — Workbench card-size visual QA
+最终再完成全量覆盖统计：
+- 23/23 crystal hero rendered
+- 6/6 pearl/organic hero rendered
+- 8/8 hardware hero rendered
+- 8/8 packaging hero rendered
+- 10/10 override runtime rendered
+- broken asset = 0
 
-这是本轮最关键的验收，不以“文件能加载”作为通过标准。
+“有映射但实际空白”必须算 broken，不得算 coverage。
 
-必须在真实工作台尺寸检查：
+## P3S-R1-D — 真实浏览器截图
 
-- 1280×960 视口；
-- 当前实际水晶目录卡片尺寸；
-- 当前右侧配饰/包装缩略图尺寸；
-- 如存在详情/展开状态，也检查 comparison 图的真实显示尺寸。
+必须生成新的、真实浏览器截图：
 
-检查：
+- `outputs/visual/p3s-r1-workbench-crystals-real-browser.png`
+- `outputs/visual/p3s-r1-workbench-pearls-real-browser.png`
 
-1. 品种是否仍然一眼可识别；
-2. 图片主体是否太小、太大、被裁掉或留白失衡；
-3. 透明背景是否和当前 classic Windows UI 背景冲突；
-4. 英文名是否抢主视觉；
-5. 10 个 override 材料在真实尺寸下 low/mid/high 是否确实看得出差异；
-6. 拉长石/月光石/虎眼石的光效是否仍可见；
-7. 黑发晶/金发晶的发丝是否在小尺寸下消失；
-8. 绿幽灵/白幽灵内部结构是否仍可辨认；
-9. 珍珠不能变成无层次塑料球；
-10. 配饰和包装必须像“可用结构素材”，不能像占位符或纯文字图标。
+如 comparison 能在现有页面可见，再生成：
 
-如发现单个材料在实际卡片尺寸下识别失败，只允许做**局部显示参数修正**（crop/scale/object-position/局部 override mapping 等），不要重新绘制整套 UI。
+- `outputs/visual/p3s-r1-workbench-comparison-real-browser.png`
 
-## P3S-E — Required visual evidence
+截图必须满足：
+- 浏览器地址栏或可确认真实运行环境的证据存在；
+- 来源是实际 Workbench 页面；
+- 不能是离线渲染图或合成图。
 
-创建：
+## P3S-R1-E — 防止再次“测试绿但页面空白”
 
-- `outputs/visual/p3s-workbench-assets-1280x960.png`
+现有 focused test 只证明 manifest/CSS 字符串存在，不足。
 
-如 comparison 有可见详情状态，再创建：
+新增最小 runtime smoke test，至少验证：
 
-- `outputs/visual/p3s-workbench-asset-comparison.png`
+1. 启动真实 Workbench server；
+2. GET 所有 atlas 返回 200；
+3. SVG content-type 正确；
+4. 使用真实浏览器环境（如现有 Playwright/Puppeteer/Chrome CDP，优先复用已有能力）打开 Workbench；
+5. 至少检查一个 hero sprite 和一个 rail sprite 的 computed background-image / bounding box；
+6. 如果测试框架能截图/像素校验，加入非空渲染验证；如果不能，至少读取 browser console/network 并确保无资源错误。
 
-验收报告中必须记录：
+不要新增重量级依赖，除非仓库已有浏览器测试能力无法完成最基本验收。
 
-- 45/45 hero 是否可见；
-- 10/10 override 是否正确调用；
-- 哪些材料在真实卡片尺寸被调整过；
-- 是否存在仍然识别不足的材料；
-- 是否有 broken asset / wrong crop / overflow。
+## P3S-R1-F — Regression / boundaries
 
-## P3S-F — Tests / validation
+运行：
 
-至少新增或更新 focused tests，覆盖：
-
-- generated asset manifest 可读取；
-- 23 crystal mapping 完整；
-- 6 pearl/organic mapping 完整；
-- 8 hardware mapping 完整；
-- 8 packaging mapping 完整；
-- total = 45；
-- 10 override mapping 完整且优先于主 comparison atlas；
-- 所有 atlas 文件存在；
-- 不存在 broken path；
-- 不存在把 `generated_from_evidence` 标成 `source_photo` 的 UI 文案；
-- 不存在 AA/AAA 等伪统一等级文案；
-- canonical SQLite SHA before == after。
-
-然后运行：
-
-- focused P3S tests
-- full `npm test`
+- focused P3S-R1 runtime test
+- 原 P3S focused test
+- `npm test`
 - `npm run validate`
 - `git diff --check`
 
-如存在与本轮无关的历史失败，必须区分 pre-existing failure 与本轮 regression；不要为了让测试绿而扩大修改边界。
+Canonical DB：
 
-## P3S-G — Outputs / handoff
+- SHA before = `8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6`
+- SHA after 必须相同
+- writes = 0
+
+P3R：
+- remains blocked and preserved
+
+User exports：
+- preserved untouched
+
+## P3S-R1-G — 收尾与报告
 
 创建：
 
-- `outputs/p3s-workbench-asset-integration.json`
-- `outputs/handoffs/P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA.json`
+- `outputs/p3s-r1-runtime-asset-repair.json`
+- `outputs/handoffs/P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR.json`
 
 更新：
 
 - `outputs/GPT_HANDOFF.json`
 
-Handoff 只保留高信号事实：
+最终 commit + push `main`，确认 HEAD == origin/main。
 
-- status: completed / partial / blocked
-- 45/45 asset coverage
-- crystal / pearl / hardware / packaging 各自覆盖数
-- 10 override 调用情况
-- 实际修改过的显示参数/映射
-- 1280×960 QA 结果
-- broken assets = ?
-- materials still visually weak = ?
-- focused tests / npm test / validate / diff check
-- canonical DB SHA before/after + unchanged proof
-- `P3R remains blocked and preserved`
-- commit SHA
-- HEAD == origin/main
-- worktree clean
-- true blockers only
-- requires_gpt_decision
+最终报告必须明确：
 
-## 授权写入范围
+1. root cause；
+2. 用户真实截图为何与旧 P3S 截图不一致；
+3. 实际采用的修复；
+4. 23/23 crystal hero rendered；
+5. 6/6 pearl/organic hero rendered；
+6. 8/8 hardware rendered；
+7. 8/8 packaging rendered；
+8. 10/10 override rendered；
+9. broken assets；
+10. 新的真实浏览器截图路径；
+11. runtime smoke test；
+12. npm test / validate / diff check；
+13. canonical DB SHA unchanged；
+14. P3R blocked preserved；
+15. commit SHA；
+16. HEAD == origin/main；
+17. true blockers；
+18. requires_gpt_decision。
 
-允许：
+## 验收标准
 
-- `workbench/**`（仅本轮素材接入所需前端映射/显示改动）
-- 与本轮直接相关的 `test/**`
-- `outputs/p3s-workbench-asset-integration.json`
-- `outputs/visual/p3s-*.png`
-- `outputs/handoffs/P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA.json`
-- `outputs/GPT_HANDOFF.json`
+本轮只有在**用户实际浏览器页面真的显示图片**时才允许 `COMPLETED`。
 
-只读：
+任何以下情况都不得标记 completed：
 
-- `data/crystal-design.sqlite`
-- `data/workbench-asset-manifest.json`
-- `data/workbench-source-coverage-audit-v1.json`
-- `workbench/assets/catalog/_sources/**`
-- `docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md`
-- `docs/WORKBENCH_VISUAL_GRADE_GUIDE.md`
-
-禁止：
-
-- canonical SQLite 写入
-- schema migration
-- P3R reference/asset 数据修改
-- 网络找图/下载/抓取
-- supplier / price / purchase / outreach
-- 大规模 UI 重设计
-- Bridge 权限扩大
-- danger-full-access
-- 为适应图片而删除历史数据
-
-## Git
-
-连续完成实现、QA、测试、报告后：
-
-- coherent commit
-- push `main`
-- 确认 local HEAD == origin/main
-- 确认 worktree clean
-
-## Stop conditions
-
-不要在“读到素材”或“图片能显示”后停下。
-
-只在以下情况停止：
-
-1. P3S 完成真实卡片尺寸接入 + 视觉 QA + 验证；或
-2. 某个单项 blocker 已记录，所有其他安全子任务均已完成；或
-3. 出现无法解释的数据库/仓库完整性异常。
-
-本轮默认不需要用户业务决策。
+- 只证明 SVG 文件存在；
+- 只证明 manifest 45/45；
+- 只证明 DOM 有 `.atlas-sprite`；
+- 只证明 CSS 中有 `background-image`；
+- 只生成离线渲染截图；
+- 实际 `127.0.0.1:4173` 页面仍为空白图片槽。
