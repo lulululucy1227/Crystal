@@ -1,0 +1,27 @@
+{
+  "pack_id": "source-pack-20260901-part8",
+  "created_at": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "Resolve South Sea pearl color-reference gap with an official CC0 Smithsonian source.",
+  "sources": [
+    {
+      "asset_scope": "golden_south_sea_pearl_reference",
+      "zh_name": "金色南洋珠",
+      "en_name": "Golden South Sea Pearl",
+      "source_url": "https://naturalhistory.si.edu/object/nmnhmineralsciences_11149727",
+      "source_site": "Smithsonian National Museum of Natural History",
+      "title": "South Sea Glow Necklace (Catalog Number: G11441)",
+      "license": "CC0 / Public Domain",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "license_evidence": "Smithsonian page explicitly states: media is in the public domain and may be copied, modified and distributed without contacting the Smithsonian.",
+      "use": "gold-to-white South Sea/Akoya color transition evidence; especially useful for the natural golden South Sea color family",
+      "notes": "The source is a finished jewelry piece, not an isolated pearl. Use as color/luster evidence, then create a standardized isolated display asset; do not copy the jewelry design."
+    }
+  ],
+  "decision": {
+    "south_sea_source_gap": "resolved_for_standardized_display_asset",
+    "remaining_work": "Create white and golden South Sea standardized representative/grade assets using pearl luster, surface, roundness and body-color axes."
+  }
+}
