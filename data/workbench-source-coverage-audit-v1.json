@@ -1,12 +1,12 @@
 {
-  "audit_version": "1.0",
+  "audit_version": "1.1",
   "date": "2026-09-01",
   "owner": "GPT Crystal Supervisor",
   "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
   "registered_total": 45,
   "summary": {
     "crystals_minerals": {"registered": 23, "evidence_source_covered": 23, "species_specific_gap": 0},
-    "pearls_organic": {"registered": 6, "evidence_source_covered": 5, "safe_generated_placeholder": 1, "species_specific_gap": 1},
+    "pearls_organic": {"registered": 6, "evidence_source_covered": 6, "species_specific_gap": 0},
     "hardware": {"registered": 8, "structural_or_material_evidence_covered": 8, "standardized_generated_assets_allowed": true},
     "packaging": {"registered": 8, "structural_evidence_covered": 8, "project_original_display_assets_preferred": true}
   },
@@ -41,7 +41,7 @@
     {"zh_name":"大溪地珍珠","en_name":"Tahitian Pearl","status":"source_verified","display_mode":"low_mid_high_bodycolor_overtone"},
     {"zh_name":"白色南洋珠","en_name":"White South Sea Pearl","status":"source_verified","display_mode":"low_mid_high"},
     {"zh_name":"金色南洋珠","en_name":"Golden South Sea Pearl","status":"source_verified_smithsonian_cc0_color_evidence","display_mode":"low_mid_high"},
-    {"zh_name":"深色木材/沉香感结构隔片","en_name":"Dark Wood / Agarwood-like Structural Spacer","status":"generic_wood_structure_source_only_species_specific_gap","display_mode":"project_original_generated_dark_wood","label_boundary":"Do not certify or label the source image itself as agarwood."}
+    {"zh_name":"深色木材/沉香感结构隔片","en_name":"Dark Wood / Agarwood-like Structural Spacer","status":"species_specific_agarwood_evidence_verified","display_mode":"project_original_modern_spacer_generated_from_evidence","source_pack":"workbench/assets/catalog/_sources/source-pack-20260901-part10.json","label_boundary":"Historical agarwood rosary verifies material/bead evidence; final Crystal asset must not copy historical gold inlay or religious composition."}
   ],
   "hardware": [
     {"zh_name":"银色微型隔珠","en_name":"Silver Micro Spacer","status":"shape_evidence_ready_generated_display_allowed"},
@@ -63,13 +63,7 @@
     {"zh_name":"书型磁吸盒","en_name":"Book-style Magnetic Box","status":"structure_can_be_standardized_generated_project_original_preferred"},
     {"zh_name":"One-of-One 证书卡","en_name":"One-of-One Certificate Card","status":"project_original_asset_preferred"}
   ],
-  "remaining_external_source_gap": [
-    {
-      "item":"深色木材/沉香感结构隔片",
-      "issue":"Permissive generic wood-bead imagery exists, but no sufficiently reliable permissive species-specific agarwood bead source has been verified.",
-      "safe_resolution":"Use generated/project-original dark wood structural-spacer display asset and keep label generic unless species evidence is later added."
-    }
-  ],
+  "remaining_external_source_gap": [],
   "next_phase": "asset_production_not_source_discovery",
   "next_phase_tasks": [
     "Generate/standardize transparent-background hero and single assets",
