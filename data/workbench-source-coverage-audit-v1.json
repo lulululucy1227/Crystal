@@ -1,0 +1,82 @@
+{
+  "audit_version": "1.0",
+  "date": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
+  "registered_total": 45,
+  "summary": {
+    "crystals_minerals": {"registered": 23, "evidence_source_covered": 23, "species_specific_gap": 0},
+    "pearls_organic": {"registered": 6, "evidence_source_covered": 5, "safe_generated_placeholder": 1, "species_specific_gap": 1},
+    "hardware": {"registered": 8, "structural_or_material_evidence_covered": 8, "standardized_generated_assets_allowed": true},
+    "packaging": {"registered": 8, "structural_evidence_covered": 8, "project_original_display_assets_preferred": true}
+  },
+  "crystals_minerals": [
+    {"zh_name":"白水晶","en_name":"Clear Quartz","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"茶晶","en_name":"Smoky Quartz","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"海蓝宝","en_name":"Aquamarine","status":"source_verified","display_mode":"low_mid_high_plus_collector_focal"},
+    {"zh_name":"拉长石","en_name":"Labradorite","status":"source_verified","display_mode":"optical_effect_strength"},
+    {"zh_name":"彩虹月光石","en_name":"Rainbow Moonstone","status":"source_verified","display_mode":"optical_effect_strength"},
+    {"zh_name":"天河石","en_name":"Amazonite","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"青金石","en_name":"Lapis Lazuli","status":"source_verified_real_bead","display_mode":"low_mid_high"},
+    {"zh_name":"绿幽灵","en_name":"Green Phantom Quartz","status":"source_verified_evidence_ready_for_standardization","display_mode":"pattern_quality"},
+    {"zh_name":"黑曜石","en_name":"Obsidian","status":"source_verified","display_mode":"type_first"},
+    {"zh_name":"紫水晶","en_name":"Amethyst","status":"source_verified_real_bead","display_mode":"low_mid_high"},
+    {"zh_name":"黄水晶","en_name":"Citrine","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"虎眼石","en_name":"Tiger's Eye","status":"source_verified_real_bracelet","display_mode":"chatoyancy_effect_strength"},
+    {"zh_name":"蓝纹玛瑙","en_name":"Blue Lace Agate","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"紫锂辉/锂辉石","en_name":"Kunzite","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"血石","en_name":"Bloodstone","status":"source_verified","display_mode":"pattern_quality"},
+    {"zh_name":"白幽灵","en_name":"White Phantom Quartz","status":"source_verified_evidence_ready_for_standardization","display_mode":"pattern_quality"},
+    {"zh_name":"粉水晶","en_name":"Rose Quartz","status":"source_verified_real_jewellery","display_mode":"low_mid_high_plus_optional_star_effect"},
+    {"zh_name":"彩虹黑曜石","en_name":"Rainbow Obsidian","status":"source_verified","display_mode":"effect_strength_type"},
+    {"zh_name":"海纹石","en_name":"Larimar","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"金发晶","en_name":"Gold Rutilated Quartz","status":"source_verified_characteristic_evidence","display_mode":"low_mid_high"},
+    {"zh_name":"黑发晶","en_name":"Black Rutilated Quartz","status":"source_verified_characteristic_evidence","display_mode":"low_mid_high"},
+    {"zh_name":"综合色发晶","en_name":"Mixed Rutilated Quartz","status":"source_verified_reference_set","display_mode":"type_pattern_quality"},
+    {"zh_name":"舒俱来","en_name":"Sugilite","status":"source_verified","display_mode":"representative_plus_quality"}
+  ],
+  "pearls_organic": [
+    {"zh_name":"白色淡水珍珠","en_name":"White Freshwater Pearl","status":"source_verified","display_mode":"luster_surface_roundness_or_baroque_form"},
+    {"zh_name":"Akoya 珍珠","en_name":"Akoya Pearl","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"大溪地珍珠","en_name":"Tahitian Pearl","status":"source_verified","display_mode":"low_mid_high_bodycolor_overtone"},
+    {"zh_name":"白色南洋珠","en_name":"White South Sea Pearl","status":"source_verified","display_mode":"low_mid_high"},
+    {"zh_name":"金色南洋珠","en_name":"Golden South Sea Pearl","status":"source_verified_smithsonian_cc0_color_evidence","display_mode":"low_mid_high"},
+    {"zh_name":"深色木材/沉香感结构隔片","en_name":"Dark Wood / Agarwood-like Structural Spacer","status":"generic_wood_structure_source_only_species_specific_gap","display_mode":"project_original_generated_dark_wood","label_boundary":"Do not certify or label the source image itself as agarwood."}
+  ],
+  "hardware": [
+    {"zh_name":"银色微型隔珠","en_name":"Silver Micro Spacer","status":"shape_evidence_ready_generated_display_allowed"},
+    {"zh_name":"极简银色弯管","en_name":"Clean Curved Silver Tube","status":"generic_geometry_generated_display_preferred"},
+    {"zh_name":"银色薄框/包边","en_name":"Thin Silver Frame / Bezel","status":"generic_geometry_generated_display_preferred"},
+    {"zh_name":"银色半帽/边帽","en_name":"Silver Half-cap / Edge-cap","status":"shape_evidence_ready_generated_display_allowed"},
+    {"zh_name":"几何连接件","en_name":"Geometric Connector","status":"generic_geometry_generated_display_preferred"},
+    {"zh_name":"银色过渡球","en_name":"Silver Counterweight / Transition Sphere","status":"generic_geometry_generated_display_preferred"},
+    {"zh_name":"细银链 + 简约扣","en_name":"Fine Silver Chain + Minimal Clasp","status":"sterling_material_reference_verified"},
+    {"zh_name":"氧化银微配件","en_name":"Oxidized Silver Micro Accent","status":"generated_display_from_silver_shape_reference_preferred"}
+  ],
+  "packaging": [
+    {"zh_name":"哑光白/冷白硬盒","en_name":"Matte White Rigid Presentation Box","status":"structure_evidence_ready_project_original_display_preferred"},
+    {"zh_name":"冷灰抽屉盒","en_name":"Cool-grey Rigid Drawer Box","status":"structure_family_covered_project_original_display_preferred"},
+    {"zh_name":"灰/珍珠白保护袋","en_name":"Soft Grey / Pearl-white Protective Pouch","status":"drawstring_structure_evidence_verified"},
+    {"zh_name":"材质说明与护理卡","en_name":"Material Disclosure + Care Card","status":"project_original_asset_preferred"},
+    {"zh_name":"品牌运输包装","en_name":"Protective Branded Shipping Mailer","status":"project_original_asset_preferred"},
+    {"zh_name":"棉麻信封/抽绳袋","en_name":"Cotton-linen Pouch","status":"fabric_pouch_structure_evidence_verified"},
+    {"zh_name":"书型磁吸盒","en_name":"Book-style Magnetic Box","status":"structure_can_be_standardized_generated_project_original_preferred"},
+    {"zh_name":"One-of-One 证书卡","en_name":"One-of-One Certificate Card","status":"project_original_asset_preferred"}
+  ],
+  "remaining_external_source_gap": [
+    {
+      "item":"深色木材/沉香感结构隔片",
+      "issue":"Permissive generic wood-bead imagery exists, but no sufficiently reliable permissive species-specific agarwood bead source has been verified.",
+      "safe_resolution":"Use generated/project-original dark wood structural-spacer display asset and keep label generic unless species evidence is later added."
+    }
+  ],
+  "next_phase": "asset_production_not_source_discovery",
+  "next_phase_tasks": [
+    "Generate/standardize transparent-background hero and single assets",
+    "Generate low/mid/high or pattern/effect/type comparison sets according to material-specific logic",
+    "Preserve source attribution and representation_type",
+    "Record transformations and SHA256 once processed binaries can be ingested",
+    "Commit final processed assets under workbench/assets/catalog/"
+  ],
+  "known_execution_blocker": "This chat can write GitHub text/blob content when bytes are available, but current web/container path cannot reliably transfer external image binary bytes into the GitHub connector. This blocks binary ingestion only; it does not block source verification, classification, quality logic or production specification."
+}
