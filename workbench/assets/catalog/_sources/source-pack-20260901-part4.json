@@ -1,0 +1,86 @@
+{
+  "pack_version": "2026-09-01.4",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "包装与袋类结构参考来源。最终 Crystal 视觉仍以冷白/冷灰/低饱和为准，不直接复制历史配色。",
+  "sources": [
+    {
+      "asset_id": "packaging_drawstring_pouch_met_01",
+      "zh_name": "抽绳保护袋",
+      "en_name": "Drawstring Protective Pouch",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Drawstring_bag_MET_1973.189.1.jpg",
+      "license": "CC0 1.0",
+      "creator": "The Metropolitan Museum of Art",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "抽绳袋结构参考；后续标准化为灰/珍珠白保护袋",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "packaging_drawstring_pouch_met_02",
+      "zh_name": "抽绳保护袋",
+      "en_name": "Drawstring Protective Pouch",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Drawstring_bag_MET_1978.244.3.jpg",
+      "license": "CC0 1.0",
+      "creator": "The Metropolitan Museum of Art",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "抽绳袋不同轮廓/开口结构参考",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "packaging_drawstring_pouch_met_03",
+      "zh_name": "抽绳保护袋",
+      "en_name": "Drawstring Protective Pouch",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Drawstring_bag_MET_1978.357.9.jpg",
+      "license": "CC0 1.0",
+      "creator": "The Metropolitan Museum of Art",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "袋体比例和抽绳结构参考",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "packaging_drawstring_pouch_met_04",
+      "zh_name": "抽绳保护袋",
+      "en_name": "Drawstring Protective Pouch",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Drawstring_bag_MET_1980.445.3.jpg",
+      "license": "CC0 1.0",
+      "creator": "The Metropolitan Museum of Art",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "保护袋结构备选",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "packaging_rigid_box_reference_03",
+      "zh_name": "礼盒 / 硬盒",
+      "en_name": "Gift Box / Rigid Box",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Valentines_Day_-_Gift_Box.svg",
+      "license": "CC0 1.0",
+      "creator": "Open Clip Art Library contributor",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "仅作为硬盒结构/轮廓矢量参考，可重配成 Crystal 冷灰/冷白体系",
+      "status": "license_verified_structure_reference"
+    },
+    {
+      "asset_id": "packaging_gift_box_reference_04",
+      "zh_name": "礼盒",
+      "en_name": "Gift Box",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gift_box_I.jpg",
+      "license": "作者允许任何用途并要求署名（Wikimedia 文件页）",
+      "creator": "Milad Mosapoor",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "礼盒实体结构参考；颜色和丝带风格不作为 Crystal 最终视觉",
+      "status": "license_verified_processing_pending"
+    }
+  ],
+  "remaining_packaging_gaps": [
+    "冷灰抽屉盒需要更接近现代珠宝包装的结构参考",
+    "书型磁吸盒需要更明确的许可来源",
+    "材质说明/护理卡和 One-of-One 证书卡更适合由 Crystal 自行设计，而不是复用外部商品图",
+    "品牌邮寄袋同样建议自行设计结构图/示意图"
+  ],
+  "decision": "对于护理卡、证书卡、品牌邮寄袋等纯平面/品牌资产，优先由 Crystal 自研模板，不再浪费时间寻找外部成品图。"
+}
