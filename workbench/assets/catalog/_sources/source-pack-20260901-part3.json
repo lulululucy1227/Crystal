@@ -1,0 +1,108 @@
+{
+  "pack_version": "2026-09-01.3",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "第三批核心水晶来源核验，优先补齐可合法再分发/修改的识别型素材。",
+  "sources": [
+    {
+      "asset_id": "crystal_clear_quartz_reference_01",
+      "zh_name": "白水晶",
+      "en_name": "Clear Quartz / Rock Crystal",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rock_crystal_bead_with_striations_MET_DP113087.jpg",
+      "license": "CC0 / The Met Open Access",
+      "creator": "The Metropolitan Museum of Art",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "真实单颗 rock crystal bead；非常适合建立白水晶圆珠透明体与内部纹理基线",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "crystal_smoky_quartz_reference_01",
+      "zh_name": "茶晶",
+      "en_name": "Smoky Quartz",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Smoky-quartz.jpg",
+      "license": "CC0 1.0",
+      "creator": "MartinThoma",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "烟棕/茶灰体色与透明度参考；后续应继续补抛光圆珠图",
+      "status": "license_verified_evidence_asset"
+    },
+    {
+      "asset_id": "crystal_aquamarine_reference_01",
+      "zh_name": "海蓝宝",
+      "en_name": "Aquamarine",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Aquamarin_cut.jpg",
+      "license": "CC BY-SA 3.0 + GFDL",
+      "creator": "Werner Lang / Wela49",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "海蓝宝蓝绿色、净度与透明宝石感参考；圆珠工作台素材仍需二次标准化",
+      "status": "license_verified_evidence_asset"
+    },
+    {
+      "asset_id": "crystal_labradorite_beads_reference_01",
+      "zh_name": "拉长石",
+      "en_name": "Labradorite",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Labradorite_-_Meaning_%26_Properties.jpg",
+      "license": "CC BY-SA 4.0",
+      "creator": "AkGemstoneBeads",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "现代珠类/抛光石视觉来源；只取矿物外观与晕彩特征，不采用原页面任何疗愈文案",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "crystal_blue_lace_agate_reference_01",
+      "zh_name": "蓝纹玛瑙",
+      "en_name": "Blue Lace Agate",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Blue_Lace_Agate_(white).png",
+      "license": "CC0 1.0",
+      "creator": "I2Overcome",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "蓝白层状条带纹理的高可信特征图；后续需要标准化成珠形展示",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "crystal_bloodstone_reference_01",
+      "zh_name": "血石",
+      "en_name": "Bloodstone",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Bloodstone_5.jpg",
+      "license": "CC BY 2.0",
+      "creator": "James St. John",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "深绿底 + 红色斑点/斑块的品种识别基线",
+      "status": "license_verified_evidence_asset"
+    },
+    {
+      "asset_id": "crystal_rainbow_obsidian_reference_01",
+      "zh_name": "彩虹黑曜石",
+      "en_name": "Rainbow Obsidian",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rainbow_obsidian.jpg",
+      "license": "CC BY-SA 3.0 (also older compatible CC BY-SA/GFDL options on file page)",
+      "creator": "Brocken Inaglory / Mila",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "黑底彩虹晕彩的核心识别参考；最终珠图必须保留晕彩层数和覆盖面积差异",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "crystal_larimar_reference_01",
+      "zh_name": "海纹石",
+      "en_name": "Larimar",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Larimar.jpg",
+      "license": "Public Domain",
+      "creator": "Vassil",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "海纹石蓝白水波/火山纹理的基础识别素材",
+      "status": "license_verified_processing_pending"
+    }
+  ],
+  "notes": [
+    "Amazonite 已有候选，但本轮未把许可写死，下一批继续核验文件页许可文本。",
+    "绿幽灵/白幽灵仍使用 Phantom Quartz 合规来源作为结构证据，不冒充具体颜色品种成品珠。",
+    "所有含疗愈/能量宣传的来源，只使用图像许可与矿物外观，不复制其宣传文案。"
+  ]
+}
