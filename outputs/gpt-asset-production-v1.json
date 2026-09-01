@@ -1,0 +1,77 @@
+{
+  "phase": "GPT-ASSET-PRODUCTION-V1",
+  "status": "complete_generated_v1",
+  "date": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "scope": {
+    "crystals_minerals": 23,
+    "pearls_organic": 6,
+    "hardware": 8,
+    "packaging": 8,
+    "total_registered_objects": 45
+  },
+  "delivery": {
+    "directory": "workbench/assets/catalog/generated/",
+    "files": [
+      "crystals-hero-atlas.svg",
+      "crystals-comparison-atlas.svg",
+      "crystals-grade-overrides-v1.svg",
+      "pearls-organic-hero-atlas.svg",
+      "pearls-organic-comparison-atlas.svg",
+      "hardware-hero-atlas.svg",
+      "packaging-hero-atlas.svg",
+      "generated-asset-manifest-v1.json",
+      "generated-asset-overrides-v1.json",
+      "README.md"
+    ]
+  },
+  "representation_type": "generated_from_evidence",
+  "visual_qa": {
+    "method": "Rendered the generated SVG atlases to raster previews and visually checked species recognition, comparison separation, silhouette/readability and consistency.",
+    "result": "pass_with_targeted_overrides",
+    "strong_recognition_groups": [
+      "Labradorite flash",
+      "Rainbow Moonstone blue sheen",
+      "Lapis Lazuli blue + pyrite/calcite cues",
+      "Green/White Phantom internal-layer cues",
+      "Tiger's Eye chatoyant band",
+      "Blue Lace Agate lace banding",
+      "Bloodstone green + red spotting",
+      "Rainbow Obsidian optical arcs",
+      "Larimar blue-white sea pattern",
+      "Gold/Black/Mixed Rutilated Quartz needle inclusions",
+      "hardware structural silhouettes",
+      "packaging structural silhouettes"
+    ],
+    "targeted_override_groups": [
+      "Clear Quartz",
+      "Smoky Quartz",
+      "Aquamarine",
+      "Amazonite",
+      "Amethyst",
+      "Citrine",
+      "Kunzite",
+      "Rose Quartz",
+      "Larimar",
+      "Sugilite"
+    ],
+    "override_reason": "Their base low/mid/high panels were too similar at catalogue-card scale. The override atlas makes the real quality axes more legible without inventing new species traits."
+  },
+  "quality_logic": {
+    "low_mid_high": "clarity/color purity/inclusions/pattern burden/luster as material-appropriate",
+    "pattern_first": "Green Phantom, White Phantom, Bloodstone, Mixed Rutilated Quartz",
+    "optical_effect_first": "Labradorite, Rainbow Moonstone, Tiger's Eye, Rainbow Obsidian",
+    "type_first": "Obsidian",
+    "pearls": "luster + surface + roundness/form + body color/overtone; not supplier AA/AAA"
+  },
+  "truthfulness": {
+    "source_photos_committed": false,
+    "generated_assets_committed": true,
+    "copyright_unclear_ecommerce_binaries_committed": false,
+    "external_source_photo_upgrade": "optional_pending_binary_transfer",
+    "v1_blocked": false
+  },
+  "repo_state_note": "Generated SVG assets are actual repository assets and can be consumed by the Workbench now. Licensed real-photo cutout assets can be added later as an enhancement layer when binary transfer is available.",
+  "requires_user_decision": false,
+  "next_action": "Do not continue broad source discovery. Review these assets in the Workbench at actual card size; only refine a material when recognition or grade separation is concretely insufficient."
+}
