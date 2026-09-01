@@ -1,5 +1,5 @@
 {
-  "queue_version": "1.0",
+  "queue_version": "1.1",
   "updated_at": "2026-09-01",
   "owner": "GPT Crystal Supervisor",
   "execution_rule": "Subtasks are independent. A blocker in one category must not stop other categories.",
@@ -46,12 +46,14 @@
       "id": "pearl_south_sea",
       "category": "pearl",
       "scope": ["白色南洋珠", "金色南洋珠"],
-      "status": "needs_better_source",
+      "status": "needs_grade_set",
       "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "source_pack_extra": "workbench/assets/catalog/_sources/source-pack-20260901-part8.json",
       "next_actions": [
-        "White South Sea has reusable circled-pearl reference but still needs clean high-grade round reference",
-        "Golden South Sea currently lacks a sufficiently clean reusable standalone reference",
-        "Continue source search without blocking other pearl assets"
+        "Use reusable South Sea circled-pearl source as form/surface evidence",
+        "Use Smithsonian CC0 South Sea Glow source as golden South Sea body-color/luster evidence",
+        "Build standardized white/golden South Sea representative and low/mid/high visual sets",
+        "Do not copy the finished jewelry design from the Smithsonian reference"
       ]
     },
     {
@@ -92,10 +94,11 @@
       "id": "hardware_minimal_system",
       "category": "accessory",
       "scope": ["微型隔珠", "弯管", "薄框/包边", "半帽/边帽", "几何连接件", "银色过渡球", "细链+简约扣", "氧化银微配件"],
-      "status": "needs_binary_ingestion",
-      "source_pack": "workbench/assets/catalog/_sources/",
+      "status": "ready_for_standardized_display_asset",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
       "next_actions": [
-        "Prefer isolated reusable silver findings when available",
+        "Use public-domain findings master sheet for shape recognition",
+        "Use CC BY 4.0 sterling silver clasp/chain reference for material finish",
         "For generic geometric hardware where photography adds little value, standardized generated/schematic display asset is allowed under WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
         "Keep shapes dimensionally plausible and visually neutral"
       ]
@@ -104,12 +107,13 @@
       "id": "packaging_system",
       "category": "packaging",
       "scope": ["哑光白硬盒", "冷灰抽屉盒", "灰/珍珠白保护袋", "材质说明卡", "运输包装", "棉麻袋", "书型磁吸盒", "One-of-One 证书卡"],
-      "status": "needs_binary_ingestion",
-      "source_pack": "workbench/assets/catalog/_sources/",
+      "status": "ready_for_standardized_display_asset",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
       "next_actions": [
-        "Use simple representative packaging imagery rather than branded product photography",
+        "Use reusable jewelry-box, drawstring-pouch and cardboard-box sources as structural evidence",
         "Generated/schematic display assets are acceptable because structure/material recognition matters more than exact product photo",
-        "Keep editorial quiet palette and avoid black-velvet/gold luxury cliché"
+        "Keep editorial quiet palette and avoid black-velvet/gold luxury cliché",
+        "Do not copy historical decorative motifs from evidence images"
       ]
     }
   ]
