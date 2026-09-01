@@ -1,0 +1,116 @@
+{
+  "queue_version": "1.0",
+  "updated_at": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "execution_rule": "Subtasks are independent. A blocker in one category must not stop other categories.",
+  "status_legend": ["source_ready", "needs_better_source", "ready_for_standardized_display_asset", "needs_grade_set", "needs_binary_ingestion", "done"],
+  "subtasks": [
+    {
+      "id": "crystal_phantom_group",
+      "category": "crystal",
+      "scope": ["绿幽灵", "白幽灵"],
+      "status": "ready_for_standardized_display_asset",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "next_actions": [
+        "Create standardized transparent-background representative assets constrained by verified phantom-quartz evidence",
+        "Green Phantom must show clear host quartz with internal green chlorite landscape/phantom layers",
+        "White Phantom must show nested white/clear ghost-crystal outline, not opaque white bead",
+        "Prepare hero + representative/high-pattern variants"
+      ]
+    },
+    {
+      "id": "pearl_akoya",
+      "category": "pearl",
+      "scope": ["Akoya 珍珠"],
+      "status": "needs_grade_set",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "next_actions": [
+        "Use public-domain average-luster strand as mid reference",
+        "Build low/mid/high display comparison around luster, surface, roundness and matching",
+        "Do not equate supplier AA/AAA labels with Crystal grade"
+      ]
+    },
+    {
+      "id": "pearl_tahitian",
+      "category": "pearl",
+      "scope": ["大溪地珍珠"],
+      "status": "needs_grade_set",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "next_actions": [
+        "Build representative + low/mid/high visual comparison",
+        "Preserve dark body color with green/grey/peacock overtone behavior",
+        "Avoid rendering as flat black sphere"
+      ]
+    },
+    {
+      "id": "pearl_south_sea",
+      "category": "pearl",
+      "scope": ["白色南洋珠", "金色南洋珠"],
+      "status": "needs_better_source",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "next_actions": [
+        "White South Sea has reusable circled-pearl reference but still needs clean high-grade round reference",
+        "Golden South Sea currently lacks a sufficiently clean reusable standalone reference",
+        "Continue source search without blocking other pearl assets"
+      ]
+    },
+    {
+      "id": "pearl_baroque_freshwater",
+      "category": "pearl",
+      "scope": ["巴洛克珍珠", "淡水 Keshi/不规则珍珠"],
+      "status": "ready_for_standardized_display_asset",
+      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+      "next_actions": [
+        "Use public-domain baroque evidence for irregular nacre growth",
+        "Use CC0 freshwater Keshi evidence for modern organic shape variation",
+        "Prepare representative rather than forcing round-pearl grade logic"
+      ]
+    },
+    {
+      "id": "crystal_core_grade_sets",
+      "category": "crystal",
+      "scope": ["白水晶", "茶晶", "海蓝宝", "紫水晶", "黄水晶", "粉水晶", "蓝纹玛瑙", "紫锂辉", "海纹石", "金发晶", "黑发晶"],
+      "status": "needs_grade_set",
+      "source_pack": "workbench/assets/catalog/_sources/",
+      "next_actions": [
+        "Create low/mid/high visual sets based on docs/WORKBENCH_VISUAL_GRADE_GUIDE.md",
+        "Each high-grade image must improve on the defined optical/clarity/pattern axes, not just saturation"
+      ]
+    },
+    {
+      "id": "crystal_optical_effect_sets",
+      "category": "crystal",
+      "scope": ["拉长石", "彩虹月光石", "虎眼石", "彩虹黑曜石"],
+      "status": "ready_for_standardized_display_asset",
+      "source_pack": "workbench/assets/catalog/_sources/",
+      "next_actions": [
+        "Build effect-strength/type comparison rather than generic low/mid/high",
+        "Preserve physically plausible directional light behavior"
+      ]
+    },
+    {
+      "id": "hardware_minimal_system",
+      "category": "accessory",
+      "scope": ["微型隔珠", "弯管", "薄框/包边", "半帽/边帽", "几何连接件", "银色过渡球", "细链+简约扣", "氧化银微配件"],
+      "status": "needs_binary_ingestion",
+      "source_pack": "workbench/assets/catalog/_sources/",
+      "next_actions": [
+        "Prefer isolated reusable silver findings when available",
+        "For generic geometric hardware where photography adds little value, standardized generated/schematic display asset is allowed under WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
+        "Keep shapes dimensionally plausible and visually neutral"
+      ]
+    },
+    {
+      "id": "packaging_system",
+      "category": "packaging",
+      "scope": ["哑光白硬盒", "冷灰抽屉盒", "灰/珍珠白保护袋", "材质说明卡", "运输包装", "棉麻袋", "书型磁吸盒", "One-of-One 证书卡"],
+      "status": "needs_binary_ingestion",
+      "source_pack": "workbench/assets/catalog/_sources/",
+      "next_actions": [
+        "Use simple representative packaging imagery rather than branded product photography",
+        "Generated/schematic display assets are acceptable because structure/material recognition matters more than exact product photo",
+        "Keep editorial quiet palette and avoid black-velvet/gold luxury cliché"
+      ]
+    }
+  ]
+}
