@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "representation_type": "generated_from_evidence",
+  "status": "committed",
+  "policy_refs": [
+    "docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
+    "docs/WORKBENCH_VISUAL_GRADE_GUIDE.md",
+    "data/workbench-asset-manifest.json",
+    "workbench/assets/catalog/_sources/"
+  ],
+  "rules": [
+    "这些素材不是实拍，不得标记为 source_photo。",
+    "水晶、珍珠的颜色、透明度、包裹体、光效、纹理与品质差异必须受 Evidence 层约束。",
+    "low/mid/high 仅代表视觉品质参考，不等于供应商 AA/AAA，也不等于市场统一价格等级。",
+    "黑曜石采用 type-first；拉长石、彩虹月光石、虎眼石采用 optical-effect-first；幽灵水晶采用 pattern-first。",
+    "版权不明确的电商图只能停留在 Evidence 层。"
+  ],
+  "atlases": {
+    "crystals_hero": {
+      "file": "workbench/assets/catalog/generated/crystals-hero-atlas.svg",
+      "grid": {"columns": 6, "cell_width": 200, "cell_height": 200},
+      "order": ["clear_quartz","smoky_quartz","aquamarine","labradorite","rainbow_moonstone","amazonite","lapis_lazuli","green_phantom_quartz","obsidian","amethyst","citrine","tigers_eye","blue_lace_agate","kunzite","bloodstone","white_phantom_quartz","rose_quartz","rainbow_obsidian","larimar","gold_rutilated_quartz","black_rutilated_quartz","mixed_rutilated_quartz","sugilite"]
+    },
+    "crystals_comparison": {
+      "file": "workbench/assets/catalog/generated/crystals-comparison-atlas.svg",
+      "grid": {"columns": 2, "cell_width": 600, "cell_height": 200, "variants_per_cell": 3},
+      "variant_semantics": "left-to-right = low/mid/high OR weak/medium/strong OR type/pattern progression according to material policy",
+      "order": ["clear_quartz","smoky_quartz","aquamarine","labradorite","rainbow_moonstone","amazonite","lapis_lazuli","green_phantom_quartz","obsidian","amethyst","citrine","tigers_eye","blue_lace_agate","kunzite","bloodstone","white_phantom_quartz","rose_quartz","rainbow_obsidian","larimar","gold_rutilated_quartz","black_rutilated_quartz","mixed_rutilated_quartz","sugilite"]
+    },
+    "pearls_organic_hero": {
+      "file": "workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg",
+      "grid": {"columns": 3, "cell_width": 220, "cell_height": 220},
+      "order": ["freshwater_white","akoya","tahitian","south_sea_white","south_sea_golden","dark_wood_agarwood_like"]
+    },
+    "pearls_organic_comparison": {
+      "file": "workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg",
+      "grid": {"columns": 2, "cell_width": 600, "cell_height": 200, "variants_per_cell": 3},
+      "variant_semantics": "left-to-right quality/appearance progression driven by luster, surface, roundness, overtone or wood structure",
+      "order": ["freshwater_white","akoya","tahitian","south_sea_white","south_sea_golden","dark_wood_agarwood_like"]
+    },
+    "hardware_hero": {
+      "file": "workbench/assets/catalog/generated/hardware-hero-atlas.svg",
+      "grid": {"columns": 4, "cell_width": 220, "cell_height": 220},
+      "order": ["silver_micro_spacer","curved_silver_tube","thin_silver_frame_bezel","silver_half_cap","geometric_connector","silver_transition_sphere","fine_silver_chain_clasp","oxidized_silver_micro_accent"]
+    },
+    "packaging_hero": {
+      "file": "workbench/assets/catalog/generated/packaging-hero-atlas.svg",
+      "grid": {"columns": 4, "cell_width": 240, "cell_height": 240},
+      "order": ["matte_white_rigid_box","cool_grey_drawer_box","pearl_white_pouch","care_card","shipping_mailer","cotton_linen_pouch","book_style_magnetic_box","one_of_one_certificate"]
+    }
+  },
+  "item_labels": {
+    "clear_quartz": ["白水晶","Clear Quartz"],
+    "smoky_quartz": ["茶晶","Smoky Quartz"],
+    "aquamarine": ["海蓝宝","Aquamarine"],
+    "labradorite": ["拉长石","Labradorite"],
+    "rainbow_moonstone": ["彩虹月光石","Rainbow Moonstone"],
+    "amazonite": ["天河石","Amazonite"],
+    "lapis_lazuli": ["青金石","Lapis Lazuli"],
+    "green_phantom_quartz": ["绿幽灵","Green Phantom Quartz"],
+    "obsidian": ["黑曜石","Obsidian"],
+    "amethyst": ["紫水晶","Amethyst"],
+    "citrine": ["黄水晶","Citrine"],
+    "tigers_eye": ["虎眼石","Tiger's Eye"],
+    "blue_lace_agate": ["蓝纹玛瑙","Blue Lace Agate"],
+    "kunzite": ["紫锂辉/锂辉石","Kunzite"],
+    "bloodstone": ["血石","Bloodstone"],
+    "white_phantom_quartz": ["白幽灵","White Phantom Quartz"],
+    "rose_quartz": ["粉水晶","Rose Quartz"],
+    "rainbow_obsidian": ["彩虹黑曜石","Rainbow Obsidian"],
+    "larimar": ["海纹石","Larimar"],
+    "gold_rutilated_quartz": ["金发晶","Gold Rutilated Quartz"],
+    "black_rutilated_quartz": ["黑发晶","Black Rutilated Quartz"],
+    "mixed_rutilated_quartz": ["综合色发晶","Mixed Rutilated Quartz"],
+    "sugilite": ["舒俱来","Sugilite"],
+    "freshwater_white": ["白色淡水珍珠","White Freshwater Pearl"],
+    "akoya": ["Akoya 珍珠","Akoya Pearl"],
+    "tahitian": ["大溪地珍珠","Tahitian Pearl"],
+    "south_sea_white": ["白色南洋珠","White South Sea Pearl"],
+    "south_sea_golden": ["金色南洋珠","Golden South Sea Pearl"],
+    "dark_wood_agarwood_like": ["深色木材/沉香感结构隔片","Dark Wood / Agarwood-like Structural Spacer"],
+    "silver_micro_spacer": ["银色微型隔珠","Silver Micro Spacer"],
+    "curved_silver_tube": ["极简银色弯管","Clean Curved Silver Tube"],
+    "thin_silver_frame_bezel": ["银色薄框/包边","Thin Silver Frame / Bezel"],
+    "silver_half_cap": ["银色半帽/边帽","Silver Half-cap / Edge-cap"],
+    "geometric_connector": ["几何连接件","Geometric Connector"],
+    "silver_transition_sphere": ["银色过渡球","Silver Counterweight / Transition Sphere"],
+    "fine_silver_chain_clasp": ["细银链 + 简约扣","Fine Silver Chain + Minimal Clasp"],
+    "oxidized_silver_micro_accent": ["氧化银微配件","Oxidized Silver Micro Accent"],
+    "matte_white_rigid_box": ["哑光白/冷白硬盒","Matte White Rigid Presentation Box"],
+    "cool_grey_drawer_box": ["冷灰抽屉盒","Cool-grey Rigid Drawer Box"],
+    "pearl_white_pouch": ["灰/珍珠白保护袋","Soft Grey / Pearl-white Protective Pouch"],
+    "care_card": ["材质说明与护理卡","Material Disclosure + Care Card"],
+    "shipping_mailer": ["品牌运输包装","Protective Branded Shipping Mailer"],
+    "cotton_linen_pouch": ["棉麻信封/抽绳袋","Cotton-linen Pouch"],
+    "book_style_magnetic_box": ["书型磁吸盒","Book-style Magnetic Box"],
+    "one_of_one_certificate": ["One-of-One 证书卡","One-of-One Certificate Card"]
+  },
+  "source_photo_upgrade": {
+    "status": "optional_pending_binary_transfer",
+    "blocking_v1": false,
+    "note": "当前 V1 已有可直接由工作台使用的 generated_from_evidence SVG；未来如补入合法实拍抠图，应作为增强层而非替换证据体系。"
+  }
+}
