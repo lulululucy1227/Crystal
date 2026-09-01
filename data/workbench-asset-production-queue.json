@@ -1,120 +1,92 @@
 {
-  "queue_version": "1.1",
+  "queue_version": "1.2",
   "updated_at": "2026-09-01",
   "owner": "GPT Crystal Supervisor",
   "execution_rule": "Subtasks are independent. A blocker in one category must not stop other categories.",
-  "status_legend": ["source_ready", "needs_better_source", "ready_for_standardized_display_asset", "needs_grade_set", "needs_binary_ingestion", "done"],
+  "primary_delivery": "workbench/assets/catalog/generated/",
+  "status_legend": ["done_generated_v1", "optional_upgrade_pending", "done"],
   "subtasks": [
     {
       "id": "crystal_phantom_group",
       "category": "crystal",
       "scope": ["绿幽灵", "白幽灵"],
-      "status": "ready_for_standardized_display_asset",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-      "next_actions": [
-        "Create standardized transparent-background representative assets constrained by verified phantom-quartz evidence",
-        "Green Phantom must show clear host quartz with internal green chlorite landscape/phantom layers",
-        "White Phantom must show nested white/clear ghost-crystal outline, not opaque white bead",
-        "Prepare hero + representative/high-pattern variants"
-      ]
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/crystals-hero-atlas.svg", "workbench/assets/catalog/generated/crystals-comparison-atlas.svg"],
+      "acceptance": ["绿幽灵保持透明石英宿主 + 绿色内部幽灵层", "白幽灵保持透明/半透明宿主 + 白色嵌套幽灵轮廓", "未做成实心绿色或不透明白珠"]
     },
     {
-      "id": "pearl_akoya",
+      "id": "pearl_grade_sets",
       "category": "pearl",
-      "scope": ["Akoya 珍珠"],
-      "status": "needs_grade_set",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-      "next_actions": [
-        "Use public-domain average-luster strand as mid reference",
-        "Build low/mid/high display comparison around luster, surface, roundness and matching",
-        "Do not equate supplier AA/AAA labels with Crystal grade"
-      ]
+      "scope": ["白色淡水珍珠", "Akoya 珍珠", "大溪地珍珠", "白色南洋珠", "金色南洋珠"],
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg", "workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg"],
+      "acceptance": ["对比由光泽、表皮、圆度/形态、体色与 overtone 驱动", "大溪地未表现为扁平黑球", "金色南洋珠保留暖金珠层光泽", "不使用供应商 AA/AAA 作为等级"]
     },
     {
-      "id": "pearl_tahitian",
-      "category": "pearl",
-      "scope": ["大溪地珍珠"],
-      "status": "needs_grade_set",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-      "next_actions": [
-        "Build representative + low/mid/high visual comparison",
-        "Preserve dark body color with green/grey/peacock overtone behavior",
-        "Avoid rendering as flat black sphere"
-      ]
-    },
-    {
-      "id": "pearl_south_sea",
-      "category": "pearl",
-      "scope": ["白色南洋珠", "金色南洋珠"],
-      "status": "needs_grade_set",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-      "source_pack_extra": "workbench/assets/catalog/_sources/source-pack-20260901-part8.json",
-      "next_actions": [
-        "Use reusable South Sea circled-pearl source as form/surface evidence",
-        "Use Smithsonian CC0 South Sea Glow source as golden South Sea body-color/luster evidence",
-        "Build standardized white/golden South Sea representative and low/mid/high visual sets",
-        "Do not copy the finished jewelry design from the Smithsonian reference"
-      ]
-    },
-    {
-      "id": "pearl_baroque_freshwater",
-      "category": "pearl",
-      "scope": ["巴洛克珍珠", "淡水 Keshi/不规则珍珠"],
-      "status": "ready_for_standardized_display_asset",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-      "next_actions": [
-        "Use public-domain baroque evidence for irregular nacre growth",
-        "Use CC0 freshwater Keshi evidence for modern organic shape variation",
-        "Prepare representative rather than forcing round-pearl grade logic"
-      ]
+      "id": "dark_wood_agarwood_like",
+      "category": "pearl_organic",
+      "scope": ["深色木材/沉香感结构隔片"],
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg", "workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg"],
+      "acceptance": ["展示深色木材纹理和结构隔片语言", "生成图本身不作为沉香物种鉴定依据"]
     },
     {
       "id": "crystal_core_grade_sets",
       "category": "crystal",
       "scope": ["白水晶", "茶晶", "海蓝宝", "紫水晶", "黄水晶", "粉水晶", "蓝纹玛瑙", "紫锂辉", "海纹石", "金发晶", "黑发晶"],
-      "status": "needs_grade_set",
-      "source_pack": "workbench/assets/catalog/_sources/",
-      "next_actions": [
-        "Create low/mid/high visual sets based on docs/WORKBENCH_VISUAL_GRADE_GUIDE.md",
-        "Each high-grade image must improve on the defined optical/clarity/pattern axes, not just saturation"
-      ]
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/crystals-hero-atlas.svg", "workbench/assets/catalog/generated/crystals-comparison-atlas.svg"],
+      "acceptance": ["low/mid/high 按材料各自真实识别轴变化", "高档不是单纯提高饱和度", "发晶对比强调发丝密度/秩序与底体净度"]
+    },
+    {
+      "id": "crystal_pattern_type_sets",
+      "category": "crystal",
+      "scope": ["青金石", "天河石", "血石", "综合色发晶", "舒俱来", "黑曜石"],
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/crystals-hero-atlas.svg", "workbench/assets/catalog/generated/crystals-comparison-atlas.svg"],
+      "acceptance": ["纹理类按 pattern quality 表现", "黑曜石使用 type-first，而不是硬做低/中/高"]
     },
     {
       "id": "crystal_optical_effect_sets",
       "category": "crystal",
       "scope": ["拉长石", "彩虹月光石", "虎眼石", "彩虹黑曜石"],
-      "status": "ready_for_standardized_display_asset",
-      "source_pack": "workbench/assets/catalog/_sources/",
-      "next_actions": [
-        "Build effect-strength/type comparison rather than generic low/mid/high",
-        "Preserve physically plausible directional light behavior"
-      ]
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/crystals-hero-atlas.svg", "workbench/assets/catalog/generated/crystals-comparison-atlas.svg"],
+      "acceptance": ["按光效强度/覆盖率/连续性比较", "光效保持方向性，不做全表面均匀发光"]
     },
     {
       "id": "hardware_minimal_system",
       "category": "accessory",
       "scope": ["微型隔珠", "弯管", "薄框/包边", "半帽/边帽", "几何连接件", "银色过渡球", "细链+简约扣", "氧化银微配件"],
-      "status": "ready_for_standardized_display_asset",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
-      "next_actions": [
-        "Use public-domain findings master sheet for shape recognition",
-        "Use CC BY 4.0 sterling silver clasp/chain reference for material finish",
-        "For generic geometric hardware where photography adds little value, standardized generated/schematic display asset is allowed under WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
-        "Keep shapes dimensionally plausible and visually neutral"
-      ]
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/hardware-hero-atlas.svg"],
+      "acceptance": ["8 个 V1 结构件均有可识别标准化图形", "银色表面与几何结构受已核验证据约束", "不冒充具体供应商实拍"]
     },
     {
       "id": "packaging_system",
       "category": "packaging",
       "scope": ["哑光白硬盒", "冷灰抽屉盒", "灰/珍珠白保护袋", "材质说明卡", "运输包装", "棉麻袋", "书型磁吸盒", "One-of-One 证书卡"],
-      "status": "ready_for_standardized_display_asset",
-      "source_pack": "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
-      "next_actions": [
-        "Use reusable jewelry-box, drawstring-pouch and cardboard-box sources as structural evidence",
-        "Generated/schematic display assets are acceptable because structure/material recognition matters more than exact product photo",
-        "Keep editorial quiet palette and avoid black-velvet/gold luxury cliché",
-        "Do not copy historical decorative motifs from evidence images"
-      ]
+      "status": "done_generated_v1",
+      "delivery": ["workbench/assets/catalog/generated/packaging-hero-atlas.svg"],
+      "acceptance": ["8 个包装对象均有项目原创标准化结构图", "保持冷白/冷灰/低饱和编辑感", "未复制外部品牌或历史装饰"]
+    },
+    {
+      "id": "external_source_photo_cutout_upgrade",
+      "category": "optional_upgrade",
+      "scope": ["许可明确的实拍单珠/单珍珠/结构件抠图增强"],
+      "status": "optional_upgrade_pending",
+      "blocking_v1": false,
+      "reason": "当前外部图片二进制从 Web 到 GitHub 的传输链路不可可靠执行；V1 已通过 generated_from_evidence SVG 完成可用素材交付。",
+      "ownership_boundary": "仍由 GPT 负责，不转交 Codex。"
     }
-  ]
+  ],
+  "v1_result": {
+    "registered_objects": 45,
+    "generated_display_coverage": "45/45",
+    "crystal_comparison_coverage": "23/23",
+    "pearl_organic_comparison_coverage": "6/6",
+    "hardware_hero_coverage": "8/8",
+    "packaging_hero_coverage": "8/8",
+    "v1_blocked": false
+  }
 }
