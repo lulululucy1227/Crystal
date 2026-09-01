@@ -2,7 +2,7 @@
   "protocol_version": "AGENT-HANDOFF-V1",
   "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
   "status": "blocked",
-  "commit_sha": "PENDING_COMMIT",
+  "commit_sha": "9484c7072a63dd6f8fac0c7329ceb74d68edcc04",
   "branch": "main",
   "changed_files": ["data/crystal-design.sqlite","scripts/import-p3r-inbox-bracelet-reference-ingestion.mjs","test/p3r-inbox-bracelet-reference-ingestion.test.mjs","outputs/p3r-inbox-bracelet-reference-ingestion.json","outputs/p3r-reviewed-move-ready.json"],
   "actual_changes": "Created REF-000045 (3 views) and REF-000046 (4 views), seven unresolved Google Drive assets, exact image links, three authorized theme relations and twelve exact-existing pattern relations. No observations or synthesis were written because all seven assets lack an authorized source SHA-256.",
