@@ -17,20 +17,38 @@
     "registered Chinese primary names and English comparison names",
     "registered quality/optical axes for each crystal/pearl type",
     "separated redistributable source candidates from evidence-only ecommerce references",
-    "confirmed permissive source pools including Wikimedia Commons, Yale Open Access and The Met Open Access"
+    "confirmed permissive source pools including Wikimedia Commons, Yale Open Access and The Met Open Access",
+    "resolved green phantom and white phantom source gaps with reusable phantom-quartz references",
+    "resolved Akoya, Tahitian, South Sea, baroque and freshwater/Keshi pearl reference coverage",
+    "resolved golden South Sea color reference with Smithsonian CC0 source",
+    "resolved hardware shape-reference coverage with a public-domain jewellery findings master sheet",
+    "resolved packaging structural-reference coverage with reusable jewellery-box, pouch and cardboard-box sources",
+    "created docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
+    "created and advanced data/workbench-asset-production-queue.json"
   ],
   "notable_new_sources_found": [
-    {"material":"Citrine","source":"Wikimedia Commons Category:Citrine gems; specific CC BY-SA files available"},
-    {"material":"Gold Rutilated Quartz","source":"Wikimedia Commons Rutilated Quartz Specimen 5 - golden rutile strands"},
-    {"material":"Green Phantom Quartz","source":"multiple modern bead references found for visual evidence; copyright-unclear ecommerce images remain evidence_only"},
-    {"material":"Tiger's Eye","source":"visual quality comparison evidence found; supplier labels treated as non-standardized evidence only"}
+    {"material":"Green Phantom Quartz","source":"Wikimedia Commons Chlorite phantom quartz, CC BY-SA 3.0"},
+    {"material":"White Phantom Quartz","source":"Wikimedia Commons QuartzFantome, CC BY-SA 3.0 / GFDL"},
+    {"material":"Akoya Pearl","source":"Wikimedia Commons public-domain average-luster strand plus CC BY-SA clean pearl reference"},
+    {"material":"Tahitian Pearl","source":"Wikimedia Commons Tahitian pearl reference, CC BY-SA 3.0"},
+    {"material":"South Sea Pearl","source":"Wikimedia Commons South Sea pearl reference, CC BY-SA 3.0"},
+    {"material":"Golden South Sea Pearl","source":"Smithsonian South Sea Glow Necklace, CC0 / public domain"},
+    {"material":"Baroque Pearl","source":"University of Washington Freshwater and Marine Image Bank via Commons, public domain"},
+    {"material":"Hardware findings","source":"Wikimedia Commons silver-plated jewellery findings master sheet, public domain"},
+    {"material":"Sterling clasp/chain","source":"Wikimedia Commons sterling silver clasp photo, CC BY 4.0"},
+    {"material":"Packaging","source":"Met CC0 jewelry-box reference + Auckland Museum CC BY 4.0 box/pouch references + CC0 simple cardboard-box vector"}
+  ],
+  "source_packs_added": [
+    "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part8.json"
   ],
   "remaining_work": [
-    "obtain or create final standardized display assets for each registered item",
+    "produce final standardized display assets for each registered item",
     "complete low/mid/high visual references for grade-suitable crystals and pearls",
     "complete type/effect references for labradorite, moonstone, phantom quartz, rainbow obsidian and mixed rutilated quartz",
-    "find/prepare modern minimal hardware assets for curved tube, bezel/frame, half-cap and geometric connector",
-    "prepare project-original packaging assets where external photos are unnecessary",
+    "produce standardized hardware assets for curved tube, bezel/frame, half-cap and geometric connector using evidence-constrained generated/schematic representation where photography adds little value",
+    "produce project-original packaging display assets in Crystal's quiet editorial direction",
     "cutout/alpha processing and sha256 attribution records",
     "commit processed binaries under workbench/assets/catalog/"
   ],
