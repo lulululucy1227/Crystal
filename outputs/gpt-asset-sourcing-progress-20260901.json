@@ -1,6 +1,6 @@
 {
   "phase": "GPT-ASSET-LIBRARY-V1",
-  "status": "source_coverage_complete_asset_production_in_progress",
+  "status": "generated_asset_v1_committed_source_photo_upgrade_optional",
   "date": "2026-09-01",
   "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
   "catalogue_items_registered": {
@@ -12,57 +12,50 @@
   },
   "source_coverage": {
     "crystals_minerals": "23/23 evidence source covered",
-    "pearls_organic": "6/6 evidence source covered, including species-specific agarwood/Chen Xiang bead evidence",
-    "hardware": "8/8 structural/material representation covered through reusable evidence and evidence-constrained generated geometry",
-    "packaging": "8/8 structural/design representation covered; project-original display assets preferred for branded/modern packaging"
+    "pearls_organic": "6/6 evidence source covered, including species-specific agarwood/Chen Xiang evidence",
+    "hardware": "8/8 structural/material evidence covered",
+    "packaging": "8/8 structural/design evidence covered"
   },
-  "completed": [
-    "created data/workbench-asset-manifest.json",
-    "created docs/WORKBENCH_ASSET_SOURCES.md",
-    "created data/workbench-visual-evidence-map.json",
-    "registered Chinese primary names and English comparison names",
-    "registered material-specific quality/optical axes",
-    "separated redistributable source candidates from evidence-only ecommerce references",
-    "verified permissive source pools including Wikimedia Commons, Yale Open Access, The Met Open Access and Smithsonian CC0",
-    "resolved green phantom and white phantom evidence gaps",
-    "resolved Akoya, Tahitian, White South Sea, Golden South Sea, baroque and freshwater/Keshi pearl evidence coverage",
-    "resolved hardware shape/material reference coverage",
-    "resolved packaging structural reference coverage",
-    "formalized Amazonite, Lapis Lazuli, Amethyst, Obsidian, Tiger's Eye, Kunzite, Sugilite and Rose Quartz reusable sources",
-    "resolved the final agarwood species-specific source gap with a CC BY-SA 4.0 Qing Chen Xiang rosary reference",
-    "created docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
-    "created and advanced data/workbench-asset-production-queue.json",
-    "created and closed data/workbench-source-coverage-audit-v1.json"
-  ],
-  "source_packs_added": [
-    "workbench/assets/catalog/_sources/source-pack-20260901.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part2.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part3.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part4.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part5.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part8.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part9.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part10.json"
-  ],
-  "remaining_external_source_gap": [],
-  "current_main_work": [
-    "produce final standardized display assets for all registered items",
-    "produce low/mid/high sets where grade logic is valid",
-    "produce pattern/effect/type sets for phantom quartz, labradorite, moonstone, tiger eye, obsidian and mixed rutilated quartz",
-    "produce evidence-constrained standardized hardware visuals",
-    "produce project-original Crystal packaging visuals",
-    "perform cutout/alpha normalization where source photos are used",
-    "record representation_type, transformations, attribution and sha256",
-    "commit final processed binaries under workbench/assets/catalog/"
-  ],
-  "binary_ingestion_blocker": {
-    "status": "active",
-    "scope": "external image binary transfer only",
-    "detail": "The current chat can write GitHub text/blob content when bytes are available, but the current web/container path cannot reliably transfer external image binary bytes into GitHub. Source verification, classification and production specification are complete and unaffected.",
-    "ownership_boundary": "GPT remains responsible. Do not transfer external image search/download/cutout responsibility to Codex."
+  "generated_asset_v1": {
+    "representation_type": "generated_from_evidence",
+    "coverage": "45/45 registered objects",
+    "repo_directory": "workbench/assets/catalog/generated/",
+    "files": [
+      "workbench/assets/catalog/generated/crystals-hero-atlas.svg",
+      "workbench/assets/catalog/generated/crystals-comparison-atlas.svg",
+      "workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg",
+      "workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg",
+      "workbench/assets/catalog/generated/hardware-hero-atlas.svg",
+      "workbench/assets/catalog/generated/packaging-hero-atlas.svg",
+      "workbench/assets/catalog/generated/generated-asset-manifest-v1.json",
+      "workbench/assets/catalog/generated/README.md"
+    ],
+    "crystal_outputs": "23 hero representations + 23 three-state comparison groups",
+    "pearl_organic_outputs": "6 hero representations + 6 three-state comparison groups",
+    "hardware_outputs": "8 standardized representative structures",
+    "packaging_outputs": "8 project-original standardized representative structures"
   },
-  "critical_rule": "No copyright-unclear ecommerce image may be committed as a repository binary. Those links are evidence only.",
-  "requires_user_decision": false
+  "comparison_logic": {
+    "low_mid_high": ["白水晶", "茶晶", "海蓝宝", "紫水晶", "黄水晶", "粉水晶", "蓝纹玛瑙", "紫锂辉", "海纹石", "金发晶", "黑发晶", "Akoya/南洋/大溪地等珍珠"],
+    "pattern_first": ["绿幽灵", "白幽灵", "血石", "综合色发晶"],
+    "optical_effect_first": ["拉长石", "彩虹月光石", "虎眼石", "彩虹黑曜石"],
+    "type_first": ["黑曜石"]
+  },
+  "truthfulness_boundary": [
+    "Generated SVG assets are not source photos and must not be labelled as photographed material.",
+    "Low/mid/high is a visual reference system, not supplier AA/AAA or a universal price grade.",
+    "Dark-wood generated asset is not itself proof of agarwood species identity.",
+    "No copyright-unclear ecommerce binary has been copied into the public repository."
+  ],
+  "optional_external_photo_upgrade": {
+    "status": "pending_binary_transfer_capability",
+    "blocking_v1": false,
+    "scope": "licensed source-photo cutout/alpha variants only",
+    "detail": "Current chat cannot reliably transfer external Web image binary bytes into GitHub. This no longer blocks V1 because the primary Workbench display layer has been delivered as evidence-constrained SVG assets.",
+    "ownership_boundary": "GPT remains responsible; do not transfer image search/download/cutout responsibility to Codex."
+  },
+  "production_queue": "data/workbench-asset-production-queue.json",
+  "asset_manifest": "workbench/assets/catalog/generated/generated-asset-manifest-v1.json",
+  "requires_user_decision": false,
+  "next_recommended_action": "Workbench may now consume generated-asset-manifest-v1.json and the committed SVG atlases. Only refine individual species visuals when visual review reveals a concrete recognition problem."
 }
