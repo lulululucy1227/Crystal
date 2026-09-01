@@ -1,0 +1,14 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
+  "status": "blocked",
+  "commit_sha": "PENDING_COMMIT",
+  "branch": "main",
+  "changed_files": ["data/crystal-design.sqlite","scripts/import-p3r-inbox-bracelet-reference-ingestion.mjs","test/p3r-inbox-bracelet-reference-ingestion.test.mjs","outputs/p3r-inbox-bracelet-reference-ingestion.json","outputs/p3r-reviewed-move-ready.json"],
+  "actual_changes": "Created REF-000045 (3 views) and REF-000046 (4 views), seven unresolved Google Drive assets, exact image links, three authorized theme relations and twelve exact-existing pattern relations. No observations or synthesis were written because all seven assets lack an authorized source SHA-256.",
+  "critical_boundaries_preserved": ["No seven-way reference split","preference writes = 0","material/component/packaging writes = 0","supplier/offer writes = 0","No Workbench UI changes","No invented SHA, pHash, mineral identity or user preference"],
+  "tests_or_checks": ["focused P3R test passes","replay creates zero references/assets/links/theme/pattern duplicates","PRAGMA integrity_check = ok","PRAGMA foreign_key_check = 0"],
+  "risks_or_blockers": ["Need the exact source bytes or authoritative SHA-256 metadata for all seven Drive files before append-only image observations, synthesis assertions and reviewed-move readiness can be completed.", "The canonical SQLite file is intentionally Git-ignored, so this local canonical write is identified by SHA and backup path rather than transported in this Git commit."],
+  "requires_gpt_decision": "NONE",
+  "next_minimum_action": "Provide an authorized seven-file intake manifest containing exact SHA-256 values (and source byte metadata where available), then replay this P3R batch to write the already-authored observations and synthesis."
+}

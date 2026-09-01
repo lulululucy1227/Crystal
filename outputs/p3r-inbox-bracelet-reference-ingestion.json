@@ -1,0 +1,18 @@
+{
+  "protocol_version": "P3R-INBOX-BRACELET-REFERENCE-INGESTION-V1",
+  "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
+  "status": "blocked",
+  "batch_key": "P3R-INBOX-BRACELETS-20260901",
+  "db_sha256_before": "3BBAD4E36E985E4204E127B8CD8267312C918AB298F5130C81215F73BC364B9F",
+  "db_backup": "backups/p3r-inbox-bracelet-reference-ingestion-20260901-225101.sqlite",
+  "db_sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+  "references": [
+    {"group_key":"SEP01-A-PURPLE-NOCTURNE-GOLD","reference_key":"REF-000045","title_zh":"紫夜鎏金结构参考","title_en":"Purple Nocturne Gilded Structure","asset_filenames":["IMG_7920.PNG","IMG_7921.PNG","IMG_7922.PNG"]},
+    {"group_key":"SEP01-B-COOL-GREY-SILVER-RHYTHM","reference_key":"REF-000046","title_zh":"冷灰银色节奏结构参考","title_en":"Cool Grey Silver Rhythm Structure","asset_filenames":["IMG_7927.PNG","IMG_7925.PNG","IMG_7926.PNG","IMG_7928.PNG"]}
+  ],
+  "created": {"references":2,"assets":7,"reference_image_links":7,"themes":3,"patterns":12,"observations":0,"synthesis_assertions":0,"synthesis_sources":0,"preference_evidence":0,"material_writes":0,"supplier_offer_writes":0},
+  "replay": {"references_created":0,"assets_created":0,"links_created":0,"themes_created":0,"patterns_created":0,"duplicates_created":0},
+  "canonical_semantic_blocker": "All seven authorized Drive records lack source bytes and SHA-256 metadata in the local authorized intake path. image_visual_observation and synthesis provenance are DB-enforced to use a resolved SHA-256; no SHA was invented.",
+  "blocked_assets": ["IMG_7920.PNG","IMG_7921.PNG","IMG_7922.PNG","IMG_7925.PNG","IMG_7926.PNG","IMG_7927.PNG","IMG_7928.PNG"],
+  "validation": {"integrity_check":"ok","foreign_key_check_rows":0,"expected_reference_groups":2,"actual_reference_groups":2,"expected_asset_coverage":7,"actual_asset_coverage":7,"observations_for_batch":0,"synthesis_for_batch":0,"p3l_p3q_workbench_ui_modified":false}
+}

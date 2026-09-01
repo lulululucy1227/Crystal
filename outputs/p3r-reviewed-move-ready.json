@@ -1,0 +1,13 @@
+{
+  "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
+  "physical_google_drive_move_performed": false,
+  "items": [
+    {"filename":"IMG_7920.PNG","google_drive_file_id":"1A9sWRUlPQwtP809XFEHrZWFYeWfExXjG","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7921.PNG","google_drive_file_id":"1cuqE6ySWH6QbSl98jB-wUq-WYuGJ8swm","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7922.PNG","google_drive_file_id":"1XX-jKALrg_x6-t2dqebaco4g8tKBJAC4","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7927.PNG","google_drive_file_id":"14jZra_4Q9xQie-YUyub6CIqmYVXEKB8C","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7925.PNG","google_drive_file_id":"1uVIeX_pmm9pKZ99ZfHqXD6nisI1g0QDu","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7926.PNG","google_drive_file_id":"14h8IZAzM9b7fNuEEHcJ2_aPM9eziB1Jz","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."},
+    {"filename":"IMG_7928.PNG","google_drive_file_id":"1YYTUgobyPatkcCCINuAfw1xO3mktu5HG","status":"blocked_from_reviewed_move","reason":"Canonical visual semantics cannot be written until authorized source bytes yield an exact SHA-256."}
+  ]
+}

@@ -1,43 +1,41 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P3L-P3Q-WORKBENCH-REFERENCE-FIDELITY-ASSET-INTEGRATION",
-  "status": "partial_completed",
-  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
+  "phase": "P3R-INBOX-BRACELET-REFERENCE-INGESTION",
+  "status": "blocked",
+  "execution_class": "DATABASE_WRITE + READ_ONLY supporting audit",
   "branch": "main",
-  "commit_sha": "12dd63dcda005d71e16db95c7e62baad003e4f2e",
+  "commit_sha": "PENDING_COMMIT",
   "changed_files": [
-    "workbench/index.html",
-    "workbench/app.js",
-    "workbench/style.css",
-    "workbench/server.mjs",
-    "test/p3e-p3h-workbench-functional.test.mjs",
-    "outputs/p3l-current-ui-gap-audit.json",
-    "outputs/p3q-workbench-fidelity-acceptance.json",
-    "outputs/visual/p3q-workbench-1280x960.png"
+    "data/crystal-design.sqlite",
+    "scripts/import-p3r-inbox-bracelet-reference-ingestion.mjs",
+    "test/p3r-inbox-bracelet-reference-ingestion.test.mjs",
+    "outputs/p3r-inbox-bracelet-reference-ingestion.json",
+    "outputs/p3r-reviewed-move-ready.json"
   ],
   "actual_changes": {
-    "layout": "Implemented the reference image's desktop title/menu/tool bars, 190px left navigation tree, four-column centre catalogue, 268px right two-library rail, recent design-board strip and local-time status bar.",
-    "language": "Made materials, accessories and packaging Chinese-first with English comparison text.",
-    "integrity": "Retained local sidecar draft behaviour, assortment export and read-only canonical SQLite access.",
-    "test_isolation": "Made the workbench test server port configurable so focused tests no longer collide with a user's running 4173 workbench."
+    "references": "Created REF-000045 for the 3-view 紫夜鎏金结构参考 group and REF-000046 for the 4-view 冷灰银色节奏结构参考 group.",
+    "asset_identity": "Created seven unresolved Google Drive assets with exact filenames, file IDs, source context, reference links and authorized display ordering.",
+    "relations": "Created three authorized theme relations and twelve exact-existing pattern relations; no new theme or pattern identity was created.",
+    "semantic_hold": "No image observations or synthesis assertion was written because all seven assets lack a source SHA-256 in the authorized local intake path."
   },
   "critical_boundaries_preserved": [
-    "canonical SQLite unchanged",
-    "no schema or canonical data write",
-    "no supplier, purchase, watcher or Bridge change",
-    "no web-derived image asset is sourced, downloaded or processed by Codex; external assets are GPT-owned"
+    "No seven-way reference split",
+    "No user preference evidence",
+    "No material/mineral identity inference",
+    "No material/component/packaging/supplier/offer writes",
+    "No Workbench UI changes",
+    "No invented SHA or pHash"
   ],
   "tests_or_checks": {
-    "focused_workbench": "PASS (5/5)",
-    "npm_test": "PASS (109 passed, 1 skipped)",
-    "npm_validate": "PASS",
-    "browser_1280x960": "PASS structurally; screenshot at outputs/visual/p3q-workbench-1280x960.png",
-    "git_diff_check": "PASS",
-    "canonical_db_sha_unchanged": true
+    "focused_p3r": "PASS",
+    "replay": "PASS: zero duplicate references/assets/links/theme/pattern relations",
+    "integrity_check": "ok",
+    "foreign_key_check_rows": 0
   },
   "risks_or_blockers": [
-    "Real bead/accessory/packaging imagery is asset_pending_from_gpt. Codex will only consume a manifest-approved, repository-present GPT asset."
+    "All seven files lack source bytes or authoritative SHA-256 metadata in the local authorized intake path. This DB requires resolved SHA-256 for image observations and synthesis provenance.",
+    "The canonical SQLite file is intentionally Git-ignored; the local write is identified by its SHA and byte-for-byte backup path in the P3R report."
   ],
   "requires_gpt_decision": false,
-  "next_minimum_action": "GPT may deliver manifest-approved imagery; Codex can then integrate it into the compact catalogue slots."
+  "next_minimum_action": "GPT provides an authorized seven-file intake manifest with exact SHA-256 values, after which Codex can replay the already-authored semantics without new visual analysis."
 }
