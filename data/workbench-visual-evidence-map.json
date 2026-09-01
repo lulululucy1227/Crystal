@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-01",
+  "purpose": "仅作为 GPT 判断品种识别特征、圆珠呈现方式和视觉品质差异的证据层；不等于可复制进公开 GitHub 的素材。",
+  "rules": [
+    "supplier AAA/AA/A/B labels are not standardized across the market",
+    "do not infer price grade only from supplier marketing labels",
+    "copyright-unclear ecommerce images are evidence_only and must not be copied into repository binaries",
+    "final workbench assets should reproduce diagnostic visual traits, not copy a vendor photograph"
+  ],
+  "evidence": [
+    {
+      "material_id": "crystal_clear_quartz",
+      "zh_name": "白水晶",
+      "en_name": "Clear Quartz",
+      "source_url": "https://beadsonline.com.au/gemstone-sku42662",
+      "evidence_role": "round_bead_high_clarity_reference",
+      "observed_traits": ["高透明度", "圆珠轮廓清楚", "内部杂质较少", "高光边缘清晰"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_aquamarine",
+      "zh_name": "海蓝宝",
+      "en_name": "Aquamarine",
+      "source_url": "https://www.gemsbiz.com/aquamarine-beads",
+      "evidence_role": "transparent_light_blue_reference",
+      "observed_traits": ["浅海水蓝", "较高透明度", "珠体颜色偏淡但干净"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_aquamarine",
+      "zh_name": "海蓝宝",
+      "en_name": "Aquamarine",
+      "source_url": "https://www.beadpark.com/p-1915644-natural-aquamarine-beads-strands-grade-ab-round.html",
+      "evidence_role": "lower_clarity_milky_blue_reference",
+      "observed_traits": ["奶蓝/雾感", "通透度低于高净度样本", "颜色更实更灰"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_citrine",
+      "zh_name": "黄水晶",
+      "en_name": "Citrine",
+      "source_url": "https://www.beadpark.com/p-1465375-natural-citrine-beads-strands-round-10mm.html",
+      "evidence_role": "round_bead_color_and_inclusion_reference",
+      "observed_traits": ["黄橙色调", "透明到半透明", "天然内部纹理/裂隙可见"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_green_phantom_quartz",
+      "zh_name": "绿幽灵",
+      "en_name": "Green Phantom Quartz",
+      "source_url": "https://www.etsy.com/listing/4461641494/green-phantom-quartz-natural-bead-green",
+      "evidence_role": "round_bead_species_recognition",
+      "observed_traits": ["透明石英底体", "绿色内部包裹体", "每颗珠内绿色景观分布不同", "抛光圆珠高光明显"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_black_rutilated_quartz",
+      "zh_name": "黑发晶",
+      "en_name": "Black Rutilated Quartz",
+      "source_url": "https://www.phangan.jp/SHOP/480-IE-BRQBA01.html",
+      "evidence_role": "dense_black_needle_reference",
+      "observed_traits": ["透明石英底体", "黑色针状/发丝状包裹体", "发丝密度与秩序可形成明显品质差异", "高净度底体能增强黑丝对比"],
+      "repo_binary_allowed": false
+    },
+    {
+      "material_id": "crystal_tigers_eye",
+      "zh_name": "虎眼石",
+      "en_name": "Tiger's Eye",
+      "source_url": "https://www.lejas.com/?l=89987827",
+      "evidence_role": "quality_difference_reference",
+      "observed_traits": ["高品质样本金色猫眼光带更亮更连续", "低品质样本光带弱且暗区更多", "颜色与光带对比是比营销等级更有用的视觉轴"],
+      "repo_binary_allowed": false
+    }
+  ]
+}
