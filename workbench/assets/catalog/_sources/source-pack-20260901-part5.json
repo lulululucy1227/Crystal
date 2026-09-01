@@ -1,0 +1,78 @@
+{
+  "pack_version": "2026-09-01.5",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "V1 银色配饰/结构件来源补齐。",
+  "sources": [
+    {
+      "asset_id": "hardware_findings_master_sheet_01",
+      "zh_name": "银色首饰结构件合集",
+      "en_name": "Jewellery Findings Master Sheet",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Findings_for_jewellery_(in_silver)_arp.jpg",
+      "license": "Public Domain",
+      "creator": "Adrian Pingstone / arpingstone",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "一张图覆盖花托、珠笼、隔珠、开口圈、磁扣、眼针、头针、耳钩、龙虾扣。后续可由 GPT 分割成单件参考资产。",
+      "status": "license_verified_high_value_source"
+    },
+    {
+      "asset_id": "hardware_lobster_clasp_01",
+      "zh_name": "龙虾扣",
+      "en_name": "Lobster Clasp",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Clasp_on_sterling_silver_anchor_chain.jpg",
+      "license": "CC BY 4.0",
+      "creator": "W.carter",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "极简 925 银链扣轮廓和银色表面质感",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "hardware_lobster_clasp_02",
+      "zh_name": "龙虾扣 / 链扣",
+      "en_name": "Lobster Clasp / Chain Clasp",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Clasp_on_sterling_silver_ball_chain.jpg",
+      "license": "CC BY 4.0",
+      "creator": "W.carter",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "右侧配饰精选的真实扣件候选",
+      "status": "license_verified_processing_pending"
+    },
+    {
+      "asset_id": "hardware_jump_ring_reference_01",
+      "zh_name": "开口圈",
+      "en_name": "Jump Ring",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Making_jump_rings.jpg",
+      "license": "CC BY-SA（文件页明确允许分享与改编，导入时记录具体版本）",
+      "creator": "Mauro Cateb",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "银质开口圈结构与截面参考；最终工作台使用单件标准化轮廓",
+      "status": "license_verified_structure_reference"
+    },
+    {
+      "asset_id": "hardware_silver_charm_reference_01",
+      "zh_name": "小型银色吊坠",
+      "en_name": "Small Silver Charm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Silver_Charm.jpg",
+      "license": "CC BY-SA 4.0",
+      "creator": "Wikimedia Commons contributor",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "小型银色吊坠表面与体积感参考；不代表 Crystal 最终造型语言",
+      "status": "license_verified_evidence_asset"
+    }
+  ],
+  "mapping_to_v1": {
+    "micro_spacer": "优先从 Public Domain findings master sheet 分割隔珠",
+    "bead_cap": "优先从 Public Domain findings master sheet 分割花托/珠帽",
+    "jump_ring": "findings master sheet + Making jump rings",
+    "minimal_clasp": "sterling silver anchor/ball chain clasp",
+    "small_charm": "Silver Charm 只作体积/表面证据，最终造型另行筛选",
+    "curved_tube": "仍缺现代极简弯管的理想开放素材",
+    "thin_frame_bezel": "仍缺适合椭圆/自由形主石的现代极简边框开放素材",
+    "geometric_connector": "仍缺现代小型几何连接件开放素材",
+    "counterweight_sphere": "可由普通银珠/小球结构参考补齐，仍待单独核验"
+  }
+}
