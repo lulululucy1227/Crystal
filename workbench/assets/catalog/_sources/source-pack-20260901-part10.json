@@ -1,0 +1,42 @@
+{
+  "pack_id": "source-pack-20260901-part10",
+  "created_at": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "Resolve the last species-specific dark wood / agarwood evidence gap.",
+  "sources": [
+    {
+      "asset_scope": "agarwood_rosary_species_reference",
+      "zh_name": "沉香珠 / 沉香念珠",
+      "en_name": "Agarwood / Chen Xiang Rosary",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Qing-Agarwood-Rosary.jpg",
+      "source_site": "Wikimedia Commons",
+      "author": "Danieliness",
+      "description": "Antique Chen xiang rosary with inlaid gold, Qing dynasty, 19th century, China; Adilnor Collection, Sweden.",
+      "license": "CC BY-SA 4.0 (GFDL alternative also offered)",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "species-specific agarwood bead color, grain, polished surface and prayer-bead form evidence",
+      "notes": "Historical rosary rather than a modern minimal spacer. Use only material/bead evidence; do not copy gold inlay or historical jewelry design into Crystal's modern structural spacer."
+    },
+    {
+      "asset_scope": "generic_wood_bead_modern_shape_reference",
+      "zh_name": "现代木珠形态补充参考",
+      "en_name": "Modern Wooden Prayer Bead Shape Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tasbih_or_prayer_beads.jpg",
+      "source_site": "Wikimedia Commons",
+      "author": "Fauwaz Alhassan",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "use": "modern wooden bead geometry and finish reference only",
+      "notes": "Not agarwood-specific. Combine its modern geometry evidence with the Qing agarwood material evidence when creating a project-original agarwood-like structural spacer."
+    }
+  ],
+  "decision": {
+    "previous_gap": "resolved",
+    "safe_display_strategy": "Create a project-original modern dark-wood/agarwood structural spacer constrained by species-specific Qing agarwood material evidence plus modern generic wood-bead geometry. Label representation_type as generated_from_evidence if generated.",
+    "do_not_copy": ["historical gold inlay", "rosary composition", "religious arrangement"]
+  }
+}
