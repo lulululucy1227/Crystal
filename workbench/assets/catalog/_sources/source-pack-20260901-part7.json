@@ -1,0 +1,102 @@
+{
+  "pack_id": "source-pack-20260901-part7",
+  "created_at": "2026-09-01",
+  "owner": "GPT Crystal Supervisor",
+  "purpose": "Resolve hardware and packaging reference coverage with reusable, attribution-safe sources.",
+  "sources": [
+    {
+      "asset_scope": "hardware_findings_master_sheet",
+      "zh_name": "银色首饰结构件总参考",
+      "en_name": "Jewellery Findings Master Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Findings_for_jewellery_(in_silver)_arp.jpg",
+      "source_site": "Wikimedia Commons",
+      "author": "Adrian Pingstone / Arpingstone",
+      "license": "Public Domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Findings_for_jewellery_(in_silver)_arp.jpg",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["花托/Bead caps", "珠笼/Bead cages", "隔珠/Spacer beads", "开口圈/Jump rings", "磁扣/Magnetic clasps", "眼针/Eye pins", "头针/Head pins", "耳钩/Ear wires", "龙虾扣/Lobster clasps"],
+      "use": "crop/isolate as structural references; final Crystal display assets may be standardized or generated from these forms",
+      "notes": "The source itself is silver plated, not 925 sterling. Do not use the image to claim metal fineness. Use only for component shape recognition."
+    },
+    {
+      "asset_scope": "hardware_lobster_clasp_sterling_reference",
+      "zh_name": "925 银龙虾扣参考",
+      "en_name": "Sterling Silver Lobster Clasp Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Clasp_on_sterling_silver_ball_chain.jpg",
+      "source_site": "Wikimedia Commons",
+      "author": "W.carter / Ann-Sophie Qvarnström attribution on Commons",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["龙虾扣/Lobster clasp", "银链/Silver chain"],
+      "use": "material and finish reference for sterling silver clasp/chain",
+      "notes": "Better material-finishing reference than the public-domain master sheet; suitable for a processed-source-photo display asset with attribution."
+    },
+    {
+      "asset_scope": "packaging_jewelry_box_structure",
+      "zh_name": "珠宝盒结构参考",
+      "en_name": "Jewelry Box Structure Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jewelry_Box_MET_LC-35_3_79_EGDP025503.jpg",
+      "source_site": "Wikimedia Commons / The Metropolitan Museum of Art",
+      "author": "The Metropolitan Museum of Art Open Access",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["硬盒/Rigid box", "珠宝盒/Jewelry box"],
+      "use": "box proportion/hinge/open-lid structural reference only",
+      "notes": "Historical object; final workbench display should be standardized to Crystal's quiet modern packaging language rather than copy decoration."
+    },
+    {
+      "asset_scope": "packaging_jewelry_box_alt",
+      "zh_name": "珠宝盒结构参考 2",
+      "en_name": "Jewelry Box Structure Reference 2",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Box,_jewellery_(AM_19629-5).jpg",
+      "source_site": "Wikimedia Commons / Auckland Museum",
+      "author": "Auckland Museum",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["珠宝盒/Jewelry box", "展示盒/Presentation box"],
+      "use": "secondary box structure and opening reference",
+      "notes": "Use for structure, not for copying historical decoration."
+    },
+    {
+      "asset_scope": "packaging_drawstring_linen_reference",
+      "zh_name": "棉麻/亚麻抽绳袋参考",
+      "en_name": "Linen Drawstring Pouch Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sewing_pouch_(AM_1996.170.6-7).jpg",
+      "source_site": "Wikimedia Commons / Auckland Museum",
+      "author": "Auckland Museum",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["棉麻袋/Cotton-linen pouch", "抽绳袋/Drawstring pouch"],
+      "use": "fabric/drawstring construction reference",
+      "notes": "Historical sewing pouch; final Crystal asset should simplify to cool beige/grey editorial pouch."
+    },
+    {
+      "asset_scope": "packaging_simple_cardboard_box",
+      "zh_name": "基础纸盒结构参考",
+      "en_name": "Simple Cardboard Box Reference",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Simple_cardboard_box.svg",
+      "source_site": "Wikimedia Commons / Open Clip Art Library",
+      "author": "Open Clip Art Library contributor",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "can_redistribute": true,
+      "can_modify": true,
+      "covers": ["纸盒/Cardboard box", "运输包装/Shipping mailer"],
+      "use": "generic structural reference and fallback iconography",
+      "notes": "Suitable for simplified workbench preview when photography is unnecessary."
+    }
+  ],
+  "representation_decision": {
+    "hardware": "Use real reusable source photos when they add material/finish information; use standardized generated/schematic assets for generic geometry such as curved tube, thin bezel, micro spacer and geometric connector.",
+    "packaging": "Use reusable sources as structural evidence. Final display assets should be standardized/generated to match Crystal packaging direction because exact branded product photography is unnecessary and often copyrighted."
+  }
+}
