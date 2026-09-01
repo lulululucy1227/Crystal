@@ -1,0 +1,39 @@
+{
+  "phase": "GPT-ASSET-LIBRARY-V1",
+  "status": "in_progress",
+  "date": "2026-09-01",
+  "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
+  "catalogue_items_registered": {
+    "crystals_minerals": 23,
+    "pearls_organic": 6,
+    "hardware": 8,
+    "packaging": 8,
+    "total": 45
+  },
+  "completed_this_round": [
+    "created data/workbench-asset-manifest.json",
+    "created docs/WORKBENCH_ASSET_SOURCES.md",
+    "created data/workbench-visual-evidence-map.json",
+    "registered Chinese primary names and English comparison names",
+    "registered quality/optical axes for each crystal/pearl type",
+    "separated redistributable source candidates from evidence-only ecommerce references",
+    "confirmed permissive source pools including Wikimedia Commons, Yale Open Access and The Met Open Access"
+  ],
+  "notable_new_sources_found": [
+    {"material":"Citrine","source":"Wikimedia Commons Category:Citrine gems; specific CC BY-SA files available"},
+    {"material":"Gold Rutilated Quartz","source":"Wikimedia Commons Rutilated Quartz Specimen 5 - golden rutile strands"},
+    {"material":"Green Phantom Quartz","source":"multiple modern bead references found for visual evidence; copyright-unclear ecommerce images remain evidence_only"},
+    {"material":"Tiger's Eye","source":"visual quality comparison evidence found; supplier labels treated as non-standardized evidence only"}
+  ],
+  "remaining_work": [
+    "obtain or create final standardized display assets for each registered item",
+    "complete low/mid/high visual references for grade-suitable crystals and pearls",
+    "complete type/effect references for labradorite, moonstone, phantom quartz, rainbow obsidian and mixed rutilated quartz",
+    "find/prepare modern minimal hardware assets for curved tube, bezel/frame, half-cap and geometric connector",
+    "prepare project-original packaging assets where external photos are unnecessary",
+    "cutout/alpha processing and sha256 attribution records",
+    "commit processed binaries under workbench/assets/catalog/"
+  ],
+  "critical_rule": "No copyright-unclear ecommerce image may be committed as a repository binary. Those links are evidence only.",
+  "requires_user_decision": false
+}
