@@ -1,6 +1,6 @@
 {
   "phase": "GPT-ASSET-LIBRARY-V1",
-  "status": "in_progress",
+  "status": "source_coverage_complete_asset_production_in_progress",
   "date": "2026-09-01",
   "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
   "catalogue_items_registered": {
@@ -10,48 +10,59 @@
     "packaging": 8,
     "total": 45
   },
-  "completed_this_round": [
+  "source_coverage": {
+    "crystals_minerals": "23/23 evidence source covered",
+    "pearls_organic": "5/6 species/material source covered; dark wood has safe generic evidence but agarwood-specific identity remains unverified",
+    "hardware": "8/8 structural/material representation covered through reusable evidence and evidence-constrained generated geometry",
+    "packaging": "8/8 structural/design representation covered; project-original display assets preferred for branded/modern packaging"
+  },
+  "completed": [
     "created data/workbench-asset-manifest.json",
     "created docs/WORKBENCH_ASSET_SOURCES.md",
     "created data/workbench-visual-evidence-map.json",
     "registered Chinese primary names and English comparison names",
-    "registered quality/optical axes for each crystal/pearl type",
+    "registered material-specific quality/optical axes",
     "separated redistributable source candidates from evidence-only ecommerce references",
-    "confirmed permissive source pools including Wikimedia Commons, Yale Open Access and The Met Open Access",
-    "resolved green phantom and white phantom source gaps with reusable phantom-quartz references",
-    "resolved Akoya, Tahitian, South Sea, baroque and freshwater/Keshi pearl reference coverage",
-    "resolved golden South Sea color reference with Smithsonian CC0 source",
-    "resolved hardware shape-reference coverage with a public-domain jewellery findings master sheet",
-    "resolved packaging structural-reference coverage with reusable jewellery-box, pouch and cardboard-box sources",
+    "verified permissive source pools including Wikimedia Commons, Yale Open Access, The Met Open Access and Smithsonian CC0",
+    "resolved green phantom and white phantom evidence gaps",
+    "resolved Akoya, Tahitian, White South Sea, Golden South Sea, baroque and freshwater/Keshi pearl evidence coverage",
+    "resolved hardware shape/material reference coverage",
+    "resolved packaging structural reference coverage",
+    "formalized Amazonite, Lapis Lazuli, Amethyst, Obsidian, Tiger's Eye, Kunzite, Sugilite and Rose Quartz reusable sources",
     "created docs/WORKBENCH_ASSET_REPRESENTATION_POLICY.md",
-    "created and advanced data/workbench-asset-production-queue.json"
-  ],
-  "notable_new_sources_found": [
-    {"material":"Green Phantom Quartz","source":"Wikimedia Commons Chlorite phantom quartz, CC BY-SA 3.0"},
-    {"material":"White Phantom Quartz","source":"Wikimedia Commons QuartzFantome, CC BY-SA 3.0 / GFDL"},
-    {"material":"Akoya Pearl","source":"Wikimedia Commons public-domain average-luster strand plus CC BY-SA clean pearl reference"},
-    {"material":"Tahitian Pearl","source":"Wikimedia Commons Tahitian pearl reference, CC BY-SA 3.0"},
-    {"material":"South Sea Pearl","source":"Wikimedia Commons South Sea pearl reference, CC BY-SA 3.0"},
-    {"material":"Golden South Sea Pearl","source":"Smithsonian South Sea Glow Necklace, CC0 / public domain"},
-    {"material":"Baroque Pearl","source":"University of Washington Freshwater and Marine Image Bank via Commons, public domain"},
-    {"material":"Hardware findings","source":"Wikimedia Commons silver-plated jewellery findings master sheet, public domain"},
-    {"material":"Sterling clasp/chain","source":"Wikimedia Commons sterling silver clasp photo, CC BY 4.0"},
-    {"material":"Packaging","source":"Met CC0 jewelry-box reference + Auckland Museum CC BY 4.0 box/pouch references + CC0 simple cardboard-box vector"}
+    "created and advanced data/workbench-asset-production-queue.json",
+    "created data/workbench-source-coverage-audit-v1.json"
   ],
   "source_packs_added": [
+    "workbench/assets/catalog/_sources/source-pack-20260901.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part2.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part3.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part4.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part5.json",
     "workbench/assets/catalog/_sources/source-pack-20260901-part6.json",
     "workbench/assets/catalog/_sources/source-pack-20260901-part7.json",
-    "workbench/assets/catalog/_sources/source-pack-20260901-part8.json"
+    "workbench/assets/catalog/_sources/source-pack-20260901-part8.json",
+    "workbench/assets/catalog/_sources/source-pack-20260901-part9.json"
   ],
-  "remaining_work": [
-    "produce final standardized display assets for each registered item",
-    "complete low/mid/high visual references for grade-suitable crystals and pearls",
-    "complete type/effect references for labradorite, moonstone, phantom quartz, rainbow obsidian and mixed rutilated quartz",
-    "produce standardized hardware assets for curved tube, bezel/frame, half-cap and geometric connector using evidence-constrained generated/schematic representation where photography adds little value",
-    "produce project-original packaging display assets in Crystal's quiet editorial direction",
-    "cutout/alpha processing and sha256 attribution records",
-    "commit processed binaries under workbench/assets/catalog/"
+  "remaining_external_source_gap": [
+    "No sufficiently reliable permissive species-specific agarwood bead image has been verified. Generic wooden-bead evidence is available but must not be labeled as agarwood."
   ],
+  "current_main_work": [
+    "produce final standardized display assets for all registered items",
+    "produce low/mid/high sets where grade logic is valid",
+    "produce pattern/effect/type sets for phantom quartz, labradorite, moonstone, tiger eye, obsidian and mixed rutilated quartz",
+    "produce evidence-constrained standardized hardware visuals",
+    "produce project-original Crystal packaging visuals",
+    "perform cutout/alpha normalization where source photos are used",
+    "record representation_type, transformations, attribution and sha256",
+    "commit final processed binaries under workbench/assets/catalog/"
+  ],
+  "binary_ingestion_blocker": {
+    "status": "active",
+    "scope": "external image binary transfer only",
+    "detail": "The current chat can write GitHub text/blob content when bytes are available, but the current web/container path cannot reliably transfer external image binary bytes into GitHub. Source verification, classification and production specification continue independently.",
+    "ownership_boundary": "GPT remains responsible. Do not transfer external image search/download/cutout responsibility to Codex."
+  },
   "critical_rule": "No copyright-unclear ecommerce image may be committed as a repository binary. Those links are evidence only.",
   "requires_user_decision": false
 }
