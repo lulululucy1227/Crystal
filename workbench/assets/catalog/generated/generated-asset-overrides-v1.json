@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-01",
+  "purpose": "视觉 QA 后，为容易被纯色球弱化特征的材料提供更明显但仍保持物理合理性的低/中/高覆盖图。",
+  "representation_type": "generated_from_evidence",
+  "file": "workbench/assets/catalog/generated/crystals-grade-overrides-v1.svg",
+  "grid": {"columns": 2, "cell_width": 600, "cell_height": 200, "variants_per_cell": 3},
+  "variant_order": ["low_reference", "mid_reference", "high_reference"],
+  "order": ["clear_quartz", "smoky_quartz", "aquamarine", "amazonite", "amethyst", "citrine", "kunzite", "rose_quartz", "larimar", "sugilite"],
+  "overrides": {
+    "clear_quartz": {"axes": ["透明度", "棉雾/冰裂", "净度"], "reason": "基础 atlas 的等级差异在小尺寸下过弱"},
+    "smoky_quartz": {"axes": ["通透度", "灰脏感", "颜色均匀度"], "reason": "避免三个等级看成相同棕色玻璃球"},
+    "aquamarine": {"axes": ["蓝度", "灰度", "净度", "通透度"], "reason": "强化低档灰雾与高档清透蓝的差异"},
+    "amazonite": {"axes": ["蓝绿色纯度", "白纹/基质比例", "颜色均匀度"], "reason": "强化白色长石纹负担与高档颜色纯度差异"},
+    "amethyst": {"axes": ["紫色浓度", "色调纯度", "均匀度", "通透度"], "reason": "低档增加灰淡/色带感，高档保持浓而不黑"},
+    "citrine": {"axes": ["黄/金色色调", "净度", "通透度", "均匀度"], "reason": "避免仅用相同黄色表达全部档位"},
+    "kunzite": {"axes": ["粉紫色饱和度", "净度", "通透度"], "reason": "强化近无色/灰雾到清透粉紫的上升"},
+    "rose_quartz": {"axes": ["粉色浓度", "奶透感", "颜色均匀度", "棉雾"], "reason": "强化淡白浑浊与高档均匀粉色差异"},
+    "larimar": {"axes": ["蓝度", "白色海纹图案", "杂质", "颜色均匀度"], "reason": "低档加入灰绿/杂质，高档强化干净蓝白海纹"},
+    "sugilite": {"axes": ["紫色纯度", "深色基质比例", "纹理细腻度"], "reason": "避免舒俱来退化成普通紫色圆珠"}
+  },
+  "truthfulness_boundary": "这些仍是视觉品质参考，不是市场统一价格等级；档位表现仅强化已在 Evidence 层确认的真实变化轴。"
+}
