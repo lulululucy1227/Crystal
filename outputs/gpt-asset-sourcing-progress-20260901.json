@@ -1,6 +1,6 @@
 {
   "phase": "GPT-ASSET-LIBRARY-V1",
-  "status": "generated_asset_v1_committed_source_photo_upgrade_optional",
+  "status": "generated_asset_v1_complete_with_visual_qa",
   "date": "2026-09-01",
   "scope_source": "docs/ASSORTMENT_SELECTION_V1.md",
   "catalogue_items_registered": {
@@ -11,51 +11,56 @@
     "total": 45
   },
   "source_coverage": {
-    "crystals_minerals": "23/23 evidence source covered",
-    "pearls_organic": "6/6 evidence source covered, including species-specific agarwood/Chen Xiang evidence",
-    "hardware": "8/8 structural/material evidence covered",
-    "packaging": "8/8 structural/design evidence covered"
+    "crystals_minerals": "23/23",
+    "pearls_organic": "6/6",
+    "hardware": "8/8",
+    "packaging": "8/8"
   },
   "generated_asset_v1": {
     "representation_type": "generated_from_evidence",
-    "coverage": "45/45 registered objects",
+    "coverage": "45/45",
     "repo_directory": "workbench/assets/catalog/generated/",
-    "files": [
-      "workbench/assets/catalog/generated/crystals-hero-atlas.svg",
-      "workbench/assets/catalog/generated/crystals-comparison-atlas.svg",
-      "workbench/assets/catalog/generated/pearls-organic-hero-atlas.svg",
-      "workbench/assets/catalog/generated/pearls-organic-comparison-atlas.svg",
-      "workbench/assets/catalog/generated/hardware-hero-atlas.svg",
-      "workbench/assets/catalog/generated/packaging-hero-atlas.svg",
-      "workbench/assets/catalog/generated/generated-asset-manifest-v1.json",
-      "workbench/assets/catalog/generated/README.md"
+    "primary_files": [
+      "crystals-hero-atlas.svg",
+      "crystals-comparison-atlas.svg",
+      "pearls-organic-hero-atlas.svg",
+      "pearls-organic-comparison-atlas.svg",
+      "hardware-hero-atlas.svg",
+      "packaging-hero-atlas.svg",
+      "generated-asset-manifest-v1.json"
     ],
-    "crystal_outputs": "23 hero representations + 23 three-state comparison groups",
-    "pearl_organic_outputs": "6 hero representations + 6 three-state comparison groups",
-    "hardware_outputs": "8 standardized representative structures",
-    "packaging_outputs": "8 project-original standardized representative structures"
+    "qa_override_files": [
+      "crystals-grade-overrides-v1.svg",
+      "generated-asset-overrides-v1.json"
+    ]
+  },
+  "visual_qa": {
+    "status": "pass_with_targeted_overrides",
+    "report": "outputs/gpt-asset-production-v1.json",
+    "method": "Rendered SVG atlases and checked them visually at catalogue-like scale.",
+    "override_materials": ["白水晶", "茶晶", "海蓝宝", "天河石", "紫水晶", "黄水晶", "紫锂辉", "粉水晶", "海纹石", "舒俱来"],
+    "override_reason": "Primary comparison atlas made low/mid/high too subtle for these materials at small card scale; overrides strengthen only the evidence-backed real quality axes."
   },
   "comparison_logic": {
-    "low_mid_high": ["白水晶", "茶晶", "海蓝宝", "紫水晶", "黄水晶", "粉水晶", "蓝纹玛瑙", "紫锂辉", "海纹石", "金发晶", "黑发晶", "Akoya/南洋/大溪地等珍珠"],
+    "low_mid_high": "clarity/color purity/inclusion burden/luster as appropriate",
     "pattern_first": ["绿幽灵", "白幽灵", "血石", "综合色发晶"],
     "optical_effect_first": ["拉长石", "彩虹月光石", "虎眼石", "彩虹黑曜石"],
     "type_first": ["黑曜石"]
   },
   "truthfulness_boundary": [
-    "Generated SVG assets are not source photos and must not be labelled as photographed material.",
-    "Low/mid/high is a visual reference system, not supplier AA/AAA or a universal price grade.",
-    "Dark-wood generated asset is not itself proof of agarwood species identity.",
-    "No copyright-unclear ecommerce binary has been copied into the public repository."
+    "SVG 素材不是实拍图，不得标成 source_photo。",
+    "low/mid/high 不是供应商 AA/AAA 或统一市场价格等级。",
+    "外部版权不明电商图没有作为二进制文件进入公开仓库。",
+    "深色木材生成图本身不能作为沉香物种鉴定。"
   ],
   "optional_external_photo_upgrade": {
     "status": "pending_binary_transfer_capability",
     "blocking_v1": false,
-    "scope": "licensed source-photo cutout/alpha variants only",
-    "detail": "Current chat cannot reliably transfer external Web image binary bytes into GitHub. This no longer blocks V1 because the primary Workbench display layer has been delivered as evidence-constrained SVG assets.",
     "ownership_boundary": "GPT remains responsible; do not transfer image search/download/cutout responsibility to Codex."
   },
   "production_queue": "data/workbench-asset-production-queue.json",
   "asset_manifest": "workbench/assets/catalog/generated/generated-asset-manifest-v1.json",
+  "asset_override_manifest": "workbench/assets/catalog/generated/generated-asset-overrides-v1.json",
   "requires_user_decision": false,
-  "next_recommended_action": "Workbench may now consume generated-asset-manifest-v1.json and the committed SVG atlases. Only refine individual species visuals when visual review reveals a concrete recognition problem."
+  "next_recommended_action": "Stop broad asset sourcing. Use the V1 pack in the Workbench and refine only materials that fail recognition at actual UI card size."
 }
