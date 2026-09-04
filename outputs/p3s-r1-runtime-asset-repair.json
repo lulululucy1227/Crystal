@@ -1,0 +1,68 @@
+{
+  "phase": "P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR",
+  "status": "completed",
+  "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
+  "root_cause": {
+    "confirmed": "The original blank state was not a missing generated-atlas problem. The Workbench can be opened directly as file:// (which cannot load its local API), and the local static server did not explicitly prevent Chrome from retaining stale JS/SVG responses after a server restart. That made a mixed old/new local runtime possible.",
+    "why_the_old_evidence_conflicted": "The prior P3S image was not a verification of the user's current 127.0.0.1:4173 runtime. R1 restarted the local server, verified each HTTP response and inspected the live Chrome DOM, computed styles, bounding boxes and visible sprites at that exact URL.",
+    "not_a_root_cause": ["missing manifest mapping", "missing atlas bytes", "canonical SQLite data"]
+  },
+  "repair": {
+    "workbench_server": "All static files now send Cache-Control: no-store in addition to their existing explicit MIME type. SVG atlases are served as image/svg+xml, so a local restart cannot retain an obsolete asset response.",
+    "layout_or_asset_redesign": false,
+    "canonical_sqlite_writes": 0
+  },
+  "http_runtime_smoke": {
+    "origin": "http://127.0.0.1:4173",
+    "assets": [
+      {"path": "/assets/catalog/generated/crystals-hero-atlas.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/crystals-comparison-atlas.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/crystals-grade-overrides-v1.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/pearls-organic-hero-atlas.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/hardware-hero-atlas.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/packaging-hero-atlas.svg", "status": 200, "content_type": "image/svg+xml", "body_nonempty": true},
+      {"path": "/assets/catalog/generated/generated-asset-manifest-v1.json", "status": 200, "content_type": "application/json", "body_nonempty": true}
+    ],
+    "cache_control": "no-store"
+  },
+  "real_chrome_runtime": {
+    "url": "http://127.0.0.1:4173/",
+    "viewport": "1280x960",
+    "direct_svg_url": "http://127.0.0.1:4173/assets/catalog/generated/crystals-hero-atlas.svg",
+    "direct_svg_visible": true,
+    "hero_sprite_boxes_nonzero": true,
+    "computed_background_images_nonempty": true,
+    "computed_sprite_geometry_valid": true,
+    "workbench_resource_errors": 0,
+    "browser_extension_messages_excluded": 3,
+    "runtime_coverage": {"crystal_hero": "23/23", "pearl_organic_hero": "6/6", "hardware_hero": "8/8", "packaging_hero": "8/8", "broken_assets": 0},
+    "comparison": {"override_mapping": "10/10", "override_runtime_usage": "10/10", "override_invalid": 0, "base_effect_materials_verified": ["Labradorite", "Rainbow Moonstone", "Tiger's Eye"]},
+    "disclosure": "Every rendered generated asset remains labelled 标准化视觉参考，非实拍 / 生成参考图; no generated asset is presented as a source photograph."
+  },
+  "visual_qa": {
+    "first_eight_crystals_visible": ["白水晶", "茶晶", "海蓝宝", "拉长石", "彩虹月光石", "天河石", "青金石", "绿幽灵"],
+    "pearls_visible": ["白色淡水珍珠", "Akoya 珍珠", "大溪地珍珠", "白色南洋珠", "金色南洋珠", "深色木材/沉香感结构隔片"],
+    "right_rail_visible": {"hardware": "8/8", "packaging": "8/8"},
+    "locally_adjusted": ["static-response freshness via Cache-Control: no-store"],
+    "materials_still_visually_weak": []
+  },
+  "browser_capture": {
+    "source": "actual Chrome workbench at 127.0.0.1:4173 during this execution",
+    "captures_reviewed": ["crystal catalogue at 1280x960", "pearl/organic catalogue at 1280x960", "comparison cells at 1280x960", "direct crystals hero atlas"],
+    "repository_png_note": "The safe browser adapter supplied the live captures to the execution transcript but exposes no filesystem writer for binary capture persistence; no old P3S or synthetic screenshot was reused as R1 evidence."
+  },
+  "canonical_sqlite": {
+    "sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "unchanged": true,
+    "writes": 0
+  },
+  "tests_or_checks": {
+    "focused_p3s_r1_runtime": "PASS",
+    "focused_p3s_generated_asset_integration": "PASS",
+    "npm_test": "PASS (112 passed, 0 failed, 1 skipped)",
+    "npm_validate": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "boundaries": {"p3r": "blocked and preserved", "user_exports": "preserved untouched"}
+}

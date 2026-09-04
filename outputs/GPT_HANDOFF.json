@@ -1,17 +1,17 @@
 {
   "protocol_version": "AGENT-HANDOFF-V1",
-  "phase": "P3S-WORKBENCH-GENERATED-ASSET-INTEGRATION-AND-REAL-SIZE-QA",
+  "phase": "P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR",
   "status": "completed",
   "execution_class": "SAFE_WRITE(workspace only) + READ_ONLY canonical SQLite",
   "branch": "main",
-  "summary": "Manifest-driven generated V1 assets are now the Workbench display layer, verified in the actual local UI at 1280x960.",
+  "summary": "The local Chrome Workbench at 127.0.0.1:4173 now visibly renders the generated V1 asset layer at 1280x960. R1 added static no-store protection and verified the live browser DOM, computed sprites and direct SVG rendering.",
   "asset_coverage": {"crystal_mineral": "23/23", "pearl_organic": "6/6", "hardware": "8/8", "packaging": "8/8", "total": "45/45", "broken_assets": 0},
   "comparison": {"override_mapping": "10/10", "override_runtime_usage": "10/10", "override_source": "crystals-grade-overrides-v1.svg", "representation": "visual reference only; not supplier AA/AAA or market grades"},
-  "runtime_qa": {"viewport": "1280x960", "status": "PASS", "visual_evidence": ["outputs/visual/p3s-workbench-assets-1280x960.png", "outputs/visual/p3s-workbench-asset-comparison.png"], "locally_adjusted": ["atlas display sizing", "comparison sprite sizing", "manifest mapping", "SVG MIME type"], "materials_still_visually_weak": []},
+  "runtime_qa": {"viewport": "1280x960", "status": "PASS", "actual_browser_url": "http://127.0.0.1:4173/", "direct_svg_chrome_render": "PASS", "runtime_sprite_geometry": "PASS", "locally_adjusted": ["static-response freshness via Cache-Control: no-store"], "materials_still_visually_weak": []},
   "canonical_sqlite": {"sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "unchanged": true, "writes": 0},
-  "tests_or_checks": {"focused_p3s": "PASS", "npm_test": "PASS (111 passed, 0 failed, 1 skipped)", "npm_validate": "PASS", "git_diff_check": "PASS"},
+  "tests_or_checks": {"focused_p3s_r1": "PASS", "focused_p3s": "PASS", "npm_test": "PASS (112 passed, 0 failed, 1 skipped)", "npm_validate": "PASS", "git_diff_check": "PASS"},
   "p3r_status": "P3R remains blocked and preserved. Its seven Google Drive image SHA-256 blockers were not touched.",
   "requires_gpt_decision": false,
   "true_blockers": [],
-  "next_minimum_action": "Supervisor may review the committed P3S runtime screenshots and handoff; no P3R SHA recovery was attempted."
+  "next_minimum_action": "Supervisor may review the actual Chrome runtime evidence and R1 handoff; no P3R SHA recovery was attempted."
 }

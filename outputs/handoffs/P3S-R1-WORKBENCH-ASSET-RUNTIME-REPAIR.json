@@ -1,0 +1,15 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR",
+  "status": "completed",
+  "summary": "R1 verified the user's actual local Chrome path after repairing static-response freshness. The generated V1 asset layer is visibly rendering in the Workbench; no canonical data changed.",
+  "root_cause": "A direct file:// launch cannot access the local API, and the static server did not explicitly prevent stale local static asset responses. MIME was already explicit; R1 added no-store freshness protection and validated the restarted 127.0.0.1:4173 runtime.",
+  "actual_runtime": {"url": "http://127.0.0.1:4173/", "viewport": "1280x960", "crystal_hero": "23/23", "pearl_organic_hero": "6/6", "hardware_hero": "8/8", "packaging_hero": "8/8", "override_runtime": "10/10", "broken_assets": 0},
+  "verification": {"server_smoke": "PASS", "real_chrome_dom_computed_style_bbox": "PASS", "direct_svg_chrome_render": "PASS", "focused_p3s_r1": "PASS", "focused_p3s": "PASS", "npm_test": "PASS (112 passed, 0 failed, 1 skipped)", "npm_validate": "PASS", "git_diff_check": "PASS"},
+  "canonical_sqlite": {"sha256_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "sha256_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6", "writes": 0},
+  "p3r_status": "blocked and preserved",
+  "user_exports": "preserved untouched",
+  "true_blockers": [],
+  "requires_gpt_decision": false,
+  "next_minimum_action": "Review the real browser evidence captured in this run. No P3R SHA recovery was attempted."
+}
