@@ -6,9 +6,10 @@ import { DatabaseSync } from 'node:sqlite';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, '..');
-const stateDir = path.join(root, 'state');
-const exportDir = path.join(root, 'exports');
+const stateDir = path.resolve(process.env.WORKBENCH_STATE_DIR || path.join(root, 'state'));
+const exportDir = path.resolve(process.env.WORKBENCH_EXPORT_DIR || path.join(root, 'exports'));
 const dbPath = path.join(repo, 'data', 'crystal-design.sqlite');
+const fabricModulePath = path.resolve(repo, 'node_modules/fabric/dist/index.min.mjs');
 fs.mkdirSync(stateDir, { recursive: true });
 fs.mkdirSync(exportDir, { recursive: true });
 const assortment = JSON.parse(fs.readFileSync(path.join(repo, 'outputs', 'assortment-selection-v1.json'), 'utf8'));
@@ -17,6 +18,16 @@ const safeName = (value) => String(value ?? '').replace(/[^a-zA-Z0-9_-]/g, '').s
 const json = (res, value, status = 200) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(value)); };
 const readBody = (req) => new Promise((resolve, reject) => { let body = ''; req.on('data', (chunk) => { body += chunk; }); req.on('end', () => resolve(body)); req.on('error', reject); });
 const fileFor = (name) => path.join(stateDir, `${safeName(name)}.json`);
+const listDraftNames = () => fs.readdirSync(stateDir)
+  .filter((entry) => entry.endsWith('.json'))
+  .map((entry) => {
+    try {
+      const saved = JSON.parse(fs.readFileSync(path.join(stateDir, entry), 'utf8'));
+      return typeof saved.name === 'string' && saved.name.trim() ? saved.name.trim() : entry.slice(0, -5);
+    } catch {
+      return entry.slice(0, -5);
+    }
+  });
 
 function dbData() {
   const db = new DatabaseSync(dbPath, { readOnly: true });
@@ -41,8 +52,13 @@ function assortmentCsv() { const headers = ['section', 'name', 'priority', 'them
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
+    if (url.pathname === '/vendor/fabric/index.min.mjs') {
+      if (!fs.existsSync(fabricModulePath)) return json(res, { error: { code: 'FABRIC_NOT_INSTALLED', message: 'Run npm install before starting the Workbench.' } }, 503);
+      res.writeHead(200, { 'content-type': 'application/javascript; charset=utf-8', 'cache-control': 'public, max-age=31536000, immutable' });
+      return res.end(fs.readFileSync(fabricModulePath));
+    }
     if (url.pathname === '/api/data') return json(res, dbData());
-    if (url.pathname === '/api/drafts' && req.method === 'GET') return json(res, { drafts: fs.readdirSync(stateDir).filter((x) => x.endsWith('.json')).map((x) => x.slice(0, -5)) });
+    if (url.pathname === '/api/drafts' && req.method === 'GET') return json(res, { drafts: listDraftNames() });
     if (url.pathname.startsWith('/api/drafts/')) {
       const parts = url.pathname.split('/').filter(Boolean); const name = parts[2]; const file = fileFor(name);
       if (parts[3] === 'export' && req.method === 'POST') { const payload = JSON.parse(await readBody(req)); const draft = JSON.parse(fs.readFileSync(file, 'utf8')); const ext = payload.format === 'md' ? 'md' : 'json'; const out = path.join(exportDir, `${safeName(name)}.${ext}`); fs.writeFileSync(out, ext === 'md' ? markdown(draft) : JSON.stringify(draft, null, 2)); return json(res, { ok: true, path: out }); }
@@ -50,7 +66,7 @@ const server = http.createServer(async (req, res) => {
       if (req.method === 'PUT' || req.method === 'POST') { const draft = JSON.parse(await readBody(req)); if (!draft.name || !Array.isArray(draft.items)) return json(res, { error: { code: 'INVALID_DRAFT', message: 'name and items are required' } }, 400); const tmp = `${file}.${process.pid}.tmp`; fs.writeFileSync(tmp, JSON.stringify(draft, null, 2)); fs.renameSync(tmp, file); return json(res, { ok: true, draft }); }
     }
     if (url.pathname === '/api/export/assortment') { const format = url.searchParams.get('format') === 'csv' ? 'csv' : 'json'; const out = path.join(exportDir, `assortment-selection-v1.${format}`); fs.writeFileSync(out, format === 'csv' ? assortmentCsv() : JSON.stringify(assortment, null, 2)); return json(res, { ok: true, path: out }); }
-    const rel = url.pathname === '/' ? 'index.html' : url.pathname.slice(1); const file = path.resolve(root, rel); if (!file.startsWith(root) || !fs.existsSync(file)) return json(res, { error: 'not found' }, 404); const type = file.endsWith('.css') ? 'text/css' : file.endsWith('.js') ? 'application/javascript' : file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.png') ? 'image/png' : file.endsWith('.json') ? 'application/json' : 'text/html'; res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' }); return res.end(fs.readFileSync(file));
+    const rel = url.pathname === '/' ? 'index.html' : url.pathname.slice(1); const file = path.resolve(root, rel); if (!file.startsWith(root) || !fs.existsSync(file)) return json(res, { error: 'not found' }, 404); const type = file.endsWith('.css') ? 'text/css' : (file.endsWith('.js') || file.endsWith('.mjs')) ? 'application/javascript' : file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.png') ? 'image/png' : file.endsWith('.json') ? 'application/json' : 'text/html'; res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' }); return res.end(fs.readFileSync(file));
   } catch (error) { return json(res, { error: { code: 'SERVER_ERROR', message: error.message } }, 500); }
 });
 const port = Number(process.env.WORKBENCH_PORT || 4173);

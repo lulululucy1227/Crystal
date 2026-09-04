@@ -1,0 +1,211 @@
+const trayAllowanceMm = 5;
+let instanceSequence = 0;
+
+const positiveNumber = (value, fallback) => {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+};
+
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const angleFor = (slotIndex, capacity) => ((Number(slotIndex) / Math.max(1, capacity)) * 360) - 90;
+const targetFor = (wristCm) => (positiveNumber(wristCm, 17) * 10) + trayAllowanceMm;
+const capacityFor = (targetMm, fallbackBeadMm) => Math.max(1, Math.round(targetMm / positiveNumber(fallbackBeadMm, 8)));
+const nextInstanceId = () => `bead-${Date.now().toString(36)}-${(++instanceSequence).toString(36)}`;
+
+function recalculate(state) {
+  const wristCm = positiveNumber(state.wristCm, 17);
+  const fallbackBeadMm = positiveNumber(state.fallbackBeadMm, 8);
+  const targetCircumferenceMm = targetFor(wristCm);
+  const capacity = capacityFor(targetCircumferenceMm, fallbackBeadMm);
+  const instances = (state.instances || []).map((item) => ({
+    ...item,
+    sizeMm: positiveNumber(item.sizeMm, fallbackBeadMm),
+    angle: angleFor(item.slotIndex, capacity),
+  }));
+  const usedCircumferenceMm = instances.reduce((sum, item) => sum + item.sizeMm, 0);
+  return {
+    ...state,
+    wristCm,
+    fallbackBeadMm,
+    targetCircumferenceMm,
+    capacity,
+    instances,
+    usedCircumferenceMm,
+    remainingCircumferenceMm: targetCircumferenceMm - usedCircumferenceMm,
+    overflowMm: Math.max(0, usedCircumferenceMm - targetCircumferenceMm),
+  };
+}
+
+function legacyInstances(layout = [], items = [], fallbackBeadMm = 8) {
+  const itemMap = new Map(items.map((item) => [item.name, item]));
+  return layout.flatMap((materialName, slotIndex) => {
+    if (!materialName) return [];
+    const source = itemMap.get(materialName) || {};
+    return [{
+      instanceId: `legacy-${slotIndex}-${String(materialName).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'material'}`,
+      materialName,
+      sizeMm: positiveNumber(source.sizeMm ?? source.beadMm, fallbackBeadMm),
+      slotIndex,
+      assetRef: source.assetRef || '',
+      provenanceClass: source.provenanceClass || source.representation || 'generated_from_evidence',
+    }];
+  });
+}
+
+export function createBraceletState(input = {}) {
+  const fallbackBeadMm = positiveNumber(input.fallbackBeadMm ?? input.beadMm, 8);
+  const instances = Array.isArray(input.instances)
+    ? input.instances.map((item) => ({ ...item }))
+    : legacyInstances(input.layout, input.items, fallbackBeadMm);
+  return recalculate({
+    wristCm: positiveNumber(input.wristCm, 17),
+    fallbackBeadMm,
+    activeMaterialName: input.activeMaterialName || input.activeItemName || '',
+    selectedInstanceId: input.selectedInstanceId || '',
+    instances,
+    unresolved: Array.isArray(input.unresolved) ? clone(input.unresolved) : [],
+  });
+}
+
+export function selectMaterial(state, materialName) {
+  return { ...state, activeMaterialName: materialName || '', selectedInstanceId: '' };
+}
+
+export function placeInstance(state, input = {}) {
+  const slotIndex = Number(input.slotIndex);
+  if (!input.materialName || !Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= state.capacity) return state;
+  if (state.instances.some((item) => item.slotIndex === slotIndex)) return state;
+  const instance = {
+    instanceId: input.instanceId || nextInstanceId(),
+    materialName: input.materialName,
+    sizeMm: positiveNumber(input.sizeMm, state.fallbackBeadMm),
+    slotIndex,
+    angle: angleFor(slotIndex, state.capacity),
+    assetRef: input.assetRef || '',
+    provenanceClass: input.provenanceClass || 'generated_from_evidence',
+  };
+  return recalculate({ ...state, selectedInstanceId: instance.instanceId, instances: [...state.instances, instance] });
+}
+
+export function moveInstance(state, { instanceId, slotIndex } = {}) {
+  const target = Number(slotIndex);
+  const source = state.instances.find((item) => item.instanceId === instanceId);
+  if (!source || !Number.isInteger(target) || target < 0 || target >= state.capacity || target === source.slotIndex) return state;
+  const occupant = state.instances.find((item) => item.slotIndex === target);
+  const instances = state.instances.map((item) => {
+    if (item.instanceId === instanceId) return { ...item, slotIndex: target };
+    if (occupant && item.instanceId === occupant.instanceId) return { ...item, slotIndex: source.slotIndex };
+    return item;
+  });
+  return recalculate({ ...state, selectedInstanceId: instanceId, instances });
+}
+
+export function removeInstance(state, instanceId) {
+  if (!state.instances.some((item) => item.instanceId === instanceId)) return state;
+  return recalculate({
+    ...state,
+    selectedInstanceId: state.selectedInstanceId === instanceId ? '' : state.selectedInstanceId,
+    instances: state.instances.filter((item) => item.instanceId !== instanceId),
+  });
+}
+
+export function replaceInstance(state, { instanceId, materialName, sizeMm, assetRef = '', provenanceClass = 'generated_from_evidence' } = {}) {
+  if (!materialName || !state.instances.some((item) => item.instanceId === instanceId)) return state;
+  return recalculate({
+    ...state,
+    instances: state.instances.map((item) => item.instanceId === instanceId ? {
+      ...item,
+      materialName,
+      sizeMm: positiveNumber(sizeMm, state.fallbackBeadMm),
+      assetRef,
+      provenanceClass,
+    } : item),
+  });
+}
+
+export function setWristSize(state, wristCm) {
+  const oldCapacity = state.capacity;
+  const nextWristCm = positiveNumber(wristCm, state.wristCm);
+  const nextCapacity = capacityFor(targetFor(nextWristCm), state.fallbackBeadMm);
+  if (state.instances.length > nextCapacity) return state;
+  const resized = recalculate({ ...state, wristCm: nextWristCm });
+  const occupied = new Set();
+  const instances = resized.instances.map((item) => {
+    let slotIndex = Math.min(resized.capacity - 1, Math.round((item.slotIndex / Math.max(1, oldCapacity)) * resized.capacity));
+    while (occupied.has(slotIndex) && occupied.size < resized.capacity) slotIndex = (slotIndex + 1) % resized.capacity;
+    occupied.add(slotIndex);
+    return { ...item, slotIndex };
+  });
+  return recalculate({ ...resized, instances });
+}
+
+export function serializeBraceletState(state) {
+  return clone({
+    version: 2,
+    wristCm: state.wristCm,
+    fallbackBeadMm: state.fallbackBeadMm,
+    activeMaterialName: state.activeMaterialName,
+    selectedInstanceId: state.selectedInstanceId,
+    instances: state.instances,
+    unresolved: state.unresolved,
+  });
+}
+
+export function createHistory(initialState, limit = 50) {
+  return { past: [], present: clone(initialState), future: [], limit: Math.max(1, Number(limit) || 50) };
+}
+
+function applyCommand(state, command = {}) {
+  if (command.type === 'place') return placeInstance(state, command);
+  if (command.type === 'move') return moveInstance(state, command);
+  if (command.type === 'remove') return removeInstance(state, command.instanceId);
+  if (command.type === 'replace') return replaceInstance(state, command);
+  if (command.type === 'select-material') return selectMaterial(state, command.materialName);
+  if (command.type === 'wrist') return setWristSize(state, command.wristCm);
+  return state;
+}
+
+export function applyHistoryCommand(history, command) {
+  const next = applyCommand(history.present, command);
+  if (next === history.present) return history;
+  return {
+    ...history,
+    past: [...history.past, clone(history.present)].slice(-history.limit),
+    present: clone(next),
+    future: [],
+  };
+}
+
+export function commitHistoryState(history, nextState) {
+  const current = serializeBraceletState(history.present);
+  const next = serializeBraceletState(nextState);
+  if (JSON.stringify(current) === JSON.stringify(next)) return history;
+  return {
+    ...history,
+    past: [...history.past, clone(history.present)].slice(-history.limit),
+    present: clone(nextState),
+    future: [],
+  };
+}
+
+export function undoHistory(history) {
+  if (!history.past.length) return history;
+  const previous = history.past.at(-1);
+  return {
+    ...history,
+    past: history.past.slice(0, -1),
+    present: clone(previous),
+    future: [clone(history.present), ...history.future].slice(0, history.limit),
+  };
+}
+
+export function redoHistory(history) {
+  if (!history.future.length) return history;
+  const next = history.future[0];
+  return {
+    ...history,
+    past: [...history.past, clone(history.present)].slice(-history.limit),
+    present: clone(next),
+    future: history.future.slice(1),
+  };
+}

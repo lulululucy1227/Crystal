@@ -9,5 +9,10 @@
     "export": "node scripts/crystal-db.mjs export-json data/export.json",
     "workbench": "node workbench/server.mjs"
   },
-  "engines": { "node": ">=24" }
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "fabric": "7.4.0"
+  }
 }
