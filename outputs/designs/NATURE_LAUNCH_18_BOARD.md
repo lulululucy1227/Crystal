@@ -1,6 +1,6 @@
 # Crystal 自然主题首发 18 款｜Portfolio Board
 
-状态：CANDIDATE。所有材料与规格均为 **PROPOSED**；正式选品 Working Version 在生成时尚未交付，不能把本包视为采购批准。
+状态：CANDIDATE。已读取正式选品 Working Version **CR-MAT-V1-20260906**；其采购批准规格数为 0，因此所有设计材料与规格仍为 **PROPOSED**，不能把本包视为采购批准。
 
 ## 六主题设计语言
 

@@ -1,0 +1,46 @@
+{
+  "result": "WORKING_V1_READY_FOR_DESIGN_SUPPORT_NOT_PROCUREMENT_RELEASE",
+  "current_state": {
+    "version": "CR-MAT-V1-20260906",
+    "material_identities": 50,
+    "specifications": 66,
+    "knowledge_records": 19,
+    "theme_support_rows": 82,
+    "approved_purchase_specs": 0,
+    "design_material_change_proposals_found": 0,
+    "canonical_sqlite_written": false,
+    "workbench_developed": false
+  },
+  "key_changes": [
+    "将材料身份与具体采购规格正式分离，保留稳定CRM-M/CRM-S工作簿ID，不冒充canonical ID。",
+    "六主题建立可引用材料池与现有规格引用，但不替代设计Agent的最终款式决定。",
+    "研究候选、历史候选、备用候选、结构缺口与采购批准明确分离；当前0条采购批准。",
+    "彩虹月光石、Spectrolite、黑发晶包体、珍珠类型、925银基材等命名/证据边界已写入知识库。",
+    "unresolved独立隔离，旧Excel/canonical只读导出/18款真实设计BOM缺失不再污染采购清单。",
+    "检查outputs/handoffs/design/与仓库搜索后，本轮未发现material_change_proposal。"
+  ],
+  "deliverables": {
+    "repo": [
+      "outputs/selection/assortment-v1.json",
+      "outputs/selection/knowledge-base-v1.json",
+      "outputs/selection/unresolved-items-v1.json",
+      "outputs/handoffs/selection/SELECTION-V1.json"
+    ],
+    "generated_xlsx_chat_artifacts": [
+      "Crystal_水晶选品主表_V1.xlsx",
+      "Crystal_水晶知识库_V1.xlsx",
+      "Crystal_合作伙伴采购版_V1.xlsx"
+    ],
+    "xlsx_repo_note": "当前GitHub connector的contents写入为UTF-8文本接口，未用其伪造二进制xlsx上传；xlsx已在当前执行环境可靠生成并验证，机器可读正式JSON已进入main。"
+  },
+  "risks_blockers": [
+    "CR-UNR-001 最新版旧Excel原件未取得，无法完成最终逐行历史迁移审计。",
+    "CR-UNR-002 工作台真实只读canonical ID/库存导出未取得。",
+    "CR-UNR-003 六主题至少18款真实设计与逐行BOM未取得。",
+    "CR-UNR-005 66条规格均未冻结且采购批准为0，合作伙伴采购版当前不可下单。",
+    "CR-UNR-006 多数材料的批次处理/产地/养殖/树种证据未取得。"
+  ],
+  "decision_required": "无需要主管立即拍板的新增选材决策；要推进到采购发布，必须先补真实旧Excel/canonical导出/设计BOM与规格冻结证据。",
+  "next_action": "持续接收设计material_change_proposal并逐条ACCEPT/MODIFY/REJECT/NEEDS_EVIDENCE；一旦真实Excel、canonical只读导出或BOM到达，立即继续迁移、映射、规格冻结和采购汇总，不因其他单项blocker停止。",
+  "commit_sha": "6c26fe69a1401fcf83f375d70846c58825cff908"
+}
