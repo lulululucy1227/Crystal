@@ -1,0 +1,57 @@
+{
+  "protocol": "CRYSTAL-SUPERVISOR-V1",
+  "project": "Crystal",
+  "supervisor": "Crystal｜主管",
+  "supervisor_status": "ACTIVE",
+  "single_supervisor_entry": true,
+  "language": "zh-CN",
+  "updated_at": "2026-09-05",
+  "repository": "lulululucy1227/Crystal",
+  "default_branch": "main",
+  "engineering_checkpoint": "49432faa3101d9a682ce645a2a20849f9b149b66",
+  "near_term_priorities": [
+    {
+      "agent": "Crystal｜选品",
+      "priority": "P0",
+      "status": "AUTHORIZED",
+      "task": "agent/tasks/selection/NEXT_TASK.md"
+    },
+    {
+      "agent": "Crystal｜设计",
+      "priority": "P0",
+      "status": "AUTHORIZED",
+      "task": "agent/tasks/design/NEXT_TASK.md"
+    },
+    {
+      "agent": "Crystal｜灵感",
+      "priority": "P1",
+      "status": "AUTHORIZED",
+      "task": "agent/tasks/inspiration/NEXT_TASK.md"
+    },
+    {
+      "agent": "Crystal｜工程",
+      "priority": "FROZEN_SUPPORT",
+      "status": "FROZEN",
+      "task": "agent/tasks/engineering/STATUS.md"
+    }
+  ],
+  "business_goal": "建立 Crystal 审美工作台体系，近期优先完成选品/知识/采购体系与六主题至少18款可采购可打样设计。",
+  "rules": {
+    "workbench_expansion": false,
+    "old_excel_is_final_boundary": false,
+    "final_design_may_use_off_table_material": false,
+    "selection_is_primary_procurement_writer": true,
+    "design_may_submit_material_change_proposal": true,
+    "external_research_auto_promotes_to_canonical": false,
+    "agent_completed_requires_supervisor_acceptance": true,
+    "preserve_history": true
+  },
+  "known_blockers": [
+    {
+      "id": "P3R-SOURCE-SHA",
+      "status": "UNRESOLVED_NON_BLOCKING_FOR_CURRENT_P0",
+      "description": "7 张 Google Drive 参考图片缺少本地授权源字节对应的真实 SHA-256；不得伪造。"
+    }
+  ],
+  "next_supervisor_action": "等待各 Agent 执行并在 GitHub 写回 handoff；用户只需告知哪个 Agent 已完成，主管自行读取并验收。"
+}
