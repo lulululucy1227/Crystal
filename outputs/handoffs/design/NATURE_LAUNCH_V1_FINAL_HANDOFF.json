@@ -12,6 +12,8 @@
     "Starlight": 3,
     "Glacier": 3
   },
+  "selection_working_version": "CR-MAT-V1-20260906",
+  "selection_purchase_approved_specs": 0,
   "outputs": [
     "outputs/designs/nature-launch-v1.json",
     "outputs/designs/NATURE_LAUNCH_18_BOARD.md",
@@ -22,14 +24,14 @@
     "bom_aggregates_from_beads": true,
     "along_string_mm_each": 165,
     "all_source_status": "PROPOSED",
-    "formal_working_version_found": false,
+    "formal_working_version_found": true,
     "theme_structure_difference_matrix_in_board": true
   },
   "risks_or_blockers": [
-    "No formal selection Working Version was present; every material/spec remains PROPOSED.",
+    "Formal Working Version CR-MAT-V1-20260906 has zero approved purchase specifications; every material/spec remains PROPOSED.",
     "P4 Workbench browser and physical sample verification are pending.",
     "OCEAN-02 / GLACIER-02 share a long-tube device and require side-by-side review."
   ],
   "requires_gpt_decision": false,
-  "next_minimum_action": "Selection reviews MCP proposals and publishes Working Version; engineering loads this package for P4 validation. Supervisor decides acceptance only after those checks."
+  "next_minimum_action": "Selection reviews MCP proposals against CR-MAT-V1-20260906 and freezes compatible specifications; engineering loads this package for P4 validation. Supervisor decides acceptance only after those checks."
 }

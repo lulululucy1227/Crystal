@@ -1,7 +1,7 @@
 {
   "version": "CRYSTAL-MATERIAL-CHANGE-PROPOSALS-V1",
   "status": "PENDING_SELECTION_REVIEW",
-  "formal_working_version_status": "NOT_DELIVERED_AT_PACKAGE_TIME",
+  "formal_working_version_status": "CR-MAT-V1-20260906 loaded; 0 approved purchase specs",
   "proposals": [
     {
       "proposal_id": "MCP-001",

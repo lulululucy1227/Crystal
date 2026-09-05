@@ -19,8 +19,13 @@
     "Starlight": 3,
     "Glacier": 3
   },
-  "formal_working_version_status": "NOT_DELIVERED_AT_PACKAGE_TIME",
-  "material_status_policy": "All design instances remain PROPOSED pending selection Working Version; none are procurement-approved by this package.",
+  "formal_working_version_status": "CR-MAT-V1-20260906 loaded; 0 approved purchase specs",
+  "material_status_policy": "The formal selection Working Version exists but contains zero approved purchase specifications. All design instances therefore remain PROPOSED pending spec freeze and selection review.",
+  "selection_references": [
+    "outputs/selection/assortment-v1.json",
+    "outputs/selection/unresolved-items-v1.json",
+    "outputs/handoffs/selection/SELECTION-V1.json"
+  ],
   "theme_design_language": {
     "Mountain": "岩层、雾、断层与碎石，避免整串虎眼/棕色。",
     "Ocean": "水深、方向性流动、潮线与浮标微光，避免冰白层理。",
