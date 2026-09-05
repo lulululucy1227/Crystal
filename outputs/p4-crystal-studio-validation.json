@@ -1,0 +1,109 @@
+{
+  "result": "PARTIAL",
+  "current_state": {
+    "phase": "P4-CRYSTAL-STUDIO-COMPLETION",
+    "engineering": "FUNCTIONAL_CHECKPOINT_VERIFIED",
+    "remaining": "Real material fidelity and explicit procurement identity crosswalk require role-owned inputs",
+    "server": "http://127.0.0.1:4173",
+    "next_phase_started": false,
+    "artifact_note": "commit_sha identifies the verified implementation/runtime checkpoint; this final handoff is committed subsequently to avoid a self-referential hash."
+  },
+  "implemented_capabilities": [
+    "Fabric.js retained; tray-first Studio, loose/free and compact bracelet modes",
+    "Per-instance add/delete/replace/drag/reorder/swap; mixed sizes and 15–20cm approximate fit",
+    "Undo/redo/clear, Unicode-safe local save/reload, four HTTP download formats",
+    "Catalog choices preserved separately from actual placed beads",
+    "Real-time identity/spec/status BOM and sourced-only cost aggregation",
+    "Six themes x three authored candidates, duplicate structure matrix, exact BOM and roundtrip checks",
+    "Sharp local alpha normalization, content hashes, private manifests, ready-only serving and no false opaque cutouts"
+  ],
+  "design_package_status": {
+    "real_designs": 18,
+    "instances": 458,
+    "authored_semantics_unchanged_during_remote_reconcile": true,
+    "working_version": "CR-MAT-V1-20260906",
+    "materials": 50,
+    "specifications": 66,
+    "purchase_approved_specs": 0,
+    "design_instances_proposed": 458,
+    "approved_materials_auto_created": 0,
+    "bom_matches": 18,
+    "save_reload_serialization_roundtrips": 18,
+    "duplicate_structure_pairs": 0,
+    "structure_pairs_compared": 153,
+    "aesthetic_approved": false,
+    "exact_mapping": {
+      "checked": 458,
+      "mapped": 0,
+      "unmapped": 458,
+      "not_checked": 0
+    }
+  },
+  "real_browser_QA": {
+    "status": "PASS_FUNCTIONAL_NOT_PHOTOREALISM",
+    "viewport": {
+      "width": 1280,
+      "height": 960
+    },
+    "workflow": "mixed-size add -> loose drag -> compact -> individual reorder/swap -> undo/redo -> wrist -> BOM -> save/reload -> actual CSV download",
+    "loaded": 18,
+    "actual_representation_totals": {
+      "generated_from_evidence": 363,
+      "fallback": 95,
+      "source_cutout": 0
+    },
+    "evidence": "outputs/p4-browser-runtime-evidence.json",
+    "screenshots": "outputs/visual/p4/",
+    "mainflow_console_errors_after_fixes": 0
+  },
+  "canonical_db_sha_before_after": {
+    "before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "unchanged": true,
+    "writes": 0
+  },
+  "real_asset_status": {
+    "pipeline": "IMPLEMENTED_AND_TESTED",
+    "real_cutout_runtime": "NOT_AVAILABLE",
+    "inspiration_source_bytes_and_sha_verified": 22,
+    "reference_only": 22,
+    "production_sprite_ready": 0,
+    "private_public_uploads": 0,
+    "sharp": "0.35.4 pinned; Windows Node24 verified; Apache JS plus LGPL libvips components disclosed in operations doc",
+    "rembg": "NOT_INSTALLED; no valid real sample source; no cloud or heavyweight model introduced"
+  },
+  "risks_blockers": [
+    "No role-approved clean single-bead cutout source; audited 22 third-party screenshots explicitly unsuitable as production sprites",
+    "No explicit design slug to CRM-M/CRM-S identity/spec crosswalk; no procurement promotion or name-based guess",
+    "Approximate along-line fit is not physical internal-circumference or sample acceptance; generated/fallback visuals are not real material fidelity",
+    "P3R remains blocked and preserved; no canonical, supplier, procurement, watcher or Bridge writes"
+  ],
+  "decision_required": [
+    "Inspiration/selection: provide clean rights-cleared source bytes plus exact material/spec labels",
+    "Selection: review MCP proposals and provide explicit design-to-Working-Version ID mapping; supervisor retains aesthetic acceptance"
+  ],
+  "next_action": "Use the working Studio for candidate layout review; prioritize authorized clear-quartz, smoky-quartz and selected hardware imagery by actual BOM frequency, then revalidate precise mapping and physical samples. No further phase started.",
+  "git_reconcile": {
+    "method": "Normal merge, no force push; local and remote design commits had identical designs. Five add/add conflicts resolved to exact authoritative origin/main versions.",
+    "user_exports_preserved_untracked": true,
+    "validated_code_and_runtime_commit": "c4da1899646659d88dcb2876a0a57e5999a557de"
+  },
+  "commit_sha": "c4da1899646659d88dcb2876a0a57e5999a557de",
+  "test_summary": {
+    "focused": {
+      "tests": 67,
+      "pass": 67,
+      "fail": 0
+    },
+    "npm_test": {
+      "tests": 207,
+      "pass": 206,
+      "fail": 0,
+      "skip": 1,
+      "expected_skip": "Windows file symlink creation unavailable"
+    },
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_checks": "Read-only validator PASS; SHA unchanged"
+  }
+}
