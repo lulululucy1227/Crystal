@@ -15,6 +15,7 @@ const exportDir = path.resolve(process.env.WORKBENCH_EXPORT_DIR || path.join(roo
 const dbPath = path.join(repo, 'data', 'crystal-design.sqlite');
 const launchPath = process.env.WORKBENCH_NATURE_LAUNCH_PATH || path.join(repo,'outputs/designs/nature-launch-v1.json');
 const proposalPath = path.join(repo,'outputs/handoffs/design/material_change_proposal-nature-launch-v1.json');
+const selectionPath = process.env.WORKBENCH_SELECTION_PATH || path.join(repo,'outputs/selection/assortment-v1.json');
 const fabricModulePath = path.resolve(repo, 'node_modules/fabric/dist/index.min.mjs');
 fs.mkdirSync(stateDir, { recursive: true });
 fs.mkdirSync(exportDir, { recursive: true });
@@ -63,6 +64,34 @@ function dbData() {
 function markdown(draft) { return `# ${draft.name}\n\nTheme: ${draft.theme}\n\n## Items\n${draft.items.map((x, i) => `${i + 1}. ${x.name} — role: ${x.role || ''}; form/spec: ${x.form || ''}`).join('\n')}\n\n## Notes\n${draft.notes || ''}\n`; }
 function assortmentCsv() { const headers = ['section', 'name', 'priority', 'themes', 'roles', 'preferred_forms', 'identity_status']; return [headers.join(','), ...assortment.items.map((x) => [x.section, x.name, x.priority, x.themes.join('|'), x.roles.join('|'), x.preferred_forms.join('|'), x.identity_status].map((v) => `"${String(v).replaceAll('"', '""')}"`).join(','))].join('\n'); }
 
+function selectionData() {
+  const invalid = errors => ({available:true,valid:false,reason:'SELECTION_PACKAGE_INVALID',errors,error:{code:'SELECTION_PACKAGE_INVALID',message:'正式选品包无效，采购映射未执行'}});
+  let selection;
+  try { selection=JSON.parse(fs.readFileSync(selectionPath,'utf8')); }
+  catch(error) { return error.code==='ENOENT' ? {available:false,reason:'SELECTION_PACKAGE_NOT_READY',mapping_status:'NOT_CHECKED'} : invalid(['Selection package could not be read or parsed']); }
+  if(!selection||!/^CR-MAT-V1-\d{8}$/.test(selection.version)||selection.status!=='working_formal_selection_master'||selection.authority!=='Crystal｜选品'
+    ||!Array.isArray(selection.materials)||!Array.isArray(selection.specifications)) return invalid(['Unsupported formal selection schema']);
+  const text=value=>typeof value==='string'&&value.trim().length>0;
+  const errors=[],materialIds=new Set(),specIds=new Set(),mappings=[];
+  for(const material of selection.materials){
+    if(!text(material?.id)||materialIds.has(material.id))errors.push('Material IDs must be nonempty and unique');
+    else materialIds.add(material.id);
+  }
+  for(const spec of selection.specifications){
+    if(!text(spec?.id)||specIds.has(spec.id)||!materialIds.has(spec?.material_id)||!text(spec?.status)||!['是','否'].includes(spec?.approved)){
+      errors.push('Specification IDs must be unique, reference a formal material, and declare status and approval');continue;
+    }
+    specIds.add(spec.id);
+    // This maps identities in the Working Version, not permission to purchase.
+    mappings.push({material_id:spec.material_id,spec_id:spec.id,spec_status:spec.status,purchase_approved:spec.approved==='是'});
+  }
+  const approvedCount=mappings.filter(mapping=>mapping.purchase_approved).length;
+  if(!Number.isInteger(selection.purchase_authorization?.approved_spec_count)||selection.purchase_authorization.approved_spec_count!==approvedCount)errors.push('Declared approved specification count does not match source records');
+  if(errors.length)return invalid(errors);
+  return {available:true,valid:true,version:selection.version,status:selection.status,authority:selection.authority,
+    material_count:selection.materials.length,specification_count:selection.specifications.length,approved_spec_count:approvedCount,mappings};
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
@@ -90,13 +119,20 @@ const server = http.createServer(async (req, res) => {
       if(!file)return json(res,{error:'not found'},404);
       res.writeHead(200,{'content-type':'image/png','cache-control':'no-store'});return res.end(fs.readFileSync(file));
     }
+    if(url.pathname==='/api/selection'){
+      if(req.method!=='GET')return json(res,{error:{code:'METHOD_NOT_ALLOWED',message:'Selection metadata is read-only'}},405);
+      const selection=selectionData();return json(res,selection,selection.valid===false?422:200);
+    }
     if(url.pathname==='/api/nature-launch'||url.pathname.startsWith('/api/nature-launch/')){
       if(!fs.existsSync(launchPath))return json(res,{available:false,reason:'DESIGN_PACKAGE_NOT_READY'});
       const pkg=JSON.parse(fs.readFileSync(launchPath,'utf8'));
       const proposals=fs.existsSync(proposalPath)?JSON.parse(fs.readFileSync(proposalPath,'utf8')).proposals:[];
-      const validation=validateDesignPackage(pkg,{materialChangeProposals:proposals});
+      const selection=selectionData();
+      if(selection.valid===false)return json(res,{available:true,selection,error:selection.error,validation:{ok:false,errors:selection.errors,warnings:[],designs:[]}},422);
+      // The validator's legacy option name does not grant APPROVED source status.
+      const validation=validateDesignPackage(pkg,{materialChangeProposals:proposals,...(selection.available?{approvedMappings:selection.mappings}:{})});
       if(url.pathname.startsWith('/api/nature-launch/')){const id=decodeURIComponent(url.pathname.slice('/api/nature-launch/'.length));const design=validation.designs.find(d=>d.design_id===id);return design?json(res,design):json(res,{error:{code:'DESIGN_NOT_FOUND',message:'没有这个设计'}},404);}
-      return json(res,{available:true,package:pkg,validation});
+      return json(res,{available:true,package:pkg,validation,selection});
     }
     if (url.pathname === '/vendor/fabric/index.min.mjs') {
       if (!fs.existsSync(fabricModulePath)) return json(res, { error: { code: 'FABRIC_NOT_INSTALLED', message: 'Run npm install before starting the Workbench.' } }, 503);

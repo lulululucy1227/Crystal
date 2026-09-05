@@ -2,16 +2,27 @@
   "phase": "P4-CRYSTAL-STUDIO-COMPLETION",
   "date": "2026-09-06",
   "input": "outputs/designs/nature-launch-v1.json",
-  "input_sha256": "20d1be4ad9134b213078e3bb76711f3c4974fca512305592ad7db2c29721808d",
-  "input_modified": false,
+  "input_sha256": "97ebc442ef35ed401f314c8e6dada8a8241100f48055ca3bea96e7f808515d50",
+  "input_modified_by_engineering": false,
   "result": "WARN",
   "design_count": 18,
   "theme_count": 6,
   "source": "design-agent-authored candidate package; not engineering fixture",
   "errors": 0,
   "warnings": 36,
-  "procurement_mapping": "NOT_CHECKED: trusted Working Version not delivered",
+  "selection": {
+    "available": true,
+    "valid": true,
+    "version": "CR-MAT-V1-20260906",
+    "status": "working_formal_selection_master",
+    "authority": "Crystal｜选品",
+    "material_count": 50,
+    "specification_count": 66,
+    "approved_spec_count": 0
+  },
+  "procurement_mapping": "458 UNMAPPED against 66 exact CRM-M/CRM-S spec pairs; no name-based inference",
   "aesthetic_approval": false,
+  "save_reload_roundtrip_method": "All18 serialized/deserialized through real state module; additional actual browser save/reload of technical draft and GLACIER-03 copy.",
   "designs": [
     {
       "design_id": "MOUNTAIN-01",
@@ -22,7 +33,7 @@
         "errors": [],
         "warnings": [
           "25 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "25 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -37,8 +48,8 @@
           "proposed": 25,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 25
+          "unmapped": 25,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -63,7 +74,7 @@
         "errors": [],
         "warnings": [
           "24 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "24 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -78,8 +89,8 @@
           "proposed": 24,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 24
+          "unmapped": 24,
+          "not_checked": 0
         },
         "asset_fallback_count": 4,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -104,7 +115,7 @@
         "errors": [],
         "warnings": [
           "23 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "23 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -119,8 +130,8 @@
           "proposed": 23,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 23
+          "unmapped": 23,
+          "not_checked": 0
         },
         "asset_fallback_count": 2,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -145,7 +156,7 @@
         "errors": [],
         "warnings": [
           "27 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "27 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -160,8 +171,8 @@
           "proposed": 27,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 27
+          "unmapped": 27,
+          "not_checked": 0
         },
         "asset_fallback_count": 6,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -186,7 +197,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -201,8 +212,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 6,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -227,7 +238,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -242,8 +253,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -268,7 +279,7 @@
         "errors": [],
         "warnings": [
           "25 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "25 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -283,8 +294,8 @@
           "proposed": 25,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 25
+          "unmapped": 25,
+          "not_checked": 0
         },
         "asset_fallback_count": 6,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -309,7 +320,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -324,8 +335,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 6,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -350,7 +361,7 @@
         "errors": [],
         "warnings": [
           "25 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "25 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -365,8 +376,8 @@
           "proposed": 25,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 25
+          "unmapped": 25,
+          "not_checked": 0
         },
         "asset_fallback_count": 10,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -391,7 +402,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -406,8 +417,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -432,7 +443,7 @@
         "errors": [],
         "warnings": [
           "27 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "27 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -447,8 +458,8 @@
           "proposed": 27,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 27
+          "unmapped": 27,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -473,7 +484,7 @@
         "errors": [],
         "warnings": [
           "27 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "27 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -488,8 +499,8 @@
           "proposed": 27,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 27
+          "unmapped": 27,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -514,7 +525,7 @@
         "errors": [],
         "warnings": [
           "24 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "24 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -529,8 +540,8 @@
           "proposed": 24,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 24
+          "unmapped": 24,
+          "not_checked": 0
         },
         "asset_fallback_count": 3,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -555,7 +566,7 @@
         "errors": [],
         "warnings": [
           "24 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "24 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -570,8 +581,8 @@
           "proposed": 24,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 24
+          "unmapped": 24,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -596,7 +607,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -611,8 +622,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -637,7 +648,7 @@
         "errors": [],
         "warnings": [
           "26 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "26 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -652,8 +663,8 @@
           "proposed": 26,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 26
+          "unmapped": 26,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -678,7 +689,7 @@
         "errors": [],
         "warnings": [
           "24 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "24 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -693,8 +704,8 @@
           "proposed": 24,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 24
+          "unmapped": 24,
+          "not_checked": 0
         },
         "asset_fallback_count": 5,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
@@ -719,7 +730,7 @@
         "errors": [],
         "warnings": [
           "27 PROPOSED instances await procurement approval",
-          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+          "27 material/spec instances UNMAPPED to trusted Working Version"
         ],
         "fit_estimate": {
           "target_mm": 165,
@@ -734,8 +745,8 @@
           "proposed": 27,
           "unresolved": 0,
           "mapped": 0,
-          "unmapped": 0,
-          "not_checked": 27
+          "unmapped": 27,
+          "not_checked": 0
         },
         "asset_fallback_count": 7,
         "asset_validation": "GENERATED_AND_FALLBACK_ONLY",

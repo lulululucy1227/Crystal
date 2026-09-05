@@ -203,5 +203,23 @@
       "source_cutout": 0,
       "screenshot": "outputs/visual/p4/GLACIER-03.jpg"
     }
-  ]
+  ],
+  "final_sync": {
+    "origin_commit": "6f298285323c3f3f5f9c0f8e291ac5e9482b815a",
+    "selection": {
+      "available": true,
+      "valid": true,
+      "version": "CR-MAT-V1-20260906",
+      "status": "working_formal_selection_master",
+      "authority": "Crystal｜选品",
+      "material_count": 50,
+      "specification_count": 66,
+      "approved_spec_count": 0
+    },
+    "designs_unchanged": true,
+    "final_runtime_load_count": 18,
+    "all_bom_match": true,
+    "all_mapping_state": "UNMAPPED",
+    "mapping_not_checked": 0
+  }
 }

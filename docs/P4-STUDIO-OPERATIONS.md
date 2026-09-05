@@ -44,6 +44,8 @@ Sharp 合成透明图 1024×768 → 256 的 5 次中位时间为 15.8 ms（原�
 
 ## 已知限制与验收解释
 
-真实资产管线软件已完成，但本轮没有已获准处理并附精确身份映射的本地真实 cutout。生成球体与带字占位只能检验排布，不能作为实物还原度通过证明。正式 18 款全部为 PROPOSED，可信 Working Version 采购映射尚未提供，故显示 NOT_CHECKED，而非错误地标成 UNMAPPED 或 APPROVED。
+真实资产管线软件已完成，但本轮没有已获准处理并附精确身份映射的本地真实 cutout。合入的灵感审计已经取得 22 张源字节并核验 SHA，但全部标为 REFERENCE_ONLY / 不宜直接抠作生产素材；不是完全没有 Drive 证据。生成球体与带字占位只能检验排布，不能作为实物还原度通过证明。
 
-工程运行态验收与审美/采购验收分开。P3R Drive SHA blocker 保留；canonical SQLite 不写入；用户 exports 不变。后续提供权利和身份已确认的本地源图，以及可信采购映射后，才能完成真实素材/采购就绪验收。
+正式 Working Version CR-MAT-V1-20260906 已交付 50 个材料身份、66 条规格，但采购批准规格为 0。正式 18 款仍为 PROPOSED。设计侧语义 ID 与 Working Version 的 CRM-M/CRM-S 键尚无精确对照；检查现有键后显示 UNMAPPED，不能按中英文名称猜测匹配，更不能自动批准。仅在 Working Version 缺失或无效时显示 NOT_CHECKED。
+
+工程运行态验收与审美/采购验收分开。P3R Drive SHA blocker 保留；canonical SQLite 不写入；用户 exports 不变。后续提供权利和身份已确认的干净单珠源图，以及设计 ID 到 CRM-M/CRM-S 的可信对照和规格审阅后，才能完成真实素材/采购就绪验收。
