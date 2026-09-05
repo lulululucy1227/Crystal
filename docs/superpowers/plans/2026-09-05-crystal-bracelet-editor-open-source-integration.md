@@ -194,4 +194,3 @@ Confirm only approved Workbench, tests, documentation, dependency, evidence, and
 - [ ] **Step 5: Commit the coherent implementation**
 
 Stage an explicit file list excluding `workbench/exports/`. Commit only after fresh verification. Push only when handoff content accurately represents the authorized task and user-approved scope.
-

@@ -16,4 +16,3 @@
 ## Behavioural references that are not treated as open source
 
 “灵感实验室”, Crystal Weave, MYASTRIS, and Vantony are used only as product-interaction references. Their code, images, catalogues, names, and brand styling are not included in Crystal Workbench.
-

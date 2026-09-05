@@ -60,4 +60,3 @@ The Workbench combines a traceable material library with a position-aware circul
 3. Prefer faithful, attributable material imagery over polished generic placeholders.
 4. Make capacity and composition legible before saving or exporting.
 5. Keep the local workflow dependable and preserve user-owned drafts and exports.
-

@@ -1,6 +1,6 @@
 # Crystal Bracelet Editor Open-Source Integration Design
 
-Date: 2026-09-05  
+Date: 2026-09-05
 Status: approved direction, pending implementation-plan approval
 
 ## Decision
@@ -174,4 +174,3 @@ Implementation is complete only when all of the following hold in the actual run
 ## Acceptance decision
 
 The approved direction is selective open-source integration. A whole-project transplant is rejected because it would replace the current data contracts and local workflow; a 3D-first implementation is deferred because it raises complexity before the real-image pipeline and 2D composition workflow are reliable.
-

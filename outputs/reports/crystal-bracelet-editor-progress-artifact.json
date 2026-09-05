@@ -1,0 +1,175 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Crystal 手串设计板当前进度审核报告",
+    "description": "面向 Crystal 主管的当前本地成果、验证证据、风险与下一步决策报告。",
+    "generatedAt": "2026-09-05T11:43:37+02:00",
+    "cards": [],
+    "charts": [
+      {
+        "id": "test_result_chart",
+        "title": "全量测试结果",
+        "subtitle": "140 项测试中无失败；1 项因 Windows 环境无法创建测试用文件符号链接而跳过。",
+        "type": "bar",
+        "dataset": "test_results",
+        "sourceId": "test_evidence",
+        "valueFormat": "number",
+        "encodings": {
+          "x": {
+            "field": "result",
+            "type": "nominal",
+            "label": "结果"
+          },
+          "y": {
+            "field": "count",
+            "type": "quantitative",
+            "label": "测试数量"
+          }
+        }
+      }
+    ],
+    "tables": [],
+    "sources": [
+      {
+        "id": "task_control",
+        "label": "当前授权任务",
+        "path": "agent/GPT_NEXT_TASK.md"
+      },
+      {
+        "id": "design_spec",
+        "label": "已批准的设计规范",
+        "path": "docs/superpowers/specs/2026-09-05-crystal-bracelet-editor-open-source-integration-design.md"
+      },
+      {
+        "id": "runtime_evidence",
+        "label": "实际运行截图",
+        "path": "outputs/visual/p3t-open-source-bracelet-editor-runtime.png"
+      },
+      {
+        "id": "test_evidence",
+        "label": "项目测试与校验",
+        "path": "test/"
+      },
+      {
+        "id": "database_evidence",
+        "label": "Canonical SQLite",
+        "path": "data/crystal-design.sqlite"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Crystal 手串设计板当前进度审核报告"
+      },
+      {
+        "id": "executive_summary",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n- **结论：功能成果真实存在，可进入主管本机功能验收，但尚不能称为已经合并或上线。** 当前本地 `main` 比 GitHub `origin/main` 领先 3 个提交，最新本地提交为 `b991ece`；远端仍停在 `4d0ea72`。\n- **核心交互已经从“列表排珠”升级为同屏圆形设计工作区。** 用户可以在材料库中选择数量，在圆盘任意空位逐颗放置；相同材料拥有独立实例，可分开放置；已放珠可沿圆环拖动、换位、移除，并支持在占用位置插入后自动让位。\n- **当前代码质量验证通过。** 2026年9月5日完成全量测试：140 项中 139 通过、0 失败、1 项因当前 Windows 环境无法创建测试用文件符号链接而跳过；`npm run validate` 与 `git diff --check` 均通过。\n- **主管决策重点不是“功能是否存在”，而是“是否批准把这 3 个本地提交作为正式 P3T 成果推送”。** 当前 GitHub 授权任务仍是 `P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR`，与本地手串交互改造不一致；同时水晶图像仍主要是生成参考素材，真实感问题尚未完成。"
+      },
+      {
+        "id": "delivery_state",
+        "type": "markdown",
+        "body": "## 当前交付状态：工程可验收，主线未交付\n\n| 项目 | 当前事实 | 审核判断 |\n|---|---|---|\n| 本地分支 | `main`，HEAD=`b991ece` | 本地成果存在 |\n| GitHub 主线 | `origin/main`=`4d0ea72` | 尚未包含手串设计板 3 个提交 |\n| 本地/远端差异 | 本地领先 3、落后 0 | 可安全评审，但未发布 |\n| 追踪文件状态 | 已提交，无未提交的追踪文件 | 代码快照稳定 |\n| 用户导出目录 | `workbench/exports/` 为未跟踪用户文件 | 已保留，未删除、未纳入提交 |\n| 当前授权任务 | `P3S-R1-WORKBENCH-ASSET-RUNTIME-REPAIR` / authorized | 与 P3T 交互改造存在控制面错位 |\n| Workbench 服务 | `http://127.0.0.1:4173/` 返回 200 | 本机服务可访问 |\n| Canonical DB | SHA-256=`8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6` | 本轮交互开发未写数据库 |"
+      },
+      {
+        "id": "completed_scope",
+        "type": "markdown",
+        "body": "## 已完成的用户核心诉求\n\n**同屏工作流。** 材料库、圆形手串设计盘和设计用量账本同时显示；选择材料不会再自动跳转页面，也不会未经指定就放入珠子。\n\n**逐颗独立控制。** 每颗已放珠子都有独立实例，同种材料可放在不相邻位置。拖动围绕圆环实时跟随，松手时吸附到最近有效珠位；目标被占用时执行换位。\n\n**插入而非堵塞。** 点击已占用位置放入新珠时，系统会移动最近的一段珠子腾出位置，因此可以在现有组合中间插入。\n\n**设计数量可见。** 每种材料显示已选、已排、剩余数量；圆盘中央显示容量、已用毫米数、目标内圈与余量。\n\n**设计操作完整。** 已实现 15–20 cm 手围选项、参考珠径、撤销、重做、均匀初排、清空排珠、草稿保存和设计单导出。\n\n**离线开源依赖。** Fabric.js 7.4.0 被精确锁定并由本地服务提供，不依赖 CDN；MIT 许可和借鉴边界已写入开源说明。商业应用“灵感实验室”仅作为交互参考，未复制其代码、图片或品牌资产。"
+      },
+      {
+        "id": "runtime_evidence_section",
+        "type": "markdown",
+        "body": "## 实际运行证据\n\n实际浏览器验收截图位于 `outputs/visual/p3t-open-source-bracelet-editor-runtime.png`。截图中可见 2 颗白水晶被放在圆环不同位置，1 颗茶晶插入右侧占用位置后，原白水晶已让位；右侧账本同步显示白水晶 2/2、茶晶 1/1。\n\n这次运行态检查同时验证了此前拖拽失效的根因与修复：旧逻辑在鼠标按下选中珠子时重绘整个画布，导致 Fabric 正在拖动的对象被替换；现逻辑选中时不重建画布，拖动期间把珠子投影到圆环，松手后再提交新珠位。"
+      },
+      {
+        "id": "test_result_chart_block",
+        "type": "chart",
+        "chartId": "test_result_chart"
+      },
+      {
+        "id": "critical_case",
+        "type": "markdown",
+        "body": "## 反方审查：现在不能直接宣布完成上线\n\n1. **GitHub 不含当前成果。** 主管如果只读取 Crystal `main`，不会看到这 3 个提交；这是最直接的交付缺口。\n2. **授权任务与实际改造不一致。** GitHub 当前任务是 P3S-R1 资产运行修复，而本地成果属于新的手串编辑器交互层。若直接把它报告为 P3S-R1 完成，会污染阶段记录和 handoff。\n3. **素材真实感尚未解决。** 当前珠子仍主要来自 `generated_from_evidence` 参考图，不能替代用户素材文件夹中的实拍水晶抠图；这会明显影响设计判断。\n4. **“自由拖动”仍有物理模型边界。** 拖动过程连续，但松手后落在离散珠位上。这符合可制造的串珠盘逻辑，却不是任意像素位置停放。如果主管期待完全自由画布，需要明确改变产品规则。\n5. **自动化覆盖未完全替代真人验收。** 状态与交互单测完整，真实拖动已人工运行验证，但目前没有浏览器端端到端拖拽回归测试。\n6. **刷新风险。** 用户若正在旧页面上有未保存排珠，强制刷新可能丢失当前屏幕状态；验收前应先保存草稿。"
+      },
+      {
+        "id": "supporting_case",
+        "type": "markdown",
+        "body": "## 支持方证据：为什么这不是演示壳\n\n- **实现不是静态效果图。** 新增了独立的状态模型、Fabric 画布适配器、设计盘算法和本地服务路由。\n- **关键失败路径有测试。** 覆盖相同材料非相邻放置、占用位换位、占用位插入让位、单颗移除、撤销/重做、历史上限、手围变化、旧草稿兼容、拖动跟随圆环、选择不重绘画布等。\n- **回归结果干净。** 全量测试 0 失败，数据库校验通过，差异格式检查通过。\n- **数据安全边界保持。** Canonical SQLite SHA 保持既有值；没有数据库写入，用户导出目录保持不动。\n- **架构成本受控。** 没有引入 React、Electron、3D 引擎或在线服务，只增加本地固定版本 Fabric.js 和少量纯模块。"
+      },
+      {
+        "id": "verdict",
+        "type": "markdown",
+        "body": "## 中立裁决：功能验收方更强，正式交付方仍未成立\n\n**现有证据更支持“交互层已经达到主管功能验收条件”。** 原因是实际运行证据、针对性测试和完整回归三者相互印证，且没有数据库副作用。\n\n**但“已经完成并交付到 Crystal 主线”这一说法目前不成立。** GitHub 缺少 3 个提交，任务阶段也未对齐。两者不是措辞问题，而是决定主管是否能复现、追踪和批准成果的控制面事实。\n\n最大的未知变量是：主管是否接受“离散珠位吸附”作为真实串珠设计盘的最终交互，以及是否把真实素材抠图作为本阶段硬性验收项。若主管在刷新后的真实工作台仍无法完成“选数量 → 任意位置放入 → 插入让位 → 拖动换位 → 保存”完整流程，则当前功能结论应立即反转为未通过。"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## 建议主管按此顺序验收\n\n1. 在本机打开 `http://127.0.0.1:4173/`，先保存任何现有草稿，再强制刷新页面。\n2. 选同一种材料 2 颗，在圆环相隔位置分别放入。\n3. 在一个已占用位置插入另一种材料，确认相邻段让位且数量账本同步。\n4. 拖动任意一颗珠子到另一珠位，验证移动/换位；拖出有效半径验证只移除该实例。\n5. 验证 17 cm 与 18 cm 切换、撤销/重做、保存草稿和重新载入。\n6. 主管批准后，先把 GitHub 任务更新为对应 P3T 交互阶段，再推送 `a6ef991`、`9e1c830`、`b991ece` 并生成正式 handoff。\n7. 将真实水晶素材抠图作为独立素材质量阶段处理，不与已验证的交互逻辑混在一次高风险改动中。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 主管需要回答的两个问题\n\n- 是否批准把当前 3 个本地提交定义为正式的 P3T 手串编辑器成果并推送 Crystal `main`？\n- 本阶段的视觉验收是否允许 `generated_from_evidence` 作为占位参考，还是必须先完成用户素材文件夹中实拍珠子的抠图接入？"
+      },
+      {
+        "id": "caveats",
+        "type": "markdown",
+        "body": "## Caveats and Assumptions\n\n- 本报告是 2026年9月5日 11:43（Europe/Berlin）对本地 Crystal 工作区的快照。\n- 测试中的 1 个跳过项来自当前 Windows 环境不允许创建测试用文件符号链接；它不是本轮手串编辑器功能失败。\n- 报告没有把生成参考图描述成实拍素材，也没有把本地提交描述成 GitHub 已合并成果。\n- 报告未执行 push、数据库写入或删除 `workbench/exports/`。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-09-05T11:43:37+02:00",
+    "status": "ready",
+    "datasets": {
+      "test_results": [
+        {
+          "result": "通过",
+          "count": 139
+        },
+        {
+          "result": "跳过",
+          "count": 1
+        },
+        {
+          "result": "失败",
+          "count": 0
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "task_control",
+      "path": "agent/GPT_NEXT_TASK.md"
+    },
+    {
+      "id": "design_spec",
+      "path": "docs/superpowers/specs/2026-09-05-crystal-bracelet-editor-open-source-integration-design.md"
+    },
+    {
+      "id": "runtime_evidence",
+      "path": "outputs/visual/p3t-open-source-bracelet-editor-runtime.png"
+    },
+    {
+      "id": "test_evidence",
+      "path": "test/",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT '通过' AS result, 139 AS count UNION ALL SELECT '跳过' AS result, 1 AS count UNION ALL SELECT '失败' AS result, 0 AS count",
+        "description": "把 2026年9月5日 npm test 的最终汇总转换为报告图表数据。",
+        "executed_at": "2026-09-05T11:45:00+02:00"
+      }
+    },
+    {
+      "id": "database_evidence",
+      "path": "data/crystal-design.sqlite"
+    }
+  ]
+}
