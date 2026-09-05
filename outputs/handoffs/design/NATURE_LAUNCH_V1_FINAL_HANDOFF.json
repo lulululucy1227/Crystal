@@ -1,0 +1,35 @@
+{
+  "protocol_version": "AGENT-HANDOFF-V1",
+  "phase": "NATURE-LAUNCH-V1-DESIGN-PACKAGE",
+  "status": "CANDIDATE_DELIVERED_PENDING_SELECTION_AND_SUPERVISOR_REVIEW",
+  "branch": "main",
+  "design_count": 18,
+  "design_count_by_theme": {
+    "Mountain": 3,
+    "Ocean": 3,
+    "Forest": 3,
+    "Sunrise": 3,
+    "Starlight": 3,
+    "Glacier": 3
+  },
+  "outputs": [
+    "outputs/designs/nature-launch-v1.json",
+    "outputs/designs/NATURE_LAUNCH_18_BOARD.md",
+    "outputs/handoffs/design/material_change_proposal-nature-launch-v1.json"
+  ],
+  "checks": {
+    "positions_continuous": true,
+    "bom_aggregates_from_beads": true,
+    "along_string_mm_each": 165,
+    "all_source_status": "PROPOSED",
+    "formal_working_version_found": false,
+    "theme_structure_difference_matrix_in_board": true
+  },
+  "risks_or_blockers": [
+    "No formal selection Working Version was present; every material/spec remains PROPOSED.",
+    "P4 Workbench browser and physical sample verification are pending.",
+    "OCEAN-02 / GLACIER-02 share a long-tube device and require side-by-side review."
+  ],
+  "requires_gpt_decision": false,
+  "next_minimum_action": "Selection reviews MCP proposals and publishes Working Version; engineering loads this package for P4 validation. Supervisor decides acceptance only after those checks."
+}
