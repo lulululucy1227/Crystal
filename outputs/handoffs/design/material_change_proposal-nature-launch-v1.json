@@ -1,0 +1,1009 @@
+{
+  "version": "CRYSTAL-MATERIAL-CHANGE-PROPOSALS-V1",
+  "status": "PENDING_SELECTION_REVIEW",
+  "formal_working_version_status": "NOT_DELIVERED_AT_PACKAGE_TIME",
+  "proposals": [
+    {
+      "proposal_id": "MCP-001",
+      "requested_material": "Smoky Quartz 8mm round",
+      "requested_spec": "smoky-quartz-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "MOUNTAIN-03",
+        "SUNRISE-01",
+        "SUNRISE-02",
+        "STARLIGHT-01",
+        "STARLIGHT-02",
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Sunrise",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Starlight"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-002",
+      "requested_material": "Clear Quartz 6mm round",
+      "requested_spec": "clear-quartz-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "MOUNTAIN-03",
+        "OCEAN-01",
+        "OCEAN-02",
+        "OCEAN-03",
+        "FOREST-01",
+        "FOREST-02",
+        "FOREST-03",
+        "SUNRISE-01",
+        "SUNRISE-02",
+        "SUNRISE-03",
+        "STARLIGHT-01",
+        "STARLIGHT-02",
+        "STARLIGHT-03",
+        "GLACIER-01",
+        "GLACIER-02",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Ocean",
+        "Ocean",
+        "Ocean",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Sunrise",
+        "Sunrise",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Starlight",
+        "Glacier",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。",
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。",
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-003",
+      "requested_material": "Labradorite 8mm round",
+      "requested_spec": "labradorite-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "MOUNTAIN-03",
+        "STARLIGHT-01"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Starlight"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-004",
+      "requested_material": "Smoky Quartz 6mm round",
+      "requested_spec": "smoky-quartz-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "MOUNTAIN-03",
+        "FOREST-01",
+        "FOREST-02",
+        "FOREST-03",
+        "SUNRISE-03",
+        "STARLIGHT-01",
+        "STARLIGHT-02",
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Starlight"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-005",
+      "requested_material": "Clear Quartz framed irregular focal",
+      "requested_spec": "proposed-clear-quartz-framed-irregular-focal-11mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "OCEAN-01",
+        "GLACIER-01",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Ocean",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-006",
+      "requested_material": "Sterling silver 4mm micro spacer",
+      "requested_spec": "sterling-silver-micro-spacer-4mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "MOUNTAIN-03",
+        "OCEAN-01",
+        "OCEAN-02",
+        "OCEAN-03",
+        "FOREST-01",
+        "FOREST-02",
+        "FOREST-03",
+        "SUNRISE-01",
+        "SUNRISE-02",
+        "SUNRISE-03",
+        "STARLIGHT-02",
+        "STARLIGHT-03",
+        "GLACIER-01",
+        "GLACIER-02",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Mountain",
+        "Ocean",
+        "Ocean",
+        "Ocean",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Sunrise",
+        "Sunrise",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Glacier",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。",
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。",
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-007",
+      "requested_material": "Clear silicone 1mm sizing spacer",
+      "requested_spec": "clear-silicone-sizing-spacer-1mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-01",
+        "MOUNTAIN-02",
+        "OCEAN-01",
+        "OCEAN-02",
+        "FOREST-02",
+        "SUNRISE-01",
+        "SUNRISE-02",
+        "SUNRISE-03",
+        "STARLIGHT-02",
+        "STARLIGHT-03",
+        "GLACIER-02",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Mountain",
+        "Ocean",
+        "Ocean",
+        "Forest",
+        "Sunrise",
+        "Sunrise",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "MOUNTAIN-01: 中央峰形渐缩；不是棕色整串。",
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-008",
+      "requested_material": "Obsidian 8mm round",
+      "requested_spec": "obsidian-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-02",
+        "FOREST-01",
+        "FOREST-02",
+        "FOREST-03",
+        "SUNRISE-03",
+        "STARLIGHT-01",
+        "STARLIGHT-02",
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Forest",
+        "Forest",
+        "Sunrise",
+        "Starlight",
+        "Starlight",
+        "Starlight"
+      ],
+      "why_needed": [
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-009",
+      "requested_material": "Sterling silver 12mm geometric bar",
+      "requested_spec": "sterling-silver-geometric-bar-12mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-02",
+        "FOREST-02",
+        "SUNRISE-02"
+      ],
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Sunrise"
+      ],
+      "why_needed": [
+        "MOUNTAIN-02: 一处偏心的银色断层切开岩块节奏。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-010",
+      "requested_material": "Bloodstone 8mm round",
+      "requested_spec": "bloodstone-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-03",
+        "FOREST-02"
+      ],
+      "themes": [
+        "Mountain",
+        "Forest"
+      ],
+      "why_needed": [
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-011",
+      "requested_material": "Green Phantom Quartz 6mm round",
+      "requested_spec": "green-phantom-quartz-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-03",
+        "FOREST-01",
+        "FOREST-02"
+      ],
+      "themes": [
+        "Mountain",
+        "Forest",
+        "Forest"
+      ],
+      "why_needed": [
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。",
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-012",
+      "requested_material": "Green Phantom Quartz framed irregular focal",
+      "requested_spec": "proposed-green-phantom-quartz-framed-irregular-focal-15mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "MOUNTAIN-03"
+      ],
+      "themes": [
+        "Mountain"
+      ],
+      "why_needed": [
+        "MOUNTAIN-03: 三段碎石簇围绕偏心大主石，非对称地质拼贴。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-013",
+      "requested_material": "Lapis Lazuli 6mm round",
+      "requested_spec": "lapis-lazuli-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-01",
+        "OCEAN-02",
+        "OCEAN-03",
+        "STARLIGHT-01",
+        "STARLIGHT-02"
+      ],
+      "themes": [
+        "Ocean",
+        "Ocean",
+        "Ocean",
+        "Starlight",
+        "Starlight"
+      ],
+      "why_needed": [
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-014",
+      "requested_material": "Aquamarine 8mm round",
+      "requested_spec": "aquamarine-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-01",
+        "OCEAN-02",
+        "OCEAN-03",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Ocean",
+        "Ocean",
+        "Ocean",
+        "Glacier"
+      ],
+      "why_needed": [
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-015",
+      "requested_material": "Amazonite 8mm round",
+      "requested_spec": "amazonite-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-01"
+      ],
+      "themes": [
+        "Ocean"
+      ],
+      "why_needed": [
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-016",
+      "requested_material": "Aquamarine 6mm round",
+      "requested_spec": "aquamarine-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-01",
+        "OCEAN-02",
+        "GLACIER-01",
+        "GLACIER-02"
+      ],
+      "themes": [
+        "Ocean",
+        "Ocean",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "OCEAN-01: 从深蓝锚点单向流向透明，重点是水深与运动。",
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-017",
+      "requested_material": "Amazonite 6mm round",
+      "requested_spec": "amazonite-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-02"
+      ],
+      "themes": [
+        "Ocean"
+      ],
+      "why_needed": [
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-018",
+      "requested_material": "Rainbow Moonstone 6mm round",
+      "requested_spec": "rainbow-moonstone-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-02",
+        "OCEAN-03",
+        "SUNRISE-01",
+        "SUNRISE-02",
+        "GLACIER-01",
+        "GLACIER-02"
+      ],
+      "themes": [
+        "Ocean",
+        "Ocean",
+        "Sunrise",
+        "Sunrise",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-019",
+      "requested_material": "Sterling silver 26mm curved tube",
+      "requested_spec": "sterling-silver-curved-tube-26mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-02",
+        "STARLIGHT-02",
+        "GLACIER-02"
+      ],
+      "themes": [
+        "Ocean",
+        "Starlight",
+        "Glacier"
+      ],
+      "why_needed": [
+        "OCEAN-02: 弧管是水平潮线，不以大石为主角。",
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-020",
+      "requested_material": "Rainbow Moonstone framed irregular focal",
+      "requested_spec": "proposed-rainbow-moonstone-framed-irregular-focal-11mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "OCEAN-03",
+        "STARLIGHT-01"
+      ],
+      "themes": [
+        "Ocean",
+        "Starlight"
+      ],
+      "why_needed": [
+        "OCEAN-03: 中央不是冰层，而是一枚海面浮标式微光。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-021",
+      "requested_material": "Dark wood 6mm tube",
+      "requested_spec": "dark-wood-tube-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-01",
+        "FOREST-03"
+      ],
+      "themes": [
+        "Forest",
+        "Forest"
+      ],
+      "why_needed": [
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-022",
+      "requested_material": "Green Phantom Quartz 8mm round",
+      "requested_spec": "green-phantom-quartz-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-01"
+      ],
+      "themes": [
+        "Forest"
+      ],
+      "why_needed": [
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-023",
+      "requested_material": "Green Phantom Quartz framed irregular focal",
+      "requested_spec": "proposed-green-phantom-quartz-framed-irregular-focal-11mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-01"
+      ],
+      "themes": [
+        "Forest"
+      ],
+      "why_needed": [
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-024",
+      "requested_material": "Oxidized silver 4mm micro spacer",
+      "requested_spec": "oxidized-silver-micro-spacer-4mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-01",
+        "FOREST-02",
+        "FOREST-03",
+        "STARLIGHT-01"
+      ],
+      "themes": [
+        "Forest",
+        "Forest",
+        "Forest",
+        "Starlight"
+      ],
+      "why_needed": [
+        "FOREST-01: 深色连续底中只开一扇绿光，不是普通木串。",
+        "FOREST-02: 金属轴替代传统主珠，形成工具感/地面坐标。",
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。",
+        "STARLIGHT-01: 90%暗场里只给一枚孤星，拒绝紫黑对半分。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-025",
+      "requested_material": "Tiger’s Eye 8mm round",
+      "requested_spec": "tigers-eye-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-03"
+      ],
+      "themes": [
+        "Forest"
+      ],
+      "why_needed": [
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-026",
+      "requested_material": "Tiger’s Eye framed irregular focal",
+      "requested_spec": "proposed-tiger-s-eye-framed-irregular-focal-15mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "FOREST-03"
+      ],
+      "themes": [
+        "Forest"
+      ],
+      "why_needed": [
+        "FOREST-03: 木材不是底色而是切段结构，虎眼只作为暗金余温。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-027",
+      "requested_material": "Citrine 6mm round",
+      "requested_spec": "citrine-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-01",
+        "SUNRISE-03"
+      ],
+      "themes": [
+        "Sunrise",
+        "Sunrise"
+      ],
+      "why_needed": [
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。",
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-028",
+      "requested_material": "Citrine 8mm round",
+      "requested_spec": "citrine-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-01"
+      ],
+      "themes": [
+        "Sunrise"
+      ],
+      "why_needed": [
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-029",
+      "requested_material": "Gold Rutilated Quartz framed irregular focal",
+      "requested_spec": "proposed-gold-rutilated-quartz-framed-irregular-focal-11mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-01"
+      ],
+      "themes": [
+        "Sunrise"
+      ],
+      "why_needed": [
+        "SUNRISE-01: 暖光只在一侧升起，另一侧保留清晨灰。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-030",
+      "requested_material": "Amethyst 6mm round",
+      "requested_spec": "amethyst-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-02",
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Sunrise",
+        "Starlight"
+      ],
+      "why_needed": [
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-031",
+      "requested_material": "Rose Quartz 6mm round",
+      "requested_spec": "rose-quartz-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-02"
+      ],
+      "themes": [
+        "Sunrise"
+      ],
+      "why_needed": [
+        "SUNRISE-02: 用金属横线而非黄色堆砌表现日出。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-032",
+      "requested_material": "Citrine framed irregular focal",
+      "requested_spec": "proposed-citrine-framed-irregular-focal-15mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "SUNRISE-03"
+      ],
+      "themes": [
+        "Sunrise"
+      ],
+      "why_needed": [
+        "SUNRISE-03: 黑暗在中央，暖光只作为边缘轮廓，不甜腻。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-033",
+      "requested_material": "Labradorite 6mm round",
+      "requested_spec": "labradorite-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "STARLIGHT-02",
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Starlight",
+        "Starlight"
+      ],
+      "why_needed": [
+        "STARLIGHT-02: 以器物感坐标线表现星图，不用紫水晶主导。",
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-034",
+      "requested_material": "Amethyst 8mm round",
+      "requested_spec": "amethyst-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Starlight"
+      ],
+      "why_needed": [
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-035",
+      "requested_material": "Black Rutilated Quartz framed irregular focal",
+      "requested_spec": "proposed-black-rutilated-quartz-framed-irregular-focal-15mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "STARLIGHT-03"
+      ],
+      "themes": [
+        "Starlight"
+      ],
+      "why_needed": [
+        "STARLIGHT-03: 紫色是远处散射，不是主体；三次不等距闪光。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-036",
+      "requested_material": "Clear Quartz 8mm round",
+      "requested_spec": "clear-quartz-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "GLACIER-01",
+        "GLACIER-02",
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Glacier",
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。",
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-037",
+      "requested_material": "Blue Lace Agate 6mm round",
+      "requested_spec": "blue-lace-agate-round-6mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "GLACIER-01",
+        "GLACIER-02"
+      ],
+      "themes": [
+        "Glacier",
+        "Glacier"
+      ],
+      "why_needed": [
+        "GLACIER-01: 平行层理与中间冰蓝断面；不做Ocean渐变。",
+        "GLACIER-02: 26mm留白是冰缝空气层，而非海洋地平线。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    },
+    {
+      "proposal_id": "MCP-038",
+      "requested_material": "Rainbow Moonstone 8mm round",
+      "requested_spec": "rainbow-moonstone-round-8mm",
+      "source_status": "PROPOSED",
+      "design_ids": [
+        "GLACIER-03"
+      ],
+      "themes": [
+        "Glacier"
+      ],
+      "why_needed": [
+        "GLACIER-03: 小型珍珠点是融水，不形成Ocean的深浅水流。"
+      ],
+      "acceptable_substitute": "Use the closest existing same-size material from the historical assortment only after selection confirms visual and hole-size compatibility.",
+      "impact_if_rejected": "Replace with the named substitute and re-run fit/BOM validation; do not promote this candidate to APPROVED.",
+      "evidence_or_design_reason": "Required to preserve the documented structure signature and 165mm string-line estimate; not a procurement approval."
+    }
+  ]
+}
