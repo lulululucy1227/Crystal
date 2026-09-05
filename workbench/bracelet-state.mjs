@@ -74,7 +74,32 @@ export function selectMaterial(state, materialName) {
 export function placeInstance(state, input = {}) {
   const slotIndex = Number(input.slotIndex);
   if (!input.materialName || !Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= state.capacity) return state;
-  if (state.instances.some((item) => item.slotIndex === slotIndex)) return state;
+  if (state.instances.length >= state.capacity) return state;
+  let instances = state.instances;
+  if (state.instances.some((item) => item.slotIndex === slotIndex)) {
+    const occupied = new Set(state.instances.map((item) => item.slotIndex));
+    let clockwiseDistance = 0;
+    let counterClockwiseDistance = 0;
+    for (let distance = 1; distance < state.capacity; distance += 1) {
+      if (!clockwiseDistance && !occupied.has((slotIndex + distance) % state.capacity)) clockwiseDistance = distance;
+      if (!counterClockwiseDistance && !occupied.has((slotIndex - distance + state.capacity) % state.capacity)) counterClockwiseDistance = distance;
+      if (clockwiseDistance || counterClockwiseDistance) break;
+    }
+    const clockwise = clockwiseDistance && (!counterClockwiseDistance || clockwiseDistance <= counterClockwiseDistance);
+    const distance = clockwise ? clockwiseDistance : counterClockwiseDistance;
+    const moves = new Map();
+    for (let step = distance; step >= 1; step -= 1) {
+      const from = clockwise
+        ? (slotIndex + step - 1) % state.capacity
+        : (slotIndex - step + 1 + state.capacity) % state.capacity;
+      const to = clockwise
+        ? (slotIndex + step) % state.capacity
+        : (slotIndex - step + state.capacity) % state.capacity;
+      const occupant = state.instances.find((item) => item.slotIndex === from);
+      if (occupant) moves.set(occupant.instanceId, to);
+    }
+    instances = state.instances.map((item) => moves.has(item.instanceId) ? { ...item, slotIndex: moves.get(item.instanceId) } : item);
+  }
   const instance = {
     instanceId: input.instanceId || nextInstanceId(),
     materialName: input.materialName,
@@ -84,7 +109,7 @@ export function placeInstance(state, input = {}) {
     assetRef: input.assetRef || '',
     provenanceClass: input.provenanceClass || 'generated_from_evidence',
   };
-  return recalculate({ ...state, selectedInstanceId: instance.instanceId, instances: [...state.instances, instance] });
+  return recalculate({ ...state, selectedInstanceId: instance.instanceId, instances: [...instances, instance] });
 }
 
 export function moveInstance(state, { instanceId, slotIndex } = {}) {

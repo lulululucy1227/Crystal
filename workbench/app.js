@@ -451,7 +451,8 @@ function applyCanvasCommand(command) {
   const state = ensureBraceletHistory().present;
   if (command.type === 'select-instance') {
     braceletHistory.present = { ...state, selectedInstanceId: command.instanceId };
-    return refreshDesignStudio();
+    syncBraceletDraft();
+    return;
   }
   if (command.type === 'place') {
     const selected = itemForName(command.materialName);
@@ -490,7 +491,7 @@ async function renderDesk() {
       <main class="bracelet-workspace" aria-label="圆形串珠设计区">
         <div class="workspace-toolbar"><button type="button" id="undo-layout">撤销</button><button type="button" id="redo-layout">重做</button><button type="button" id="auto-layout">均匀初排</button><button type="button" id="clear-layout">清空排珠</button></div>
         <div class="bracelet-canvas-host"><canvas id="bracelet-canvas" width="560" height="560"></canvas><div id="bracelet-fit-status" class="bracelet-fit-status"></div></div>
-        <p class="workspace-guide">点左侧材料只会选中；再点圆盘空位放入。拖动珠子可换位，拖出圆环可移除。相同材料可分别放到任意位置。</p>
+        <p class="workspace-guide">点左侧材料只会选中；再点圆环位置放入。点在已有珠位旁可插入并自动腾位。圆珠可沿圆环自由拖动，落到已有珠位会换位，拖出圆环可移除。</p>
       </main>
       <aside class="design-ledger" aria-label="设计用量清单"><header><h2>设计用量</h2><p>随圆盘实时更新</p></header><div id="design-ledger-items"></div><label>设计备注<textarea id="draft-notes" placeholder="记录组合理由或待确认事项。">${esc(draft.notes)}</textarea></label><div class="ledger-actions"><button id="save-draft">保存草稿</button><button id="export-draft">导出设计单</button></div><p id="desk-message" class="desk-message"></p></aside>
     </section>

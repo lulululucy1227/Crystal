@@ -30,9 +30,15 @@ test('selecting a material does not navigate away or silently place a bead', () 
   assert.match(app, /选择材料不会自动放珠/);
 });
 
+test('selecting an existing bead does not rebuild the canvas before dragging starts', () => {
+  const selectionBranch = app.match(/if \(command\.type === 'select-instance'\) \{([\s\S]*?)\n  \}/)?.[1] || '';
+  assert.ok(selectionBranch, 'select-instance branch must exist');
+  assert.doesNotMatch(selectionBranch, /refreshDesignStudio/);
+});
+
 test('canvas includes explicit fit and history controls', () => {
   for (const label of ['撤销', '重做', '均匀初排', '清空排珠']) assert.match(app, new RegExp(label));
   assert.match(app, /targetCircumferenceMm/);
   assert.match(app, /remainingCircumferenceMm/);
+  assert.match(app, /插入并自动腾位/);
 });
-

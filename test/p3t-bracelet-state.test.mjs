@@ -42,6 +42,19 @@ test('moving to an occupied slot swaps the two instances', () => {
   assert.equal(state.instances.find((item) => item.instanceId === 'aqua-a').slotIndex, 2);
 });
 
+test('placing into an occupied slot inserts the new bead and shifts the nearest run', () => {
+  let state = createBraceletState({ wristCm: 17, fallbackBeadMm: 8 });
+  state = place(state, 'Clear Quartz', 4, 'clear-a', 8);
+  state = place(state, 'Smoky Quartz', 5, 'smoky-a', 8);
+  state = place(state, 'Aquamarine', 6, 'aqua-a', 8);
+  state = place(state, 'Tahitian Pearl', 5, 'pearl-a', 8);
+  assert.equal(state.instances.length, 4);
+  assert.equal(state.instances.find((item) => item.instanceId === 'clear-a').slotIndex, 4);
+  assert.equal(state.instances.find((item) => item.instanceId === 'pearl-a').slotIndex, 5);
+  assert.equal(state.instances.find((item) => item.instanceId === 'smoky-a').slotIndex, 6);
+  assert.equal(state.instances.find((item) => item.instanceId === 'aqua-a').slotIndex, 7);
+});
+
 test('removing one duplicate leaves the other duplicate untouched', () => {
   let state = createBraceletState({ wristCm: 17, fallbackBeadMm: 8 });
   state = place(state, 'Tahitian Pearl', 2, 'pearl-a');

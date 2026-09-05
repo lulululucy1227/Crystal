@@ -17,6 +17,13 @@ function pointForSlot(slotIndex, capacity, center, radius) {
   return { x: center.x + (Math.cos(angle) * radius), y: center.y + (Math.sin(angle) * radius) };
 }
 
+function projectPointToRing(point, center, radius) {
+  const dx = point.x - center.x;
+  const dy = point.y - center.y;
+  const distance = Math.hypot(dx, dy) || 1;
+  return { x: center.x + ((dx / distance) * radius), y: center.y + ((dy / distance) * radius) };
+}
+
 function slotForPoint(point, capacity, center) {
   const angle = Math.atan2(point.y - center.y, point.x - center.x) + (Math.PI / 2);
   const normalized = ((angle % TAU) + TAU) % TAU;
@@ -128,6 +135,8 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
         borderColor: '#0b4b96',
         cornerColor: '#0b4b96',
         transparentCorners: false,
+        hoverCursor: 'grab',
+        moveCursor: 'grabbing',
       });
       return object;
     }));
@@ -173,9 +182,8 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
     const outsideRing = distance > radius + removalPadding;
     object.set({ opacity: outsideRing ? 0.55 : 1 });
     if (outsideRing) return;
-    const slotIndex = slotForPoint({ x: object.left, y: object.top }, currentState.capacity, center);
-    const point = pointForSlot(slotIndex, currentState.capacity, center, radius);
-    object.set({ left: point.x, top: point.y });
+    const projected = projectPointToRing({ x: object.left, y: object.top }, center, radius);
+    object.set({ left: projected.x, top: projected.y });
   });
 
   canvas.on('object:modified', (event) => {

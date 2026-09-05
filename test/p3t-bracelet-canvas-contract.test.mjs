@@ -36,6 +36,14 @@ test('canvas adapter exports the semantic bracelet canvas factory', () => {
   assert.doesNotMatch(source, /localStorage|fetch\(|\/api\//);
 });
 
+test('dragging follows the pointer around the ring before snapping on release', () => {
+  const source = fs.readFileSync(canvasFile, 'utf8');
+  assert.match(source, /function projectPointToRing/);
+  const movingBranch = source.match(/canvas\.on\('object:moving',[\s\S]*?canvas\.on\('object:modified'/)?.[0] || '';
+  assert.match(movingBranch, /projectPointToRing/);
+  assert.doesNotMatch(movingBranch, /pointForSlot\(slotIndex/);
+});
+
 test('running Workbench serves the Fabric module as JavaScript', async (t) => {
   const port = 44174;
   const child = spawn(process.execPath, ['workbench/server.mjs'], {
