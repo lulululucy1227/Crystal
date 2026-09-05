@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "task": "Crystal inspiration Google Drive real-material source audit",
+  "generated_at": "2026-09-06",
+  "drive_scope": {
+    "folder": "Crystal Design References/Inbox",
+    "folder_id": "1IeTjrm0rmqo0sSGe-K8rSdlhDmwp-W7V",
+    "files_audited": 22,
+    "source_bytes_obtained": 22,
+    "sha256_verified": 22
+  },
+  "rights_policy": "All audited files are third-party social-media screenshots stored in a private Drive folder. Public GitHub publication of source images or derived cutouts is not authorized. Technical cutout suitability is evaluated separately from publication rights.",
+  "overall_finding": {
+    "production_sprite_ready": 0,
+    "hero_ready": 0,
+    "reference_only": 22,
+    "rejected_as_direct_sprite_source": 22,
+    "reason": "Screenshots contain app UI/text/watermarks and finished-bracelet context; beads are small, oblique, reflective, occluded or visually altered by lighting. They are useful as design evidence, not as clean material sprites.",
+    "generation_implication": "Do not stop generated_from_evidence fallback for uncovered materials/specs. Replace generated assets only when a clean, rights-cleared single-bead/loose-stone source is later obtained."
+  },
+  "reference_groups": [
+    {
+      "group_id": "REF-G01-WARM-GOLD-ARC",
+      "files": ["IMG_7984.PNG","IMG_7985.PNG","IMG_7986.PNG","IMG_7987.PNG"],
+      "observation": "Same finished piece from four views: warm transparent/golden round beads, one larger warm focal, small pale/metal spacers, and a curved silver-toned arc/tassel-like interruption. Strong asymmetry and size rhythm.",
+      "material_spec_candidates": ["golden transparent quartz/rutilated-quartz-family candidate", "clear quartz-family candidate", "silver-toned structure"],
+      "do_not_confirm": ["mineral identity", "treatment", "origin", "grade"],
+      "design_use": ["Sunrise", "light Ocean accent"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Finished-piece screenshot, UI/watermark, reflective transparent beads, perspective and occlusion; no clean isolated bead.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    },
+    {
+      "group_id": "REF-G02-GREY-WOOD-ASYM",
+      "files": ["IMG_7966.PNG","IMG_7967.PNG","IMG_7968.PNG","IMG_7969.PNG","IMG_7970.PNG"],
+      "observation": "Same asymmetrical bracelet from five views: grey translucent beads, dark brown wood-like beads, one pale oversized round focal, small pale accent and restrained metal details. Visual mass shifts from one side to another rather than centering the focal.",
+      "material_spec_candidates": ["grey translucent stone candidate", "wood/incense-bead candidate", "pale moonstone/chalcedony-family candidate", "silver-toned small accent"],
+      "do_not_confirm": ["mineral identity", "wood species", "treatment", "origin", "grade"],
+      "design_use": ["Forest", "Mountain"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Useful macro views but still finished-piece screenshots; individual beads are partially occluded and strongly lit.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    },
+    {
+      "group_id": "REF-G03-COOL-GREY-SILVER",
+      "files": ["IMG_7925.PNG","IMG_7926.PNG","IMG_7927.PNG","IMG_7928.PNG"],
+      "observation": "Same cool grey-blue small-bead bracelet from four views with repeated silver-toned micro spacers and one ornamental silver focal. Uniform bead scale is interrupted by metal texture rather than a large gemstone focal.",
+      "material_spec_candidates": ["cool grey-blue chalcedony/agate-family candidate", "silver-toned spacers/focal"],
+      "do_not_confirm": ["mineral identity", "treatment", "origin", "grade"],
+      "design_use": ["Glacier", "Mountain", "neutral/masculine direction"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Some beads are visually clear enough for identification reference but too small and context-lit for production sprites.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    },
+    {
+      "group_id": "REF-G04-PURPLE-BLACK-CLEAR-GOLD",
+      "files": ["IMG_7920.PNG","IMG_7921.PNG","IMG_7922.PNG"],
+      "observation": "Same chunky bracelet from three views combining black rounds, saturated purple rounds, clear crackled/translucent rounds, rectangular dark focal and high-polish gold accents. High contrast and high focal density.",
+      "material_spec_candidates": ["black stone candidate", "purple stone candidate", "clear quartz-family candidate", "rectangular dark focal", "gold-toned metal"],
+      "do_not_confirm": ["mineral identity", "treatment", "origin", "grade"],
+      "design_use": ["Starlight as anti-reference / contrast study"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Strong color/lighting treatment, multiple overlapping focal elements, social screenshot overlays; unsuitable for faithful material sprite extraction.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    },
+    {
+      "group_id": "REF-G05-DEEP-BLUE-BLACK-CLEAR",
+      "files": ["IMG_7884.PNG","IMG_7885.PNG","IMG_7886.PNG"],
+      "observation": "Same chunky dark bracelet from three views: deep blue/black rounds, clear irregular/translucent beads, a dark rectangular focal and sparse metal accents. Contrast is driven by depth and transparency rather than pastel color.",
+      "material_spec_candidates": ["deep blue/black stone candidate", "clear quartz-family candidate", "dark rectangular focal"],
+      "do_not_confirm": ["mineral identity", "treatment", "origin", "grade"],
+      "design_use": ["Ocean storm/deep-water direction", "Starlight", "Mountain shadow"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Potential individual-bead crops exist but are perspective-heavy and strongly reflective; rights are not cleared.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    },
+    {
+      "group_id": "REF-G06-SMOKY-BLACK-MICRO",
+      "files": ["IMG_7887.PNG","IMG_7888.PNG","IMG_7889.PNG"],
+      "observation": "Three views of small dark smoky/black translucent bead bracelets with subtle internal inclusions and minimal metal. Low chroma, low ornament, wearable single-strand/stack language.",
+      "material_spec_candidates": ["smoky quartz/black-rutilated-quartz-family candidate", "dark translucent inclusion-bearing stone candidate"],
+      "do_not_confirm": ["mineral identity", "treatment", "origin", "grade"],
+      "design_use": ["Starlight", "Mountain", "neutral/masculine baseline"],
+      "sprite_assessment": "REFERENCE_ONLY",
+      "technical_reason": "Bracelet context and black background obscure bead boundaries; not a clean sprite source despite useful material appearance evidence.",
+      "rights_publication": "NO_UNTIL_PERMISSION"
+    }
+  ],
+  "files": [
+    {"id":"1ooCne-hTPuu_DfIHr2esLnHbvC7vCrXs","name":"IMG_7984.PNG","group":"REF-G01-WARM-GOLD-ARC","resolution":"1179x2556","sha256":"254cf2f7533d5da9906f2827293d11ff31c7ffdc6f6a5073970968280a25f0e1","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1CZnzLPZpBszd-JYCAfeSUD0JGelRe5fT","name":"IMG_7985.PNG","group":"REF-G01-WARM-GOLD-ARC","resolution":"1179x2556","sha256":"970b9d92487e1c49106bacd2043d640ed68cbe88f66b93273e5b8e16f2b214ea","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1j9CZobSBpFt8_uu0or_LUcwlz-AFRdkl","name":"IMG_7986.PNG","group":"REF-G01-WARM-GOLD-ARC","resolution":"1179x2556","sha256":"b7c20984944ec6256eaa1f54a7b20718bd04fcb4d27f4bdcb4dece2bf9e4d267","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1coxrPxVB4GdoxVOOw7nGRN9Et3M8LIs4","name":"IMG_7987.PNG","group":"REF-G01-WARM-GOLD-ARC","resolution":"1179x2556","sha256":"40c5dd2179d4db1dd0905cb6503fec0599f63c0608ec2a340cd1b330bf1513a2","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1tLS1CVqcYeOgiU1cIfQK-Jd11nemcN9e","name":"IMG_7966.PNG","group":"REF-G02-GREY-WOOD-ASYM","resolution":"1179x2556","sha256":"ac0a1d5b74ca51009958619cf1c04caf35493975fc35e476c52e3ad551943e58","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1Xp3A70KacHj0bllLdtBP6JAzaW9mZmpt","name":"IMG_7967.PNG","group":"REF-G02-GREY-WOOD-ASYM","resolution":"1179x2556","sha256":"6df6420f2fc7fea48d1d8a044659fbe26ee0205b6ed46989670a979b8858f3e6","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1I4q2N7HlYyLYVHtvLZFGK5jhi4_R7xe5","name":"IMG_7968.PNG","group":"REF-G02-GREY-WOOD-ASYM","resolution":"1179x2556","sha256":"84afa49cb143b6c09b7fdb0ecca1a939ca8e74fca07c274ba89716eba82d71c5","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1lfUeap2SjFvmrToNla689ffjzYNIKIJF","name":"IMG_7969.PNG","group":"REF-G02-GREY-WOOD-ASYM","resolution":"1179x2556","sha256":"5c8542308de05ad626d3a152ea184f6f7a4702dc0bd36da1998b1f584faad61f","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1PwQgf02pw2NRzR5Zr14LDewX-xVRt4AV","name":"IMG_7970.PNG","group":"REF-G02-GREY-WOOD-ASYM","resolution":"1179x2556","sha256":"55f626aa75db9ad40ba1f6c2e9642a686b8a9dce3158c5b16dba56d91806ed23","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1uVIeX_pmm9pKZ99ZfHqXD6nisI1g0QDu","name":"IMG_7925.PNG","group":"REF-G03-COOL-GREY-SILVER","resolution":"1179x2556","sha256":"ba8f1fd58fca31e5acd6c0307c9286eed1228a055803a154f96de864fa34433d","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"14h8IZAzM9b7fNuEEHcJ2_aPM9eziB1Jz","name":"IMG_7926.PNG","group":"REF-G03-COOL-GREY-SILVER","resolution":"1179x2556","sha256":"d5ee0a3e63e9ba365e149b7d0aca663adc87f3b0251c1262cf3deeaaa20a8074","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"14jZra_4Q9xQie-YUyub6CIqmYVXEKB8C","name":"IMG_7927.PNG","group":"REF-G03-COOL-GREY-SILVER","resolution":"1179x2556","sha256":"be1899cb2f61560dd245d518ab558f29caed161b6a96fbf7bd2b6d07af6709db","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1YYTUgobyPatkcCCINuAfw1xO3mktu5HG","name":"IMG_7928.PNG","group":"REF-G03-COOL-GREY-SILVER","resolution":"1179x2556","sha256":"bfbae04b23640f877ce76ccad321100814bd8c2c2e7f0ff5b156f63ece15e875","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1A9sWRUlPQwtP809XFEHrZWFYeWfExXjG","name":"IMG_7920.PNG","group":"REF-G04-PURPLE-BLACK-CLEAR-GOLD","resolution":"1179x2556","sha256":"120e71d9e3a99873e8846b0fa79a55d0e66f7ad5b078e8d1b100169cea405965","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1cuqE6ySWH6QbSl98jB-wUq-WYuGJ8swm","name":"IMG_7921.PNG","group":"REF-G04-PURPLE-BLACK-CLEAR-GOLD","resolution":"1179x2556","sha256":"6c637a5b2aa412819db7df4f974cd8cda8a03699e3b53e3000e9785a52a5cd21","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1XX-jKALrg_x6-t2dqebaco4g8tKBJAC4","name":"IMG_7922.PNG","group":"REF-G04-PURPLE-BLACK-CLEAR-GOLD","resolution":"1179x2556","sha256":"01ae29c344a80bc8720448f47850b5a47b8fd2bed24fbf17c7a41831b05774ed","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1fuOwEQanLzScGvYGnk0oBiGDIgFcAFE9","name":"IMG_7884.PNG","group":"REF-G05-DEEP-BLUE-BLACK-CLEAR","resolution":"1179x2556","sha256":"bfd1846dbe7fa559ae647ccbcbbf899453049d3591217be74a52ab4ebfeb4173","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"18y8o-HqWfaDccAEOifbfsVNJe9yXs4Dc","name":"IMG_7885.PNG","group":"REF-G05-DEEP-BLUE-BLACK-CLEAR","resolution":"1179x2556","sha256":"14afa8a1303c64b62af2b2e193eba54e9de72e0271aee6c0773c8ce5268050c2","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1Q_TZKQ66ab0CDIJ7xt6vJdR4MZ4m8gjE","name":"IMG_7886.PNG","group":"REF-G05-DEEP-BLUE-BLACK-CLEAR","resolution":"1179x2556","sha256":"6870534399a4f54d49c79a4a6fd70e7152bbdedf4b216b8090ddb8a30feb22ff","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"14ofJK6onYAQo5jShKCPHnhC0XPiydzk6","name":"IMG_7887.PNG","group":"REF-G06-SMOKY-BLACK-MICRO","resolution":"1179x2556","sha256":"d1d438e1a2fd61dd7cf118661b66829b977b2365254d874ea36caba222d7937c","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"123NnrcmCKT2ka2BVfv43mwUXXYLzMfYn","name":"IMG_7888.PNG","group":"REF-G06-SMOKY-BLACK-MICRO","resolution":"1179x2556","sha256":"07f2be260a4e1b5095dec62fe9f7cd208290211c118ecd9133d8c27d611cf84c","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"},
+    {"id":"1OmNBx0vTc8QaivGaW331Ae2Cc9PcsYTh","name":"IMG_7889.PNG","group":"REF-G06-SMOKY-BLACK-MICRO","resolution":"1179x2556","sha256":"2adf54d48be2419db92a95842f4f05b6685415f485087ce2bba70663d3270294","source_type":"bracelet/multi-angle screenshot","public":"NO","recommended_action":"REFERENCE_ONLY"}
+  ],
+  "priority_for_engineering": [
+    "Do not batch-cut these screenshots into production sprites.",
+    "Use REF-G02/G03/G06 first as structure/material-appearance references for Forest/Mountain/Glacier/Starlight.",
+    "Request or source clean single-bead/loose-stone photos for any material actually selected into the 18-design package.",
+    "Only after rights clearance and clean-source validation should engineering run CUTOUT/CROP_SINGLE_BEAD and manifest integration."
+  ]
+}
