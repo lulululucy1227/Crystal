@@ -1,16 +1,23 @@
 # Crystal｜设计 — NEXT TASK
 
 Protocol: CRYSTAL-SUPERVISOR-V1
-Priority: P0
-Status: AUTHORIZED
+Priority: P0-URGENT
+Status: AUTHORIZED_EXECUTE_TO_DELIVERABLE
 Owner: Crystal｜设计
 Language: 中文为主
 
+## 当前主管判断
+
+18 款目前的主要卡点不是 Workbench，也不是 P3R，而是：GitHub 中尚无 `outputs/handoffs/design/`、尚无 `outputs/designs/nature-launch-v1.json`，说明 18 款正式候选还没有被实际产出/提交。
+
+选品正式 Working Version 尚未完成会影响最终采购批准，但**不应该阻塞设计本身**。缺失规格可以先标 `PROPOSED` 并提交 material change proposal。
+
+因此本轮不要继续停留在概念讨论，直接完成 18 款可被 Workbench 读取的设计包。
+
 ## 目标
 
-完成 Crystal 自然主题首发系列：6 个主题 × 每主题至少 3 款 = 至少 18 款正式设计候选。不是同款换色，也不是简单低/中/高品质分层。
+完成 Crystal 自然主题首发系列：
 
-主题：
 1. Mountain / 山
 2. Ocean / 海
 3. Forest / 森林
@@ -18,119 +25,178 @@ Language: 中文为主
 5. Starlight / 星辰
 6. Glacier / 冰川
 
-## 设计边界
+每主题 3 款，共 **18 款正式候选**。
 
-1. 使用 Crystal｜选品维护的正式材料 Working Version，但不受旧 Excel 限死。
-2. 如真实设计需要新增水晶、珍珠、木材、珠径、切型、主石、配饰、银件或结构件，必须生成 `material_change_proposal`，交给 Crystal｜选品审核。
-3. 在选品 Agent 正式回写前，新增材料只能标记为 PROPOSED，不得伪装成已批准采购项。
-4. 最终批准设计必须全部映射回正式采购 Excel；主管验收时发现表外材料即 Rework。
-5. 不直接修改正式采购主表。
-6. 不开发 Workbench；现有手串编辑器只作为可选设计辅助，不是本轮交付前提。
-7. 不因 P3R、素材缺图、Workbench 图片问题停止设计。
+不是同款换色，也不是简单低/中/高品质分层。
 
-## 结构差异要求
+## 必须先读取
 
-每个主题的至少 3 款必须有真实结构语言差异。可来自：
-- 主石位置；
-- 珠径节奏；
-- 异形珠；
-- 结构件；
-- 金属比例；
-- 非对称设计；
-- 留白；
-- 材料组合；
-- 视觉重心；
-- 男性/中性/不同佩戴语言。
+1. `docs/CRYSTAL_DESIGN_PACKAGE_V1.md`
+2. `agent/tasks/selection/NEXT_TASK.md`
+3. 当前正式/历史选品数据：`data/assortment-selection-v1.json`、`outputs/assortment-selection-v1.json` 及仓库中更新后的正式 Working Version（如已存在）
+4. `agent/tasks/inspiration/NEXT_TASK.md` 及灵感 Agent 已产生的最新 evidence（如已存在）
 
-禁止仅通过颜色替换、品质等级替换或同排列换材来凑 3 款。
+如果灵感/选品尚未交付，不等待；使用现有证据和 `PROPOSED` 状态继续。
+
+## 设计输出契约
+
+正式机器可读文件必须写：
+
+`outputs/designs/nature-launch-v1.json`
+
+人类可读主视图必须写：
+
+`outputs/designs/NATURE_LAUNCH_18_BOARD.md`
+
+主视图不是 18 篇长文。必须用 **6×3 Portfolio Board** 为第一层呈现：六个主题，每主题三张设计卡；每张卡突出：
+- 中文名 / English name
+- 场景
+- 结构 archetype
+- 核心材料
+- 主石/视觉重心
+- 目标手围
+- bead count
+- material status summary
+- 为什么与同主题另外两款不同
+
+详细 BOM / 排珠 / 打样说明放第二层。
+
+## 每款必须可被 Workbench 真实验证
+
+按 `docs/CRYSTAL_DESIGN_PACKAGE_V1.md` 输出真实排珠序列。
+
+每一个珠子/异形主石/结构件都要成为独立 bead instance，至少包含：
+- position
+- material_id
+- spec_id
+- display_name_zh / en
+- form
+- size_mm
+- role
+- source_status
+
+不能只写“海蓝宝若干颗”“银件适量”。
+
+每款同时提供：
+- expected_bom
+- structure_signature
+- alternatives
+- sample_notes
+- procurement_questions
+- material_change_proposals
+
+## 三款结构差异硬要求
+
+每主题 3 款必须至少在两个以上维度明显不同：
+- symmetry / asymmetry
+- focal strategy
+- bead-size rhythm
+- main-stone placement
+- metal ratio
+- material count
+- negative space / interruption
+- shape language
+- masculine / neutral / refined language
+
+禁止：
+- 同排列只换颜色；
+- 同结构只换材料；
+- 同款做低/中/高配；
+- 只改主石名称但视觉重心不变。
+
+必须写差异矩阵，并主动标出你认为仍然相似的 pair。
 
 ## 审美基线
 
-长期方向仅作为约束，不机械套用：
+Ocean / Glacier：冷蓝、通透、冰感、水感、空气感、清洁；避免廉价彩色串珠感。
 
-Ocean / Glacier：冷蓝、通透、冰感、水感、空气感、清洁，避免廉价彩色串珠感。
+Forest：深墨绿、黑灰、木材/沉香感、低调银色、方形/异形主石、男性/中性；避免传统普通佛珠感。
 
-Forest：深墨绿、黑灰、木材/沉香感、低调银色、方形/异形主石、更男性或中性，避免传统普通佛珠感。
+Mountain：不要机械等于“棕色+虎眼石”；应有岩层、雾、雪线、地质结构或阴影层次。
 
-四神兽相关历史方向不属于本轮六主题硬任务，不要顺手扩 scope。
+Sunrise：不要机械等于“粉+黄”；需要控制暖光比例，避免甜腻和婚礼饰品感。
 
-## 每款必须包含
+Starlight：不要机械等于“紫水晶+黑曜石”；重点是夜空、微光、闪烁、深浅层次和留白。
 
-- 中文名
-- English name
-- 主题
-- 情绪/自然场景
-- 色彩语言
-- 核心材料
-- 辅助材料
-- 主石
-- 珠径
-- 数量
-- 排列
-- 配饰
-- 目标手围
-- BOM
-- 替代材料
-- 打样注意
-- 采购确认问题
-- 视觉设计稿或可被视觉化执行的结构图/排珠图
-- material source status（APPROVED / PROPOSED / UNRESOLVED）
+Glacier 与 Ocean 必须避免互相变成同一套蓝白串；两者的结构语言和光感要有明确区别。
 
-## 设计方法
+## 手围与制作
 
-先建立 6 个主题各自的设计语言，再在主题内部做三种结构方向。设计应考虑真实制作、孔径、珠径节奏、佩戴舒适、手围闭环、主石重量感和采购可得性。
+首轮可以统一以 16.0 cm 作为主要验证手围，并在设计里明确 target wrist；如设计语言明显需要其他手围可提出，但不要为每款随意改变目标。
 
-如果某设计只有“概念漂亮”但 BOM 无法采购或无法装配，必须降级为 concept，不得计入 18 款正式候选。
+计算必须考虑每颗实际 `size_mm`；如果异形主石不能用单一尺寸描述，在 `sample_notes` 中提供长×宽×厚和沿线估算尺寸。
 
-## 与选品 Agent 协作
+Workbench 后续给的是 `fit estimate`，不是实物佩戴保证；设计仍需给打样余量/弹力线/孔径/重心注意。
 
-持续读取正式选品 Working Version。发现缺口时写入：
+## 与选品协作
+
+任何表外材料/规格都允许设计提出，但必须：
+- `source_status = PROPOSED`
+- 写 `material_change_proposal`
+- 提供 acceptable substitute
+- 说明若被拒绝会怎样影响设计
+
+完整提案写入：
 `outputs/handoffs/design/material_change_proposal-*.json`
 
-每条 proposal 至少含：
-- design_id / theme
-- requested_material
-- requested_spec
-- why_needed
-- acceptable_substitute
-- impact_if_rejected
-- evidence_or_design_reason
+不要等选品批准完才继续其余款。
 
-不要等待所有 proposal 一次性审批后才继续；可先用 PROPOSED 状态推进其他不冲突设计。
+## 与 Workbench 协作
 
-## 正式交付
+P4 工程已启动，会读取 `outputs/designs/nature-launch-v1.json`。
 
-至少：
-- 18 款设计总表（机器可读 JSON + 人类可读文档）
-- 每款 BOM
+你不要开发 Workbench。
+
+一旦 18 款 JSON 形成并 push，工程 Agent 应能自动加载并验证：
+- BOM 聚合
+- fit estimate
+- material/spec mapping
+- duplicate structure warning
+- 6×3 Portfolio Board
+
+如果工程尚未完成，你仍先交付完整设计包，不要阻塞。
+
+## 本轮必须交付
+
+- `outputs/designs/nature-launch-v1.json`
+- `outputs/designs/NATURE_LAUNCH_18_BOARD.md`
 - 六主题设计语言说明
+- 18 款 expected BOM
+- 18 款真实 bead sequence
+- 18 款 structure_signature
+- 差异矩阵
 - material change proposals（如有）
-- 设计间差异检查矩阵，证明不是同款换色
 - `outputs/handoffs/design/` 最终 handoff
 
-不要删除历史设计或旧素材。
+## 自检
 
-## 验收条件
+完成前逐项检查：
+- design_count = 18；
+- 每主题 = 3；
+- 每款 beads 非空且 position 连续；
+- 每款 BOM 能从 beads 聚合；
+- 每款 target wrist 明确；
+- 所有材料有 APPROVED / PROPOSED / UNRESOLVED；
+- PROPOSED 都有 proposal；
+- 同主题结构不是换色；
+- Ocean ≠ Glacier；
+- Mountain ≠ 普通棕色佛珠；
+- Forest ≠ 普通木串；
+- Sunrise 不甜腻；
+- Starlight 不靠“紫+黑”凑主题。
 
-主管将逐款判断 Accepted / Rework / Partial / Blocked。至少检查：
-- 是否真的达到 18 款；
-- 每主题 ≥3 款；
-- 结构差异是否真实；
-- 是否符合主题而非堆材料；
-- BOM 是否完整；
-- 手围与珠径/数量是否自洽；
-- 是否存在表外正式材料；
-- 是否过度依赖市场热门或历史偏好；
-- 是否具备打样价值。
+## 执行习惯
 
-## Handoff
+一次性完成。遇到单项材料 blocker：标记、提 proposal、继续其他设计。
 
-写入：`outputs/handoffs/design/`
+只有剩余所有设计都无法继续时才停下来要求用户决策。
 
 最终报告只保留：
 - result
 - current_state
 - design_count_by_theme
+- strongest_designs
+- weak_or_risky_designs
 - material_change_proposals
 - deliverables
 - risks_blockers
@@ -138,4 +204,4 @@ Forest：深墨绿、黑灰、木材/沉香感、低调银色、方形/异形主
 - next_action
 - commit_sha
 
-完成后 push `main`，不要自行宣布主管 Accepted。
+完成后 commit + push `main`，不要自行宣布主管 Accepted。
