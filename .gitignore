@@ -14,3 +14,8 @@ test/.tmp-p2a-2r-*/
 test/.tmp-cretaceous-intake-*/
 test/.tmp-p2a-semantic-resolve-*/
 backups/
+inputs/local-assets/
+workbench/assets/local/
+workbench/state/local-asset-manifest.json
+workbench/state/draft-*.json
+workbench/state/.local-asset-manifest-*.tmp

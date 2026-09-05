@@ -1,0 +1,207 @@
+{
+  "phase": "P4-CRYSTAL-STUDIO-COMPLETION",
+  "date": "2026-09-06",
+  "url": "http://127.0.0.1:4173",
+  "viewport_css": {
+    "width": 1280,
+    "height": 960
+  },
+  "screenshot_note": "Browser screenshot API emits JPEG; viewport capture buffer 1265x866, full-page buffer 1264x3428. No rendered content recreated offline.",
+  "steps": {
+    "mixed_size_add": "PASS: 6mm x2 +10mm x2 +14mm irregular x2 =60mm",
+    "loose_drag": "PASS: moved exactly one of six",
+    "bracelet_drag": "PASS: first instance moved to index3, remaining order preserved",
+    "swap": "PASS: first and second swapped",
+    "undo_redo": "PASS: exact sequence restored",
+    "wrist": "PASS:17 to18cm, target175 to185mm, used60mm unchanged",
+    "delete_undo": "PASS:6 to5 used60 to54, undo restored",
+    "save_reload": "PASS: technical draft and GLACIER-03 local copy preserve geometry, identities and BOM",
+    "export": "PASS: actual BOM CSV link produced browser download event; HTTP regression checks attachment bytes and no exports directory writes",
+    "catalog_continuity": "PASS:2 Clear Quartz +1 Aquamarine =>2 types/3 choices survive Studio roundtrip,0 beads placed automatically",
+    "package_load": "PASS:18/18 actual buttons and rendered geometry, all BOM match"
+  },
+  "current_mainflow_console_errors": 0,
+  "resolved_console_error": "Earlier duplicate renderLegacyDesk declaration fixed before final browser run; historical log remains timestamp2026-09-05T23:09:23.599Z.",
+  "designs": [
+    {
+      "design_id": "MOUNTAIN-01",
+      "name": "山脊雾线",
+      "instances": 25,
+      "bom_match": true,
+      "generated_from_evidence": 20,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/MOUNTAIN-01.jpg"
+    },
+    {
+      "design_id": "MOUNTAIN-02",
+      "name": "断层阴影",
+      "instances": 24,
+      "bom_match": true,
+      "generated_from_evidence": 20,
+      "fallback": 4,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/MOUNTAIN-02.jpg"
+    },
+    {
+      "design_id": "MOUNTAIN-03",
+      "name": "高原砾石",
+      "instances": 23,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 2,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/MOUNTAIN-03.jpg"
+    },
+    {
+      "design_id": "OCEAN-01",
+      "name": "深潮",
+      "instances": 27,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 6,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/OCEAN-01.jpg"
+    },
+    {
+      "design_id": "OCEAN-02",
+      "name": "潮汐索道",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 20,
+      "fallback": 6,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/OCEAN-02.jpg"
+    },
+    {
+      "design_id": "OCEAN-03",
+      "name": "浮标微光",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/OCEAN-03.jpg"
+    },
+    {
+      "design_id": "FOREST-01",
+      "name": "苔境",
+      "instances": 25,
+      "bom_match": true,
+      "generated_from_evidence": 19,
+      "fallback": 6,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/FOREST-01.jpg"
+    },
+    {
+      "design_id": "FOREST-02",
+      "name": "林下方位",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 20,
+      "fallback": 6,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/FOREST-02.jpg"
+    },
+    {
+      "design_id": "FOREST-03",
+      "name": "树皮余烬",
+      "instances": 25,
+      "bom_match": true,
+      "generated_from_evidence": 15,
+      "fallback": 10,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/FOREST-03.jpg"
+    },
+    {
+      "design_id": "SUNRISE-01",
+      "name": "初照",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/SUNRISE-01.jpg"
+    },
+    {
+      "design_id": "SUNRISE-02",
+      "name": "地平线余温",
+      "instances": 27,
+      "bom_match": true,
+      "generated_from_evidence": 22,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/SUNRISE-02.jpg"
+    },
+    {
+      "design_id": "SUNRISE-03",
+      "name": "日食边缘",
+      "instances": 27,
+      "bom_match": true,
+      "generated_from_evidence": 22,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/SUNRISE-03.jpg"
+    },
+    {
+      "design_id": "STARLIGHT-01",
+      "name": "夜航",
+      "instances": 24,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 3,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/STARLIGHT-01.jpg"
+    },
+    {
+      "design_id": "STARLIGHT-02",
+      "name": "星图坐标",
+      "instances": 24,
+      "bom_match": true,
+      "generated_from_evidence": 19,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/STARLIGHT-02.jpg"
+    },
+    {
+      "design_id": "STARLIGHT-03",
+      "name": "远星闪",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/STARLIGHT-03.jpg"
+    },
+    {
+      "design_id": "GLACIER-01",
+      "name": "冰层",
+      "instances": 26,
+      "bom_match": true,
+      "generated_from_evidence": 21,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/GLACIER-01.jpg"
+    },
+    {
+      "design_id": "GLACIER-02",
+      "name": "裂隙空气",
+      "instances": 24,
+      "bom_match": true,
+      "generated_from_evidence": 19,
+      "fallback": 5,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/GLACIER-02.jpg"
+    },
+    {
+      "design_id": "GLACIER-03",
+      "name": "融线",
+      "instances": 27,
+      "bom_match": true,
+      "generated_from_evidence": 20,
+      "fallback": 7,
+      "source_cutout": 0,
+      "screenshot": "outputs/visual/p4/GLACIER-03.jpg"
+    }
+  ]
+}

@@ -1,0 +1,755 @@
+{
+  "phase": "P4-CRYSTAL-STUDIO-COMPLETION",
+  "date": "2026-09-06",
+  "input": "outputs/designs/nature-launch-v1.json",
+  "input_sha256": "20d1be4ad9134b213078e3bb76711f3c4974fca512305592ad7db2c29721808d",
+  "input_modified": false,
+  "result": "WARN",
+  "design_count": 18,
+  "theme_count": 6,
+  "source": "design-agent-authored candidate package; not engineering fixture",
+  "errors": 0,
+  "warnings": 36,
+  "procurement_mapping": "NOT_CHECKED: trusted Working Version not delivered",
+  "aesthetic_approval": false,
+  "designs": [
+    {
+      "design_id": "MOUNTAIN-01",
+      "name": "山脊雾线",
+      "theme": "Mountain",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "25 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 25,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 25
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/MOUNTAIN-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 25,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 20,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "MOUNTAIN-02",
+      "name": "断层阴影",
+      "theme": "Mountain",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "24 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 24,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 24
+        },
+        "asset_fallback_count": 4,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/MOUNTAIN-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 24,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 20,
+          "fallback": 4,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "MOUNTAIN-03",
+      "name": "高原砾石",
+      "theme": "Mountain",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "23 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 23,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 23
+        },
+        "asset_fallback_count": 2,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/MOUNTAIN-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 23,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 2,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "OCEAN-01",
+      "name": "深潮",
+      "theme": "Ocean",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "27 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 27,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 27
+        },
+        "asset_fallback_count": 6,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/OCEAN-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 27,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 6,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "OCEAN-02",
+      "name": "潮汐索道",
+      "theme": "Ocean",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 6,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/OCEAN-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 20,
+          "fallback": 6,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "OCEAN-03",
+      "name": "浮标微光",
+      "theme": "Ocean",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/OCEAN-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "FOREST-01",
+      "name": "苔境",
+      "theme": "Forest",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "25 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 25,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 25
+        },
+        "asset_fallback_count": 6,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/FOREST-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 25,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 19,
+          "fallback": 6,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "FOREST-02",
+      "name": "林下方位",
+      "theme": "Forest",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 6,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/FOREST-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 20,
+          "fallback": 6,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "FOREST-03",
+      "name": "树皮余烬",
+      "theme": "Forest",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "25 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 25,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 25
+        },
+        "asset_fallback_count": 10,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/FOREST-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 25,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 15,
+          "fallback": 10,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "SUNRISE-01",
+      "name": "初照",
+      "theme": "Sunrise",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/SUNRISE-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "SUNRISE-02",
+      "name": "地平线余温",
+      "theme": "Sunrise",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "27 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 27,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 27
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/SUNRISE-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 27,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 22,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "SUNRISE-03",
+      "name": "日食边缘",
+      "theme": "Sunrise",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "27 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 27,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 27
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/SUNRISE-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 27,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 22,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "STARLIGHT-01",
+      "name": "夜航",
+      "theme": "Starlight",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "24 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 24,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 24
+        },
+        "asset_fallback_count": 3,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/STARLIGHT-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 24,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 3,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "STARLIGHT-02",
+      "name": "星图坐标",
+      "theme": "Starlight",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "24 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 24,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 24
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/STARLIGHT-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 24,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 19,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "STARLIGHT-03",
+      "name": "远星闪",
+      "theme": "Starlight",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/STARLIGHT-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "GLACIER-01",
+      "name": "冰层",
+      "theme": "Glacier",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "26 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 26,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 26
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/GLACIER-01.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 26,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 21,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "GLACIER-02",
+      "name": "裂隙空气",
+      "theme": "Glacier",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "24 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 24,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 24
+        },
+        "asset_fallback_count": 5,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/GLACIER-02.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 24,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 19,
+          "fallback": 5,
+          "source_cutout": 0
+        }
+      }
+    },
+    {
+      "design_id": "GLACIER-03",
+      "name": "融线",
+      "theme": "Glacier",
+      "validation": {
+        "status": "WARN",
+        "errors": [],
+        "warnings": [
+          "27 PROPOSED instances await procurement approval",
+          "material/spec mapping NOT_CHECKED: no trusted Working Version mappings supplied"
+        ],
+        "fit_estimate": {
+          "target_mm": 165,
+          "used_mm": 165,
+          "delta_mm": 0,
+          "status": "fit",
+          "confidence": "approximate"
+        },
+        "bom_match": true,
+        "material_mapping": {
+          "approved": 0,
+          "proposed": 27,
+          "unresolved": 0,
+          "mapped": 0,
+          "unmapped": 0,
+          "not_checked": 27
+        },
+        "asset_fallback_count": 7,
+        "asset_validation": "GENERATED_AND_FALLBACK_ONLY",
+        "duplicate_structure_warning": false,
+        "browser_preview": "outputs/visual/p4/GLACIER-03.jpg",
+        "browser_validation": "PASS",
+        "save_reload_roundtrip": true,
+        "runtime_instance_count": 27,
+        "runtime_representation_counts": {
+          "generated_from_evidence": 20,
+          "fallback": 7,
+          "source_cutout": 0
+        }
+      }
+    }
+  ]
+}

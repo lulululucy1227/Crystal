@@ -3,12 +3,18 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
+import {createHash,randomUUID} from 'node:crypto';
+import {exportDesign} from './studio-view.mjs';
+import {validateDesignPackage} from './design-package.mjs';
+import {loadLocalAssetManifest,resolveLocalAssetPath} from './local-asset-manifest.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, '..');
 const stateDir = path.resolve(process.env.WORKBENCH_STATE_DIR || path.join(root, 'state'));
 const exportDir = path.resolve(process.env.WORKBENCH_EXPORT_DIR || path.join(root, 'exports'));
 const dbPath = path.join(repo, 'data', 'crystal-design.sqlite');
+const launchPath = process.env.WORKBENCH_NATURE_LAUNCH_PATH || path.join(repo,'outputs/designs/nature-launch-v1.json');
+const proposalPath = path.join(repo,'outputs/handoffs/design/material_change_proposal-nature-launch-v1.json');
 const fabricModulePath = path.resolve(repo, 'node_modules/fabric/dist/index.min.mjs');
 fs.mkdirSync(stateDir, { recursive: true });
 fs.mkdirSync(exportDir, { recursive: true });
@@ -16,10 +22,18 @@ const assortment = JSON.parse(fs.readFileSync(path.join(repo, 'outputs', 'assort
 const themes = ['Mountain', 'Ocean', 'Forest', 'Sunrise', 'Starlight', 'Glacier'];
 const safeName = (value) => String(value ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80);
 const json = (res, value, status = 200) => { res.writeHead(status, { 'content-type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(value)); };
+const studioDownloads = new Map(); // Bounded session-only buffers; never overwrites user exports.
 const readBody = (req) => new Promise((resolve, reject) => { let body = ''; req.on('data', (chunk) => { body += chunk; }); req.on('end', () => resolve(body)); req.on('error', reject); });
-const fileFor = (name) => path.join(stateDir, `${safeName(name)}.json`);
+const fileFor = (name) => {
+  const decoded=decodeURIComponent(name);
+  // Existing ASCII drafts remain compatible; Unicode names get distinct keys, never an empty filename.
+  const key=/^[a-zA-Z0-9_-]{1,80}$/.test(decoded)?decoded:`draft-${createHash('sha256').update(decoded).digest('hex').slice(0,24)}`;
+  const legacy=path.join(stateDir,`${safeName(name)}.json`);
+  if(fs.existsSync(legacy)){try{if(JSON.parse(fs.readFileSync(legacy,'utf8')).name===decoded)return legacy;}catch{}}
+  return path.join(stateDir,`${key}.json`);
+};
 const listDraftNames = () => fs.readdirSync(stateDir)
-  .filter((entry) => entry.endsWith('.json'))
+  .filter((entry) => entry.endsWith('.json') && entry!=='local-asset-manifest.json')
   .map((entry) => {
     try {
       const saved = JSON.parse(fs.readFileSync(path.join(stateDir, entry), 'utf8'));
@@ -52,6 +66,38 @@ function assortmentCsv() { const headers = ['section', 'name', 'priority', 'them
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   try {
+    if(url.pathname==='/api/studio-export'&&req.method==='POST'){
+      const payload=JSON.parse(await readBody(req));
+      if(!['design-json','bom-json','bom-csv','md'].includes(payload.format)||!Array.isArray(payload.draft?.braceletState?.instances))return json(res,{error:'Invalid Studio export'},400);
+      const output=exportDesign(payload.draft,payload.format),token=randomUUID(),name=`Crystal-${payload.format}.${output.ext}`;
+      if(Buffer.byteLength(output.text)>5*1024*1024)return json(res,{error:'Export too large'},413);
+      if(studioDownloads.size>=20)studioDownloads.delete(studioDownloads.keys().next().value);
+      studioDownloads.set(token,{...output,name});return json(res,{downloadUrl:`/api/studio-export/${token}`,filename:name,bytes:Buffer.byteLength(output.text)});
+    }
+    if(url.pathname.startsWith('/api/studio-export/')&&req.method==='GET'){
+      const output=studioDownloads.get(url.pathname.slice('/api/studio-export/'.length));
+      if(!output)return json(res,{error:'Export expired; generate it again'},404);
+      res.writeHead(200,{'content-type':output.mime,'content-disposition':`attachment; filename="${output.name}"`,'cache-control':'no-store'});return res.end(output.text);
+    }
+    if(url.pathname==='/api/local-assets'){
+      const manifest=loadLocalAssetManifest({rootDir:repo});
+      return json(res,{assets:manifest.assets.map(a=>({material_id:a.material_id,spec_id:a.spec_id,status:a.status,needs_mask:a.needs_mask,reason:a.reason,representation_class:a.representation_class,publication_status:a.publication_status,file:a.file,imageUrl:a.status==='ready'&&!a.needs_mask&&a.rights_status!=='prohibited'&&resolveLocalAssetPath({rootDir:repo,file:a.file})?`/assets/local/${encodeURIComponent(a.file)}`:undefined}))});
+    }
+    if(url.pathname.startsWith('/assets/local/')){
+      const name=decodeURIComponent(url.pathname.slice('/assets/local/'.length));
+      const allowed=loadLocalAssetManifest({rootDir:repo}).assets.some(a=>a.file===name&&a.status==='ready'&&!a.needs_mask&&a.rights_status!=='prohibited');
+      const file=allowed&&resolveLocalAssetPath({rootDir:repo,file:name});
+      if(!file)return json(res,{error:'not found'},404);
+      res.writeHead(200,{'content-type':'image/png','cache-control':'no-store'});return res.end(fs.readFileSync(file));
+    }
+    if(url.pathname==='/api/nature-launch'||url.pathname.startsWith('/api/nature-launch/')){
+      if(!fs.existsSync(launchPath))return json(res,{available:false,reason:'DESIGN_PACKAGE_NOT_READY'});
+      const pkg=JSON.parse(fs.readFileSync(launchPath,'utf8'));
+      const proposals=fs.existsSync(proposalPath)?JSON.parse(fs.readFileSync(proposalPath,'utf8')).proposals:[];
+      const validation=validateDesignPackage(pkg,{materialChangeProposals:proposals});
+      if(url.pathname.startsWith('/api/nature-launch/')){const id=decodeURIComponent(url.pathname.slice('/api/nature-launch/'.length));const design=validation.designs.find(d=>d.design_id===id);return design?json(res,design):json(res,{error:{code:'DESIGN_NOT_FOUND',message:'没有这个设计'}},404);}
+      return json(res,{available:true,package:pkg,validation});
+    }
     if (url.pathname === '/vendor/fabric/index.min.mjs') {
       if (!fs.existsSync(fabricModulePath)) return json(res, { error: { code: 'FABRIC_NOT_INSTALLED', message: 'Run npm install before starting the Workbench.' } }, 503);
       res.writeHead(200, { 'content-type': 'application/javascript; charset=utf-8', 'cache-control': 'public, max-age=31536000, immutable' });
@@ -66,8 +112,10 @@ const server = http.createServer(async (req, res) => {
       if (req.method === 'PUT' || req.method === 'POST') { const draft = JSON.parse(await readBody(req)); if (!draft.name || !Array.isArray(draft.items)) return json(res, { error: { code: 'INVALID_DRAFT', message: 'name and items are required' } }, 400); const tmp = `${file}.${process.pid}.tmp`; fs.writeFileSync(tmp, JSON.stringify(draft, null, 2)); fs.renameSync(tmp, file); return json(res, { ok: true, draft }); }
     }
     if (url.pathname === '/api/export/assortment') { const format = url.searchParams.get('format') === 'csv' ? 'csv' : 'json'; const out = path.join(exportDir, `assortment-selection-v1.${format}`); fs.writeFileSync(out, format === 'csv' ? assortmentCsv() : JSON.stringify(assortment, null, 2)); return json(res, { ok: true, path: out }); }
-    const rel = url.pathname === '/' ? 'index.html' : url.pathname.slice(1); const file = path.resolve(root, rel); if (!file.startsWith(root) || !fs.existsSync(file)) return json(res, { error: 'not found' }, 404); const type = file.endsWith('.css') ? 'text/css' : (file.endsWith('.js') || file.endsWith('.mjs')) ? 'application/javascript' : file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.png') ? 'image/png' : file.endsWith('.json') ? 'application/json' : 'text/html'; res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' }); return res.end(fs.readFileSync(file));
+    const rel = url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname.slice(1)); const file = path.resolve(root, rel); const relative=path.relative(root,file);
+    if (relative.startsWith('..') || path.isAbsolute(relative) || /^(state|exports|assets[\\/]local)([\\/]|$)/i.test(relative) || !fs.existsSync(file) || !fs.statSync(file).isFile() || path.relative(root,fs.realpathSync(file)).startsWith('..')) return json(res, { error: 'not found' }, 404);
+    const type = file.endsWith('.css') ? 'text/css' : (file.endsWith('.js') || file.endsWith('.mjs')) ? 'application/javascript' : file.endsWith('.svg') ? 'image/svg+xml' : file.endsWith('.png') ? 'image/png' : file.endsWith('.json') ? 'application/json' : 'text/html'; res.writeHead(200, { 'content-type': type, 'cache-control': 'no-store' }); return res.end(fs.readFileSync(file));
   } catch (error) { return json(res, { error: { code: 'SERVER_ERROR', message: error.message } }, 500); }
 });
 const port = Number(process.env.WORKBENCH_PORT || 4173);
-server.listen(port, '127.0.0.1', () => console.log(`Crystal Workbench http://127.0.0.1:${port}`));
+server.listen(port, '127.0.0.1', () => console.log(`Crystal Workbench http://127.0.0.1:${server.address().port}`));

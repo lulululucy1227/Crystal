@@ -10,6 +10,7 @@ import {
   undoHistory,
 } from './bracelet-state.mjs';
 import { createBraceletCanvas } from './bracelet-canvas.mjs';
+import { renderStudio } from './studio-view.mjs';
 
 let data;
 let drafts = [];
@@ -161,7 +162,8 @@ function recentDrafts() {
 
 function selectionSummary() {
   const plan = createTrayPlan(draft);
-  return `<section class="selection-summary" aria-label="当前选择"><div><strong>当前选择</strong><span>${draft.items.length} 种材料 · ${plan.planned} 颗/件</span></div>${renderTray(plan, { compact: true })}<button data-view="desk">进入设计板</button><button id="clear-selection" ${draft.items.length ? '' : 'disabled'}>清空选择</button></section>`;
+  const placed = draft.braceletState?.instances?.length ?? (draft.layout || []).filter(Boolean).length;
+  return `<section class="selection-summary" aria-label="当前选择"><div><strong>目录备选</strong><span>${new Set(draft.items.map(item=>item.name)).size} 种材料 · ${plan.planned} 颗/件</span><span>设计板已排 ${placed} 颗/件 · 目录备选不自动放珠</span></div><button data-view="desk">进入设计板</button><button id="clear-selection" ${draft.items.length ? '' : 'disabled'}>清空备选</button></section>`;
 }
 
 function renderCatalog() {
@@ -181,7 +183,7 @@ function renderCatalog() {
   };
   app.querySelectorAll('.catalogue-filters input').forEach((input) => input.oninput = draw);
   app.querySelector('#clear-filter').onclick = () => { app.querySelectorAll('.catalogue-filters input').forEach((input) => input.value = ''); draw(); };
-  app.querySelector('#clear-selection').onclick = () => { draft.items = []; draft.layout = []; draft.activeItemName = ''; draft.manualLayout = false; setStatus('当前选择已清空。'); renderCatalog(); };
+  app.querySelector('#clear-selection').onclick = () => { draft.items = []; draft.activeItemName = ''; setStatus('目录备选已清空，设计板中的珠子保留。'); renderCatalog(); };
   draw();
   bindViewButtons(app);
   app.querySelectorAll('[data-load]').forEach((button) => button.onclick = () => loadDraft(button.dataset.load));
@@ -359,8 +361,10 @@ function syncBraceletDraft() {
   draft.manualLayout = true;
 }
 
-function canvasMaterial(name) {
-  const item = studioMaterial(name) || { name };
+function canvasMaterial(name, instance = {}) {
+  // Display-only match to existing catalog slugs, never a procurement/material identity approval.
+  const displaySlug=String(instance.materialId||'').replaceAll('-','_');
+  const item = allStudioMaterials().find(item=>assetSlug(item)===displaySlug) || studioMaterial(name) || { name };
   const slug = assetSlug(item);
   const atlas = Object.values(generatedAssets?.atlases || {}).find((entry) => entry.file.includes('hero') && entry.order.includes(slug));
   return {
@@ -467,7 +471,15 @@ function applyCanvasCommand(command) {
   refreshDesignStudio();
 }
 
-async function renderDesk() {
+function renderDesk() {
+  braceletCanvas?.dispose();
+  const materials=allStudioMaterials().map(item=>({name:itemName(item),zhName:zh(item),materialId:item.canonical_identity?.id ? String(item.canonical_identity.id) : undefined,category:item.section==='pearls_organic'?'organic':item.section==='hardware_accessories'?'hardware':'crystal',thumbnail:crystalImage(item)}));
+  const controller=renderStudio({host:app,initialDraft:draft,materials,resolveMaterial:canvasMaterial,onDraft:value=>{if(braceletCanvas!==controller)return;draft=value;braceletHistory=undefined;},setStatus});
+  braceletCanvas=controller;
+  controller.ready.catch(error=>{if(braceletCanvas===controller)setStatus(`设计板加载失败：${error.message}`);});
+}
+
+async function renderP3TDesk() {
   const list = await fetch('/api/drafts').then((response) => response.json());
   drafts = list.drafts;
   ensureBraceletHistory();

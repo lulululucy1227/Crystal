@@ -1,0 +1,1384 @@
+{
+  "version": "CRYSTAL-NATURE-LAUNCH-V1",
+  "status": "CANDIDATE",
+  "fixture": true,
+  "fixture_notice": "SYNTHETIC CONTRACT TEST ONLY; not the formal 18 nature launch designs.",
+  "themes": [
+    "Mountain",
+    "Ocean",
+    "Forest",
+    "Sunrise",
+    "Starlight",
+    "Glacier"
+  ],
+  "designs": [
+    {
+      "design_id": "TEST-MOUNTAIN-1",
+      "theme": "Mountain",
+      "zh_name": "测试Mountain1",
+      "en_name": "Synthetic Mountain 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-MOUNTAIN-1",
+          "theme": "Mountain",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-MOUNTAIN-2",
+      "theme": "Mountain",
+      "zh_name": "测试Mountain2",
+      "en_name": "Synthetic Mountain 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-MOUNTAIN-2",
+          "theme": "Mountain",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-MOUNTAIN-3",
+      "theme": "Mountain",
+      "zh_name": "测试Mountain3",
+      "en_name": "Synthetic Mountain 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-MOUNTAIN-3",
+          "theme": "Mountain",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-OCEAN-1",
+      "theme": "Ocean",
+      "zh_name": "测试Ocean1",
+      "en_name": "Synthetic Ocean 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-OCEAN-1",
+          "theme": "Ocean",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-OCEAN-2",
+      "theme": "Ocean",
+      "zh_name": "测试Ocean2",
+      "en_name": "Synthetic Ocean 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-OCEAN-2",
+          "theme": "Ocean",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-OCEAN-3",
+      "theme": "Ocean",
+      "zh_name": "测试Ocean3",
+      "en_name": "Synthetic Ocean 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-OCEAN-3",
+          "theme": "Ocean",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-FOREST-1",
+      "theme": "Forest",
+      "zh_name": "测试Forest1",
+      "en_name": "Synthetic Forest 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-FOREST-1",
+          "theme": "Forest",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-FOREST-2",
+      "theme": "Forest",
+      "zh_name": "测试Forest2",
+      "en_name": "Synthetic Forest 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-FOREST-2",
+          "theme": "Forest",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-FOREST-3",
+      "theme": "Forest",
+      "zh_name": "测试Forest3",
+      "en_name": "Synthetic Forest 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-FOREST-3",
+          "theme": "Forest",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-SUNRISE-1",
+      "theme": "Sunrise",
+      "zh_name": "测试Sunrise1",
+      "en_name": "Synthetic Sunrise 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-SUNRISE-1",
+          "theme": "Sunrise",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-SUNRISE-2",
+      "theme": "Sunrise",
+      "zh_name": "测试Sunrise2",
+      "en_name": "Synthetic Sunrise 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-SUNRISE-2",
+          "theme": "Sunrise",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-SUNRISE-3",
+      "theme": "Sunrise",
+      "zh_name": "测试Sunrise3",
+      "en_name": "Synthetic Sunrise 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-SUNRISE-3",
+          "theme": "Sunrise",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-STARLIGHT-1",
+      "theme": "Starlight",
+      "zh_name": "测试Starlight1",
+      "en_name": "Synthetic Starlight 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-STARLIGHT-1",
+          "theme": "Starlight",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-STARLIGHT-2",
+      "theme": "Starlight",
+      "zh_name": "测试Starlight2",
+      "en_name": "Synthetic Starlight 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-STARLIGHT-2",
+          "theme": "Starlight",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-STARLIGHT-3",
+      "theme": "Starlight",
+      "zh_name": "测试Starlight3",
+      "en_name": "Synthetic Starlight 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-STARLIGHT-3",
+          "theme": "Starlight",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-GLACIER-1",
+      "theme": "Glacier",
+      "zh_name": "测试Glacier1",
+      "en_name": "Synthetic Glacier 1",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-1",
+        "symmetry": "symmetric",
+        "focal_strategy": "fixture-1",
+        "bead_rhythm": "fixture-1",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-GLACIER-1",
+          "theme": "Glacier",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-GLACIER-2",
+      "theme": "Glacier",
+      "zh_name": "测试Glacier2",
+      "en_name": "Synthetic Glacier 2",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-2",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-2",
+        "bead_rhythm": "fixture-2",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-GLACIER-2",
+          "theme": "Glacier",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    },
+    {
+      "design_id": "TEST-GLACIER-3",
+      "theme": "Glacier",
+      "zh_name": "测试Glacier3",
+      "en_name": "Synthetic Glacier 3",
+      "scene": "Synthetic test only",
+      "color_language": [
+        "test"
+      ],
+      "target_wrist_cm": 16,
+      "construction": "elastic",
+      "structure_signature": {
+        "archetype": "test-3",
+        "symmetry": "asymmetric",
+        "focal_strategy": "fixture-3",
+        "bead_rhythm": "fixture-3",
+        "metal_level": "none",
+        "negative_space": "none",
+        "wear_language": "test"
+      },
+      "beads": [
+        {
+          "position": 1,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        },
+        {
+          "position": 2,
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠",
+          "display_name_en": "Test bead",
+          "form": "round",
+          "size_mm": 8,
+          "quantity": 1,
+          "role": "body",
+          "source_status": "PROPOSED"
+        }
+      ],
+      "expected_bom": [
+        {
+          "material_id": "test-stone",
+          "spec_id": "test-stone-8",
+          "display_name_zh": "测试珠 8mm",
+          "quantity": 2,
+          "source_status": "PROPOSED"
+        }
+      ],
+      "alternatives": [],
+      "sample_notes": [
+        "Synthetic deliberately short strand; fit is not physical validation."
+      ],
+      "procurement_questions": [],
+      "material_change_proposals": [
+        {
+          "design_id": "TEST-GLACIER-3",
+          "theme": "Glacier",
+          "requested_material": "test-stone",
+          "requested_spec": "test-stone-8",
+          "why_needed": "Synthetic fixture only",
+          "acceptable_substitute": "Not a purchase request",
+          "impact_if_rejected": "No commercial impact",
+          "evidence_or_design_reason": "Tests only"
+        }
+      ],
+      "workbench_validation": {
+        "status": "NOT_RUN"
+      }
+    }
+  ]
+}
