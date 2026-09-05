@@ -5,10 +5,11 @@
   "supervisor_status": "ACTIVE",
   "single_supervisor_entry": true,
   "language": "zh-CN",
-  "updated_at": "2026-09-05",
+  "updated_at": "2026-09-06",
   "repository": "lulululucy1227/Crystal",
   "default_branch": "main",
   "engineering_checkpoint": "49432faa3101d9a682ce645a2a20849f9b149b66",
+  "active_engineering_phase": "P4-CRYSTAL-STUDIO-COMPLETION",
   "near_term_priorities": [
     {
       "agent": "Crystal｜选品",
@@ -18,33 +19,50 @@
     },
     {
       "agent": "Crystal｜设计",
-      "priority": "P0",
-      "status": "AUTHORIZED",
-      "task": "agent/tasks/design/NEXT_TASK.md"
+      "priority": "P0-URGENT",
+      "status": "AUTHORIZED_EXECUTE_TO_DELIVERABLE",
+      "task": "agent/tasks/design/NEXT_TASK.md",
+      "primary_output": "outputs/designs/nature-launch-v1.json"
     },
     {
       "agent": "Crystal｜灵感",
-      "priority": "P1",
-      "status": "AUTHORIZED",
-      "task": "agent/tasks/inspiration/NEXT_TASK.md"
+      "priority": "P0-SUPPORT/P1-RESEARCH",
+      "status": "AUTHORIZED_EXECUTE",
+      "task": "agent/tasks/inspiration/NEXT_TASK.md",
+      "primary_asset_output": "outputs/handoffs/inspiration/workbench-source-asset-plan-v1.json"
     },
     {
       "agent": "Crystal｜工程",
-      "priority": "FROZEN_SUPPORT",
-      "status": "FROZEN",
-      "task": "agent/tasks/engineering/STATUS.md"
+      "priority": "P0-SUPPORT",
+      "status": "ACTIVE_P4",
+      "task": "agent/tasks/engineering/NEXT_TASK.md",
+      "spec": "docs/superpowers/specs/2026-09-06-crystal-studio-completion-design.md",
+      "plan": "docs/superpowers/plans/2026-09-06-crystal-studio-completion.md"
     }
   ],
-  "business_goal": "建立 Crystal 审美工作台体系，近期优先完成选品/知识/采购体系与六主题至少18款可采购可打样设计。",
+  "business_goal": "尽快形成六主题18款真实可打样候选，并让 Crystal Studio 能设计、加载、验证、生成 BOM、核对材料状态并使用真实源图抠图素材。",
+  "current_18_design_diagnosis": {
+    "primary_blocker": "尚无正式18款设计包或 design handoff 提交到 GitHub；当前是执行未发生/未交付，不是 Workbench 技术阻塞。",
+    "secondary_constraint": "正式选品 Working Version 尚未完成会影响最终采购批准，但不阻塞设计候选；缺口使用 PROPOSED + material_change_proposal。",
+    "validation_dependency": "P4 Workbench 完成后对18款做结构/BOM/fit/material mapping/真实浏览器验证；Workbench 不替代审美批准。"
+  },
   "rules": {
-    "workbench_expansion": false,
+    "workbench_expansion": "P4_ONLY",
     "old_excel_is_final_boundary": false,
     "final_design_may_use_off_table_material": false,
     "selection_is_primary_procurement_writer": true,
     "design_may_submit_material_change_proposal": true,
     "external_research_auto_promotes_to_canonical": false,
     "agent_completed_requires_supervisor_acceptance": true,
-    "preserve_history": true
+    "preserve_history": true,
+    "canonical_sqlite_write": false,
+    "real_source_asset_priority": [
+      "source_cutout",
+      "source_derived",
+      "generated_from_evidence",
+      "fallback"
+    ],
+    "public_repo_unlicensed_drive_images": "DO_NOT_COMMIT"
   },
   "known_blockers": [
     {
@@ -53,5 +71,5 @@
       "description": "7 张 Google Drive 参考图片缺少本地授权源字节对应的真实 SHA-256；不得伪造。"
     }
   ],
-  "next_supervisor_action": "等待各 Agent 执行并在 GitHub 写回 handoff；用户只需告知哪个 Agent 已完成，主管自行读取并验收。"
+  "next_supervisor_action": "等待设计/选品/灵感/工程各自执行并写回 GitHub；主管主动读取 handoff，优先验收18款设计包与P4真实浏览器效果。"
 }
