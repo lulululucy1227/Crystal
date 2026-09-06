@@ -1,181 +1,116 @@
 # Crystal｜工程 — NEXT TASK
 
 Protocol: CRYSTAL-SUPERVISOR-V1
-Phase: P4-CRYSTAL-STUDIO-COMPLETION
+Phase: P4R-CANVA-REAL-ASSET-INTEGRATION
 Priority: P0-SUPPORT
 Status: AUTHORIZED_EXECUTE_TO_FINAL_EFFECT
 Owner: Crystal｜工程
 Language: 中文为主
 
-## 主管授权
+## 主管结论
 
-解除此前 Workbench `FROZEN_SUPPORT`，仅为本 P4 任务重新激活工程。
+P4 功能 checkpoint 已通过，但主管不接受 `source_cutout = 0` 作为最终视觉状态。用户明确补充：Google Drive 中当前审核过的素材都应视为“值得实际尝试抠成干净单珠/单件素材”，不得仅因原图是截图、背景复杂或不是预裁切 sprite 就直接判定为 reference-only。
 
-Business reason：让现有 P3T 技术原型成为真正用于六主题 18 款首发设计、Workbench 验证、BOM、打样/采购核对的 Crystal Studio V1。
+本任务是 P4 的聚焦续作，不重新开发 Workbench 架构。
 
-必须先读取并严格执行：
+必须先读取：
+- `outputs/handoffs/engineering/P4-CRYSTAL-STUDIO-COMPLETION.json`
+- `outputs/handoffs/inspiration/` 最新 source audit / evidence handoff
+- `outputs/designs/nature-launch-v1.json`
+- `data/` 与正式 Working Version 中可用的材料/spec 标签
+- 当前 `workbench/assets/`、本地素材 manifest 与图像处理脚本
 
-1. `docs/superpowers/specs/2026-09-06-crystal-studio-completion-design.md`
-2. `docs/superpowers/plans/2026-09-06-crystal-studio-completion.md`
-3. `docs/CRYSTAL_DESIGN_PACKAGE_V1.md`
-4. `agent/MASTER_STATUS.json`
-5. 当前 `workbench/` 与现有 P3T tests
+## 核心任务
 
-基线 checkpoint：
-`49432faa3101d9a682ce645a2a20849f9b149b66`
+### A. 对现有 Google Drive 素材逐张实际尝试抠图
+
+对当前已审核的 22 张 Drive 源图逐张执行真实尝试，不允许仅凭截图形态提前淘汰。
+
+优先工具链：
+1. Canva：允许并优先使用 Canva 的背景移除、裁切、Magic Grab / 图像编辑等可用能力，尤其处理透明/半透明水晶、珍珠、银件、异形主石等普通自动分割容易失败的素材；
+2. Sharp：做透明边界清理、方形画布、尺度归一、PNG/WebP 输出和压缩；
+3. 若 Canva/现有工具无法可靠完成，再评估轻量开源方案；不得为了这一任务引入重型、长期维护成本高的 ML 栈；
+4. 最后才允许 `needs_mask=true`。
+
+如果当前 Canva connector/API 没有直接背景移除动作，可在 Work/浏览器环境中使用 Canva 编辑器完成，不要因此判定“Canva不可用”。但不得把私人素材为了工具兼容性上传到公开临时图床。
+
+### B. 每张图的验收标准
+
+目标不是“自动算法跑完”，而是 Workbench 可用的 production sprite：
+- 主体完整，不能切掉珠体边缘、月光/晕彩、发丝、晶体透明边缘；
+- 不保留明显原背景矩形块；
+- 透明/半透明区域允许保留合理 alpha；
+- 单珠/单件居中但不强制几何圆形；
+- 保留真实纹理，不做会改变材料身份或品质判断的美化；
+- 不通过调色制造不存在的低/中/高品质；
+- 输出透明 PNG 或 WebP，并保留源图 SHA-256、source reference、处理方法、人工/Canva/自动标记。
+
+### C. 来源和身份边界
+
+用户关于“这些图都值得抠图尝试”的判断，覆盖此前“全部只适合 reference-only”的可用性结论；但不覆盖以下边界：
+- 不得仅凭图片猜材料真伪、产地、处理方式；
+- 材料/spec 映射必须使用已有明确标签或选品提供的映射；
+- 不确定身份时可产出 cutout，但标记 `identity_status=UNRESOLVED`，不能映射成正式采购事实；
+- 仓库为 public，未明确 rights-cleared 的原图和抠图默认保持 local/private，不 push 二进制到 public GitHub。
+
+### D. Workbench 替换策略
+
+生产视觉优先级固定为：
+`source_cutout > source_neutral_optimized > generated_from_evidence > fallback`
+
+完成一张合格 source cutout 后，立刻通过 manifest 让 Workbench 优先使用；不要等 22 张全部处理完才接入。
+
+按 18 款 BOM 实际使用频率优先处理高频材料和结构件，但最终本轮应对 22 张全部尝试并给出逐张结果。
+
+### E. 真实浏览器复验
+
+至少验证：
+- source_cutout 实际 HTTP 200 加载；
+- 材料卡和设计盘均显示真实抠图；
+- 透明边缘无明显黑/白底；
+- mixed-size、drag、compact、save/reload 不受影响；
+- 18 款设计中实际替换后的 source_cutout 数量统计准确；
+- console/network 无新增错误。
+
+不得以脚本 manifest 正常代替真实浏览器视觉验收。
+
+## 开源 / Skill 授权
+
+允许自行检索、安装、测试并使用成熟开源库、CLI、SDK 或现有 Skill，前提是明确减少重复造轮子并符合当前架构。
+
+引入前检查：许可证、维护状态、Windows + Node 24 兼容性、依赖重量、隐私边界、与现有 Fabric.js/Sharp 的冲突。
+
+MIT / Apache-2.0 / BSD 类低风险依赖可自行采用；GPL / AGPL / SSPL、商业 SDK、需要把私人素材上传第三方公开云端的方案不得自行纳入正式实现。
+
+如果现有 Canva + Sharp 已经足够，不得为了“使用开源方案”而重构。
 
 ## 执行方式
 
-这是一次性完整任务。使用 Superpowers 的 plan execution / subagent-driven 方法执行完整计划，不要每完成一个小步骤就停下来等待用户。
+连续执行到最终效果。遇到失败：实际尝试 → 判断 root cause → 更换方法/修边 → 浏览器复验。单张图片失败不阻塞其他图片。只有剩余全部素材都需要用户重新授权或人工源文件时才停止。
 
-遇到问题：
+## 正式交付
 
-- 先定位 root cause；
-- 增加/调整 regression test（适用时）；
-- 修复；
-- 重跑失败 scope；
-- 再跑完整 regression；
-- 单项 blocker 记录后继续其他可安全任务；
-- 只有剩余全部事项都需要用户决策/重新授权时才停止。
+更新/新增：
+- `outputs/p4-real-asset-validation.json`
+- `outputs/handoffs/engineering/P4R-CANVA-REAL-ASSET-INTEGRATION.json`
+- 本地/private asset manifest（不要把受限二进制误推 public）
+- 必要的 Workbench manifest/runtime 代码和 tests
 
-不要因为 18 款真实设计包尚未提交而停止 Studio 开发；使用 contract fixture 验证能力，真实设计包一旦出现立即自动切换为真实 18 款验证。
-
-## 必须实现的最终效果
-
-### 1. Crystal Studio
-
-设计板升级为桌面优先 Studio：
-- 大型圆形实体设计盘；
-- Loose 散珠自由摆放；
-- Bracelet 一键收拢成串；
-- 逐颗新增/删除/替换/拖动/换位；
-- 普通圆珠、异形主石、结构件统一进入设计；
-- 15–20 cm 手围；
-- 混合珠径按各自尺寸做近似 fit，而不是单一 fallback 珠径；
-- Undo / Redo / Clear / Save / Reload；
-- 搜索材料；
-- 水晶 / 珍珠天然材质 / 配饰 / 异形主石分类；
-- 材料卡显示图片、名称、规格、数量增减；
-- 已知成本可聚合，未知价格不得编造。
-
-吸收用户参考界面的交互层级，但不得复制第三方品牌 UI / trade dress，也不做购物车。
-
-### 2. BOM + 采购状态
-
-每个实例至少保留：
-`material_id + spec_id + instance_id + size_mm + form + source_status`
-
-实时自动 BOM；区分：
-- APPROVED
-- PROPOSED
-- UNRESOLVED
-
-Workbench 不得自动审批材料，不得写 canonical SQLite。
-
-### 3. 18 款自然首发验证
-
-读取：
-`outputs/designs/nature-launch-v1.json`
-
-完成：
-- 六主题 × 三款 `6×3 Portfolio Board`；
-- 每款可直接载入 Studio；
-- 自动 BOM 对比；
-- fit estimate；
-- material/spec mapping；
-- structure fingerprint duplicate warning；
-- 保存/重载一致性；
-- validation JSON。
-
-若真实 18 款包还不存在，不允许工程自己编造首发设计，只能用 fixture 验证能力并等待设计 Agent 产出。
-
-### 4. Google Drive / 真实素材抠图接入
-
-实际视觉资产采用：
-`真实源图抠图 > 中性技术优化 > generated_from_evidence > fallback`
-
-角色边界：
-- 灵感 Agent 决定哪些源图值得使用/归组以及来源性质；
-- 选品 Agent 确认材料/规格标签；
-- 工程负责批量图像处理与 Workbench 接入，不猜材料身份。
-
-建立 rights-aware 本地资产管线：
-- 输入默认 `inputs/local-assets/`；
-- 输出默认 `workbench/assets/local/`；
-- 计算真实源字节 SHA-256；
-- 透明 PNG/WebP / 方形画布 / 尺度归一；
-- manifest 映射；
-- 本地资产优先加载；
-- 无可靠自动抠图能力时输出 `needs_mask=true`，不得伪造好结果；
-- 不为了抠图引入重量级 ML 依赖。
-
-仓库当前是 public。第三方/供应商/私人 Google Drive 图片默认不得 push 到 public GitHub；只提交处理逻辑、manifest schema 和允许公开的资产。
-
-### 5. 真实运行验收
-
-最终必须在真实 `http://127.0.0.1:4173` 浏览器完成：
-
-新增多尺寸珠子 → 散珠拖动 → 收拢成串 → 换位 → Undo/Redo → 手围变化 → BOM → 保存 → 重载 → 导出。
-
-真实 18 款包存在时：全部 18 款通过 Workbench 载入/验证并显示 6×3 board。
-
-测试通过不等于 UI 通过。不得用离线 mock screenshot 代替真实浏览器。
-
-## 允许写入
-
-允许：
-- `workbench/`
-- `test/`
-- 与 P4 直接有关的 `tools/`
-- `docs/` 中 P4 实现补充
-- `outputs/p4-*`
-- `outputs/handoffs/engineering/`
-- `outputs/designs/*-workbench-validation.json`
-- `agent/tasks/engineering/STATUS.md`
-
-禁止：
-- canonical SQLite 写入；
-- 删除/清理 `workbench/exports/`；
-- 修改选品正式采购事实；
-- 替设计 Agent 编造 18 款正式设计；
-- P3R blocker 伪修复；
-- 电商/支付/订单/账号/云同步/供应商系统扩展。
-
-## 验收命令
-
-至少：
-
-```powershell
-npm test
-npm run validate
-git diff --check
-```
-
-并记录 canonical SQLite SHA before/after。
-
-## 最终交付
-
-必须写：
-- `outputs/p4-crystal-studio-validation.json`
-- `outputs/handoffs/engineering/P4-CRYSTAL-STUDIO-COMPLETION.json`
-
-若真实设计包存在，再写：
-- `outputs/designs/nature-launch-v1-workbench-validation.json`
-
-最终报告只保留：
+最终报告必须包含：
 - result
-- current_state
-- implemented_capabilities
-- design_package_status
+- attempted_source_count
+- successful_cutout_count
+- needs_mask_count
+- source_cutout_runtime_count
+- per_source_result_summary
+- canva_usage
+- tooling_changes
 - real_browser_QA
 - test_summary
-- canonical_db_sha_before_after
-- real_asset_status
+- rights/private_asset_status
+- unresolved_identity_mapping
 - risks_blockers
-- decision_required
 - next_action
 - commit_sha
 
-完成后 commit + push `main`，确认 `HEAD == origin/main`。
-
-只有 spec 的 mandatory acceptance 全部满足才允许 `COMPLETED`；否则用 `PARTIAL` 并明确剩余 blocker。
+完成后 commit + push `main`；不得自行宣布主管 Accepted。
