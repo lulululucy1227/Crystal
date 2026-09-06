@@ -1,97 +1,138 @@
 # Crystal｜选品 — NEXT TASK
 
 Protocol: CRYSTAL-SUPERVISOR-V1
-Priority: P0
+Priority: P0-REWORK
 Status: AUTHORIZED
 Owner: Crystal｜选品
 Language: 中文为主
 
-## 目标
+## 主管结论
 
-建立可被真实设计反向修正、最终可交给合作伙伴采购的 Crystal 选品与材料知识主线。旧 Excel、数据库已有材料和历史选品均不是不可变边界；但任何最终批准设计不得存在表外材料或表外规格。
+上一轮选品结果为 `PARTIAL`，不是 Accepted。
 
-## 权威边界
+已经确认完成：
+- 18 款 design→CRM-M→CRM-S 精确映射；
+- 38 条 material_change_proposal 已审核：28 ACCEPT / 10 MODIFY / 0 REJECT / 0 NEEDS_EVIDENCE；
+- Working Version 升级为 `CR-MAT-V1.1-NATURE-LAUNCH-20260906`；
+- Working specs 从 66 扩展到 93；
+- 18 款无表外正式 material/spec 引用。
 
-1. 你是正式选品/采购主表的唯一主要写入者；设计 Agent 不维护第二套采购表。
-2. 先审计并复用仓库已有事实，不从零重建：至少检查 `docs/ASSORTMENT_SELECTION_V1.md`、`data/assortment-selection-v1.json`、`outputs/assortment-selection-v1.*`、`data/p1c-knowledge-seeds.jsonl`，并检查仓库中现有相关输入/历史交付。
-3. 数据库/历史记录只作为候选证据，不自动等于正式采购决定。
-4. 设计 Agent 可以提出 `material_change_proposal`；你负责核对、接受/修改/拒绝，并将批准项写入正式采购主表。
-5. 不因 Workbench 图片缺陷、P3R SHA blocker 或素材不完整而停止本任务。
-6. 不写 canonical SQLite；如需读取仅只读。
-7. 不开发 Workbench。
+但 handoff 中“未收到 per-design BOM quantities/consumption”的判断与仓库当前事实冲突：
+`outputs/designs/nature-launch-v1.json` 已包含逐珠 `beads[]`、position、quantity、size_mm、material_id、spec_id；P4 工程也已验证 18/18 BOM 聚合匹配、共 458 个实例。
+
+因此本轮必须先消除这个事实冲突，再判断真实 procurement blockers。
 
 ## 本轮必须完成
 
-### A. 现有选品审计与 Working Version
+### 1. BOM reconciliation
 
-对现有选品进行去重、命名统一、规格拆分和采购可执行性检查。明确区分：
-- 材料身份（例如海蓝宝、黑发晶、Akoya）；
-- 具体规格（珠径、切型、孔径、颜色/品质、主石/配珠用途、金属/结构件规格）；
-- 研究候选；
-- 已批准采购项；
-- unresolved。
+读取并以当前 main 为准：
+- `outputs/designs/nature-launch-v1.json`
+- `outputs/handoffs/design/NATURE_LAUNCH_V1_FINAL_HANDOFF.json`
+- `outputs/selection/design-material-spec-mapping-nature-launch-v1.json`
+- `outputs/selection/working-version-nature-launch-v1.json`
+- `outputs/handoffs/engineering/P4-CRYSTAL-STUDIO-COMPLETION.json`
 
-旧表中不适合真实设计的材料/规格可以修改或降级；设计需要的新材料/规格可以新增。
+从 18 款逐珠数据重新聚合：
+- 每设计 BOM；
+- 每 design × spec consumption；
+- 18 款总采购汇总；
+- CRM-M / CRM-S 精确映射后的采购数量视图；
+- 无法聚合的条目必须说明具体字段缺失，不得笼统写“未收到 BOM”。
 
-### B. 材料知识库
+### 2. 区分三种状态
 
-至少覆盖当前选品与六个自然主题直接相关的：
-- 水晶/宝石；
-- 珍珠；
-- 木材/天然材质；
-- 银件/金属配饰/结构件。
+严格区分：
+- `DESIGN_MAPPED`：设计已映射到 Working Version；
+- `PROCUREMENT_SPEC_FROZEN`：尺寸、孔径/连接方式、材质身份等已足够明确可用于询价/样品采购；
+- `PURCHASE_APPROVED`：最终正式采购批准。
 
-不同材料使用不同的品质判断逻辑，禁止强行统一“低中高”指标。知识项至少包括：中英文名、识别特征、常见品质变量、视觉差异、常见处理/仿冒风险（仅在证据足够时）、适合珠径/切型、设计用途、采购时必须确认的问题、证据状态。
+禁止因为缺少批次/供应商证据，就把所有 93 个 working specs 一律视为同等不可采购。
 
-材料图片原则：优先帮助“一眼识别品种和关键品质差异”；`generated_from_evidence` 不得称为 `source_photo`；不得仅凭照片确认真伪、产地或处理方式。
+对每个被 18 款使用的 CRM-S 逐项给出：
+- READY_FOR_SAMPLE_SOURCING
+- READY_FOR_QUOTE_ONLY
+- NEEDS_DIMENSION_FREEZE
+- NEEDS_MATERIAL_IDENTITY_EVIDENCE
+- NEEDS_BATCH_OR_TREATMENT_EVIDENCE
+- BLOCKED
 
-### C. 六主题设计支持
+并给出理由。
 
-针对 Mountain / Ocean / Forest / Sunrise / Starlight / Glacier，给设计 Agent 提供可用材料池与规格建议，但不要代替设计 Agent 做最终款式决定。
+### 3. Procurement shortlist
 
-特别保留但不机械采纳的历史线索：茶晶、黑发晶；Ocean/Glacier 的冷蓝通透冰水空气感；Forest 的深墨绿、黑灰、木材感、低调银色、男性/中性语言。
+生成“首轮打样最小采购集”，目标不是一次采购全部 93 specs，而是覆盖18款验证所需的最小合理集合。
 
-### D. 接收设计变更
+优先：
+- 共用频率高的基础圆珠；
+- 结构件/银件共用规格；
+- 能同时验证多个主题的核心材料；
+- 对审美影响最大的主石/异形件。
 
-检查 `outputs/handoffs/design/` 是否存在新的 `material_change_proposal`。如存在，逐条输出：ACCEPT / MODIFY / REJECT / NEEDS_EVIDENCE，并同步正式主表。单项 blocker 不阻塞其他可安全工作。
+输出：
+`outputs/selection/nature-launch-v1-sample-procurement-shortlist.json`
 
-## 正式交付
+字段至少包括：
+- crm_material_id
+- crm_spec_id
+- display_name
+- used_by_designs
+- total_quantity_for_18_designs
+- sample_order_quantity_recommendation
+- procurement_state
+- unresolved_gate
+- why_priority
 
-优先生成并维护：
+### 4. 采购版 Excel 状态
+
+检查仓库是否已经存在：
 - `Crystal_水晶选品主表_V1.xlsx`
 - `Crystal_水晶知识库_V1.xlsx`
 - `Crystal_合作伙伴采购版_V1.xlsx`
-- `assortment-v1.json`
-- `knowledge-base-v1.json`
-- `unresolved-items-v1.json`
 
-如果当前执行环境无法可靠生成 xlsx，不得伪造完成：先完成机器可读 JSON/CSV 与字段定义，并在 handoff 中明确 xlsx blocker；其余工作继续。
+若不存在，不得声称选品 V1 已最终完成。
 
-将机器可读正式文件放在稳定、清晰的位置，并避免与旧 `assortment-selection-v1` 混淆。不要删除历史文件。
+如果当前 Work/执行环境可生成 xlsx，则基于当前 Working Version + 18款 BOM + shortlist 生成；如果仍不能可靠生成，则明确保留为 blocker，但必须提供等价 CSV/JSON 采购视图，不阻塞其他工作。
 
-## 验收条件
+### 5. 不要错误扩大 blocker
 
-主管只在以下条件同时满足时接受：
-- 当前正式材料身份与规格边界清楚；
-- unresolved 被明确隔离；
-- 六主题设计有可执行材料支持；
-- 设计提出的正式新增项能回写采购体系；
-- 合作伙伴采购版不包含模糊、不可下单的描述；
-- 不把市场热门、数据库存在、历史偏好自动当作采购理由；
-- 无表外正式材料。
+以下事实不能自动阻塞所有样品采购：
+- legacy Excel 尚未拿到；
+- canonical SQLite export 尚未拿到；
+- treatment/origin 尚未确认。
 
-## Handoff
+必须逐项判断这些信息到底是：
+- 设计打样前必须；
+- 正式批量采购前必须；
+- 仅知识/溯源增强。
 
-写入：`outputs/handoffs/selection/`
+## 不要做
 
-最终报告保持简洁，只包含：
+- 不修改 18 款设计审美内容；
+- 不写 canonical SQLite；
+- 不自动把 working spec 升级为 PURCHASE_APPROVED；
+- 不为了“完整”新增与18款无关的大量材料；
+- 不把历史 Excel 当成当前事实高于当前 main。
+
+## 交付
+
+至少更新/新增：
+- `outputs/selection/nature-launch-v1-bom-aggregate.json`
+- `outputs/selection/nature-launch-v1-procurement-readiness.json`
+- `outputs/selection/nature-launch-v1-sample-procurement-shortlist.json`
+- 必要时更新 `working-version-nature-launch-v1.json`
+- `outputs/handoffs/selection/SELECTION-NATURE-LAUNCH-V1-RECONCILED.json`
+
+最终 handoff 只保留：
 - result
-- current_state
-- key_changes
-- deliverables
-- risks_blockers
+- bom_reconciliation
+- mapped_designs
+- specs_by_procurement_state
+- sample_shortlist_count
+- xlsx_status
+- real_blockers
 - decision_required
 - next_action
 - commit_sha
 
-完成后 push `main`，不要自行宣布主管 Accepted。
+完成后 push main。不要自行宣布主管 Accepted。
