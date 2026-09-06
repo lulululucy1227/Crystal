@@ -1,0 +1,184 @@
+{
+  "protocol_version": "CRYSTAL-SUPERVISOR-V1",
+  "phase": "P4R-CANVA-REAL-ASSET-INTEGRATION",
+  "status": "blocked",
+  "result": "BLOCKED",
+  "commit_sha": "f2b14342225389dd3734621f12c8d50737835a30",
+  "commit_sha_scope": "Verified runtime code checkpoint; this report is recorded by the subsequent handoff commit, not self-referential.",
+  "branch": "main",
+  "changed_files": [
+    "workbench/bracelet-canvas.mjs",
+    "workbench/local-asset-manifest.mjs",
+    "workbench/studio-view.mjs",
+    "test/p4-local-assets.test.mjs",
+    "test/p4-studio-layout.test.mjs",
+    "test/p4-studio-lifecycle.test.mjs",
+    "outputs/reports/p4-selection-outline-and-source-samples.json",
+    "outputs/p4-real-asset-validation.json",
+    "outputs/handoffs/engineering/P4R-CANVA-REAL-ASSET-INTEGRATION.json"
+  ],
+  "actual_changes": [
+    "Preserved prior selected-bead feedback repair: non-intercepting muted circular selection outline, no Fabric rectangular border.",
+    "Repaired deterministic source-class priority in manifest selection and shared Studio card/canvas resolver; exact identity, readiness and rights guards retained.",
+    "Refreshed actual browser from final code: existing private source-derived images loaded, persisted three-instance 8/8/12mm design and moved position preserved, no console errors."
+  ],
+  "critical_boundaries_preserved": [
+    "canonical SQLite writes = 0",
+    "user workbench/exports untouched and excluded",
+    "source binaries and private manifests not staged",
+    "no guessed material/spec mappings",
+    "P3R blocked and preserved",
+    "no infrastructure, procurement, schema or UI redesign work"
+  ],
+  "attempted_source_count": 0,
+  "successful_cutout_count": 0,
+  "needs_mask_count": 0,
+  "unattempted_source_count": 22,
+  "source_cutout_runtime_count": 0,
+  "per_source_result_summary": {
+    "report": "outputs/p4-real-asset-validation.json",
+    "pending_source_access": 22,
+    "actually_attempted": 0,
+    "old_reference_only_disposition": "superseded; not a reason for skipping attempts",
+    "needs_mask": "Not assessed; zero is not a successful-mask claim"
+  },
+  "canva_usage": {
+    "connector_upload_attempts": 1,
+    "uploads_succeeded": 0,
+    "background_removal_attempts": 0,
+    "private_upload": "REJECTED_BY_AUTO_REVIEW",
+    "browser_checked": true,
+    "browser_editor_access": "SIGN_IN_REQUIRED",
+    "public_hosting_used": false,
+    "rejection_not_bypassed": true
+  },
+  "tooling_changes": {
+    "new_dependencies": [],
+    "retained": [
+      "Fabric.js 7.4.0",
+      "Sharp 0.35.4"
+    ],
+    "model_stack_installed": false,
+    "reason_no_rembg_benchmark": "Original source bytes were not materialized locally; installing a model cannot fix the source-access prerequisite.",
+    "runtime_priority": [
+      "source_cutout",
+      "source_neutral_optimized",
+      "source_derived (legacy, truthfully labeled)",
+      "generated_from_evidence",
+      "fallback"
+    ],
+    "importer_limitation": "The existing CLI does not yet accept source_neutral_optimized as an input source_type. Runtime resolution supports it; no new neutral-optimized asset was imported or claimed."
+  },
+  "real_browser_QA": {
+    "scope": "Existing private source_derived samples and generated fallback baseline only; not P4R 22-source acceptance.",
+    "url": "http://127.0.0.1:4173/",
+    "materials_loaded": 2,
+    "canvas_source_derived_instances": 2,
+    "canvas_generated_instances": 1,
+    "mixed_sizes_mm": [
+      8,
+      8,
+      12
+    ],
+    "compact": "PASS",
+    "native_individual_drag": "PASS",
+    "save_reload": "PASS",
+    "console_errors": 0,
+    "source_cutout_acceptance": "NOT_RUN_NO_NEW_CUTOUTS",
+    "private_draft_state": "work/p4r-qa/state",
+    "user_exports_touched": false,
+    "final_code_fresh_tab": "PASS",
+    "catalogue_page": "Still generated placeholders; source-derived baseline verified only in Studio material cards and tray. No P4R catalogue replacement claimed.",
+    "existing_source_derived_http": [
+      {
+        "label": "白水晶",
+        "status": 200,
+        "bytes": 71508
+      },
+      {
+        "label": "白幽灵",
+        "status": 200,
+        "bytes": 84010
+      }
+    ],
+    "native_click_selection": "PASS: clicked aquamarine then clear quartz in final fresh browser; circular outline switched immediately without dragging; no rectangular border, console errors 0."
+  },
+  "test_summary": {
+    "focused_p4": {
+      "total": 72,
+      "passed": 72,
+      "failed": 0
+    },
+    "npm_test": {
+      "total": 212,
+      "passed": 211,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Known Windows file-symlink creation restriction"
+    },
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "review": "APPROVED after fixing immediate native click-selection refresh; no remaining critical/important findings",
+    "red_green": "Priority repair and real Studio select-instance lifecycle regressions failed first, then passed after minimal corrections."
+  },
+  "tests_or_checks": {
+    "focused_p4": {
+      "total": 72,
+      "passed": 72,
+      "failed": 0
+    },
+    "npm_test": {
+      "total": 212,
+      "passed": 211,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Known Windows file-symlink creation restriction"
+    },
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "review": "APPROVED after fixing immediate native click-selection refresh; no remaining critical/important findings",
+    "red_green": "Priority repair and real Studio select-instance lifecycle regressions failed first, then passed after minimal corrections."
+  },
+  "rights_private_asset_status": {
+    "source_or_cutout_binaries_pushed": false,
+    "canva_uploads_succeeded": 0,
+    "public_sharing_changes": 0,
+    "raw_drive_references": "Only persisted in ignored inputs/local-assets/p4r-private-download-receipts.json.",
+    "previous_two_samples": "Preserved privately as source_derived from a separate user-provided sheet; not counted toward this 22-image task.",
+    "user_exports": "Preserved, excluded from all staging."
+  },
+  "unresolved_identity_mapping": {
+    "source_count": 22,
+    "reason": "Source audit labels are candidate material families, not an approved source-bead to exact material/spec mapping. No guessed mineral or procurement identity was created. Unresolved cutouts may still be produced once source access is restored."
+  },
+  "canonical_db": {
+    "sha_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "sha_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "unchanged": true,
+    "writes": 0
+  },
+  "risks_blockers": [
+    {
+      "code": "EXTERNAL_AUTH_REQUIRED",
+      "detail": "Auto-review rejected private Drive-to-Canva upload. Requested explicit confirmation to upload these 22 files to the user's own Canva account without public sharing; no workaround attempted."
+    },
+    {
+      "code": "SOURCE_BYTES_REQUIRED",
+      "detail": "All 22 Drive fetches returned authenticated sediment references but no local workspace_path. No available materialization/download tool was found. Known project source caches, Downloads/Temp and named Desktop location had no matching originals; browser Drive/Canva both require sign-in. Local Sharp requires accessible source bytes."
+    }
+  ],
+  "risks_or_blockers": [
+    {
+      "code": "EXTERNAL_AUTH_REQUIRED",
+      "detail": "Auto-review rejected private Drive-to-Canva upload. Requested explicit confirmation to upload these 22 files to the user's own Canva account without public sharing; no workaround attempted."
+    },
+    {
+      "code": "SOURCE_BYTES_REQUIRED",
+      "detail": "All 22 Drive fetches returned authenticated sediment references but no local workspace_path. No available materialization/download tool was found. Known project source caches, Downloads/Temp and named Desktop location had no matching originals; browser Drive/Canva both require sign-in. Local Sharp requires accessible source bytes."
+    }
+  ],
+  "requires_gpt_decision": true,
+  "next_action": "Confirm private upload to the user's own Canva account and sign in to the editor; alternatively supply the 22 originals locally for offline processing. Then actually attempt all 22, inspect edges, map only explicit identities, integrate and rerun browser acceptance. Do not treat this blocked checkpoint as P4R completion.",
+  "next_minimum_action": "Confirm private upload to the user's own Canva account and sign in to the editor; alternatively supply the 22 originals locally for offline processing. Then actually attempt all 22, inspect edges, map only explicit identities, integrate and rerun browser acceptance. Do not treat this blocked checkpoint as P4R completion.",
+  "supervisor_acceptance": "NOT_REQUESTED; P4R remains blocked, not completed"
+}

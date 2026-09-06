@@ -1,0 +1,831 @@
+{
+  "protocol_version": "CRYSTAL-SUPERVISOR-V1",
+  "phase": "P4R-CANVA-REAL-ASSET-INTEGRATION",
+  "result": "BLOCKED",
+  "status": "blocked",
+  "generated_at": "2026-09-06",
+  "authorization": {
+    "path": "agent/tasks/engineering/NEXT_TASK.md",
+    "synced_commit": "a40b93f76bf31cb58bdc77ebd60d4ec366f57db9",
+    "status": "AUTHORIZED_EXECUTE_TO_FINAL_EFFECT",
+    "latest_synced_base": "a9def85ccc450b463dafc15665858b47b3f79c7c"
+  },
+  "attempted_source_count": 0,
+  "successful_cutout_count": 0,
+  "needs_mask_count": 0,
+  "unattempted_source_count": 22,
+  "source_cutout_runtime_count": 0,
+  "count_definitions": {
+    "attempted_source_count": "Actual background-removal/cutout processing of a source, not metadata/raw-reference retrieval or a denied upload.",
+    "needs_mask_count": "Only sources actually processed and judged still needing a mask. Zero here does not mean the 22 sources need no masks.",
+    "previous_reference_only_disposition": "Superseded for technical eligibility by P4R; all 22 remain eligible and pending actual processing."
+  },
+  "authenticated_source_reference_fetch_count": 22,
+  "local_original_byte_count": 0,
+  "source_sha_verified_this_run_count": 0,
+  "per_source_result_summary": [
+    {
+      "filename": "IMG_7984.PNG",
+      "source_id": "1ooCne-hTPuu_DfIHr2esLnHbvC7vCrXs",
+      "expected_source_sha256_from_inspiration_audit": "254cf2f7533d5da9906f2827293d11ff31c7ffdc6f6a5073970968280a25f0e1",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7985.PNG",
+      "source_id": "1CZnzLPZpBszd-JYCAfeSUD0JGelRe5fT",
+      "expected_source_sha256_from_inspiration_audit": "970b9d92487e1c49106bacd2043d640ed68cbe88f66b93273e5b8e16f2b214ea",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7986.PNG",
+      "source_id": "1j9CZobSBpFt8_uu0or_LUcwlz-AFRdkl",
+      "expected_source_sha256_from_inspiration_audit": "b7c20984944ec6256eaa1f54a7b20718bd04fcb4d27f4bdcb4dece2bf9e4d267",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7987.PNG",
+      "source_id": "1coxrPxVB4GdoxVOOw7nGRN9Et3M8LIs4",
+      "expected_source_sha256_from_inspiration_audit": "40c5dd2179d4db1dd0905cb6503fec0599f63c0608ec2a340cd1b330bf1513a2",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7966.PNG",
+      "source_id": "1tLS1CVqcYeOgiU1cIfQK-Jd11nemcN9e",
+      "expected_source_sha256_from_inspiration_audit": "ac0a1d5b74ca51009958619cf1c04caf35493975fc35e476c52e3ad551943e58",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7967.PNG",
+      "source_id": "1Xp3A70KacHj0bllLdtBP6JAzaW9mZmpt",
+      "expected_source_sha256_from_inspiration_audit": "6df6420f2fc7fea48d1d8a044659fbe26ee0205b6ed46989670a979b8858f3e6",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7968.PNG",
+      "source_id": "1I4q2N7HlYyLYVHtvLZFGK5jhi4_R7xe5",
+      "expected_source_sha256_from_inspiration_audit": "84afa49cb143b6c09b7fdb0ecca1a939ca8e74fca07c274ba89716eba82d71c5",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7969.PNG",
+      "source_id": "1lfUeap2SjFvmrToNla689ffjzYNIKIJF",
+      "expected_source_sha256_from_inspiration_audit": "5c8542308de05ad626d3a152ea184f6f7a4702dc0bd36da1998b1f584faad61f",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7970.PNG",
+      "source_id": "1PwQgf02pw2NRzR5Zr14LDewX-xVRt4AV",
+      "expected_source_sha256_from_inspiration_audit": "55f626aa75db9ad40ba1f6c2e9642a686b8a9dce3158c5b16dba56d91806ed23",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7925.PNG",
+      "source_id": "1uVIeX_pmm9pKZ99ZfHqXD6nisI1g0QDu",
+      "expected_source_sha256_from_inspiration_audit": "ba8f1fd58fca31e5acd6c0307c9286eed1228a055803a154f96de864fa34433d",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7926.PNG",
+      "source_id": "14h8IZAzM9b7fNuEEHcJ2_aPM9eziB1Jz",
+      "expected_source_sha256_from_inspiration_audit": "d5ee0a3e63e9ba365e149b7d0aca663adc87f3b0251c1262cf3deeaaa20a8074",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7927.PNG",
+      "source_id": "14jZra_4Q9xQie-YUyub6CIqmYVXEKB8C",
+      "expected_source_sha256_from_inspiration_audit": "be1899cb2f61560dd245d518ab558f29caed161b6a96fbf7bd2b6d07af6709db",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7928.PNG",
+      "source_id": "1YYTUgobyPatkcCCINuAfw1xO3mktu5HG",
+      "expected_source_sha256_from_inspiration_audit": "bfbae04b23640f877ce76ccad321100814bd8c2c2e7f0ff5b156f63ece15e875",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7920.PNG",
+      "source_id": "1A9sWRUlPQwtP809XFEHrZWFYeWfExXjG",
+      "expected_source_sha256_from_inspiration_audit": "120e71d9e3a99873e8846b0fa79a55d0e66f7ad5b078e8d1b100169cea405965",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7921.PNG",
+      "source_id": "1cuqE6ySWH6QbSl98jB-wUq-WYuGJ8swm",
+      "expected_source_sha256_from_inspiration_audit": "6c637a5b2aa412819db7df4f974cd8cda8a03699e3b53e3000e9785a52a5cd21",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7922.PNG",
+      "source_id": "1XX-jKALrg_x6-t2dqebaco4g8tKBJAC4",
+      "expected_source_sha256_from_inspiration_audit": "01ae29c344a80bc8720448f47850b5a47b8fd2bed24fbf17c7a41831b05774ed",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7884.PNG",
+      "source_id": "1fuOwEQanLzScGvYGnk0oBiGDIgFcAFE9",
+      "expected_source_sha256_from_inspiration_audit": "bfd1846dbe7fa559ae647ccbcbbf899453049d3591217be74a52ab4ebfeb4173",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7885.PNG",
+      "source_id": "18y8o-HqWfaDccAEOifbfsVNJe9yXs4Dc",
+      "expected_source_sha256_from_inspiration_audit": "14afa8a1303c64b62af2b2e193eba54e9de72e0271aee6c0773c8ce5268050c2",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7886.PNG",
+      "source_id": "1Q_TZKQ66ab0CDIJ7xt6vJdR4MZ4m8gjE",
+      "expected_source_sha256_from_inspiration_audit": "6870534399a4f54d49c79a4a6fd70e7152bbdedf4b216b8090ddb8a30feb22ff",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7887.PNG",
+      "source_id": "14ofJK6onYAQo5jShKCPHnhC0XPiydzk6",
+      "expected_source_sha256_from_inspiration_audit": "d1d438e1a2fd61dd7cf118661b66829b977b2365254d874ea36caba222d7937c",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7888.PNG",
+      "source_id": "123NnrcmCKT2ka2BVfv43mwUXXYLzMfYn",
+      "expected_source_sha256_from_inspiration_audit": "07f2be260a4e1b5095dec62fe9f7cd208290211c118ecd9133d8c27d611cf84c",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    },
+    {
+      "filename": "IMG_7889.PNG",
+      "source_id": "1OmNBx0vTc8QaivGaW331Ae2Cc9PcsYTh",
+      "expected_source_sha256_from_inspiration_audit": "2adf54d48be2419db92a95842f4f05b6685415f485087ce2bba70663d3270294",
+      "sha_verified_this_run": false,
+      "authenticated_reference_retrieved": true,
+      "source_bytes_local": false,
+      "cutout_attempted": false,
+      "result": "PENDING_SOURCE_ACCESS",
+      "needs_mask": null,
+      "identity_status": "UNRESOLVED",
+      "canonical_mapping_created": false
+    }
+  ],
+  "canva_usage": {
+    "connector_upload_attempts": 1,
+    "uploads_succeeded": 0,
+    "background_removal_attempts": 0,
+    "private_upload": "REJECTED_BY_AUTO_REVIEW",
+    "browser_checked": true,
+    "browser_editor_access": "SIGN_IN_REQUIRED",
+    "public_hosting_used": false,
+    "rejection_not_bypassed": true
+  },
+  "tooling_changes": {
+    "new_dependencies": [],
+    "retained": [
+      "Fabric.js 7.4.0",
+      "Sharp 0.35.4"
+    ],
+    "model_stack_installed": false,
+    "reason_no_rembg_benchmark": "Original source bytes were not materialized locally; installing a model cannot fix the source-access prerequisite.",
+    "runtime_priority": [
+      "source_cutout",
+      "source_neutral_optimized",
+      "source_derived (legacy, truthfully labeled)",
+      "generated_from_evidence",
+      "fallback"
+    ],
+    "importer_limitation": "The existing CLI does not yet accept source_neutral_optimized as an input source_type. Runtime resolution supports it; no new neutral-optimized asset was imported or claimed."
+  },
+  "real_browser_QA": {
+    "scope": "Existing private source_derived samples and generated fallback baseline only; not P4R 22-source acceptance.",
+    "url": "http://127.0.0.1:4173/",
+    "materials_loaded": 2,
+    "canvas_source_derived_instances": 2,
+    "canvas_generated_instances": 1,
+    "mixed_sizes_mm": [
+      8,
+      8,
+      12
+    ],
+    "compact": "PASS",
+    "native_individual_drag": "PASS",
+    "save_reload": "PASS",
+    "console_errors": 0,
+    "source_cutout_acceptance": "NOT_RUN_NO_NEW_CUTOUTS",
+    "private_draft_state": "work/p4r-qa/state",
+    "user_exports_touched": false,
+    "final_code_fresh_tab": "PASS",
+    "catalogue_page": "Still generated placeholders; source-derived baseline verified only in Studio material cards and tray. No P4R catalogue replacement claimed.",
+    "existing_source_derived_http": [
+      {
+        "label": "白水晶",
+        "status": 200,
+        "bytes": 71508
+      },
+      {
+        "label": "白幽灵",
+        "status": 200,
+        "bytes": 84010
+      }
+    ],
+    "native_click_selection": "PASS: clicked aquamarine then clear quartz in final fresh browser; circular outline switched immediately without dragging; no rectangular border, console errors 0."
+  },
+  "eighteen_designs": {
+    "design_count": 18,
+    "source_cutout_counts": [
+      {
+        "design_id": "MOUNTAIN-01",
+        "count": 0
+      },
+      {
+        "design_id": "MOUNTAIN-02",
+        "count": 0
+      },
+      {
+        "design_id": "MOUNTAIN-03",
+        "count": 0
+      },
+      {
+        "design_id": "OCEAN-01",
+        "count": 0
+      },
+      {
+        "design_id": "OCEAN-02",
+        "count": 0
+      },
+      {
+        "design_id": "OCEAN-03",
+        "count": 0
+      },
+      {
+        "design_id": "FOREST-01",
+        "count": 0
+      },
+      {
+        "design_id": "FOREST-02",
+        "count": 0
+      },
+      {
+        "design_id": "FOREST-03",
+        "count": 0
+      },
+      {
+        "design_id": "SUNRISE-01",
+        "count": 0
+      },
+      {
+        "design_id": "SUNRISE-02",
+        "count": 0
+      },
+      {
+        "design_id": "SUNRISE-03",
+        "count": 0
+      },
+      {
+        "design_id": "STARLIGHT-01",
+        "count": 0
+      },
+      {
+        "design_id": "STARLIGHT-02",
+        "count": 0
+      },
+      {
+        "design_id": "STARLIGHT-03",
+        "count": 0
+      },
+      {
+        "design_id": "GLACIER-01",
+        "count": 0
+      },
+      {
+        "design_id": "GLACIER-02",
+        "count": 0
+      },
+      {
+        "design_id": "GLACIER-03",
+        "count": 0
+      }
+    ],
+    "calculation": "Exact material_id/spec_id matched against ready private source_cutout entries; current private manifest contains zero source_cutout entries. This is not a claim of 18-design visual QA.",
+    "processing_priority_by_bom": [
+      {
+        "material_id": "clear-quartz",
+        "spec_id": "clear-quartz-round-6mm",
+        "label": "白水晶 6mm 圆珠",
+        "quantity": 148,
+        "design_count": 18
+      },
+      {
+        "material_id": "sterling-silver",
+        "spec_id": "sterling-silver-micro-spacer-4mm",
+        "label": "925 银 4mm 微隔珠",
+        "quantity": 41,
+        "design_count": 17
+      },
+      {
+        "material_id": "obsidian",
+        "spec_id": "obsidian-round-8mm",
+        "label": "黑曜石 8mm 圆珠",
+        "quantity": 37,
+        "design_count": 8
+      },
+      {
+        "material_id": "smoky-quartz",
+        "spec_id": "smoky-quartz-round-8mm",
+        "label": "烟晶 8mm 圆珠",
+        "quantity": 30,
+        "design_count": 8
+      },
+      {
+        "material_id": "smoky-quartz",
+        "spec_id": "smoky-quartz-round-6mm",
+        "label": "烟晶 6mm 圆珠",
+        "quantity": 22,
+        "design_count": 10
+      },
+      {
+        "material_id": "clear-silicone",
+        "spec_id": "clear-silicone-sizing-spacer-1mm",
+        "label": "透明硅胶 1mm 调整隔片",
+        "quantity": 20,
+        "design_count": 12
+      },
+      {
+        "material_id": "aquamarine",
+        "spec_id": "aquamarine-round-8mm",
+        "label": "海蓝宝 8mm 圆珠",
+        "quantity": 16,
+        "design_count": 4
+      },
+      {
+        "material_id": "clear-quartz",
+        "spec_id": "clear-quartz-round-8mm",
+        "label": "白水晶 8mm 圆珠",
+        "quantity": 14,
+        "design_count": 3
+      },
+      {
+        "material_id": "rainbow-moonstone",
+        "spec_id": "rainbow-moonstone-round-6mm",
+        "label": "彩虹月光石 6mm 圆珠",
+        "quantity": 11,
+        "design_count": 6
+      },
+      {
+        "material_id": "bloodstone",
+        "spec_id": "bloodstone-round-8mm",
+        "label": "血石 8mm 圆珠",
+        "quantity": 10,
+        "design_count": 2
+      },
+      {
+        "material_id": "lapis-lazuli",
+        "spec_id": "lapis-lazuli-round-6mm",
+        "label": "青金石 6mm 圆珠",
+        "quantity": 10,
+        "design_count": 5
+      },
+      {
+        "material_id": "labradorite",
+        "spec_id": "labradorite-round-8mm",
+        "label": "拉长石 8mm 圆珠",
+        "quantity": 9,
+        "design_count": 4
+      },
+      {
+        "material_id": "green-phantom-quartz",
+        "spec_id": "green-phantom-quartz-round-6mm",
+        "label": "绿幽灵 6mm 圆珠",
+        "quantity": 9,
+        "design_count": 3
+      },
+      {
+        "material_id": "aquamarine",
+        "spec_id": "aquamarine-round-6mm",
+        "label": "海蓝宝 6mm 圆珠",
+        "quantity": 9,
+        "design_count": 4
+      },
+      {
+        "material_id": "dark-wood",
+        "spec_id": "dark-wood-tube-6mm",
+        "label": "深色木 6mm 短管",
+        "quantity": 8,
+        "design_count": 2
+      },
+      {
+        "material_id": "oxidized-silver",
+        "spec_id": "oxidized-silver-micro-spacer-4mm",
+        "label": "氧化银 4mm 微隔珠",
+        "quantity": 8,
+        "design_count": 4
+      },
+      {
+        "material_id": "citrine",
+        "spec_id": "citrine-round-6mm",
+        "label": "黄水晶 6mm 圆珠",
+        "quantity": 6,
+        "design_count": 2
+      },
+      {
+        "material_id": "proposed-clear-quartz-framed-irregular-focal",
+        "spec_id": "proposed-clear-quartz-framed-irregular-focal-11mm",
+        "label": "白水晶银框异形主石",
+        "quantity": 4,
+        "design_count": 4
+      },
+      {
+        "material_id": "tigers-eye",
+        "spec_id": "tigers-eye-round-8mm",
+        "label": "虎眼石 8mm 圆珠",
+        "quantity": 4,
+        "design_count": 1
+      },
+      {
+        "material_id": "amethyst",
+        "spec_id": "amethyst-round-6mm",
+        "label": "紫水晶 6mm 圆珠",
+        "quantity": 4,
+        "design_count": 2
+      },
+      {
+        "material_id": "labradorite",
+        "spec_id": "labradorite-round-6mm",
+        "label": "拉长石 6mm 圆珠",
+        "quantity": 4,
+        "design_count": 2
+      },
+      {
+        "material_id": "rainbow-moonstone",
+        "spec_id": "rainbow-moonstone-round-8mm",
+        "label": "彩虹月光石 8mm 圆珠",
+        "quantity": 4,
+        "design_count": 1
+      },
+      {
+        "material_id": "sterling-silver",
+        "spec_id": "sterling-silver-geometric-bar-12mm",
+        "label": "925 银 12mm 几何连接条",
+        "quantity": 3,
+        "design_count": 3
+      },
+      {
+        "material_id": "amazonite",
+        "spec_id": "amazonite-round-8mm",
+        "label": "天河石 8mm 圆珠",
+        "quantity": 3,
+        "design_count": 1
+      },
+      {
+        "material_id": "sterling-silver",
+        "spec_id": "sterling-silver-curved-tube-26mm",
+        "label": "925 银 26mm 弧管",
+        "quantity": 3,
+        "design_count": 3
+      },
+      {
+        "material_id": "blue-lace-agate",
+        "spec_id": "blue-lace-agate-round-6mm",
+        "label": "蓝纹玛瑙 6mm 圆珠",
+        "quantity": 3,
+        "design_count": 2
+      },
+      {
+        "material_id": "amazonite",
+        "spec_id": "amazonite-round-6mm",
+        "label": "天河石 6mm 圆珠",
+        "quantity": 2,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-rainbow-moonstone-framed-irregular-focal",
+        "spec_id": "proposed-rainbow-moonstone-framed-irregular-focal-11mm",
+        "label": "彩虹月光石银框异形主石",
+        "quantity": 2,
+        "design_count": 2
+      },
+      {
+        "material_id": "green-phantom-quartz",
+        "spec_id": "green-phantom-quartz-round-8mm",
+        "label": "绿幽灵 8mm 圆珠",
+        "quantity": 2,
+        "design_count": 1
+      },
+      {
+        "material_id": "citrine",
+        "spec_id": "citrine-round-8mm",
+        "label": "黄水晶 8mm 圆珠",
+        "quantity": 2,
+        "design_count": 1
+      },
+      {
+        "material_id": "rose-quartz",
+        "spec_id": "rose-quartz-round-6mm",
+        "label": "粉晶 6mm 圆珠",
+        "quantity": 2,
+        "design_count": 1
+      },
+      {
+        "material_id": "amethyst",
+        "spec_id": "amethyst-round-8mm",
+        "label": "紫水晶 8mm 圆珠",
+        "quantity": 2,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-green-phantom-quartz-framed-irregular-focal",
+        "spec_id": "proposed-green-phantom-quartz-framed-irregular-focal-15mm",
+        "label": "绿幽灵银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-green-phantom-quartz-framed-irregular-focal",
+        "spec_id": "proposed-green-phantom-quartz-framed-irregular-focal-11mm",
+        "label": "绿幽灵银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-tiger-s-eye-framed-irregular-focal",
+        "spec_id": "proposed-tiger-s-eye-framed-irregular-focal-15mm",
+        "label": "虎眼石银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-gold-rutilated-quartz-framed-irregular-focal",
+        "spec_id": "proposed-gold-rutilated-quartz-framed-irregular-focal-11mm",
+        "label": "金发晶银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-citrine-framed-irregular-focal",
+        "spec_id": "proposed-citrine-framed-irregular-focal-15mm",
+        "label": "黄水晶银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      },
+      {
+        "material_id": "proposed-black-rutilated-quartz-framed-irregular-focal",
+        "spec_id": "proposed-black-rutilated-quartz-framed-irregular-focal-15mm",
+        "label": "黑发晶银框异形主石",
+        "quantity": 1,
+        "design_count": 1
+      }
+    ]
+  },
+  "rights_private_asset_status": {
+    "source_or_cutout_binaries_pushed": false,
+    "canva_uploads_succeeded": 0,
+    "public_sharing_changes": 0,
+    "raw_drive_references": "Only persisted in ignored inputs/local-assets/p4r-private-download-receipts.json.",
+    "previous_two_samples": "Preserved privately as source_derived from a separate user-provided sheet; not counted toward this 22-image task.",
+    "user_exports": "Preserved, excluded from all staging."
+  },
+  "unresolved_identity_mapping": {
+    "source_count": 22,
+    "reason": "Source audit labels are candidate material families, not an approved source-bead to exact material/spec mapping. No guessed mineral or procurement identity was created. Unresolved cutouts may still be produced once source access is restored."
+  },
+  "canonical_db": {
+    "sha_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "sha_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "unchanged": true,
+    "writes": 0
+  },
+  "P3R": "blocked and preserved; no SHA or DB work performed",
+  "risks_blockers": [
+    {
+      "code": "EXTERNAL_AUTH_REQUIRED",
+      "detail": "Auto-review rejected private Drive-to-Canva upload. Requested explicit confirmation to upload these 22 files to the user's own Canva account without public sharing; no workaround attempted."
+    },
+    {
+      "code": "SOURCE_BYTES_REQUIRED",
+      "detail": "All 22 Drive fetches returned authenticated sediment references but no local workspace_path. No available materialization/download tool was found. Known project source caches, Downloads/Temp and named Desktop location had no matching originals; browser Drive/Canva both require sign-in. Local Sharp requires accessible source bytes."
+    }
+  ],
+  "requires_gpt_decision": true,
+  "next_action": "Confirm private upload to the user's own Canva account and sign in to the editor; alternatively supply the 22 originals locally for offline processing. Then actually attempt all 22, inspect edges, map only explicit identities, integrate and rerun browser acceptance. Do not treat this blocked checkpoint as P4R completion.",
+  "commit_sha": "f2b14342225389dd3734621f12c8d50737835a30",
+  "test_summary": {
+    "focused_p4": {
+      "total": 72,
+      "passed": 72,
+      "failed": 0
+    },
+    "npm_test": {
+      "total": 212,
+      "passed": 211,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Known Windows file-symlink creation restriction"
+    },
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "review": "APPROVED after fixing immediate native click-selection refresh; no remaining critical/important findings",
+    "red_green": "Priority repair and real Studio select-instance lifecycle regressions failed first, then passed after minimal corrections."
+  },
+  "completed_independent_work": [
+    "Preserved prior selected-bead feedback repair: non-intercepting muted circular selection outline, no Fabric rectangular border.",
+    "Repaired deterministic source-class priority in manifest selection and shared Studio card/canvas resolver; exact identity, readiness and rights guards retained.",
+    "Refreshed actual browser from final code: existing private source-derived images loaded, persisted three-instance 8/8/12mm design and moved position preserved, no console errors."
+  ],
+  "commit_sha_scope": "Verified runtime code checkpoint; this report is recorded by the subsequent handoff commit, not self-referential.",
+  "branch": "main",
+  "changed_files": [
+    "workbench/bracelet-canvas.mjs",
+    "workbench/local-asset-manifest.mjs",
+    "workbench/studio-view.mjs",
+    "test/p4-local-assets.test.mjs",
+    "test/p4-studio-layout.test.mjs",
+    "test/p4-studio-lifecycle.test.mjs",
+    "outputs/reports/p4-selection-outline-and-source-samples.json",
+    "outputs/p4-real-asset-validation.json",
+    "outputs/handoffs/engineering/P4R-CANVA-REAL-ASSET-INTEGRATION.json"
+  ],
+  "actual_changes": [
+    "Preserved prior selected-bead feedback repair: non-intercepting muted circular selection outline, no Fabric rectangular border.",
+    "Repaired deterministic source-class priority in manifest selection and shared Studio card/canvas resolver; exact identity, readiness and rights guards retained.",
+    "Refreshed actual browser from final code: existing private source-derived images loaded, persisted three-instance 8/8/12mm design and moved position preserved, no console errors."
+  ],
+  "critical_boundaries_preserved": [
+    "canonical SQLite writes = 0",
+    "user workbench/exports untouched and excluded",
+    "source binaries and private manifests not staged",
+    "no guessed material/spec mappings",
+    "P3R blocked and preserved",
+    "no infrastructure, procurement, schema or UI redesign work"
+  ],
+  "tests_or_checks": {
+    "focused_p4": {
+      "total": 72,
+      "passed": 72,
+      "failed": 0
+    },
+    "npm_test": {
+      "total": 212,
+      "passed": 211,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Known Windows file-symlink creation restriction"
+    },
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "review": "APPROVED after fixing immediate native click-selection refresh; no remaining critical/important findings",
+    "red_green": "Priority repair and real Studio select-instance lifecycle regressions failed first, then passed after minimal corrections."
+  },
+  "risks_or_blockers": [
+    {
+      "code": "EXTERNAL_AUTH_REQUIRED",
+      "detail": "Auto-review rejected private Drive-to-Canva upload. Requested explicit confirmation to upload these 22 files to the user's own Canva account without public sharing; no workaround attempted."
+    },
+    {
+      "code": "SOURCE_BYTES_REQUIRED",
+      "detail": "All 22 Drive fetches returned authenticated sediment references but no local workspace_path. No available materialization/download tool was found. Known project source caches, Downloads/Temp and named Desktop location had no matching originals; browser Drive/Canva both require sign-in. Local Sharp requires accessible source bytes."
+    }
+  ],
+  "next_minimum_action": "Confirm private upload to the user's own Canva account and sign in to the editor; alternatively supply the 22 originals locally for offline processing. Then actually attempt all 22, inspect edges, map only explicit identities, integrate and rerun browser acceptance. Do not treat this blocked checkpoint as P4R completion."
+}
