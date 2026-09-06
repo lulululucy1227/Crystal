@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const PUBLIC_RIGHTS = new Set(['owned', 'licensed_for_publication', 'public_domain']);
-const SOURCE_CLASSES = new Set(['source_cutout', 'source_derived']);
+const SOURCE_CLASSES = ['source_cutout', 'source_neutral_optimized', 'source_derived'];
 const SAFE_FILE = /^[a-zA-Z0-9][a-zA-Z0-9_.-]*\.(?:png|webp)$/;
 
 // Refuse junctions/symlinks anywhere below the caller's explicit repository root.
@@ -47,10 +47,13 @@ export function resolveLocalAssetPath({ rootDir, file }) {
 export function resolveMaterialAsset({ materialId, specId, localAssets = [], trackedAssets = [], generatedAssets = [], fallback = null }) {
   const matches = asset => asset && asset.material_id === materialId && asset.spec_id === specId && asset.rights_status !== 'prohibited';
   const ready = asset => matches(asset) && !asset.needs_mask && (!asset.status || asset.status === 'ready');
-  const local = localAssets.find(asset => ready(asset) && SOURCE_CLASSES.has(asset.representation_class) && typeof asset.file === 'string' && SAFE_FILE.test(asset.file) && !asset.file.includes('..'));
-  if (local) return { ...local, url: `/assets/local/${encodeURIComponent(local.file)}` };
-  const tracked = trackedAssets.find(asset => ready(asset) && SOURCE_CLASSES.has(asset.representation_class) && asset.publication_status === 'public_allowed' && PUBLIC_RIGHTS.has(asset.rights_status));
-  if (tracked) return tracked;
+  // Class outranks storage location; local wins only within the same class.
+  for (const sourceClass of SOURCE_CLASSES) {
+    const local = localAssets.find(asset => ready(asset) && asset.representation_class === sourceClass && typeof asset.file === 'string' && SAFE_FILE.test(asset.file) && !asset.file.includes('..'));
+    if (local) return { ...local, url: `/assets/local/${encodeURIComponent(local.file)}` };
+    const tracked = trackedAssets.find(asset => ready(asset) && asset.representation_class === sourceClass && asset.publication_status === 'public_allowed' && PUBLIC_RIGHTS.has(asset.rights_status));
+    if (tracked) return tracked;
+  }
   const localGenerated = localAssets.find(asset => ready(asset) && asset.representation_class === 'generated_from_evidence' && typeof asset.file === 'string' && SAFE_FILE.test(asset.file) && !asset.file.includes('..'));
   if (localGenerated) return { ...localGenerated, url: `/assets/local/${encodeURIComponent(localGenerated.file)}` };
   return generatedAssets.find(asset => ready(asset) && asset.representation_class === 'generated_from_evidence') || fallback;

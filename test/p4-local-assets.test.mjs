@@ -132,6 +132,33 @@ test('publication claim alone cannot promote unknown source rights to public ass
   assert.equal(manifest.assets[0].publication_status, 'local_only');
 });
 
+test('source class priority survives every manifest ordering and preserves legacy provenance', () => {
+  const classes = ['source_cutout', 'source_neutral_optimized', 'source_derived', 'generated_from_evidence'];
+  const assets = classes.map(representation_class => ({ material_id: 'm', spec_id: 's', representation_class, status: 'ready', file: `${representation_class}.png` }));
+  const permutations = rows => rows.length ? rows.flatMap((row, i) => permutations(rows.filter((_, j) => j !== i)).map(rest => [row, ...rest])) : [[]];
+  for (let rank = 0; rank < classes.length; rank++) {
+    for (const localAssets of permutations(assets.slice(rank))) {
+      const before = structuredClone(localAssets);
+      const chosen = resolveMaterialAsset({ materialId: 'm', specId: 's', localAssets });
+      assert.equal(chosen.representation_class, classes[rank]);
+      assert.equal(chosen.url, `/assets/local/${classes[rank]}.png`);
+      assert.deepEqual(localAssets, before, 'selection must not mutate the manifest');
+    }
+  }
+});
+
+test('class priority outranks storage origin while public rights and exact identity remain required', () => {
+  const asset = (representation_class, extra = {}) => ({ material_id: 'm', spec_id: 's', representation_class, status: 'ready', file: `${representation_class}.png`, ...extra });
+  const options = { materialId: 'm', specId: 's', localAssets: [asset('source_derived')], trackedAssets: [asset('source_cutout', { publication_status: 'public_allowed', rights_status: 'owned', url: '/public-cutout.png' })] };
+  assert.equal(resolveMaterialAsset(options).url, '/public-cutout.png');
+  for (const rejected of [{ rights_status: 'unknown' }, { publication_status: 'local_only' }, { needs_mask: true }, { status: 'pending' }, { rights_status: 'prohibited' }, { material_id: 'other' }, { spec_id: 'other' }]) {
+    assert.equal(resolveMaterialAsset({ ...options, trackedAssets: options.trackedAssets.map(a => ({ ...a, ...rejected })) }).representation_class, 'source_derived');
+  }
+  for (const rejected of [{ needs_mask: true }, { status: 'pending' }, { rights_status: 'prohibited' }, { material_id: 'other' }, { spec_id: 'other' }, { file: '../unsafe.png' }]) {
+    assert.equal(resolveMaterialAsset({ materialId: 'm', specId: 's', localAssets: [asset('source_cutout', rejected), asset('source_neutral_optimized')] }).representation_class, 'source_neutral_optimized');
+  }
+});
+
 test('generated source retains its provenance and remains below real source selection', async (t) => {
   const rootDir = fixture(t);
   fs.writeFileSync(path.join(rootDir, 'inputs/local-assets/sample.png'), syntheticPng());

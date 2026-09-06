@@ -77,7 +77,7 @@ function fallbackBead(instance, material, position, diameter) {
     originX: 'center',
     originY: 'center',
     hasControls: false,
-    hasBorders: true,
+    hasBorders: false,
     lockScalingX: true,
     lockScalingY: true,
     lockRotation: true,
@@ -115,7 +115,7 @@ async function imageBead(instance, material, position, diameter) {
       scaleX: diameter / sourceWidth,
       scaleY: diameter / sourceHeight,
       hasControls: false,
-      hasBorders: true,
+      hasBorders: false,
       lockScalingX: true,
       lockScalingY: true,
       lockRotation: true,
@@ -139,6 +139,15 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
   let renderedKey = '';
   let disposed = false;
   let renderedObjects = [];
+  let selectionOutline;
+
+  function showSelection(object) {
+    if (!selectionOutline) return;
+    selectionOutline.set(object ? {
+      visible: true, left: object.left, top: object.top,
+      radius: object.data.diameter / 2 + 4,
+    } : { visible: false });
+  }
 
   const emit = (command) => onCommand?.(command);
 
@@ -152,6 +161,7 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
       const selected = renderedObjects.find((object) => object.data?.instanceId === currentState.selectedInstanceId);
       if (selected) canvas.setActiveObject(selected);
       else canvas.discardActiveObject();
+      showSelection(selected);
       canvas.requestRenderAll();
       return;
     }
@@ -189,9 +199,6 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
       const object = await imageBead(instance, material, position, diameter);
       object.set({
         data: { instanceId: instance.instanceId, materialName: instance.materialName, diameter },
-        borderColor: '#0b4b96',
-        cornerColor: '#0b4b96',
-        transparentCorners: false,
         hoverCursor: 'grab',
         moveCursor: 'grabbing',
       });
@@ -210,11 +217,21 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
       fill: 'transparent', stroke: '#f5efe7', strokeWidth: 2,
       selectable: false, evented: false,
     }));
+    // A quiet outline follows the selected bead without changing its image or
+    // intercepting pointer events. Fabric's rectangular borders stay disabled.
+    selectionOutline = new Circle({
+      selectionIndicator: true, visible: false, radius: 0,
+      originX: 'center', originY: 'center',
+      fill: 'transparent', stroke: '#637b6a', strokeWidth: 1.5,
+      selectable: false, evented: false,
+    });
+    canvas.add(selectionOutline);
     objects.forEach((object) => canvas.add(object));
     renderedObjects = objects;
     renderedKey = key;
     const selected = objects.find((object) => object.data?.instanceId === currentState.selectedInstanceId);
     if (selected) canvas.setActiveObject(selected);
+    showSelection(selected);
     if (canvasElement.dataset) {
       canvasElement.dataset.layoutMode = snapshot.layoutMode || 'slots';
       canvasElement.dataset.instanceGeometry = JSON.stringify(objects.map(object => ({ instanceId: object.data.instanceId, x: object.left, y: object.top, diameter: object.data.diameter, representationClass: object.representationClass || 'fallback' })));
@@ -266,17 +283,19 @@ export function createBraceletCanvas({ canvasElement, state, resolveMaterial, on
     const distance = Math.hypot(object.left - center.x, object.top - center.y);
     const outsideRing = distance > (currentState.layoutMode === 'loose' ? trayRadius : radius) + removalPadding;
     object.set({ opacity: outsideRing ? 0.55 : 1 });
-    if (outsideRing) return;
+    if (outsideRing) { showSelection(object); return; }
     if (currentState.layoutMode === 'loose') {
       const allowedRadius = Math.max(1, trayRadius - object.data.diameter / 2);
       if (distance > allowedRadius) {
         const projected = projectPointToRing({ x: object.left, y: object.top }, center, allowedRadius);
         object.set({ left: projected.x, top: projected.y });
       }
+      showSelection(object);
       return;
     }
     const projected = projectPointToRing({ x: object.left, y: object.top }, center, radius);
     object.set({ left: projected.x, top: projected.y });
+    showSelection(object);
   });
 
   canvas.on('object:modified', (event) => {

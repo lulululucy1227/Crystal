@@ -35,6 +35,32 @@ async function canvasHarness(state, resolver = () => ({})) {
 const bead = (instanceId, sizeMm = 8) => ({ instanceId, materialName: 'Quartz', materialId: 'quartz', specId: `quartz-${sizeMm}`, displayNameZh: '白水晶', displayNameEn: 'Quartz', form: 'round', sizeMm, sourceStatus: 'PROPOSED', assetRef: 'asset:q', provenanceClass: 'source_cutout', imageUrl: '/assets/local/quartz.png' });
 const loose = () => stateApi.createBraceletState({ layoutMode: 'loose', instances: [bead('a', 6), bead('b', 8), bead('c', 12)] });
 
+test('selection uses a non-intercepting round outline that follows drag without rebuilding beads', async () => {
+  const state = { ...loose(), selectedInstanceId: 'a' };
+  const h = await canvasHarness(state);
+  const objects = h.canvas.objects.filter(x => x.data?.instanceId);
+  assert.ok(objects.every(x => x.hasBorders === false && x.hasControls === false));
+  const outline = h.canvas.objects.find(x => x.selectionIndicator);
+  assert.equal(outline.selectable, false);
+  assert.equal(outline.evented, false);
+  assert.equal(outline.fill, 'transparent');
+  assert.equal(outline.radius, objects[0].data.diameter / 2 + 4);
+  assert.equal(outline.left, objects[0].left);
+  const clears = h.canvas.clears;
+  await h.api.render({ ...state, selectedInstanceId: 'b' });
+  assert.equal(h.canvas.clears, clears);
+  assert.equal(outline.radius, objects[1].data.diameter / 2 + 4);
+  objects[1].set({ left: 280, top: 300 });
+  h.canvas.handlers['object:moving']({ target: objects[1] });
+  assert.equal(outline.left, 280);
+  assert.equal(outline.top, 300);
+  assert.equal(h.canvas.active, objects[1]);
+  await h.api.render({ ...state, selectedInstanceId: null });
+  assert.equal(outline.visible, false);
+  assert.equal(h.commands.length, 0);
+  h.api.dispose();
+});
+
 test('P4 places independent free instances beyond legacy capacity preserving material identity', () => {
   let state = stateApi.createBraceletState({ layoutMode: 'loose', wristCm: 1 });
   for (let i = 0; i < 8; i++) state = stateApi.placeInstance(state, { ...bead(`q-${i}`), looseX: 0.3, looseY: 0.6 });

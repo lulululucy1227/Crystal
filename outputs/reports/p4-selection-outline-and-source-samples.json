@@ -1,0 +1,43 @@
+{
+  "task": "P4 user feedback: selected bead indicator and source material reminder",
+  "selection_indicator": {
+    "status": "completed",
+    "change": "Replace Fabric rectangular selection borders with a thin muted sage circular outline; no image tint, resize handles or pointer interception.",
+    "runtime_verified": ["Round outline visible on actual tray", "Individual native pointer drag changes only the target bead", "Undo restores the exact pre-drag position", "Both local source-derived samples render on the actual tray"],
+    "runtime_screenshot": "inputs/local-assets/p4-selection-outline-source-samples.jpg",
+    "browser_errors": 0
+  },
+  "source_materials": {
+    "status": "two_local_samples_integrated_not_full_collection_complete",
+    "correct_drive_folder": "https://drive.google.com/drive/folders/1_A8nMbJP-G0ex8MSoiCJXkxZ2aIsS6V4",
+    "folder_name": "素材",
+    "direct_png_count": 13,
+    "files": ["IMG_3383.PNG", "IMG_3384.PNG", "IMG_3385.PNG", "IMG_3386.PNG", "IMG_3387.PNG", "IMG_3388.PNG", "IMG_3389.PNG", "IMG_3390.PNG", "IMG_3391.PNG", "IMG_3392.PNG", "IMG_3393.PNG", "IMG_3394.PNG", "IMG_3395.PNG"],
+    "correction": "The previously checked Inbox is a different folder. Its unsuitability findings do not apply to this source-material folder.",
+    "sample_source": "User-provided local attachment E:/Desktop/IMG_3384.PNG; same name and size as the Drive item, but not claimed cryptographically verified against Drive bytes.",
+    "original_sha256": "2b585ae60ff3188f0ee1e359a7052a83c9a045cbbdcb55a9876d2359ae0559ee",
+    "samples": [
+      {"printed_label": "白水晶", "material_id": "2", "spec_id": "2-round-8mm", "library_loaded": true, "tray_representation": "source_derived"},
+      {"printed_label": "白幽灵", "material_id": "13", "spec_id": "13-round-8mm", "library_loaded": true, "tray_representation": "source_derived"}
+    ],
+    "method": "Local Sharp: manually reviewed outer ellipse silhouette, retain original RGB, transparent PNG, existing alpha normalization. No AI regeneration or cloud image upload.",
+    "limitations": ["Appearance samples for existing default 8mm display choices, not photographs of verified 8mm specimens", "Labels are source claims, not mineral identification", "Reflected/refracted source background inside transparent beads remains baked in", "Other materials and size variants are not replaced by these two samples", "Photographic authenticity of the supplied sheet is unverified"],
+    "private_files": ["inputs/local-assets/white-series-sample-evidence.json", "inputs/local-assets/white-series-approved.json", "workbench/state/local-asset-manifest.json", "workbench/assets/local/"],
+    "publication_status": "local_only",
+    "new_dependencies": [],
+    "remaining": "Inspect remaining sheets, verify printed-name mappings and alpha-edge quality before integrating further samples; full collection replacement is not complete."
+  },
+  "validation": {
+    "red_green": "New regression first failed on existing rectangular borders, then passed after fix",
+    "focused": {"passed": 20, "failed": 0},
+    "npm_test": {"total": 208, "passed": 207, "failed": 0, "skipped": 1, "skip_reason": "Existing Windows symlink creation limitation"},
+    "npm_run_validate": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_db_sha_before": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "canonical_db_sha_after": "8FE0CA49229808D3F737D14F0A4B5698B971827BFEC11E05E4FFCAE2A3B85DC6",
+    "canonical_db_writes": 0,
+    "user_exports_touched": false,
+    "user_open_chrome_design_touched": false
+  },
+  "git": {"commit_push": "Originally uncommitted local feedback fix; included in the subsequent P4R engineering checkpoint. See outputs/handoffs/engineering/P4R-CANVA-REAL-ASSET-INTEGRATION.json for current verification and code checkpoint."}
+}
