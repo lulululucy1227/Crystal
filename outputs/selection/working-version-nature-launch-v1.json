@@ -1,0 +1,43 @@
+{
+  "version":"CR-MAT-V1.1-NATURE-LAUNCH-20260906",
+  "date":"2026-09-06",
+  "base":"outputs/selection/assortment-v1.json@CR-MAT-V1-20260906",
+  "status":"WORKING_VERSION_OVERLAY",
+  "authority":"Crystal｜选品",
+  "purchase_authorization":{"approved_spec_count":0,"rule":"This overlay supports design mapping only. No new item is purchase-approved."},
+  "material_additions":[
+    {"id":"CRM-M-0051","name":"透明定距隔片（材质待确认）","en":"Clear sizing spacer (material pending confirmation)","cat":"线材/辅料/定距件","role":"设计结构候选","themes":"山/海/森林/日出/星辰/冰川","status":"研究候选","source_proposal":"MCP-007","constraint":"Design proposal called it silicone; chemistry is not asserted until supplier evidence is received."}
+  ],
+  "spec_additions":[
+    {"id":"CRM-S-0067","material_id":"CRM-M-0001","name":"白水晶","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-002"},
+    {"id":"CRM-S-0068","material_id":"CRM-M-0002","name":"茶晶（烟晶）","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-004"},
+    {"id":"CRM-S-0069","material_id":"CRM-M-0001","name":"白水晶","form":"随形焦点石（银框另列）","size":"目标长轴11mm；宽/厚/连接方式待选石和银框工程确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-005"},
+    {"id":"CRM-S-0070","material_id":"CRM-M-0027","name":"925银（配件基材要求）","form":"微隔珠","size":"外径4mm；内径/壁厚待线材验证","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-006"},
+    {"id":"CRM-S-0071","material_id":"CRM-M-0051","name":"透明定距隔片（材质待确认）","form":"透明定距隔片","size":"名义外形1mm；孔径/硬度/材质待样品确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-007"},
+    {"id":"CRM-S-0072","material_id":"CRM-M-0027","name":"925银（配件基材要求）","form":"几何横条/连接件","size":"长度12mm；宽/厚/接口内径待图纸确认","hole_mm":null,"unit":"件","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-009"},
+    {"id":"CRM-S-0073","material_id":"CRM-M-0008","name":"绿幽灵水晶（商业名）","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-011"},
+    {"id":"CRM-S-0074","material_id":"CRM-M-0008","name":"绿幽灵水晶（商业名）","form":"随形焦点石（银框另列）","size":"目标长轴15mm；内部景观清晰；宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-012"},
+    {"id":"CRM-S-0075","material_id":"CRM-M-0007","name":"青金石","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-013"},
+    {"id":"CRM-S-0076","material_id":"CRM-M-0003","name":"海蓝宝","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-016"},
+    {"id":"CRM-S-0077","material_id":"CRM-M-0006","name":"天河石","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-017"},
+    {"id":"CRM-S-0078","material_id":"CRM-M-0027","name":"925银（配件基材要求）","form":"弧形管","size":"弧长26mm；外径/内径/曲率待图纸确认","hole_mm":null,"unit":"件","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-019"},
+    {"id":"CRM-S-0079","material_id":"CRM-M-0005","name":"彩虹月光石（商业名）","form":"随形焦点石（银框另列）","size":"目标长轴11mm；光效方向/宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-020"},
+    {"id":"CRM-S-0080","material_id":"CRM-M-0026","name":"深色木材（树种未定）","form":"短管隔件","size":"目标外形6mm级；长度/外径/孔径待样品；树种未定","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-021","purchase_blocker":"树种/表面处理/孔径未确认"},
+    {"id":"CRM-S-0081","material_id":"CRM-M-0008","name":"绿幽灵水晶（商业名）","form":"圆珠","size":"直径8mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-022"},
+    {"id":"CRM-S-0082","material_id":"CRM-M-0008","name":"绿幽灵水晶（商业名）","form":"随形焦点石（银框另列）","size":"目标长轴11mm；内部景观清晰；宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-023"},
+    {"id":"CRM-S-0083","material_id":"CRM-M-0027","name":"925银（配件基材要求）","form":"氧化银微隔件","size":"外径4mm；内径/壁厚/氧化工艺待样品确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-024"},
+    {"id":"CRM-S-0084","material_id":"CRM-M-0012","name":"虎眼石","form":"随形焦点石（银框另列）","size":"目标长轴15mm；猫眼光带方向/宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-026"},
+    {"id":"CRM-S-0085","material_id":"CRM-M-0011","name":"黄水晶","form":"圆珠","size":"直径6mm；公差待打样确认；处理状态单列","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-027"},
+    {"id":"CRM-S-0086","material_id":"CRM-M-0020","name":"金发晶（商业名）","form":"随形焦点石（银框另列）","size":"目标长轴11mm；金色针状包体可读；宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-029"},
+    {"id":"CRM-S-0087","material_id":"CRM-M-0010","name":"紫水晶","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-030"},
+    {"id":"CRM-S-0088","material_id":"CRM-M-0017","name":"粉晶","form":"圆珠","size":"直径6mm；公差待打样确认","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-031"},
+    {"id":"CRM-S-0089","material_id":"CRM-M-0011","name":"黄水晶","form":"随形焦点石（银框另列）","size":"目标长轴15mm；宽/厚/连接和处理状态待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-032"},
+    {"id":"CRM-S-0090","material_id":"CRM-M-0004","name":"拉长石","form":"圆珠","size":"直径6mm；公差待打样确认；晕彩方向/覆盖需封样","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-033"},
+    {"id":"CRM-S-0091","material_id":"CRM-M-0021","name":"黑发晶（包体待确认）","form":"随形焦点石（银框另列）","size":"目标长轴15mm；黑色针状包体可读；宽/厚/连接待选石确认","hole_mm":null,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-035","purchase_blocker":"包体矿物与批次处理状态仍需证据"},
+    {"id":"CRM-S-0092","material_id":"CRM-M-0013","name":"蓝纹玛瑙","form":"圆珠","size":"直径6mm；公差待打样确认；纹理/色带需封样","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-037"},
+    {"id":"CRM-S-0093","material_id":"CRM-M-0005","name":"彩虹月光石（商业名）","form":"圆珠","size":"直径8mm；公差待打样确认；光效需封样","hole_mm":1,"unit":"颗","status":"设计工作规格","approved":"否","version":"S01","source_proposal":"MCP-038"}
+  ],
+  "reused_existing_specs":["CRM-S-0001","CRM-S-0002","CRM-S-0003","CRM-S-0004","CRM-S-0005","CRM-S-0006","CRM-S-0009","CRM-S-0010","CRM-S-0011","CRM-S-0012","CRM-S-0015","CRM-S-0044"],
+  "resulting_counts":{"base_materials":50,"new_materials":1,"working_materials":51,"base_specs":66,"new_specs":27,"working_specs":93,"purchase_approved_specs":0},
+  "integration_rule":"Treat this file as the current selection-owned Working Version overlay on top of outputs/selection/assortment-v1.json until the next binary workbook regeneration; it is not a second procurement master and does not override purchase-approval gates."
+}
