@@ -1,0 +1,28 @@
+{
+  "result":"WORKING_VERSION_UPDATED_DESIGN_MAPPING_COMPLETE_PROCUREMENT_STILL_BLOCKED",
+  "current_state":"18 Nature Launch designs have exact design→CRM-M→CRM-S mappings under CR-MAT-V1.1-NATURE-LAUNCH-20260906. Formal purchase-approved specification count remains 0.",
+  "key_changes":[
+    "Reviewed all 38 material_change_proposal entries: 28 ACCEPT, 10 MODIFY, 0 REJECT, 0 NEEDS_EVIDENCE.",
+    "Reused existing material identities wherever possible; added only CRM-M-0051 for the transparent sizing spacer with composition explicitly pending evidence.",
+    "Added 27 design working specifications CRM-S-0067 through CRM-S-0093; base 66 specs therefore become 93 working specs.",
+    "Split every framed-irregular-focal composite proposal into an independent mineral focal specification plus existing CRM-S-0044 925-silver frame/bezel component.",
+    "Mapped all 18 designs with no table-external formal material/spec references.",
+    "Updated unresolved state: design/material mapping gap is resolved, but BOM quantities, canonical mapping, legacy Excel migration and batch evidence still block procurement release."
+  ],
+  "deliverables":[
+    "outputs/selection/material-change-review-nature-launch-v1.json",
+    "outputs/selection/working-version-nature-launch-v1.json",
+    "outputs/selection/design-material-spec-mapping-nature-launch-v1.json",
+    "outputs/selection/unresolved-items-v1.json"
+  ],
+  "risks_blockers":[
+    "No per-design BOM quantities/consumption have been received; procurement aggregation cannot be calculated.",
+    "Latest legacy Excel is still unavailable for final row-by-row migration audit.",
+    "Canonical IDs/inventory read-only export is still unavailable.",
+    "Tree species for dark wood, actual composition of clear sizing spacer, black-rutilated inclusion identity, treatment/origin/batch claims and engineering dimensions remain evidence or freeze gates."
+  ],
+  "decision_required":[],
+  "next_action":"Ingest the next design BOM/proposal delta when present; freeze only those CRM-S specs whose dimensions, hole/connection geometry and batch evidence are confirmed. Do not promote any working spec to purchase-approved automatically.",
+  "commit_sha":"a40b93f76bf31cb58bdc77ebd60d4ec366f57db9",
+  "note":"commit_sha is the last data-state commit before this handoff file was created; final repository HEAD is reported by the selection owner after readback."
+}
