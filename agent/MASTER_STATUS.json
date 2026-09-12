@@ -5,71 +5,65 @@
   "supervisor_status": "ACTIVE",
   "single_supervisor_entry": true,
   "language": "zh-CN",
-  "updated_at": "2026-09-06",
+  "updated_at": "2026-09-12",
   "repository": "lulululucy1227/Crystal",
   "default_branch": "main",
-  "engineering_checkpoint": "49432faa3101d9a682ce645a2a20849f9b149b66",
-  "active_engineering_phase": "P4-CRYSTAL-STUDIO-COMPLETION",
-  "near_term_priorities": [
+  "current_phase": "NATURE-LAUNCH-V1-FINAL-RELEASE",
+  "business_goal": "一次性完成最终材料选品、六主题18款最终设计、18张设计图和一个不含采购链接的最终Excel。",
+  "final_release_owner": {
+    "agent": "Crystal｜设计",
+    "priority": "P0-FINAL",
+    "status": "AUTHORIZED_EXECUTE_TO_FINAL_DELIVERABLE",
+    "task": "agent/tasks/design/NEXT_TASK.md",
+    "recommended_model": "GPT-6",
+    "recommended_reasoning": "High",
+    "recommended_environment": "Work mode"
+  },
+  "support_roles": [
     {
       "agent": "Crystal｜选品",
-      "priority": "P0",
-      "status": "AUTHORIZED",
-      "task": "agent/tasks/selection/NEXT_TASK.md"
-    },
-    {
-      "agent": "Crystal｜设计",
-      "priority": "P0-URGENT",
-      "status": "AUTHORIZED_EXECUTE_TO_DELIVERABLE",
-      "task": "agent/tasks/design/NEXT_TASK.md",
-      "primary_output": "outputs/designs/nature-launch-v1.json"
+      "status": "HOLD_SUPPORT_ONLY",
+      "task": "agent/tasks/selection/NEXT_TASK.md",
+      "reason": "现有选品/知识/Working Version作为正式输入，本轮避免与Release Owner并行写第二套最终表。"
     },
     {
       "agent": "Crystal｜灵感",
-      "priority": "P0-SUPPORT/P1-RESEARCH",
-      "status": "AUTHORIZED_EXECUTE",
-      "task": "agent/tasks/inspiration/NEXT_TASK.md",
-      "primary_asset_output": "outputs/handoffs/inspiration/workbench-source-asset-plan-v1.json"
+      "status": "HOLD_SUPPORT_ONLY",
+      "reason": "只在最终设计发现证据缺口时调用；本轮不继续扩市场研究。"
     },
     {
       "agent": "Crystal｜工程",
-      "priority": "P0-SUPPORT",
-      "status": "ACTIVE_P4",
-      "task": "agent/tasks/engineering/NEXT_TASK.md",
-      "spec": "docs/superpowers/specs/2026-09-06-crystal-studio-completion-design.md",
-      "plan": "docs/superpowers/plans/2026-09-06-crystal-studio-completion.md"
+      "status": "HOLD_SUPPORT_ONLY",
+      "reason": "Workbench仅作为18款排珠/图片/BOM验证工具；本轮不继续扩功能。"
     }
   ],
-  "business_goal": "尽快形成六主题18款真实可打样候选，并让 Crystal Studio 能设计、加载、验证、生成 BOM、核对材料状态并使用真实源图抠图素材。",
-  "current_18_design_diagnosis": {
-    "primary_blocker": "尚无正式18款设计包或 design handoff 提交到 GitHub；当前是执行未发生/未交付，不是 Workbench 技术阻塞。",
-    "secondary_constraint": "正式选品 Working Version 尚未完成会影响最终采购批准，但不阻塞设计候选；缺口使用 PROPOSED + material_change_proposal。",
-    "validation_dependency": "P4 Workbench 完成后对18款做结构/BOM/fit/material mapping/真实浏览器验证；Workbench 不替代审美批准。"
-  },
+  "authoritative_inputs": [
+    "outputs/selection/assortment-v1.json",
+    "outputs/selection/knowledge-base-v1.json",
+    "outputs/selection/working-version-nature-launch-v1.json",
+    "outputs/selection/design-material-spec-mapping-nature-launch-v1.json",
+    "outputs/designs/nature-launch-v1.json",
+    "outputs/designs/NATURE_LAUNCH_18_BOARD.md",
+    "outputs/handoffs/inspiration/",
+    "workbench/"
+  ],
+  "required_user_deliverables": [
+    "outputs/release/nature-launch-v1/Crystal_自然主题18款_选品设计与材料表_V1.xlsx",
+    "outputs/release/nature-launch-v1/NATURE_LAUNCH_18_BOARD.png",
+    "outputs/release/nature-launch-v1/images/ (18 PNG)",
+    "outputs/release/nature-launch-v1/materials-needed-v1.json",
+    "outputs/release/nature-launch-v1/FINAL_RELEASE_HANDOFF.json"
+  ],
   "rules": {
-    "workbench_expansion": "P4_ONLY",
-    "old_excel_is_final_boundary": false,
-    "final_design_may_use_off_table_material": false,
-    "selection_is_primary_procurement_writer": true,
-    "design_may_submit_material_change_proposal": true,
-    "external_research_auto_promotes_to_canonical": false,
+    "single_final_excel": true,
+    "procurement_links_required": false,
+    "procurement_link_column_forbidden": true,
+    "supplier_price_batch_origin_are_current_blockers": false,
+    "selection_is_source_input_not_parallel_final_writer": true,
+    "workbench_is_validation_tool_not_design_authority": true,
     "agent_completed_requires_supervisor_acceptance": true,
     "preserve_history": true,
-    "canonical_sqlite_write": false,
-    "real_source_asset_priority": [
-      "source_cutout",
-      "source_derived",
-      "generated_from_evidence",
-      "fallback"
-    ],
-    "public_repo_unlicensed_drive_images": "DO_NOT_COMMIT"
+    "canonical_sqlite_write": false
   },
-  "known_blockers": [
-    {
-      "id": "P3R-SOURCE-SHA",
-      "status": "UNRESOLVED_NON_BLOCKING_FOR_CURRENT_P0",
-      "description": "7 张 Google Drive 参考图片缺少本地授权源字节对应的真实 SHA-256；不得伪造。"
-    }
-  ],
-  "next_supervisor_action": "等待设计/选品/灵感/工程各自执行并写回 GitHub；主管主动读取 handoff，优先验收18款设计包与P4真实浏览器效果。"
+  "next_supervisor_action": "等待 Final Release Owner 一次性完成并写回 GitHub；主管随后只验收最终Excel、18张图、6×3总览和材料清单。"
 }
