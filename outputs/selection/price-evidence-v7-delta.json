@@ -1,0 +1,59 @@
+{
+  "version":"CR-PRICE-EVIDENCE-V7-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/price-evidence-v6-delta.json@CR-PRICE-EVIDENCE-V6-DELTA-20260913",
+  "updates":[
+    {
+      "material":"盐源玛瑙",
+      "spec":"7-8mm / 8-8.5mm round bead strands",
+      "status":"SECONDARY_WHOLESALE_ANCHORS_STRONG",
+      "anchors":[
+        {"price":"USD 4.45/strand","spec":"7-8mm cut round; 1 strand","source":"https://www.beadswholesale.com/product/Alashan-Agate-Beads-Candy-Pink-Cut-Round-approx-7-8mm-p157868.html"},
+        {"price":"USD 7.51/strand","spec":"about 8mm smooth round mixed color","source":"https://www.beadswholesale.com/shop/Natural-Agate-Beads-c1-at492.html"},
+        {"price":"USD 16.45-20.56/strand","spec":"8-8.5mm round, hole 1.2mm, about 46pcs/strand","source":"https://www.pandahall.com/p-2844218-natural-yanyuan-agate-beads-strands-colorful-round.html"},
+        {"price":"USD 6.69 regular-discounted / strand","spec":"8mm round Yanyuan","source":"https://www.tombeads.com/agate-beads-other-ct-77.html"}
+      ],
+      "rule":"Reference-ready secondary range now exists. Keep color branch, cut/smooth form and supplier identity explicit; China domestic CNY calibration remains desirable but is no longer a blocking gap."
+    },
+    {
+      "material":"摩根石",
+      "spec":"8mm round bead strand",
+      "status":"SECONDARY_WHOLESALE_ANCHORS_STRONG_UNDYED_BRANCH",
+      "anchors":[
+        {"price":"USD 8.29/strand","spec":"natural multicolor smooth round approx 8mm","source":"https://www.beadswholesale.com/product/Natural-Morganite-Beads-Multicolor-Smooth-Round-approx-8mm-dia-p175074.html"},
+        {"price":"USD 22.95 list; USD 19.51 at 100+","spec":"natural 8mm round, 15.5in, about 50 beads","source":"https://www.21cnbeads.com/cmg142-155-inches-8mm-round-natural-morganite-gemstone-beads-p-47984.html"},
+        {"price":"USD 14.35-15.94 per package of 2 strands; about 47pcs/strand","spec":"natural faceted 7.5-8mm, hole 0.9mm, explicitly undyed","source":"https://www.pandahall.com/p-4837765-natural-morganite-beads-strands-faceted-128-facets-round.html"},
+        {"price":"USD 16.00 down to 14.40/strand","spec":"natural 8mm smooth round, hole 1mm, about 52 beads","source":"https://www.jowele.com/en/morganite/3361-natural-morganite-round-beads-strand-diameter-8mm-hole-1mm-about-52-beadsstrand-1516.html"}
+      ],
+      "quarantine":"Yiwugo mixed-material listings explicitly marked 烤漆 remain excluded from natural/undyed morganite evidence.",
+      "rule":"Morganite no longer needs to be treated as an unresolved identity-risk market. Use natural/undyed branch anchors; treated/painted low-cost goods remain separate."
+    },
+    {
+      "material":"黄水晶 / Citrine",
+      "spec":"8mm round commercial branch",
+      "status":"TREATMENT_DISCLOSURE_REQUIRED_NOT_SPECIALIST",
+      "market_anchors":"existing China 8mm commercial anchors remain valid only as generic yellow-quartz/citrine market references until treatment disclosure is known",
+      "identity_evidence":[
+        {"source":"GIA Citrine","url":"https://www.gia.edu/citrine","evidence":"Natural citrine is rare; most citrine on the market results from heat treatment of amethyst."},
+        {"source":"GIA Citrine Quality Factors","url":"https://www.gia.edu/citrine-quality-factors","evidence":"Heat-treated amethyst is a dominant commercial source of citrine; natural-vs-heated status must not be assumed from color alone."}
+      ],
+      "rule":"Keep STANDARD_SPEC_BAND, but add treatment disclosure field. Do not market or purchase as untreated/natural-color citrine unless batch evidence supports that claim. Heat-treated citrine is a legitimate treated branch, not counterfeit by definition."
+    },
+    {
+      "material":"小叶紫檀 / seller-claimed Indian red sanders",
+      "spec":"8x9mm old-style bead; 23-bead and 108-bead products",
+      "status":"SAME_SELLER_BRANCH_LADDER_IDENTITY_GATED",
+      "anchors":[
+        {"branch":"老料玻璃底","price":"CNY 45/23 beads; CNY 200/108 beads","source":"https://www.yiwugo.com/product/detail/982244465.html"},
+        {"branch":"多金星","price":"CNY 90/23 beads; CNY 330/108 beads","source":"https://www.yiwugo.com/product/detail/982244465.html"},
+        {"branch":"满金星","price":"CNY 140/23 beads; CNY 580/108 beads","source":"https://www.yiwugo.com/product/detail/982244465.html"},
+        {"branch":"another market seller old straight grain","price":"CNY 76.70/108 beads at 8mm","source":"https://wap.yiwugo.com/products/956814815"},
+        {"branch":"specialist Yiwu shop current listing","price":"CNY 380/108 beads at 8mm","source":"https://www.yiwugo.com/hu/01A8223A02.html"}
+      ],
+      "identity_gate":"Supplier claim must distinguish Pterocarpus santalinus from Zambia bloodwood/other woods using similar Chinese trade names. Seller visual/price grade labels are not botanical proof.",
+      "rule":"Ordinary wood pricing may remain, but only identity-qualified quotes can enter the small-leaf red-sanders reference ladder."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
