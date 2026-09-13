@@ -1,0 +1,109 @@
+{
+  "version": "CR-PRICE-EVIDENCE-V2-DELTA-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/price-evidence-v1.json@CR-PRICE-EVIDENCE-V1-20260913",
+  "rules": [
+    "This file only adds or strengthens evidence; it does not authorize purchasing.",
+    "Same material branches may have separate bands when commercial subtypes materially change price.",
+    "Finished-bracelet anchors are never silently converted into per-bead wholesale prices unless bead count is explicit."
+  ],
+  "updates": [
+    {
+      "material": "南红（商业名）",
+      "spec": "8mm round bead",
+      "status": "BRANCH_PRICING_REQUIRED",
+      "branches": [
+        {"branch":"ordinary natural Nanhong seller-claimed","anchor_cny_per_pc":"0.74-0.86","sources":["https://www.yiwugo.com/product/detail/976665879.html","https://yiwugo.com/product/detail/980000109.html"]},
+        {"branch":"柿子红","anchor_cny_per_pc":"1.81","source":"https://wap.yiwugo.com/products/975642954"},
+        {"branch":"樱桃红","anchor_cny_per_pc":"8.02","source":"https://yiwugo.com/product/detail/980000109.html"}
+      ],
+      "working_rule": "Do not make one generic Nanhong 8mm band. Build branch bands after more comparable same-branch anchors are collected."
+    },
+    {
+      "material": "蓝虎眼 / 鹰眼石",
+      "spec": "8mm round bead",
+      "status": "ANCHOR_ONLY_STRENGTHENED",
+      "anchor_cny_per_pc":"3.00",
+      "source":"https://yiwugo.com/product/detail/980219097.html",
+      "note":"seller markets 7A; seller grade is ignored as project grade."
+    },
+    {
+      "material": "孔雀石",
+      "spec": "about 8mm round bead",
+      "status": "ANCHOR_ONLY_STRENGTHENED",
+      "anchor_cny_per_pc":"2.55",
+      "source":"https://yiwugo.com/product/detail/986559399.html",
+      "warning":"listing process field says 喷油; treatment/finish must be checked before natural-market comparison."
+    },
+    {
+      "material": "超七（商业名）",
+      "spec": "about 8mm round bead",
+      "status": "ESTABLISHED_BAND_STRENGTHENED",
+      "additional_anchor_cny_per_pc":"8.64",
+      "source":"https://www.chinagoods.com/store/goodsdetail/1903298368464982018",
+      "note":"Supports previously established approx low 2 / mid 4-8 / high 13+ commercial price ladder; composition still batch-dependent."
+    },
+    {
+      "material": "银曜石",
+      "spec": "8mm finished single-circle bracelet",
+      "status": "FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor_cny_per_strand":"8.10",
+      "source":"https://yiwugo.com/product/detail/973910255.html",
+      "rule":"Do not convert to per-bead raw price until bead count/strand length is explicit."
+    },
+    {
+      "material": "金曜石（黑曜石商业分支）",
+      "spec": "8mm finished single-circle bracelet",
+      "status": "FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor_cny_per_strand":"10.56",
+      "source":"https://yiwugo.com/product/detail/973910255.html",
+      "note":"Keep as black-obsidian commercial branch, not new mineral identity."
+    },
+    {
+      "material": "普通黑曜石",
+      "spec": "8mm finished single-circle bracelet",
+      "status": "FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor_cny_per_strand":"5.86",
+      "source":"https://yiwugo.com/product/detail/973910255.html",
+      "note":"Raw-bead band remains governed by stronger raw-bead evidence in price-evidence-v1."
+    },
+    {
+      "material": "彩虹黑曜石",
+      "spec": "8mm finished single-circle bracelet",
+      "status": "FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor_cny_per_strand":"7.03",
+      "source":"https://yiwugo.com/product/detail/973910255.html"
+    },
+    {
+      "material": "淡水养殖珍珠",
+      "spec": "8-9mm large-hole loose cultured pearl",
+      "status": "ANCHOR_ONLY_STRENGTHENED",
+      "anchor_cny_per_pc":"1.80",
+      "hole_mm":"about 2.5",
+      "source":"https://www.yiwugo.com/product/detail/984308352.html",
+      "rule":"Large-hole price is its own specification; do not merge with standard 0.8-1mm drilled pearl pricing."
+    },
+    {
+      "material": "和田玉",
+      "spec": "8mm Qinghai-material necklace/strand commercial product",
+      "status": "SPECIALIST_COMMERCIAL_ANCHOR",
+      "anchor_cny_per_finished_strand":"300-690",
+      "source":"https://www.chinagoods.com/store/goodsdetail/1801253875170242561",
+      "rule":"Commercial anchor only; origin/material evidence remains separate and no per-bead universal band is inferred."
+    },
+    {
+      "material": "白玉菩提",
+      "spec": "6x8mm or 8x10mm barrel/apple 108-bead product",
+      "status": "FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor_cny_per_product":"about 10+",
+      "source":"https://www.chinagoods.com/store/goodsdetail/1930826223460032514",
+      "warning":"wholesale unit description is ambiguous; use as low-market presence anchor, not final per-bead price."
+    }
+  ],
+  "rejected_or_quarantined_quotes": [
+    {"material":"茶晶","source":"https://yiwugo.com/product/detail/978343621.html","quote":"8mm ¥0.05/pc","reason":"extremely low mixed-material page; insufficient identity confidence, excluded from natural tea-quartz band"},
+    {"material":"蜜蜡","source":"https://www.chinagoods.com/store/goodsdetail/1583267058840379394/","reason":"explicitly 二代蜜蜡; separate reconstructed/resin category, never a low tier of natural amber"},
+    {"material":"猫眼类","source":"https://www.chinagoods.com/store/goodsdetail/1835496","reason":"8mm product explicitly glass fiber + rock material; useful imitation evidence, not natural cat-eye price evidence"}
+  ]
+}
