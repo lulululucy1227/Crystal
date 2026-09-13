@@ -1,0 +1,51 @@
+{
+  "version": "CR-REFERENCE-PHOTO-EVIDENCE-V3-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/reference-photo-evidence-v2.json@CR-REFERENCE-PHOTO-EVIDENCE-V2-20260913",
+  "purpose": "Third reference-image pass; close accessory and specialist-material recognition gaps.",
+  "new_references": [
+    {
+      "type":"accessory",
+      "name":"非弹力串珠线 / Tiger Tail beading wire",
+      "form":"0.38mm spool",
+      "source_url":"https://rainbowbeads.ca/products/tiger-tail-beading-wire-silver-tone",
+      "image_url":"https://rainbowbeads.ca/cdn/shop/products/71f74c66-7e4c-5ef5-aaa1-6dcf8db566c5_1024x1024%402x.jpg?v=1642907594",
+      "reference_quality":"HIGH",
+      "note":"0.38mm / 100m reel; useful to distinguish non-elastic coated beading wire from elastic cord."
+    },
+    {
+      "type":"material",
+      "name":"和田玉/白色软玉形态参考",
+      "form":"10mm白色桶珠/松石形散珠",
+      "source_url":"https://www.ebay.com/itm/305503987069",
+      "image_url":null,
+      "reference_quality":"MEDIUM_HIGH_SOURCE_PAGE",
+      "note":"Listing explicitly describes white Hetian nephrite, center drilled, 1mm hole. Seller origin claim remains a claim and is not treated as certificate evidence."
+    },
+    {
+      "type":"material",
+      "name":"和田玉随形参考",
+      "form":"白色软玉随形打孔珠",
+      "source_url":"https://www.3jade.com/6pcs-tumbled-white-nephrite-jade-gemstone-nugget-beads-wholesale/",
+      "image_url":null,
+      "reference_quality":"HIGH_SOURCE_PAGE",
+      "note":"Six-piece natural white nephrite nugget bead lots, each explicitly drilled; good neutral freeform sourcing reference."
+    },
+    {
+      "type":"material",
+      "name":"和田玉/软玉中性识别参考",
+      "form":"5mm绿色软玉全孔单珠",
+      "source_url":"https://jaipurgem.com/products/nephrite-green-jade-plain-round-cab-full-drill-5mm-1-00-cts",
+      "image_url":"https://jaipurgem.com/cdn/shop/files/NPJ15_1_78bbb3f4-6271-4453-838a-98f5d5bc6d33.jpg?v=1748033074",
+      "reference_quality":"HIGH",
+      "note":"Used only to show nephrite full-drill bead construction; not a Hetian-origin example."
+    }
+  ],
+  "remaining_photo_gaps": [
+    "景观玛瑙：still no reliable single drilled bead explicitly sold as Landscape/Scenic Agate; generic spotted/banded agate is not accepted as a substitute.",
+    "阿拉善玛瑙：source pages are adequate; stable direct image URL still optional.",
+    "盐源玛瑙：source pages are adequate; stable direct image URL still optional.",
+    "金色金属件：remain intentionally unfilled until base material is decided (925 silver vermeil/gold plate vs gold-filled vs brass plate)."
+  ]
+}
