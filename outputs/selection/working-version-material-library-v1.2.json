@@ -1,0 +1,32 @@
+{
+  "version": "CR-MAT-V1.2-MOTHER-LIBRARY-20260913",
+  "date": "2026-09-13",
+  "status": "ACTIVE_WORKING_MOTHER_LIBRARY",
+  "authority": "Crystal｜选品",
+  "composition": [
+    "outputs/selection/assortment-v1.json@CR-MAT-V1-20260906",
+    "outputs/selection/working-version-nature-launch-v1.json@CR-MAT-V1.1-NATURE-LAUNCH-20260906",
+    "outputs/selection/material-library-expansion-xhs-v1.json@CR-MAT-LIB-EXPANSION-XHS-V1"
+  ],
+  "scope_rule": "Mother library serves all future design styles, not only the 18 Nature Launch designs. Nature Launch is one consumer of the library, not its boundary.",
+  "display_categories": ["水晶","珍珠","矿石","木材","配饰","随形"],
+  "counts": {
+    "base_materials": 50,
+    "nature_launch_additions": 1,
+    "xiaohongshu_expansion_additions": 23,
+    "active_working_materials": 74,
+    "base_specs": 66,
+    "nature_launch_working_spec_additions": 27,
+    "active_working_specs": 93,
+    "purchase_approved_specs": 0
+  },
+  "purchase_rule": "Inclusion in the mother library does not authorize purchase. Low/mid/high quality guidance, offline sourcing views and exact procurement specs are generated from this database only after evidence and sourcing requirements are defined.",
+  "excel_rule": "Do not generate the user-facing Excel yet. Future Excel is an export/view of the mother database, grouped by category, and must include a single-bead/single-item image field.",
+  "offline_sourcing_rule": "The future offline sourcing version is a filtered export of approved/target sourcing items, not a separate master database.",
+  "next_data_work": [
+    "Define low/mid/high sourcing-quality reference for each material using material-specific criteria.",
+    "Assign/curate single-bead or single-item reference images by category.",
+    "Keep trade-name/material-identity uncertainty explicit for commercially named materials.",
+    "Do not create purchase quantities until a real sourcing plan or BOM requires them."
+  ]
+}
