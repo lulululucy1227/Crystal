@@ -1,0 +1,59 @@
+{
+  "version": "CR-MAT-LIB-EXPANSION-XHS-V1",
+  "date": "2026-09-13",
+  "status": "RESEARCH_CANDIDATES_ADDED_TO_MOTHER_LIBRARY",
+  "authority": "Crystal｜选品",
+  "source_context": "User-approved expansion after public Xiaohongshu-oriented market scan; popularity is not procurement approval.",
+  "rules": [
+    "These records expand the long-term mother material library and are not limited to Nature Launch.",
+    "All new records enter as research candidates only; purchase approval remains false.",
+    "Trade/commercial names are retained as user-facing search vocabulary but do not assert mineral identity without evidence.",
+    "Display category is optimized for material browsing and later offline sourcing export: 水晶 / 珍珠 / 矿石 / 木材 / 配饰 / 随形.",
+    "No design BOM, purchase quantity, supplier quote or batch claim is created by this expansion."
+  ],
+  "material_additions": [
+    {"id":"CRM-M-0052","name":"草莓晶（商业名，材质待核）","en":"Strawberry Quartz (trade name; material pending)","display_category":"水晶","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"粉红至红色内含物视觉在女性、多宝、轻甜与对比色设计中使用频率高；作为长期设计语言有价值，但商业名对应材质需逐批确认。"},
+    {"id":"CRM-M-0053","name":"超七（商业名，组成待核）","en":"Super Seven (trade name; composition pending)","display_category":"水晶","role":"特色候选","status":"研究候选","purchase_approved":false,"why":"市场识别度和多包体视觉较强，适合高信息量、多宝和孤品设计；不把商业名自动视为固定矿物组合。"},
+    {"id":"CRM-M-0054","name":"灰月光石（商业名，矿物身份待核）","en":"Grey Moonstone (trade name; identity pending)","display_category":"水晶","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"灰白冷调适合中性、夜色、星辰和低饱和设计，可补足白月光与拉长石之间的灰阶。"},
+    {"id":"CRM-M-0055","name":"绿松石","en":"Turquoise","display_category":"矿石","role":"核心扩展候选","status":"研究候选","purchase_approved":false,"why":"中国串珠、文玩、珍珠与金属混搭中长期高频，蓝绿色天然成为强识别色，也适合未来东方、民族、复古与高端点缀设计。"},
+    {"id":"CRM-M-0056","name":"南红（商业名）","en":"Nanhong agate / chalcedony trade","display_category":"矿石","role":"核心扩展候选","status":"研究候选","purchase_approved":false,"why":"红色石材体系的重要中国市场材料，可服务东方、复古、暖色、多宝及与黄金/木材组合的设计。"},
+    {"id":"CRM-M-0057","name":"和田玉（商业/产地体系，材质证据待核）","en":"Hetian jade (trade/origin system; material evidence pending)","display_category":"矿石","role":"核心扩展候选","status":"研究候选","purchase_approved":false,"why":"中国首饰与手串生态中具有独立设计语言和高认知度，适合东方、极简、温润、中性与贵金属组合；具体材质与产地必须逐批核验。"},
+    {"id":"CRM-M-0058","name":"蜜蜡（琥珀类，批次待核）","en":"Opaque amber / Beeswax amber trade","display_category":"矿石","role":"核心扩展候选","status":"研究候选","purchase_approved":false,"why":"暖黄不透明天然有机视觉与南红、绿松、木材组合成熟，适合东方、复古和暖色天然材质设计。"},
+    {"id":"CRM-M-0059","name":"琥珀","en":"Amber","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"透明至半透明暖色天然有机材料，与蜜蜡形成不同视觉层级，可用于暖色、复古、轻量和随形主石设计。"},
+    {"id":"CRM-M-0060","name":"阿拉善玛瑙（商业名/产区名）","en":"Alashan agate trade","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"色彩、纹理和异形件选择丰富，适合多宝、自然地质、东方和年轻DIY设计。"},
+    {"id":"CRM-M-0061","name":"盐源玛瑙（商业名/产区名）","en":"Yanyuan agate trade","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"低饱和多色与雕件/异形件常见，适合柔和多宝、东方与自然主题之外的长期设计。"},
+    {"id":"CRM-M-0062","name":"玉髓","en":"Chalcedony","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"颜色与加工形态覆盖广，供应成熟，可作为蓝、紫、白等多种商业设计的稳定材料底盘。"},
+    {"id":"CRM-M-0063","name":"孔雀石","en":"Malachite","display_category":"矿石","role":"特色候选","status":"研究候选","purchase_approved":false,"why":"天然绿色条带辨识度高，适合复古、艺术、森林、金属结构和主石设计。"},
+    {"id":"CRM-M-0064","name":"沉香（树种/产地/形成状态待核）","en":"Agarwood (species/origin/resin state pending)","display_category":"木材","role":"核心扩展候选","status":"研究候选","purchase_approved":false,"why":"木材手串与东方珠宝生态中的高价值核心材料，可服务男性、中性、东方、高端天然材质和香气体验设计；真实性与等级需独立体系。"},
+    {"id":"CRM-M-0065","name":"小叶紫檀（树种待证据）","en":"Red sandalwood / Pterocarpus santalinus trade","display_category":"木材","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"深红棕色、密度和细腻木质感适合复古、东方、男性及与金属/蜜蜡/绿松组合；市场名称需与树种证据分开。"},
+    {"id":"CRM-M-0066","name":"菩提籽类（植物种类待细分）","en":"Bodhi seed / botanical seed beads (species pending)","display_category":"木材","role":"风格扩展候选","status":"研究候选","purchase_approved":false,"why":"文玩与串珠市场中常作为天然植物珠主体，未来可服务休闲、东方、自然与染色/雕刻实验；必须按具体植物种类再细分。"},
+    {"id":"CRM-M-0067","name":"樱花玛瑙（商业名）","en":"Flower / Sakura Agate trade","display_category":"矿石","role":"风格扩展候选","status":"研究候选","purchase_approved":false,"why":"花状内含视觉适合女性、柔色、春季和随形设计，市场辨识度足够但不必作为核心。"},
+    {"id":"CRM-M-0068","name":"蓝虎眼 / 鹰眼石（商业名需核）","en":"Blue Tiger's Eye / Hawk's Eye trade","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"深蓝灰猫眼光带可补足虎眼石的冷色分支，适合男性、中性、星空和工业设计。"},
+    {"id":"CRM-M-0069","name":"银曜石（商业名）","en":"Silver Sheen Obsidian trade","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"黑色底上的银灰光效比普通黑曜石更具层次，适合暗色、中性、未来和星辰风格。"},
+    {"id":"CRM-M-0070","name":"猫眼类（材质未细分）","en":"Cat's-eye materials (material family pending)","display_category":"水晶","role":"研究候选","status":"研究候选","purchase_approved":false,"why":"猫眼视觉在串珠市场使用频繁，但天然宝石、处理料与人造纤维光学玻璃必须拆分，当前仅保留设计需求入口。"},
+    {"id":"CRM-M-0071","name":"胶花水晶（商业名，包体待核）","en":"Inclusion Quartz / 'Jiaohua' Quartz trade","display_category":"水晶","role":"风格扩展候选","status":"研究候选","purchase_approved":false,"why":"内部彩色包体和景观感适合孤品、多宝和焦点设计；商业名称和包体身份必须逐批核验。"},
+    {"id":"CRM-M-0072","name":"兔毛水晶（商业名，包体待核）","en":"Rutilated/inclusion Quartz 'Rabbit Hair' trade","display_category":"水晶","role":"风格扩展候选","status":"研究候选","purchase_approved":false,"why":"细密纤维状包体提供柔和动态纹理，可服务女性、复古和主石设计；不预设包体矿物。"},
+    {"id":"CRM-M-0073","name":"天珠（工艺/年代/基材待核）","en":"Dzi bead (process/age/base material pending)","display_category":"矿石","role":"风格扩展候选","status":"研究候选","purchase_approved":false,"why":"中国/藏式文玩与多宝设计中具有强图形识别度，未来东方、文化和复古设计有价值；古董与现代工艺必须严格分离。"},
+    {"id":"CRM-M-0074","name":"翡翠（硬玉类，批次待核）","en":"Jadeite Jade","display_category":"矿石","role":"高端扩展候选","status":"研究候选","purchase_approved":false,"why":"高认知度、高价格跨度和丰富雕件/珠材使其具有长期设计价值；处理状态、颜色、结构和证书需要独立采购标准。"}
+  ],
+  "form_vocabulary_additions": [
+    "小米珠",
+    "方糖/方块",
+    "桶珠",
+    "平安扣",
+    "葫芦",
+    "跑环",
+    "提溜",
+    "福牌",
+    "雕件",
+    "碎石",
+    "薄片/隔片",
+    "异形/随形"
+  ],
+  "resulting_counts": {
+    "prior_working_materials": 51,
+    "new_materials": 23,
+    "working_materials_after_expansion": 74,
+    "purchase_approved_new_materials": 0
+  }
+}
