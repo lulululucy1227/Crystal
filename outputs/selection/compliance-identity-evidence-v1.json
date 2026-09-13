@@ -1,0 +1,27 @@
+{
+  "version":"CR-COMPLIANCE-IDENTITY-EVIDENCE-V1-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "purpose":"Record sourcing identity/compliance facts that materially affect procurement language. This is not legal advice and does not authorize purchase/import.",
+  "items":[
+    {
+      "material":"小叶紫檀 / Red Sanders / Pterocarpus santalinus",
+      "identity_rule":"Project must separate seller claims of Indian Pterocarpus santalinus from unrelated woods marketed with similar Chinese trade names, including 赞比亚血檀/赞比亚小叶紫檀.",
+      "market_risk":"Public Yiwu listings show extremely cheap 赞比亚血檀/赞比亚小叶紫檀 products next to much higher-priced seller-claimed Indian small-leaf red-sanders products. They must not be interpreted as low/high tiers of one material.",
+      "eu_cites_current":{
+        "source":"Commission Regulation (EU) 2026/1383, Annex to Regulation (EC) 338/97",
+        "url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1383",
+        "listing":"Pterocarpus santalinus (II) #7, Red sandalwood, Annex B",
+        "annotation_7":"Designates logs, wood-chips, powder and extracts.",
+        "project_interpretation":"The current #7 scope is form-specific. Finished drilled beads/finished bracelets are not among the parts named in #7, so the project must not automatically label finished bead procurement as if it were controlled raw-log trade solely because the species is listed. If import documentation is material to a real transaction, confirm the exact product form with the competent national CITES authority before purchase/import."
+      },
+      "eu_general_guidance":{
+        "source":"European Commission Wildlife Trade page",
+        "url":"https://environment.ec.europa.eu/topics/nature-and-biodiversity/wildlife-trade_en",
+        "evidence":"EU wildlife-trade rules implement CITES; documentation depends on species/product/origin and national authorities advise on applicable permit requirements."
+      },
+      "pricing_model_recommendation":"Keep under ordinary wood sourcing for now, but add a mandatory species-identity gate before treating a supplier quote as genuine small-leaf red sandalwood evidence. Do not promote to SPECIALIST_MATERIAL solely because of CITES #7.",
+      "purchase_approval_effect":"none"
+    }
+  ]
+}
