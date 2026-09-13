@@ -1,0 +1,60 @@
+{
+  "version":"CR-PRICE-EVIDENCE-V5-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/price-evidence-v4-delta.json@CR-PRICE-EVIDENCE-V4-DELTA-20260913",
+  "updates":[
+    {
+      "material":"盐源玛瑙",
+      "spec":"8mm finished-bracelet/commercial design branch",
+      "status":"FINISHED_PRODUCT_ANCHORS_STRENGTHENED",
+      "anchors":[
+        {"price":"CNY 35 for 8mm Yanyuan-agate focal design bracelet variant","source":"https://en.yiwugo.com/product/detail/975276212.html"},
+        {"price":"CNY 35-38 for several 8mm Yanyuan-agate focal/fang-tang design variants","source":"https://en.yiwugo.com/product/detail/975241755.html"},
+        {"price":"CNY 52 finished Yanyuan lotus-pendant bracelet","source":"https://www.chinagoods.com/store/goodsdetail/1988560505845100545"}
+      ],
+      "rule":"Do not convert finished-design prices into raw 8mm bead price. Raw-bead China wholesale band remains unresolved; finished-market presence is now well established."
+    },
+    {
+      "material":"小叶紫檀",
+      "spec":"seller-claimed Indian red sanders / Pterocarpus-santalinus commercial branch",
+      "status":"HIGH_FINISHED_PRODUCT_ANCHOR",
+      "anchors":[
+        {"price":"CNY 580 for 8x9mm, 108-bead, 满金星 seller-claimed Indian small-leaf red sandalwood","source":"https://www.yiwugo.com/product/detail/982244465.html","confidence":"MEDIUM"},
+        {"price":"CNY 42 for 8mm finished bracelet with lacquer accent bead(s)","source":"https://wap.yiwugo.com/products/975251854","confidence":"LOW_FOR_PURE_MATERIAL"}
+      ],
+      "rule":"Species identity must be separated from commercial name. Do not use Zambia bloodwood / 血檀 as the low tier of Indian red sanders."
+    },
+    {
+      "material":"赞比亚血檀/商家所谓赞比亚小叶紫檀",
+      "status":"EXCLUSION_SEPARATE_WOOD_CLASS",
+      "anchor":{"price":"CNY 3 for 8mm x 22-bead finished strand seller-labeled 赞比亚小叶紫檀/血檀","source":"https://www.yiwugo.com/product/detail/976266691.html"},
+      "rule":"Separate wood identity. This price must never be used to form the low tier of Pterocarpus santalinus / Indian red sanders."
+    },
+    {
+      "material":"红兔毛水晶",
+      "spec":"commercial red-rabbit-hair branch",
+      "status":"MARKET_PRESENCE_HIGH_ANCHOR_UNSPECIFIED_UNIT",
+      "anchors":[
+        {"price":"CNY 95 one listed item; spec/unit not sufficiently exposed","source":"https://www.chinagoods.com/search/categoryProduct/T--51---C--609---M--01---S--10---P--35---I--20","confidence":"LOW_FOR_BAND"},
+        {"price":"CNY 19.98 for a 10mm finished natural-red-rabbit-hair design variant","source":"https://yiwugo.com/product/detail/976704258.html","confidence":"MEDIUM_FINISHED_PRODUCT"}
+      ],
+      "rule":"Useful only to prove higher-price commercial red-rabbit-hair market. Do not infer an 8mm raw-bead high tier until comparable loose-bead quotes expose unit and identity."
+    },
+    {
+      "material":"红胶花水晶",
+      "spec":"freeform/focal branch",
+      "status":"FREEFORM_PRICE_STRENGTHENED",
+      "anchors":[
+        {"price":"CNY 8.93 per red-inclusion double-point piece","source":"https://yiwugo.com/product/detail/986753030.html"},
+        {"price":"CNY 4 per freeform bead; CNY 6.50 double-point hex column","source":"https://yiwugo.com/product/detail/970419454.html"}
+      ],
+      "rule":"Keep freeform/focal pricing separate from ordinary 8mm round-bead baseline around CNY 0.6/pc."
+    }
+  ],
+  "identity_reference":[
+    {"taxon":"Pterocarpus santalinus","source":"https://cites.org/eng/virtual-college/ndf-red-sander-trees-pterocarpus-santalinus","evidence":"CITES identifies Pterocarpus santalinus as Red Sanders and lists it in Appendix II."},
+    {"taxon":"Pterocarpus santalinus","source":"https://www.pib.gov.in/PressReleasePage.aspx?PRID=2203722&lang=1&reg=3","evidence":"Government of India press release identifies Red Sanders as Pterocarpus santalinus and notes CITES Appendix II / export restrictions."}
+  ],
+  "purchase_approval_effect":"none"
+}
