@@ -1,0 +1,405 @@
+{
+  "version": "CR-PRICE-EVIDENCE-V1-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "purpose": "Consolidated market-price evidence for future offline sourcing. Price tiers are market price tiers for the same material + comparable spec/form, not quality grades.",
+  "rules": [
+    "Supplier A/AA/5A/7A labels are seller vocabulary only and are not project quality standards.",
+    "Do not merge round-bead and freeform/focal-bead prices.",
+    "Do not treat treated, resin, painted, synthetic or identity-ambiguous goods as the low tier of a natural material.",
+    "ESTABLISHED_BAND requires multiple comparable same-spec anchors or a clear same-seller tier ladder.",
+    "ANCHOR_ONLY means useful market evidence exists but a full low/mid/high band is not yet justified.",
+    "IDENTITY_RISK means public listings are too contaminated by ambiguous names/treatments to build a trustworthy natural-material band.",
+    "SPECIALIST_MARKET means origin/species/treatment/weight/luster/certificate or other identity variables dominate price enough that a simple 8mm three-tier model is potentially misleading.",
+    "Prices are research references, not purchase approvals."
+  ],
+  "status_definitions": {
+    "ESTABLISHED_BAND": "usable provisional price band exists for the specified form/spec",
+    "ANCHOR_ONLY": "one or more usable anchors exist; more comparable quotes needed",
+    "IDENTITY_RISK": "identity/treatment ambiguity must be resolved before price banding",
+    "SPECIALIST_MARKET": "use identity-first specialist price model rather than ordinary 8mm bead band",
+    "NO_DIRECT_PURCHASE": "taxonomy/design parent only"
+  },
+  "evidence": [
+    {
+      "material": "白水晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<1", "mid": "1-3", "high": "3-6+"},
+      "target_purchase_tier": "MID; HIGH small quantity",
+      "evidence": [
+        {"source_url": "https://wap.yiwugo.com/products/984605345", "quote": "压电白水晶8mm ¥0.60/颗", "confidence": "MEDIUM", "warning": "商品属性材质字段为玛瑙，故仅作为低价市场标签证据"},
+        {"source_url": "https://yiwugo.com/product/detail/976906464.html", "quote": "东海AA天然白水晶8mm ¥93.15/约47颗 ≈ ¥1.98/颗", "confidence": "HIGH"},
+        {"source_url": "https://yiwugo.com/product/detail/980219975.html", "quote": "卖家收藏级白水晶8mm ¥4.93/颗", "confidence": "HIGH"}
+      ]
+    },
+    {
+      "material": "海蓝宝",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<2.5", "mid": "2.5-5", "high": "5-10+"},
+      "target_purchase_tier": "MID + HIGH focal",
+      "evidence_note": "Multiple public raw-bead anchors previously collected; keep separate from 7-10mm方糖/切面单珠 and freeform pricing."
+    },
+    {
+      "material": "紫水晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<1", "mid": "1-3", "high": "3-8+"},
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/985358552.html", "quote": "8mm ¥18/约46颗 ≈ ¥0.39/颗", "confidence": "HIGH"}
+      ],
+      "warning": "High-tier boundary remains provisional and should be validated offline."
+    },
+    {
+      "material": "灰月光石（商业名）",
+      "spec": "约8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "1-1.5", "mid": "1.5-4", "high": "4-8+"},
+      "target_purchase_tier": "MID + HIGH",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/976106956.html", "quote": "同卖家不同商业等级7.8-8.5mm约22颗，公开价格阶梯含约¥49.40、¥133等/条", "confidence": "HIGH"},
+        {"source_url": "https://yiwugo.com/product/detail/950839734.html", "quote": "同卖家多级灰月光/拉长石商业货盘，8mm约45颗，价格从百元级到¥322.56/条", "confidence": "MEDIUM", "warning": "页面商业命名混有灰月光/拉长石"}
+      ]
+    },
+    {
+      "material": "绿幽灵水晶（商业名）",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "1-2.5", "mid": "2.5-6", "high": "6-15+"},
+      "target_purchase_tier": "MID; HIGH by piece",
+      "evidence_note": "Ordinary public 8mm anchors around ¥1.7-3/pc and聚宝盆 high anchor around ¥14+/pc collected previously."
+    },
+    {
+      "material": "粉晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<0.4", "mid": "0.4-1.5", "high": "1.5+ provisional"},
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/986753030.html", "quote": "天然粉晶8mm ¥0.57/颗", "confidence": "HIGH"}
+      ]
+    },
+    {
+      "material": "草莓晶（商业名）",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "0.5-0.8", "mid": "0.8-1.5", "high": "pending"},
+      "target_purchase_tier": "MID",
+      "warning": "Trade name and material identity require batch confirmation."
+    },
+    {
+      "material": "萤石",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<0.5", "mid": "0.5-2", "high": "2-4+"},
+      "target_purchase_tier": "MID; selected color-band HIGH small quantity"
+    },
+    {
+      "material": "石榴石",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<1", "mid": "1-6 provisional", "high": "6-15+"},
+      "target_purchase_tier": "MID",
+      "warning": "Seller-grade ladders show very large spread; offline validation of the middle band is still required."
+    },
+    {
+      "material": "普通黑曜石",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<0.15", "mid": "0.15-0.3", "high": "0.3-0.6+"},
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/986318733.html", "quote": "8mm ¥7.18/约47颗 ≈ ¥0.153/颗", "confidence": "HIGH"}
+      ],
+      "rule": "Silver sheen, gold sheen and rainbow-eye are separate commercial branches with separate price bands."
+    },
+    {
+      "material": "彩虹黑曜石",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/984705182.html", "quote": "8A彩虹眼黑曜石8mm ¥26.13/约48颗 ≈ ¥0.54/颗", "confidence": "HIGH"}
+      ]
+    },
+    {
+      "material": "蓝虎眼 / 鹰眼石",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "about 0.5 ordinary wholesale; selected single beads may be several CNY",
+      "target_purchase_tier": "MID"
+    },
+    {
+      "material": "玉髓",
+      "spec": "8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "<0.2", "mid": "0.2-0.4", "high": "0.4-1+"},
+      "target_purchase_tier": "MID",
+      "warning": "Color treatment/dyeing must be separated."
+    },
+    {
+      "material": "天河石 / Amazonite",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "about 0.12-0.13/pc for low wholesale strand",
+      "target_purchase_tier": "MID",
+      "warning": "Do not use listings labeled 天河石玉髓 as natural Amazonite evidence."
+    },
+    {
+      "material": "茶晶 / 烟晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "about 0.25-1.1/pc across public multi-material wholesale listings; exact tier mapping still needs validation",
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://www.yiwugo.com/product/detail/985280410.html", "quote": "同页天然茶水晶（微棉裂）列入46颗左右/8mm规格阶梯", "confidence": "MEDIUM", "warning": "multi-material variant ordering requires careful mapping"},
+        {"source_url": "https://yiwugo.com/product/detail/970419454.html", "quote": "天然茶水晶随形珠 ¥5.75/颗", "confidence": "HIGH", "note": "freeform anchor, not round-bead band"}
+      ]
+    },
+    {
+      "material": "白幽灵水晶（商业名）",
+      "spec": "8-8.8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "about 1-2", "mid": "2-4", "high": "4+ provisional"},
+      "target_purchase_tier": "MID + selected HIGH",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/980219975.html", "quote": "白幽灵8mm ¥2.12/颗", "confidence": "HIGH"},
+        {"source_url": "https://yiwugo.com/product/detail/983535277.html", "quote": "白幽灵满盆千层8-8.8mm ¥38.30/约22颗 ≈ ¥1.74/颗", "confidence": "HIGH"},
+        {"source_url": "https://yiwugo.com/product/detail/980279577.html", "quote": "精品白幽灵8-9mm成品单圈 ¥80", "confidence": "MEDIUM", "warning": "finished bracelet retail/wholesale hybrid, not direct raw-bead per-piece quote"}
+      ]
+    },
+    {
+      "material": "超七（商业名）",
+      "spec": "8-8.8mm圆珠/颗",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "about 2", "mid": "about 4-8", "high": "about 13+"},
+      "target_purchase_tier": "MID; distinctive HIGH small quantity",
+      "evidence": [
+        {"source_url": "https://www.yiwugo.com/product/detail/976109258.html", "quote": "同卖家8-8.8mm约23颗：3A冰种 ¥47.50≈2.07/颗；5A ¥95≈4.13/颗；7A ¥308.75≈13.42/颗", "confidence": "HIGH"},
+        {"source_url": "https://yiwugo.com/product/detail/984636886.html", "quote": "多种商业超七8mm约23颗 ¥47.50起", "confidence": "HIGH"}
+      ],
+      "warning": "Commercial Super Seven name does not establish a fixed mineral composition."
+    },
+    {
+      "material": "胶花水晶（商业名）",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "about 0.66/pc for seller 5A red inclusion quartz 8mm",
+      "target_purchase_tier": "MID + freeform focal",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/978343621.html", "quote": "天然红胶花水晶5A 8mm ¥0.66/颗", "confidence": "MEDIUM", "warning": "same page includes many treated/low-cost materials; item itself is seller claim"},
+        {"source_url": "https://yiwugo.com/product/detail/970419454.html", "quote": "天然红胶花随形珠 ¥4/颗；双尖六角柱 ¥6.5/颗", "confidence": "HIGH", "note": "freeform/focal form only"}
+      ]
+    },
+    {
+      "material": "紫锂辉石 / Kunzite",
+      "spec": "7-12mm圆珠",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "7-7.3mm about 1.27/pc; larger sizes rise to roughly 4-10+/pc in direct listings",
+      "target_purchase_tier": "MID + HIGH",
+      "warning": "Must not confuse with 紫锂云母."
+    },
+    {
+      "material": "金发晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "premium public anchors about 10-16/pc",
+      "target_purchase_tier": "MID + HIGH by piece"
+    },
+    {
+      "material": "黑发晶",
+      "spec": "8mm圆珠/颗",
+      "status": "ANCHOR_ONLY",
+      "target_purchase_tier": "MID + HIGH by piece",
+      "warning": "Public multi-material pages exist but variant mapping is not clean enough for a three-tier band."
+    },
+    {
+      "material": "葡萄石",
+      "spec": "8mm圆珠",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "8mm finished single-circle around ¥32.8; separate single premium bead anchor around ¥10.8/pc collected previously",
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/983119871.html", "quote": "天然葡萄石8mm手链 ¥32.80/条", "confidence": "MEDIUM", "warning": "finished bracelet, not raw strand"}
+      ]
+    },
+    {
+      "material": "摩根石",
+      "spec": "8mm圆珠",
+      "status": "IDENTITY_RISK",
+      "target_purchase_tier": "pending identity-confirmed supply",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/978385406.html", "quote": "摩根石/多材质商品公开极低价，但处理工艺明确写烤漆", "confidence": "HIGH", "decision": "REJECT as natural morganite price evidence"}
+      ]
+    },
+    {
+      "material": "日光石",
+      "spec": "8mm圆珠",
+      "status": "IDENTITY_RISK",
+      "target_purchase_tier": "pending identity-confirmed supply",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/976278942.html", "quote": "红/橙太阳石8mm整圈 ¥4.18", "confidence": "LOW", "warning": "page mixes very cheap commercial/treatment goods; do not use as natural sunstone band"}
+      ]
+    },
+    {
+      "material": "蓝纹玛瑙 / Blue Lace Agate",
+      "spec": "8mm圆珠",
+      "status": "IDENTITY_RISK",
+      "target_purchase_tier": "MID after identity confirmation",
+      "warning": "Chinese listings use 蓝纹石/蓝条纹玛瑙/蓝纹玛瑙 inconsistently; do not merge automatically."
+    },
+    {
+      "material": "血石 / Bloodstone",
+      "spec": "8mm圆珠",
+      "status": "IDENTITY_RISK",
+      "target_purchase_tier": "MID after identity confirmation",
+      "warning": "Very low public '非洲血石' finished-bracelet prices are not sufficient identity evidence."
+    },
+    {
+      "material": "南红（商业名）",
+      "spec": "8mm圆珠/单珠",
+      "status": "ANCHOR_ONLY",
+      "working_anchor_cny": "wholesale ordinary anchors can be sub-CNY to low single-digit; retail/full-meat/focal examples rise sharply",
+      "target_purchase_tier": "MID + HIGH focal",
+      "evidence": [
+        {"source_url": "https://www.yiwugo.com/product/detail/984993329.html", "quote": "8mm single-bead variant on multi-variant 南红 page; public prices include sub-CNY ordinary commercial beads", "confidence": "MEDIUM"},
+        {"source_url": "https://wiki.smzdm.com/p/nd154x9/", "quote": "8+mm 凉山冰飘南红单珠零售锚点约¥30.6起", "confidence": "MEDIUM", "note": "retail/focal anchor, not wholesale"}
+      ]
+    },
+    {
+      "material": "阿拉善玛瑙",
+      "spec": "约8-10mm单珠/圆珠",
+      "status": "ANCHOR_ONLY",
+      "target_purchase_tier": "MID",
+      "evidence": [
+        {"source_url": "https://www.topaoko2007.com/collections/engraved-hole-beads/products/-rf082", "quote": "阿拉善五角星单珠12.5-15mm NT$150，孔径约1mm", "confidence": "HIGH", "note": "Taiwan retail carved-form anchor"},
+        {"source_url": "https://yiwugo.com/product/detail/970419454.html", "quote": "天然牛油果阿拉善方糖 ¥1.88/颗", "confidence": "MEDIUM", "note": "China wholesale form anchor; not round 8mm"}
+      ]
+    },
+    {
+      "material": "盐源玛瑙",
+      "spec": "约8-9mm圆珠/单珠",
+      "status": "ANCHOR_ONLY",
+      "target_purchase_tier": "MID + carved focal",
+      "evidence": [
+        {"source_url": "https://www.topaoko2007.com/collections/yanyuan-agate", "quote": "8.5-9mm天然A级盐源圆珠 variants listed NT$120-540; 7.8-8.5mm方形单珠 NT$80", "confidence": "HIGH", "note": "Taiwan retail reference"}
+      ]
+    },
+    {
+      "material": "黑碧玺",
+      "spec": "约8mm圆珠",
+      "status": "ANCHOR_ONLY",
+      "target_purchase_tier": "MID",
+      "warning": "Public China raw-bead numeric mapping remains incomplete; specialist/Taiwan references confirm 8mm form but not a China wholesale band."
+    },
+    {
+      "material": "海纹石 / Larimar",
+      "spec": "8-9mm圆珠/颗",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "MID-HIGH; often by piece/focal",
+      "warning": "Current trustworthy evidence is mostly retail/specialist rather than China wholesale; do not infer wholesale band from retail bracelet prices."
+    },
+    {
+      "material": "舒俱来",
+      "spec": "8mm圆珠",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "MID-HIGH",
+      "warning": "Large quality/identity/color spread; public general-market pricing is too inconsistent for a normal 8mm band."
+    },
+    {
+      "material": "绿松石",
+      "spec": "8mm圆珠/随形",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "MID-HIGH",
+      "warning": "Natural/stabilized/pressed/reconstituted and origin differences dominate price. Identity/treatment first."
+    },
+    {
+      "material": "和田玉",
+      "spec": "8mm圆珠",
+      "status": "SPECIALIST_MARKET",
+      "working_commercial_anchor_cny": "about 4-9/pc in general-market seller-labeled goods",
+      "target_purchase_tier": "MID-HIGH only after material/origin evidence",
+      "warning": "General-market seller use of 新疆/和田 is not origin proof."
+    },
+    {
+      "material": "翡翠",
+      "spec": "round/freeform",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "identity-first",
+      "warning": "Treatment status, color, texture/translucency and certificate dominate; no unified 8mm band."
+    },
+    {
+      "material": "天然蜜蜡 / 琥珀",
+      "spec": "round/freeform",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "identity-first, often by gram/piece",
+      "evidence": [
+        {"source_url": "https://wap.yiwugo.com/products/975287650", "quote": "净水级血珀8mm五颗装 ¥32.8; 5-9 packs ¥29.8; 10+ ¥24.8", "confidence": "MEDIUM", "warning": "seller natural claim; still not proof of amber identity"}
+      ],
+      "warning": "Second-generation resin or resin-labeled goods must never be used as natural amber low-tier price evidence."
+    },
+    {
+      "material": "沉香",
+      "spec": "8mm/whole bracelet/by gram",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "identity-first",
+      "warning": "Species/origin/resin formation/oil content/weight/sink status and fragrance dominate price; public seller ranges conflict strongly."
+    },
+    {
+      "material": "淡水养殖珍珠",
+      "spec": "7-9mm pierced loose pearl",
+      "status": "ESTABLISHED_BAND",
+      "working_band_cny": {"low": "about 0.6-1", "mid": "1-3", "high": "3+ requires shape/luster sub-spec"},
+      "target_purchase_tier": "MID; HIGH focal",
+      "evidence": [
+        {"source_url": "https://yiwugo.com/product/detail/984722575.html", "quote": "7-8mm优选冲 ¥1.41/颗; 8-9mm ¥1.46/颗; 米珠7-8mm ¥1/颗", "confidence": "HIGH"},
+        {"source_url": "https://www.yiwugo.com/product/detail/984308352.html", "quote": "8-9mm天然淡水大孔珠 ¥1.80/颗, 孔约2.5mm", "confidence": "HIGH"}
+      ],
+      "rule": "Near-round/round/rice/baroque and hole type must be separated."
+    },
+    {
+      "material": "Akoya养殖珍珠",
+      "spec": "7-8mm loose/strand",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "identity-first specialist pearl channel",
+      "warning": "Public listings frequently misuse Akoya for freshwater or 'Akoya-luster' pearls; true Japanese Akoya vs Chinese saltwater/freshwater labels must be separated."
+    },
+    {
+      "material": "大溪地养殖珍珠",
+      "spec": "about 9mm loose pearl",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "MID-HIGH by piece",
+      "working_specialist_anchor": "specialist loose 9mm around USD 20s-60s/pc for many commercial-to-good examples; exceptional pieces higher",
+      "warning": "Color, luster, surface, roundness and farm/source dominate."
+    },
+    {
+      "material": "南洋养殖珍珠",
+      "spec": "9-10mm loose pearl",
+      "status": "SPECIALIST_MARKET",
+      "target_purchase_tier": "MID-HIGH by piece",
+      "working_specialist_anchor": "farm-direct white South Sea 9-10mm observed roughly USD 118-549 in a recent specialist sample; sample median about USD 156",
+      "warning": "Small specialist sample; use as high-value benchmark, not China wholesale band."
+    },
+    {
+      "material": "发晶（未细分）",
+      "status": "NO_DIRECT_PURCHASE",
+      "rule": "taxonomy/design parent only; buy specific gold/black/other inclusion branch"
+    },
+    {
+      "material": "猫眼类（材质未细分）",
+      "status": "NO_DIRECT_PURCHASE",
+      "rule": "taxonomy/design parent only until actual natural/synthetic material is identified"
+    },
+    {
+      "material": "深色木材（树种未定）",
+      "status": "NO_DIRECT_PURCHASE",
+      "rule": "design placeholder only; procurement requires exact species/material identity"
+    }
+  ],
+  "research_conclusion": {
+    "standard_band_materials": "Most ordinary quartz/crystal/agate/obsidian/tiger-eye style bead materials can use same-spec low/mid/high price bands, with 8mm round bead as a common baseline where appropriate.",
+    "specialist_identity_first_materials": ["Akoya珍珠", "大溪地珍珠", "南洋珍珠", "沉香", "天然蜜蜡/琥珀", "翡翠", "和田玉", "绿松石", "海纹石", "舒俱来"],
+    "decision_needed_later": "Whether the mother database should formally store two price models (STANDARD_SPEC_BAND vs SPECIALIST_IDENTITY_FIRST) instead of forcing every material into one low/mid/high 8mm framework."
+  }
+}
