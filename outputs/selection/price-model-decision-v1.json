@@ -1,0 +1,38 @@
+{
+  "version": "CR-PRICE-MODEL-DECISION-V1-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "decision_source": "user selected option B after price-model review",
+  "decision": "DUAL_PRICE_MODEL",
+  "models": {
+    "STANDARD_SPEC_BAND": {
+      "use_for": "ordinary bead/material categories where same-material same-spec low/mid/high market price bands are meaningful",
+      "required_fields": ["material","spec","unit","low_price_reference","mid_price_reference","high_price_reference","target_purchase_tier","price_status","evidence_date"],
+      "rule": "low/mid/high are market price bands, not quality grades"
+    },
+    "SPECIALIST_MATERIAL": {
+      "use_for": "materials where identity, treatment, origin/species, weight, luster, certification or batch uniqueness dominates price",
+      "required_fields": ["material","identity_gate","pricing_unit","key_price_drivers","reference_anchors","purchase_rule","evidence_date"],
+      "rule": "do not force a universal 8mm low/mid/high band before identity/specification is resolved"
+    }
+  },
+  "initial_specialist_materials": [
+    "Akoya养殖珍珠",
+    "大溪地养殖珍珠",
+    "南洋养殖珍珠",
+    "沉香",
+    "蜜蜡",
+    "琥珀",
+    "翡翠",
+    "和田玉",
+    "绿松石",
+    "海纹石"
+  ],
+  "review_note": "舒俱来 remains provisionally under review: it may use specialist handling for higher-value batches while ordinary round-bead market anchors are still collected.",
+  "exclusions": [
+    "do not classify treated/resin/synthetic goods as the low tier of a natural material",
+    "do not merge round-bead and freeform/focal prices",
+    "do not use supplier A/AA/5A labels as project grading standards"
+  ],
+  "purchase_approval_effect": "none; this decision changes research/pricing structure only"
+}
