@@ -1,0 +1,115 @@
+{
+  "version": "CR-SPECIALIST-PRICE-EVIDENCE-V1-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "pricing_model": "SPECIALIST_MATERIAL",
+  "rule": "Identity/specification gates are resolved before price comparison. Market anchors are references, not purchase approvals.",
+  "materials": [
+    {
+      "material": "Akoya养殖珍珠",
+      "identity_gate": ["saltwater cultured pearl", "Akoya identity; reject freshwater products marketed as Akoya/Akoya-luster", "treatment disclosure"],
+      "pricing_unit": "single pearl / matched pair / strand",
+      "key_price_drivers": ["size", "shape", "color/overtone", "luster", "surface", "nacre", "matching"],
+      "reference_spec": "7-8mm and 8-9mm loose/strand",
+      "reference_anchors": [
+        {"source":"GIA","url":"https://www.gia.edu/gia-news-research/differences-between-pearl-types","evidence":"Akoya commonly 6-9mm; >9mm increasingly rare; GIA 7 Pearl Value Factors apply."},
+        {"source":"Alibaba current listings","url":"https://www.alibaba.com/wholesale/akoya-cultured-pearls.html","evidence":"Current supplier listings show very wide prices and some contradictory freshwater/Akoya labeling; use only after identity confirmation."}
+      ],
+      "purchase_rule": "Do not create a low/mid/high RMB band from marketplace search alone. Price only after identity + size + luster/surface/nacre spec is locked."
+    },
+    {
+      "material": "大溪地养殖珍珠",
+      "identity_gate": ["Tahitian cultured pearl / Pinctada margaritifera", "natural dark bodycolor vs dyed", "treatment disclosure"],
+      "pricing_unit": "single loose pearl / matched pair / lot",
+      "key_price_drivers": ["size", "shape", "bodycolor", "overtone", "luster", "surface", "nacre", "matching"],
+      "reference_spec": "9-10mm loose pearl",
+      "reference_anchors": [
+        {"source":"GIA","url":"https://www.gia.edu/gia-news-research/differences-between-pearl-types","evidence":"Tahitian pearls commonly 8-14mm; dark bodycolors and overtones materially affect appearance/value."},
+        {"source":"The South Sea Pearl","url":"https://www.thesouthseapearl.com/zh-hant/collections/ssp-9-10mm-peacock-tahitian-pearl-loose","evidence":"9-10mm loose examples around USD 28-42 each; wholesale-lot examples differ substantially by grade/lot."},
+        {"source":"2026 catalog benchmark","url":"https://www.thesouthseapearl.com/pages/pearl-price-guides","evidence":"2026-07-26 catalog asking-price benchmark reports median USD 42 for eligible loose Tahitian listings; seller catalog benchmark, not market-wide index."}
+      ],
+      "purchase_rule": "Compare within same size + shape + overtone/luster/surface spec; do not translate seller AAA directly into project grade."
+    },
+    {
+      "material": "南洋养殖珍珠",
+      "identity_gate": ["South Sea cultured pearl / Pinctada maxima", "white/silver vs golden variety", "treatment/dye disclosure"],
+      "pricing_unit": "single loose pearl / pair / strand",
+      "key_price_drivers": ["size", "shape", "color", "luster", "surface", "nacre", "matching"],
+      "reference_spec": "9-14mm loose pearl",
+      "reference_anchors": [
+        {"source":"GIA","url":"https://www.gia.edu/gia-news-research/differences-between-pearl-types","evidence":"South Sea pearls commonly 8-18mm and have thick nacre; larger size and quality factors materially affect value."},
+        {"source":"The South Sea Pearl June 2026 snapshot","url":"https://www.thesouthseapearl.com/pages/south-sea-pearl-prices","evidence":"White South Sea loose pearl catalog ranges: 9-10mm USD 118-549, 10-11mm USD 28-1300, 11-12mm USD 68-4741; wide spread demonstrates need for specialist model."},
+        {"source":"Golden South Sea supplier guide","url":"https://www.thesouthseapearl.com/de/collections/ssp-golden-south-sea-pearl-loose","evidence":"Supplier indicates light champagne 9-10mm AA roughly USD 120-220; 11-12mm AAA gold tone roughly USD 400-800; deep 24K 13mm+ AAA roughly USD 1200-3500. Seller guide only."}
+      ],
+      "purchase_rule": "White/silver and golden South Sea must be separate sourcing branches. Do not build one generic South Sea price band."
+    },
+    {
+      "material": "沉香",
+      "identity_gate": ["botanical/species evidence where practical", "origin", "natural resin formation/state", "weight/density", "avoid conflating plain wood, compounded incense beads and resin-rich agarwood"],
+      "pricing_unit": "gram + finished strand/piece",
+      "key_price_drivers": ["identity", "resin/oil content", "density/sinking behavior", "origin", "aroma", "weight", "bead size"],
+      "reference_anchors": [
+        {"source":"Chinagoods market listing","url":"https://www.chinagoods.com/store/goodsdetail/2003681601430052866","evidence":"Current Yiwu market listing for Mysore sandalwood/wood-bead products demonstrates that wood-trade names and finished-strand pricing differ strongly; not usable as agarwood identity proof."}
+      ],
+      "purchase_rule": "No generic 8mm band. First classify exactly what the supplier is selling; then compare on gram/strand basis within the same material class."
+    },
+    {
+      "material": "蜜蜡/琥珀",
+      "identity_gate": ["natural amber vs pressed/reconstructed/resin imitation", "treatment disclosure", "color treatment", "weight"],
+      "pricing_unit": "gram + single bead/piece",
+      "key_price_drivers": ["natural identity", "color", "clarity/cloudiness", "inclusions", "treatment", "weight", "form"],
+      "reference_anchors": [
+        {"source":"GIA Amber buyer guide","url":"https://www.gia.edu/amber/buyers-guide","evidence":"Amber value varies with color/clarity/inclusions; bright green amber is treated; important purchases may require independent lab confirmation."},
+        {"source":"GIA treatment guide","url":"https://www.gia.edu/articles/gem-treatment","evidence":"Heat/oil treatment can darken/clarify amber and create spangled inclusions."},
+        {"source":"Chinagoods exclusion evidence","url":"https://www.chinagoods.com/store/goodsdetail/1583267058840379394/","evidence":"Very low-cost '二代蜜蜡' listings exist; they must not be treated as the low price tier of natural amber/beeswax amber."}
+      ],
+      "purchase_rule": "Natural amber/beeswax only enters price comparison after identity/treatment classification; reconstructed/resin goods are separate materials, not low tier."
+    },
+    {
+      "material": "翡翠",
+      "identity_gate": ["jadeite vs other jade", "A/B/C treatment status", "certificate for meaningful-value purchases"],
+      "pricing_unit": "single bead/piece + weight/size",
+      "key_price_drivers": ["color", "transparency", "texture", "treatment", "size", "cut/symmetry", "fractures"],
+      "reference_anchors": [
+        {"source":"GIA jade quality","url":"https://www.gia.edu/jade-quality-factor","evidence":"Color, transparency and texture are the three major jadeite value factors; size and matching matter for bead strands."},
+        {"source":"GIA jade treatment","url":"https://origin.dev.author.gia.edu/jade/buyers-guide","evidence":"A jade is natural/wax-only; B is bleached + polymer-impregnated; C is dyed; jade can be dyed, bleached, heated, waxed and impregnated."}
+      ],
+      "purchase_rule": "Do not compare price until treatment class and material identity are known. Round beads may be compared only inside the same treatment/color/transparency class."
+    },
+    {
+      "material": "和田玉",
+      "identity_gate": ["nephrite identity", "origin claim separated from material identity", "treatment disclosure", "certificate/traceable evidence for high-value origin claims"],
+      "pricing_unit": "single bead/piece + strand + weight",
+      "key_price_drivers": ["color", "texture/fineness", "clarity/structure", "luster/oiliness", "origin claim", "size", "matching"],
+      "reference_anchors": [
+        {"source":"GIA nephrite market research","url":"https://www.gia.edu/gia-news-research/nephrite-jade-road-evolution-green-nephrite-market","evidence":"Color, texture and clarity are important price factors; source ranges overlap in quality."},
+        {"source":"CIBJO Jade Guide progress report","url":"https://cibjo.org/wp-content/uploads/2025/10/Jade-Guide-Progress-Report.pdf","evidence":"Hetian/white nephrite terminology and material identity require careful distinction from trade/origin claims."},
+        {"source":"Chinagoods commercial anchor","url":"https://www.chinagoods.com/store/goodsdetail/1801253875170242561","evidence":"Current Yiwu listing explicitly markets Qinghai-material 8mm Hetian-jade necklace at RMB 300-690/strand; useful commercial anchor only, not proof of Xinjiang origin."}
+      ],
+      "purchase_rule": "Never price '和田玉' solely from the name. Record material identity and origin claim separately; use origin-neutral comparison unless evidence supports origin."
+    },
+    {
+      "material": "绿松石",
+      "identity_gate": ["natural turquoise identity", "stabilization/impregnation", "dyeing", "reconstituted/imitation separation"],
+      "pricing_unit": "gram + single bead/piece",
+      "key_price_drivers": ["color", "texture", "matrix pattern", "treatment", "weight/size", "origin claim"],
+      "reference_anchors": [
+        {"source":"GIA quality factors","url":"https://origin.prod.gia.edu/turquoise-quality-factor","evidence":"Turquoise is commonly judged by color, texture and presence/absence of matrix."},
+        {"source":"GIA treatment research","url":"https://www.gia.edu/gems-gemology/fall-2015-gemnews-impregnated-dyed-turquoise","evidence":"Turquoise may be dyed and impregnated with polymer/wax/plastic; treatment identification is essential."}
+      ],
+      "purchase_rule": "Natural untreated, stabilized, dyed and reconstructed/imitation turquoise must be separate sourcing classes; do not create one 8mm price band across them."
+    },
+    {
+      "material": "海纹石 / Larimar",
+      "identity_gate": ["blue pectolite identity", "Dominican Republic origin consistent with Larimar definition", "exclude dyed chalcedony/other blue imitations"],
+      "pricing_unit": "single bead/cabochon/freeform + weight/size",
+      "key_price_drivers": ["blue saturation", "blue-white pattern", "translucency", "fractures", "polish", "size/form"],
+      "reference_anchors": [
+        {"source":"2024 Journal of South American Earth Sciences","url":"https://www.sciencedirect.com/science/article/pii/S0895981124001718","evidence":"Larimar is gem-quality bluish pectolite from the Dominican Republic, often blue/green/white with associated minerals."},
+        {"source":"IGS","url":"https://www.gemsociety.org/article/pectolite-jewelry-and-gemstone-information/","evidence":"Fine Larimar is prized for blue color; dark blue/translucent and attractive sky-blue cloud patterns are valued."},
+        {"source":"GIA imitation evidence","url":"https://www.gia.edu/doc/Summer-2020-Gems-Gemology-v2.pdf","evidence":"Dyed quench-crackled chalcedony can resemble Larimar; identity must be confirmed for meaningful-value material."}
+      ],
+      "purchase_rule": "Price by individual piece/batch after identity; round 8mm pricing can be recorded as a commercial sub-spec but must not replace focal/freeform pricing."
+    }
+  ]
+}
