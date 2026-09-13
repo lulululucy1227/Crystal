@@ -1,0 +1,34 @@
+{
+  "version": "CR-MAT-V1.4-MOTHER-LIBRARY-20260913",
+  "date": "2026-09-13",
+  "status": "ACTIVE_WORKING_MOTHER_LIBRARY",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/working-version-material-library-v1.3.json@CR-MAT-V1.3-MOTHER-LIBRARY-20260913",
+  "pricing_evidence": "outputs/selection/price-evidence-v1.json@CR-PRICE-EVIDENCE-V1-20260913",
+  "photo_evidence": [
+    "outputs/selection/reference-photo-evidence-v1.json@CR-REFERENCE-PHOTO-EVIDENCE-V1",
+    "outputs/selection/reference-photo-evidence-v2.json@CR-REFERENCE-PHOTO-EVIDENCE-V2-20260913"
+  ],
+  "pricing_model_decision": "outputs/selection/price-model-decision-v1.json@CR-PRICE-MODEL-DECISION-V1-20260913",
+  "pricing_rule": "Use STANDARD_SPEC_BAND for ordinary materials and SPECIALIST_MATERIAL for identity-first/high-variance materials. Low/mid/high always mean market price bands for comparable material + spec, never universal quality grades.",
+  "initial_specialist_materials": [
+    "Akoya养殖珍珠",
+    "大溪地养殖珍珠",
+    "南洋养殖珍珠",
+    "沉香",
+    "蜜蜡",
+    "琥珀",
+    "翡翠",
+    "和田玉",
+    "绿松石",
+    "海纹石"
+  ],
+  "purchase_approved_specs": 0,
+  "excel_rule": "Do not generate final user-facing Excel until price/photo/spec gap filling reaches review-ready state.",
+  "next_work": [
+    "Continue collecting comparable same-spec price evidence for remaining STANDARD_SPEC_BAND materials.",
+    "Build identity-first pricing reference for SPECIALIST_MATERIAL items.",
+    "Close remaining single-bead/freeform/accessory reference-photo gaps.",
+    "Define only genuinely useful procurement specs per material; avoid dimension explosion."
+  ]
+}
