@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as stateApi from '../workbench/bracelet-state.mjs';
 import fs from 'node:fs/promises';
+import {layoutStudio} from '../workbench/studio-layout.mjs';
 
 // Fabric's browser-only absolute import needs a narrow drawing boundary double in Node.
 async function canvasHarness(state, resolver = () => ({})) {
@@ -17,13 +18,14 @@ async function canvasHarness(state, resolver = () => ({})) {
     export class FabricImage extends Circle { static async fromURL(url) { urls.push(url); if (imageLoader) await imageLoader(url); return new FabricImage({width:200,height:200}); } }
     export class Canvas { constructor() { this.objects=[]; this.handlers={}; this.width=520; this.height=520; this.clears=0; canvases.push(this); }
       getWidth(){return this.width;} getHeight(){return this.height;} setDimensions(p){Object.assign(this,p);}
-      add(obj){this.objects.push(obj);} clear(){this.objects=[];this.clears++;} discardActiveObject(){this.active=null;}
+      add(obj){this.objects.push(obj);} remove(obj){this.objects=this.objects.filter(o=>o!==obj);} clear(){this.objects=[];this.clears++;} discardActiveObject(){this.active=null;}
       setActiveObject(o){this.active=o;} requestRenderAll(){} on(name,fn){this.handlers[name]=fn;}
       getScenePoint(e){return e;} dispose(){this.disposed=true;}
+      renderAll(){} toDataURL(){return JSON.stringify(this.objects.filter(o=>o.data).map(o=>({id:o.data.instanceId,left:o.left,top:o.top,scaleX:o.scaleX,scaleY:o.scaleY,angle:o.angle})));}
     }
   `;
   const url = `data:text/javascript;base64,${Buffer.from(fabric + `\n// ${Math.random()}`).toString('base64')}`;
-  const module = await import(`data:text/javascript;base64,${Buffer.from(source.replace("'/vendor/fabric/index.min.mjs'", JSON.stringify(url))).toString('base64')}`);
+  const module = await import(`data:text/javascript;base64,${Buffer.from(source.replace("'/vendor/fabric/index.min.mjs'", JSON.stringify(url)).replace("'./studio-layout.mjs'", JSON.stringify(new URL('../workbench/studio-layout.mjs', import.meta.url).href))).toString('base64')}`);
   const boundary = await import(url);
   const commands = [];
   const element = { parentElement: { clientWidth: 520, clientHeight: 520 }, dataset: {} };
@@ -34,6 +36,54 @@ async function canvasHarness(state, resolver = () => ({})) {
 
 const bead = (instanceId, sizeMm = 8) => ({ instanceId, materialName: 'Quartz', materialId: 'quartz', specId: `quartz-${sizeMm}`, displayNameZh: '白水晶', displayNameEn: 'Quartz', form: 'round', sizeMm, sourceStatus: 'PROPOSED', assetRef: 'asset:q', provenanceClass: 'source_cutout', imageUrl: '/assets/local/quartz.png' });
 const loose = () => stateApi.createBraceletState({ layoutMode: 'loose', instances: [bead('a', 6), bead('b', 8), bead('c', 12)] });
+test('linear filter hides persistent objects from selection drag and modification without removing identity',async()=>{
+ const state=stateApi.createBraceletState({layoutMode:'bracelet',trayMode:'linear',wrapCount:2,selectedInstanceId:'0',instances:Array.from({length:8},(_,n)=>bead(String(n)))}),h=await canvasHarness(state);
+ const objects=h.canvas.objects.filter(o=>o.data),first=objects[0];await h.api.render(state,{linearSection:'back'});
+ assert.equal(first.visible,false);assert.equal(first.evented,false);assert.equal(first.selectable,false);assert.equal(h.canvas.active,null);
+ for(const event of ['mouse:down','object:moving','object:modified'])h.canvas.handlers[event]({target:first});assert.equal(h.commands.length,0);
+ assert.equal(h.canvas.objects.filter(o=>o.data&&o.visible).length,4);await h.api.render(state,{linearSection:'all'});assert.equal(first.visible,true);assert.deepEqual(h.canvas.objects.filter(o=>o.data),objects);h.api.dispose();
+});
+test('pointer settlement persists only moved linear points and preserves an unrelated bead exactly',async()=>{
+ const state=stateApi.createBraceletState({layoutMode:'loose',trayMode:'linear',instances:[{...bead('a'),looseX:.4,looseY:.5},{...bead('b'),looseX:.6,looseY:.5},{...bead('far'),looseX:.5,looseY:.2}]}),h=await canvasHarness(state);
+ const a=h.canvas.objects.find(o=>o.data?.instanceId==='a'),b=h.canvas.objects.find(o=>o.data?.instanceId==='b');a.set({left:b.left-5,top:b.top});h.canvas.handlers['object:moving']({target:a});h.canvas.handlers['object:modified']({target:a});
+ const command=h.commands.at(-1);assert.equal(command.type,'settle');assert.equal(command.positions.some(p=>p.instanceId==='far'),false);assert.ok(command.positions.every(p=>Number.isFinite(p.looseLinearX)));
+ const next=stateApi.applyHistoryCommand(stateApi.createHistory(state),command).present;assert.deepEqual(next.instances[2],state.instances[2]);h.api.dispose();
+});
+
+test('dual projections retain the exact same rendered bead objects and image cache', async()=>{
+ const state=loose(),h=await canvasHarness(state),before=h.canvas.objects.filter(o=>o.data?.instanceId),loads=h.urls.length;
+ await h.api.render({...state,layoutMode:'bracelet',trayMode:'linear',wrapCount:2});
+ const after=h.canvas.objects.filter(o=>o.data?.instanceId);for(let n=0;n<before.length;n++)assert.equal(after[n],before[n]);
+ assert.equal(h.urls.length,loads);assert.equal(h.canvas.clears,0);h.api.dispose();
+});
+test('leaving tray edges never deletes an instance',async()=>{
+ const h=await canvasHarness(loose()),object=h.canvas.objects.find(o=>o.data?.instanceId==='a');object.set({left:900,top:900});h.canvas.handlers['object:modified']({target:object});
+ assert.notEqual(h.commands.at(-1)?.type,'remove');h.api.dispose();
+});
+test('strung drag previews local neighbor displacement without emitting a state change until release',async()=>{
+ const state=stateApi.createBraceletState({layoutMode:'bracelet',trayMode:'linear',instances:[bead('a',6),bead('b',8),bead('c',12)]});
+ const h=await canvasHarness(state),a=h.canvas.objects.find(o=>o.data?.instanceId==='a'),b=h.canvas.objects.find(o=>o.data?.instanceId==='b'),c=h.canvas.objects.find(o=>o.data?.instanceId==='c'),before=b.left;
+ c.set({left:a.left-20,top:a.top});h.canvas.handlers['object:moving']({target:c});assert.notEqual(b.left,before);assert.equal(h.commands.length,0);
+ h.canvas.handlers['object:modified']({target:c});assert.equal(h.commands.at(-1).type,'move');assert.equal(h.commands.at(-1).targetIndex,0);h.api.dispose();
+});
+test('subject alpha bounds crop transparent padding and preserve non-square source aspect',async()=>{
+ const h=await canvasHarness(stateApi.createBraceletState({layoutMode:'bracelet',instances:[{...bead('shape',12),subjectBounds:{left:40,top:20,width:100,height:50}}]}));
+ const o=h.canvas.objects.find(o=>o.data?.instanceId==='shape');assert.equal(o.cropX,40);assert.equal(o.cropY,20);assert.equal(o.width,100);assert.equal(o.height,50);assert.equal(o.scaleX,o.scaleY);assert.equal(o.width*o.scaleX,o.data.diameter);h.api.dispose();
+});
+test('selection during a mode transform does not strand beads between projections',async t=>{
+ const original={matchMedia:globalThis.matchMedia,requestAnimationFrame:globalThis.requestAnimationFrame,cancelAnimationFrame:globalThis.cancelAnimationFrame};
+ t.after(()=>Object.assign(globalThis,original));let next=0;const frames=new Map();globalThis.matchMedia=()=>({matches:false});globalThis.requestAnimationFrame=fn=>{frames.set(++next,fn);return next;};globalThis.cancelAnimationFrame=id=>frames.delete(id);
+ const h=await canvasHarness(loose());t.after(()=>h.api.dispose());const finish=()=>{const callbacks=[...frames.values()];frames.clear();callbacks.forEach(fn=>fn(performance.now()+400));};finish();
+ const linear={...loose(),layoutMode:'bracelet',trayMode:'linear'};await h.api.render(linear);await h.api.render({...linear,selectedInstanceId:'b'});finish();
+ const a=h.canvas.objects.find(o=>o.data?.instanceId==='a'),expected=layoutStudio(linear,520,520).points[0];assert.ok(Math.abs(a.left-expected.x)<1e-8);assert.equal(a.top,expected.y);
+});
+test('mid-transition export finishes canonical position scale and rotation and leaves same-state render correct',async t=>{
+ const original={matchMedia:globalThis.matchMedia,requestAnimationFrame:globalThis.requestAnimationFrame,cancelAnimationFrame:globalThis.cancelAnimationFrame};t.after(()=>Object.assign(globalThis,original));let next=0;const frames=new Map();globalThis.matchMedia=()=>({matches:false});globalThis.requestAnimationFrame=fn=>{frames.set(++next,fn);return next;};globalThis.cancelAnimationFrame=id=>frames.delete(id);
+ const h=await canvasHarness(loose());t.after(()=>h.api.dispose());const flush=offset=>{const callbacks=[...frames.values()];frames.clear();callbacks.forEach(fn=>fn(performance.now()+offset));};flush(400);
+ const nextState={...loose(),layoutMode:'bracelet',trayMode:'linear',instances:loose().instances.map(i=>i.instanceId==='b'?{...i,sizeMm:16,rotationDeg:90}:i)};await h.api.render(nextState);flush(80);
+ const exported=JSON.parse(await h.api.exportImage()).find(i=>i.id==='b');assert.equal(exported.angle,90);assert.equal(exported.scaleX,16*(520/110)/200);assert.equal(exported.scaleY,exported.scaleX);
+ await h.api.render(nextState);const b=h.canvas.objects.find(o=>o.data?.instanceId==='b');assert.equal(b.angle,90);assert.equal(b.scaleX,exported.scaleX);assert.equal(b.scaleY,exported.scaleY);
+});
 
 test('selection uses a non-intercepting round outline that follows drag without rebuilding beads', async () => {
   const state = { ...loose(), selectedInstanceId: 'a' };
@@ -198,7 +248,7 @@ test('selection-only canvas renders preserve drag object and loose release emits
   h.api.dispose();
 });
 
-test('canvas bracelet release emits nearest sequence index, and empty area can place freely', async () => {
+test('canvas bracelet release emits a gap boundary, and Studio empty area never places implicitly', async () => {
   const ring = stateApi.compactToBracelet(loose());
   const h = await canvasHarness(ring);
   const source = h.canvas.objects.find(x => x.data?.instanceId === 'a');
@@ -206,11 +256,11 @@ test('canvas bracelet release emits nearest sequence index, and empty area can p
   source.left = target.left;
   source.top = target.top;
   h.canvas.handlers['object:modified']({ target: source });
-  assert.equal(h.commands.at(-1).targetIndex, 2);
+  assert.equal(h.commands.at(-1).targetIndex, 1);
   await h.api.render({ ...loose(), activeMaterialName: 'Quartz' });
+  const commandCount=h.commands.length;
   h.canvas.handlers['mouse:down']({ e: { x: 280, y: 290 } });
-  assert.equal(h.commands.at(-1).type, 'place');
-  assert.ok(h.commands.at(-1).looseX > 0.5);
+  assert.equal(h.commands.length, commandCount);
   h.api.dispose();
 });
 

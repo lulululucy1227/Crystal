@@ -2,9 +2,32 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
+import {layoutStudio} from '../workbench/studio-layout.mjs';
 
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const response = body => ({ ok: true, json: async () => body });
+async function editingStudio(t, instances, extra={}) {
+ const dom=new JSDOM('<main></main>');t.after(()=>dom.window.close());const host=dom.window.document.querySelector('main'),changes=[];
+ const oldFetch=globalThis.fetch;t.after(()=>{globalThis.fetch=oldFetch;});globalThis.fetch=async url=>response(url==='/api/local-assets'?{assets:[]}:url==='/api/drafts'?{drafts:[]}:{available:false});
+ const {renderStudio}=await studioModule();const controller=renderStudio({host,resolveMaterial:()=>({}),initialDraft:{braceletState:{layoutMode:'loose',selectedInstanceId:instances[0]?.instanceId,instances,...extra}},onDraft:d=>changes.push(d)});t.after(()=>controller.dispose());await controller.ready;
+ const key=key=>host.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key,bubbles:true}));return {dom,host,key,state:()=>changes.at(-1).braceletState};
+}
+test('real keyboard moves and inspector resize settle locally and undo in one action',async t=>{
+ const instances=[{instanceId:'a',materialName:'Quartz',sizeMm:8,looseX:.42,looseY:.5},{instanceId:'b',materialName:'Quartz',sizeMm:8,looseX:.58,looseY:.5},{instanceId:'far',materialName:'Quartz',sizeMm:8,looseX:.5,looseY:.2}];
+ const h=await editingStudio(t,instances),before=structuredClone(h.state().instances);
+ const clear=()=>{const p=layoutStudio(h.state(),900,560).points;assert.ok(Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)>=(p[0].diameter+p[1].diameter)/2-.1);assert.deepEqual(h.state().instances[2],before[2]);};
+ h.key('ArrowRight');clear();h.host.querySelector('[data-action="undo"]').click();assert.deepEqual(h.state().instances,before);
+ const size=h.host.querySelector('[data-instance-size]');size.value='16';size.dispatchEvent(new h.dom.window.Event('change'));clear();h.host.querySelector('[data-action="undo"]').click();assert.deepEqual(h.state().instances,before);
+});
+test('keyboard selection reaches each visible bead without edits and section filter cannot target hidden beads',async t=>{
+ const instances=Array.from({length:8},(_,n)=>({instanceId:String(n),materialName:'Quartz',sizeMm:8}));
+ const h=await editingStudio(t,instances,{trayMode:'linear',layoutMode:'bracelet',wrapCount:2}),before=structuredClone(h.state().instances);
+ h.key('PageDown');assert.equal(h.state().selectedInstanceId,'1');h.key('PageDown');assert.equal(h.state().selectedInstanceId,'2');h.key('PageUp');assert.equal(h.state().selectedInstanceId,'1');
+ assert.match(h.host.textContent,/PageDown/);assert.match(h.host.textContent,/圆盘与直槽分别记住散珠位置/);
+ h.host.querySelector('[data-section="back"]').click();h.key('Delete');assert.deepEqual(h.state().instances,before,'hidden selected bead must not be deleted');
+ h.key('PageDown');assert.equal(h.state().selectedInstanceId,'2');h.host.querySelector('[data-select-next]').click();assert.equal(h.state().selectedInstanceId,'3');
+ h.host.querySelector('[data-section="all"]').click();assert.deepEqual(h.state().instances,before);assert.equal(h.host.querySelector('[data-action="undo"]').disabled,true);
+});
 async function studioModule(canvasSource = 'export function createBraceletCanvas(){return {render(){},dispose(){}}}') {
   const file = new URL('../workbench/studio-view.mjs', import.meta.url);
   const canvasUrl = `data:text/javascript;base64,${Buffer.from(`${canvasSource} // ${Math.random()}`).toString('base64')}`;
@@ -98,6 +121,28 @@ test('typing a size then pressing plus without blur adds that size immediately',
   assert.equal(changes.at(-1).braceletState.instances[0].sizeMm, 14);
   assert.match(changes.at(-1).braceletState.instances[0].specId, /14mm$/);
   controller.dispose();
+});
+
+test('dual Studio controls preserve beads through wrap, tray, preview cancel, commit and undo', async t => {
+ const dom=new JSDOM('<main></main>');t.after(()=>dom.window.close());const host=dom.window.document.querySelector('main'),changes=[];
+ const oldFetch=globalThis.fetch;t.after(()=>{globalThis.fetch=oldFetch;});globalThis.fetch=async url=>response(url==='/api/local-assets'?{assets:[]}:url==='/api/drafts'?{drafts:[]}:{available:false});
+ const {renderStudio}=await studioModule();const controller=renderStudio({host,materials:[{name:'Quartz',zhName:'白水晶',category:'crystal'}],resolveMaterial:()=>({}),onDraft:d=>changes.push(d)});t.after(()=>controller.dispose());await controller.ready;
+ host.querySelector('[data-plus]').click();host.querySelector('[data-plus]').click();const ids=changes.at(-1).braceletState.instances.map(i=>i.instanceId);
+ assert.ok(host.querySelector('[data-tray="linear"]'));host.querySelector('[data-tray="linear"]').click();
+ const wrap=host.querySelector('[data-wrap]');wrap.value='3';wrap.dispatchEvent(new dom.window.Event('change'));
+ assert.equal(changes.at(-1).braceletState.trayMode,'linear');assert.equal(changes.at(-1).braceletState.wrapCount,3);
+ host.querySelector('[data-action="bracelet"]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');assert.equal(host.querySelector('[data-order-preview]').hidden,false);
+ host.querySelector('[data-cancel-order]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');host.querySelector('[data-action="bracelet"]').click();host.querySelector('[data-confirm-order]').click();
+ assert.equal(changes.at(-1).braceletState.layoutMode,'bracelet');assert.deepEqual(changes.at(-1).braceletState.instances.map(i=>i.instanceId),ids);
+ host.querySelector('[data-action="undo"]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');
+});
+
+test('finishing a pending save must not dismiss a newly opened string preview', async t=>{
+ const dom=new JSDOM('<main></main>');t.after(()=>dom.window.close());const host=dom.window.document.querySelector('main'),pending=deferred();const oldFetch=globalThis.fetch;t.after(()=>{globalThis.fetch=oldFetch;});
+ globalThis.fetch=async(url,options)=>options?.method==='PUT'?pending.promise:response(url==='/api/local-assets'?{assets:[]}:url==='/api/drafts'?{drafts:[]}:{available:false});
+ const {renderStudio}=await studioModule();const controller=renderStudio({host,initialDraft:{name:'save-race'},resolveMaterial:()=>({})});t.after(()=>controller.dispose());await controller.ready;
+ const saving=host.querySelector('[data-action="save"]').onclick();host.querySelector('[data-action="bracelet"]').click();pending.resolve(response({ok:true}));await saving;
+ assert.equal(host.querySelector('[data-order-preview]').hidden,false);
 });
 
 test('selecting a bead immediately renders its selection without changing bead identities or positions', async t => {

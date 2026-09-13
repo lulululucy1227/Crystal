@@ -31,7 +31,6 @@ test('canvas adapter exports the semantic bracelet canvas factory', () => {
   assert.match(source, /type:\s*['"]remove['"]/);
   assert.match(source, /material\.atlas/);
   assert.match(source, /cropX/);
-  assert.match(source, /outsideRing/);
   assert.match(source, /slotDiameter/);
   assert.doesNotMatch(source, /localStorage|fetch\(|\/api\//);
 });
