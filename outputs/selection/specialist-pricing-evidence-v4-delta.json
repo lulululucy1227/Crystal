@@ -1,0 +1,26 @@
+{
+  "version":"CR-SPECIALIST-PRICE-EVIDENCE-V4-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/specialist-pricing-evidence-v3-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V3-DELTA-20260913",
+  "updates":[
+    {
+      "material":"海纹石 / Larimar",
+      "status":"SPECIALIST_ANCHORS_STRENGTHENED",
+      "direct_source_anchors":[
+        {"form":"hand-polished drilled freeform beads","spec":"100g lot; approximately 25-30 stones; about 13x12mm to 20x23mm","price":"USD 95 per 100g lot","source":"https://larimarwholesalers.com/product/larimar-hand-polished-drilled-freeform-beads-100g-lot/","seller_claims":"Dominican source; natural; not enhanced/treated","confidence":"MEDIUM_HIGH_SOURCE"},
+        {"form":"round beads","spec":"10-12mm strand","price":"USD 187 standard / USD 425 premium listed on supplier catalog","source":"https://larimarwholesalers.com/","confidence":"MEDIUM_HIGH_SOURCE"},
+        {"form":"polished cabochon","spec":"Ocean Blue 18x13mm","price":"wholesale from USD 28/pc","source":"https://www.larimarejewelry.com/wholesale.html","confidence":"MEDIUM_HIGH_SOURCE"},
+        {"form":"rough","spec":"Ocean Blue / Sky Blue-Cloud","price":"from USD 2.50/g Ocean Blue; USD 1.50/g Sky Blue/Cloud","source":"https://www.larimarejewelry.com/wholesale.html","confidence":"MEDIUM_HIGH_SOURCE"}
+      ],
+      "secondary_market_anchors":[
+        {"form":"natural freeform pebble strand","spec":"8-10mm, ~15.5in","price":"USD 18.99/strand","source":"https://intrinsictrading.com/collections/new-collection/products/larimar-beads-04813"},
+        {"form":"natural B-grade smooth rondelle","spec":"about 8mm","price":"USD 20.54/strand","source":"https://www.beadswholesale.com/shop/Larimar-Beads-c1-at125.html?page=1"}
+      ],
+      "identity_warning":"Marketplace listings can include treated or Chinese 'Larimar' commercial products. Dominican Larimar identity/origin and treatment disclosure remain gates for meaningful-value purchasing.",
+      "working_sourcing_units":["gram for rough/batch","piece for focal/freeform/cabochon","strand for comparable round-bead specs"],
+      "purchase_rule":"Compare only within the same form + color/pattern class + identity confidence. Freeform batch pricing and round-strand pricing remain separate."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
