@@ -22,7 +22,16 @@ function ringRadius(group) {
   });
   return radius;
 }
-export function layoutStudio(state, width, height, {linearSection='all'}={}) {
+export function layoutStudio(state,width,height,options={}){
+  const originals=state.instances||[];
+  // A conservative enclosing circle for nonround source bodies, not a product
+  // dimension. Keep the render width and BOM's along-string size unchanged.
+  const footprint=i=>{const b=i.subjectBounds;if(!b||!(b.width>0&&b.height>0))return i.sizeMm;const ratio=b.height/b.width;return i.sizeMm*(i.form==='round'?Math.max(1,ratio):Math.hypot(1,ratio));};
+  const projection=layoutProjection({...state,instances:originals.map(i=>({...i,sizeMm:footprint(i)}))},width,height,options);
+  projection.points.forEach((p,n)=>{p.collisionDiameter=p.diameter;p.diameter=originals[n].sizeMm*projection.scale;});
+  return projection;
+}
+function layoutProjection(state, width, height, {linearSection='all'}={}) {
   const center = {x: width / 2, y: height / 2};
   const trayRadius = Math.min(width, height) * .44;
   const trayMode = state.trayMode || 'round';
@@ -101,8 +110,9 @@ export function insertionForPoint(pointer, projection, excludeId) {
   return gaps.reduce((best,g)=>Math.hypot(g.x-pointer.x,g.y-pointer.y)<Math.hypot(best.x-pointer.x,best.y-pointer.y)?g:best);
 }
 export function looseCoordinates(point, projection) {
-  const rx=projection.trayMode==='round'?projection.trayRadius-point.diameter/2:projection.width*.44-point.diameter/2;
-  const ry=projection.trayMode==='round'?projection.trayRadius-point.diameter/2:projection.height*.36-point.diameter/2;
+  const extent=point.collisionDiameter??point.diameter;
+  const rx=projection.trayMode==='round'?projection.trayRadius-extent/2:projection.width*.44-extent/2;
+  const ry=projection.trayMode==='round'?projection.trayRadius-extent/2:projection.height*.36-extent/2;
   const x=.5+(point.x-projection.center.x)/(2*Math.max(1,rx)),y=.5+(point.y-projection.center.y)/(2*Math.max(1,ry));
   return {instanceId:point.instanceId,...(projection.trayMode==='linear'?{looseLinearX:x,looseLinearY:y}:{looseX:x,looseY:y})};
 }
@@ -110,17 +120,18 @@ export function settleLoose(points, activeId, pointer, projection) {
   const result=points.map(p=>({...p}));const active=result.find(p=>p.instanceId===activeId);if(!active)return result;
   active.x=pointer.x;active.y=pointer.y;
   const constrain=p=>{
+    const extent=p.collisionDiameter??p.diameter;
     if(projection.trayMode==='round'){
-      const dx=p.x-projection.center.x,dy=p.y-projection.center.y,d=Math.hypot(dx,dy),limit=projection.trayRadius-p.diameter/2;
+      const dx=p.x-projection.center.x,dy=p.y-projection.center.y,d=Math.hypot(dx,dy),limit=projection.trayRadius-extent/2;
       if(d>limit){p.x=projection.center.x+dx*limit/d;p.y=projection.center.y+dy*limit/d;}
-    }else{const rx=projection.width*.44-p.diameter/2,ry=projection.height*.36-p.diameter/2;p.x=clamp(p.x,projection.center.x-rx,projection.center.x+rx);p.y=clamp(p.y,projection.center.y-ry,projection.center.y+ry);}
+    }else{const rx=projection.width*.44-extent/2,ry=projection.height*.36-extent/2;p.x=clamp(p.x,projection.center.x-rx,projection.center.x+rx);p.y=clamp(p.y,projection.center.y-ry,projection.center.y+ry);}
   };
   constrain(active);
   const affected=new Set([activeId]);
   for(let iteration=0;iteration<24;iteration++){
     let changed=false;
     for(let a=0;a<result.length;a++)for(let b=a+1;b<result.length;b++){
-      const p=result[a],q=result[b],dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy),need=(p.diameter+q.diameter)/2+1;
+      const p=result[a],q=result[b],dx=q.x-p.x,dy=q.y-p.y,d=Math.hypot(dx,dy),need=((p.collisionDiameter??p.diameter)+(q.collisionDiameter??q.diameter))/2+1;
       if(!affected.has(p.instanceId)&&!affected.has(q.instanceId))continue;
       if(d>=need-.02)continue;changed=true;const nx=d?dx/d:Math.cos(a*2.4+b),ny=d?dy/d:Math.sin(a*2.4+b),overlap=(need-d)*.8;
       affected.add(p.instanceId);affected.add(q.instanceId);
