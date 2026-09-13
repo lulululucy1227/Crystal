@@ -1,0 +1,27 @@
+{
+  "version": "CR-SPECIALIST-PRICE-EVIDENCE-V2-DELTA-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/specialist-pricing-evidence-v1.json@CR-SPECIALIST-PRICE-EVIDENCE-V1-20260913",
+  "updates": [
+    {
+      "material":"舒俱来 / Sugilite",
+      "pricing_model":"SPECIALIST_MATERIAL",
+      "identity_gate":[
+        "confirm jewelry material is sugilite-bearing material rather than relying on the trade name alone",
+        "record matrix/chalcedony mixture or associated minerals where visible/relevant",
+        "record treatment disclosure",
+        "use lab identity for meaningful-value purchases when supplier evidence is insufficient"
+      ],
+      "pricing_unit":"single bead/piece + weight/size; round-bead strand may be a commercial sub-spec",
+      "key_price_drivers":["purple saturation","color uniformity","matrix/pattern attractiveness","translucency","fractures","polish","size/weight","treatment","identity confidence"],
+      "reference_anchors":[
+        {"source":"GIA Gems & Gemology 1987","url":"https://www.gia.edu/doc/SU87.pdf","evidence":"Jewelry-quality Wessels Mine material may be predominantly manganoan sugilite or chalcedony mixed/colored by sugilite; composition and associated minerals matter to identity."},
+        {"source":"GemSelect current buyer reference","url":"https://www.gemselect.com/gem-info/sugilite/sugilite-info.php","evidence":"Uniform/intense purple is typically valued highly; attractive veining and patterned material can also be desirable."},
+        {"source":"GIA colored stone identification services","url":"https://www.gia.edu/gem-lab-service/colored-stone","evidence":"Laboratory reports can identify colored stones and detectable treatments when higher-value batch verification is needed."}
+      ],
+      "purchase_rule":"Do not create a universal low/mid/high 8mm band from seller labels alone. First lock identity/treatment + visual class; then compare same-size/same-class beads or individual pieces."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
