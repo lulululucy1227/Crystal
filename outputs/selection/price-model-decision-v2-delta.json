@@ -1,0 +1,23 @@
+{
+  "version": "CR-PRICE-MODEL-DECISION-V2-DELTA-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/price-model-decision-v1.json@CR-PRICE-MODEL-DECISION-V1-20260913",
+  "decision": "PROMOTE_SUGILITE_TO_SPECIALIST_MATERIAL",
+  "reason": "User selected dual model B after review where Sugilite was included in the specialist set. Public evidence also shows composition/identity and high-value batch variation are too important for a generic 8mm band.",
+  "specialist_materials_current": [
+    "Akoya养殖珍珠",
+    "大溪地养殖珍珠",
+    "南洋养殖珍珠",
+    "沉香",
+    "蜜蜡",
+    "琥珀",
+    "翡翠",
+    "和田玉",
+    "绿松石",
+    "海纹石",
+    "舒俱来"
+  ],
+  "rule": "For these materials, identity/specification/treatment gates precede price comparison. Ordinary round-bead market prices may be stored as commercial anchors only and must not replace specialist pricing logic.",
+  "purchase_approval_effect": "none"
+}
