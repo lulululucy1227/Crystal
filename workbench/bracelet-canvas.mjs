@@ -51,7 +51,7 @@ export function createBraceletCanvas({canvasElement,state,resolveMaterial,onComm
    const columns=Math.max(1,Number(source.atlas?.columns)||1),rows=Math.max(1,Number(source.atlas?.rows)||1),index=Math.max(0,Number(source.atlas?.index)||0),bounds=source.subjectBounds;
    const validBounds=!source.atlas&&bounds&&[bounds.left,bounds.top,bounds.width,bounds.height].every(Number.isFinite)&&bounds.left>=0&&bounds.top>=0&&bounds.width>0&&bounds.height>0&&bounds.left+bounds.width<=template.width&&bounds.top+bounds.height<=template.height;
    const width=validBounds?bounds.width:template.width/columns,height=validBounds?bounds.height:template.height/rows;
-   image.set({...locked,width,height,cropX:validBounds?bounds.left:source.atlas?index%columns*width:0,cropY:validBounds?bounds.top:source.atlas?Math.floor(index/columns)*height:0,representationClass:source.representationClass});image.baseSize=Math.max(width,height);return image;
+   image.set({...locked,width,height,cropX:validBounds?bounds.left:source.atlas?index%columns*width:0,cropY:validBounds?bounds.top:source.atlas?Math.floor(index/columns)*height:0,representationClass:source.representationClass});image.baseSize=validBounds?width:Math.max(width,height);return image;
   }catch{return fallbackBead(instance,material);}
  }
  function drawGuides(){

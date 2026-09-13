@@ -70,6 +70,11 @@ test('subject alpha bounds crop transparent padding and preserve non-square sour
  const h=await canvasHarness(stateApi.createBraceletState({layoutMode:'bracelet',instances:[{...bead('shape',12),subjectBounds:{left:40,top:20,width:100,height:50}}]}));
  const o=h.canvas.objects.find(o=>o.data?.instanceId==='shape');assert.equal(o.cropX,40);assert.equal(o.cropY,20);assert.equal(o.width,100);assert.equal(o.height,50);assert.equal(o.scaleX,o.scaleY);assert.equal(o.width*o.scaleX,o.data.diameter);h.api.dispose();
 });
+test('tall off-center alpha body renders its physical width with uniform scale after save and reload',async()=>{
+ const original=stateApi.createBraceletState({layoutMode:'bracelet',instances:[{...bead('tall',8),form:'irregular',rotationDeg:90,sourceRef:{source_key:'SRC-IMG_3405',position:'P03'},subjectBounds:{left:100,top:10,width:60,height:160}}]});
+ const restored=stateApi.createBraceletState(stateApi.serializeBraceletState(original));const h=await canvasHarness(restored);
+ const o=h.canvas.objects.find(o=>o.data?.instanceId==='tall');assert.equal(o.cropX,100);assert.equal(o.cropY,10);assert.equal(o.width,60);assert.equal(o.height,160);assert.equal(o.scaleX,o.scaleY);assert.equal(o.width*o.scaleX,o.data.diameter);assert.equal(o.angle,90);assert.deepEqual(restored.instances[0].sourceRef,original.instances[0].sourceRef);h.api.dispose();
+});
 test('selection during a mode transform does not strand beads between projections',async t=>{
  const original={matchMedia:globalThis.matchMedia,requestAnimationFrame:globalThis.requestAnimationFrame,cancelAnimationFrame:globalThis.cancelAnimationFrame};
  t.after(()=>Object.assign(globalThis,original));let next=0;const frames=new Map();globalThis.matchMedia=()=>({matches:false});globalThis.requestAnimationFrame=fn=>{frames.set(++next,fn);return next;};globalThis.cancelAnimationFrame=id=>frames.delete(id);

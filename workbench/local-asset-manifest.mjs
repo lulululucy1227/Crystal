@@ -44,6 +44,16 @@ export function resolveLocalAssetPath({ rootDir, file }) {
   } catch { return null; }
 }
 
+// Explicit allowlist: inventory can expose provenance, never arbitrary source paths
+// as file endpoints. Non-ready records retain their status without a usable URL.
+export function publicLocalAsset(asset,{rootDir}) {
+  const keys=['material_id','spec_id','status','needs_mask','reason','representation_class','publication_status','rights_status','file','display_name_zh','display_name_en','material_name','category','form','source_ref','source_position','identity_status','asset_key','width','height','subject_bounds','size_status','virtual_default_size_mm','label_kind','printed_label','quality_flags','quality_notes','source_sha256','derived_sha256','archive_sha256'];
+  const result=Object.fromEntries(keys.filter(k=>asset[k]!==undefined).map(k=>[k,asset[k]]));
+  if(asset.status==='ready'&&!asset.needs_mask&&asset.rights_status!=='prohibited'&&resolveLocalAssetPath({rootDir,file:asset.file}))result.imageUrl=`/assets/local/${encodeURIComponent(asset.file)}`;
+  else delete result.file;
+  return result;
+}
+
 export function resolveMaterialAsset({ materialId, specId, localAssets = [], trackedAssets = [], generatedAssets = [], fallback = null }) {
   const matches = asset => asset && asset.material_id === materialId && asset.spec_id === specId && asset.rights_status !== 'prohibited';
   const ready = asset => matches(asset) && !asset.needs_mask && (!asset.status || asset.status === 'ready');

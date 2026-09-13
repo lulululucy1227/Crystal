@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import {createHash,randomUUID} from 'node:crypto';
 import {exportDesign} from './studio-view.mjs';
 import {validateDesignPackage} from './design-package.mjs';
-import {loadLocalAssetManifest,resolveLocalAssetPath} from './local-asset-manifest.mjs';
+import {loadLocalAssetManifest,resolveLocalAssetPath,publicLocalAsset} from './local-asset-manifest.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(root, '..');
@@ -110,7 +110,7 @@ const server = http.createServer(async (req, res) => {
     }
     if(url.pathname==='/api/local-assets'){
       const manifest=loadLocalAssetManifest({rootDir:repo});
-      return json(res,{assets:manifest.assets.map(a=>({material_id:a.material_id,spec_id:a.spec_id,status:a.status,needs_mask:a.needs_mask,reason:a.reason,representation_class:a.representation_class,publication_status:a.publication_status,file:a.file,imageUrl:a.status==='ready'&&!a.needs_mask&&a.rights_status!=='prohibited'&&resolveLocalAssetPath({rootDir:repo,file:a.file})?`/assets/local/${encodeURIComponent(a.file)}`:undefined}))});
+      return json(res,{assets:manifest.assets.map(a=>publicLocalAsset(a,{rootDir:repo}))});
     }
     if(url.pathname.startsWith('/assets/local/')){
       const name=decodeURIComponent(url.pathname.slice('/assets/local/'.length));
