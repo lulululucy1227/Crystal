@@ -1,0 +1,187 @@
+{
+  "version": "CR-REFERENCE-PHOTO-EVIDENCE-V2-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": "outputs/selection/reference-photo-evidence-v1.json@CR-REFERENCE-PHOTO-EVIDENCE-V1",
+  "purpose": "Second reference-image evidence pass. External images remain recognition/sourcing references only; they are not owned project assets, procurement samples or proof of material identity.",
+  "rules": [
+    "Prefer single bead/single item images with visible drill hole and neutral background.",
+    "Group/strand images are allowed only as secondary identity references.",
+    "Do not copy third-party images into product marketing materials.",
+    "Retain source URL and image URL; seller material claims remain claims, not laboratory verification."
+  ],
+  "new_or_improved_material_photo_references": [
+    {
+      "material": "南红",
+      "form": "8mm圆珠识别图",
+      "image_url": "https://www.ilike-diy.com/Uploads/image/20230530/20230530214405_95175.png",
+      "source_url": "https://www.ilike-diy.com/product/South-Red-Agate-Beads.html",
+      "reference_quality": "HIGH",
+      "note": "图中明确标出8mm直径、1mm孔径；适合做圆珠识别/孔径参考，不用于证明产区或等级。"
+    },
+    {
+      "material": "彼得石",
+      "form": "8mm圆珠组图",
+      "image_url": "https://www.istraka.sk/obchod_homedir/data/3012/obrazky/goralky-pietersit-8mm-leskle-hladke-hnede-modre-oranzove-s-kresbou-nebrusene-2541-3.jpg",
+      "source_url": "https://www.istraka.sk/eshop/pietersit-8mm-polsnura/p-2216068.xhtml",
+      "reference_quality": "MEDIUM_HIGH",
+      "note": "不是单颗白底，但8mm球珠纹理辨识度高，可替换原先更弱的组合证据。"
+    },
+    {
+      "material": "黑碧玺",
+      "form": "8mm抛光圆珠识别图",
+      "source_url": "external bead supplier reference",
+      "image_url": "https://cdn11.bigcommerce.com/s-iv30xoewdg/images/stencil/original/products/21034/32693/IMG_3966__36938.1713456413.jpg?c=2&imbypass=on",
+      "reference_quality": "HIGH",
+      "note": "8mm黑色抛光珠，孔位可辨；作为形态识别。"
+    },
+    {
+      "material": "蓝纹玛瑙",
+      "form": "8mm圆珠识别图",
+      "source_url": "Rakuten natural-stone bead listing",
+      "image_url": "https://thumbnail.image.rakuten.co.jp/%400_mall/gembazaar/cabinet/tama3/tu-bluerace-3_01.jpg",
+      "reference_quality": "MEDIUM_HIGH",
+      "note": "用于Blue Lace Agate视觉识别；中国市场名称仍需和蓝纹石/蓝条纹玛瑙分开。"
+    },
+    {
+      "material": "天河石",
+      "form": "8mm圆珠识别图",
+      "source_url": "external bead supplier reference",
+      "image_url": "https://www.onyxwroclaw.pl/img/products/20/06/1/3_max.jpg?v=1727252008",
+      "reference_quality": "HIGH",
+      "note": "圆珠和孔位清楚，作为Amazonite视觉参考。"
+    },
+    {
+      "material": "摩根石",
+      "form": "约8mm圆珠识别图",
+      "source_url": "Yahoo/Rakuten bead retail reference",
+      "image_url": "https://item-shopping.c.yimg.jp/i/n/colorfulbeads_210309605_1_d_20250328114009",
+      "reference_quality": "MEDIUM_HIGH",
+      "note": "仅用于天然摩根石圆珠视觉参考；不得与烤漆低价商品混为同一价格证据。"
+    },
+    {
+      "material": "日光石",
+      "form": "8mm圆珠识别图",
+      "source_url": "Rakuten bead reference",
+      "image_url": "https://tshop.r10s.jp/auc-hinryo/cabinet/img65/s-dscf8830.jpg?fitin=720%3A720",
+      "reference_quality": "MEDIUM_HIGH",
+      "note": "用于天然日光石外观参考。"
+    },
+    {
+      "material": "蓝晶石",
+      "form": "约8.6-9.3mm圆珠组图",
+      "source_url": "external bead supplier reference",
+      "image_url": "https://images.tcdn.com.br/img/img_prod/99941/cianita_azul_mesclada_extra_esferas_de_8_9mm_06_pecas_pp123_32252_1_e086d259e2748e55108562a526dec1de_20241212173119.jpg",
+      "reference_quality": "HIGH",
+      "note": "尺寸接近基准规格，蓝晶石纹理清晰。"
+    },
+    {
+      "material": "舒俱来",
+      "form": "8mm圆珠组图",
+      "source_url": "Japanese bead supplier reference",
+      "image_url": "https://img06.shop-pro.jp/PA01106/172/product/133419403.jpg?cmsp_timestamp=20180718142756",
+      "reference_quality": "MEDIUM_HIGH",
+      "note": "用于紫色/黑色纹理识别，不作为高端舒俱来等级样品。"
+    },
+    {
+      "material": "阿拉善玛瑙",
+      "form": "12.5-15mm五角星雕刻单珠",
+      "source_url": "https://www.topaoko2007.com/collections/engraved-hole-beads/products/-rf082",
+      "image_url": null,
+      "reference_quality": "HIGH_SOURCE_PAGE",
+      "note": "页面为实物多图，孔径约1mm；保留source_url，后续如果能稳定提取直链再补image_url。"
+    },
+    {
+      "material": "盐源玛瑙",
+      "form": "7.8-8.5mm方块/直孔单珠",
+      "source_url": "https://www.topaoko2007.com/collections/yanyuan-agate",
+      "image_url": null,
+      "reference_quality": "HIGH_SOURCE_PAGE",
+      "note": "同分类页明确存在7.8-8.5mm裸石单珠和8.5-9mm圆珠；适合作为形态/规格参考，图直链待补。"
+    }
+  ],
+  "new_accessory_photo_references": [
+    {
+      "accessory": "0.4mm透明弹力线",
+      "source_url": "https://www.dekorynka.pl/zylki.html",
+      "image_url": "https://www.dekorynka.pl/environment/cache/images/productGfx_78600_500_500/zylka-jubilerska-silikonowa-elastyczna-transparentna-bezbarwna-0%2C4mm.jpg",
+      "reference_quality": "HIGH",
+      "note": "0.4mm/20m卷装形态清楚；仅作线材识别，不锁定品牌。"
+    },
+    {
+      "accessory": "透明隔片/定距片",
+      "source_url": "https://www.etmall.com.tw/i/100002288860",
+      "image_url": "https://media.etmall.com.tw/nximg/00100002288/100002288860/1fb2ffb3-bc63-41ef-a1ff-00090d5a1f30.jpg",
+      "reference_quality": "HIGH",
+      "note": "图示直径4mm、孔径1.4mm、透明隔片；页面称硅胶，但项目材质身份仍保持待确认，不直接把营销材质写死。"
+    },
+    {
+      "accessory": "925银小圆隔珠/配重珠尺寸系列",
+      "source_url": "https://blingqueen.in/products/180pcs-3g-s925-sterling-silver-spacer-beads-2mm-4mm-for-jewelry-making",
+      "image_url": "https://blingqueen.in/cdn/shop/files/BQ_F_CNJL2509251253_2121443_1080x.jpg?v=1759786030",
+      "reference_quality": "HIGH",
+      "note": "2-4mm圆珠尺寸对照清楚，可作为小圆隔珠/配重珠视觉参考。"
+    }
+  ],
+  "freeform_price_form_references": [
+    {
+      "material": "白水晶",
+      "form": "直孔切面随形",
+      "source_url": "https://miaho.shopstore.tw/item/Shopee672b3b6e4ca6f",
+      "spec": "约17-25mm x 12-16mm",
+      "market": "Taiwan retail",
+      "price": "NT$85/pc"
+    },
+    {
+      "material": "白水晶",
+      "form": "横孔切面随形",
+      "source_url": "https://miaho.shopstore.tw/item/Shopee672b3bd37849b",
+      "spec": "约14-22mm",
+      "market": "Taiwan retail",
+      "price": "NT$60/pc"
+    },
+    {
+      "material": "葡萄石",
+      "form": "横孔切面随形",
+      "source_url": "https://miaho.shopstore.tw/item/Shopee66ceeb4a50080",
+      "spec": "约15-20mm",
+      "market": "Taiwan retail",
+      "price": "NT$75/pc"
+    },
+    {
+      "material": "茶晶",
+      "form": "随形珠",
+      "source_url": "https://yiwugo.com/product/detail/970419454.html",
+      "market": "China wholesale/public",
+      "price": "¥5.75/pc"
+    },
+    {
+      "material": "红胶花水晶",
+      "form": "随形珠",
+      "source_url": "https://yiwugo.com/product/detail/970419454.html",
+      "market": "China wholesale/public",
+      "price": "¥4.00/pc"
+    },
+    {
+      "material": "红胶花水晶",
+      "form": "双尖六角柱",
+      "source_url": "https://yiwugo.com/product/detail/970419454.html",
+      "market": "China wholesale/public",
+      "price": "¥6.50/pc"
+    },
+    {
+      "material": "阿拉善玛瑙",
+      "form": "牛油果色方糖",
+      "source_url": "https://yiwugo.com/product/detail/970419454.html",
+      "market": "China wholesale/public",
+      "price": "¥1.88/pc"
+    }
+  ],
+  "remaining_photo_gaps_after_v2": [
+    "景观玛瑙：仍缺能明确对应Landscape Agate、单颗、打孔的可靠图；不能用普通缠丝/红玛瑙替代。",
+    "和田玉：已有更好的圆珠识别候选，但仍需一张来源清楚、明确打孔、不会暗示新疆产地真伪的中性参考图。",
+    "盐源玛瑙与阿拉善玛瑙：source page已经合格，仍可继续补稳定直接image_url。",
+    "非弹力串珠线：还需要一张能明确识别结构/线径的参考图。",
+    "金色金属件：在基材确定之前暂不补正式参考图，避免混淆925银镀金/包金/铜镀金。"
+  ]
+}
