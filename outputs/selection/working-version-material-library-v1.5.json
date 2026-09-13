@@ -1,0 +1,35 @@
+{
+  "version":"CR-MAT-V1.5-MOTHER-LIBRARY-20260913",
+  "date":"2026-09-13",
+  "status":"ACTIVE_WORKING_MOTHER_LIBRARY",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/working-version-material-library-v1.4.json@CR-MAT-V1.4-MOTHER-LIBRARY-20260913",
+  "pricing_model_decisions":[
+    "outputs/selection/price-model-decision-v1.json@CR-PRICE-MODEL-DECISION-V1-20260913",
+    "outputs/selection/price-model-decision-v2-delta.json@CR-PRICE-MODEL-DECISION-V2-DELTA-20260913"
+  ],
+  "pricing_evidence":[
+    "outputs/selection/price-evidence-v1.json@CR-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/price-evidence-v2-delta.json@CR-PRICE-EVIDENCE-V2-DELTA-20260913",
+    "outputs/selection/price-evidence-v3-delta.json@CR-PRICE-EVIDENCE-V3-DELTA-20260913",
+    "outputs/selection/specialist-pricing-evidence-v1.json@CR-SPECIALIST-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/specialist-pricing-evidence-v2-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V2-DELTA-20260913"
+  ],
+  "photo_evidence":[
+    "outputs/selection/reference-photo-evidence-v1.json@CR-REFERENCE-PHOTO-EVIDENCE-V1",
+    "outputs/selection/reference-photo-evidence-v2.json@CR-REFERENCE-PHOTO-EVIDENCE-V2-20260913",
+    "outputs/selection/reference-photo-evidence-v3.json@CR-REFERENCE-PHOTO-EVIDENCE-V3-20260913",
+    "outputs/selection/reference-photo-evidence-v4.json@CR-REFERENCE-PHOTO-EVIDENCE-V4-20260913"
+  ],
+  "gap_tracker":"outputs/selection/completion-gap-tracker-v1.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V1-20260913",
+  "specialist_materials_current":["Akoya养殖珍珠","大溪地养殖珍珠","南洋养殖珍珠","沉香","蜜蜡","琥珀","翡翠","和田玉","绿松石","海纹石","舒俱来"],
+  "pricing_rule":"STANDARD_SPEC_BAND for ordinary materials; SPECIALIST_MATERIAL for identity-first/high-variance materials. Low/mid/high are market price tiers for comparable material + spec, never universal quality grades.",
+  "purchase_approved_specs":0,
+  "excel_rule":"Do not generate final user-facing Excel until the remaining evidence/spec gaps are review-ready; Excel remains an export/view, not the database.",
+  "current_next_work":[
+    "Close remaining clean China same-spec anchors where public evidence exists.",
+    "Build minimal 2-4 sourcing specs per material rather than exhaustive size permutations.",
+    "Continue specialist identity-first price anchors.",
+    "Improve only meaningful photo gaps; do not delay the whole database for cosmetic image perfection."
+  ]
+}
