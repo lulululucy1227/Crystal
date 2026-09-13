@@ -1,0 +1,33 @@
+{
+  "version":"CR-SPECIALIST-PRICE-EVIDENCE-V3-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":[
+    "outputs/selection/specialist-pricing-evidence-v1.json@CR-SPECIALIST-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/specialist-pricing-evidence-v2-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V2-DELTA-20260913"
+  ],
+  "updates":[
+    {
+      "material":"蜜蜡/琥珀",
+      "status":"SPECIALIST_ANCHORS_STRENGTHENED",
+      "anchors":[
+        {"branch":"seller-claimed natural raw beeswax amber hex bead","spec":"about 8mm single bead","price":"CNY 68/pc","source":"https://www.yiwugo.com/product/detail/975340634.html","confidence":"MEDIUM","note":"seller explicitly states 天然原矿蜜蜡; still requires batch identity/treatment verification"},
+        {"branch":"seller-claimed natural blood amber","spec":"about 8mm, 5-piece pack","price":"CNY 32.80/5 ≈ 6.56/pc; volume tiers to CNY 24.80/5 ≈ 4.96/pc","source":"https://wap.yiwugo.com/products/975287650","confidence":"MEDIUM","note":"commercial blood-amber branch; not universal amber price"},
+        {"branch":"second-generation beeswax/resin imitation","spec":"8mm single bead","price":"CNY 1.50/pc","source":"https://yiwugo.com/product/detail/983564505.html","confidence":"HIGH_EXCLUSION","note":"listing material field explicitly says 树脂; this is exclusion/contrast evidence only, never low-tier natural amber"}
+      ],
+      "rule":"Identity/treatment first. Natural amber, pressed/reconstructed amber and resin imitation remain separate material classes."
+    },
+    {
+      "material":"绿松石",
+      "status":"SPECIALIST_TREATMENT_BRANCHES_STRENGTHENED",
+      "anchors":[
+        {"branch":"optimized turquoise seller claim","spec":"about 8mm, 2 pieces","price":"CNY 12.60/2 ≈ 6.30/pc","source":"https://yiwugo.com/product/detail/986559399.html","confidence":"MEDIUM"},
+        {"branch":"optimized high-porcelain turquoise seller claim","spec":"8mm single bead","price":"CNY 0.95/pc","source":"https://yiwugo.com/product/detail/970444292.html","confidence":"MEDIUM","note":"large price spread reinforces need for treatment/batch verification"},
+        {"branch":"synthetic turquoise","spec":"8mm, about 50 beads/strand","price":"CNY 1.88/strand ≈ 0.038/pc","source":"https://www.yiwugo.com/product/detail/972582221.html","confidence":"HIGH_EXCLUSION","note":"listing explicitly says 合成绿松石"},
+        {"branch":"seller-claimed natural raw turquoise","spec":"8mm, about 46 beads/strand","price":"CNY 9.60/strand ≈ 0.21/pc","source":"https://yiwugo.com/product/detail/976554595.html","confidence":"LOW_IDENTITY","warning":"price and seller context are inconsistent with meaningful natural-turquoise claims; do not use as authentic natural price evidence without verification"}
+      ],
+      "rule":"Natural untreated, stabilized/optimized, dyed, reconstructed and synthetic must remain separate sourcing classes. Marketplace label alone cannot establish natural identity."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
