@@ -1,0 +1,85 @@
+{
+  "version":"CR-PRICE-EVIDENCE-V4-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/price-evidence-v3-delta.json@CR-PRICE-EVIDENCE-V3-DELTA-20260913",
+  "updates":[
+    {
+      "material":"彩虹月光石（商业名）",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_CHINA_FACTORY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 2.93-4.94 per ~49 bead strand depending SKU/qty","source":"https://www.pandawhole.com/p-wholesale-moonstone/1666-1688310-7431934-natural-rainbow-moonstone-beads-strands-round-white-8mm.html"},
+        {"price":"USD 3.10-8.40 supplier range for 45pc 8mm strand","source":"https://www.alibaba.com/countrysearch/CN/rainbow-moonstone-gemstone-beads.html"},
+        {"price":"USD 2.38-3.23 per 24-bead half-length 8mm strand","source":"https://www.pandawhole.com/p-wholesale-moonstone/1666-1686756-7429874-natural-rainbow-moonstone-round-beads-strands-8mm.html"}
+      ],
+      "rule":"do not merge with grey moonstone or labradorite; keep seller grade language out of project grade"
+    },
+    {
+      "material":"月光石（未细分）/ white moonstone commercial branch",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 14.39-15.99 per ~49 bead strand","source":"https://www.pandahall.com/p-1915567-natural-white-moonstone-beads-strands-grade-a-round.html"},
+        {"price":"EUR 4.58-5.73 per package depending quantity; 2-strand package option on listing","source":"https://www.pandahall.com/p-3088139-natural-white-moonstone-beads-strands-round-8mm.html"}
+      ],
+      "warning":"commercial white-moonstone listings show channel/quality spread; exact feldspar identity should be batch-verified for meaningful purchases"
+    },
+    {
+      "material":"蓝纹玛瑙 / Blue Lace Agate",
+      "spec":"8mm round bead, ~1mm hole",
+      "status":"SECONDARY_WHOLESALE_ANCHORS_STRONG",
+      "anchors":[
+        {"price":"USD 3.78 per ~51 bead strand","source":"https://www.nbeads.com/shop/agate/277-1.html"},
+        {"price":"USD 15.54-18.28 per ~49 bead undyed strand","source":"https://www.pandahall.com/p-3878590-natural-blue-lace-agate-beads-strands-round-8mm.html"},
+        {"price":"USD 13.20 per ~49 bead wholesale strand","source":"https://www.liwanbeads.com/cro89-155-inches-8mm-round-blue-lace-agate-beads-wholesale-pw-17965.html"}
+      ],
+      "quarantine":"dyed and resin imitation Blue Lace Agate listings are separate categories and never low-tier natural material",
+      "rule":"China domestic CNY calibration desirable, but natural/undyed external wholesale evidence is now strong enough for a reference range"
+    },
+    {
+      "material":"血石 / Bloodstone (Heliotrope)",
+      "spec":"8-8.5mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 10.97-13.71 per 2-strand package; ~46 beads/strand","source":"https://www.nbeads.com/shop/p-2546948-natural-bloodstone-beads-strands-heliotrope-stone-beads-round.html"},
+        {"price":"wholesale product exists as 8mm/40cm heliotrope strand; price behind business login","source":"https://www.marcoschreier.com/en/p/140870100720/string-beads-heliotrope-bloodstone-08mm"}
+      ],
+      "rule":"Dragon Blood Jasper products must not be used as Bloodstone/Heliotrope price evidence"
+    },
+    {
+      "material":"日光石",
+      "spec":"8mm round bead, 1mm hole",
+      "status":"SECONDARY_WHOLESALE_ANCHORS_STRONG",
+      "anchors":[
+        {"price":"USD 4.70 per ~49 bead grade-B 8mm strand listing","source":"https://de.pandahall.com/sonnenstein/148-1.html?batchType=All&datastyle=0&paLb=large_discountitems&size=60"},
+        {"price":"USD 7.40-8.22 per ~48 bead AA 8mm strand listing","source":"https://de.pandahall.com/sonnenstein/148-1.html?batchType=All&datastyle=0&paLb=large_discountitems&size=60"},
+        {"price":"EUR 2.13/strand equivalent at bulk for 24-bead half-length 8mm strand","source":"https://www.pandahall.com/p-598962-natural-sunstone-beads-strands-round-8mm.html"}
+      ],
+      "rule":"full-length vs half-length strand counts must remain explicit; do not compare raw package prices without bead count"
+    },
+    {
+      "material":"贝母 / Mother-of-pearl",
+      "spec":"commercial shell-bead branches",
+      "status":"BRANCH_PRICING_REQUIRED",
+      "branches":[
+        {"branch":"8mm shell pearl / mother-of-pearl composite bead","price":"CNY 14.78 per 45-48 bead strand ≈ CNY 0.31-0.33/pc","source":"https://yiwugo.com/product/detail/973802474.html","warning":"commercial shell pearl / imitation-pearl use; not equivalent to natural pearl"},
+        {"branch":"8x13mm mother-of-pearl pieced bead","price":"CNY 14-15/pc at quantity tiers","source":"https://www.yiwugo.com/product/detail/949207473.html"}
+      ],
+      "rule":"final sourcing specs must say whether the design needs shell disc/bead, shell-pearl/composite, or focal mother-of-pearl piece"
+    },
+    {
+      "material":"小叶紫檀",
+      "spec":"8mm finished bracelet commercial anchor",
+      "status":"FINISHED_PRODUCT_ANCHOR_ONLY",
+      "anchor":{"price":"CNY 42 for an 8mm bracelet variant containing lacquer accent bead(s)","source":"https://wap.yiwugo.com/products/975251854"},
+      "rule":"not pure-material enough for per-bead band; continue searching for unadorned 8mm strand/bracelet and verify species claim"
+    }
+  ],
+  "identity_exclusions":[
+    "Dragon Blood Jasper is not Bloodstone/Heliotrope",
+    "resin imitation Blue Lace Agate is not low-tier natural Blue Lace Agate",
+    "dyed Blue Lace Agate is a treated branch and cannot be silently mixed with undyed branch",
+    "shell-pearl/mother-of-pearl composite is not cultured pearl"
+  ]
+}
