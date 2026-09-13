@@ -1,0 +1,42 @@
+{
+  "version":"CR-MAT-V1.6-MOTHER-LIBRARY-20260913",
+  "date":"2026-09-13",
+  "status":"ACTIVE_WORKING_MOTHER_LIBRARY",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/working-version-material-library-v1.5.json@CR-MAT-V1.5-MOTHER-LIBRARY-20260913",
+  "pricing_model_decisions":[
+    "outputs/selection/price-model-decision-v1.json@CR-PRICE-MODEL-DECISION-V1-20260913",
+    "outputs/selection/price-model-decision-v2-delta.json@CR-PRICE-MODEL-DECISION-V2-DELTA-20260913"
+  ],
+  "ordinary_price_evidence":[
+    "outputs/selection/price-evidence-v1.json@CR-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/price-evidence-v2-delta.json@CR-PRICE-EVIDENCE-V2-DELTA-20260913",
+    "outputs/selection/price-evidence-v3-delta.json@CR-PRICE-EVIDENCE-V3-DELTA-20260913",
+    "outputs/selection/price-evidence-v4-delta.json@CR-PRICE-EVIDENCE-V4-DELTA-20260913",
+    "outputs/selection/price-evidence-v5-delta.json@CR-PRICE-EVIDENCE-V5-DELTA-20260913",
+    "outputs/selection/price-evidence-v6-delta.json@CR-PRICE-EVIDENCE-V6-DELTA-20260913",
+    "outputs/selection/price-evidence-v7-delta.json@CR-PRICE-EVIDENCE-V7-DELTA-20260913"
+  ],
+  "specialist_price_evidence":[
+    "outputs/selection/specialist-pricing-evidence-v1.json@CR-SPECIALIST-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/specialist-pricing-evidence-v2-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V2-DELTA-20260913",
+    "outputs/selection/specialist-pricing-evidence-v3-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V3-DELTA-20260913",
+    "outputs/selection/specialist-pricing-evidence-v4-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V4-DELTA-20260913",
+    "outputs/selection/specialist-pricing-evidence-v5-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V5-DELTA-20260913"
+  ],
+  "photo_evidence":[
+    "outputs/selection/reference-photo-evidence-v1.json@CR-REFERENCE-PHOTO-EVIDENCE-V1",
+    "outputs/selection/reference-photo-evidence-v2.json@CR-REFERENCE-PHOTO-EVIDENCE-V2-20260913",
+    "outputs/selection/reference-photo-evidence-v3.json@CR-REFERENCE-PHOTO-EVIDENCE-V3-20260913",
+    "outputs/selection/reference-photo-evidence-v4.json@CR-REFERENCE-PHOTO-EVIDENCE-V4-20260913",
+    "outputs/selection/reference-photo-evidence-v5.json@CR-REFERENCE-PHOTO-EVIDENCE-V5-20260913"
+  ],
+  "compliance_identity_evidence":"outputs/selection/compliance-identity-evidence-v1.json@CR-COMPLIANCE-IDENTITY-EVIDENCE-V1-20260913",
+  "gap_tracker":"outputs/selection/completion-gap-tracker-v2.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V2-20260913",
+  "specialist_materials_current":["Akoya养殖珍珠","大溪地养殖珍珠","南洋养殖珍珠","沉香","蜜蜡","琥珀","翡翠","和田玉","绿松石","海纹石","舒俱来"],
+  "pricing_rule":"STANDARD_SPEC_BAND for ordinary materials and SPECIALIST_MATERIAL for identity-first/high-variance materials. Low/mid/high are market price tiers for comparable material + spec, never universal quality grades.",
+  "research_closeout_rule":"A material does not remain blocked merely because a perfect China domestic quote or perfect single-bead image is missing when strong same-spec secondary evidence exists. Evidence confidence and market/source are retained explicitly.",
+  "purchase_approved_specs":0,
+  "excel_rule":"Final user-facing Excel still waits for user approval of the minimal sourcing-spec profile approach and population of those sourcing specs. Excel remains an export/view of the database, not the database itself.",
+  "next_gate":"User approval of simple profile-based minimal sourcing specs (normally 2-4 genuinely useful procurement specs per material)."
+}
