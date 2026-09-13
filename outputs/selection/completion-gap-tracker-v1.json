@@ -1,0 +1,77 @@
+{
+  "version":"CR-SELECTION-COMPLETION-GAP-TRACKER-V1-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "purpose":"Track only unresolved work that still prevents a review-ready sourcing database. Do not confuse unavailable reliable evidence with unfinished search.",
+  "pricing_model":"DUAL_PRICE_MODEL",
+  "standard_price_gaps":{
+    "needs_clean_china_same_spec_anchor":[
+      "彩虹月光石（must remain separate from grey moonstone/labradorite）",
+      "月光石未细分",
+      "蓝纹玛瑙 / Blue Lace Agate",
+      "血石 / Bloodstone",
+      "景观玛瑙 / Landscape Agate",
+      "日光石",
+      "阿拉善玛瑙（foreign wholesale evidence now adequate; domestic calibration still wanted）",
+      "盐源玛瑙",
+      "樱花玛瑙 / Flower Agate（foreign wholesale evidence adequate; China domestic calibration still wanted）",
+      "彼得石（foreign wholesale evidence adequate; China domestic calibration still wanted）",
+      "苔藓玛瑙（foreign wholesale evidence adequate; China domestic calibration still wanted）",
+      "堇青石（factory/international wholesale evidence adequate; China domestic calibration still wanted）",
+      "蓝晶石（international supplier spread too wide; domestic calibration needed）",
+      "黑碧玺（channel spread too wide; domestic calibration needed）"
+    ],
+    "needs_high_or_branch_anchor_not_basic_market_presence":[
+      "黑发晶：ordinary 8mm anchors now exist; premium/high focal anchor still missing",
+      "兔毛水晶：green/red commercial branches need separate ladders and premium anchors",
+      "胶花水晶：ordinary red 8mm baseline exists; premium/high branch still missing",
+      "茶晶：partial band exists; cleaner premium anchor still desirable",
+      "葡萄石：ordinary and premium anchors exist but channel spread is wide",
+      "摩根石：clean untreated/identity-confident branch still needed",
+      "黄水晶：treatment branch must be resolved before final band"
+    ],
+    "non_round_or_finished_product_units":[
+      "星月菩提：use finished strand/product unit",
+      "白玉菩提：use finished 108-bead/product unit",
+      "绿檀：finished-strand anchor exists but tree-species identity remains unresolved",
+      "小叶紫檀：need pure-material 8mm/strand evidence; mixed luxury bracelets are quarantined",
+      "贝母：must define actual bead/disc/shell form before pricing"
+    ]
+  },
+  "specialist_materials":[
+    "Akoya养殖珍珠",
+    "大溪地养殖珍珠",
+    "南洋养殖珍珠",
+    "沉香",
+    "蜜蜡",
+    "琥珀",
+    "翡翠",
+    "和田玉",
+    "绿松石",
+    "海纹石",
+    "舒俱来"
+  ],
+  "specialist_next_work":"For each specialist material, keep adding same-identity comparable anchors only after identity/treatment/spec gates. Do not convert to ordinary 8mm bands.",
+  "photo_gaps":[
+    "景观玛瑙：a valid landscape-agate single bead reference now exists, but final preferred target remains raw drilled bead without silver sleeve.",
+    "金色金属件：intentionally blocked until base metal is selected.",
+    "Other key freeform/accessory image gaps are non-blocking and can be improved opportunistically."
+  ],
+  "specification_gaps":[
+    "Current 93 working specs do not mean every mother-library material has a minimal sourcing spec set.",
+    "Need a small sourcing spec set per material, normally 2-4 useful forms/sizes only: core round bead sizes + freeform/focal form where relevant + hole + unit.",
+    "Do not explode every material into every possible diameter."
+  ],
+  "no_direct_purchase_items":[
+    "发晶（未细分） parent",
+    "猫眼类 parent until actual material is identified",
+    "深色木材（树种未定） design placeholder",
+    "菩提籽类 taxonomy parent"
+  ],
+  "purchase_approved_specs":0,
+  "user_decision_needed_now":false,
+  "future_decision_gates":[
+    "Gold-tone accessory base material if/when a gold-tone sourcing line is activated (925 silver plated/vermeil vs gold-filled vs brass plated).",
+    "Any later proposal to remove an actual active material identity from the mother library rather than merely mark it no-direct-purchase."
+  ]
+}
