@@ -1,0 +1,20 @@
+{
+  "version":"CR-PRICE-EVIDENCE-V6-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/price-evidence-v5-delta.json@CR-PRICE-EVIDENCE-V5-DELTA-20260913",
+  "updates":[
+    {
+      "material":"景观玛瑙 / Landscape Agate",
+      "spec":"8mm faceted round bead, 15-15.5in strand, hole 1-1.2mm",
+      "status":"SECONDARY_WHOLESALE_ANCHOR_STRONG",
+      "anchor":{"price":"USD 4.65 per strand","count":"about 49 beads at 8mm","source":"https://adbeadsstore.com/collections/faceted/products/faceted-natural-landscape-agate-gemstone-round-loose-beads-on-a-15-5-strand"},
+      "derived_reference":"about USD 0.095/pc before freight/tax; keep USD source value in evidence layer rather than silently turning it into a China RMB band",
+      "source_claims":"Natural faceted Landscape Agate; round; 4/6/8/10/12/14mm; hole 1-1.2mm depending on size.",
+      "treatment_rule":"Landscape/scenic-pattern agate can also be sold in dyed/enhanced forms. Treatment disclosure must remain a batch field; treated goods are a separate branch, not the low tier of untreated material.",
+      "target_purchase_tier":"MID visual-quality branch; selected scenic freeform/focal pieces can be sourced individually",
+      "band_rule":"China domestic CNY calibration is desirable but no longer a blocker for reference-ready status because the size/count/hole/price wholesale anchor is explicit."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
