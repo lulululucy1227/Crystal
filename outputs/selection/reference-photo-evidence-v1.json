@@ -1,0 +1,54 @@
+{
+  "version": "CR-REFERENCE-PHOTO-EVIDENCE-V1",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "purpose": "Reference-image evidence for freeform single-bead recognition and accessory recognition. Images are external references only and are not procurement samples, owned project assets, or proof of material identity.",
+  "rules": [
+    "Prefer single-bead/single-item photos with visible shape and drill hole.",
+    "Use strand/group photos only when a suitable single-item photo is unavailable.",
+    "Do not treat seller grade names as project quality standards.",
+    "Do not copy these third-party images into product marketing assets; retain source URL and image URL as research references only."
+  ],
+  "freeform_single_bead_photo_references": [
+    {"material":"白水晶","form":"抛光随形侧孔单珠","source_url":"https://rockparadise.com/products/drilled-tumbled-stone-crystal-quartz-polished-bead-side-drilled-wrhs2-s24-04-01","image_url":"https://rockparadise.com/cdn/shop/products/drilled-tumbled-stone-crystal-quartz-beads-tumbled-crystal-quartz-beads-tumbled-stone-drilled-side-drilled-bead-rk46b7-01-1.jpg?v=1571609031","reference_quality":"HIGH","note":"单颗、孔位清楚、形态适合作为随形识别参考"},
+    {"material":"海蓝宝","form":"抛光随形横孔单珠","source_url":"https://www.edelsteinkreationen.de/Anhaenger/Kettenanhaenger/Aquamarin-Edelstein-Anhaenger.html","image_url":"https://www.edelsteinkreationen.de/images/product_images/popup_images/Aquamarin-blau-gruen-Trommelstein-gebohrt.jpg","reference_quality":"HIGH","note":"单颗、白底、天然包体可见"},
+    {"material":"拉长石","form":"抛光随形孔珠","source_url":"https://www.lebensfreudeverlag.de/c/edelsteine-anhaenger-gebohrte-steine","image_url":"https://www.lebensfreudeverlag.de/storage/images/image?height=2560&remote=https%3A%2F%2Fwww.lebensfreudeverlag.de%2FWebRoot%2FStore4%2FShops%2F17653888%2F5A8A%2FDB84%2F5223%2F8FA5%2F891E%2F0A0C%2F6D00%2FED54%2FCosmocolor-trommelstein-labradorit-gebohrt-2-10.jpg&shop=17653888&width=%7Bwidth%7D","reference_quality":"HIGH","note":"单颗，蓝绿光效和孔位可辨"},
+    {"material":"彩虹月光石","form":"水滴随形单珠","source_url":"https://www.gemmesaventures.com/perle-pierre-de-lune-arc-en-ciel/17-6mm-perle-de-pierre-de-lune-naturelle-arc-en-ciel-en-goutte-plate-lisse-pn700.html","image_url":"https://media.cdnws.com/_i/64837/18708/2188/10/p1560071.jpeg","reference_quality":"HIGH","note":"单颗、晕彩明显"},
+    {"material":"海纹石","form":"抛光随形单珠","source_url":"https://tosho-stones.com/products/112-11338","image_url":"https://tosho-stones.com/cdn/shop/files/tosho-stones_112-11338.jpg?v=1715262307","reference_quality":"HIGH","note":"单颗白底，孔位清楚"},
+    {"material":"金发晶","form":"抛光随形单珠","source_url":"https://myearthstone.com/tumbled-beads/2174-golden-rutile-smooth-tumbled.html","image_url":"https://ik.imagekit.io/earthstone/ik-seo/img/Tumbled-Beads/26750-tm_thickbox_default/Golden-Rutile-Smooth-Tumbled.jpg","reference_quality":"HIGH","note":"单颗白底，金色针状包体清楚"},
+    {"material":"黑发晶","form":"桶形/随形焦点单珠","source_url":"https://crystalswholesaleusa.com/products/high-quality-barrel-bead-diy-pendant-rutile-quartz-rose-quartz-citrine","image_url":"https://crystalswholesaleusa.com/cdn/shop/products/high-quality-barrel-bead-diy-pendant-rutile-quartz-rose-quartz-citrine-wholesale-crystals-349333.jpg?v=1681130323&width=1214","reference_quality":"HIGH","note":"单颗，黑色针状包体清晰；形态偏桶珠"},
+    {"material":"苔藓玛瑙","form":"抛光随形孔珠","source_url":"https://www.debarnsteenspecialist.nl/nl/geboorde-hanger-van-mosagaat-162701397.html","image_url":"https://cdn.webshopapp.com/shops/12972/files/495822496/image.jpg","reference_quality":"HIGH","note":"单颗，内部苔藓景观可辨"},
+    {"material":"虎眼石","form":"三角随形焦点单珠","source_url":"https://rockparadise.com/products/rk103b8-05","image_url":"https://rockparadise.com/cdn/shop/products/tigers-eye-drilled-bead-top-center-drilled-triangle-bead-rk103b8-05-1.jpg?v=1603333390","reference_quality":"HIGH","note":"单颗白底、孔位清楚、猫眼纹理明显"},
+    {"material":"绿松石","form":"天然块状随形单珠","source_url":"https://turquoisemoose.com/products/sleeping-beauty-nugget-beads-sky-blue-besbnbsb","image_url":"https://turquoisemoose.com/cdn/shop/products/LgjoMpc_75096c33-cb28-4b01-9143-c204917d21ed_1024x.jpg?v=1663454545","reference_quality":"HIGH","note":"单颗手持，铁线与孔位清楚"},
+    {"material":"琥珀/蜜蜡视觉参考","form":"有机随形单件","source_url":"https://griseldakuceraminerals.com/collections/joyas-bisuteria","image_url":"https://griseldakuceraminerals.com/cdn/shop/files/colgante-ambar-color-yema.jpg?v=1771495997&width=533","reference_quality":"MEDIUM","note":"单件随形，但孔径较大，主要用于形态识别"},
+    {"material":"萤石","form":"几何随形孔珠","source_url":"https://contempocrystals.com/products/fluorite-pendant","image_url":"https://contempocrystals.com/cdn/shop/products/Purple-Green-Fluorite-Regtangle-Pendant.jpg?v=1757887082&width=416","reference_quality":"HIGH","note":"单件，紫绿分带清楚"},
+    {"material":"绿龙晶","form":"水滴随形孔珠","source_url":"https://store.didoni.com/fai-da-te/perline/cabochon-di-serafinite-38ser007.html","image_url":"https://store.didoni.com/media/prodotti/38ser007_3_1741792794_735.jpg","reference_quality":"HIGH","note":"单颗，羽毛状绿色纹理清楚"},
+    {"material":"翡翠/硬玉形态参考","form":"长条随形孔珠","source_url":"https://www.hisui-oumi.com/product/532","image_url":"https://www.hisui-oumi.com/data/west14/product/itoigawa/it-tisu-1/tisu-3/022.jpg","reference_quality":"MEDIUM","note":"硬玉随形孔珠参考；不是中国翡翠采购样本"},
+    {"material":"和田玉形态参考","form":"白色随形单件","source_url":"https://houdejade.com/zh-hans/products/%E5%92%8C%E7%94%B0%E7%8E%89%E7%B3%96%E7%99%BD-%E5%9C%86%E7%8F%A0%E6%89%8B%E4%B8%B2-54-7g","image_url":"https://houdejade.com/cdn/shop/files/a82a5776-1191-4b69-aa2f-755c4f8819b4.jpg?v=1775873376&width=1200","reference_quality":"LOW","note":"单件形态可参考，但页面产品主体为手串，孔位/规格证据不足，需后续替换"}
+  ],
+  "accessory_photo_references": [
+    {"accessory":"925银光面圆珠/隔珠","source_url":"https://www.bluestreakcrystals.com/products/sterling-silver-925-sts-round-beads-various-sizes-2-5mm-to-8mm-jewellery","image_url":"https://www.bluestreakcrystals.com/cdn/shop/files/Sterling-Silver-925-Smooth-Round-Beads.jpg?v=1744090323","reference_quality":"HIGH"},
+    {"accessory":"925银弯管","source_url":"https://www.ametista.ch/roehrchen-tube-gebogen-30mm-loch-3mm-silber-925/","image_url":"https://www.ametista.ch/media/24459/catalog/R%C3%B6hrchen%20silber-1.jpg","reference_quality":"HIGH"},
+    {"accessory":"925银半圆珠帽/半帽","source_url":"https://www.riogrande.com/product/sterling-silver-bead-cap8/694308DISCGP/","image_url":"https://www.riogrande.com/globalassets/products/694308/694308.jpg","reference_quality":"HIGH"},
+    {"accessory":"925银方形镶框连接件","source_url":"https://www.franceperles.com/fr/intercalaire-argent-925/18599-intercalaire-pour-cabochon-carre-8mm-argent-925-x-1pc.html","image_url":"https://www.franceperles.com/cdn-cgi/image/width%3D1000%2Cheight%3D1000%2Cfit%3Dcrop%2Cquality%3D90%2Cformat%3Dauto%2Conerror%3Dredirect%2Cmetadata%3Dnone/65761-medium_default/intercalaire-pour-cabochon-carre-8mm-argent-925-x-1pc.jpg","reference_quality":"HIGH"},
+    {"accessory":"925银圆形薄框/Bezel连接件","source_url":"https://www.thecuriousgem.co.uk/sterling-silver-settings/sterling-silver-bezel-connector-6mm.html","image_url":"https://www.thecuriousgem.co.uk/user/products/large/CG17295a.jpg","reference_quality":"HIGH"},
+    {"accessory":"925银细链+弹簧扣","source_url":"https://bijouterie-carador.com/480-chaines-pour-pendentifs","image_url":"https://bijouterie-carador.com/83719-large_default/-chaine-argent-carador-maille-gourmette.jpg","reference_quality":"HIGH"},
+    {"accessory":"氧化银纹理隔珠","source_url":"https://www.ebay.com/itm/405254878321","image_url":"https://i.ebayimg.com/images/g/uIQAAOSwHYJm94vJ/s-l960.jpg","reference_quality":"HIGH"},
+    {"accessory":"925银小型有机形吊坠","source_url":"https://blackbirdjewellery.com/products/seashore-small-sterling-silver-pebble-charm","image_url":"https://blackbirdjewellery.com/cdn/shop/files/BlackbirdJewellery-Sterling-Silver-Small-Pebble-Charm-Front_1024x1024.jpg?v=1762778291","reference_quality":"HIGH"},
+    {"accessory":"925银六边形几何隔件","source_url":"https://www.istraka.sk/eshop/sestuholnik-hexagon-medzikus-ag925-strieborny/p-1330928.xhtml","image_url":"https://www.istraka.sk/obchod_homedir/data/3012/obrazky/5581_sestuholnik_konektor_AG925_strieborny.jpg","reference_quality":"HIGH"}
+  ],
+  "price_evidence_sources": [
+    {"topic":"白水晶/草莓晶/随形单珠","source_url":"https://yiwugo.com/product/detail/986753030.html?loc=34","evidence":"白水晶8mm约¥1.01/颗；白水晶随形约¥12.28/颗；紫水晶随形约¥14.53/颗；草莓晶随形约¥6.66/颗；黄水晶随形约¥10.75/颗；海蓝宝切面单珠约¥24.51/颗"},
+    {"topic":"金发晶圆珠","source_url":"https://yiwugo.com/product/detail/976055387.html","evidence":"金发晶8mm ¥20/2颗，即约¥10/颗；其他尺寸有连续报价"},
+    {"topic":"925银圆珠","source_url":"https://wap.yiwugo.com/products/961106269","evidence":"925银4mm圆珠5克约47颗，¥51.03/包；3/5/6/7/8mm等有同页规格"},
+    {"topic":"925/999银结构件","source_url":"https://yiwugo.com/product/detail/986693641.html?loc=25","evidence":"925银2×25mm弯管¥15.89/件；2×35mm弯管¥22.45/件；多种圆珠/花托/吊坠有单件报价"}
+  ],
+  "next_photo_gaps": [
+    "阿拉善玛瑙随形单珠：需要更可靠的单颗白底图",
+    "盐源玛瑙随形单珠：需要更可靠的单颗白底图",
+    "南红随形单珠：需要更可靠的单颗白底图",
+    "彼得石：已有三颗组合图，仍需替换为单颗图",
+    "景观玛瑙：现有条纹玛瑙图仅作形态参考，需补真正景观玛瑙单颗",
+    "和田玉：现有图仅作形态参考，需补明确打孔单珠图"
+  ]
+}
