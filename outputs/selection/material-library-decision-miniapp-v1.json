@@ -1,0 +1,29 @@
+{
+  "version": "CR-MAT-DECISION-MINIAPP-V1",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "source": "user review after DIY miniapp assortment audit",
+  "excluded_from_mother_library": [
+    {"name":"刻字银珠","reason":"不需要作为独立材料/工艺项"},
+    {"name":"刻字配件","reason":"不需要作为独立材料/工艺项"},
+    {"name":"貔貅类配件","reason":"不纳入当前母库"},
+    {"name":"黄塔晶","reason":"用户明确不需要"},
+    {"name":"碧玉","reason":"用户明确不加入"},
+    {"name":"岫玉","reason":"用户明确不加入"}
+  ],
+  "material_additions": [
+    {"id":"CRM-M-0075","name":"石榴石","en":"Garnet","display_category":"矿石","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"深红至酒红色稳定，适合复古、暖色、冬季、女性及与金属/珍珠搭配；DIY小程序中作为常用天然石出现。"},
+    {"id":"CRM-M-0076","name":"萤石","en":"Fluorite","display_category":"水晶","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"透明至半透明、多色带与切面表现丰富，可覆盖紫、绿、黄等颜色分支；黄萤石作为规格/颜色分支而非新材料身份。"},
+    {"id":"CRM-M-0077","name":"绿龙晶（商业名）","en":"Seraphinite / green chlorite trade","display_category":"矿石","role":"特色候选","status":"研究候选","purchase_approved":false,"why":"羽毛状绿色纹理辨识度强，适合自然、复古、东方和高识别焦点设计；商业名称与具体矿物组成需批次核验。"},
+    {"id":"CRM-M-0078","name":"星月菩提","en":"Xingyue Bodhi seed bead trade","display_category":"木材","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"实际线下/DIY采购中与其他菩提分开销售，尺寸、密度、表面星点与加工方式具有独立采购逻辑。"},
+    {"id":"CRM-M-0079","name":"白玉菩提","en":"White Bodhi seed bead trade","display_category":"木材","role":"设计扩展候选","status":"研究候选","purchase_approved":false,"why":"颜色和质感与星月菩提差异明显，实际采购与设计语言独立，适合浅色、自然、东方和混搭设计。"}
+  ],
+  "taxonomy_changes": [
+    {"id":"CRM-M-0066","name":"菩提籽类（植物种类待细分）","new_status":"TAXONOMY_ONLY","rule":"保留历史与分类关系，但不再作为实际可选采购材料；具体选材使用CRM-M-0078星月菩提或CRM-M-0079白玉菩提。"}
+  ],
+  "result": {
+    "new_material_records": 5,
+    "new_purchase_approved_materials": 0,
+    "generic_bodhi_parent_deactivated_from_selection": true
+  }
+}
