@@ -1,0 +1,51 @@
+{
+  "version":"CR-SPECIALIST-PRICE-EVIDENCE-V5-DELTA-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/specialist-pricing-evidence-v4-delta.json@CR-SPECIALIST-PRICE-EVIDENCE-V4-DELTA-20260913",
+  "updates":[
+    {
+      "material":"Akoya养殖珍珠",
+      "status":"SPECIALIST_WHOLESALE_ANCHORS_STRENGTHENED",
+      "reference_spec":"7-8mm / 7.5-8mm loose round cultured Akoya",
+      "anchors":[
+        {"price":"USD 75/30pcs, 120/50pcs, 230/100pcs for seller-described 7-8mm round Akoya color branches","source":"https://www.lpearls.com/Akoya-%26-South-sea-Pearls-Loose-akoya-pearls/c122_160/index.html","confidence":"MEDIUM"},
+        {"price":"USD 22.70/pc, volume down to USD 21.34 at 100+ for seller-described 7.5-8mm AA black round Akoya half-drilled","source":"https://www.pearlstrandwholesale.com/aa-grade-wholesale-black-round-akoya-loose-pearls-size-7-5-8mm-alpb1002","confidence":"MEDIUM"},
+        {"source":"https://wholesaler.alibaba.com/product-detail/Bulk-Wholesale-Vacuum-packed-7-8mm_60699877138.html","confidence":"HIGH_EXCLUSION","evidence":"Listing title says Akoya/oyster but material fields explicitly say freshwater pearl and dyed colors; demonstrates why marketplace title alone cannot establish Akoya identity."}
+      ],
+      "rule":"Compare only after saltwater cultured Akoya identity + color/treatment + drill state + luster/surface/nacre spec are locked. Seller AA/AAA language remains seller-specific."
+    },
+    {
+      "material":"大溪地养殖珍珠",
+      "status":"SPECIALIST_WHOLESALE_ANCHORS_STRENGTHENED",
+      "reference_spec":"9-10mm loose / wholesale lots",
+      "anchors":[
+        {"price":"USD 28-45/pc across current 9-10mm round natural-color listings","source":"https://www.thesouthseapearl.com/collections/ssp-9-10mm-tahitian-pearl-looses","confidence":"MEDIUM_HIGH"},
+        {"price":"USD 266/10pcs seller-AA; USD 359 seller-AAA lot; USD 286/10pcs peacock lot","source":"https://www.thesouthseapearl.it/collections/ssp-9-10mm-peacock-tahitian-pearl-loose","confidence":"MEDIUM_HIGH"},
+        {"price":"average USD 10.90/pc for a 9-10mm semi-round wholesale lot example","source":"https://www.thesouthseapearl.com/collections/ssp-tahitian-pearls-5000-plus/products/wholesale-lot-tahiti-pearls-9-10-mm-aaa-natural-color","confidence":"MEDIUM_HIGH"}
+      ],
+      "rule":"Round vs semi-round/baroque, bodycolor/overtone, luster, surface and matching must stay separate; seller grades are not project grades."
+    },
+    {
+      "material":"南洋养殖珍珠",
+      "status":"SPECIALIST_WHOLESALE_ANCHORS_STRENGTHENED",
+      "reference_spec":"white/silver or golden, 9-12mm loose",
+      "anchors":[
+        {"branch":"white South Sea","price":"current catalog examples include 10-11mm loose at USD 28 and round 10mm at USD 58; wholesale lots 11-14mm USD 192 and 11-12mm 14pcs USD 224","source":"https://www.thesouthseapearl.com/de/collections/ssp-south-sea-pearl-looses","confidence":"MEDIUM_HIGH"},
+        {"branch":"golden South Sea","price":"seller guide: light champagne 9-10mm seller-AA about USD 120-220/pc; 11-12mm seller-AAA gold USD 400-800; deep 24K 13mm+ seller-AAA USD 1200-3500","source":"https://www.thesouthseapearl.com/de/collections/ssp-golden-south-sea-pearl-loose","confidence":"MEDIUM_HIGH"}
+      ],
+      "rule":"White/silver and golden are separate sourcing branches; compare only same size/shape/color/luster/surface/nacre class."
+    },
+    {
+      "material":"沉香",
+      "status":"SPECIALIST_IDENTITY_SPREAD_STRENGTHENED",
+      "anchors":[
+        {"branch":"seller-described Hainan natural agarwood","price":"CNY 3980-5000 per 108-bead bracelet listing","source":"https://www.chinagoods.com/store/goodsdetail/2017536720564207617","confidence":"MEDIUM","note":"merchant states main business natural agarwood and derivatives; still not independent botanical/lab proof"},
+        {"branch":"milk-fragrant wood marketed in agarwood-style naming","price":"8mm x108 CNY 13.54","source":"https://wap.yiwugo.com/products/977190075","confidence":"HIGH_EXCLUSION","note":"material field explicitly says 奶香木"},
+        {"branch":"generic wood collection variant marketed as 越南沉香","price":"8mm x108 CNY 5.40","source":"https://wap.yiwugo.com/products/934594292","confidence":"LOW_IDENTITY","note":"mass mixed-wood listing; cannot establish agarwood identity"}
+      ],
+      "rule":"The market spread demonstrates identity-first pricing. Plain fragrant wood, compounded/incense wood and resin-rich Aquilaria agarwood cannot be treated as low/mid/high tiers of one product."
+    }
+  ],
+  "purchase_approval_effect":"none"
+}
