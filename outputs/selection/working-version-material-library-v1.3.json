@@ -1,0 +1,35 @@
+{
+  "version": "CR-MAT-V1.3-MOTHER-LIBRARY-20260913",
+  "date": "2026-09-13",
+  "status": "ACTIVE_WORKING_MOTHER_LIBRARY",
+  "authority": "Crystal｜选品",
+  "composition": [
+    "outputs/selection/assortment-v1.json@CR-MAT-V1-20260906",
+    "outputs/selection/working-version-nature-launch-v1.json@CR-MAT-V1.1-NATURE-LAUNCH-20260906",
+    "outputs/selection/material-library-expansion-xhs-v1.json@CR-MAT-LIB-EXPANSION-XHS-V1",
+    "outputs/selection/material-library-decision-miniapp-v1.json@CR-MAT-DECISION-MINIAPP-V1"
+  ],
+  "scope_rule": "Mother library serves all future design styles. Current design collections and social/miniapp market scans are evidence inputs, not library boundaries.",
+  "display_categories": ["水晶","珍珠","矿石","木材","配饰","随形"],
+  "counts": {
+    "prior_material_records": 74,
+    "new_material_records": 5,
+    "material_records_total": 79,
+    "taxonomy_only_records": 1,
+    "active_selectable_materials": 78,
+    "active_working_specs": 93,
+    "purchase_approved_specs": 0
+  },
+  "new_active_materials": [
+    "CRM-M-0075 石榴石",
+    "CRM-M-0076 萤石",
+    "CRM-M-0077 绿龙晶（商业名）",
+    "CRM-M-0078 星月菩提",
+    "CRM-M-0079 白玉菩提"
+  ],
+  "explicit_exclusions": ["刻字银珠","刻字配件","貔貅类配件","黄塔晶","碧玉","岫玉"],
+  "taxonomy_rule": "CRM-M-0066 菩提籽类 remains only as a historical/taxonomy parent and is not an actual selectable or procurement material.",
+  "purchase_rule": "Inclusion in the mother library does not authorize purchase. Low/mid/high quality guidance, offline sourcing views and exact procurement specs must be derived later from evidence and sourcing requirements.",
+  "excel_rule": "Do not generate the user-facing Excel until user review is complete. Future Excel is an export/view of this mother database and must include a single-bead/single-item image field.",
+  "offline_sourcing_rule": "Offline sourcing is a filtered export from the mother library, not a separate master database."
+}
