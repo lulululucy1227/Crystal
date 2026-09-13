@@ -1,0 +1,54 @@
+{
+  "version":"CR-REFERENCE-PHOTO-EVIDENCE-V5-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/reference-photo-evidence-v4.json@CR-REFERENCE-PHOTO-EVIDENCE-V4-20260913",
+  "purpose":"Fifth sourcing-photo pass; improve single-bead and wood-material recognition.",
+  "new_references":[
+    {
+      "material":"黑发晶",
+      "form":"single polished drilled bead",
+      "source_url":"https://shopee.com.my/4A-Natural-Black-Rutilated-Quartz-Hair-Crystal-Single-Bead-DIY-Handmade-Crystal-4A%E5%A4%A9%E7%84%B6-%E9%BB%91%E9%AB%AE%E6%99%B6-%E7%99%BC%E6%99%B6-%E6%95%A3%E7%8F%A0-%E5%9C%93%E7%8F%A0-%E5%96%AE%E7%8F%A0-%E6%95%A3%E7%8F%A0%E6%B0%B4%E6%99%B6-%E5%88%B6%E4%BD%9C-i.28621154.4223551521",
+      "image_url":"https://down-my.img.susercontent.com/file/c53b32fea64137def991c9fff4d143dc",
+      "reference_quality":"HIGH_VISUAL",
+      "note":"Single bead on neutral background; black needle-like inclusions and drill hole are clearly visible. Seller grade/natural-authenticity claims remain unverified."
+    },
+    {
+      "material":"红兔毛水晶",
+      "form":"loose polished bead group",
+      "source_url":"https://www.aromaunion.net/products/red-rutilated-quartz-rabbit-hair-the-gentle-igniter-of-inner-harmony",
+      "image_url":"https://www.aromaunion.net/cdn/shop/files/04_1280x.jpg?v=1750057533",
+      "reference_quality":"MEDIUM_HIGH_VISUAL",
+      "note":"Loose beads make inclusion/color variation visible; not a single white-background bead and not identity proof."
+    },
+    {
+      "material":"红兔毛水晶",
+      "form":"8mm finished bracelet visual reference",
+      "source_url":"https://bailong.easy.co/products/red-rutilated-quartz-rabbit-hair-bracelet-%E5%8F%91%E6%99%B6%E7%BA%A2%E5%85%94%E6%AF%9B%E6%89%8B%E9%93%BE",
+      "image_url":"https://cdn.store-assets.com/s/1430824/i/100389768.png?width=1024",
+      "reference_quality":"MEDIUM_HIGH_VISUAL",
+      "note":"Useful 8mm appearance reference; finished-bracelet image only."
+    },
+    {
+      "material":"小叶紫檀 / Indian red sanders visual reference",
+      "form":"loose round wooden beads",
+      "source_url":"https://www.etsy.com/listing/1324243297/natural-indian-red-sandalwood-round",
+      "image_url":"https://i.etsystatic.com/21690587/r/il/e72cbd/4247415682/il_fullxfull.4247415682_8944.jpg",
+      "reference_quality":"HIGH_VISUAL",
+      "note":"Round bead wood grain and drill-hole appearance are clear. Seller taxon claim is not a botanical certificate; project identity remains evidence-gated."
+    },
+    {
+      "material":"盐源玛瑙",
+      "form":"8-9mm finished-strand visual reference",
+      "source_url":"https://shopee.tw/%E2%98%85%E6%B7%B3%E5%93%81%E6%99%B6%E6%A3%A7%E2%98%85-%E6%AD%A3%E5%AE%97%E9%B9%BD%E6%BA%90-%E6%A9%98%E7%B4%85%E9%B9%BD%E6%BA%90-%E6%B0%B4%E8%9C%9C%E6%A1%83%E9%B9%BD%E6%BA%90-%E6%A9%98%E7%B4%85%E9%B9%BD%E6%BA%90%E7%91%AA%E7%91%99-%E9%B9%BD%E6%BA%90%E6%89%8B%E4%B2%B2-%E7%AB%A5%E5%8F%9F%E7%84%A1%E6%AC%BA-i.2097266.20369817109",
+      "image_url":"https://down-tw.img.susercontent.com/file/sg-11134201-22120-y9lf6d802jlv15",
+      "reference_quality":"MEDIUM_VISUAL",
+      "note":"Color/translucency range useful; strand/group image, not single sourcing bead. Existing Topaoko single-bead source remains preferred for shape/spec."
+    }
+  ],
+  "remaining_meaningful_photo_gaps":[
+    "景观玛瑙：still prefer a raw drilled single bead without silver sleeve; current explicit landscape-agate image is sufficient for identity reference but not ideal sourcing image.",
+    "红兔毛：a clean single loose 8mm white-background image would improve final sourcing export but is no longer a blocker.",
+    "金色金属件：intentionally blank pending base-metal decision."
+  ]
+}
