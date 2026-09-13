@@ -1,0 +1,63 @@
+{
+  "version":"CR-SELECTION-COMPLETION-GAP-TRACKER-V2-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/completion-gap-tracker-v1.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V1-20260913",
+  "purpose":"Track only gaps that still matter before the sourcing database is review-ready. A missing perfect China quote or perfect white-background photo is not automatically a blocker when reliable secondary evidence exists.",
+  "pricing_model":"DUAL_PRICE_MODEL",
+  "price_status_summary":{
+    "reference_ready_or_provisional":"Most ordinary core materials now have either an established China price band, a same-spec China anchor ladder, or strong secondary wholesale anchors with bead count/spec exposed.",
+    "specialist_model_ready":"Akoya, Tahitian, South Sea, agarwood, amber/beeswax, jadeite, Hetian/nephrite, turquoise, Larimar and Sugilite have identity-first sourcing rules; specialist evidence continues to improve without forcing an 8mm universal band.",
+    "remaining_nonblocking_calibration":[
+      "黑发晶：ordinary 8mm China anchors exist; a clean premium/high loose-bead anchor would improve the high tier.",
+      "兔毛水晶：green/red branches have market evidence; clean same-spec premium ladders would improve final branch bands.",
+      "胶花水晶：ordinary round and freeform anchors exist; premium round-bead ladder remains desirable.",
+      "部分国际批发锚点材料（彼得石、苔藓玛瑙、堇青石、蓝晶石、黑碧玺、阿拉善、樱花玛瑙等）：China domestic calibration would improve confidence but is no longer required before review-ready export.",
+      "盐源玛瑙：raw 7-8/8-8.5mm wholesale reference range now exists; China domestic raw-bead calibration remains optional."
+    ],
+    "identity_or_branch_rules_not_missing_prices":[
+      "黄水晶：keep treatment disclosure; most commercial citrine is heat-treated, so untreated status must never be assumed.",
+      "摩根石：clean natural/undyed wholesale anchors now exist; painted/烤漆 market goods remain quarantined.",
+      "小叶紫檀：seller-claimed price ladders exist; species identity gate is mandatory and Zambia bloodwood is a separate wood class.",
+      "南红、黑曜石、蜜蜡/琥珀、绿松石、珍珠：commercial/treatment/identity branches remain separate by design rather than being averaged."
+    ]
+  },
+  "photo_status_summary":{
+    "reference_ready":"Key round-bead, freeform and accessory recognition images are broadly covered across v1-v5 evidence files.",
+    "nonblocking_improvements":[
+      "景观玛瑙：explicit landscape-agate single bead and wholesale strand references exist; a raw drilled single bead without silver sleeve would still be a nicer final sourcing image.",
+      "红兔毛：loose-bead and 8mm finished references exist; a single white-background loose 8mm bead is optional improvement.",
+      "阿拉善/盐源：usable sourcing/source-page references exist; stable single-bead direct image URLs can still be improved."
+    ],
+    "intentional_block":"金色金属件 remains intentionally blank until its base-material system is chosen."
+  },
+  "remaining_real_blockers":[
+    {
+      "blocker":"MINIMAL_SOURCING_SPEC_SET",
+      "why":"The mother library has 93 historical/design working specs, but this does not yet provide a simple procurement-ready 2-4-spec set for every active material.",
+      "decision_needed":"Choose whether to standardize a small number of sourcing-spec profiles rather than expanding every material into many diameters/forms.",
+      "recommended":"Use simple profile-based minimum sourcing specs, normally 2-4 useful specs per material, with 8mm as the comparison baseline where appropriate and freeform/focal specs only where the material benefits from them."
+    },
+    {
+      "blocker":"GOLD_TONE_BASE_MATERIAL",
+      "why":"Gold-tone hardware cannot have a trustworthy price/photo/spec line until the base system is chosen (e.g. silver plated/vermeil, gold-filled, brass plated).",
+      "decision_needed":"Later, only when gold-tone sourcing becomes active.",
+      "recommended":"Do not block the rest of the database now."
+    },
+    {
+      "blocker":"REAL_PURCHASE_BATCH_EVIDENCE",
+      "why":"Supplier batch treatment/origin/species and samples cannot exist before a real sourcing batch/supplier is selected.",
+      "decision_needed":"No; this belongs to future procurement approval, not mother-library completion.",
+      "purchase_approved_specs":0
+    }
+  ],
+  "no_direct_purchase_items":[
+    "发晶（未细分） taxonomy/design parent",
+    "猫眼类 parent until actual material is identified",
+    "深色木材（树种未定） design placeholder",
+    "菩提籽类 taxonomy parent"
+  ],
+  "user_decision_needed_now":true,
+  "decision_gate":"Approve the simple minimal sourcing-spec profile approach before it is written into the mother-library sourcing layer.",
+  "excel_status":"NOT_YET. After minimal sourcing specs are approved and populated, the database can move to final review before Excel export."
+}
