@@ -1,0 +1,58 @@
+{
+  "version":"CR-REFERENCE-PHOTO-EVIDENCE-V4-20260913",
+  "date":"2026-09-13",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/reference-photo-evidence-v3.json@CR-REFERENCE-PHOTO-EVIDENCE-V3-20260913",
+  "rules":[
+    "External images are recognition/sourcing references only, not owned marketing assets or proof of identity.",
+    "Prefer single drilled beads; group/strand photos are secondary references.",
+    "Trade-name and origin claims remain seller claims unless independently verified."
+  ],
+  "new_references":[
+    {
+      "material":"南红",
+      "form":"柿子红圆珠单颗打孔图",
+      "source_url":"https://www.chinaglobalmall.com/products/OMZq6QTZQWpd7Dysz",
+      "image_url":"https://gw.alicdn.com/imgextra/i1/2200646561247/O1CN01EHGKf41L5AiJjfwNk_%21%212200646561247.jpg_640x640q90.jpg",
+      "reference_quality":"HIGH_VISUAL",
+      "note":"Single bead and drill hole clearly visible. Use for visual/form recognition only; seller 'collection grade/Baoshan' wording is not accepted as verified grade/origin."
+    },
+    {
+      "material":"阿拉善玛瑙",
+      "form":"8.5x8.5x6mm rondelle loose beads",
+      "source_url":"https://www.creema.jp/item/17168311/detail",
+      "image_url":"https://c.p02.c4a.im/images/item/17168311/c657da7017cfc68100650b09f8ffd8ae7d4b97efdaaa97f810823c684577558e?d=500x500",
+      "reference_quality":"HIGH_VISUAL",
+      "note":"Several loose beads with 1mm-class holes visibly separated from strand; good offline-shape reference. Color/material claims still require batch verification."
+    },
+    {
+      "material":"阿拉善玛瑙",
+      "form":"8mm polished round visual reference",
+      "source_url":"https://www.etsy.com/listing/1713945656/8mm-colorful-alashan-agate-beads-natural",
+      "image_url":"https://i.etsystatic.com/27159091/r/il/918d67/6334228819/il_1080xN.6334228819_scv4.jpg",
+      "reference_quality":"MEDIUM_HIGH",
+      "note":"Useful for color/pattern range; group image, not single bead."
+    },
+    {
+      "material":"盐源玛瑙",
+      "form":"8mm round-bead identity reference",
+      "source_url":"https://orientaldirect.co.uk/natural-pink-yan-yuan-agate-semi-precious-gemstone-round-beads-8mm-15-strand/",
+      "image_url":"https://cdn11.bigcommerce.com/s-ced79/images/stencil/1280x1280/products/9311/35966/36203_2d49032f-1e50-41a9-aaa7-a219341a9ed70__94027.1710847936.jpg?c=2%3Fimbypass%3Don",
+      "reference_quality":"MEDIUM_HIGH",
+      "note":"Round beads and color zoning are clear; group/strand image. Existing Topaoko single-bead source remains preferred for single-item sourcing reference."
+    },
+    {
+      "material":"景观玛瑙",
+      "form":"single landscape-agate large-hole bead",
+      "source_url":"https://www.materia-schmuck.de/naturstein-bead-silber-armband/a-9462/",
+      "image_url":"https://cdn03.plentymarkets.com/ryazitesj23f/item/images/9462/full/European-Beads-Schmuck-Landschaftsachat-Edelstein-Stein-9462_1.jpeg",
+      "reference_quality":"MEDIUM_HIGH_VISUAL",
+      "note":"Explicitly sold as Landschaftsachat / landscape agate; single bead and scenic pattern clear. Silver sleeve/4.5mm large-hole makes it a visual reference only, not our target raw-drilled procurement spec."
+    }
+  ],
+  "remaining_photo_gaps":[
+    "景观玛瑙：visual identity gap is now partially closed, but still seek a raw stone single drilled bead without silver core for the final sourcing sheet.",
+    "金色金属件：intentionally unfilled until base metal is decided.",
+    "阿拉善/盐源：usable sourcing references exist; direct single-bead white-background photos can still be improved but are no longer blockers."
+  ]
+}
