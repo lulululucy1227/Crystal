@@ -1,0 +1,193 @@
+{
+  "version": "CR-PRICE-EVIDENCE-V3-DELTA-20260913",
+  "date": "2026-09-13",
+  "authority": "Crystal｜选品",
+  "extends": [
+    "outputs/selection/price-evidence-v1.json@CR-PRICE-EVIDENCE-V1-20260913",
+    "outputs/selection/price-evidence-v2-delta.json@CR-PRICE-EVIDENCE-V2-DELTA-20260913"
+  ],
+  "rules": [
+    "Same-seller same-size ladders are preferred for relative market calibration.",
+    "Seller A/AA/5A labels remain seller vocabulary only.",
+    "Different forms and treated branches are kept separate.",
+    "Foreign wholesale/retail anchors remain secondary and are not silently converted into China CNY price bands."
+  ],
+  "updates": [
+    {
+      "material":"拉长石",
+      "spec":"8mm round bead",
+      "status":"ANCHOR_ONLY_STRENGTHENED",
+      "china_anchor_cny_per_pc":2.39,
+      "source":"https://www.yiwugo.com/product/detail/955941228.html",
+      "note":"same-seller 8mm ladder; seller calls branch 5A"
+    },
+    {
+      "material":"天河石",
+      "spec":"8mm round bead",
+      "status":"ANCHOR_ONLY_STRENGTHENED",
+      "china_anchor_cny_per_pc":1.03,
+      "source":"https://www.yiwugo.com/product/detail/955941228.html",
+      "warning":"exclude listings explicitly described as 天河石玉髓 from Amazonite evidence"
+    },
+    {
+      "material":"摩根石",
+      "spec":"8mm round bead",
+      "status":"IDENTITY_RISK_ANCHOR",
+      "china_anchor_cny_per_pc":0.95,
+      "source":"https://www.yiwugo.com/product/detail/955941228.html",
+      "rule":"keep as low-market commercial anchor only; do not merge painted/baked/identity-ambiguous morganite listings into a natural-material band"
+    },
+    {
+      "material":"茶晶/烟晶",
+      "spec":"8mm round bead",
+      "status":"BAND_PARTIAL_STRENGTHENED",
+      "working_reference_cny_per_pc":[0.45,0.90,1.22],
+      "sources":["https://www.yiwugo.com/product/detail/976675970.html","https://www.yiwugo.com/product/detail/955941228.html"],
+      "working_band_cny":{"low":"<0.5","mid":"0.5-1.3","high":"1.3+ pending"},
+      "target_purchase_tier":"MID",
+      "note":"provisional band; high boundary still needs a cleaner premium anchor"
+    },
+    {
+      "material":"葡萄石",
+      "spec":"8mm round bead",
+      "status":"ANCHOR_ONLY_STRENGTHENED",
+      "china_anchor_cny_per_pc":0.95,
+      "source":"https://www.yiwugo.com/product/detail/955941228.html",
+      "secondary_anchor":"premium/single-bead public anchor previously collected around CNY 10.8/pc",
+      "rule":"large spread indicates seller/product-position differences; do not force full band yet"
+    },
+    {
+      "material":"黄水晶",
+      "spec":"8mm round bead",
+      "status":"TREATMENT_BRANCH_REQUIRED",
+      "china_reference_cny_per_pc":[0.95,0.94,1.87],
+      "sources":["https://www.yiwugo.com/product/detail/955941228.html","https://www.yiwugo.com/product/detail/976675970.html"],
+      "rule":"do not create one natural-citrine band before treatment/origin disclosure; commercial yellow quartz anchors remain useful market evidence"
+    },
+    {
+      "material":"虎眼石",
+      "spec":"8mm round bead",
+      "status":"ESTABLISHED_BAND_STRENGTHENED",
+      "same_seller_anchors_cny_per_pc":[0.285,0.489],
+      "source":"https://www.yiwugo.com/product/detail/955941228.html",
+      "note":"supports existing low-price material logic; project target remains mid-tier rather than artificially expensive stock"
+    },
+    {
+      "material":"黑发晶",
+      "spec":"8mm round bead",
+      "status":"ANCHOR_ONLY_STRENGTHENED",
+      "china_anchors_cny_per_pc":[0.35,0.48],
+      "source":"https://www.yiwugo.com/product/detail/976675970.html",
+      "warning":"seller 1A/3A labels ignored; high-quality focal anchors still required"
+    },
+    {
+      "material":"胶花水晶/红胶花商业分支",
+      "spec":"8mm round bead",
+      "status":"ORDINARY_BASELINE_ESTABLISHED_HIGH_PENDING",
+      "china_anchors_cny_per_pc":[0.59,0.67],
+      "sources":["https://yiwugo.com/product/detail/985358517.html","https://www.yiwugo.com/product/detail/976675970.html"],
+      "working_rule":"ordinary red-inclusion 8mm commercial baseline about 0.6 CNY/pc; premium/high band remains pending; freeform pricing stays separate"
+    },
+    {
+      "material":"兔毛水晶/绿兔毛商业分支",
+      "spec":"8mm round bead",
+      "status":"ANCHOR_ONLY",
+      "china_anchor_cny_per_pc":0.57,
+      "source":"https://www.yiwugo.com/product/detail/976675970.html",
+      "secondary_foreign_anchor":{"material_branch":"red rabbit hair quartz","price":"USD 7.07 per about-47-bead 8mm strand","source":"https://www.21cnbeads.com/crh622-inches-8mm-round-red-rabbit-hair-quartz-beads-wholesale-p-79386.html"},
+      "rule":"green and red rabbit-hair commercial branches must not be merged into one price band without batch comparability"
+    },
+    {
+      "material":"彼得石",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 13.50 per ~48-bead strand","source":"https://www.21cn-beads.com/cpb1072-155-inches-8mm-round-peter-stone-beads-wholesale-p-64588.html"},
+        {"price":"USD 14.69 / 13.95 / 13.22 per ~47-bead strand by quantity","source":"https://www.pandahall.com/p-1886701-natural-pietersite-beads-strands-round-8mm.html"}
+      ],
+      "rule":"use as international wholesale validation only until China domestic same-spec anchors are found"
+    },
+    {
+      "material":"苔藓玛瑙",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 8.00 per 16-inch strand; 12+ USD 7.20","source":"https://www.stachurawholesalegemstones.com/moss-agate-beads.html"},
+        {"price":"USD 5.79 per ~15-inch strand","source":"https://store.kenkengems.com/products/77671510"},
+        {"price":"USD 6.80 per ~48-bead strand","source":"https://gemwholesales.com/products/aa-8mm-natural-green-moss-agate-round-beads"}
+      ],
+      "rule":"good cross-market evidence, but retain foreign-currency anchor status until China domestic comparable quote is found"
+    },
+    {
+      "material":"堇青石",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 4.20-4.76 per 48-49 bead strand bulk","source":"https://www.pandawhole.com/p-wholesale-iolite/2527-840352-2906046-natural-iolite-beads-strands-round-8mm.html"},
+        {"price":"USD 3.29-6.19 per strand marketplace range","source":"https://www.alibaba.com/countrysearch/CN/iolite-gemstone.html"}
+      ]
+    },
+    {
+      "material":"蓝晶石",
+      "spec":"round bead family; 8mm target",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 10.50-27.50 per strand seller range","source":"https://www.alibaba.com/countrysearch/CN/kyanite-beads.html"},
+        {"price":"USD 37.70-93 per 8mm strand higher-range supplier","source":"https://www.alibaba.com/countrysearch/CN/gemstone-beads-kyanit.html"}
+      ],
+      "rule":"large supplier spread means China domestic calibration remains necessary"
+    },
+    {
+      "material":"黑碧玺",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"USD 1.88 per strand at factory bulk threshold","source":"https://www.pandawhole.com/p-wholesale-tourmaline/1644-827214-2708541-natural-black-tourmaline-beads-strands-round-8mm.html"},
+        {"price":"EUR 11.95 single strand / EUR 10.40 at 3+","source":"https://www.ipergems.com/en/gemstone-and-freshwater-pearls/gemstones/black-tourmaline/9s01732-black-tourmaline-smooth-round-8mm"}
+      ],
+      "rule":"huge channel spread; retain as secondary anchors only"
+    },
+    {
+      "material":"阿拉善玛瑙",
+      "spec":"8mm round bead, 1mm hole",
+      "status":"SECONDARY_WHOLESALE_ANCHOR_STRENGTHENED",
+      "anchor":{"price":"USD 20.56 per 5 strands; quantity tiers down to USD 16.45 per 5 strands","source":"https://www.nbeads.com/shop/p-3556450-natural-alashan-agate-beads-strands-round-8mm.html","count":"about 45-47 beads/strand"},
+      "warning":"separate dyed/rainbow branches from undyed material"
+    },
+    {
+      "material":"樱花玛瑙/Flower Agate",
+      "spec":"8mm round bead",
+      "status":"SECONDARY_WHOLESALE_ANCHORS",
+      "anchors":[
+        {"price":"EUR 11.95 per 15/16-inch strand; EUR 10.40 at 3+","source":"https://www.ipergems.com/en/gemstone-and-freshwater-pearls/gemstones/flower-agate/9s02627-flower-agate-smooth-round-8mm"},
+        {"price":"USD 14 per strand, 45-46 beads for 8mm","source":"https://bellairewholesale.com/products/flower-agate-beads"}
+      ],
+      "warning":"dyed Flower Agate listings exist and must be separate from undyed branch"
+    },
+    {
+      "material":"星月菩提",
+      "spec":"commercial finished bracelet/strand",
+      "status":"FINISHED_PRODUCT_ANCHOR",
+      "anchor":{"price":"CNY 9.90 for 顺白脱籽桶珠 product; related 3x5 two-loop CNY 15.90 and 108-bead product CNY 29.90","source":"https://www.chinagoods.com/store/goodsdetail/1937068147481124866"},
+      "rule":"future sourcing table should use finished-strand/product unit rather than forcing per-bead 8mm price"
+    },
+    {
+      "material":"白玉菩提",
+      "spec":"108-bead barrel/apple product",
+      "status":"FINISHED_PRODUCT_ANCHOR_STRENGTHENED",
+      "anchor":{"price":"CNY 10 per product for 6x8mm and 8x10mm barrel/apple variants","source":"https://www.chinagoods.com/store/goodsdetail/1930826223460032514"}
+    },
+    {
+      "material":"绿檀",
+      "spec":"8mm 22-bead finished bracelet",
+      "status":"FINISHED_PRODUCT_ANCHOR",
+      "anchor":{"price":"CNY 1.50 per 22-bead product","source":"https://www.chinagoods.com/store/goodsdetail/2003714310345109506/"},
+      "warning":"seller material field says 其他; tree species identity remains unresolved"
+    }
+  ],
+  "quarantined_evidence": [
+    {"item":"Alashan rainbow dyed branch","source":"https://www.pandahall.com/p-2255596-natural-gemstone-strands-round-8mm.html","reason":"explicitly dyed; separate branch, not low tier of undyed Alashan"},
+    {"item":"Flower Agate dyed branch","source":"https://www.pandahall.com/p-1615599-natural-flower-agate-beads-strands-round-dyed.html","reason":"explicitly dyed; keep separate"},
+    {"item":"小叶紫檀 mixed bracelet CNY799","source":"https://www.chinagoods.com/store/goodsdetail/1987763867515908098","reason":"mixed high-value bracelet with蜜蜡/南红/绿松; unusable for pure 8mm wood-bead band"}
+  ]
+}
