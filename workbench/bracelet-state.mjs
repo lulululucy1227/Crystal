@@ -1,3 +1,4 @@
+import { layoutStudio, settleLoose, looseCoordinates } from './studio-layout.mjs';
 const trayAllowanceMm = 5;
 let instanceSequence = 0;
 
@@ -25,6 +26,27 @@ function loosePoint(x, y, index = 0) {
     looseY = 0.5 + (looseY - 0.5) * 0.5 / distance;
   }
   return { looseX, looseY };
+}
+
+function positionFields(input) {
+  if (Number.isFinite(input.looseLinearX) && Number.isFinite(input.looseLinearY)) return {
+    looseLinearX: Math.max(0, Math.min(1, input.looseLinearX)),
+    looseLinearY: Math.max(0, Math.min(1, input.looseLinearY)),
+  };
+  return loosePoint(input.looseX, input.looseY);
+}
+
+function settleEditedState(state, instanceId, viewport) {
+  if (state.layoutMode !== 'loose') return state;
+  const projection = layoutStudio(state, positiveNumber(viewport?.width, 900), positiveNumber(viewport?.height, 560));
+  const point = projection.points.find(p => p.instanceId === instanceId);
+  if (!point) return state;
+  const moved = new Map();
+  settleLoose(projection.points, instanceId, point, projection).forEach((p, index) => {
+    const before = projection.points[index];
+    if (Math.hypot(p.x - before.x, p.y - before.y) > 1e-8) moved.set(p.instanceId, looseCoordinates(p, projection));
+  });
+  return moved.size ? recalculate({ ...state, instances: state.instances.map(i => moved.has(i.instanceId) ? { ...i, ...moved.get(i.instanceId) } : i) }) : state;
 }
 
 function normalizeInstance(item, fallbackBeadMm, index) {
@@ -56,6 +78,7 @@ function normalizeInstance(item, fallbackBeadMm, index) {
     displayNameEn: item.displayNameEn || materialName,
     form: item.form || 'round',
     sizeMm,
+    rotationDeg: Number.isFinite(Number(item.rotationDeg)) ? Number(item.rotationDeg) : 0,
     sourceStatus: item.sourceStatus == null ? 'PROPOSED' : ['APPROVED', 'PROPOSED', 'UNRESOLVED'].includes(item.sourceStatus) ? item.sourceStatus : 'UNRESOLVED',
     assetRef: item.assetRef || '',
     provenanceClass: item.provenanceClass || 'generated_from_evidence',
@@ -118,6 +141,9 @@ export function createBraceletState(input = {}) {
     ...(input.layoutMode === 'loose' || input.layoutMode === 'bracelet' ? { layoutMode: input.layoutMode } : {}),
     ...(input.design && typeof input.design === 'object' ? { design: clone(input.design) } : {}),
     wristCm: positiveNumber(input.wristCm, 17),
+    trayMode: input.trayMode === 'linear' ? 'linear' : 'round',
+    wrapCount: [1, 2, 3].includes(input.wrapCount) ? input.wrapCount : 1,
+    allowanceMm: Number.isFinite(input.allowanceMm) && input.allowanceMm >= 0 ? input.allowanceMm : 5,
     fallbackBeadMm,
     activeMaterialName: input.activeMaterialName || input.activeItemName || '',
     selectedInstanceId: input.selectedInstanceId || '',
@@ -134,9 +160,12 @@ export function placeInstance(state, input = {}) {
   if (isStudio(state)) {
     if (!input.materialName && !input.materialId && !input.displayNameZh && !input.displayNameEn) return state;
     if (input.instanceId && state.instances.some((item) => item.instanceId === input.instanceId)) return state;
-    const { type, targetIndex, ...fields } = input;
+    const { type, targetIndex, settle, viewport, ...fields } = input;
     const instance = normalizeInstance(fields, state.fallbackBeadMm, state.instances.length);
-    return recalculate({ ...state, selectedInstanceId: instance.instanceId, instances: [...state.instances, instance] });
+    const instances = [...state.instances];
+    instances.splice(Number.isInteger(targetIndex) ? Math.max(0, Math.min(instances.length, targetIndex)) : instances.length, 0, instance);
+    const placed = recalculate({ ...state, selectedInstanceId: instance.instanceId, instances });
+    return settle ? settleEditedState(placed, instance.instanceId, viewport) : placed;
   }
   const slotIndex = Number(input.slotIndex);
   if (!input.materialName || !Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= state.capacity) return state;
@@ -180,13 +209,15 @@ export function placeInstance(state, input = {}) {
   return recalculate({ ...state, selectedInstanceId: instance.instanceId, instances: [...instances, instance] });
 }
 
-export function moveInstance(state, { instanceId, slotIndex, targetIndex, looseX, looseY } = {}) {
+export function moveInstance(state, { instanceId, slotIndex, targetIndex, looseX, looseY, looseLinearX, looseLinearY, settle, viewport } = {}) {
   const sourceIndex = state.instances.findIndex((item) => item.instanceId === instanceId);
   if (sourceIndex < 0) return state;
   if (state.layoutMode === 'loose') {
-    if (!Number.isFinite(Number(looseX)) || !Number.isFinite(Number(looseY))) return state;
-    const point = loosePoint(looseX, looseY);
-    return recalculate({ ...state, selectedInstanceId: instanceId, instances: state.instances.map((item, index) => index === sourceIndex ? { ...item, ...point } : item) });
+    const linear = Number.isFinite(looseLinearX) && Number.isFinite(looseLinearY);
+    if (!linear && (!Number.isFinite(Number(looseX)) || !Number.isFinite(Number(looseY)))) return state;
+    const point = positionFields({ looseX, looseY, looseLinearX, looseLinearY });
+    const moved = recalculate({ ...state, selectedInstanceId: instanceId, instances: state.instances.map((item, index) => index === sourceIndex ? { ...item, ...point } : item) });
+    return settle ? settleEditedState(moved, instanceId, viewport) : moved;
   }
   if (state.layoutMode === 'bracelet') {
     const target = Number(targetIndex ?? slotIndex);
@@ -217,14 +248,15 @@ export function removeInstance(state, instanceId) {
 }
 
 export function replaceInstance(state, input = {}) {
-  const { instanceId, type, ...fields } = input;
+  const { instanceId, type, settle, viewport, ...fields } = input;
   if ((!fields.materialName && !fields.materialId) || !state.instances.some((item) => item.instanceId === instanceId)) return state;
-  return recalculate({
+  const replaced = recalculate({
     ...state,
     instances: state.instances.map((item) => item.instanceId === instanceId ? {
-      ...normalizeInstance({ ...fields, instanceId, ...(item.position != null ? { position: item.position, sourcePosition: item.sourcePosition } : {}), looseX: item.looseX, looseY: item.looseY, slotIndex: item.slotIndex }, state.fallbackBeadMm, item.slotIndex),
+      ...normalizeInstance({ ...fields, instanceId, ...(item.position != null ? { position: item.position, sourcePosition: item.sourcePosition } : {}), looseX: item.looseX, looseY: item.looseY, ...(item.looseLinearX != null ? { looseLinearX: item.looseLinearX, looseLinearY: item.looseLinearY } : {}), slotIndex: item.slotIndex }, state.fallbackBeadMm, item.slotIndex),
     } : item),
   });
+  return settle ? settleEditedState(replaced, instanceId, viewport) : replaced;
 }
 
 export function setWristSize(state, wristCm) {
@@ -256,6 +288,9 @@ export function compactToBracelet(state) {
 export function serializeBraceletState(state) {
   return clone({
     version: isStudio(state) ? 3 : 2,
+    trayMode: state.trayMode || 'round',
+    wrapCount: state.wrapCount || 1,
+    allowanceMm: state.allowanceMm ?? 5,
     ...(isStudio(state) ? { layoutMode: state.layoutMode } : {}),
     ...(state.design ? { design: state.design } : {}),
     wristCm: state.wristCm,
@@ -272,6 +307,25 @@ export function createHistory(initialState, limit = 50) {
 }
 
 function applyCommand(state, command = {}) {
+  if (command.type === 'tray-mode' && ['round', 'linear'].includes(command.trayMode) && command.trayMode !== state.trayMode) return { ...state, trayMode: command.trayMode };
+  if (command.type === 'wrap-count' && [1, 2, 3].includes(command.wrapCount) && command.wrapCount !== state.wrapCount) return { ...state, wrapCount: command.wrapCount };
+  if (command.type === 'allowance' && Number.isFinite(command.allowanceMm) && command.allowanceMm >= 0 && command.allowanceMm !== state.allowanceMm) return { ...state, allowanceMm: command.allowanceMm };
+  if (command.type === 'rotate' && Number.isFinite(command.rotationDeg) && state.instances.some(i => i.instanceId === command.instanceId)) return recalculate({ ...state, instances: state.instances.map(i => i.instanceId === command.instanceId ? { ...i, rotationDeg: command.rotationDeg } : i) });
+  if (command.type === 'swap') {
+    const a = state.instances.findIndex(i => i.instanceId === command.instanceId), b = state.instances.findIndex(i => i.instanceId === command.otherInstanceId);
+    if (a < 0 || b < 0 || a === b) return state;
+    const instances = [...state.instances], first = instances[a], second = instances[b];
+    const position = i => state.layoutMode === 'loose' && state.trayMode === 'linear'
+      ? { looseLinearX: i.looseLinearX ?? i.looseX, looseLinearY: i.looseLinearY ?? i.looseY }
+      : { looseX: i.looseX, looseY: i.looseY };
+    instances[a] = { ...second, ...position(first) };
+    instances[b] = { ...first, ...position(second) };
+    return recalculate({ ...state, instances });
+  }
+  if (command.type === 'settle' && Array.isArray(command.positions)) {
+    const positions = new Map(command.positions.map(p => [p.instanceId, p]));
+    return recalculate({ ...state, instances: state.instances.map(i => positions.has(i.instanceId) ? { ...i, ...positionFields(positions.get(i.instanceId)) } : i) });
+  }
   if (command.type === 'place') return placeInstance(state, command);
   if (command.type === 'move') return moveInstance(state, command);
   if (command.type === 'remove') return removeInstance(state, command.instanceId);
