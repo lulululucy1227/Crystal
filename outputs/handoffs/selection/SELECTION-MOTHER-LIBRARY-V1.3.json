@@ -1,0 +1,20 @@
+{
+  "result":"MOTHER_LIBRARY_V1_3_UPDATED",
+  "current_state":"Mother library now contains 79 material records, of which 78 are active selectable materials and 1 is taxonomy-only. Purchase-approved specs remain 0.",
+  "key_changes":[
+    "Added Garnet, Fluorite, Seraphinite trade, Xingyue Bodhi and White Bodhi as research candidates.",
+    "Excluded engraved silver beads, engraved accessories, pixiu accessories, Huangta crystal, jasper and Xiuyu jade from the current mother library.",
+    "CRM-M-0066 generic Bodhi seed family is retained only as taxonomy/history and removed from actual selectable/procurement use."
+  ],
+  "deliverables":[
+    "outputs/selection/material-library-decision-miniapp-v1.json",
+    "outputs/selection/working-version-material-library-v1.3.json"
+  ],
+  "risks_blockers":[
+    "All five additions remain research candidates and need material-specific low/mid/high sourcing standards before offline sourcing release.",
+    "Seraphinite and Bodhi trade naming still require supplier/batch evidence for exact identity."
+  ],
+  "decision_required":[],
+  "next_action":"Continue user audit of category coverage before generating Excel; next useful step is material-specific low/mid/high quality criteria and single-item reference images.",
+  "commit_sha":"a9ccf6649e57215128ef46a32273e2a5591e6197"
+}
