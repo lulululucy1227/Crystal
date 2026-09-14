@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 
@@ -19,7 +20,6 @@ test('shared Workbench build has an explicit static publication boundary', () =>
   assert.match(source, /assets[\\/]local/);
   assert.match(source, /'exports'/);
   assert.match(source, /static-data\.json/);
-  assert.match(source, /127\.0\.0\.1/);
 
   const runtime = fs.readFileSync(bootstrap, 'utf8');
   assert.match(runtime, /localStorage/);
@@ -40,4 +40,24 @@ test('shared Workbench build excludes local source material and canonical source
   assert.equal(snapshot.includes('local_image_path'), false);
   assert.equal(snapshot.includes('external_locator'), false);
   assert.equal(snapshot.includes('source_url'), false);
+});
+
+test('shared Workbench build succeeds without a canonical SQLite file', () => {
+  const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'crystal-shared-static-'));
+  try {
+    fs.mkdirSync(path.join(fixture, 'scripts'), { recursive: true });
+    fs.mkdirSync(path.join(fixture, 'outputs'), { recursive: true });
+    fs.mkdirSync(path.join(fixture, 'data'), { recursive: true });
+    fs.mkdirSync(path.join(fixture, 'node_modules', 'fabric', 'dist'), { recursive: true });
+    fs.copyFileSync(path.join(repo, 'scripts', 'build-workbench-static.mjs'), path.join(fixture, 'scripts', 'build-workbench-static.mjs'));
+    fs.copyFileSync(path.join(repo, 'outputs', 'assortment-selection-v1.json'), path.join(fixture, 'outputs', 'assortment-selection-v1.json'));
+    fs.copyFileSync(path.join(repo, 'node_modules', 'fabric', 'dist', 'index.min.mjs'), path.join(fixture, 'node_modules', 'fabric', 'dist', 'index.min.mjs'));
+    fs.cpSync(path.join(repo, 'workbench'), path.join(fixture, 'workbench'), { recursive: true });
+
+    const result = spawnSync(process.execPath, ['scripts/build-workbench-static.mjs'], { cwd: fixture, encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(fs.existsSync(path.join(fixture, '.static-workbench', 'data', 'static-data.json')), true);
+  } finally {
+    fs.rmSync(fixture, { recursive: true, force: true });
+  }
 });

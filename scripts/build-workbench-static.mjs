@@ -1,4 +1,3 @@
-import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -6,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const workbench = path.join(repo, 'workbench');
 const output = path.join(repo, '.static-workbench');
+const assortmentPath = path.join(repo, 'outputs', 'assortment-selection-v1.json');
 const excluded = new Set([
   'server.mjs',
   'state',
@@ -39,30 +39,27 @@ const sanitizeData = data => redact({
     reference_key, reference_type, themes, snippets, evidence_status,
   })),
 });
-const startServer = () => new Promise((resolve, reject) => {
-  const child = spawn(process.execPath, ['workbench/server.mjs'], {
-    cwd: repo,
-    env: { ...process.env, WORKBENCH_PORT: '0' },
-    stdio: ['ignore', 'pipe', 'pipe'],
-  });
-  const timer = setTimeout(() => { child.kill(); reject(new Error('Timed out while preparing the static catalogue snapshot.')); }, 15_000);
-  let stderr = '';
-  child.stderr.on('data', chunk => { stderr += chunk; });
-  child.on('error', error => { clearTimeout(timer); reject(error); });
-  child.stdout.on('data', chunk => {
-    const text = chunk.toString();
-    const match = text.match(/http:\/\/127\.0\.0\.1:(\d+)/);
-    if (!match) return;
-    clearTimeout(timer);
-    resolve({ child, url: `http://127.0.0.1:${match[1]}`, stderr });
-  });
-});
+const sharedSnapshot = () => {
+  const assortment = JSON.parse(fs.readFileSync(assortmentPath, 'utf8'));
+  if (!Array.isArray(assortment.items)) throw new Error('Shared assortment snapshot is missing items.');
+  const countBy = key => Object.fromEntries([...new Set(assortment.items.map(item => item[key]))]
+    .filter(Boolean).map(value => [value, assortment.items.filter(item => item[key] === value).length]));
+  return {
+    assortment,
+    overview: {
+      themes: ['Mountain', 'Ocean', 'Forest', 'Sunrise', 'Starlight', 'Glacier'],
+      assortmentBySection: countBy('section'),
+      assortmentByPriority: countBy('priority'),
+      canonicalCounts: {},
+    },
+    db: { counts: {} },
+    libraries: { materials: [], accessories: [], packaging: [] },
+    materials: [], components: [], packaging: [], references: [],
+  };
+};
 
-const { child, url } = await startServer();
-try {
-  const response = await fetch(`${url}/api/data`);
-  if (!response.ok) throw new Error(`Catalogue endpoint returned ${response.status}.`);
-  const data = sanitizeData(await response.json());
+{
+  const data = sanitizeData(sharedSnapshot());
   fs.rmSync(output, { recursive: true, force: true });
   copyWorkbench();
   // The desktop build uses origin-rooted paths. GitHub Pages is served from a
@@ -84,6 +81,4 @@ try {
     .replace('<script type="module" src="app.js?build=graphite-v1"></script>', '<script src="shared-bootstrap.js"></script>\n  <script type="module" src="app.js?build=shared-static-v1"></script>');
   fs.writeFileSync(path.join(output, 'index.html'), index);
   console.log(`Shared Workbench static site prepared at ${output}`);
-} finally {
-  child.kill();
 }
