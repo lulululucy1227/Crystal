@@ -1,0 +1,27 @@
+{
+  "version":"CR-SELECTION-COMPLETION-GAP-TRACKER-V4-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/completion-gap-tracker-v3.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V3-20260914",
+  "status":"PRE_EXCEL_REPAIR_COMPLETE_PENDING_AUDIT",
+  "resolved_this_round":[
+    "Default hole-size risk corrected: doubled-0.4mm-elastic bracelet bead profiles now target finished clear through-hole >=1.0mm instead of inheriting ~0.8-1.0mm.",
+    "NON_ELASTIC profile removed from sourcing-ready status; material/structure remains pending rather than assuming coated beading wire.",
+    "STONE_AGATE semantic mismatch corrected by renaming/interpreting the generic profile as STONE_GENERAL.",
+    "Standard sourcing-recognition image/source coverage repaired to 67/67 sourcing-spec-ready items.",
+    "Final Excel price display policy now requires evidence status, source market and original currency, preventing overseas/reference anchors from masquerading as China RMB bands."
+  ],
+  "current_counts":{"materials_in_scope":72,"sourcing_spec_ready":67,"photo_covered_ready":67,"no_direct_purchase":3,"gold_tone_hold":1,"non_elastic_structure_pending":1,"purchase_approved_specs":0},
+  "remaining_nonblocking_improvements":[
+    "Some references are source-page-only rather than stable direct image URLs (notably generic chalcedony and flower/sakura agate); acceptable for review/export but can be improved later.",
+    "胶花水晶 uses an explicitly labeled red-inclusion-quartz visual proxy plus a red-jiaohua trade-category source; exact inclusion identity remains batch-dependent.",
+    "A few ordinary materials still have foreign wholesale or single-point price anchors rather than dense China same-spec bands; price evidence status must remain visible in Excel."
+  ],
+  "deferred_real_blockers":[
+    {"item":"GOLD_TONE_BASE_MATERIAL","status":"USER_DECISION_LATER","effect":"Only CRM-M-0028 remains on hold."},
+    {"item":"NON_ELASTIC_STRINGING_STRUCTURE","status":"DESIGN_ENGINEERING_DECISION_LATER","effect":"CRM-M-0037 remains structure-pending and must not be exported as coated wire/tiger-tail by default."},
+    {"item":"REAL_SUPPLIER_BATCH_EVIDENCE","status":"FUTURE_PROCUREMENT","effect":"Treatment/origin/species/sample evidence remains required before any purchase approval."},
+    {"item":"HISTORICAL_EXCEL_AND_CANONICAL_EXPORT","status":"NOT_AVAILABLE","effect":"CRM-M IDs remain selection-library IDs; no claim of canonical-ID or inventory reconciliation."}
+  ],
+  "next_gate":"Pass pre-Excel audit; then workbook generation may proceed without waiting for gold-tone or real supplier batch evidence."
+}
