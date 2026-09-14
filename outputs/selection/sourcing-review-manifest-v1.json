@@ -1,0 +1,23 @@
+{
+  "version":"CR-SOURCING-REVIEW-MANIFEST-V1-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "status":"READY_FOR_HUMAN_REVIEW_EXPORT",
+  "mother_library":"outputs/selection/working-version-material-library-v1.7.json@CR-MAT-V1.7-MOTHER-LIBRARY-20260914",
+  "minimal_sourcing_specs":"outputs/selection/minimal-sourcing-specs-v1.json@CR-MINIMAL-SOURCING-SPECS-V1-20260914",
+  "ordinary_price_evidence":["outputs/selection/price-evidence-v1.json","outputs/selection/price-evidence-v2-delta.json","outputs/selection/price-evidence-v3-delta.json","outputs/selection/price-evidence-v4-delta.json","outputs/selection/price-evidence-v5-delta.json","outputs/selection/price-evidence-v6-delta.json","outputs/selection/price-evidence-v7-delta.json"],
+  "specialist_price_evidence":["outputs/selection/specialist-pricing-evidence-v1.json","outputs/selection/specialist-pricing-evidence-v2-delta.json","outputs/selection/specialist-pricing-evidence-v3-delta.json","outputs/selection/specialist-pricing-evidence-v4-delta.json","outputs/selection/specialist-pricing-evidence-v5-delta.json"],
+  "photo_evidence":["outputs/selection/reference-photo-evidence-v1.json","outputs/selection/reference-photo-evidence-v2.json","outputs/selection/reference-photo-evidence-v3.json","outputs/selection/reference-photo-evidence-v4.json","outputs/selection/reference-photo-evidence-v5.json"],
+  "gap_tracker":"outputs/selection/completion-gap-tracker-v3.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V3-20260914",
+  "display_categories":["水晶","珍珠","矿石","木材","配饰","随形"],
+  "review_counts":{"materials_in_scope":72,"sourcing_spec_ready":68,"no_direct_purchase":3,"gold_tone_on_hold":1,"purchase_approved_specs":0},
+  "review_rules":[
+    "Excel is an export/view of this evidence chain, not a second source of truth.",
+    "随形 is a cross-material view and does not duplicate material identities.",
+    "Ordinary materials display comparable-spec low/mid/high market price bands; specialist materials display identity gates and relevant price anchors instead.",
+    "Third-party images are sourcing recognition references only; they must not be reused as project marketing assets.",
+    "Purchase approval remains zero until actual supplier/batch evidence is reviewed."
+  ],
+  "items_not_ready_for_direct_purchase":["CRM-M-0022 发晶（未细分）","CRM-M-0070 猫眼类","CRM-M-0026 深色木材（树种未定）","CRM-M-0028 金色金属件（基材待定）"],
+  "next_user_facing_step":"Generate the final human-readable sourcing review/Excel only after review of this sourcing structure; gold-tone base material can stay pending."
+}
