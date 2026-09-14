@@ -1,4 +1,5 @@
 import { layoutStudio, settleLoose, looseCoordinates } from './studio-layout.mjs';
+import { fitEstimate, fitChangeAllowed } from './bracelet-fit.mjs';
 const trayAllowanceMm = 5;
 let instanceSequence = 0;
 
@@ -78,6 +79,7 @@ function normalizeInstance(item, fallbackBeadMm, index) {
     displayNameEn: item.displayNameEn || materialName,
     form: item.form || 'round',
     sizeMm,
+    ...(item.fitSizeUnknown || !(typeof item.sizeMm==='number'&&Number.isFinite(item.sizeMm)&&item.sizeMm>0) ? {fitSizeUnknown:true} : {}),
     rotationDeg: Number.isFinite(Number(item.rotationDeg)) ? Number(item.rotationDeg) : 0,
     sourceStatus: item.sourceStatus == null ? 'PROPOSED' : ['APPROVED', 'PROPOSED', 'UNRESOLVED'].includes(item.sourceStatus) ? item.sourceStatus : 'UNRESOLVED',
     assetRef: item.assetRef || '',
@@ -90,15 +92,16 @@ function normalizeInstance(item, fallbackBeadMm, index) {
 function recalculate(state) {
   const wristCm = positiveNumber(state.wristCm, 17);
   const fallbackBeadMm = positiveNumber(state.fallbackBeadMm, 8);
-  const targetCircumferenceMm = targetFor(wristCm);
-  const capacity = capacityFor(targetCircumferenceMm, fallbackBeadMm);
   const normalized = (state.instances || []).map((item, index) => normalizeInstance(item, fallbackBeadMm, index));
+  const planningFit = fitEstimate({...state,wristCm,instances:normalized});
+  const targetCircumferenceMm = isStudio(state) ? planningFit.targetMm : targetFor(wristCm);
+  const capacity = capacityFor(targetCircumferenceMm, fallbackBeadMm);
   const totalSize = normalized.reduce((sum, item) => sum + item.sizeMm, 0);
   let cumulative = 0;
   const instances = normalized.map((item, index) => {
     const angle = state.layoutMode === 'bracelet'
       ? ((cumulative + item.sizeMm / 2) / Math.max(1, totalSize)) * 360 - 90
-      : angleFor(item.slotIndex, capacity);
+      : state.layoutMode==='loose'&&Number.isFinite(item.angle)?item.angle:angleFor(item.slotIndex, capacity);
     cumulative += item.sizeMm;
     return { ...item, ...(item.position != null ? { position: index + 1 } : {}), slotIndex: isStudio(state) ? index : item.slotIndex, angle };
   });
@@ -143,7 +146,7 @@ export function createBraceletState(input = {}) {
     wristCm: positiveNumber(input.wristCm, 17),
     trayMode: input.trayMode === 'linear' ? 'linear' : 'round',
     wrapCount: [1, 2, 3].includes(input.wrapCount) ? input.wrapCount : 1,
-    allowanceMm: Number.isFinite(input.allowanceMm) && input.allowanceMm >= 0 ? input.allowanceMm : 5,
+    allowanceMm: Number.isFinite(input.allowanceMm) && input.allowanceMm >= 0 ? input.allowanceMm : 0,
     fallbackBeadMm,
     activeMaterialName: input.activeMaterialName || input.activeItemName || '',
     selectedInstanceId: input.selectedInstanceId || '',
@@ -165,6 +168,7 @@ export function placeInstance(state, input = {}) {
     const instances = [...state.instances];
     instances.splice(Number.isInteger(targetIndex) ? Math.max(0, Math.min(instances.length, targetIndex)) : instances.length, 0, instance);
     const placed = recalculate({ ...state, selectedInstanceId: instance.instanceId, instances });
+    if(!fitChangeAllowed(state,placed))return state;
     return settle ? settleEditedState(placed, instance.instanceId, viewport) : placed;
   }
   const slotIndex = Number(input.slotIndex);
@@ -256,6 +260,7 @@ export function replaceInstance(state, input = {}) {
       ...normalizeInstance({ ...fields, instanceId, ...(item.position != null ? { position: item.position, sourcePosition: item.sourcePosition } : {}), looseX: item.looseX, looseY: item.looseY, ...(item.looseLinearX != null ? { looseLinearX: item.looseLinearX, looseLinearY: item.looseLinearY } : {}), slotIndex: item.slotIndex }, state.fallbackBeadMm, item.slotIndex),
     } : item),
   });
+  if(isStudio(state)&&!fitChangeAllowed(state,replaced))return state;
   return settle ? settleEditedState(replaced, instanceId, viewport) : replaced;
 }
 
@@ -278,6 +283,7 @@ export function setWristSize(state, wristCm) {
 
 export function setLayoutMode(state, mode) {
   if (!['loose', 'bracelet'].includes(mode) || mode === state.layoutMode) return state;
+  if(mode==='bracelet'&&!fitEstimate(state).canCollect)return state;
   return recalculate({ ...state, layoutMode: mode });
 }
 
@@ -290,7 +296,7 @@ export function serializeBraceletState(state) {
     version: isStudio(state) ? 3 : 2,
     trayMode: state.trayMode || 'round',
     wrapCount: state.wrapCount || 1,
-    allowanceMm: state.allowanceMm ?? 5,
+    allowanceMm: state.allowanceMm ?? 0,
     ...(isStudio(state) ? { layoutMode: state.layoutMode } : {}),
     ...(state.design ? { design: state.design } : {}),
     wristCm: state.wristCm,
@@ -308,8 +314,8 @@ export function createHistory(initialState, limit = 50) {
 
 function applyCommand(state, command = {}) {
   if (command.type === 'tray-mode' && ['round', 'linear'].includes(command.trayMode) && command.trayMode !== state.trayMode) return { ...state, trayMode: command.trayMode };
-  if (command.type === 'wrap-count' && [1, 2, 3].includes(command.wrapCount) && command.wrapCount !== state.wrapCount) return { ...state, wrapCount: command.wrapCount };
-  if (command.type === 'allowance' && Number.isFinite(command.allowanceMm) && command.allowanceMm >= 0 && command.allowanceMm !== state.allowanceMm) return { ...state, allowanceMm: command.allowanceMm };
+  if (command.type === 'wrap-count' && [1, 2, 3].includes(command.wrapCount) && command.wrapCount !== state.wrapCount) return recalculate({ ...state, wrapCount: command.wrapCount });
+  if (command.type === 'allowance' && Number.isFinite(command.allowanceMm) && command.allowanceMm >= 0 && command.allowanceMm !== state.allowanceMm) return recalculate({ ...state, allowanceMm: command.allowanceMm });
   if (command.type === 'rotate' && Number.isFinite(command.rotationDeg) && state.instances.some(i => i.instanceId === command.instanceId)) return recalculate({ ...state, instances: state.instances.map(i => i.instanceId === command.instanceId ? { ...i, rotationDeg: command.rotationDeg } : i) });
   if (command.type === 'swap') {
     const a = state.instances.findIndex(i => i.instanceId === command.instanceId), b = state.instances.findIndex(i => i.instanceId === command.otherInstanceId);

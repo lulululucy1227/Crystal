@@ -64,15 +64,17 @@ test('assortment and draft exports are available', async () => {
   r = await req('/api/export/assortment?format=json'); assert.equal(r.status, 200); assert.match(r.body.path, /assortment-selection-v1\.json$/);
 });
 
-test('reference-fidelity shell keeps only working toolbar actions and exposes a multi-selection tray workflow', () => {
-  const html = fs.readFileSync(path.join(root, 'workbench', 'index.html'), 'utf8');
-  const app = fs.readFileSync(path.join(root, 'workbench', 'app.js'), 'utf8');
-  const css = fs.readFileSync(path.join(root, 'workbench', 'style.css'), 'utf8');
-  assert.doesNotMatch(html, /文件\(F\)|编辑\(E\)|视图\(V\)|工具\(T\)|窗口\(W\)|帮助\(H\)/);
-  assert.doesNotMatch(html, /打开现有设计板尚未接入|导入功能尚未接入|设置尚未接入|帮助尚未接入/);
-  assert.match(html, /新建/); assert.match(html, /配饰精选/); assert.match(html, /包装精选/); assert.doesNotMatch(html, /data-tool="save"/);
-  assert.doesNotMatch(html, /Materials|Accessories|Packaging|References|Design Board/);
-  assert.match(app, /白水晶/); assert.match(app, /Aquamarine/); assert.match(app, /水晶目录/); assert.match(app, /最近打开的设计板/); assert.match(app, /图片由 GPT 素材任务接入/); assert.match(app, /概念占位 · 非实拍/);
-  assert.match(app, /加入当前选择/); assert.match(app, /目标手围/); assert.match(app, /串珠托盘/); assert.doesNotMatch(app, /setView\('desk'\);\s*}\s*\n\s*const generatedRoot/);
-  assert.match(css, /grid-template-columns:190px minmax\(0,1fr\) 268px/); assert.match(css, /grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+test('Graphite shell exposes the same working tools through one navigation and a secondary menu', async () => {
+  const {JSDOM}=await import('jsdom');
+  const dom=new JSDOM(fs.readFileSync(path.join(root,'workbench','index.html'),'utf8'));
+  try{
+    const document=dom.window.document;
+    assert.deepEqual([...document.querySelectorAll('.crystal-navigation [data-view]')].map(button=>button.dataset.view),['catalog','desk','present']);
+    assert.ok(document.querySelector('[data-global-save]'));
+    assert.ok(document.querySelector('.crystal-more [data-tool="new"]'));
+    assert.ok(document.querySelector('.crystal-more [data-tool="export"]'));
+    assert.ok(document.querySelector('.crystal-more [data-view="inspiration"]'));
+    assert.ok(document.querySelector('.crystal-more [data-view="home"]'));
+    assert.equal(document.querySelectorAll('.window-title,.left-pane,.right-pane').length,0);
+  }finally{dom.window.close();}
 });

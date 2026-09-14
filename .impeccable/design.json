@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T18:42:53.776Z",
+  "title": "Design System: Crystal Studio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "displayName": "primary",
+        "role": "primary",
+        "canonical": "#374039",
+        "tonalRamp": [
+          "oklch(15.00% 0.01685 152.06)",
+          "oklch(26.43% 0.01685 152.06)",
+          "oklch(37.86% 0.01685 152.06)",
+          "oklch(49.29% 0.01685 152.06)",
+          "oklch(60.71% 0.01685 152.06)",
+          "oklch(72.14% 0.01685 152.06)",
+          "oklch(83.57% 0.01685 152.06)",
+          "oklch(95.00% 0.01685 152.06)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "primary-hover": {
+        "displayName": "primary-hover",
+        "role": "primary",
+        "canonical": "#536252",
+        "tonalRamp": [
+          "oklch(15.00% 0.03128 143.40)",
+          "oklch(26.43% 0.03128 143.40)",
+          "oklch(37.86% 0.03128 143.40)",
+          "oklch(49.29% 0.03128 143.40)",
+          "oklch(60.71% 0.03128 143.40)",
+          "oklch(72.14% 0.03128 143.40)",
+          "oklch(83.57% 0.03128 143.40)",
+          "oklch(95.00% 0.03128 143.40)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "desk": {
+        "displayName": "desk",
+        "role": "neutral",
+        "canonical": "#f6f4ef",
+        "tonalRamp": [
+          "oklch(15.00% 0.00697 88.64)",
+          "oklch(26.43% 0.00697 88.64)",
+          "oklch(37.86% 0.00697 88.64)",
+          "oklch(49.29% 0.00697 88.64)",
+          "oklch(60.71% 0.00697 88.64)",
+          "oklch(72.14% 0.00697 88.64)",
+          "oklch(83.57% 0.00697 88.64)",
+          "oklch(95.00% 0.00697 88.64)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "surface": {
+        "displayName": "surface",
+        "role": "neutral",
+        "canonical": "#fbfaf7",
+        "tonalRamp": [
+          "oklch(15.00% 0.00411 91.45)",
+          "oklch(26.43% 0.00411 91.45)",
+          "oklch(37.86% 0.00411 91.45)",
+          "oklch(49.29% 0.00411 91.45)",
+          "oklch(60.71% 0.00411 91.45)",
+          "oklch(72.14% 0.00411 91.45)",
+          "oklch(83.57% 0.00411 91.45)",
+          "oklch(95.00% 0.00411 91.45)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "ceramic": {
+        "displayName": "ceramic",
+        "role": "neutral",
+        "canonical": "#e7dfd3",
+        "tonalRamp": [
+          "oklch(15.00% 0.01836 78.24)",
+          "oklch(26.43% 0.01836 78.24)",
+          "oklch(37.86% 0.01836 78.24)",
+          "oklch(49.29% 0.01836 78.24)",
+          "oklch(60.71% 0.01836 78.24)",
+          "oklch(72.14% 0.01836 78.24)",
+          "oklch(83.57% 0.01836 78.24)",
+          "oklch(95.00% 0.01836 78.24)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "ink": {
+        "displayName": "ink",
+        "role": "neutral",
+        "canonical": "#302f2b",
+        "tonalRamp": [
+          "oklch(15.00% 0.00717 95.30)",
+          "oklch(26.43% 0.00717 95.30)",
+          "oklch(37.86% 0.00717 95.30)",
+          "oklch(49.29% 0.00717 95.30)",
+          "oklch(60.71% 0.00717 95.30)",
+          "oklch(72.14% 0.00717 95.30)",
+          "oklch(83.57% 0.00717 95.30)",
+          "oklch(95.00% 0.00717 95.30)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "muted": {
+        "displayName": "muted",
+        "role": "neutral",
+        "canonical": "#625e54",
+        "tonalRamp": [
+          "oklch(15.00% 0.01641 88.77)",
+          "oklch(26.43% 0.01641 88.77)",
+          "oklch(37.86% 0.01641 88.77)",
+          "oklch(49.29% 0.01641 88.77)",
+          "oklch(60.71% 0.01641 88.77)",
+          "oklch(72.14% 0.01641 88.77)",
+          "oklch(83.57% 0.01641 88.77)",
+          "oklch(95.00% 0.01641 88.77)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "edge": {
+        "displayName": "edge",
+        "role": "neutral",
+        "canonical": "#d8d3c8",
+        "tonalRamp": [
+          "oklch(15.00% 0.01592 86.43)",
+          "oklch(26.43% 0.01592 86.43)",
+          "oklch(37.86% 0.01592 86.43)",
+          "oklch(49.29% 0.01592 86.43)",
+          "oklch(60.71% 0.01592 86.43)",
+          "oklch(72.14% 0.01592 86.43)",
+          "oklch(83.57% 0.01592 86.43)",
+          "oklch(95.00% 0.01592 86.43)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "readout": {
+        "displayName": "readout",
+        "role": "neutral",
+        "canonical": "#eeece4",
+        "tonalRamp": [
+          "oklch(15.00% 0.01087 95.17)",
+          "oklch(26.43% 0.01087 95.17)",
+          "oklch(37.86% 0.01087 95.17)",
+          "oklch(49.29% 0.01087 95.17)",
+          "oklch(60.71% 0.01087 95.17)",
+          "oklch(72.14% 0.01087 95.17)",
+          "oklch(83.57% 0.01087 95.17)",
+          "oklch(95.00% 0.01087 95.17)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "selected": {
+        "displayName": "selected",
+        "role": "neutral",
+        "canonical": "#80917a",
+        "tonalRamp": [
+          "oklch(15.00% 0.03896 137.53)",
+          "oklch(26.43% 0.03896 137.53)",
+          "oklch(37.86% 0.03896 137.53)",
+          "oklch(49.29% 0.03896 137.53)",
+          "oklch(60.71% 0.03896 137.53)",
+          "oklch(72.14% 0.03896 137.53)",
+          "oklch(83.57% 0.03896 137.53)",
+          "oklch(95.00% 0.03896 137.53)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "focus": {
+        "displayName": "focus",
+        "role": "neutral",
+        "canonical": "#4e7664",
+        "tonalRamp": [
+          "oklch(15.00% 0.05337 164.63)",
+          "oklch(26.43% 0.05337 164.63)",
+          "oklch(37.86% 0.05337 164.63)",
+          "oklch(49.29% 0.05337 164.63)",
+          "oklch(60.71% 0.05337 164.63)",
+          "oklch(72.14% 0.05337 164.63)",
+          "oklch(83.57% 0.05337 164.63)",
+          "oklch(95.00% 0.05337 164.63)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      },
+      "on-primary": {
+        "displayName": "on-primary",
+        "role": "neutral",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 89.88)",
+          "oklch(26.43% 0.00000 89.88)",
+          "oklch(37.86% 0.00000 89.88)",
+          "oklch(49.29% 0.00000 89.88)",
+          "oklch(60.71% 0.00000 89.88)",
+          "oklch(72.14% 0.00000 89.88)",
+          "oklch(83.57% 0.00000 89.88)",
+          "oklch(95.00% 0.00000 89.88)"
+        ],
+        "rampPurpose": "Derived OKLCH panel previews only; not additional production tokens."
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "工作室标题",
+        "purpose": "Compact tool heading, not marketing display typography."
+      },
+      "body": {
+        "displayName": "操作正文",
+        "purpose": "Chinese-first operating labels and material names."
+      },
+      "label": {
+        "displayName": "辅助说明",
+        "purpose": "Source and mode information."
+      }
+    },
+    "shadows": [
+      {
+        "name": "order-preview",
+        "value": "0 10px 35px #4a42331f",
+        "purpose": "Pending string-order overlay."
+      },
+      {
+        "name": "round-tray",
+        "value": "0 7px 16px rgba(65,49,30,0.16)",
+        "purpose": "Fabric shadow parameters translated to CSS notation for documentation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "finite-layout",
+        "value": "240ms, ease=1-(1-t)^3",
+        "purpose": "Finite geometry transition; no idle loop; reduced-motion respected."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "780px"
+      },
+      {
+        "name": "wide-grid",
+        "value": "1700px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "主要按钮",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "明确保存或收拢操作。",
+      "html": "<button class=\"ds-control ds-primary\">保存草稿</button>",
+      "css": ".ds-primary{font:13px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;background:#374039;color:#fff;border:1px solid #374039;border-radius:18px;padding:5px 15px;min-height:32px;cursor:pointer}.ds-primary:hover{background:#536252}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    },
+    {
+      "name": "次要按钮",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "可逆编辑动作。",
+      "html": "<button class=\"ds-control ds-secondary\">撤销</button>",
+      "css": ".ds-secondary{font:13px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;background:#fbfaf7;color:#302f2b;border:1px solid #d8d3c8;border-radius:8px;padding:5px 9px;min-height:32px;cursor:pointer}.ds-secondary:hover{background:#e8ebe3}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    },
+    {
+      "name": "字段",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "输入虚拟尺寸或名称。",
+      "html": "<label class=\"ds-field\">手围 cm<input class=\"ds-control\" type=\"number\" value=\"17\" min=\"5\" max=\"35\"></label>",
+      "css": ".ds-field{font:12px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;color:#656157;display:flex;gap:5px;align-items:center}.ds-field input{font:inherit;color:#302f2b;background:#fbfaf7;border:1px solid #d8d3c8;border-radius:8px;padding:4px 5px;width:58px;min-height:32px}.ds-field input:hover{border-color:#80917a}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    },
+    {
+      "name": "视图分组",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "同一设计的视图选择，面板仅展示样式。",
+      "html": "<nav class=\"ds-segment\" aria-label=\"盘面\"><button class=\"ds-control\" aria-pressed=\"true\">圆盘</button><button class=\"ds-control\" aria-pressed=\"false\">直槽</button></nav>",
+      "css": ".ds-segment{display:inline-flex;border:1px solid #d8d3c8;border-radius:18px;overflow:hidden}.ds-segment button{font:13px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;padding:5px 17px;min-height:32px;border:0;background:#fbfaf7;color:#302f2b;cursor:pointer}.ds-segment button:hover{background:#e8ebe3}.ds-segment button[aria-pressed=true]{background:#374039;color:white}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    },
+    {
+      "name": "材料分类",
+      "kind": "chip",
+      "refersTo": "button-secondary",
+      "description": "本地素材／目录分类。",
+      "html": "<button class=\"ds-control ds-chip\" aria-pressed=\"true\">本地素材</button>",
+      "css": ".ds-chip{font:11px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;padding:3px 9px;min-height:27px;border:1px solid transparent;border-radius:14px;background:#374039;color:#fff;cursor:pointer}.ds-chip:hover{background:#536252}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    },
+    {
+      "name": "材料卡",
+      "kind": "card",
+      "refersTo": "material-card",
+      "description": "无图片的文档示例，不伪造已认证素材。",
+      "html": "<article class=\"ds-card\"><button class=\"ds-control ds-card-title\"><strong>白水晶</strong><small>Clear Quartz</small></button><small>本地源图 · 标签与尺寸未核验</small></article>",
+      "css": ".ds-card{font:13px/1.5 \"Segoe UI\",\"Microsoft YaHei UI\",sans-serif;background:#fbfaf7;border:1px solid #e0dcd2;border-radius:12px;padding:9px;color:#302f2b;width:170px}.ds-card:hover{border-color:#80917a}.ds-card-title{font:inherit;border:0;background:transparent;text-align:left;padding:0;cursor:pointer;color:inherit}.ds-card small{display:block;font-size:10px;color:#625e54}.ds-card-title:hover{background:#e8ebe3}.ds-control:focus-visible{outline:2px solid #4e7664;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "安静的桌面串珠工具",
+    "overview": "这是已实现 Studio 的记录，不是新设计提案。轻暖桌面、陶盘色承托面、石墨色控件和克制的灰绿选中线，让来源素材与逐颗操作成为主角。中文操作标签优先，英文与来源编号辅助核对。\n\n范围仅限设计工作室，不把旧目录页面描述为已重新设计。继承用户批准的圆盘／直槽参考逻辑，保留 Crystal 自身名称；没有复制参考应用品牌、结算或销售承诺。",
+    "keyCharacteristics": [
+      "同一设计，圆盘与直槽两种投影。",
+      "一颗一身份，视图切换不复制材料。",
+      "素材轮廓与纹理优先于装饰。",
+      "功能状态清楚，动画有终点。"
+    ],
+    "rules": [
+      {
+        "name": "The Readable Instrument Rule",
+        "body": "小型操作文字需要真实背景下至少4.5:1的对比度；不能以“轻盈”为由恢复已经发现的低对比度旧色。",
+        "section": "colors"
+      },
+      {
+        "name": "The One Bead Rule",
+        "body": "每颗珠子具有自己的位置、规格和来源。选中提示跟随可见主体为圆／椭圆细线，不能重新引入方形变换框。",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do 保留中文优先、来源可追溯与独立逐颗操作。",
+      "Do 在真实小尺寸检查珠体纹理、非圆轮廓和标注遮挡。",
+      "Do 保持有限动画、键盘操作和明确撤销路径。",
+      "Do 将尺寸与佩戴效果标为近似并提示实物复核。"
+    ],
+    "donts": [
+      "Don't 将源图标签升级为矿物身份、真实品质或采购事实。",
+      "Don't 将生成参考图写成实拍，或将二维排布写成物理模拟。",
+      "Don't 让选材跳走设计上下文，或把同种珠子锁成一个组合。",
+      "Don't 让宽透明留白决定珠子尺寸，或裁掉异形主体。"
+    ]
+  }
+}

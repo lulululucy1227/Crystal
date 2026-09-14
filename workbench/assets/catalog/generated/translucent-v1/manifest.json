@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "representation_class": "generated_from_evidence",
+  "approved_style": "B graphite UI and translucent bead illustrations",
+  "source_photo": false,
+  "processing": "Image-gradient silhouette alpha and Sharp normalization; exact image-generation prompts embedded in PNG metadata",
+  "limits": "True exterior transparency; internal refraction is rendered and opaque, not a physical optical simulation. Labels are illustrative and not authenticated mineral or procurement facts.",
+  "entries": [
+    {
+      "file": "clear-quartz.png",
+      "sourceSha256": "e1aba63119ab8289fb323e96e0c9086187740fb4c5281e83f0094384b7e40458",
+      "sha256": "842778877833660bdd53222e245daece04d49f6ee95ce8c4bb3106490ba0895f",
+      "pixelSha256": "d2845ab1f3caa30a95c752a9682cf842fcd9e0e54426098c332fc1925bf3b4bb",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 48,
+        "top": 52,
+        "width": 672,
+        "height": 664,
+        "alphaThreshold": 0
+      },
+      "bytes": 803187
+    },
+    {
+      "file": "aquamarine.png",
+      "sourceSha256": "7e81bfdd1ff53d6f3fa335547ac4142bc8b75099d7c5e44d06f55adac8278ed1",
+      "sha256": "b6f9feb6b54039f9460d4b0ab21d8a1a3c984dd73290370ad5c733292ed88be9",
+      "pixelSha256": "7c8a610f37e53cc696a6c38b61f0e718b151d8d34025e7c4b261f1dae12f6707",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 49,
+        "top": 48,
+        "width": 670,
+        "height": 672,
+        "alphaThreshold": 0
+      },
+      "bytes": 962502
+    },
+    {
+      "file": "labradorite.png",
+      "sourceSha256": "c41cfa327b5d57f216d3dbe7b4bde4dd45d84334f609001bc8e30770b3750657",
+      "sha256": "057ca04afac54c5eb1f7ec773d5b87d07c72b651023d6c991fc62a948eb106f0",
+      "pixelSha256": "eff5a3785768c7443a8609ae4f3f8b119755c9bfe52d2c5234dceb8461ce6292",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 48,
+        "top": 48,
+        "width": 672,
+        "height": 671,
+        "alphaThreshold": 0
+      },
+      "bytes": 1067575
+    },
+    {
+      "file": "white-phantom-quartz.png",
+      "sourceSha256": "0e62c0f76628e53b09f49d57c6a1c4bf7acd8c4d4a7d860eab45e01896e467bf",
+      "sha256": "64dfb8117029228db4f55cc30b7561671922d0ce9c4a82dcb288c515af301821",
+      "pixelSha256": "503c28559b747caf1ba51c68cdd34358b422ee71007dca06f593c82e4e409c5f",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 50,
+        "top": 48,
+        "width": 668,
+        "height": 672,
+        "alphaThreshold": 0
+      },
+      "bytes": 844176
+    },
+    {
+      "file": "tahitian-pearl.png",
+      "sourceSha256": "44fb715c8a1bc1201c26b2fcfac2e67041018171ad9ec89c0c8c1cb69def4382",
+      "sha256": "b8404dafe366b20f6f25bf05346889d30eed31f2b4f95fdbdcd1fec6a6fd39a1",
+      "pixelSha256": "bb99d809957aec055fea480702e80f77f66356b042e93645b58705bf9eed5b81",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 48,
+        "top": 49,
+        "width": 672,
+        "height": 669,
+        "alphaThreshold": 0
+      },
+      "bytes": 841652
+    },
+    {
+      "file": "amethyst.png",
+      "sourceSha256": "6dbdafbb8c56906cc4ae25891d488bcd1ce37595909f63206beeea367c6c8633",
+      "sha256": "847eb2abb6594e39ac6175cb72d5f79710f324b2b88c228b3c56a220eeabdad1",
+      "pixelSha256": "45ecfd645aef7183adafd97482cf282af185dd21f4973133937d9c9f03e8041b",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 48,
+        "top": 53,
+        "width": 672,
+        "height": 661,
+        "alphaThreshold": 0
+      },
+      "bytes": 996473
+    },
+    {
+      "file": "moonstone.png",
+      "sourceSha256": "8a1422809a83bf3b9900ba61889b2277cf8f131f922875625bf16ab23d42b0d1",
+      "sha256": "a3e18388875a8e8f25c8ce2ff017f6f84d0ebf413c43c1b588c34c39a6109ac6",
+      "pixelSha256": "cc977e84d622bc7feea6505e26a2a6dd32823e1ed23fe729ca431bc8829bfe04",
+      "width": 768,
+      "height": 768,
+      "hasAlpha": true,
+      "subjectBounds": {
+        "left": 48,
+        "top": 48,
+        "width": 672,
+        "height": 671,
+        "alphaThreshold": 0
+      },
+      "bytes": 881108
+    }
+  ]
+}

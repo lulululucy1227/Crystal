@@ -1,13 +1,34 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Crystal Workbench - 水晶设计工作台</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio.css"></head>
-<body>
-  <!-- THESIS: a quiet desktop bead-making instrument. OWN-WORLD: source-faithful stones on warm ceramic. STORY: choose, place, string, inspect. FIRST VIEWPORT: dominant tray beside an always-visible material library. FORM: code-led, approved round and grooved reference. FINISH: finite soft transforms, independent identities, clear provenance. -->
-  <header class="window-title"><span class="app-mark" aria-hidden="true"></span><strong>Crystal Workbench - 水晶设计工作台</strong></header>
-  <section class="tool-bar" aria-label="工具栏">
-    <button data-tool="new" title="新建设计板"><svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5zM15 3v5h5M8 13h8M12 9v8"/></svg><span>新建</span></button><button data-tool="export" title="导出当前选品 CSV"><svg viewBox="0 0 24 24"><path d="M4 3h16v18H4zM8 8l8 8M16 8l-8 8"/></svg><span>导出选品</span></button><button data-view="desk" title="进入设计板"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 4v16M4 9h16M11 13h5"/></svg><span>设计板</span></button><button data-view="inspiration" title="进入参考图库"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM7 16l4-4 3 3 2-2 2 3M8 8h.1"/></svg><span>参考图库</span></button>
-  </section>
-  <div class="desktop-shell"><aside class="left-pane"><div class="panel-title">导航</div><nav class="tree-nav" aria-label="工作台导航"><button data-view="home"><span class="tree-icon">▧</span>总览</button><div class="tree-group"><button data-view="catalog"><span class="tree-icon">▤</span>选品清单</button><button class="tree-child" data-view="catalog">全部清单</button></div><button data-view="catalog" data-section="minerals_crystals"><span class="tree-icon">◇</span>水晶</button><button data-view="catalog" data-section="hardware_accessories"><span class="tree-icon">◎</span>配饰</button><button data-view="catalog" data-section="packaging"><span class="tree-icon">□</span>包装</button><button data-view="inspiration"><span class="tree-icon">▣</span>参考图库</button><button data-view="desk"><span class="tree-icon">▦</span>设计板</button></nav><section class="today-box"><h2>今日概览</h2><dl id="today-counts"></dl></section></aside><main id="app" class="center-pane" aria-live="polite">加载中…</main><aside class="right-pane" aria-label="精选库"><section class="side-panel"><div class="panel-title">配饰精选</div><div id="accessory-preview" class="side-grid accessory-grid"></div><button class="more-link" data-view="catalog" data-section="hardware_accessories">查看更多配饰…</button></section><section class="side-panel"><div class="panel-title">包装精选</div><div id="packaging-preview" class="side-grid packaging-grid"></div><button class="more-link" data-view="catalog" data-section="packaging">查看更多包装…</button></section></aside></div>
-  <footer class="status-bar"><span id="status-text">就绪</span><time id="local-clock"></time></footer><script type="module" src="app.js?build=circular-studio-v1"></script>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crystal Workbench · 水晶设计工作台</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2339414b'/%3E%3Cpath d='M16 5 26 13 21 26 11 26 6 13Z' fill='%23e2e4e7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="studio.css"><link rel="stylesheet" href="graphite.css">
+</head>
+<body data-current-view="catalog">
+  <!-- THESIS: one private bead-making instrument with truthful quantities and stable identities.
+  OWN-WORLD: user-approved B Graphite; silver fields, charcoal controls, neutral inset tray, natural bead colors.
+  STORY: choose materials, arrange independent beads, confirm order, present the actual design, return and refine.
+  FIRST VIEWPORT: one global navigation; the catalogue foregrounds individual materials; the editor keeps library, canvas and inspector together.
+  FORM: Chinese-primary operating UI, responsive panels, persistent measured straight rails and finite canvas transitions.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance. -->
+  <header class="crystal-header">
+    <a class="crystal-wordmark" href="./" aria-label="Crystal 选品库">Crystal</a>
+    <nav class="crystal-navigation tree-nav" aria-label="主导航">
+      <button data-view="catalog" class="selected">选品库</button>
+      <button data-view="desk">设计台</button>
+      <button data-view="present">成品展示</button>
+    </nav>
+    <span class="crystal-design-name" data-global-design-name>未命名设计</span>
+    <span class="crystal-save-state" data-global-save-state>本地工作台</span>
+    <button class="crystal-save" data-global-save>保存草稿</button>
+    <details class="crystal-more"><summary aria-label="更多工具"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.5 3-2 1-2.8-1L2 10l2.5 2L4 15l-2 1 2 4 3-1 2 1 1 3h4l1-3 2-1 3 1 2-4-2-1-.5-3L22 10l-1.7-4L17.5 7l-2-1L15 3Z"/><circle cx="12" cy="13" r="3"/></svg></summary>
+      <div class="crystal-more-menu"><button data-tool="new">新建设计</button><button data-view="inspiration">参考图库</button><button data-view="home">草稿与总览</button><button data-tool="export">导出选品 CSV</button></div>
+    </details>
+  </header>
+  <div class="desktop-shell"><main id="app" class="center-pane" aria-live="polite"><p class="app-loading">正在加载材料与设计工具…</p></main></div>
+  <footer class="status-bar"><span id="status-text">正在加载…</span><time id="local-clock"></time></footer>
+  <script type="module" src="app.js?build=graphite-v1"></script>
 </body>
 </html>

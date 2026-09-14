@@ -14,7 +14,13 @@
 - Windows / Node 24.19 / Chrome 152, 100 reused mixed-size sprites from 20 real source PNGs: Fabric median 0.5 ms and P95 1.0 ms; Pixi median 0.2 ms and P95 0.4 ms (CPU update + submission, not GPU completion). Initialization was 87.4 ms versus 280.6 ms; installed package bytes 22,222,881 versus 69,930,736 excluding transitive dependencies.
 - Retained Fabric: both fit a 16.7 ms frame budget; the small observed submission-time saving did not justify a second runtime, slower startup, and additional integration surface. No Matter.js dependency was added; loose collision settlement is bounded and deterministic.
 
-## Perler Beads Generator
+## Local image and browser tooling (2026-09-13)
+
+- Sharp 0.35.4, Apache-2.0, https://github.com/lovell/sharp: existing dependency for deterministic local normalization, alpha/bounds measurements and source/hash QA. No source image is uploaded to a third-party image service by this pipeline. Transitive bundled library notices remain with their packages.
+- playwright-core 1.58.2, Apache-2.0, https://github.com/microsoft/playwright: development-only real-browser QA, using installed Chrome 152 on Windows / Node 24.19.0. Installed package: 363 files, 9,312,969 bytes; no browser binary was downloaded. The shared session helper owns its server/browser, isolates drafts/exports and cleans up only those owned processes. It is not served to the Workbench browser.
+- No rembg, commercial SDK, GPL/AGPL runtime, cloud image processor or additional production renderer was adopted in this change.
+
+## Perler Beads Generator (research attribution)
 
 - Project: https://github.com/Jett-Wu/Perler_Beads_Generator
 - Licence: MIT
