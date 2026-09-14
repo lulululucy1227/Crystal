@@ -1,0 +1,29 @@
+{
+  "version":"CR-PRE-EXCEL-AUDIT-V1-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "basis":"outputs/selection/sourcing-review-manifest-v2.json@CR-SOURCING-REVIEW-MANIFEST-V2-20260914",
+  "result":"PASS_WITH_DEFERRED_NONBLOCKING_ITEMS",
+  "checks":[
+    {"check":"MATERIAL_SCOPE_AND_STATUS_COUNTS","result":"PASS","evidence":"72 in scope = 67 sourcing-spec-ready + 3 no-direct-purchase + 1 gold-tone hold + 1 non-elastic structure-pending."},
+    {"check":"HOLE_RULE_FOR_DOUBLE_0_4MM_ELASTIC","result":"PASS","evidence":"General bracelet bead profiles target finished clear through-hole >=1.0mm; 0.8mm is no longer the default lower bound."},
+    {"check":"NON_ELASTIC_STRUCTURE_ASSUMPTION","result":"PASS","evidence":"CRM-M-0037 moved to STRUCTURE_PENDING; coated wire/tiger-tail is not treated as the chosen material."},
+    {"check":"GENERIC_STONE_PROFILE_SEMANTICS","result":"PASS","evidence":"STONE_AGATE renamed/interpreted as STONE_GENERAL without material-identity changes."},
+    {"check":"PHOTO_COVERAGE_READY_ITEMS","result":"PASS","evidence":"photo-coverage-matrix-v1 reports 67 required and 67 covered, 0 uncovered sourcing-ready items."},
+    {"check":"PHOTO_SOURCE_QUALITY_DISCLOSURE","result":"PASS","evidence":"source-page-only and trade-name proxy references are explicitly labeled; external images are sourcing references only."},
+    {"check":"PRICE_EVIDENCE_DISPLAY","result":"PASS","evidence":"price-display-policy-v1 requires evidence status, source market and original currency; foreign anchors are not silently converted into China RMB bands."},
+    {"check":"SPECIALIST_PRICE_MODEL","result":"PASS","evidence":"Akoya, Tahitian, South Sea, agarwood, amber/beeswax, jadeite, Hetian/nephrite, turquoise, Larimar and Sugilite remain identity-first specialist materials."},
+    {"check":"PURCHASE_APPROVAL_BOUNDARY","result":"PASS","evidence":"purchase-approved specs remain 0; workbook will be a review/export, not an order instruction."},
+    {"check":"CANONICAL_AND_INVENTORY_BOUNDARY","result":"PASS","evidence":"CRM-M IDs remain selection-library IDs; canonical ID, inventory offsets and final procurement quantity are not asserted without authorized sources."}
+  ],
+  "deferred_nonblocking_items":[
+    "CRM-M-0028 gold-tone hardware base material remains undecided and stays on hold.",
+    "CRM-M-0037 non-elastic stringing material/structure remains pending and stays out of the final sourcing-ready list.",
+    "Some image references can be upgraded from source-page-only/proxy to cleaner direct single-bead files later, but no sourcing-ready material lacks a recognition source.",
+    "Some ordinary materials retain foreign wholesale or limited-anchor price evidence; Excel must show evidence status/market/currency rather than fabricate a China band.",
+    "Real supplier/batch treatment/origin/species evidence remains a future procurement-approval requirement."
+  ],
+  "excel_generation_gate":"OPEN",
+  "excel_generation_rule":"Generate only from sourcing-review-manifest-v2 and v1.8 repair chain. Do not use superseded v1.7 counts/rules without applying the repair deltas.",
+  "purchase_approval_effect":"none"
+}
