@@ -1,0 +1,22 @@
+{
+  "version":"CR-PRICE-DISPLAY-POLICY-V2-DELTA-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/price-display-policy-v1.json@CR-PRICE-DISPLAY-POLICY-V1-20260914",
+  "decision_source":"User requires user-facing prices to appear only in CNY or EUR.",
+  "user_visible_currency_rule":{
+    "allowed":["CNY","EUR"],
+    "forbidden_in_user_facing_export":["USD","GBP","JPY","TWD","HKD","other currencies"],
+    "china_market_rule":"China-market quotes remain displayed in CNY/¥.",
+    "non_cny_market_rule":"All non-CNY reference prices are converted to EUR/€ for the user-facing Excel.",
+    "conversion_rule":"Use a dated reference FX source at export time. Store FX date and source in the internal evidence/export metadata. Do not present the original foreign currency in the user-facing workbook.",
+    "evidence_integrity_rule":"The original quoted amount/currency remains preserved only in the underlying evidence JSON/source record so the conversion can be audited later."
+  },
+  "excel_field_change":{
+    "remove_user_visible_fields":["原始币种","原币价格"],
+    "keep_or_add_user_visible_fields":["显示币种","人民币/欧元参考价","价格证据状态","来源市场","汇率日期（仅发生换算时）","来源链接"],
+    "display_format":"Use ¥ for CNY and € for EUR. No other currency symbols/codes appear in the user-facing workbook."
+  },
+  "market_rule":"Source market remains visible even when a foreign-market quote is converted to EUR; conversion does not transform a foreign wholesale anchor into a China price band.",
+  "purchase_approval_effect":"none"
+}
