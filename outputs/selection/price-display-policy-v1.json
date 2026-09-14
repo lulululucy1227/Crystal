@@ -1,0 +1,43 @@
+{
+  "version":"CR-PRICE-DISPLAY-POLICY-V1-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "purpose":"Prevent the final Excel from presenting heterogeneous price evidence as if every material had one equally reliable China RMB low/mid/high band.",
+  "required_export_fields":[
+    "价格模型",
+    "规格",
+    "计价单位",
+    "低档参考价",
+    "中档参考价",
+    "高档参考价",
+    "推荐拿货档",
+    "价格证据状态",
+    "来源市场",
+    "币种",
+    "证据日期",
+    "处理/身份提示",
+    "来源链接"
+  ],
+  "evidence_statuses":{
+    "CHINA_BAND":{"label":"中国同规格价带已建立","rule":"Multiple comparable China-market same-spec anchors or a clear same-seller ladder support a provisional low/mid/high band."},
+    "CHINA_ANCHOR":{"label":"中国同规格锚点","rule":"Useful China-market same-spec quote(s) exist but a full three-tier band is not justified."},
+    "FOREIGN_WHOLESALE_ANCHOR":{"label":"海外批发同规格锚点","rule":"Explicit size/count/hole/price wholesale evidence exists outside China; retain original currency and market, do not silently convert into a China RMB band."},
+    "FINISHED_PRODUCT_ANCHOR":{"label":"成品市场锚点","rule":"Only finished bracelet/strand/product price is reliable; do not back-calculate per-bead raw price unless count/spec supports it."},
+    "BRANCH_REQUIRED":{"label":"商业分支需拆分","rule":"One generic band would hide materially different commercial branches (e.g. Nanhong ordinary/persimmon/cherry, obsidian sheen branches)."},
+    "TREATMENT_REQUIRED":{"label":"处理状态需披露","rule":"Price evidence is usable only with explicit treatment branch/status; treated material is not automatically fake or low tier."},
+    "IDENTITY_RISK":{"label":"材质身份风险","rule":"Marketplace naming is too ambiguous to form a trustworthy natural-material band without identity verification."},
+    "SPECIALIST_MATERIAL":{"label":"专业材料模型","rule":"Identity/treatment/origin/species/weight/luster/certificate variables precede price comparison; do not force a universal 8mm three-tier band."},
+    "NO_DIRECT_PURCHASE":{"label":"不直接采购","rule":"Taxonomy/design parent or placeholder; no purchase price row."},
+    "HOLD":{"label":"暂停","rule":"Required upstream material/structure decision is not yet made."}
+  },
+  "market_currency_rule":"Every displayed price keeps its original market and currency. If a convenience converted value is later added, it must be a separate calculated field with FX date/source and must never replace the original quote.",
+  "latest_evidence_rule":"For export, resolve each material/spec from the latest applicable evidence across price-evidence-v1..v7 and specialist-pricing-evidence-v1..v5. Later deltas override earlier status only when they explicitly strengthen/correct the same material/spec; rejected/quarantined quotes never contribute to a natural-material band.",
+  "specialist_materials":["Akoya养殖珍珠","大溪地养殖珍珠","南洋养殖珍珠","沉香","蜜蜡","琥珀","翡翠","和田玉","绿松石","海纹石","舒俱来"],
+  "explicit_examples":[
+    {"material":"彼得石","display":"FOREIGN_WHOLESALE_ANCHOR","market":"international wholesale","currency":"USD","rule":"Do not label as China RMB low/mid/high unless China comparable anchors are later found."},
+    {"material":"黄水晶","display":"TREATMENT_REQUIRED","rule":"Keep commercial 8mm price anchors but show treatment disclosure; do not imply untreated natural-color citrine."},
+    {"material":"南红","display":"BRANCH_REQUIRED","rule":"Ordinary, 柿子红 and 樱桃红 branches stay separate."},
+    {"material":"蜜蜡","display":"SPECIALIST_MATERIAL","rule":"Natural amber/beeswax, reconstructed/pressed amber and resin imitation are separate material classes."}
+  ],
+  "purchase_approval_effect":"none"
+}
