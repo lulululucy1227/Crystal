@@ -1,0 +1,15 @@
+{
+  "version":"CR-MAT-V1.9-MOTHER-LIBRARY-20260914",
+  "date":"2026-09-14",
+  "status":"PRE_EXCEL_CURRENCY_POLICY_APPLIED",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/working-version-material-library-v1.8.json@CR-MAT-V1.8-MOTHER-LIBRARY-20260914",
+  "price_display_policy":[
+    "outputs/selection/price-display-policy-v1.json@CR-PRICE-DISPLAY-POLICY-V1-20260914",
+    "outputs/selection/price-display-policy-v2-delta.json@CR-PRICE-DISPLAY-POLICY-V2-DELTA-20260914"
+  ],
+  "user_visible_currency_rule":"Final Excel may show only CNY/¥ or EUR/€. China-market prices remain CNY. All non-CNY evidence used in the workbook is converted to EUR at export time using a dated FX reference; original foreign currency remains only in the internal evidence chain.",
+  "source_market_rule":"Converted EUR values retain their original source-market label and evidence status; conversion never upgrades a foreign anchor into a China RMB price band.",
+  "scope":{"materials_in_six_category_view":72,"sourcing_spec_ready":67,"photo_covered_ready":67,"no_direct_purchase":3,"gold_tone_on_hold":1,"non_elastic_structure_pending":1,"purchase_approved_specs":0},
+  "excel_gate":"Run pre-Excel audit after applying the CNY/EUR-only display rule."
+}
