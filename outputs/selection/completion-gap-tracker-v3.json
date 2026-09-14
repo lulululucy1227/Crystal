@@ -1,0 +1,22 @@
+{
+  "version":"CR-SELECTION-COMPLETION-GAP-TRACKER-V3-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/completion-gap-tracker-v2.json@CR-SELECTION-COMPLETION-GAP-TRACKER-V2-20260913",
+  "status":"REVIEW_READY_WITH_DEFERRED_PROCUREMENT_BLOCKERS",
+  "resolved_this_round":[
+    "MINIMAL_SOURCING_SPEC_SET resolved by user-approved profile-based option B.",
+    "72 material records mapped; 68 have 2-4 useful sourcing specs, 3 remain no-direct-purchase parents/placeholders, 1 gold-tone material remains intentionally on hold.",
+    "Research evidence now separates ordinary price bands, specialist identity-first pricing, freeform prices and third-party photo references."
+  ],
+  "remaining_nonblocking_research_improvements":[
+    "A few materials can still gain better China-domestic premium anchors or cleaner single-bead images, but current secondary evidence is sufficient for review/export.",
+    "景观玛瑙、阿拉善、盐源、兔毛等仍可继续改善参考图或国内同规格价格密度 without changing database structure."
+  ],
+  "deferred_real_blockers":[
+    {"item":"GOLD_TONE_BASE_MATERIAL","status":"USER_DECISION_LATER","effect":"Only CRM-M-0028 gold-tone hardware is on hold; rest of database is unaffected."},
+    {"item":"REAL_SUPPLIER_BATCH_EVIDENCE","status":"FUTURE_PROCUREMENT","effect":"Treatment/origin/species/sample evidence must be collected per real supplier batch before purchase approval."},
+    {"item":"PURCHASE_APPROVAL","status":"ZERO_APPROVED","approved_specs":0,"effect":"Mother library and sourcing review can be exported, but nothing is yet an order instruction."}
+  ],
+  "next_gate":"Human-readable final sourcing review/export can now be prepared. Gold-tone base material can remain pending unless user wants to activate gold-tone sourcing now."
+}
