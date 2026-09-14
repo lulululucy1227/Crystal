@@ -1,0 +1,41 @@
+{
+  "version":"CR-MAT-V1.8-MOTHER-LIBRARY-20260914",
+  "date":"2026-09-14",
+  "status":"PRE_EXCEL_REPAIR_APPLIED",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/working-version-material-library-v1.7.json@CR-MAT-V1.7-MOTHER-LIBRARY-20260914",
+  "repair_inputs":[
+    "outputs/selection/minimal-sourcing-specs-v2-delta.json@CR-MINIMAL-SOURCING-SPECS-V2-DELTA-20260914",
+    "outputs/selection/reference-photo-evidence-v6.json@CR-REFERENCE-PHOTO-EVIDENCE-V6-20260914",
+    "outputs/selection/photo-coverage-matrix-v1.json@CR-PHOTO-COVERAGE-MATRIX-V1-20260914",
+    "outputs/selection/price-display-policy-v1.json@CR-PRICE-DISPLAY-POLICY-V1-20260914"
+  ],
+  "corrected_scope":{
+    "materials_in_six_category_view":72,
+    "sourcing_spec_ready":67,
+    "no_direct_purchase":3,
+    "gold_tone_on_hold":1,
+    "non_elastic_structure_pending":1,
+    "photo_required_ready_materials":67,
+    "photo_covered_ready_materials":67,
+    "purchase_approved_specs":0
+  },
+  "corrected_rules":[
+    "General bracelet beads intended for doubled 0.4mm elastic use target finished clear through-hole >=1.0mm; 0.8mm is not the default acceptable lower bound.",
+    "The generic profile previously called STONE_AGATE is renamed/interpreted as STONE_GENERAL; material identities are unchanged.",
+    "CRM-M-0037 non-elastic stringing material is structure-pending and has no final sourcing spec or final standard photo until material/structure is selected.",
+    "Every one of the 67 sourcing-spec-ready items has at least one sourcing-recognition image/source reference; source-page-only and proxy references are explicitly labeled.",
+    "Final Excel must show price evidence status + source market + currency; overseas wholesale anchors may not be silently presented as China RMB low/mid/high bands.",
+    "Third-party images remain sourcing recognition references only, not project-owned product/marketing assets or proof of identity.",
+    "CRM-M IDs are selection-library IDs, not canonical workbench IDs. Inventory and final procurement quantity remain blank until authorized sources exist."
+  ],
+  "not_ready_for_direct_purchase":[
+    "CRM-M-0022 发晶（未细分） taxonomy/design parent",
+    "CRM-M-0070 猫眼类 taxonomy/design parent",
+    "CRM-M-0026 深色木材（树种未定） design placeholder",
+    "CRM-M-0028 金色金属件（基材待定）",
+    "CRM-M-0037 非弹力串珠线（材质/结构待定）"
+  ],
+  "excel_gate":"Run and pass pre-Excel audit against v1.8 before generating the workbook.",
+  "purchase_approval_effect":"none"
+}
