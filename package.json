@@ -7,7 +7,9 @@
     "validate": "node scripts/crystal-db.mjs validate",
     "test": "node --test test/*.test.mjs",
     "export": "node scripts/crystal-db.mjs export-json data/export.json",
-    "workbench": "node workbench/server.mjs"
+    "workbench": "node workbench/server.mjs",
+    "build:shared-workbench": "node scripts/build-workbench-static.mjs",
+    "serve:shared-workbench": "node scripts/serve-workbench-static.mjs"
   },
   "engines": {
     "node": ">=24"
