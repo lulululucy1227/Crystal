@@ -1,48 +1,46 @@
 // Pure screen projection. Neither layouts nor hit testing mutate design order.
+import {fitEstimate} from './bracelet-fit.mjs';
 const TAU = Math.PI * 2;
 const clamp = (n, a, b) => Math.min(b, Math.max(a, n));
-function groupsFor(instances, count, weights) {
-  const groups = Array.from({length: Math.min(Math.max(1, count), Math.max(1, instances.length))}, () => []);
-  const total = instances.reduce((n, i) => n + i.sizeMm, 0);
-  const shares=groups.map((_,n)=>weights?.[n]||1),weightTotal=shares.reduce((n,v)=>n+v,0);
-  const thresholds=shares.map((_,n)=>total*shares.slice(0,n+1).reduce((a,b)=>a+b,0)/weightTotal);
-  let used = 0, group = 0;
-  instances.forEach((item, index) => {
-    if (group < groups.length - 1 && groups[group].length && used + item.sizeMm / 2 > thresholds[group]) group++;
-    groups[group].push({item, index}); used += item.sizeMm;
-  });
-  return groups.filter(g => g.length);
-}
-function ringRadius(group) {
-  const total = group.reduce((n, {item}) => n + item.sizeMm, 0);
-  let radius = 0;
-  if (group.length > 1) group.forEach(({item}, i) => {
-    const pair = item.sizeMm + group[(i + 1) % group.length].item.sizeMm;
-    radius = Math.max(radius, pair / (4 * Math.sin(Math.PI * pair / (2 * total))));
-  });
-  return radius;
+function spiral(instances,wraps,budget,maxMm){
+  const total=instances.reduce((n,i)=>n+i.sizeMm,0),span=Math.max(budget,total,1),pitch=wraps>1?maxMm*1.12:0;
+  let base=Math.max(maxMm/2,span/(TAU*wraps)-pitch*wraps/2);
+  const sample=()=>{const path=[];let distance=0;for(let n=0;n<=wraps*128;n++){const theta=n/128*TAU,radius=base+pitch*theta/TAU,point={x:Math.cos(theta-Math.PI/2)*radius,y:Math.sin(theta-Math.PI/2)*radius,theta};if(n)distance+=Math.hypot(point.x-path[n-1].x,point.y-path[n-1].y);path.push({...point,distance});}return path;};
+  let path,points;
+  for(let attempt=0;attempt<80;attempt++){
+    path=sample();const factor=path.at(-1).distance/span;let used=0,cursor=1;
+    points=instances.map((item,index)=>{const distance=(used+item.sizeMm/2)*factor;used+=item.sizeMm;while(cursor<path.length-1&&path[cursor].distance<distance)cursor++;const a=path[cursor-1],b=path[cursor],t=clamp((distance-a.distance)/(b.distance-a.distance),0,1),theta=a.theta+(b.theta-a.theta)*t;return {instanceId:item.instanceId,index,x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t,diameter:item.sizeMm,row:Math.min(wraps-1,Math.floor(theta/TAU)),angle:theta-Math.PI/2,threadDistance:distance,rotationDeg:item.rotationDeg||0};});
+    let overlap=false;for(let a=0;a<points.length&&!overlap;a++)for(let b=a+1;b<points.length;b++)if(Math.hypot(points[a].x-points[b].x,points[a].y-points[b].y)<(points[a].diameter+points[b].diameter)/2+.02){overlap=true;break;}
+    if(!overlap)break;base=base*1.04+.05;
+  }
+  return {path,points,extent:base+pitch*wraps+maxMm/2};
 }
 export function layoutStudio(state,width,height,options={}){
   const originals=state.instances||[];
   // A conservative enclosing circle for nonround source bodies, not a product
   // dimension. Keep the render width and BOM's along-string size unchanged.
   const footprint=i=>{const b=i.subjectBounds;if(!b||!(b.width>0&&b.height>0))return i.sizeMm;const ratio=b.height/b.width;return i.sizeMm*(i.form==='round'?Math.max(1,ratio):Math.hypot(1,ratio));};
-  const projection=layoutProjection({...state,instances:originals.map(i=>({...i,sizeMm:footprint(i)}))},width,height,options);
+  const projection=layoutProjection({...state,fit:fitEstimate(state),instances:originals.map(i=>({...i,sizeMm:footprint(i)}))},width,height,options);
   projection.points.forEach((p,n)=>{p.collisionDiameter=p.diameter;p.diameter=originals[n].sizeMm*projection.scale;});
   return projection;
 }
-function layoutProjection(state, width, height, {linearSection='all'}={}) {
+function layoutProjection(state, width, height, {linearSection='all',closeResidual=true}={}) {
   const center = {x: width / 2, y: height / 2};
   const trayRadius = Math.min(width, height) * .44;
   const trayMode = state.trayMode || 'round';
   const instances = state.instances || [];
   const maxMm = Math.max(state.fallbackBeadMm || 8, ...instances.map(i => i.sizeMm));
   let scale = Math.min(width / 110, 96 / maxMm);
-  const guides = [], points = [];
+  const guides = [], points = [],railY=[];let threadPath;
   const total = instances.reduce((n,i)=>n+i.sizeMm,0);
-  const desiredLength=(state.wristCm||17)*10+(state.allowanceMm??5)+Math.PI*maxMm;
-  const linearGroups=trayMode==='linear'?groupsFor(instances,2*Math.max(state.wrapCount||1,Math.ceil(total/desiredLength))):[];
-  const sections=new Map(linearGroups.flatMap((g,row)=>g.map(({index})=>[index,row%2?'back':'front'])));
+  const desiredLength=(state.fit.targetMm??170)/(state.wrapCount||1);
+  const wraps=state.wrapCount||1;
+  const occupied=state.layoutMode==='bracelet'&&closeResidual&&state.fit.closeOccupiedSpan;
+  const displayLength=occupied?state.fit.usedMm/wraps:desiredLength;
+  const linearGroups=trayMode==='linear'?Array.from({length:wraps},()=>[]):[];
+  if(trayMode==='linear'){let used=0;const rowLength=Math.max(displayLength,total/wraps);instances.forEach((item,index)=>{const row=Math.min(wraps-1,Math.floor((used+item.sizeMm/2)/rowLength));linearGroups[row].push({item,index});used+=item.sizeMm;});scale=Math.min(scale,width*.84/desiredLength);}
+  while(trayMode==='linear'&&linearGroups.length<wraps)linearGroups.push([]);
+  const sections=new Map(linearGroups.flatMap(g=>{let used=0;return g.map(({item,index})=>{const section=used+item.sizeMm/2<=desiredLength/2?'front':'back';used+=item.sizeMm;return [index,section];});}));
   if (state.layoutMode === 'loose') {
     // Keep enough free ceramic area for bounded local yielding at dense counts.
     const squareSum=instances.reduce((n,i)=>n+i.sizeMm*i.sizeMm,0);
@@ -58,54 +56,63 @@ function layoutProjection(state, width, height, {linearSection='all'}={}) {
   } else if (trayMode === 'linear') {
     const groups = linearGroups;
     const lengths = groups.map(g => g.reduce((n,{item})=>n+item.sizeMm,0));
-    scale = Math.min(scale,(width*.84)/Math.max(maxMm,...lengths),(height*.68)/Math.max(maxMm,groups.length*maxMm*1.8));
-    const pitch = maxMm * scale * 1.8;
+    // Charge each continuous run only for its own enclosing bead height. A
+    // common scale preserves material proportions; a fixed label lane separates
+    // rows without multiplying every row by the single largest irregular bead.
+    const heights=groups.map(g=>Math.max(state.fallbackBeadMm||8,...g.map(({item})=>item.sizeMm)));
+    const labelLane=Math.min(62,height*.35/wraps),sumHeight=heights.reduce((n,h)=>n+h,0);
+    scale = Math.min(width/110,(width*.84)/Math.max(desiredLength,...lengths),(height*.85-labelLane*wraps)/sumHeight);
+    let top=center.y-(sumHeight*scale+labelLane*wraps)/2;
     groups.forEach((g,row)=>{
-      const y = center.y + (row-(groups.length-1)/2)*pitch;
-      const direction = row%2 ? -1 : 1;
+      const y=top+labelLane/2+heights[row]*scale/2;top+=heights[row]*scale+labelLane;railY[row]=y;
+      const direction = row%2?-1:1;
       let used = 0;
-      guides.push({row,y,x1:width*.07,x2:width*.93,direction,startIndex:g[0].index,count:g.length,section:row%2?'back':'front',wrapIndex:Math.floor(row/2)+1});
       g.forEach(({item,index})=>{
-        const x=center.x+direction*((used+item.sizeMm/2-lengths[row]/2)*scale);used+=item.sizeMm;
+        const x=center.x+direction*((used+item.sizeMm/2-Math.max(displayLength,...lengths)/2)*scale);used+=item.sizeMm;
         points.push({instanceId:item.instanceId,index,x,y,diameter:item.sizeMm*scale,rotationDeg:item.rotationDeg||0,row,direction});
       });
     });
   } else {
-    const wraps=state.wrapCount||1,total=instances.reduce((n,i)=>n+i.sizeMm,0);
-    const innerRadius=Math.max(maxMm/2,total/(TAU*wraps)-maxMm*(wraps-1)/2);
-    const groups = groupsFor(instances, wraps, Array.from({length:wraps},(_,n)=>innerRadius+n*maxMm));
-    let lastRadius = 0, lastMax = 0;
-    const rings=groups.map((g,row)=>{
-      const max = Math.max(...g.map(({item})=>item.sizeMm));
-      const radius = Math.max(ringRadius(g), row ? lastRadius+(lastMax+max)/2+1 : 0);
-      lastRadius=radius;lastMax=max;return {g,radius,max};
+    const continuous=spiral(instances,wraps,occupied?state.fit.usedMm:state.fit.targetMm??total,maxMm);
+    scale=Math.min(scale,(trayRadius-12)/continuous.extent);
+    const screen=p=>({x:center.x+p.x*scale,y:center.y+p.y*scale});
+    points.push(...continuous.points.map(p=>({...p,...screen(p),diameter:p.diameter*scale})));
+    const turns=Array.from({length:wraps},(_,row)=>({row,points:continuous.path.slice(row*128,(row+1)*128+1).map(screen)}));
+    threadPath={kind:'spiral-schematic',turns,closures:[{points:[turns.at(-1).points.at(-1),turns[0].points[0]],crossover:wraps>1}]};
+    turns.forEach((turn,row)=>{const members=points.filter(p=>p.row===row);guides.push({row,labelX:center.x+(row-(wraps-1)/2)*width/(wraps+1),labelY:height-10,startIndex:members[0]?.index??instances.length,count:members.length,direction:1,targetLengthMm:desiredLength});});
+  }
+  if(trayMode==='linear'){
+    linearGroups.forEach((g,row)=>{
+      const y=railY[row]??height*(.2+.6*(row+.5)/wraps),x1=center.x-desiredLength*scale/2,x2=center.x+desiredLength*scale/2;
+      guides.push({row,y,x1,x2,labelX:width*.045,labelY:y,lengthMm:desiredLength,targetLengthMm:desiredLength,direction:row%2?-1:1,startIndex:g[0]?.index??0,count:g.length,wrapIndex:row+1});
     });
-    const extent=Math.max(maxMm/2,...rings.map(r=>r.radius+r.max/2));
-    scale=Math.min(scale,(trayRadius-12)/extent);
-    rings.forEach(({g,radius},row)=>{
-      const total=g.reduce((n,{item})=>n+item.sizeMm,0);let used=0;
-      guides.push({row,radius:radius*scale,startIndex:g[0].index,count:g.length,direction:1});
-      g.forEach(({item,index})=>{
-        const angle=(used+item.sizeMm/2)/total*TAU-Math.PI/2;used+=item.sizeMm;
-        points.push({instanceId:item.instanceId,index,x:center.x+Math.cos(angle)*radius*scale,y:center.y+Math.sin(angle)*radius*scale,diameter:item.sizeMm*scale,rotationDeg:item.rotationDeg||0,row,angle});
-      });
-    });
+    // The planning ruler stays fixed. A legacy overflow schematic must still
+    // carry every visible bead on its actual thread, rather than truncate it.
+    const threadLength=Math.max(displayLength,...linearGroups.map(g=>g.reduce((sum,{item})=>sum+item.sizeMm,0)));
+    const threadX1=center.x-threadLength*scale/2,threadX2=center.x+threadLength*scale/2;
+    const turns=guides.map((g,row)=>{const start={x:g.direction>0?threadX1:threadX2,y:g.y},end={x:g.direction>0?threadX2:threadX1,y:g.y};return {row,points:row?[start,start,end]:[start,end]};});
+    // Each row owns its incoming turn; exactly one return closes the whole run.
+    turns.forEach((turn,row)=>{if(row)turn.points[0]=turns[row-1].points.at(-1);});
+    const first=turns[0].points[0],last=turns.at(-1).points.at(-1),outside=width*.97;
+    threadPath={kind:'serpentine-unfolded',turns,closures:[{points:[last,{x:outside,y:last.y+24},{x:outside,y:first.y-24},first],crossover:false}]};
   }
   points.forEach(p=>{p.section=sections.get(p.index);p.visible=trayMode!=='linear'||linearSection==='all'||p.section===linearSection;});
-  guides.forEach(g=>{g.visible=trayMode!=='linear'||linearSection==='all'||g.section===linearSection;});
-  return {width,height,center,trayRadius,trayMode,scale,points,guides};
+  guides.forEach(g=>{g.visible=true;});
+  return {width,height,center,trayRadius,trayMode,scale,points,guides,fit:state.fit,threadPath,closedOccupiedSpan:occupied};
 }
 export function insertionForPoint(pointer, projection, excludeId) {
   const points=projection.points.filter(p=>p.instanceId!==excludeId);
   if(!points.length)return {index:0,x:pointer.x,y:pointer.y};
   const gaps=[];
+  const closedRound=projection.trayMode==='round'&&projection.threadPath?.turns.length===1&&projection.closedOccupiedSpan;
   points.forEach((p,n)=>{
     if(p.visible===false)return;
     const previous=points[n-1];
-    if(previous&&previous.visible!==false&&previous.row===p.row)gaps.push({index:n,x:(p.x+previous.x)/2,y:(p.y+previous.y)/2});
-    else gaps.push({index:n,x:p.x-(p.direction||1)*p.diameter*.65,y:p.y});
-    const next=points[n+1];if(!next||next.visible===false||next.row!==p.row)gaps.push({index:n+1,x:p.x+(p.direction||1)*p.diameter*.65,y:p.y});
+    if(previous&&previous.visible!==false)gaps.push({index:n,x:(p.x+previous.x)/2,y:(p.y+previous.y)/2});
+    else if(!closedRound)gaps.push({index:n,x:p.x-(p.direction||1)*p.diameter*.65,y:p.y});
+    const next=points[n+1];if(!closedRound&&(!next||next.visible===false||next.row!==p.row))gaps.push({index:n+1,x:p.x+(p.direction||1)*p.diameter*.65,y:p.y});
   });
+  if(closedRound){const first=points[0],last=points.at(-1);gaps.push({index:points.length,x:(first.x+last.x)/2,y:(first.y+last.y)/2});}
   if(!gaps.length)return {index:points.length,x:pointer.x,y:pointer.y};
   return gaps.reduce((best,g)=>Math.hypot(g.x-pointer.x,g.y-pointer.y)<Math.hypot(best.x-pointer.x,best.y-pointer.y)?g:best);
 }

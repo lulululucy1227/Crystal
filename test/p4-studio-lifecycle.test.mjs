@@ -21,7 +21,7 @@ test('real keyboard moves and inspector resize settle locally and undo in one ac
 });
 test('keyboard selection reaches each visible bead without edits and section filter cannot target hidden beads',async t=>{
  const instances=Array.from({length:8},(_,n)=>({instanceId:String(n),materialName:'Quartz',sizeMm:8}));
- const h=await editingStudio(t,instances,{trayMode:'linear',layoutMode:'bracelet',wrapCount:2}),before=structuredClone(h.state().instances);
+ const h=await editingStudio(t,instances,{trayMode:'linear',layoutMode:'bracelet',wrapCount:2,wristCm:1}),before=structuredClone(h.state().instances);
  h.key('PageDown');assert.equal(h.state().selectedInstanceId,'1');h.key('PageDown');assert.equal(h.state().selectedInstanceId,'2');h.key('PageUp');assert.equal(h.state().selectedInstanceId,'1');
  assert.match(h.host.textContent,/PageDown/);assert.match(h.host.textContent,/圆盘与直槽分别记住散珠位置/);
  h.host.querySelector('[data-section="back"]').click();h.key('Delete');assert.deepEqual(h.state().instances,before,'hidden selected bead must not be deleted');
@@ -123,7 +123,7 @@ test('typing a size then pressing plus without blur adds that size immediately',
   controller.dispose();
 });
 
-test('dual Studio controls preserve beads through wrap, tray, preview cancel, commit and undo', async t => {
+test('dual Studio controls preserve beads through wrap, tray, immediate collect and undo', async t => {
  const dom=new JSDOM('<main></main>');t.after(()=>dom.window.close());const host=dom.window.document.querySelector('main'),changes=[];
  const oldFetch=globalThis.fetch;t.after(()=>{globalThis.fetch=oldFetch;});globalThis.fetch=async url=>response(url==='/api/local-assets'?{assets:[]}:url==='/api/drafts'?{drafts:[]}:{available:false});
  const {renderStudio}=await studioModule();const controller=renderStudio({host,materials:[{name:'Quartz',zhName:'白水晶',category:'crystal'}],resolveMaterial:()=>({}),onDraft:d=>changes.push(d)});t.after(()=>controller.dispose());await controller.ready;
@@ -131,18 +131,17 @@ test('dual Studio controls preserve beads through wrap, tray, preview cancel, co
  assert.ok(host.querySelector('[data-tray="linear"]'));host.querySelector('[data-tray="linear"]').click();
  const wrap=host.querySelector('[data-wrap]');wrap.value='3';wrap.dispatchEvent(new dom.window.Event('change'));
  assert.equal(changes.at(-1).braceletState.trayMode,'linear');assert.equal(changes.at(-1).braceletState.wrapCount,3);
- host.querySelector('[data-action="bracelet"]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');assert.equal(host.querySelector('[data-order-preview]').hidden,false);
- host.querySelector('[data-cancel-order]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');host.querySelector('[data-action="bracelet"]').click();host.querySelector('[data-confirm-order]').click();
+ host.querySelector('[data-action="bracelet"]').click();assert.equal(host.querySelector('[data-order-preview]'),null);assert.equal(host.querySelector('.is-presenting'),null);
  assert.equal(changes.at(-1).braceletState.layoutMode,'bracelet');assert.deepEqual(changes.at(-1).braceletState.instances.map(i=>i.instanceId),ids);
  host.querySelector('[data-action="undo"]').click();assert.equal(changes.at(-1).braceletState.layoutMode,'loose');
 });
 
-test('finishing a pending save must not dismiss a newly opened string preview', async t=>{
+test('finishing a pending save must not undo a newly collected editable string', async t=>{
  const dom=new JSDOM('<main></main>');t.after(()=>dom.window.close());const host=dom.window.document.querySelector('main'),pending=deferred();const oldFetch=globalThis.fetch;t.after(()=>{globalThis.fetch=oldFetch;});
  globalThis.fetch=async(url,options)=>options?.method==='PUT'?pending.promise:response(url==='/api/local-assets'?{assets:[]}:url==='/api/drafts'?{drafts:[]}:{available:false});
- const {renderStudio}=await studioModule();const controller=renderStudio({host,initialDraft:{name:'save-race'},resolveMaterial:()=>({})});t.after(()=>controller.dispose());await controller.ready;
+ const changes=[];const {renderStudio}=await studioModule();const controller=renderStudio({host,initialDraft:{name:'save-race',braceletState:{instances:[{instanceId:'save-race-bead',materialName:'Quartz',sizeMm:8}]}},resolveMaterial:()=>({}),onDraft:d=>changes.push(d)});t.after(()=>controller.dispose());await controller.ready;
  const saving=host.querySelector('[data-action="save"]').onclick();host.querySelector('[data-action="bracelet"]').click();pending.resolve(response({ok:true}));await saving;
- assert.equal(host.querySelector('[data-order-preview]').hidden,false);
+ assert.equal(changes.at(-1).braceletState.layoutMode,'bracelet');assert.equal(host.querySelector('[data-order-preview]'),null);assert.equal(host.querySelector('.is-presenting'),null);
 });
 
 test('selecting a bead immediately renders its selection without changing bead identities or positions', async t => {

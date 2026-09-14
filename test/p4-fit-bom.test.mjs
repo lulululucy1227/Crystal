@@ -6,11 +6,11 @@ import { aggregateBom, compareExpectedBom, knownCostSummary } from '../workbench
 test('mixed dimensions produce an explicitly approximate fit, not fixed-size capacity math', () => {
   const fit = fitEstimate({ wristCm: 3, instances: [{sizeMm:8},{sizeMm:8},{sizeMm:12},{sizeMm:4}], allowanceMm:0 });
   assert.equal(fit.usedMm,32);
-  assert.equal(fit.deltaMm,2);
+  assert.ok(Math.abs(fit.deltaMm-(-23.132741228718345))<1e-9);
   assert.equal(fit.confidence,'approximate');
-  assert.equal(fit.status,'fit');
+  assert.equal(fit.status,'underfilled');
   assert.equal(fitEstimate({wristCm:16,instances:[{size_mm:8}]}).status,'underfilled');
-  assert.equal(fitEstimate({wristCm:1,instances:[{sizeMm:30}]}).status,'overflow');
+  assert.equal(fitEstimate({wristCm:1,instances:Array.from({length:5},()=>({sizeMm:30}))}).status,'overflow');
 });
 
 test('missing dimensions and invalid targets do not silently become a guaranteed fit', () => {

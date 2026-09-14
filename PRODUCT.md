@@ -16,13 +16,13 @@ Crystal Workbench turns the project's crystal, pearl, organic-material, hardware
 
 ## Positioning
 
-The Workbench combines a traceable material library with a position-aware circular bracelet editor. It is a private design instrument: material fidelity and freedom of placement matter more than checkout, social sharing, generic healing scores, or public-facing merchandising.
+The Workbench combines a traceable material library with a position-aware dual-mode bracelet editor. Round and linear trays project the same stable per-bead design; loose/strung layout and one/two/three wraps remain independent. It is a private design instrument: material fidelity and freedom of placement matter more than checkout, social sharing, generic healing scores, or public-facing merchandising.
 
 ## Operating Context
 
 - The user designs at a desktop browser viewport, normally through the local Workbench server.
 - Materials are selected repeatedly and assessed as a composition, not as isolated single-item choices.
-- Wrist circumference and bead diameter determine the working capacity of the circular tray.
+- Wrist circumference, allowance, wraps and along-string bead dimensions inform approximate fit; physical thickness and irregular components still require sampling.
 - The user may use the same material multiple times at unrelated positions.
 - Source imagery may come from user-owned files, authorized supplier material, generated evidence assets, or explicitly open-licensed sources. These origins must remain distinguishable.
 - Drafts and exports remain local. Existing files under `workbench/exports/` are user-owned and must be preserved.
@@ -31,7 +31,7 @@ The Workbench combines a traceable material library with a position-aware circul
 
 - Chinese material names are primary; English names are supporting reference text.
 - Selecting a material must not navigate away from the catalogue or immediately add an unspecified quantity.
-- The design surface must show a circular bracelet continuously while materials are being chosen.
+- The chosen round or linear design surface remains visible beside the desktop material picker; narrow screens stack the same two regions. Switching projections must preserve bead identity, source, order and BOM.
 - Individual bead instances must support independent placement, movement, replacement, and removal.
 - The editor must report selected, placed, and remaining quantities and warn about overflow.
 - Existing canonical SQLite data remains read-only unless a separate task explicitly authorizes database writes.

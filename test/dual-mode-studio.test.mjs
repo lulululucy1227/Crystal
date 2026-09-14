@@ -6,9 +6,9 @@ const bead=(instanceId,sizeMm=8)=>({instanceId,materialId:'q',specId:`q${sizeMm}
 const initial=()=>stateApi.createBraceletState({layoutMode:'loose',instances:['a','b','c'].map(id=>bead(id))});
 const layout=await import('../workbench/studio-layout.mjs').catch(e=>{if(e.code==='ERR_MODULE_NOT_FOUND')return {};throw e;});
 test('linear front and back are pure visibility projections and gap indices retain the full sequence',()=>{
- const s=stateApi.createBraceletState({layoutMode:'bracelet',trayMode:'linear',wrapCount:2,instances:Array.from({length:8},(_,n)=>bead(String(n)))}),before=structuredClone(s);
+ const s=stateApi.createBraceletState({layoutMode:'bracelet',trayMode:'linear',wrapCount:2,wristCm:1,instances:Array.from({length:8},(_,n)=>bead(String(n)))}),before=structuredClone(s);
  const all=layout.layoutStudio(s,900,560),front=layout.layoutStudio(s,900,560,{linearSection:'front'}),back=layout.layoutStudio(s,900,560,{linearSection:'back'});
- assert.equal(all.guides.length,4);assert.deepEqual(front.points.filter(p=>p.visible).map(p=>p.instanceId),['0','1','4','5']);assert.deepEqual(back.points.filter(p=>p.visible).map(p=>p.instanceId),['2','3','6','7']);
+ assert.equal(all.guides.length,2);assert.deepEqual(front.points.filter(p=>p.visible).map(p=>p.instanceId),['0','1','4','5']);assert.deepEqual(back.points.filter(p=>p.visible).map(p=>p.instanceId),['2','3','6','7']);
  assert.deepEqual(front.points.map(({visible,...p})=>p),all.points.map(({visible,...p})=>p));assert.deepEqual(layout.layoutStudio(s,900,560),all);assert.deepEqual(s,before);
  const a=back.points[2],b=back.points[3];assert.equal(layout.insertionForPoint({x:(a.x+b.x)/2,y:a.y},back).index,3);assert.equal(layout.insertionForPoint({x:(a.x+b.x)/2,y:a.y},back,'0').index,2);
 });
@@ -35,9 +35,10 @@ test('sparse multiwrap layouts never stack one-bead loops on the same center',()
  const p=layout.layoutStudio(stateApi.createBraceletState({layoutMode:'bracelet',wrapCount:3,instances:['a','b','c'].map(id=>bead(id))}),600,600);
  for(let a=0;a<3;a++)for(let b=a+1;b<3;b++)assert.ok(Math.hypot(p.points[a].x-p.points[b].x,p.points[a].y-p.points[b].y)>=(p.points[a].diameter+p.points[b].diameter)/2);
 });
-test('dense multiwrap allocation gives outer loops more beads instead of leaving large artificial gaps',()=>{
+test('dense multiwrap follows one continuous sequence across turns without per-ring closures',()=>{
  const p=layout.layoutStudio(stateApi.createBraceletState({layoutMode:'bracelet',wrapCount:3,instances:Array.from({length:80},(_,n)=>bead(String(n),[6,8,12][n%3]))}),900,560);
- for(const guide of p.guides){const row=p.points.filter(i=>i.row===guide.row);for(let n=0;n<row.length;n++){const a=row[n],b=row[(n+1)%row.length],gap=Math.hypot(a.x-b.x,a.y-b.y)-(a.diameter+b.diameter)/2;assert.ok(gap<Math.max(a.diameter,b.diameter)*.5,`row ${guide.row} has artificial gap ${gap}`);}}
+ for(let n=1;n<p.points.length;n++){const a=p.points[n-1],b=p.points[n],gap=Math.hypot(a.x-b.x,a.y-b.y)-(a.diameter+b.diameter)/2;assert.ok(gap>=-.02&&gap<Math.max(a.diameter,b.diameter)*.5,`continuous neighbor ${n} has artificial gap ${gap}`);assert.ok(b.threadDistance>a.threadDistance);}
+ assert.equal(p.threadPath.closures.length,1);for(let n=1;n<3;n++)assert.deepEqual(p.threadPath.turns[n-1].points.at(-1),p.threadPath.turns[n].points[0]);
  assert.ok(p.guides[2].count>p.guides[0].count);
 });
 test('invalid instance collections make the fit estimate unknown, never throw',()=>{
@@ -54,7 +55,7 @@ test('local settlement never untangles an unrelated overlapping cluster elsewher
  assert.deepEqual(result.slice(1),points.slice(1));
 });
 test('normal Studio additions settle mixed loose beads without overlap and remain a single undo action',()=>{
- let h=stateApi.createHistory(stateApi.createBraceletState({layoutMode:'loose'}));
+ let h=stateApi.createHistory(stateApi.createBraceletState({layoutMode:'loose',wristCm:30,wrapCount:3}));
  for(let n=0;n<80;n++){
   h=stateApi.applyHistoryCommand(h,{type:'place',...bead(String(n),[6,8,12][n%3]),settle:true,viewport:{width:900,height:560}});
   const p=layout.layoutStudio(h.present,900,560).points;
@@ -71,8 +72,8 @@ test('independent tray and wrap commands survive 20 projections, history and exa
  h=stateApi.applyHistoryCommand(h,{type:'wrap-count',wrapCount:3});h=stateApi.applyHistoryCommand(h,{type:'allowance',allowanceMm:7});
  assert.equal(h.present.wrapCount,3);assert.equal(h.present.allowanceMm,7);assert.equal(h.present.layoutMode,'loose');assert.deepEqual(h.present.instances,before);
  const serialized=stateApi.serializeBraceletState(h.present);assert.deepEqual(stateApi.serializeBraceletState(stateApi.createBraceletState(serialized)),serialized);
- assert.equal(stateApi.undoHistory(h).present.allowanceMm,5);assert.equal(stateApi.redoHistory(stateApi.undoHistory(h)).present.allowanceMm,7);
- const old=stateApi.createBraceletState({layout:['Quartz']});assert.equal(old.trayMode,'round');assert.equal(old.wrapCount,1);assert.equal(old.allowanceMm,5);
+ assert.equal(stateApi.undoHistory(h).present.allowanceMm,0);assert.equal(stateApi.redoHistory(stateApi.undoHistory(h)).present.allowanceMm,7);
+ const old=stateApi.createBraceletState({layout:['Quartz']});assert.equal(old.trayMode,'round');assert.equal(old.wrapCount,1);assert.equal(old.allowanceMm,0);
 });
 test('gap insertion inserts exactly one stable identity without exchanging neighbors',()=>{
  let s=stateApi.setLayoutMode(initial(),'bracelet');s=stateApi.placeInstance(s,{...bead('new',12),targetIndex:1});

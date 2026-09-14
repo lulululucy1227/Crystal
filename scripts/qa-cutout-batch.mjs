@@ -2,10 +2,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import sharp from 'sharp';
-import {chromium} from '../work/dual-mode/benchmark-deps/node_modules/playwright/index.mjs';
+import {withStudioSession} from './qa-studio-session.mjs';
 import {resolveSourceDisplay} from '../workbench/source-display.mjs';
 import {importCutoutBatch} from './import-workbench-cutout-batch.mjs';
 const root=process.cwd(),privateDir=path.join(root,'work/dual-mode/task2-qa');
@@ -16,7 +15,7 @@ const read=async p=>JSON.parse(await fs.readFile(path.join(root,p),'utf8'));
 if(process.argv.includes('--record-reviewed')){
  const report=await read('outputs/dual-mode-cutout-validation.json');assert.equal(report.status,'PASS');
  for(const sheet of report.contact_sheets){sheet.viewed=true;sheet.sha256=hash(await fs.readFile(path.join(root,sheet.file)));}
- report.visual_review={reviewed_by:'Task2 implementation agent',scope:'All 257 imported samples on both backgrounds at 80px; all four final UI screenshots after image decode',result:'No additional blocking crop defect observed at preview size; existing five weak exclusions and reference-only cluster remain excluded.',screenshots:[]};
+ report.visual_review={reviewed_by:'Local reviewer explicitly confirming --record-reviewed after opening all listed files',scope:'All 257 imported samples in nine final sheets on both backgrounds at 80px; all four final UI screenshots after image decode. Producer-wide32 contact sheets are a separate earlier inventory.',result:'No additional blocking crop defect observed at preview size; existing five weak exclusions and reference-only cluster remain excluded.',screenshots:[]};
  for(const file of [...report.contact_sheets.map(s=>s.file),...report.screenshots]){
   const sha256=hash(await fs.readFile(path.join(root,file)));
   const carrier={prompt:`Local QA composite/screenshot of user source-derived Crystal Studio cutouts. Origin: workbench/state/local-asset-manifest.json and work/dual-mode/refined-cutouts-manifest.json. Display-only scaling/compositing; source labels are not verified mineral identities or authenticated photography. Artifact ${file}.`,derived_sha256:sha256};
@@ -51,15 +50,12 @@ for(let page=0;page<Math.ceil(assets.length/32);page++){
  }
  const file=path.join(privateDir,`contact-${page+1}-dark-light.png`);await sharp({create:{width:1200,height:Math.ceil(group.length/4)*112,channels:4,background:'#9d9d9d'}}).composite(layers).png().toFile(file);result.contact_sheets.push({file:path.relative(root,file).replaceAll('\\','/'),assets:group.length,preview_px:80,backgrounds:['#20252a','#f8f6f0'],viewed:false});
 }
-const server=spawn(process.execPath,['workbench/server.mjs'],{cwd:root,env:{...process.env,WORKBENCH_PORT:'44187',WORKBENCH_STATE_DIR:path.join(privateDir,'state'),WORKBENCH_EXPORT_DIR:path.join(privateDir,'exports')},stdio:['ignore','pipe','pipe']});
-await new Promise((resolve,reject)=>{server.stdout.once('data',resolve);server.once('error',reject);});
-let browser;
 try{
- const base='http://127.0.0.1:44187',api=await fetch(base+'/api/local-assets').then(r=>r.json()),ready=api.assets.filter(a=>a.asset_key&&a.imageUrl);
+ await withStudioSession({root,onStart:info=>result.server=info},async({base,browser})=>{
+ const api=await fetch(base+'/api/local-assets').then(r=>r.json()),ready=api.assets.filter(a=>a.asset_key&&a.imageUrl);
  assert.equal(ready.length,251);assert.equal(api.assets.filter(a=>a.asset_key&&!a.imageUrl).length,6);
  for(const a of api.assets.filter(a=>a.imageUrl)){const response=await fetch(base+a.imageUrl),bytes=Buffer.from(await response.arrayBuffer());assert.equal(response.status,200);if(a.derived_sha256)assert.equal(hash(bytes),a.derived_sha256);const stats=await sharp(bytes).stats();assert.ok(stats.channels[3].max>127);result.http.push({asset_key:a.asset_key||a.material_id+'/'+a.spec_id,status:response.status,sha256:hash(bytes)});}
  for(const endpoint of ['/assets/local/%2e%2e%5csecret.png','/assets/local/'+assets[0].file+'.json','/state/local-asset-manifest.json','/assets/local/'+assets.find(a=>a.status==='reference-only').file])assert.equal((await fetch(base+endpoint)).status,404);
- browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-sandbox']});
  const page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>result.errors.push(e.message));
  await page.goto(base);await page.locator('.source-hero').first().waitFor();
  const cardSources=await page.locator('.material-card').evaluateAll(cards=>cards.filter(c=>c.querySelector('.source-hero')).map(c=>({name:c.querySelector('h2').textContent,image:c.querySelector('.source-hero').getAttribute('src')})));result.catalogue_source_cards=cardSources;
@@ -83,7 +79,9 @@ try{
  const materials=await page.evaluate(async()=>{const m=await import('/source-display.mjs');const a=await fetch('/api/local-assets').then(r=>r.json());return {ready:a.assets.filter(x=>x.asset_key&&x.imageUrl).length};});assert.equal(materials.ready,251);
  result.draft_roundtrip_source_identity=true;result.actual_pearl_positions=['SRC-IMG_3405 P02','SRC-IMG_3405 P03','SRC-IMG_3405 P04'];
  assert.deepEqual(result.errors,[]);result.status='PASS';
-}catch(error){result.status='FAIL';result.failure=error.stack;process.exitCode=1;console.error(error);}finally{await browser?.close();server.kill();}
+ });
+}catch(error){result.status='FAIL';result.failure=error.stack;process.exitCode=1;console.error(error);}
+result.visual_inventory_scope={producer_wide_contact_sheets:32,task2_final_contact_sheets:result.contact_sheets.length,task2_runtime_captures:result.screenshots.length,note:'Inherited producer limitations refer to its 32 source-production contact sheets, not Task2 final delivery: nine sheets plus four runtime captures.'};
 result.preservation=[];
 for(const entry of await read('work/dual-mode/preserved-before.json')){const actual=hash(await fs.readFile(path.join(root,entry.file)));assert.equal(actual,entry.sha256);result.preservation.push({...entry,unchanged:true});}
 await fs.writeFile(path.join(root,'outputs/dual-mode-cutout-validation.json'),JSON.stringify(result,null,2)+'\n');

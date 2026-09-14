@@ -19,3 +19,4 @@ workbench/assets/local/
 workbench/state/local-asset-manifest.json
 workbench/state/draft-*.json
 workbench/state/.local-asset-manifest-*.tmp
+/outputs/visual/dual-mode/

@@ -1401,6 +1401,14 @@
     "32 contact-sheet PNGs are QA composites, not additional material assets, and also have origin sidecars.",
     "Fontconfig reported unavailable writable cache directories during labels, but the sheet labels rendered correctly and were visually read. No cache/configuration changes were made."
   ],
+  "server": {
+    "directory": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\work\\dual-mode\\final-qa-0MSzM0",
+    "stateDir": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\work\\dual-mode\\final-qa-0MSzM0\\state",
+    "exportDir": "C:\\Users\\luo_d\\Documents\\企划\\crystal-design-db\\work\\dual-mode\\final-qa-0MSzM0\\exports",
+    "port": 60639,
+    "stopped": true,
+    "pid": 692
+  },
   "catalogue_source_cards": [
     {
       "name": "白水晶Clear Quartz",
@@ -1481,6 +1489,12 @@
     "SRC-IMG_3405 P03",
     "SRC-IMG_3405 P04"
   ],
+  "visual_inventory_scope": {
+    "producer_wide_contact_sheets": 32,
+    "task2_final_contact_sheets": 9,
+    "task2_runtime_captures": 4,
+    "note": "Inherited producer limitations refer to its 32 source-production contact sheets, not Task2 final delivery: nine sheets plus four runtime captures."
+  },
   "preservation": [
     {
       "file": "data/crystal-design.sqlite",
@@ -1504,8 +1518,8 @@
     }
   ],
   "visual_review": {
-    "reviewed_by": "Task2 implementation agent",
-    "scope": "All 257 imported samples on both backgrounds at 80px; all four final UI screenshots after image decode",
+    "reviewed_by": "Local reviewer explicitly confirming --record-reviewed after opening all listed files",
+    "scope": "All 257 imported samples in nine final sheets on both backgrounds at 80px; all four final UI screenshots after image decode. Producer-wide32 contact sheets are a separate earlier inventory.",
     "result": "No additional blocking crop defect observed at preview size; existing five weak exclusions and reference-only cluster remain excluded.",
     "screenshots": [
       {
@@ -1515,17 +1529,17 @@
       },
       {
         "file": "work/dual-mode/task2-qa/pearl-source-library.png",
-        "sha256": "fa22dbbf41f42bbc8d041a5e6ca47ea3d60af05eb6ecddef01523120952b4188",
+        "sha256": "4a2d8142d629b9535dfa930e43b46e69ba178be6ca25d938bb0b1cddae7bd415",
         "viewed": true
       },
       {
         "file": "work/dual-mode/task2-qa/loose-nonround-rotated-size-edited.png",
-        "sha256": "fe3ac9ee0586c97a6b0c559736649e17663e807e93611425c37d6fc73eca842e",
+        "sha256": "0e90f3712fc8f573c94a498ca15257b7b7f9d9c640650957a59f8c4f0aa42006",
         "viewed": true
       },
       {
         "file": "work/dual-mode/task2-qa/linear-nonround-source-arrangement.png",
-        "sha256": "43c5ae097e692b8116fa6d1a12f2a27519bc866f1c56aba0b0beee173772def4",
+        "sha256": "3714f317c5b303f8126f70f498fcda4e65ffc6feca6c92fca609fd38b5a2098a",
         "viewed": true
       }
     ]
