@@ -2,7 +2,7 @@ name: Deploy shared Crystal Workbench
 
 on:
   push:
-    branches: [codex/studio-dual-mode-20260913]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
