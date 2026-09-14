@@ -1,0 +1,18 @@
+{
+  "version":"CR-PRE-EXCEL-AUDIT-V2-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "basis":"outputs/selection/sourcing-review-manifest-v3.json@CR-SOURCING-REVIEW-MANIFEST-V3-20260914",
+  "result":"PASS",
+  "checks":[
+    {"check":"USER_VISIBLE_CURRENCY_ALLOWLIST","result":"PASS","rule":"Only CNY/¥ and EUR/€ may appear in final workbook price fields."},
+    {"check":"CHINA_QUOTES","result":"PASS","rule":"Native China-market evidence remains CNY/¥."},
+    {"check":"NON_CNY_QUOTES","result":"PASS","rule":"Any non-CNY evidence selected for display is converted to EUR/€ at export time; no other currency is shown."},
+    {"check":"FX_TRACEABILITY","result":"PASS","rule":"Converted values retain FX date/source in export metadata; original amount/currency remains only in internal evidence JSON."},
+    {"check":"MARKET_SEMANTICS","result":"PASS","rule":"Source market + evidence status remain visible after conversion, preventing EUR conversion from being misread as an EU-native market quote or a China RMB band."},
+    {"check":"OTHER_PREVIOUS_AUDIT_RULES","result":"PASS","evidence":"Hole rule, photo coverage, specialist model, no-direct-purchase, gold-tone hold, non-elastic structure-pending and zero purchase approval remain unchanged from pre-excel-audit-v1."}
+  ],
+  "excel_generation_gate":"OPEN",
+  "excel_currency_rule":"Final workbook price fields may display only ¥ or €. No other currency symbol/code appears in user-visible sheets.",
+  "purchase_approval_effect":"none"
+}
