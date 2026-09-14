@@ -1,0 +1,26 @@
+{
+  "version":"CR-SOURCING-REVIEW-MANIFEST-V3-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "status":"PRE_EXCEL_CURRENCY_POLICY_APPLIED",
+  "mother_library":"outputs/selection/working-version-material-library-v1.9.json@CR-MAT-V1.9-MOTHER-LIBRARY-20260914",
+  "minimal_sourcing_specs":["outputs/selection/minimal-sourcing-specs-v1.json","outputs/selection/minimal-sourcing-specs-v2-delta.json"],
+  "price_display_policy":["outputs/selection/price-display-policy-v1.json","outputs/selection/price-display-policy-v2-delta.json"],
+  "photo_coverage_matrix":"outputs/selection/photo-coverage-matrix-v1.json@CR-PHOTO-COVERAGE-MATRIX-V1-20260914",
+  "display_categories":["水晶","珍珠","矿石","木材","配饰","随形"],
+  "review_counts":{"materials_in_scope":72,"sourcing_spec_ready":67,"photo_covered_ready":67,"no_direct_purchase":3,"gold_tone_on_hold":1,"non_elastic_structure_pending":1,"purchase_approved_specs":0},
+  "mandatory_excel_currency_rules":[
+    "User-facing prices use only CNY/¥ or EUR/€.",
+    "China-market source prices remain CNY/¥.",
+    "All non-CNY source prices used in the workbook are converted to EUR/€ at export time.",
+    "No USD/GBP/JPY/TWD/HKD or other currencies appear in the user-facing workbook.",
+    "FX conversion date/source is retained when conversion occurs.",
+    "Source market and evidence status remain visible so converted EUR values are not mistaken for European-market or China-market native quotes."
+  ],
+  "other_mandatory_excel_rules":[
+    "Use CRM-M ID label as 选品材料ID, never canonical ID.",
+    "Do not fill inventory offsets or procurement quantity from unavailable canonical/inventory sources.",
+    "Purchase approval remains zero and the workbook is not an order instruction."
+  ],
+  "next_user_facing_step":"Generate Excel only after pre-Excel audit confirms the CNY/EUR-only policy is applied consistently."
+}
