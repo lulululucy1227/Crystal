@@ -1,0 +1,50 @@
+{
+  "version":"CR-MINIMAL-SOURCING-SPECS-V1-20260914",
+  "date":"2026-09-14",
+  "authority":"Crystal｜选品",
+  "decision_source":"User approved option B: profile-based minimal sourcing specs",
+  "purpose":"Procurement-view layer with only 2-4 genuinely useful sourcing specs per material. Historical/design CRM-S specs remain unchanged.",
+  "rules":[
+    "8mm is the comparison baseline only where it is meaningful; it is not forced onto pearls, wood, focal pieces or specialist materials.",
+    "Freeform is a form/spec view linked to the original material, never a duplicate material identity.",
+    "Low/mid/high remain market price tiers for comparable material + spec, never universal quality grades.",
+    "SPECIALIST_MATERIAL items keep identity/treatment/origin/species gates before price comparison.",
+    "Supplier batch evidence is still required before purchase approval.",
+    "Gold-tone hardware stays on hold until its base-material system is chosen."
+  ],
+  "profiles":{
+    "ROUND_CORE":{"specs":["6mm round / ~0.8-1.0mm hole","8mm round / ~0.8-1.0mm hole / main comparison spec","10mm round / ~1.0mm hole"]},
+    "ROUND_FOCAL":{"specs":["8mm round / ~0.8-1.0mm hole","10mm round / ~1.0mm hole","10-20mm freeform or faceted focal / ~0.8-1.2mm hole"]},
+    "OPTICAL":{"specs":["8mm round / ~0.8-1.0mm hole","10mm round / ~1.0mm hole","10-20mm flat/freeform/faceted focal / ~0.8-1.2mm hole / select by optical effect"]},
+    "INCLUSION":{"specs":["8mm round / ~0.8-1.0mm hole","10mm round / ~1.0mm hole","12-20mm freeform/faceted focal / ~0.8-1.2mm hole / select by inclusion composition"]},
+    "STONE_AGATE":{"specs":["8mm round / ~0.8-1.0mm hole","10mm round / ~1.0mm hole","10-20mm freeform/carved piece / ~0.8-1.2mm hole when material benefits from it"]},
+    "FRESHWATER_PEARL":{"specs":["7-8mm round/near-round / ~0.8-1.0mm hole","8-9mm round/near-round / ~0.8-1.0mm hole","8-12mm baroque/irregular / hole by batch"]},
+    "AKOYA":{"specs":["7-7.5mm round/near-round loose pearl","7.5-8mm round/near-round loose pearl / main","8-8.5mm round/near-round loose pearl / premium focal"],"hole":"through/half-drill according to design"},
+    "TAHITIAN":{"specs":["8-9mm round/near-round loose pearl","9-10mm round/near-round loose pearl / main","10-11mm round/near-round loose pearl","9-12mm baroque/irregular loose pearl"],"hole":"through/half-drill according to design"},
+    "SOUTH_SEA":{"specs":["9-10mm round/near-round loose pearl","10-11mm round/near-round loose pearl / main","11-12mm round/near-round loose pearl","10-14mm baroque/irregular loose pearl"],"hole":"through/half-drill according to design"},
+    "MOP":{"specs":["6mm disc/round bead","8mm disc/round bead / main","10-20mm freeform/sheet focal"]},
+    "SPECIALIST_GEM":{"specs":["8mm round / commercial comparison only after identity gate","10mm round","10-20mm freeform/faceted/carved focal"]},
+    "AMBER":{"specs":["8mm round / compare by gram + piece/strand","10mm round / compare by gram + piece/strand","10-20mm freeform/barrel / compare by gram + piece"]},
+    "WOOD_ROUND":{"specs":["8mm round / ~1.0mm hole / main","10mm round / ~1.0mm hole"]},
+    "AGARWOOD":{"specs":["8mm round strand / gram + strand / identity first","10mm round strand / gram + strand","108-bead ~6-8mm strand / gram + strand"]},
+    "BODHI_XY":{"specs":["~8mm 108-bead round/barrel strand","~10mm single-circle round/barrel strand"]},
+    "BODHI_WHITE":{"specs":["~6x8mm barrel/apple 108-bead strand","~8x10mm barrel/apple 108-bead strand / main","~10mm round single-circle strand"]},
+    "DZI":{"specs":["~10-14mm barrel/oval single piece","~14-20mm barrel/oval focal single piece"]},
+    "SILVER_925":{"specs":["3-4mm smooth spacer bead / piece+gram","~2x25mm or 2x35mm curved tube / piece+gram","~8-12mm thin bezel/frame connector / piece+gram","~4-6mm-compatible half cap/bead cap / piece+gram"]},
+    "ELASTIC":{"specs":["0.4mm transparent high-strength elastic","0.6mm transparent high-strength elastic","0.8mm transparent high-strength elastic"]},
+    "NON_ELASTIC":{"specs":["~0.38mm coated beading wire/string","~0.45mm coated beading wire/string"]},
+    "TRANSPARENT_SPACER":{"specs":["~4mm OD clear spacer / ~1.2-1.4mm hole","~6mm OD clear spacer / ~1.2-1.4mm hole"]},
+    "NO_DIRECT_PURCHASE":{"specs":[]},
+    "GOLD_TONE_HOLD":{"specs":[]}
+  },
+  "material_profile_map":[
+    ["CRM-M-0001","ROUND_FOCAL"],["CRM-M-0002","ROUND_FOCAL"],["CRM-M-0003","ROUND_FOCAL"],["CRM-M-0004","OPTICAL"],["CRM-M-0005","OPTICAL"],["CRM-M-0006","ROUND_CORE"],["CRM-M-0008","INCLUSION"],["CRM-M-0010","ROUND_CORE"],["CRM-M-0011","ROUND_FOCAL"],["CRM-M-0014","ROUND_CORE"],["CRM-M-0016","INCLUSION"],["CRM-M-0017","ROUND_CORE"],["CRM-M-0020","INCLUSION"],["CRM-M-0021","INCLUSION"],["CRM-M-0022","NO_DIRECT_PURCHASE"],["CRM-M-0039","OPTICAL"],["CRM-M-0043","OPTICAL"],["CRM-M-0044","ROUND_CORE"],["CRM-M-0047","ROUND_CORE"],["CRM-M-0052","ROUND_CORE"],["CRM-M-0053","INCLUSION"],["CRM-M-0054","OPTICAL"],["CRM-M-0070","NO_DIRECT_PURCHASE"],["CRM-M-0071","INCLUSION"],["CRM-M-0072","INCLUSION"],["CRM-M-0076","ROUND_FOCAL"],
+    ["CRM-M-0024","FRESHWATER_PEARL"],["CRM-M-0025","SOUTH_SEA"],["CRM-M-0034","AKOYA"],["CRM-M-0035","TAHITIAN"],["CRM-M-0050","MOP"],
+    ["CRM-M-0007","STONE_AGATE"],["CRM-M-0009","STONE_AGATE"],["CRM-M-0012","OPTICAL"],["CRM-M-0013","STONE_AGATE"],["CRM-M-0015","STONE_AGATE"],["CRM-M-0018","OPTICAL"],["CRM-M-0019","SPECIALIST_GEM"],["CRM-M-0023","SPECIALIST_GEM"],["CRM-M-0040","STONE_AGATE"],["CRM-M-0041","STONE_AGATE"],["CRM-M-0042","STONE_AGATE"],["CRM-M-0045","ROUND_CORE"],["CRM-M-0046","ROUND_FOCAL"],["CRM-M-0049","STONE_AGATE"],["CRM-M-0055","SPECIALIST_GEM"],["CRM-M-0056","STONE_AGATE"],["CRM-M-0057","SPECIALIST_GEM"],["CRM-M-0058","AMBER"],["CRM-M-0059","AMBER"],["CRM-M-0060","STONE_AGATE"],["CRM-M-0061","STONE_AGATE"],["CRM-M-0062","STONE_AGATE"],["CRM-M-0063","STONE_AGATE"],["CRM-M-0067","STONE_AGATE"],["CRM-M-0068","OPTICAL"],["CRM-M-0069","OPTICAL"],["CRM-M-0073","DZI"],["CRM-M-0074","SPECIALIST_GEM"],["CRM-M-0075","ROUND_CORE"],["CRM-M-0077","ROUND_FOCAL"],
+    ["CRM-M-0026","NO_DIRECT_PURCHASE"],["CRM-M-0048","WOOD_ROUND"],["CRM-M-0064","AGARWOOD"],["CRM-M-0065","WOOD_ROUND"],["CRM-M-0078","BODHI_XY"],["CRM-M-0079","BODHI_WHITE"],
+    ["CRM-M-0027","SILVER_925"],["CRM-M-0028","GOLD_TONE_HOLD"],["CRM-M-0036","ELASTIC"],["CRM-M-0037","NON_ELASTIC"],["CRM-M-0051","TRANSPARENT_SPACER"]
+  ],
+  "counts":{"materials_in_scope":72,"sourcing_spec_ready":68,"no_direct_purchase":3,"gold_tone_on_hold":1},
+  "no_direct_purchase_items":["CRM-M-0022 发晶（未细分）","CRM-M-0070 猫眼类","CRM-M-0026 深色木材"],
+  "next_rule":"Populate sourcing-review/export rows from these profiles. Purchase approval remains zero until supplier/batch evidence is reviewed."
+}
