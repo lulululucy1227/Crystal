@@ -1,0 +1,37 @@
+{
+  "version":"CR-REFERENCE-PHOTO-EVIDENCE-V7-20260915",
+  "date":"2026-09-15",
+  "authority":"Crystal｜选品",
+  "extends":"outputs/selection/reference-photo-evidence-v6.json@CR-REFERENCE-PHOTO-EVIDENCE-V6-20260914",
+  "purpose":"Strict single-bead/single-item photo repair after user clarified that strand/group/source-page-only/proxy images are not sufficient for final Excel. Cropping is allowed when one bead/item can be cleanly isolated from the original photo.",
+  "strict_rule":[
+    "Final user-facing image for each retained procurement item must show one bead/item as the only focal subject.",
+    "Group, strand or bracelet photos may be accepted only if a clean crop isolates one complete bead/item without ambiguity.",
+    "Source-page-only records are not complete until an actual image can be extracted or cropped.",
+    "Proxy images are not final-complete for the target material unless the proxy relationship is intentionally retained and user-visible as proxy; preference is to replace with target-trade-name single-bead imagery.",
+    "No-direct-purchase taxonomy parents/placeholders do not require final images."
+  ],
+  "new_direct_single_or_crop_eligible_references":[
+    {"material":"绿幽灵水晶","status":"DIRECT_SINGLE_SOURCE_FOUND","source_url":"https://dlvsion.com/products/green-phantom-quartz-bead","note":"Listing explicitly sells a single Green Phantom Quartz bead in 6/8/10mm; use actual product image when extracted."},
+    {"material":"月光石/佩里斯特石商业参考","status":"CROP_ELIGIBLE","source_url":"https://colorfulbeads.jp/view/item/000000013031","image_url":"https://colorfulbeads.sub.jp/file/webp_photo/210602604.webp","crop_instruction":"crop one fully visible 8mm bead from the black-background loose-bead image","note":"Single-bead sale page; multiple loose beads shown, each independently isolated."},
+    {"material":"超七","status":"CROP_ELIGIBLE","source_url":"https://www.superdelivery.com/p/r/pd_p/5414245/","image_url":"https://c.superdelivery.com/ip/n/sa/1200/630/www.superdelivery.com/product_image/541/4/5414245_s_1.jpg","crop_instruction":"crop bead #01 or #02 as a single isolated 8mm bead","note":"Listing is 粒売り/单珠; source image shows four separated beads."},
+    {"material":"血石/Bloodstone","status":"CROP_ELIGIBLE","source_url":"https://colorfulbeads.jp/view/item/000000004580","image_url":"https://colorfulbeads.sub.jp/file/webp_photo/210204114.webp","crop_instruction":"crop one fully visible green/red speckled 8mm bead near center","note":"8mm, ~1mm hole listed; crop required because source image shows multiple beads."},
+    {"material":"彼得石","status":"CROP_ELIGIBLE","source_url":"https://pascle.net/item/PTSMT08","image_url":"https://img.pascle.com/item/pascle006/ptsmt08-n.jpg","crop_instruction":"crop one complete front bead from the white-background loose-bead cluster","note":"粒売り/バラ売り 8mm; seven separated beads visible."},
+    {"material":"蓝晶石","status":"CROP_ELIGIBLE","source_url":"https://www.artstones.com.br/cianita-azul-mesclada-natural-esferas-de-8-9mm","image_url":"https://images.tcdn.com.br/img/img_prod/99941/cianita_azul_mesclada_extra_esferas_de_8_9mm_06_pecas_pp123_32252_1_e086d259e2748e55108562a526dec1de_20241212173119.jpg","crop_instruction":"crop one isolated drilled 8.6-9.3mm bead from upper/right group","note":"Drill holes visible; crop yields a valid single-bead reference."},
+    {"material":"舒俱来","status":"CROP_ELIGIBLE","source_url":"https://stone-puck.com/?pid=133419403","image_url":"https://img06.shop-pro.jp/PA01106/172/product/133419403.jpg?cmsp_timestamp=20180718142756","crop_instruction":"crop one complete 8mm purple bead with visible drill hole","note":"Five separated beads on white background; crop resolves strict single requirement."},
+    {"material":"阿拉善玛瑙","status":"DIRECT_SINGLE","source_url":"https://shopee.tw/%E6%95%A3%E7%8F%A0%E7%B3%BB%E5%88%97-%E9%98%BF%E6%8B%89%E5%96%84%E7%91%AA%E7%91%9915.5mm-%E8%85%AE%E7%B4%85%E5%A4%A9%E7%9C%BC%E6%95%A3%E7%8F%A0-i.3259342.14787486324","image_url":"https://down-tw.img.susercontent.com/file/b5daf0ebb8cf8d02acdde789888a134d","note":"Single loose Alashan bead; hole and bead body visible."},
+    {"material":"玉髓","status":"DIRECT_SINGLE","source_url":"https://www.daraz.pk/products/4a-natural-white-chalcedony-quartz-crystal-single-bead-diy-jewelry-i282821751.html","image_url":"https://img.drz.lazcdn.com/static/pk/p/f73a4732d7ee3bc734a7a41aec546de1.jpg_720x720q80.jpg","note":"Single drilled white chalcedony bead."},
+    {"material":"樱花玛瑙/Flower Agate","status":"SINGLE_BEAD_SOURCE_FOUND","source_url":"https://www.etsy.com/listing/4313763086/flower-agate-8mm-single-bead-braided","note":"Listing explicitly uses one 8mm Flower Agate bead as the focal subject; extract product image for final reference. If unavailable, crop one bead from https://yeolderockshop.com/products/flower-agate-loose-beads-round-various-sizes ."},
+    {"material":"胶花水晶/红胶花商业分支","status":"TARGET_TRADE_SINGLE_SOURCE_FOUND","source_url":"https://www.jd.com/chanpin/44430.html","note":"JD category page explicitly contains red Jiaohua single-bead listings at 8/9/10/12mm and per-piece variants. Replace prior hematoid-quartz proxy with a cropped actual 红胶花单珠 product image before final export."},
+    {"material":"绿檀（商业名）","status":"CROP_ELIGIBLE","source_url":"https://www.ungrandmarche.fr/merceries/p/bois/perle-bois-de-santal-bouddhiste-bouddha-meditation-8-mm-lot/3992619","image_url":"https://storage.gra.cloud.ovh.net/v1/AUTH_ca60d77ddd5e42749d7c4c17f753540d/ugm-data/pictures/abracadabracie/3992619-perle-bois-de-santal-bouddhiste-bouddha-meditation-8-mm-lot-1_medium.jpeg","crop_instruction":"crop one isolated foreground 8mm wooden bead with visible grain","note":"Commercial green sandalwood identity remains trade-name only."}
+  ],
+  "strict_remaining_gaps_after_v7":[
+    "白幽灵：need one final isolated bead image or crop from a product image where one bead is complete and distinguishable; current bracelet/cluster images are not accepted without crop.",
+    "南洋珍珠：current pair image can be cropped to one pearl; crop asset still needs to be produced/registered.",
+    "925银基础圆珠/弯管/半帽/方框/圆框/有机吊坠/六边件：audit each final accessory row and crop to one item where the source image contains multiples.",
+    "星月菩提、白玉菩提：need strict single-bead crop or direct single item if current source is strand/product-only.",
+    "绿松/和田玉/翡翠等随形专业材料 already have single-piece references, but round-bead sheet rows need a distinct single round-bead image if the Excel row is round-bead-specific.",
+    "胶花水晶：actual JD single-bead image extraction/crop still pending; prior proxy is not final-complete."
+  ],
+  "completion_claim":"NOT_COMPLETE_STRICT_STANDARD"
+}
