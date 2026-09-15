@@ -1,0 +1,24 @@
+{
+  "version":"CR-STRICT-SINGLE-PHOTO-COVERAGE-V2-20260915",
+  "date":"2026-09-15",
+  "authority":"Crystal｜选品",
+  "basis":[
+    "outputs/selection/reference-photo-evidence-v1.json",
+    "outputs/selection/reference-photo-evidence-v2.json",
+    "outputs/selection/reference-photo-evidence-v3.json",
+    "outputs/selection/reference-photo-evidence-v4.json",
+    "outputs/selection/reference-photo-evidence-v5.json",
+    "outputs/selection/reference-photo-evidence-v6.json",
+    "outputs/selection/reference-photo-evidence-v7.json",
+    "outputs/selection/reference-photo-evidence-v8.json"
+  ],
+  "strict_rule":"Each sourcing-spec-ready item must resolve to either DIRECT_SINGLE or CROP_TO_SINGLE. Source-page-only, group-only without an isolatable complete bead/item, bracelet-only without a valid crop, and proxy-only are failures.",
+  "ready_item_ids":["CRM-M-0001","CRM-M-0002","CRM-M-0003","CRM-M-0004","CRM-M-0005","CRM-M-0006","CRM-M-0007","CRM-M-0008","CRM-M-0009","CRM-M-0010","CRM-M-0011","CRM-M-0012","CRM-M-0013","CRM-M-0014","CRM-M-0015","CRM-M-0016","CRM-M-0017","CRM-M-0018","CRM-M-0019","CRM-M-0020","CRM-M-0021","CRM-M-0023","CRM-M-0024","CRM-M-0025","CRM-M-0027","CRM-M-0034","CRM-M-0035","CRM-M-0036","CRM-M-0039","CRM-M-0040","CRM-M-0041","CRM-M-0042","CRM-M-0043","CRM-M-0044","CRM-M-0045","CRM-M-0046","CRM-M-0047","CRM-M-0048","CRM-M-0049","CRM-M-0050","CRM-M-0051","CRM-M-0052","CRM-M-0053","CRM-M-0054","CRM-M-0055","CRM-M-0056","CRM-M-0057","CRM-M-0058","CRM-M-0059","CRM-M-0060","CRM-M-0061","CRM-M-0062","CRM-M-0063","CRM-M-0064","CRM-M-0065","CRM-M-0067","CRM-M-0068","CRM-M-0069","CRM-M-0071","CRM-M-0072","CRM-M-0073","CRM-M-0074","CRM-M-0075","CRM-M-0076","CRM-M-0077","CRM-M-0078","CRM-M-0079"],
+  "direct_single_ids":["CRM-M-0001","CRM-M-0002","CRM-M-0003","CRM-M-0004","CRM-M-0005","CRM-M-0007","CRM-M-0009","CRM-M-0010","CRM-M-0011","CRM-M-0012","CRM-M-0017","CRM-M-0019","CRM-M-0020","CRM-M-0021","CRM-M-0024","CRM-M-0025","CRM-M-0027","CRM-M-0034","CRM-M-0035","CRM-M-0036","CRM-M-0042","CRM-M-0050","CRM-M-0052","CRM-M-0055","CRM-M-0056","CRM-M-0058","CRM-M-0059","CRM-M-0060","CRM-M-0062","CRM-M-0063","CRM-M-0064","CRM-M-0073","CRM-M-0076","CRM-M-0077"],
+  "crop_to_single_ids":["CRM-M-0006","CRM-M-0008","CRM-M-0013","CRM-M-0014","CRM-M-0015","CRM-M-0016","CRM-M-0018","CRM-M-0023","CRM-M-0039","CRM-M-0040","CRM-M-0041","CRM-M-0043","CRM-M-0044","CRM-M-0045","CRM-M-0046","CRM-M-0047","CRM-M-0048","CRM-M-0049","CRM-M-0051","CRM-M-0053","CRM-M-0054","CRM-M-0057","CRM-M-0061","CRM-M-0065","CRM-M-0067","CRM-M-0068","CRM-M-0069","CRM-M-0071","CRM-M-0072","CRM-M-0074","CRM-M-0075","CRM-M-0078","CRM-M-0079"],
+  "not_required_ids":["CRM-M-0022","CRM-M-0026","CRM-M-0028","CRM-M-0037","CRM-M-0070"],
+  "counts":{"ready_items":67,"direct_single":34,"crop_to_single":33,"strict_covered":67,"strict_uncovered":0,"not_required":5},
+  "user_visible_parent_rule":"CRM-M-0022 发晶（未细分） must not appear as a selectable/user-facing material. Only CRM-M-0020 金发晶 and CRM-M-0021 黑发晶 are shown as the current rutilated/inclusion-quartz selectable branches.",
+  "excel_image_rule":"Before embedding into Excel, execute the recorded crop instructions so each displayed image contains exactly one bead/item. Keep source URL in a separate source field; third-party images remain research/sourcing references only.",
+  "result":"PASS_STRICT_SINGLE_IMAGE_SOURCE_COVERAGE"
+}
