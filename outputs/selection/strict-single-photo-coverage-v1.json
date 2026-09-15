@@ -1,0 +1,40 @@
+{
+  "version":"CR-STRICT-SINGLE-PHOTO-COVERAGE-V1-20260915",
+  "date":"2026-09-15",
+  "authority":"Crystal｜选品",
+  "basis":[
+    "outputs/selection/reference-photo-evidence-v1.json",
+    "outputs/selection/reference-photo-evidence-v2.json",
+    "outputs/selection/reference-photo-evidence-v3.json",
+    "outputs/selection/reference-photo-evidence-v4.json",
+    "outputs/selection/reference-photo-evidence-v5.json",
+    "outputs/selection/reference-photo-evidence-v6.json",
+    "outputs/selection/reference-photo-evidence-v7.json",
+    "outputs/selection/reference-photo-evidence-v8.json"
+  ],
+  "strict_acceptance":["DIRECT_SINGLE","CROP_TO_SINGLE","CROP_ELIGIBLE with explicit final crop instruction"],
+  "strict_rejections":["strand as-is","bracelet as-is","group as-is","source-page-only","proxy-only"],
+  "rules":[
+    "Each sourcing-ready material/component must render in the final Excel as one bead/item only.",
+    "Where a source image contains multiple separated items, the workbook generation step must crop to the explicit single target before embedding.",
+    "The source URL must remain in the row for traceability.",
+    "No-direct-purchase parents/placeholders do not require an image.",
+    "Gold-tone hardware and non-elastic stringing remain outside sourcing-ready scope until their upstream material/structure decisions are made."
+  ],
+  "counts":{
+    "materials_in_scope":72,
+    "sourcing_spec_ready":67,
+    "strict_single_source_or_crop_ready":67,
+    "strict_unresolved_ready_items":0,
+    "no_direct_purchase":3,
+    "gold_tone_hold":1,
+    "non_elastic_structure_pending":1
+  },
+  "special_notes":[
+    "发晶（未细分） remains taxonomy-only and is not user-visible as a selectable sourcing item; final user-facing list uses 金发晶 and 黑发晶 only.",
+    "Crop-ready status is not permission to display the original multi-item image unchanged. Final Excel must embed the single-item crop.",
+    "Third-party images are sourcing-recognition references only, not project-owned marketing assets or proof of material identity."
+  ],
+  "result":"PASS_STRICT_SOURCE_COVERAGE",
+  "excel_image_rule":"During workbook generation, execute every crop instruction and embed only the single-item derivative."
+}
