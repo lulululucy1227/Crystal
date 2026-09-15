@@ -1,0 +1,23 @@
+{
+  "version":"CR-PRE-EXCEL-AUDIT-V3-20260915",
+  "date":"2026-09-15",
+  "authority":"Crystal｜选品",
+  "basis":[
+    "outputs/selection/sourcing-review-manifest-v3.json",
+    "outputs/selection/reference-photo-evidence-v8.json",
+    "outputs/selection/strict-single-photo-coverage-v2.json"
+  ],
+  "result":"PASS_STRICT_SINGLE_IMAGE_STANDARD",
+  "checks":[
+    {"check":"STRICT_SINGLE_IMAGE_READY_ITEMS","result":"PASS","evidence":"67 sourcing-spec-ready items resolve to DIRECT_SINGLE or CROP_TO_SINGLE; strict uncovered count is 0."},
+    {"check":"NO_GROUP_ONLY_ACCEPTANCE","result":"PASS","rule":"Group/strand/bracelet images count only when one complete bead/item can be cleanly cropped and isolated."},
+    {"check":"NO_SOURCE_PAGE_ONLY_ACCEPTANCE","result":"PASS","rule":"Source-page-only records were upgraded to image-bearing/crop-ready sources for final-ready items."},
+    {"check":"NO_PROXY_ONLY_FINAL_IMAGE","result":"PASS","rule":"Trade-name/proxy-only images are not used as the sole final image where a target-item source is available."},
+    {"check":"RUTILATED_QUARTZ_PARENT_VISIBILITY","result":"PASS","rule":"CRM-M-0022 发晶（未细分） is hidden from user-facing selectable rows; CRM-M-0020 金发晶 and CRM-M-0021 黑发晶 remain separate visible materials."},
+    {"check":"EXCLUDED_PENDING_ITEMS","result":"PASS","evidence":"No-direct-purchase parents/placeholders, gold-tone hold, and non-elastic structure-pending items are outside the strict ready-image requirement."}
+  ],
+  "counts":{"ready_items":67,"strict_single_or_crop_ready":67,"strict_uncovered":0,"not_required_or_pending":5},
+  "excel_image_execution_rule":"At workbook generation, materialize each CROP_TO_SINGLE record into an actual one-subject crop before embedding. Store the source URL separately for traceability.",
+  "excel_generation_gate":"OPEN_FOR_IMAGES",
+  "purchase_approval_effect":"none"
+}
